@@ -1,0 +1,33 @@
+﻿<Window x:Class="AccountingPolessUp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingPolessUp"
+        mc:Ignorable="d"
+        Title="PolessUp" Height="450" Width="920"  ResizeMode="NoResize">
+    <Grid Background="#EDEEF0" Width="Auto">
+        <Grid HorizontalAlignment="Left" Width="130">
+            <Border Width="Auto" Height="Auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
+
+            <Button BorderBrush="Transparent" Height="30" Width="100" Content="Profile" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonProfile_Click" Cursor="Hand" Margin="15,50,0,0" />
+            <Image HorizontalAlignment="Left" Height="20" Margin="5,55,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-пользователь-мужчина-в-кружке-50.png"/>
+            <Button BorderBrush="Transparent" Height="30" Width="100" Content="Positions" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonPositions_Click" Cursor="Hand" Margin="15,80,0,0" />
+            <Image HorizontalAlignment="Left" Height="20" Margin="5,85,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-создание-50.png"/>
+            <Button BorderBrush="Transparent" Height="30" Width="100" Content="Courses" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonCourses_Click" Cursor="Hand" Margin="15,110,0,0" />
+            <Image HorizontalAlignment="Left" Height="20" Margin="5,115,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-назначение-курса-50.png"/>
+            <Button BorderBrush="Transparent" Height="30" Width="100" Content="Mentor" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonMentor_Click" Cursor="Hand" Margin="15,140,0,0" />
+            <Image HorizontalAlignment="Left" Height="20" Margin="5,145,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-посредник-50.png"/>
+            <Label Content="PolessUp" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        </Grid>
+        <Grid Width="230" Height="313" Margin="131,4,554,117" Background="Transparent">
+            <Border Width="Auto" Height="Auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White">
+                <Image x:Name="Picture" Source="/icons8-не-снимать-100.png" Width="150" Margin="39,40,39,121" Height="150"/>
+            </Border>
+        </Grid>
+        <Grid Width="550" Height="230" Margin="362,4,0,200" Background="Transparent">
+            <Border Width="Auto" Height="Auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+
+        </Grid>
+    </Grid>
+</Window>
