@@ -20,16 +20,23 @@
             <Image HorizontalAlignment="Left" Height="20" Margin="5,145,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-посредник-50.png"/>
             <Label Content="PolessUp" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         </Grid>
+        <Grid x:Name="GridInformation" Margin="135,0,0,0">
+            <Grid  Margin="0,2,176,260" Background="Transparent">
+                <Border Width="auto" Height="auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"  />
 
-        <Grid  Margin="132,4,253,266" Background="Transparent">
-            <Border Width="auto" Height="Auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" Margin="0,0,0,0"/>
-            <Image x:Name="Picture" Source="/icons8-не-снимать-100.png" Margin="10,15,413,15" Height="150"/>
-            <Label x:Name="PersonName"  Margin="180,15,0,119" Content="last name first name middle name"  FontSize="20" />
-            <Label x:Name="PersonPosition" Margin="180,53,0,90" Content="position" FontSize="16"  />
-        </Grid>
-        <Grid Margin="132,189,1,1" Background="Transparent" Height="241" VerticalAlignment="Top">
-            <Border Width="auto" Height="auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"  />
+                <Image x:Name="Picture" Source="/icons8-не-снимать-100.png" Margin="5,15,456,33"/>
+                <Label x:Name="PersonName"  Margin="180,15,0,112" Content="last name first name middle name"  FontSize="20" />
+                <Label x:Name="PersonPosition" Margin="180,53,0,80" Content="position" FontSize="16"  />
+            </Grid>
+            <Grid Margin="0,195,1,0" Background="Transparent" Height="241" VerticalAlignment="Top">
+                <Border Width="auto" Height="auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"  />
 
+            </Grid>
+            <Grid Margin="614,2,1,0" Background="Transparent" Height="189" VerticalAlignment="Top">
+                <Border Width="auto" Height="auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"  />
+
+            </Grid>
         </Grid>
+
     </Grid>
 </Window>

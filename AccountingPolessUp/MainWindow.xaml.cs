@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +22,20 @@ namespace AccountingPolessUp
     /// </summary>
     public partial class MainWindow : Window
     {
+        IndividualsService _indvidualsService;
         public MainWindow()
         {
             InitializeComponent();
+            _indvidualsService = new IndividualsService();
+            GridInformation.Visibility = Visibility.Hidden;
         }
 
         private void ButtonProfile_Click(object sender, RoutedEventArgs e)
         {
-
+            List<Individuals> individuals = _indvidualsService.Get();
+            PersonName.Content = individuals[0].FIO;
+            PersonPosition.Content = "Пошел в жопу кузьмич";
+            GridInformation.Visibility = Visibility.Visible;
         }
 
         private void ButtonPositions_Click(object sender, RoutedEventArgs e)
