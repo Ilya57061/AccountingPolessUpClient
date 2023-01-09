@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:AccountingPolessUp"
         mc:Ignorable="d"
         Title="PolessUp" Height="450" Width="920"  ResizeMode="NoResize">
-    <Grid Background="#EDEEF0" Width="Auto">
-        <Grid HorizontalAlignment="Left" Width="130">
-            <Border Width="Auto" Height="Auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
+    <Grid Background="#EDEEF0" Width="920" Height="450">
+        <Grid HorizontalAlignment="Left" Width="130" Margin="0,0,0,20">
+            <Border Width="Auto" Height="Auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
 
             <Button BorderBrush="Transparent" Height="30" Width="100" Content="Profile" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonProfile_Click" Cursor="Hand" Margin="15,50,0,0" />
             <Image HorizontalAlignment="Left" Height="20" Margin="5,55,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-пользователь-мужчина-в-кружке-50.png"/>
@@ -20,13 +20,15 @@
             <Image HorizontalAlignment="Left" Height="20" Margin="5,145,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-посредник-50.png"/>
             <Label Content="PolessUp" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
         </Grid>
-        <Grid Width="230" Height="313" Margin="131,4,554,117" Background="Transparent">
-            <Border Width="Auto" Height="Auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White">
-                <Image x:Name="Picture" Source="/icons8-не-снимать-100.png" Width="150" Margin="39,40,39,121" Height="150"/>
-            </Border>
+
+        <Grid  Margin="132,4,253,266" Background="Transparent">
+            <Border Width="auto" Height="Auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" Margin="0,0,0,0"/>
+            <Image x:Name="Picture" Source="/icons8-не-снимать-100.png" Margin="10,15,413,15" Height="150"/>
+            <Label x:Name="PersonName"  Margin="180,15,0,119" Content="last name first name middle name"  FontSize="20" />
+            <Label x:Name="PersonPosition" Margin="180,53,0,90" Content="position" FontSize="16"  />
         </Grid>
-        <Grid Width="550" Height="230" Margin="362,4,0,200" Background="Transparent">
-            <Border Width="Auto" Height="Auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+        <Grid Margin="132,189,1,1" Background="Transparent" Height="241" VerticalAlignment="Top">
+            <Border Width="auto" Height="auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"  />
 
         </Grid>
     </Grid>
