@@ -34,7 +34,7 @@ namespace AccountingPolessUp
         {
             List<Individuals> individuals = _indvidualsService.Get();
             PersonName.Content = individuals[0].FIO;
-            PersonPosition.Content = "Пошел в жопу кузьмич";
+            PersonPosition.Content = "Ранг";
             GridInformation.Visibility = Visibility.Visible;
         }
 
