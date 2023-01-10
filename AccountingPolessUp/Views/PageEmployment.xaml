@@ -1,0 +1,20 @@
+﻿<Page x:Class="AccountingPolessUp.PageEmployment"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AccountingPolessUp"
+      mc:Ignorable="d" 
+      d:DesignHeight="770" d:DesignWidth="1250"
+          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+   Background="#EDEEF0"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid >
+
+    </Grid>
+</Page>

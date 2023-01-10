@@ -26,7 +26,7 @@ namespace AccountingPolessUp
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
+            WorkWindow mainWindow = new WorkWindow();
             mainWindow.Show();
             this.Close();
         }

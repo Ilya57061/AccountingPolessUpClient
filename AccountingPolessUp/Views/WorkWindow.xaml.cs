@@ -1,6 +1,4 @@
-﻿using AccountingPolessUp.Implementations;
-using AccountingPolessUp.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,24 +16,21 @@ using System.Windows.Shapes;
 namespace AccountingPolessUp
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для WorkWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
-    {
-        IndividualsService _indvidualsService;
-        public MainWindow()
+    public partial class WorkWindow : Window
+    { 
+    
+        public WorkWindow()
         {
             InitializeComponent();
-            _indvidualsService = new IndividualsService();
-            GridInformation.Visibility = Visibility.Hidden;
-        }
+            MainFrame.Content = new PageProfile();
 
+        }
         private void ButtonProfile_Click(object sender, RoutedEventArgs e)
         {
-            List<Individuals> individuals = _indvidualsService.Get();
-            PersonName.Content = individuals[0].FIO;
-            PersonPosition.Content = "Ранг";
-            GridInformation.Visibility = Visibility.Visible;
+            //List<Individuals> individuals = _indvidualsService.Get();
+            MainFrame.Content = new PageProfile();
         }
 
         private void ButtonPositions_Click(object sender, RoutedEventArgs e)
@@ -51,6 +46,11 @@ namespace AccountingPolessUp
         private void ButtonMentor_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ButtonEmployment_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageEmployment();
         }
     }
 }
