@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:AccountingPolessUp"
         mc:Ignorable="d"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
@@ -12,30 +13,201 @@
      TextOptions.TextRenderingMode="Auto"
    Background="#EDEEF0"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="PolessUp" Height="770" Width="1400"  ResizeMode="NoResize">
+        Title="PolessUp" Height="850" Width="1200"  ResizeMode="NoResize">
     <Grid>
-        <Grid HorizontalAlignment="Left" Width="150">
-            <Border Width="Auto" Height="Auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" >
-            </Border>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
 
-            <Button BorderBrush="Transparent" Height="30" Width="100" Content="Профиль" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonProfile_Click" Cursor="Hand" Margin="15,50,0,0" />
-            <Image HorizontalAlignment="Left" Height="20" Margin="5,55,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-пользователь-мужчина-в-кружке-50.png"/>
-            <Button BorderBrush="Transparent" Height="30" Width="135" Content="Трудоустройство" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonEmployment_Click" Cursor="Hand" Margin="15,80,0,0" />
-            <Image Source="/Views/icons8-работа-по-контракту-100.png" Width="20" Height="20" Margin="5,85,125,649"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
 
-           
-            <Button BorderBrush="Transparent" Height="30" Width="100" Content="Courses" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonCourses_Click" Cursor="Hand" Margin="15,227,0,0" />
-            <Image HorizontalAlignment="Left" Height="20" Margin="5,232,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-назначение-курса-50.png"/>
-            <Button BorderBrush="Transparent" Height="30" Width="135" Content="Менторство" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonMentor_Click" Cursor="Hand" Margin="15,110,0,0" />
-            <Image HorizontalAlignment="Left" Height="20" Margin="5,115,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-посредник-50.png"/>
-            <Button BorderBrush="Transparent" Height="30" Width="135" Content="Мои проекты" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonProjects_Click" Cursor="Hand" Margin="15,140,0,0" />
-            <Image HorizontalAlignment="Left" Height="20" Margin="5,145,0,0" VerticalAlignment="Top" Width="20" Source="/Views/icons8-настройка-проекта-80.png"/>
-            <Button BorderBrush="Transparent" Height="30" Width="100" Content="Вакансии" HorizontalContentAlignment="Left"  HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#000" Background="Transparent" Click="ButtonPositions_Click" Cursor="Hand" Margin="15,170,0,0" />
-            <Image HorizontalAlignment="Left" Height="20" Margin="5,175,0,0" VerticalAlignment="Top" Width="20" Source="/icons8-создание-50.png"/>
-            <Label Content="PolessUp" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-
+        <Grid Grid.Row="0" Grid.RowSpan="2">
+            <Border Width="auto"  BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <TreeView Margin="10 40"  Width="auto" FontSize="20">
+                <TreeViewItem Selected="ButtonProfile_Click">
+                    <TreeViewItem.Header>
+                        <StackPanel  Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AccountCircleOutline" Width="35" Height="35" VerticalAlignment="Center"/>
+                            <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Моя страница" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem Selected="ButtonEmployment_Click">
+                    <TreeViewItem.Header>
+                        <StackPanel  Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="BadgeAccountHorizontal" Width="35" Height="35" VerticalAlignment="Center"/>
+                            <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Трудоустройство" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem Selected="ButtonMentor_Click">
+                    <TreeViewItem.Header>
+                        <StackPanel  Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AccountGroup" Width="35" Height="35" VerticalAlignment="Center"/>
+                            <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Менторство" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem Selected="ButtonProjects_Click">
+                    <TreeViewItem.Header>
+                        <StackPanel  Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="BriefcaseEye" Width="35" Height="35" VerticalAlignment="Center"/>
+                            <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Мои Проекты" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem Selected="ButtonPositions_Click">
+                    <TreeViewItem.Header>
+                        <StackPanel  Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="BriefcasePlus" Width="35" Height="35" VerticalAlignment="Center"/>
+                            <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Вакансии" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem   Header="Справочники" >
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Уставы PolessUP" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Отделы" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Должности" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Учебные Курсы" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Ранги" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Бонусы" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                </TreeViewItem>
+                <TreeViewItem    Header="Администрирование" >
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Организация" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Юридические лица" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Проекты" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Уставы" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Отделы" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Пользователи" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Участники" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Физические лица" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Студенты" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Ранги" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Учебные курсы" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                    <TreeViewItem >
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Трудоустройства" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
+                </TreeViewItem>
+            </TreeView>
         </Grid>
-        <Frame Name="MainFrame" Content="Pages" Background="White" NavigationUIVisibility="Hidden" Margin="151,0,4,0"/>
-
+        <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Background="WhiteSmoke">
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <Frame Margin="5 0 0 0" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Background="Transparent">
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+        </Grid>
     </Grid>
 </Window>

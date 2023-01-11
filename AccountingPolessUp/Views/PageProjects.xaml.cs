@@ -1,5 +1,4 @@
-﻿using AccountingPolessUp.Implementations;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,21 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AccountingPolessUp
+namespace AccountingPolessUp.Views
 {
     /// <summary>
-    /// Логика взаимодействия для PageProfile.xaml
+    /// Логика взаимодействия для PageProjects.xaml
     /// </summary>
-    public partial class PageProfile : Page
+    public partial class PageProjects : Page
     {
-        IndividualsService _indvidualsService;
-
-        public PageProfile()
+        public PageProjects()
         {
             InitializeComponent();
-            _indvidualsService = new IndividualsService();
         }
-
-      
     }
 }

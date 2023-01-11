@@ -72,8 +72,17 @@
     <Compile Include="Views\PageEmployment.xaml.cs">
       <DependentUpon>PageEmployment.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\PageMentor.xaml.cs">
+      <DependentUpon>PageMentor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PagePositions.xaml.cs">
+      <DependentUpon>PagePositions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PageProfile.xaml.cs">
       <DependentUpon>PageProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PageProjects.xaml.cs">
+      <DependentUpon>PageProjects.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
@@ -95,7 +104,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PageMentor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PagePositions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PageProfile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PageProjects.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,7 +174,7 @@
     <Resource Include="Resources\iconsAuthorization.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="iconsAuthorization.png" />
+    <Resource Include="Views\iconsAuthorization.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icons8-пользователь-мужчина-в-кружке-50.png" />
@@ -168,19 +189,25 @@
     <Resource Include="Resources\icons8-создание-50.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons8-пользователь-мужчина-в-кружке-50.png" />
+    <Resource Include="Views\icons8-пользователь-мужчина-в-кружке-50.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons8-создание-50.png" />
+    <Resource Include="Views\icons8-создание-50.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons8-назначение-курса-50.png" />
+    <Resource Include="Views\icons8-назначение-курса-50.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons8-посредник-50.png" />
+    <Resource Include="Views\icons8-посредник-50.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="icons8-не-снимать-100.png" />
+    <Resource Include="Views\icons8-не-снимать-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\icons8-работа-по-контракту-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Views\icons8-настройка-проекта-80.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.7.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.7.0\build\MaterialDesignThemes.targets')" />

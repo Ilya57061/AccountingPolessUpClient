@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountingPolessUp.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,24 +34,24 @@ namespace AccountingPolessUp
             MainFrame.Content = new PageProfile();
         }
 
-        private void ButtonPositions_Click(object sender, RoutedEventArgs e)
+        private void ButtonPositions_Click(object sender, RoutedEventArgs e) // вакансии
         {
-
-        }
-
-        private void ButtonCourses_Click(object sender, RoutedEventArgs e)
-        {
-
+            MainFrame.Content = new PagePositions();
         }
 
         private void ButtonMentor_Click(object sender, RoutedEventArgs e)
         {
-
+            MainFrame.Content = new PageMentor();
         }
 
         private void ButtonEmployment_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageEmployment();
+        }
+
+        private void ButtonProjects_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
