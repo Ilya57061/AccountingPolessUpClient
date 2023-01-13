@@ -69,6 +69,68 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Implementations\ParticipantsService.cs" />
+    <Compile Include="Implementations\UserService.cs" />
+    <Compile Include="Views\Administration\EditPages\PageAddMembers.xaml.cs">
+      <DependentUpon>PageAddMembers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditMembers.xaml.cs">
+      <DependentUpon>PageEditMembers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmCourses.xaml.cs">
+      <DependentUpon>PageAdmCourses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmDepartments.xaml.cs">
+      <DependentUpon>PageAdmDepartments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmLegal.xaml.cs">
+      <DependentUpon>PageAdmLegal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmMembers.xaml.cs">
+      <DependentUpon>PageAdmMembers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmNatural.xaml.cs">
+      <DependentUpon>PageAdmNatural.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmOrganizations.xaml.cs">
+      <DependentUpon>PageAdmOrganizations.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmProjects.xaml.cs">
+      <DependentUpon>PageAdmProjects.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmRanks.xaml.cs">
+      <DependentUpon>PageAdmRanks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmRules.xaml.cs">
+      <DependentUpon>PageAdmRules.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmStudents.xaml.cs">
+      <DependentUpon>PageAdmStudents.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmUsers.xaml.cs">
+      <DependentUpon>PageAdmUsers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmWork.xaml.cs">
+      <DependentUpon>PageAdmWork.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Infromation\PageInfoBonus.xaml.cs">
+      <DependentUpon>PageInfoBonus.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Infromation\PageInfoDepartments.xaml.cs">
+      <DependentUpon>PageInfoDepartments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Infromation\PageInfoPositions.xaml.cs">
+      <DependentUpon>PageInfoPositions.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Infromation\PageInfoRanks.xaml.cs">
+      <DependentUpon>PageInfoRanks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Infromation\PageInfoRules.xaml.cs">
+      <DependentUpon>PageInfoRules.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Infromation\PageInfoСourses.xaml.cs">
+      <DependentUpon>PageInfoСourses.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PageEmployment.xaml.cs">
       <DependentUpon>PageEmployment.xaml</DependentUpon>
     </Compile>
@@ -87,6 +149,62 @@
     <Compile Include="Views\WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Administration\EditPages\PageAddMembers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\EditPages\PageEditMembers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmCourses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmDepartments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmLegal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmMembers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmNatural.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmOrganizations.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmProjects.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmRanks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmRules.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmUsers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmWork.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Authorization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -100,6 +218,30 @@
     </Compile>
     <Compile Include="Implementations\IndividualsService.cs" />
     <Compile Include="Implementations\StudentService.cs" />
+    <Page Include="Views\Infromation\PageInfoBonus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Infromation\PageInfoDepartments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Infromation\PageInfoPositions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Infromation\PageInfoRanks.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Infromation\PageInfoRules.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Infromation\PageInfoСourses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PageEmployment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,6 +351,7 @@
   <ItemGroup>
     <Resource Include="Views\icons8-настройка-проекта-80.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.7.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.7.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
