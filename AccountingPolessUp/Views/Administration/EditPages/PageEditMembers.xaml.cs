@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditMembers : Page
     {
+        ParticipantsService _participantsService = new ParticipantsService();
+
         Participants participants;
         public PageEditMembers(Participants participants)
         {
@@ -36,7 +39,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            
+            participants.IndividualsId=int.Parse(IndividualsId.Text);
+            participants.RangId=int.Parse(RangId.Text);
+            participants.UserId=int.Parse(UserId.Text);
+            participants.DateEntry = DateTime.Parse(DateEntry.Text);
+            participants.DateExit = DateTime.Parse(DateExit.Text);
+            participants.Status=Status.Text;
+            participants.GitHub=GitHub.Text;
+            _participantsService.Update(participants);
         }
     }
 }
