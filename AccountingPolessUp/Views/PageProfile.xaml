@@ -17,13 +17,12 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         
         <Grid Background="Transparent">
-            
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-
+            <Border  BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <StackPanel Margin="5" HorizontalAlignment="Right"  Orientation="Horizontal" Height="auto" VerticalAlignment="Top">
                 <TextBlock x:Name="OnlineStatus" FontSize="14" FontFamily="Calibri " FontWeight="Bold" Foreground="Green" Height="auto">Онлайн</TextBlock>
                 <materialDesign:PackIcon Kind="BatteryHeartVariant" Foreground="Green" VerticalAlignment="Center" Height="auto"/>

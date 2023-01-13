@@ -24,5 +24,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             InitializeComponent();
         }
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

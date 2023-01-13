@@ -54,7 +54,15 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditMembers();
+            for (int i = 0; i < membersGrid.SelectedItems.Count; i++)
+            {
+                Participants participants = membersGrid.SelectedItems[i] as Participants;
+                if (participants != null)
+                {
+                    EditFrame.Content = new PageEditMembers(participants);
+
+                }
+            }
         }
     }
 }

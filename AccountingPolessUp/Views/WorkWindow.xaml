@@ -11,7 +11,7 @@
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-   Background="#EDEEF0"
+   Background="WhiteSmoke"
      FontFamily="{DynamicResource MaterialDesignFont}"
         Title="PolessUp" Height="850" Width="1200"  >
     <Grid>
@@ -203,7 +203,6 @@
             </TreeView>
         </Grid>
         <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Background="WhiteSmoke">
-            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <Frame Margin="5 0 0 0" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Background="Transparent">

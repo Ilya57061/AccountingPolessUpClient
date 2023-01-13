@@ -18,48 +18,59 @@ Background="Transparent"
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition />
-                <RowDefinition Height="35"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <DataGrid  Grid.Row="0" Grid.ColumnSpan="2" AutoGenerateColumns="False" x:Name="membersGrid" CanUserAddRows="False" Background="Transparent">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
-                    <DataGridTextColumn Binding="{Binding IndividualsId, UpdateSourceTrigger=PropertyChanged}" Header="Физ.Лицо" />
-                    <DataGridTextColumn Binding="{Binding RangId, UpdateSourceTrigger=PropertyChanged}" Header="Ранг" />
-                    <DataGridTextColumn Binding="{Binding UserId, UpdateSourceTrigger=PropertyChanged}" Header="Пользователь" />
-                    <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged}" Header="Вступление" />
-                    <DataGridTextColumn Binding="{Binding DateExit, UpdateSourceTrigger=PropertyChanged}" Header="Выход" />
-                    <DataGridTextColumn Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged}" Header="Статус" />
-                    <DataGridTextColumn Binding="{Binding GitHub, UpdateSourceTrigger=PropertyChanged}" Header="GitHub"/>
-                    <DataGridTemplateColumn Header="Удалить">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="ButtonDelete" Click="ButtonDelete_Click">
-                                    <materialDesign:PackIcon Kind="DeleteEmpty" />
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="Изменить">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="ButtonEdit" Click="ButtonEdit_Click">
-                                    <materialDesign:PackIcon Kind="AccountEdit" />
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-            <Button  x:Name="ButtonAdd" Click="ButtonAdd_Click" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="5,0,0,0" >
-                <materialDesign:PackIcon Kind="AccountPlus" />
-            </Button>
+            <Grid  Grid.Row="0" Grid.ColumnSpan="2">
+                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+                <DataGrid  AutoGenerateColumns="False" x:Name="membersGrid" CanUserAddRows="False" Background="Transparent">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
+                        <DataGridTextColumn Binding="{Binding IndividualsId, UpdateSourceTrigger=PropertyChanged}" Header="Физ.Лицо" />
+                        <DataGridTextColumn Binding="{Binding RangId, UpdateSourceTrigger=PropertyChanged}" Header="Ранг" />
+                        <DataGridTextColumn Binding="{Binding UserId, UpdateSourceTrigger=PropertyChanged}" Header="Пользователь" />
+                        <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged}" Header="Вступление" />
+                        <DataGridTextColumn Binding="{Binding DateExit, UpdateSourceTrigger=PropertyChanged}" Header="Выход" />
+                        <DataGridTextColumn Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged}" Header="Статус" />
+                        <DataGridTextColumn Binding="{Binding GitHub, UpdateSourceTrigger=PropertyChanged}" Header="GitHub"/>
+                        <DataGridTemplateColumn Header="Удалить">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="ButtonDelete" Click="ButtonDelete_Click">
+                                        <materialDesign:PackIcon Kind="DeleteEmpty" />
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Изменить">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="ButtonEdit" Click="ButtonEdit_Click">
+                                        <materialDesign:PackIcon Kind="AccountEdit" />
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
             
-            <Frame x:Name="EditFrame" Content="Frame" Grid.ColumnSpan="2" Grid.Row="2"/>
+            <Grid Grid.ColumnSpan="2" Grid.Row="1">
+                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+               
+                    <Button  x:Name="ButtonAdd" Click="ButtonAdd_Click"  HorizontalAlignment="Left" Margin="10,0,0,0" >
+                        <materialDesign:PackIcon Kind="AccountPlus" />
+                    </Button>
+               
+            </Grid>
+            <Grid Grid.ColumnSpan="2" Grid.Row="2">
+                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+                <Frame x:Name="EditFrame" Content="" />
+            </Grid>
         </Grid>
     </ScrollViewer>
 </Page>
