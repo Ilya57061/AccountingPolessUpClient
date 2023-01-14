@@ -131,22 +131,22 @@
     <Compile Include="Views\Infromation\PageInfoСourses.xaml.cs">
       <DependentUpon>PageInfoСourses.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PageEmployment.xaml.cs">
+    <Compile Include="Views\Menu\PageEmployment.xaml.cs">
       <DependentUpon>PageEmployment.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PageMentor.xaml.cs">
+    <Compile Include="Views\Menu\PageMentor.xaml.cs">
       <DependentUpon>PageMentor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PagePositions.xaml.cs">
+    <Compile Include="Views\Menu\PagePositions.xaml.cs">
       <DependentUpon>PagePositions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PageProfile.xaml.cs">
+    <Compile Include="Views\Menu\PageProfile.xaml.cs">
       <DependentUpon>PageProfile.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PageProjects.xaml.cs">
+    <Compile Include="Views\Menu\PageProjects.xaml.cs">
       <DependentUpon>PageProjects.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\WorkWindow.xaml.cs">
+    <Compile Include="Views\MainWindows\WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\Administration\EditPages\PageAddMembers.xaml">
@@ -205,7 +205,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Authorization.xaml">
+    <Page Include="Views\MainWindows\Authorization.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,7 +213,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\Authorization.xaml.cs">
+    <Compile Include="Views\MainWindows\Authorization.xaml.cs">
       <DependentUpon>Authorization.xaml</DependentUpon>
     </Compile>
     <Compile Include="Implementations\IndividualsService.cs" />
@@ -242,27 +242,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageEmployment.xaml">
+    <Page Include="Views\Menu\PageEmployment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageMentor.xaml">
+    <Page Include="Views\Menu\PageMentor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PagePositions.xaml">
+    <Page Include="Views\Menu\PagePositions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageProfile.xaml">
+    <Page Include="Views\Menu\PageProfile.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageProjects.xaml">
+    <Page Include="Views\Menu\PageProjects.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\WorkWindow.xaml">
+    <Page Include="Views\MainWindows\WorkWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -316,7 +316,7 @@
     <Resource Include="Resources\iconsAuthorization.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\iconsAuthorization.png" />
+    <Resource Include="Views\MainWindows\iconsAuthorization.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icons8-пользователь-мужчина-в-кружке-50.png" />
@@ -329,27 +329,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\icons8-создание-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\icons8-пользователь-мужчина-в-кружке-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\icons8-создание-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\icons8-назначение-курса-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\icons8-посредник-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\icons8-не-снимать-100.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\icons8-работа-по-контракту-100.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Views\icons8-настройка-проекта-80.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,7 +13,7 @@
      TextOptions.TextRenderingMode="Auto"
    Background="#EDEEF0"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Authorization" Height="400" Width="384" ResizeMode="NoResize" Icon="iconsAuthorization.png">
+        Title="Authorization" Height="400" Width="384" ResizeMode="NoResize" >
 
     <Grid Margin="0,0,0,0" Height="400" Width="370" Background="#EDEEF0" Cursor="Hand">
         

@@ -29,13 +29,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             InitializeComponent();
             this.participants = participants;
-            IndividualsId.Text=participants.IndividualsId.ToString();
-            RangId.Text=participants.RangId.ToString();
-            UserId.Text=participants.UserId.ToString();
-            DateEntry.Text=participants.DateEntry.ToString();
-            DateExit.Text=participants.DateExit.ToString();
-            Status.Text=participants.Status.ToString();
-            GitHub.Text = participants.GitHub.ToString();
+            IndividualsId.DataContext= participants;
+            RangId.DataContext= participants;
+            UserId.DataContext = participants;
+            DateEntry.DataContext = participants;
+            DateExit.DataContext = participants;
+            Status.DataContext = participants;
+            GitHub.DataContext = participants;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -47,6 +47,15 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             participants.Status=Status.Text;
             participants.GitHub=GitHub.Text;
             _participantsService.Update(participants);
+        }
+        private void OpenIndividuals_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        private void OpenRank_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        private void OpenUser_Click(object sender, RoutedEventArgs e)
+        {
         }
     }
 }
