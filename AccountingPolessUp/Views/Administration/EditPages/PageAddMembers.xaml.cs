@@ -39,5 +39,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             participants.GitHub = GitHub.Text;
             _participantsService.Create(participants);
         }
+        private void OpenIndividuals_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        private void OpenRank_Click(object sender, RoutedEventArgs e)
+        {
+        }
+        private void OpenUser_Click(object sender, RoutedEventArgs e)
+        {
+        }
     }
 }

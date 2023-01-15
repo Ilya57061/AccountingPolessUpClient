@@ -33,7 +33,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding IndividualsId, UpdateSourceTrigger=PropertyChanged}" Header="Физ.Лицо" />
                         <DataGridTextColumn Binding="{Binding RangId, UpdateSourceTrigger=PropertyChanged}" Header="Ранг" />
                         <DataGridTextColumn Binding="{Binding UserId, UpdateSourceTrigger=PropertyChanged}" Header="Пользователь" />
-                        <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged}" Header="Вступление" />
+                        <DataGridTextColumn Binding="{Binding DateEntry.ToShortDateString, UpdateSourceTrigger=PropertyChanged}" Header="Вступление" />
                         <DataGridTextColumn Binding="{Binding DateExit, UpdateSourceTrigger=PropertyChanged}" Header="Выход" />
                         <DataGridTextColumn Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged}" Header="Статус" />
                         <DataGridTextColumn Binding="{Binding GitHub, UpdateSourceTrigger=PropertyChanged}" Header="GitHub"/>

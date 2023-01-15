@@ -29,13 +29,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             InitializeComponent();
             this.participants = participants;
-            IndividualsId.DataContext= participants;
-            RangId.DataContext= participants;
-            UserId.DataContext = participants;
-            DateEntry.DataContext = participants;
-            DateExit.DataContext = participants;
-            Status.DataContext = participants;
-            GitHub.DataContext = participants;
+            this.DataContext = participants;
+            //IndividualsId.DataContext= participants;
+            //RangId.DataContext= participants;
+            //UserId.DataContext = participants;
+            //DateEntry.DataContext = participants;
+            //DateExit.DataContext = participants;
+            //Status.DataContext = participants;
+            //GitHub.DataContext = participants;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

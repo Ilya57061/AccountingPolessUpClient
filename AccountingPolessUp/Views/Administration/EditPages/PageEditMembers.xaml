@@ -48,7 +48,7 @@ Background="Transparent"
             </Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
-            <TextBox  x:Name="IndividualsId" FontSize="14" materialDesign:HintAssist.Hint="Физ.Лицо"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="AccountBox" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding IndividualsId}" Margin="1,0,1,18"/>
+            <TextBox  x:Name="IndividualsId" FontSize="14"  materialDesign:HintAssist.Hint="Физ.Лицо"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="AccountBox" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding IndividualsId}" Margin="1,0,1,18"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <TextBox Margin="1,0,1,18" x:Name="RangId" FontSize="14" materialDesign:HintAssist.Hint="Должность" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="BadgeAccount" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding RangId}"/>
