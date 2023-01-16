@@ -23,28 +23,33 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditMembers : Page
     {
         ParticipantsService _participantsService = new ParticipantsService();
+        UserService _userService = new UserService();
+        IndividualsService _individualsService=new IndividualsService();
+        List<User> _users;
+        List<Individuals> _individuals;
 
         Participants participants;
         public PageEditMembers(Participants participants)
         {
             InitializeComponent();
+            _users = _userService.Get();
+            _individuals=_individualsService.Get();
             this.participants = participants;
             this.DataContext = participants;
-            //IndividualsId.DataContext= participants;
-            //RangId.DataContext= participants;
-            //UserId.DataContext = participants;
-            //DateEntry.DataContext = participants;
-            //DateExit.DataContext = participants;
-            //Status.DataContext = participants;
-            //GitHub.DataContext = participants;
+            BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == participants.Individuals.Id));
+            BoxUser.SelectedIndex = _users.IndexOf(_users.FirstOrDefault(p => p.Id == participants.User.Id));
+            BoxIndividuals.ItemsSource = _individuals;
+            BoxUser.ItemsSource = _users;
+            
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            participants.IndividualsId=int.Parse(IndividualsId.Text);
-            participants.RangId=int.Parse(RangId.Text);
-            participants.UserId=int.Parse(UserId.Text);
+           
+            participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
+            participants.mmr=int.Parse(mmr.Text);
+            participants.UserId= _users.FirstOrDefault(i=>i==BoxUser.SelectedItem).Id;
             participants.DateEntry = DateTime.Parse(DateEntry.Text);
-            participants.DateExit = DateTime.Parse(DateExit.Text);
+            participants.DateExit = DateExit.Text=="" ? DateTime.Parse("1970/01/01"):DateTime.Parse(DateExit.Text);
             participants.Status=Status.Text;
             participants.GitHub=GitHub.Text;
             _participantsService.Update(participants);
@@ -52,9 +57,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void OpenIndividuals_Click(object sender, RoutedEventArgs e)
         {
         }
-        private void OpenRank_Click(object sender, RoutedEventArgs e)
-        {
-        }
+       
         private void OpenUser_Click(object sender, RoutedEventArgs e)
         {
         }

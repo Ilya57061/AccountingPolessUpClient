@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -13,12 +14,13 @@ namespace AccountingPolessUp.Implementations
 {
     public class ParticipantsService // участники
     {
+
         public List<Participants> Get()
         {
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/Get";
+                string url = $"https://localhost:7273/GetParticipants";
                 var json = web.DownloadString(url);
                 List<Participants> Info = JsonConvert.DeserializeObject<List<Participants>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -41,7 +43,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
-                string url = $"https://localhost:7058/Create?participantsDto={model}";
+                string url = $"https://localhost:7273/CreateParticipant?participantsDto={model}";
                 web.UploadString(url, "POST");
             }
         }
@@ -49,15 +51,24 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
-                string url = $"https://localhost:7058/Update?participantsDto={model}";
-                web.UploadString(url, "PUT");
+                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                reqparm.Add("id", $"{model.Id}");
+                reqparm.Add("IndividualsId", $"{model.IndividualsId}");
+                reqparm.Add("UserId", $"{model.UserId}");
+                reqparm.Add("DateEntry", $"{model.DateEntry}");
+                reqparm.Add("DateExit", $"{model.DateExit}");
+                reqparm.Add("mmr", $"{model.mmr}");
+                reqparm.Add("status", $"{model.Status}");
+                reqparm.Add("GitHub", $"{model.GitHub}");
+                web.UploadValues("https://localhost:7273/UpdateParticipant", "PUT", reqparm);
+         
             }
         }
         public void Delete(int id)
         {
             using (WebClient web = new WebClient())
             {
-                string url = $"https://localhost:7058/Delete?id={id}";
+                string url = $"https://localhost:7273/DeleteParticipant?id={id}";
                 web.UploadString(url, "DELETE");
             }
         }

@@ -23,18 +23,26 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageAddMembers : Page
     {
         ParticipantsService _participantsService = new ParticipantsService();
+        UserService _userService = new UserService();
+        IndividualsService _individualsService = new IndividualsService();
+        List<User> _users;
+        List<Individuals> _individuals;
         public PageAddMembers()
         {
             InitializeComponent();
+            _users = _userService.Get();
+            _individuals = _individualsService.Get();
+            BoxIndividuals.ItemsSource = _individuals;
+            BoxUser.ItemsSource = _users;
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             Participants participants = new Participants();
-            participants.IndividualsId = int.Parse(IndividualsId.Text);
-            participants.RangId = int.Parse(RangId.Text);
-            participants.UserId = int.Parse(UserId.Text);
+            participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
+            participants.mmr = int.Parse(mmr.Text);
+            participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
             participants.DateEntry = DateTime.Parse(DateEntry.Text);
-            participants.DateExit = DateTime.Parse(DateExit.Text);
+            participants.DateExit = DateExit.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateExit.Text);
             participants.Status = Status.Text;
             participants.GitHub = GitHub.Text;
             _participantsService.Create(participants);
@@ -42,9 +50,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void OpenIndividuals_Click(object sender, RoutedEventArgs e)
         {
         }
-        private void OpenRank_Click(object sender, RoutedEventArgs e)
-        {
-        }
+       
         private void OpenUser_Click(object sender, RoutedEventArgs e)
         {
         }

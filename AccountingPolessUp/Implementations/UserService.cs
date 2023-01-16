@@ -11,14 +11,14 @@ namespace AccountingPolessUp.Implementations
 {
     public class UserService
     {
-        public List<Individuals> Get()
+        public List<User> Get()
         {
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetIndividuals";
+                string url = $"https://localhost:7273/GetUsers";
                 var json = web.DownloadString(url);
-                List<Individuals> Info = JsonConvert.DeserializeObject<List<Individuals>>(json);
+                List<User> Info = JsonConvert.DeserializeObject<List<User>>(json);
                 if (Info is null) throw new Exception("info - null");
                 else return Info;
             }
