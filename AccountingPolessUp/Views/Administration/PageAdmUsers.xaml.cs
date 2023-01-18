@@ -29,16 +29,19 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             dataGrid.ItemsSource = _userService.Get();
         }
+
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    User participants = dataGrid.SelectedItems[i] as User;
-                    if (participants != null)
+                    User user = dataGrid.SelectedItems[i] as User;
+                    if (user!= null)
                     {
-                        _userService.Delete(participants.Id);
+                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
+                       
+                        _userService.Delete(user.Id);
                     }
                 }
             }

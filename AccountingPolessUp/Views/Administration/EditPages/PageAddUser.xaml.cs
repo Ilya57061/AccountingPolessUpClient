@@ -32,7 +32,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             User user = new User();
             user.Login = Login.Text;
             user.Password= Password.Password;
-            user.IsAdmin = bool.Parse(IsAdmin.Text);
+            user.IsAdmin = bool.Parse(BoxIsAdmin.Text);
             _userSerivce.Create(user);
         }
     }

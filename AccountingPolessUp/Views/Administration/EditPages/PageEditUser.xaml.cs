@@ -34,7 +34,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             user.Login = Login.Text;
             user.Password = Password.Password;
-            user.IsAdmin = bool.Parse(BoxIsAdmin.SelectedItem.ToString());
+            user.IsAdmin = bool.Parse(BoxIsAdmin.Text);
             _userService.Update(user);
         }
     }

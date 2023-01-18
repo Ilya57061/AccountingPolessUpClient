@@ -51,8 +51,12 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
-                string url = $"https://localhost:7273/CreateUser?userDto={model}";
-                web.UploadString(url, "POST");
+                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                reqparm.Add("id", $"{model.Id}");
+                reqparm.Add("Login", $"{model.Login}");
+                reqparm.Add("Password", $"{model.Password}");
+                reqparm.Add("isAdmin", $"{model.IsAdmin}");
+                web.UploadValues("https://localhost:7273/CreateUser", "POST", reqparm);
             }
         }
         public void Update(User model)
@@ -61,7 +65,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("login", $"{model.Login}");
+                reqparm.Add("Login", $"{model.Login}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
                 web.UploadValues("https://localhost:7273/UpdateUser", "PUT", reqparm);
 
@@ -71,8 +75,9 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
-                string url = $"https://localhost:7273/DeletUser?id={id}";
-                web.UploadString(url, "DELETE");
+                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                reqparm.Add("id", $"{id}");
+                web.UploadValues("https://localhost:7273/DeletUser", "DELETE", reqparm);
             }
         }
     }

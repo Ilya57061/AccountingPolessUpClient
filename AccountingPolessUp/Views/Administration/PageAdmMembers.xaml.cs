@@ -43,6 +43,7 @@ namespace AccountingPolessUp.Views.Administration
                     Participants participants = membersGrid.SelectedItems[i] as Participants;
                     if (participants != null)
                     {
+                        
                         _participantsService.Delete(participants.Id);
                     }
                 }

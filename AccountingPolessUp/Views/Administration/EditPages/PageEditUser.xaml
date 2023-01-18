@@ -49,7 +49,7 @@ Background="Transparent"
     Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Password" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="3">
-            <ComboBox  x:Name="BoxIsAdmin"  SelectedItem="{Binding IsAdmin}" DisplayMemberPath="FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Админ" Margin="1,0,1,12"   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+            <ComboBox  x:Name="BoxIsAdmin"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Админ" Margin="1,0,1,12"   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <ComboBoxItem
     Content="True" />
                 <ComboBoxItem
