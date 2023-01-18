@@ -74,8 +74,14 @@
     <Compile Include="Views\Administration\EditPages\PageAddMembers.xaml.cs">
       <DependentUpon>PageAddMembers.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administration\EditPages\PageAddUser.xaml.cs">
+      <DependentUpon>PageAddUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditMembers.xaml.cs">
       <DependentUpon>PageEditMembers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditUser.xaml.cs">
+      <DependentUpon>PageEditUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\PageAdmCourses.xaml.cs">
       <DependentUpon>PageAdmCourses.xaml</DependentUpon>
@@ -153,7 +159,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Administration\EditPages\PageAddUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Administration\EditPages\PageEditMembers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\EditPages\PageEditUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -313,22 +327,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\iconsAuthorization.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Views\MainWindows\iconsAuthorization.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-пользователь-мужчина-в-кружке-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-посредник-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-назначение-курса-50.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\icons8-создание-50.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
