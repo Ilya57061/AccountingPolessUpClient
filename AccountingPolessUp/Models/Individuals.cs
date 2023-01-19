@@ -1,7 +1,5 @@
 ﻿
-using System;
-
-namespace AccountingPolessUp.Models
+namespace StudentAccounting.Model.DataBaseModels
 {
     public class Individuals
     {
@@ -12,7 +10,7 @@ namespace AccountingPolessUp.Models
         public string Mail { get; set; } = string.Empty;
         public string Gender { get; set; } = string.Empty;
         public string SocialNetwork { get; set; } = string.Empty;
-        public Participants Participants { get; set; }
-        public Student Student { get; set; }
+        public Participants? Participants { get; set; }
+        public Student? Student { get; set; }
     }
 }

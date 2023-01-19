@@ -1,5 +1,5 @@
 ﻿
-namespace AccountingPolessUp.Models
+namespace StudentAccounting.Model.DataBaseModels
 {
     public class Bonus
     {
@@ -7,6 +7,6 @@ namespace AccountingPolessUp.Models
         public string BonusName { get; set; } = string.Empty;
         public string BonusDescription { get; set; } = string.Empty;
         public int RangId { get; set; }
-        public Rang Rang { get; set; }
+        public Rang? Rang { get; set; }
     }
 }

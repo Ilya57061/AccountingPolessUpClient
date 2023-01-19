@@ -1,7 +1,8 @@
-﻿
-
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Models
 {
@@ -13,8 +14,8 @@ namespace AccountingPolessUp.Models
         public string Responsibilities { get; set; } = string.Empty;
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
-        public decimal Budjet { get; set; }
-        public List<ApplicationsInTheProject> ApplicationsInTheProjects { get; set; }
+        public int Budjet { get; set; }
+        public List<ApplicationsInTheProject> ApplicationsInTheProjects { get; set; } 
         public StagesOfProject StagesOfProject { get; set; }
         public int StagesOfProjectId { get; set; } 
     }

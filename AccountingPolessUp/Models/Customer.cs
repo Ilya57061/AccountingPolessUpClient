@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-namespace AccountingPolessUp.Models
+﻿
+namespace StudentAccounting.Model.DataBaseModels
 {
     public class Customer
     {
@@ -10,6 +9,6 @@ namespace AccountingPolessUp.Models
         public string Contacts { get; set; } = string.Empty;
         public string WebSite { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public List<Project> Projects { get; set; } 
+        public List<Project>? Projects { get; set; } = new();
     }
 }

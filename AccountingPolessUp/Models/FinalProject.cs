@@ -1,6 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-namespace AccountingPolessUp.Models
+﻿
+namespace StudentAccountin.Model.DatabaseModels
 {
     public class FinalProject
     {
@@ -11,6 +10,7 @@ namespace AccountingPolessUp.Models
         public string Links { get; set; } = string.Empty;
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
-        public List<Employment> Employments { get; set; }
+        public Employment? Employment { get; set; }
+        public int EmploymentId { get; set; }
     }
 }

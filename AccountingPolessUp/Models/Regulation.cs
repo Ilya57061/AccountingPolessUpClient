@@ -1,7 +1,7 @@
 ﻿
-using AccountingPolessUp.Models;
+using StudentAccounting.Model.DataBaseModels;
 
-namespace AccountingPolessUp.Models
+namespace StudentAccountin.Model.DatabaseModels
 {
     public class Regulation
     {
@@ -9,7 +9,7 @@ namespace AccountingPolessUp.Models
         public string Text { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
-        public Organization Organization { get; set; }
+        public Organization? Organization { get; set; }
         public int OrganizationId { get; set; }
     }
 }
