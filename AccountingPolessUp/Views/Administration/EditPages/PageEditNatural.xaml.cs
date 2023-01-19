@@ -27,8 +27,17 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditNatural(Individuals individual)
         {
             InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
             this._individual= individual;
             DataContext = individual;
+        }
+        public PageEditNatural()
+        {
+            InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+            this._individual = new Individuals();
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -40,6 +49,18 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _individual.Phone = Phone.Text;
             _individual.SocialNetwork = SocialNetwork.Text;
             _individualsService.Update(_individual);
+        }
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+          
+            _individual.FIO = FIO.Text;
+            _individual.Phone = Phone.Text;
+            _individual.DateOfBirth = DateTime.Parse(DateOfBirth.Text);
+            _individual.Mail = Mail.Text;
+            _individual.Gender = Gender.Text;
+            _individual.Phone = Phone.Text;
+            _individual.SocialNetwork = SocialNetwork.Text;
+            _individualsService.Create(_individual);
         }
     }
 }

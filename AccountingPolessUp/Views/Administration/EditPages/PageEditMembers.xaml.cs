@@ -32,6 +32,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditMembers(Participants participants)
         {
             InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
             _users = _userService.Get();
             _individuals=_individualsService.Get();
             this.participants = participants;
@@ -45,7 +47,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditMembers()
         {
             InitializeComponent();
-
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+            participants= new Participants();
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -58,6 +62,18 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             participants.Status=Status.Text;
             participants.GitHub=GitHub.Text;
             _participantsService.Update(participants);
+        }
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            Participants participants = new Participants();
+            participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
+            participants.mmr = int.Parse(mmr.Text);
+            participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
+            participants.DateEntry = DateTime.Parse(DateEntry.Text);
+            participants.DateExit = DateExit.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateExit.Text);
+            participants.Status = Status.Text;
+            participants.GitHub = GitHub.Text;
+            _participantsService.Create(participants);
         }
         private void OpenIndividuals_Click(object sender, RoutedEventArgs e)
         {
