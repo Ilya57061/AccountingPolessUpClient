@@ -38,16 +38,14 @@ namespace AccountingPolessUp.Views.Administration
                     Individuals user = dataGrid.SelectedItems[i] as Individuals;
                     if (user != null)
                     {
-                       
-
-                        //_individualsService.Delete(user.Id);
+                        _individualsService.Delete(user.Id);
                     }
                 }
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            //EditFrame.Content = new PageAddUser();
+            EditFrame.Content = new PageAddNatural();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -56,7 +54,7 @@ namespace AccountingPolessUp.Views.Administration
                 Individuals individual = dataGrid.SelectedItems[i] as Individuals;
                 if (individual != null)
                 {
-                    //EditFrame.Content = new PageEditUser(individual);
+                    EditFrame.Content = new PageEditNatural(individual);
 
                 }
             }
