@@ -1,7 +1,8 @@
 ﻿
-using StudentAccountin.Model.DatabaseModels;
+using AccountingPolessUp.Models;
+using System.Collections.Generic;
 
-namespace StudentAccounting.Model.DataBaseModels
+namespace AccountingPolessUp.Models
 {
     public class Position
     {
@@ -9,7 +10,7 @@ namespace StudentAccounting.Model.DataBaseModels
         public string FullName { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public int DepartmentId { get; set; }
-        public Department? Department { get; set; }
-        public List<Employment>? Employments { get; set; } = new();
+        public Department Department { get; set; }
+        public List<Employment> Employments { get; set; }
     }
 }

@@ -1,5 +1,8 @@
 ﻿
-namespace StudentAccounting.Model.DataBaseModels
+using System;
+using System.Collections.Generic;
+
+namespace AccountingPolessUp.Models
 {
     public class Department
     {
@@ -9,8 +12,8 @@ namespace StudentAccounting.Model.DataBaseModels
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public string Status { get; set; } = string.Empty;
-        public List<Position>? Positions { get; set; } = new();
+        public List<Position> Positions { get; set; }
         public int OrganizationId { get; set; }
-        public Organization? Organizations { get; set; }
+        public Organization Organizations { get; set; }
     }
 }

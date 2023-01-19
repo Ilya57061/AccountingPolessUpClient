@@ -1,5 +1,7 @@
 ﻿
-namespace StudentAccountin.Model.DatabaseModels
+using System;
+
+namespace AccountingPolessUp.Models
 {
     public class FinalProject
     {
@@ -10,7 +12,7 @@ namespace StudentAccountin.Model.DatabaseModels
         public string Links { get; set; } = string.Empty;
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
-        public Employment? Employment { get; set; }
+        public Employment Employment { get; set; }
         public int EmploymentId { get; set; }
     }
 }

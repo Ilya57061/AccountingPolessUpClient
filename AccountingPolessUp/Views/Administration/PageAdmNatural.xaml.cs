@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,11 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmNatural : Page
     {
+        IndividualsService _individualsService = new IndividualsService();
         public PageAdmNatural()
         {
             InitializeComponent();
+            dataGrid.ItemsSource = _individualsService.Get();
         }
     }
 }

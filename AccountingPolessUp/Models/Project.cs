@@ -1,7 +1,9 @@
 ﻿
-using StudentAccountin.Model.DatabaseModels;
+using AccountingPolessUp.Models;
+using System;
+using System.Collections.Generic;
 
-namespace StudentAccounting.Model.DataBaseModels
+namespace AccountingPolessUp.Models
 {
     public class Project
     {
@@ -13,7 +15,7 @@ namespace StudentAccounting.Model.DataBaseModels
         public string Description { get; set; } = string.Empty;
         public string TechnicalSpecification { get; set; } = string.Empty;
         public int CustomerId { get; set; }
-        public Customer? Customer { get; set; }
-        public List<StagesOfProject>? StagesOfProjects { get; set; } = new();
+        public Customer Customer { get; set; }
+        public List<StagesOfProject> StagesOfProjects { get; set; }
     }
 }

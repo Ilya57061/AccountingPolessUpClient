@@ -1,7 +1,9 @@
 ﻿
-using StudentAccountin.Model.DatabaseModels;
+using AccountingPolessUp.Models;
+using System;
+using System.Collections.Generic;
 
-namespace StudentAccounting.Model.DataBaseModels
+namespace AccountingPolessUp.Models
 {
     public class Organization
     {
@@ -9,10 +11,10 @@ namespace StudentAccounting.Model.DataBaseModels
         public string Fullname { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
         public string Contacts { get; set; } = string.Empty;
-        public string? WebSite { get; set; } = string.Empty;
-        public DateTime? FoundationDate { get; set; }
-        public List<Department>? Departments { get; set; } = new();
-        public List<Regulation>? Regulations { get; set; } = new();
-        public List<Rang>? Rangs { get; set; } = new();
+        public string WebSite { get; set; } = string.Empty;
+        public DateTime FoundationDate { get; set; }
+        public List<Department> Departments { get; set; } 
+        public List<Regulation> Regulations { get; set; } 
+        public List<Rang> Rangs { get; set; } 
     }
 }

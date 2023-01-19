@@ -1,5 +1,5 @@
 ﻿
-namespace StudentAccounting.Model.DataBaseModels
+namespace AccountingPolessUp.Models
 {
     public class Student
     {
@@ -9,6 +9,6 @@ namespace StudentAccounting.Model.DataBaseModels
         public int CourseNumber { get; set; }
         public string University { get; set; } = string.Empty;
         public int IndividualsId { get; set; }
-        public Individuals? Individuals { get; set; }
+        public Individuals Individuals { get; set; }
     }
 }
