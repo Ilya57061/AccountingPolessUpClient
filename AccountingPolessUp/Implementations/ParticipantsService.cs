@@ -78,7 +78,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeletParticipant", "DELETE", reqparm);
+                web.UploadValues("https://localhost:7273/DeleteParticipant", "DELETE", reqparm);
            
             }
         }
