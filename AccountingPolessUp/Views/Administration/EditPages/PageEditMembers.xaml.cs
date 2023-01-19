@@ -42,6 +42,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxUser.ItemsSource = _users;
             
         }
+        public PageEditMembers()
+        {
+            InitializeComponent();
+
+        }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
            

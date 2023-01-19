@@ -57,10 +57,13 @@ Background="Transparent"
             </ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
-            <Button Click="ButtonSaveEdit_Click">
+            <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />
             </Button>
+            <Button x:Name="ButtonAdd" Click="ButtonAdd_Click">
+                <materialDesign:PackIcon Kind="DatabasePlus" />
+            </Button>
         </Grid>
-
+       
     </Grid>
 </Page>

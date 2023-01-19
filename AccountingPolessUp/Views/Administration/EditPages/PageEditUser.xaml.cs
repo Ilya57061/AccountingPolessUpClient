@@ -27,8 +27,17 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditUser(User user)
         {
             InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
             this.user = user;
             DataContext = user;
+        }
+        public PageEditUser()
+        {
+            InitializeComponent();
+            this.user = new User();
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -36,6 +45,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             user.Password = Password.Password;
             user.IsAdmin = bool.Parse(BoxIsAdmin.Text);
             _userService.Update(user);
+        }
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            
+            user.Login = Login.Text;
+            user.Password = Password.Password;
+            user.IsAdmin = bool.Parse(BoxIsAdmin.Text);
+            _userService.Create(user);
         }
     }
 }

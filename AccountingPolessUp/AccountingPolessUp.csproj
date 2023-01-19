@@ -69,16 +69,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Implementations\ApplicationsInTheProjectService.cs" />
+    <Compile Include="Implementations\BonusService.cs" />
+    <Compile Include="Implementations\CustomerService.cs" />
+    <Compile Include="Implementations\DepartmentService.cs" />
+    <Compile Include="Implementations\EmploymentService.cs" />
+    <Compile Include="Implementations\FinalProjectService.cs" />
+    <Compile Include="Implementations\OrganizationService.cs" />
     <Compile Include="Implementations\ParticipantsService.cs" />
+    <Compile Include="Implementations\PositionService.cs" />
+    <Compile Include="Implementations\ProjectService.cs" />
+    <Compile Include="Implementations\RangService.cs" />
+    <Compile Include="Implementations\RegulationService.cs" />
+    <Compile Include="Implementations\StagesOfProjectService.cs" />
+    <Compile Include="Implementations\TrainingCoursesService.cs" />
     <Compile Include="Implementations\UserService.cs" />
+    <Compile Include="Implementations\VacancyService.cs" />
     <Compile Include="Views\Administration\EditPages\PageAddMembers.xaml.cs">
       <DependentUpon>PageAddMembers.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageAddNatural.xaml.cs">
       <DependentUpon>PageAddNatural.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administration\EditPages\PageAddStudents.xaml.cs">
+      <DependentUpon>PageAddStudents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administration\EditPages\PageAddUser.xaml.cs">
       <DependentUpon>PageAddUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\EditPages\PageAddWork.xaml.cs">
+      <DependentUpon>PageAddWork.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditMembers.xaml.cs">
       <DependentUpon>PageEditMembers.xaml</DependentUpon>
@@ -86,8 +106,14 @@
     <Compile Include="Views\Administration\EditPages\PageEditNatural.xaml.cs">
       <DependentUpon>PageEditNatural.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditStudents.xaml.cs">
+      <DependentUpon>PageEditStudents.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditUser.xaml.cs">
       <DependentUpon>PageEditUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditWork.xaml.cs">
+      <DependentUpon>PageEditWork.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\PageAdmCourses.xaml.cs">
       <DependentUpon>PageAdmCourses.xaml</DependentUpon>
@@ -169,7 +195,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Administration\EditPages\PageAddStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Administration\EditPages\PageAddUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\EditPages\PageAddWork.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -181,7 +215,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Administration\EditPages\PageEditStudents.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Administration\EditPages\PageEditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\EditPages\PageEditWork.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
