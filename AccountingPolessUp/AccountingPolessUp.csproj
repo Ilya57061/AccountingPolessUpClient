@@ -85,21 +85,6 @@
     <Compile Include="Implementations\TrainingCoursesService.cs" />
     <Compile Include="Implementations\UserService.cs" />
     <Compile Include="Implementations\VacancyService.cs" />
-    <Compile Include="Views\Administration\EditPages\PageAddMembers.xaml.cs">
-      <DependentUpon>PageAddMembers.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Administration\EditPages\PageAddNatural.xaml.cs">
-      <DependentUpon>PageAddNatural.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Administration\EditPages\PageAddStudents.xaml.cs">
-      <DependentUpon>PageAddStudents.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Administration\EditPages\PageAddUser.xaml.cs">
-      <DependentUpon>PageAddUser.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Administration\EditPages\PageAddWork.xaml.cs">
-      <DependentUpon>PageAddWork.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditMembers.xaml.cs">
       <DependentUpon>PageEditMembers.xaml</DependentUpon>
     </Compile>
@@ -187,26 +172,6 @@
     <Compile Include="Views\MainWindows\WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="Views\Administration\EditPages\PageAddMembers.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Administration\EditPages\PageAddNatural.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Administration\EditPages\PageAddStudents.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Administration\EditPages\PageAddUser.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Administration\EditPages\PageAddWork.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Administration\EditPages\PageEditMembers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

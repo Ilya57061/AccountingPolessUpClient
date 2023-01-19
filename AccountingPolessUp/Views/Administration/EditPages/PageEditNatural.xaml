@@ -56,8 +56,11 @@ Background="Transparent"
             <TextBox Margin="1,0,1,20" x:Name="SocialNetwork" FontSize="14" materialDesign:HintAssist.Hint="Соц.Сеть" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Linkedin" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding SocialNetwork}"/>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
-            <Button Click="ButtonSaveEdit_Click">
+            <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />
+            </Button>
+            <Button x:Name="ButtonAdd" Click="ButtonAdd_Click">
+                <materialDesign:PackIcon Kind="DatabasePlus" />
             </Button>
         </Grid>
 

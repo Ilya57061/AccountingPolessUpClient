@@ -44,7 +44,7 @@ Background="Transparent"
             </Button>
         </Grid>
         <Grid Grid.Row="1">
-            <ComboBox x:Name="BoxIndividuals" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Individuals}" DisplayMemberPath="FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Физ.Лицо" Margin="1,0,1,0"> </ComboBox>
+            <ComboBox x:Name="BoxIndividuals" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Individuals}" DisplayMemberPath="FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Юр.Лицо" Margin="1,0,1,0"> </ComboBox>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="2">
@@ -72,8 +72,11 @@ Background="Transparent"
             <TextBox Margin="1,0,1,20" x:Name="GitHub" FontSize="14" materialDesign:HintAssist.Hint="GitHub" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="GitHub" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding GitHub}"/>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
-            <Button Click="ButtonSaveEdit_Click">
+            <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />
+            </Button>
+            <Button x:Name="ButtonAdd" Click="ButtonAdd_Click">
+                <materialDesign:PackIcon Kind="DatabasePlus" />
             </Button>
         </Grid>
         

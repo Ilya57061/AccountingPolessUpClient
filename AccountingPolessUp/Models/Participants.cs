@@ -13,7 +13,7 @@ namespace AccountingPolessUp.Models
         public int UserId { get; set; }
         public User User { get; set; }
         public DateTime DateEntry { get; set; }
-        public DateTime DateExit { get; set; }
+        public DateTime? DateExit { get; set; }
         public int mmr { get; set; }
         public string Status { get; set; } = string.Empty;
         public string GitHub { get; set; } = string.Empty;

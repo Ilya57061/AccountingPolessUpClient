@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,15 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditStudents()
         {
             InitializeComponent();
+        }
+        private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
+        {
+
+         
+        }
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            
         }
     }
 }
