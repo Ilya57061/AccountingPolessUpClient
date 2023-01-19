@@ -1,4 +1,6 @@
 ﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
+using AccountingPolessUp.Views.Administration.EditPages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,38 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             dataGrid.ItemsSource = _individualsService.Get();
+        }
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+                {
+                    Individuals user = dataGrid.SelectedItems[i] as Individuals;
+                    if (user != null)
+                    {
+                       
+
+                        //_individualsService.Delete(user.Id);
+                    }
+                }
+            }
+        }
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            //EditFrame.Content = new PageAddUser();
+        }
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Individuals individual = dataGrid.SelectedItems[i] as Individuals;
+                if (individual != null)
+                {
+                    //EditFrame.Content = new PageEditUser(individual);
+
+                }
+            }
         }
     }
 }
