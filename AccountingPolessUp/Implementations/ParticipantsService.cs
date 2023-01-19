@@ -43,8 +43,17 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
-                string url = $"https://localhost:7273/CreateParticipant?participantsDto={model}";
-                web.UploadString(url, "POST");
+                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                reqparm.Add("id", $"{model.Id}");
+                reqparm.Add("IndividualsId", $"{model.IndividualsId}");
+                reqparm.Add("UserId", $"{model.UserId}");
+                reqparm.Add("DateEntry", $"{model.DateEntry}");
+                reqparm.Add("DateExit", $"{model.DateExit}");
+                reqparm.Add("mmr", $"{model.mmr}");
+                reqparm.Add("status", $"{model.Status}");
+                reqparm.Add("GitHub", $"{model.GitHub}");
+                web.UploadValues("https://localhost:7273/CreateParticipant", "POST", reqparm);
+            
             }
         }
         public void Update(Participants model)
@@ -68,8 +77,10 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
-                string url = $"https://localhost:7273/DeleteParticipant?id={id}";
-                web.UploadString(url, "DELETE");
+                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                reqparm.Add("id", $"{id}");
+                web.UploadValues("https://localhost:7273/DeleteParticipant", "DELETE", reqparm);
+           
             }
         }
     }
