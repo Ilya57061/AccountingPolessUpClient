@@ -27,7 +27,7 @@ Background="Transparent"
             </Grid.ColumnDefinitions>
             <Grid  Grid.Row="0" Grid.ColumnSpan="2">
                 <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-                <DataGrid IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
+                <DataGrid HorizontalAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Header="Логин" />
