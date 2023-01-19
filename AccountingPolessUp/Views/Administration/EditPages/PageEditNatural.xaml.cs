@@ -38,6 +38,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _individual.Mail = Mail.Text;
             _individual.Gender = Gender.Text;
             _individual.Phone = Phone.Text;
+            _individual.SocialNetwork = SocialNetwork.Text;
             _individualsService.Update(_individual);
         }
     }

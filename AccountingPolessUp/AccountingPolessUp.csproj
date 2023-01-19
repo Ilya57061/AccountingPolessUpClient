@@ -74,11 +74,17 @@
     <Compile Include="Views\Administration\EditPages\PageAddMembers.xaml.cs">
       <DependentUpon>PageAddMembers.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administration\EditPages\PageAddNatural.xaml.cs">
+      <DependentUpon>PageAddNatural.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administration\EditPages\PageAddUser.xaml.cs">
       <DependentUpon>PageAddUser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditMembers.xaml.cs">
       <DependentUpon>PageEditMembers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditNatural.xaml.cs">
+      <DependentUpon>PageEditNatural.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditUser.xaml.cs">
       <DependentUpon>PageEditUser.xaml</DependentUpon>
@@ -159,11 +165,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Administration\EditPages\PageAddNatural.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Administration\EditPages\PageAddUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Administration\EditPages\PageEditMembers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\EditPages\PageEditNatural.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -29,14 +29,15 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            Individuals individual = new Individuals();
-            individual.FIO = FIO.Text;
-            individual.Phone= Phone.Text;
-            individual.DateOfBirth = DateTime.Parse(DateOfBirth.Text);
-            individual.Mail = Mail.Text;
-            individual.Gender= Gender.Text;
-            individual.Phone= Phone.Text;
-            _individualsService.Create(individual);
+            Individuals _individual = new Individuals();
+            _individual.FIO = FIO.Text;
+            _individual.Phone= Phone.Text;
+            _individual.DateOfBirth = DateTime.Parse(DateOfBirth.Text);
+            _individual.Mail = Mail.Text;
+            _individual.Gender= Gender.Text;
+            _individual.Phone= Phone.Text;
+            _individual.SocialNetwork = SocialNetwork.Text;
+            _individualsService.Create(_individual);
         }
     }
 }
