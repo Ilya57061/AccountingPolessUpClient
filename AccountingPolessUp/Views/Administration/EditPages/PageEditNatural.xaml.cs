@@ -39,20 +39,20 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonAdd.Visibility = Visibility.Visible;
             this._individual = new Individuals();
         }
+       
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            _individual.FIO = FIO.Text;
-            _individual.Phone = Phone.Text;
-            _individual.DateOfBirth = DateTime.Parse(DateOfBirth.Text);
-            _individual.Mail = Mail.Text;
-            _individual.Gender = Gender.Text;
-            _individual.Phone = Phone.Text;
-            _individual.SocialNetwork = SocialNetwork.Text;
+            WriteData();
             _individualsService.Update(_individual);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-          
+
+            WriteData();
+            _individualsService.Create(_individual);
+        }
+        private void WriteData()
+        {
             _individual.FIO = FIO.Text;
             _individual.Phone = Phone.Text;
             _individual.DateOfBirth = DateTime.Parse(DateOfBirth.Text);
@@ -60,7 +60,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _individual.Gender = Gender.Text;
             _individual.Phone = Phone.Text;
             _individual.SocialNetwork = SocialNetwork.Text;
-            _individualsService.Create(_individual);
         }
     }
 }
