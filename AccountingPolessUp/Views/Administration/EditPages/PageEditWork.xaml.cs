@@ -58,17 +58,19 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
 
-            employment.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipants.SelectedItem).Id;
-            employment.PositionId = _positions.FirstOrDefault(i => i == BoxPosition.SelectedItem).Id;
-            employment.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
+            WriteData();
             _employmentService.Update(employment);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            WriteData();
+            _employmentService.Create(employment);
+        }
+        private void WriteData()
+        {
             employment.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipants.SelectedItem).Id;
             employment.PositionId = _positions.FirstOrDefault(i => i == BoxPosition.SelectedItem).Id;
             employment.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
-            _employmentService.Create(employment);
         }
     }
 }

@@ -41,18 +41,20 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            user.Login = Login.Text;
-            user.Password = Password.Password;
-            user.IsAdmin = bool.Parse(BoxIsAdmin.Text);
+            WriteData();
             _userService.Update(user);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            WriteData();
+            _userService.Create(user);
+        }
+        private void WriteData()
+        {
             user.Login = Login.Text;
             user.Password = Password.Password;
             user.IsAdmin = bool.Parse(BoxIsAdmin.Text);
-            _userService.Create(user);
         }
     }
 }

@@ -53,26 +53,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-           
-            participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
-            participants.mmr=int.Parse(mmr.Text);
-            participants.UserId= _users.FirstOrDefault(i=>i==BoxUser.SelectedItem).Id;
-            participants.DateEntry = DateTime.Parse(DateEntry.Text);
-            participants.DateExit = DateExit.Text=="" ? DateTime.Parse("1970/01/01"):DateTime.Parse(DateExit.Text);
-            participants.Status=Status.Text;
-            participants.GitHub=GitHub.Text;
+
+            WriteData();
             _participantsService.Update(participants);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            Participants participants = new Participants();
-            participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
-            participants.mmr = int.Parse(mmr.Text);
-            participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
-            participants.DateEntry = DateTime.Parse(DateEntry.Text);
-            participants.DateExit = DateExit.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateExit.Text);
-            participants.Status = Status.Text;
-            participants.GitHub = GitHub.Text;
+
+            WriteData();
             _participantsService.Create(participants);
         }
         private void OpenIndividuals_Click(object sender, RoutedEventArgs e)
@@ -81,6 +69,16 @@ namespace AccountingPolessUp.Views.Administration.EditPages
        
         private void OpenUser_Click(object sender, RoutedEventArgs e)
         {
+        }
+        private void WriteData()
+        {
+            participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
+            participants.mmr = int.Parse(mmr.Text);
+            participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
+            participants.DateEntry = DateTime.Parse(DateEntry.Text);
+            participants.DateExit = DateExit.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateExit.Text);
+            participants.Status = Status.Text;
+            participants.GitHub = GitHub.Text;
         }
     }
 }
