@@ -15,7 +15,6 @@ namespace AccountingPolessUp.Models
         public int? IdMentor { get; set; }
         public Participants Participants { get; set; }
         public int ParticipantsId { get; set; }
-        public List<TrainingCourses> TrainingCourses { get; set; } 
         public List<FinalProject> FinalProjects { get; set; }
         public Position Position { get; set; }
         public int PositionId { get; set; }

@@ -17,5 +17,6 @@ namespace AccountingPolessUp.Models
         public int CustomerId { get; set; }
         public Customer Customer { get; set; }
         public List<StagesOfProject> StagesOfProjects { get; set; }
+        public int? idLocalPM { get; set; }
     }
 }

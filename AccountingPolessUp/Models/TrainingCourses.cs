@@ -1,4 +1,5 @@
 ﻿
+using AccountingPolessUp.Models;
 using System.Collections.Generic;
 
 namespace AccountingPolessUp.Models
@@ -9,6 +10,7 @@ namespace AccountingPolessUp.Models
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string Link { get; set; } = string.Empty;
-        public List<Employment> Employments { get; set; }
+        public List<RegistrationForCourses> RegistrationForCourses { get; set; } 
+        public List<ScheduleOfСlasses> ScheduleOfСlasses { get; set; } 
     }
 }
