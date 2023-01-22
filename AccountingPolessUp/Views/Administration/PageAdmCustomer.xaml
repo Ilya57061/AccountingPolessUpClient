@@ -1,11 +1,11 @@
-﻿<Page x:Class="AccountingPolessUp.Views.Administration.PageAdmUsers"
+﻿<Page x:Class="AccountingPolessUp.Views.Administration.PageAdmCustomer"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AccountingPolessUp.Views.Administration"
       mc:Ignorable="d" 
-     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       d:DesignHeight="950" d:DesignWidth="800"
           TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
@@ -30,9 +30,11 @@ Background="Transparent"
                 <DataGrid HorizontalAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
-                        <DataGridTextColumn Binding="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Header="Логин" />
-                        <DataGridTextColumn Binding="{Binding IsAdmin, UpdateSourceTrigger=PropertyChanged}" Header="Админ" />
-                        <DataGridTextColumn Binding="{Binding IsGlobalPM, UpdateSourceTrigger=PropertyChanged}" Header="GlobalPM" />
+                        <DataGridTextColumn Binding="{Binding FullName, UpdateSourceTrigger=PropertyChanged}" Header="Полное наименование" />
+                        <DataGridTextColumn Binding="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Header="Адрес" />
+                        <DataGridTextColumn Binding="{Binding Contacts, UpdateSourceTrigger=PropertyChanged}" Header="Контакты" />
+                        <DataGridTextColumn Binding="{Binding WebSite, UpdateSourceTrigger=PropertyChanged}" Header="Вэб-сайт" />
+                        <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

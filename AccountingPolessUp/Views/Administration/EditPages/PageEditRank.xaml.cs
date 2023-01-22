@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
     /// <summary>
-    /// Логика взаимодействия для PageEditProject.xaml
+    /// Логика взаимодействия для PageEditRank.xaml
     /// </summary>
-    public partial class PageEditProject : Page
+    public partial class PageEditRank : Page
     {
-        public PageEditProject()
+        public PageEditRank()
         {
             InitializeComponent();
         }
@@ -30,9 +30,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
         }
-        private void OpenProject_Click(object sender, RoutedEventArgs e)
+        private void OpenRank_Click(object sender, RoutedEventArgs e)
         {
         }
-
     }
 }

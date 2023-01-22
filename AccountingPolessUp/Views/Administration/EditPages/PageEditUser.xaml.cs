@@ -55,6 +55,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             user.Login = Login.Text;
             user.Password = Password.Password;
             user.IsAdmin = bool.Parse(BoxIsAdmin.Text);
+            user.isGlobalPM = bool.Parse(BoxIsGlobalPM.Text);
         }
     }
 }
