@@ -1,6 +1,6 @@
 ﻿using AccountingPolessUp.Views;
 using AccountingPolessUp.Views.Administration;
-using AccountingPolessUp.Views.Infromation;
+using AccountingPolessUp.Views.Information;
 using System;
 using System.Collections.Generic;
 using System.Linq;
