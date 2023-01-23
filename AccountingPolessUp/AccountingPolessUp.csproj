@@ -88,11 +88,23 @@
     <Compile Include="Models\EducationalPortals.cs" />
     <Compile Include="Models\RegistrationForCourses.cs" />
     <Compile Include="Models\ScheduleOfСlasses.cs" />
+    <Compile Include="Views\Administration\EditPages\PageEditBonus.xaml.cs">
+      <DependentUpon>PageEditBonus.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditCourses.xaml.cs">
       <DependentUpon>PageEditCourses.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditCustomer.xaml.cs">
+      <DependentUpon>PageEditCustomer.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditDepartments.xaml.cs">
       <DependentUpon>PageEditDepartments.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditEducationalPortals.xaml.cs">
+      <DependentUpon>PageEditEducationalPortals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditFinalProject.xaml.cs">
+      <DependentUpon>PageEditFinalProject.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditIndividuals.xaml.cs">
       <DependentUpon>PageEditIndividuals.xaml</DependentUpon>
@@ -105,6 +117,9 @@
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditOrganization.xaml.cs">
       <DependentUpon>PageEditOrganization.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditPosition.xaml.cs">
+      <DependentUpon>PageEditPosition.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditProject.xaml.cs">
       <DependentUpon>PageEditProject.xaml</DependentUpon>
@@ -120,6 +135,9 @@
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditUser.xaml.cs">
       <DependentUpon>PageEditUser.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditVacancy.xaml.cs">
+      <DependentUpon>PageEditVacancy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditWork.xaml.cs">
       <DependentUpon>PageEditWork.xaml</DependentUpon>
@@ -166,9 +184,6 @@
     <Compile Include="Views\Administration\PageAdmRules.xaml.cs">
       <DependentUpon>PageAdmRules.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Administration\PageAdmStagesOfProject.xaml.cs">
-      <DependentUpon>PageAdmStagesOfProject.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Administration\PageAdmStudents.xaml.cs">
       <DependentUpon>PageAdmStudents.xaml</DependentUpon>
     </Compile>
@@ -181,22 +196,22 @@
     <Compile Include="Views\Administration\PageAdmWork.xaml.cs">
       <DependentUpon>PageAdmWork.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Infromation\PageInfoBonus.xaml.cs">
+    <Compile Include="Views\Information\PageInfoBonus.xaml.cs">
       <DependentUpon>PageInfoBonus.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Infromation\PageInfoDepartments.xaml.cs">
+    <Compile Include="Views\Information\PageInfoDepartments.xaml.cs">
       <DependentUpon>PageInfoDepartments.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Infromation\PageInfoPositions.xaml.cs">
+    <Compile Include="Views\Information\PageInfoPositions.xaml.cs">
       <DependentUpon>PageInfoPositions.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Infromation\PageInfoRanks.xaml.cs">
+    <Compile Include="Views\Information\PageInfoRanks.xaml.cs">
       <DependentUpon>PageInfoRanks.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Infromation\PageInfoRules.xaml.cs">
+    <Compile Include="Views\Information\PageInfoRules.xaml.cs">
       <DependentUpon>PageInfoRules.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Infromation\PageInfoСourses.xaml.cs">
+    <Compile Include="Views\Information\PageInfoСourses.xaml.cs">
       <DependentUpon>PageInfoСourses.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Menu\PageEmployment.xaml.cs">
@@ -217,11 +232,27 @@
     <Compile Include="Views\MainWindows\WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Administration\EditPages\PageEditBonus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Administration\EditPages\PageEditCourses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Administration\EditPages\PageEditCustomer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Administration\EditPages\PageEditDepartments.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\EditPages\PageEditEducationalPortals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\EditPages\PageEditFinalProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -238,6 +269,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Administration\EditPages\PageEditOrganization.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\EditPages\PageEditPosition.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -258,6 +293,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Administration\EditPages\PageEditUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\EditPages\PageEditVacancy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -321,10 +360,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\Administration\PageAdmStagesOfProject.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Administration\PageAdmStudents.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -354,27 +389,27 @@
     </Compile>
     <Compile Include="Implementations\IndividualsService.cs" />
     <Compile Include="Implementations\StudentService.cs" />
-    <Page Include="Views\Infromation\PageInfoBonus.xaml">
+    <Page Include="Views\Information\PageInfoBonus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Infromation\PageInfoDepartments.xaml">
+    <Page Include="Views\Information\PageInfoDepartments.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Infromation\PageInfoPositions.xaml">
+    <Page Include="Views\Information\PageInfoPositions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Infromation\PageInfoRanks.xaml">
+    <Page Include="Views\Information\PageInfoRanks.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Infromation\PageInfoRules.xaml">
+    <Page Include="Views\Information\PageInfoRules.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Infromation\PageInfoСourses.xaml">
+    <Page Include="Views\Information\PageInfoСourses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
