@@ -129,7 +129,7 @@
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonAdmСustomer_Click">
+                    <TreeViewItem Selected="ButtonAdmCustomer_Click">
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Заказчики" />

@@ -138,6 +138,30 @@ namespace AccountingPolessUp
         {
             MainFrame.Content = new PageAdmMembers();
         }
+        private void ButtonAdmBonus_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageAdmBonus();
+        }
+        private void ButtonAdmCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageAdmCustomer();
+        }
+        private void ButtonAdmEducationalPortals_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageAdmEducationalPortals();
+        }
+        private void ButtonAdmFinalProject_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageAdmFinalProject();
+        }
+        private void ButtonAdmPosition_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageAdmPosition();
+        }
+        private void ButtonAdmVacancy_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageAdmVacancy();
+        }
         #endregion
     }
 }
