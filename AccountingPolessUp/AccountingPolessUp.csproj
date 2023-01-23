@@ -106,9 +106,6 @@
     <Compile Include="Views\Administration\EditPages\PageEditFinalProject.xaml.cs">
       <DependentUpon>PageEditFinalProject.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Administration\EditPages\PageEditIndividuals.xaml.cs">
-      <DependentUpon>PageEditIndividuals.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditMembers.xaml.cs">
       <DependentUpon>PageEditMembers.xaml</DependentUpon>
     </Compile>
@@ -253,10 +250,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Administration\EditPages\PageEditFinalProject.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Administration\EditPages\PageEditIndividuals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
