@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace AccountingPolessUp.Views.Infromation
+namespace AccountingPolessUp.Views.Information
 {
     /// <summary>
-    /// Логика взаимодействия для PageInfoPositions.xaml
+    /// Логика взаимодействия для PageInfoBonus.xaml
     /// </summary>
-    public partial class PageInfoPositions : Page
+    public partial class PageInfoBonus : Page
     {
-        public PageInfoPositions()
+        public PageInfoBonus()
         {
             InitializeComponent();
         }
