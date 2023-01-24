@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,11 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmPosition : Page
     {
+        PositionService _positionService = new PositionService();
         public PageAdmPosition()
         {
             InitializeComponent();
+            dataGrid.ItemsSource = _positionService.Get();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -32,28 +35,26 @@ namespace AccountingPolessUp.Views.Administration
             {
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    User user = dataGrid.SelectedItems[i] as User;
-                    if (user != null)
+                    Position position = dataGrid.SelectedItems[i] as Position;
+                    if (position != null)
                     {
-                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
-
-                        //_userService.Delete(user.Id);
+                        _positionService.Delete(position.Id);
                     }
                 }
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditUser();
+            EditFrame.Content = new PageEditPosition();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
             {
-                User user = dataGrid.SelectedItems[i] as User;
-                if (user != null)
+                Position position = dataGrid.SelectedItems[i] as Position;
+                if (position != null)
                 {
-                    //EditFrame.Content = new PageEditUser(user);
+                    EditFrame.Content = new PageEditPosition(position);
 
                 }
             }

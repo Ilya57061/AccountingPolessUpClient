@@ -24,10 +24,12 @@ Background="Transparent"
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Border Grid.ColumnSpan="4" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
-        <Grid Grid.Row="0" Grid.Column="3">
+        <Border Grid.ColumnSpan="5" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
+        <Grid Grid.Row="0" Grid.Column="2">
             <Button Click="OpenRank_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
@@ -43,7 +45,13 @@ Background="Transparent"
         <Grid Grid.Row="1" Grid.Column="2">
             <ComboBox x:Name="BoxOrganization" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Organizations}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация" Margin="1,0,1,0"></ComboBox>
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="1" >
+        <Grid Grid.Row="1" Grid.Column="3">
+            <TextBox Margin="1,0,1,20" x:Name="MinMmr" FontSize="14" materialDesign:HintAssist.Hint="MinMmr" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="UnfoldLessHorizontal" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding MinMmr}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="4">
+            <TextBox Margin="1,0,1,20" x:Name="MaxMmr" FontSize="14" materialDesign:HintAssist.Hint="MaxMmr" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="UnfoldMoreHorizontal" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding MaxMmr}"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2" >
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />
             </Button>

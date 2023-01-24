@@ -23,9 +23,11 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmRanks : Page
     {
+        RangService _rangService = new RangService();
         public PageAdmRanks()
         {
             InitializeComponent();
+            dataGrid.ItemsSource = _rangService.Get();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -33,28 +35,27 @@ namespace AccountingPolessUp.Views.Administration
             {
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    User user = dataGrid.SelectedItems[i] as User;
-                    if (user != null)
+                    Rang rang = dataGrid.SelectedItems[i] as Rang;
+                    if (rang != null)
                     {
-                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
 
-                        //_userService.Delete(user.Id);
+                        _rangService.Delete(rang.Id);
                     }
                 }
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditUser();
+            EditFrame.Content = new PageEditRank();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
             {
-                User user = dataGrid.SelectedItems[i] as User;
-                if (user != null)
+                Rang rang = dataGrid.SelectedItems[i] as Rang;
+                if (rang != null)
                 {
-                    //EditFrame.Content = new PageEditUser(user);
+                    EditFrame.Content = new PageEditRank(rang);
 
                 }
             }

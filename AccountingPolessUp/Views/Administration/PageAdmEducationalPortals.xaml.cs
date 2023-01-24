@@ -22,6 +22,7 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmEducationalPortals : Page
     {
+        
         public PageAdmEducationalPortals()
         {
             InitializeComponent();
@@ -32,28 +33,27 @@ namespace AccountingPolessUp.Views.Administration
             {
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    User user = dataGrid.SelectedItems[i] as User;
-                    if (user != null)
+                    EducationalPortals EducationalPortals = dataGrid.SelectedItems[i] as EducationalPortals;
+                    if (EducationalPortals != null)
                     {
-                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
 
-                        //_userService.Delete(user.Id);
+                        //_educationalPortalsService.Delete(EducationalPortals.Id);
                     }
                 }
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditUser();
+            EditFrame.Content = new PageEditEducationalPortals();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
             {
-                User user = dataGrid.SelectedItems[i] as User;
-                if (user != null)
+                EducationalPortals EducationalPortals = dataGrid.SelectedItems[i] as EducationalPortals;
+                if (EducationalPortals != null)
                 {
-                    //EditFrame.Content = new PageEditUser(user);
+                    //EditFrame.Content = new PageEditEducationalPortals(EducationalPortals);
 
                 }
             }

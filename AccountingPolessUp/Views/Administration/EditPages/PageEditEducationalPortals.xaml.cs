@@ -1,6 +1,9 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,6 +26,18 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditEducationalPortals()
         {
             InitializeComponent();
+        }
+        private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
+        {
+            WriteData();
+        }
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            WriteData();
+        }
+        private void WriteData()
+        {
+            
         }
     }
 }

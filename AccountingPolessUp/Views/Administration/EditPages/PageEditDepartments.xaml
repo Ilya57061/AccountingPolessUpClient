@@ -52,8 +52,13 @@ Background="Transparent"
         <Grid Grid.Row="1" Grid.Column="4">
             <TextBox Margin="1,0,1,20" x:Name="Status" FontSize="14" materialDesign:HintAssist.Hint="Status" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Status}"/>
         </Grid>
+        <Grid Grid.Row="0" Grid.Column="5">
+            <Button Click="OpenOrganization_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
+            </Button>
+        </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
-            <ComboBox x:Name="Organizations" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Organizations}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Organization" Margin="1,0,1,0"></ComboBox>
+            <ComboBox x:Name="BoxOrganizations" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Organizations}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Organization" Margin="1,0,1,0"></ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">

@@ -38,8 +38,6 @@ namespace AccountingPolessUp.Views.Administration
                     Employment employment = dataGrid.SelectedItems[i] as Employment;
                     if (employment != null)
                     {
-                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
-
                         _employmentService.Delete(employment.Id);
                     }
                 }

@@ -32,7 +32,6 @@ namespace AccountingPolessUp
         }
         private void ButtonProfile_Click(object sender, RoutedEventArgs e)
         {
-            //List<Individuals> individuals = _indvidualsService.Get();
             MainFrame.Content = new PageProfile();
         }
 
@@ -121,10 +120,6 @@ namespace AccountingPolessUp
         private void ButtonAdmProjects_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageAdmProjects();
-        }
-        private void ButtonAdmLegal_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Content = new PageAdmLegal();
         }
         private void ButtonAdmOrganization_Click(object sender, RoutedEventArgs e)
         {

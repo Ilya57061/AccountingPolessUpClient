@@ -23,9 +23,11 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmOrganizations : Page
     {
+        OrganizationService _organizationService=new OrganizationService();
         public PageAdmOrganizations()
         {
             InitializeComponent();
+            dataGrid.ItemsSource = _organizationService.Get();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -33,28 +35,29 @@ namespace AccountingPolessUp.Views.Administration
             {
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    User user = dataGrid.SelectedItems[i] as User;
-                    if (user != null)
+                    Organization Organization = dataGrid.SelectedItems[i] as Organization;
+                    if (Organization != null)
                     {
-                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
 
-                        //_userService.Delete(user.Id);
+
+                        _organizationService.Delete(Organization.Id);
                     }
                 }
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditUser();
+            EditFrame.Content = new PageEditOrganization();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
             {
-                User user = dataGrid.SelectedItems[i] as User;
-                if (user != null)
+                Organization Organization = dataGrid.SelectedItems[i] as Organization;
+                if (Organization != null)
                 {
-                    //EditFrame.Content = new PageEditUser(user);
+
+                    EditFrame.Content = new PageEditOrganization(Organization);
 
                 }
             }

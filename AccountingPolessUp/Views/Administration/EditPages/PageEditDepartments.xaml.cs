@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,15 +22,49 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditDepartments : Page
     {
+        DepartmentService _departmentService=new DepartmentService();
+        OrganizationService _organizationService = new OrganizationService();
+        Department _department;
+        List<Organization> _organizations;
+        public PageEditDepartments(Department department)
+        {
+            InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+            _department = department;
+            _organizations = _organizationService.Get();
+            DataContext = department;
+            BoxOrganizations.ItemsSource= _organizations;
+            BoxOrganizations.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o=>o.Id==department.OrganizationId));
+        }
         public PageEditDepartments()
         {
             InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+            _department = new Department();
+        }
+        private void OpenOrganization_Click(object sender, RoutedEventArgs e)
+        {
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
+            WriteData();
+            _departmentService.Update(_department);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            WriteData();
+            _departmentService.Create(_department);
+        }
+        private void WriteData()
+        {
+            _department.FullName = FullName.Text;
+            _department.Description=Description.Text;
+            _department.DateStart = DateTime.Parse(DateStart.Text);
+            _department.DateEnd= DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
+            _department.Status = Status.Text;
+            _department.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganizations.SelectedItem).Id;
         }
     }
 }

@@ -32,6 +32,8 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding RangName, UpdateSourceTrigger=PropertyChanged}" Header="Название ранга" />
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
+                        <DataGridTextColumn Binding="{Binding MaxMmr, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
+                        <DataGridTextColumn Binding="{Binding MinMmr, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding OrganizationId, UpdateSourceTrigger=PropertyChanged}" Header="Ид организации" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>

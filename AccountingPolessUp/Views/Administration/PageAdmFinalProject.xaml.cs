@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,11 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmFinalProject : Page
     {
+        FinalProjectService _finalProjectService = new FinalProjectService();
         public PageAdmFinalProject()
         {
             InitializeComponent();
+            dataGrid.ItemsSource = _finalProjectService.Get();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -32,28 +35,28 @@ namespace AccountingPolessUp.Views.Administration
             {
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    User user = dataGrid.SelectedItems[i] as User;
-                    if (user != null)
+                    FinalProject FinalProject = dataGrid.SelectedItems[i] as FinalProject;
+                    if (FinalProject != null)
                     {
-                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
 
-                        //_userService.Delete(user.Id);
+                        _finalProjectService.Delete(FinalProject.Id);
                     }
                 }
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditUser();
+            EditFrame.Content = new PageEditFinalProject();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
             {
-                User user = dataGrid.SelectedItems[i] as User;
-                if (user != null)
+                FinalProject FinalProject = dataGrid.SelectedItems[i] as FinalProject;
+                if (FinalProject != null)
                 {
-                    //EditFrame.Content = new PageEditUser(user);
+
+                    EditFrame.Content = new PageEditFinalProject(FinalProject);
 
                 }
             }

@@ -29,11 +29,12 @@ Background="Transparent"
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Border Grid.ColumnSpan="7" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
+        <Border Grid.ColumnSpan="8" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
         <Grid Grid.Row="0" Grid.Column="1">
-            <Button Click="OpenProject_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Click="OpenCustomer_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>
@@ -65,7 +66,11 @@ Background="Transparent"
         <Grid Grid.Row="1" Grid.Column="6">
             <TextBox Margin="1,0,1,20" x:Name="TechnicalSpecification" FontSize="14" materialDesign:HintAssist.Hint="Спецификация" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="FolderInformation" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding TechnicalSpecification}"/>
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
+        <Grid Grid.Row="1" Grid.Column="7">
+            <TextBox Margin="1,0,1,20" x:Name="idLocalPM" FontSize="14" materialDesign:HintAssist.Hint="id PM" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Man" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding TechnicalSpecification}"/>
+        </Grid>
+        
+        <Grid Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2">
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />
             </Button>

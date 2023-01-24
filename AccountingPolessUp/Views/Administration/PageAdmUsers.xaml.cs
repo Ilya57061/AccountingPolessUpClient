@@ -39,8 +39,6 @@ namespace AccountingPolessUp.Views.Administration
                     User user = dataGrid.SelectedItems[i] as User;
                     if (user!= null)
                     {
-                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
-                       
                         _userService.Delete(user.Id);
                     }
                 }

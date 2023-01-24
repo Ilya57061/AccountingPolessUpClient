@@ -18,8 +18,5 @@ namespace AccountingPolessUp.Models
         public int mmr { get; set; }
         public string Status { get; set; } = string.Empty;
         public string GitHub { get; set; } = string.Empty;
-        public List<ApplicationsInTheProject> ApplicationsInTheProjects { get; set; } 
-        public List<Employment> Employments { get; set; } 
-        public List<RegistrationForCourses> RegistrationForCourses { get; set; }
     }
 }

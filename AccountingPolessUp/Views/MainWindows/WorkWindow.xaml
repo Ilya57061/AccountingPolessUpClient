@@ -154,14 +154,7 @@
                     <TreeViewItem Selected="ButtonAdmFinalProject_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
-                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Организация" />
-                            </StackPanel>
-                        </TreeViewItem.Header>
-                    </TreeViewItem>
-                    <TreeViewItem Selected="ButtonAdmLegal_Click">
-                        <TreeViewItem.Header>
-                            <StackPanel  Orientation="Horizontal">
-                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Юридические лица" />
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Законченные проекты" />
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
@@ -214,13 +207,7 @@
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonAdmRules_Click">
-                        <TreeViewItem.Header>
-                            <StackPanel  Orientation="Horizontal">
-                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Уставы" />
-                            </StackPanel>
-                        </TreeViewItem.Header>
-                    </TreeViewItem>
+        
                     <TreeViewItem Selected="ButtonAdmStudents_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">

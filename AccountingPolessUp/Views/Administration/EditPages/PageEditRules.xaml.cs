@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,18 +22,47 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditRules : Page
     {
+        RegulationService _regulationService = new RegulationService();
+        OrganizationService _organizationService=new OrganizationService();
+        List<Organization> _organizations;
+        Regulation _regulation;
+        public PageEditRules(Regulation regulation)
+        {
+            InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+            _regulation = regulation;
+            DataContext = regulation;
+            _organizations = _organizationService.Get();
+            BoxOrganization.ItemsSource= _organizations;
+            BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o=>o.Id==regulation.OrganizationId));
+        }
         public PageEditRules()
         {
             InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+            _regulation = new Regulation();
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
+            DataWrite();
+            _regulationService.Update(_regulation);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            DataWrite();
+            _regulationService.Create(_regulation);
         }
         private void OpenRegulation_Click(object sender, RoutedEventArgs e)
         {
+        }
+        private void DataWrite()
+        {
+            _regulation.Text = Text.Text;
+            _regulation.Name = Name.Text;
+            _regulation.Description = Description.Text;
+            _regulation.OrganizationId = _organizations.FirstOrDefault(i=>i==BoxOrganization.SelectedItem).Id;
         }
     }
 }

@@ -106,11 +106,11 @@
     <Compile Include="Views\Administration\EditPages\PageEditFinalProject.xaml.cs">
       <DependentUpon>PageEditFinalProject.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditIndividuals.xaml.cs">
+      <DependentUpon>PageEditIndividuals.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditMembers.xaml.cs">
       <DependentUpon>PageEditMembers.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Administration\EditPages\PageEditNatural.xaml.cs">
-      <DependentUpon>PageEditNatural.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditOrganization.xaml.cs">
       <DependentUpon>PageEditOrganization.xaml</DependentUpon>
@@ -156,9 +156,6 @@
     </Compile>
     <Compile Include="Views\Administration\PageAdmFinalProject.xaml.cs">
       <DependentUpon>PageAdmFinalProject.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Administration\PageAdmLegal.xaml.cs">
-      <DependentUpon>PageAdmLegal.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\PageAdmMembers.xaml.cs">
       <DependentUpon>PageAdmMembers.xaml</DependentUpon>
@@ -253,11 +250,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Administration\EditPages\PageEditMembers.xaml">
+    <Page Include="Views\Administration\EditPages\PageEditIndividuals.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Administration\EditPages\PageEditNatural.xaml">
+    <Page Include="Views\Administration\EditPages\PageEditMembers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -320,10 +317,6 @@
     <Page Include="Views\Administration\PageAdmFinalProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Administration\PageAdmLegal.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Administration\PageAdmMembers.xaml">
       <Generator>MSBuild:Compile</Generator>

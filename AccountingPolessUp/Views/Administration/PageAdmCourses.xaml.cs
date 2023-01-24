@@ -23,9 +23,11 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmCourses : Page
     {
+        TrainingCoursesService _coursesService = new TrainingCoursesService();
         public PageAdmCourses()
         {
             InitializeComponent();
+            dataGrid.ItemsSource = _coursesService.Get();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -33,28 +35,27 @@ namespace AccountingPolessUp.Views.Administration
             {
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    User user = dataGrid.SelectedItems[i] as User;
-                    if (user != null)
+                    TrainingCourses TrainingCourses = dataGrid.SelectedItems[i] as TrainingCourses;
+                    if (TrainingCourses != null)
                     {
-                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
 
-                        //_userService.Delete(user.Id);
+                        _coursesService.Delete(TrainingCourses.Id);
                     }
                 }
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditUser();
+            EditFrame.Content = new PageEditCourses();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
             {
-                User user = dataGrid.SelectedItems[i] as User;
-                if (user != null)
+                TrainingCourses TrainingCourses = dataGrid.SelectedItems[i] as TrainingCourses;
+                if (TrainingCourses != null)
                 {
-                    //EditFrame.Content = new PageEditUser(user);
+                    EditFrame.Content = new PageEditCourses(TrainingCourses);
 
                 }
             }

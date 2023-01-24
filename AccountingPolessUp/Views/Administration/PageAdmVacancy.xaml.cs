@@ -23,9 +23,11 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmVacancy : Page
     {
+        VacancyService _vacancyService = new VacancyService();
         public PageAdmVacancy()
         {
             InitializeComponent();
+            dataGrid.ItemsSource = _vacancyService.Get();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -33,28 +35,27 @@ namespace AccountingPolessUp.Views.Administration
             {
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    User user = dataGrid.SelectedItems[i] as User;
-                    if (user != null)
+                    Vacancy vacancy = dataGrid.SelectedItems[i] as Vacancy;
+                    if (vacancy != null)
                     {
-                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
 
-                        //_userService.Delete(user.Id);
+                        _vacancyService.Delete(vacancy.Id);
                     }
                 }
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditUser();
+            EditFrame.Content = new PageEditVacancy();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
             {
-                User user = dataGrid.SelectedItems[i] as User;
-                if (user != null)
+                Vacancy vacancy = dataGrid.SelectedItems[i] as Vacancy;
+                if (vacancy != null)
                 {
-                    //EditFrame.Content = new PageEditUser(user);
+                    EditFrame.Content = new PageEditVacancy(vacancy);
 
                 }
             }

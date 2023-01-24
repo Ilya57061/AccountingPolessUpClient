@@ -18,48 +18,45 @@ using System.Windows.Shapes;
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
     /// <summary>
-    /// Логика взаимодействия для PageEditNatural.xaml
+    /// Логика взаимодействия для PageEditIndividuals.xaml
     /// </summary>
-    public partial class PageEditNatural : Page
+    public partial class PageEditIndividuals : Page // физ лицо
     {
         IndividualsService _individualsService = new IndividualsService();
-        Individuals _individual;
-        public PageEditNatural(Individuals individual)
+        Individuals _individuals;
+        public PageEditIndividuals(Individuals individuals)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            this._individual= individual;
-            DataContext = individual;
+            _individuals = individuals;
+            DataContext = individuals;
         }
-        public PageEditNatural()
+        public PageEditIndividuals()
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            this._individual = new Individuals();
+            _individuals = new Individuals();
         }
-       
+
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             WriteData();
-            _individualsService.Update(_individual);
+            _individualsService.Update(_individuals);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-
             WriteData();
-            _individualsService.Create(_individual);
+            _individualsService.Create(_individuals);
         }
         private void WriteData()
         {
-            _individual.FIO = FIO.Text;
-            _individual.Phone = Phone.Text;
-            _individual.DateOfBirth = DateTime.Parse(DateOfBirth.Text);
-            _individual.Mail = Mail.Text;
-            _individual.Gender = Gender.Text;
-            _individual.Phone = Phone.Text;
-            _individual.SocialNetwork = SocialNetwork.Text;
+            _individuals.FIO = FIO.Text;
+            _individuals.Phone = Phone.Text; 
+            _individuals.Mail = Mail.Text;
+            _individuals.Gender= Gender.Text;
+            _individuals.SocialNetwork= SocialNetwork.Text;
         }
     }
 }

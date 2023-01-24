@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System;
 using System.Collections.Generic;
@@ -22,9 +23,11 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmBonus : Page
     {
+        BonusService _bonusService = new BonusService();
         public PageAdmBonus()
         {
             InitializeComponent();
+            dataGrid.ItemsSource = _bonusService.Get();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -32,28 +35,26 @@ namespace AccountingPolessUp.Views.Administration
             {
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    User user = dataGrid.SelectedItems[i] as User;
-                    if (user != null)
+                    Bonus Bonus = dataGrid.SelectedItems[i] as Bonus;
+                    if (Bonus != null)
                     {
-                        //dataGrid.Items.Remove(dataGrid.SelectedItems[i]);
-
-                        //_userService.Delete(user.Id);
+                        _bonusService.Delete(Bonus.Id);
                     }
                 }
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditUser();
+            EditFrame.Content = new PageEditBonus();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
             {
-                User user = dataGrid.SelectedItems[i] as User;
-                if (user != null)
+                Bonus Bonus = dataGrid.SelectedItems[i] as Bonus;
+                if (Bonus != null)
                 {
-                    //EditFrame.Content = new PageEditUser(user);
+                    EditFrame.Content = new PageEditBonus(Bonus);
 
                 }
             }

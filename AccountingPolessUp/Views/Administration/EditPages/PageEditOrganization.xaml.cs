@@ -1,4 +1,6 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,15 +22,40 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditOrganization : Page
     {
+        OrganizationService _organizationService = new OrganizationService();
+        Organization _organization;
+        public PageEditOrganization(Organization organization)
+        {
+            InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+            _organization = organization;
+            DataContext = organization;
+        }
         public PageEditOrganization()
         {
             InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+            _organization= new Organization();
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
+            WriteData();
+            _organizationService.Update(_organization);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
+            WriteData();
+            _organizationService.Create(_organization);
+        }
+        private void WriteData()
+        {
+            _organization.Fullname = FullName.Text;
+            _organization.Address= Address.Text;
+            _organization.Contacts=Contacts.Text;
+            _organization.WebSite = Website.Text;
+            _organization.FoundationDate = DateTime.Parse(FoundationDate.Text);
         }
     }
 }

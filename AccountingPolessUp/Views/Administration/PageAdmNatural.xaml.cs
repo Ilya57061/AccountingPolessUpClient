@@ -45,7 +45,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditNatural();
+            EditFrame.Content = new PageEditIndividuals();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -54,7 +54,7 @@ namespace AccountingPolessUp.Views.Administration
                 Individuals individual = dataGrid.SelectedItems[i] as Individuals;
                 if (individual != null)
                 {
-                    EditFrame.Content = new PageEditNatural(individual);
+                    EditFrame.Content = new PageEditIndividuals(individual);
 
                 }
             }
