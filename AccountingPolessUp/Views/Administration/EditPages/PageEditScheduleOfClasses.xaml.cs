@@ -47,7 +47,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
