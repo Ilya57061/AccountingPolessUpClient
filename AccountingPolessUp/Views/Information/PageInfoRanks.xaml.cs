@@ -26,7 +26,7 @@ namespace AccountingPolessUp.Views.Information
         RankService _RankService = new RankService();
         OrganizationService _organizationService = new OrganizationService();
         BonusService _bonusService = new BonusService();
-        List<Rank> Ranks;
+        IEnumerable<Rank> Ranks;
         List<Organization> organizations;
         public PageInfoRanks()
         {
@@ -46,7 +46,7 @@ namespace AccountingPolessUp.Views.Information
 
                     if (rank != null)
                     {
-                    this.NavigationService.Content=new PageInfoBonus(1);
+                    this.NavigationService.Content=new PageInfoBonus(rank.Id);
 
                     }
                 }
@@ -69,22 +69,22 @@ namespace AccountingPolessUp.Views.Information
         }
         private void Confirm()
         {
-            List<Rank> newRanks = Ranks;
+            IEnumerable<Rank> newRanks = Ranks;
             if (ComboORG.SelectedItem!=null)
             {
-                newRanks = (List<Rank>)newRanks.Where(x=>x.OrganizationId== organizations.FirstOrDefault(o=>o== ComboORG.SelectedItem).Id);
+                newRanks = newRanks.Where(x=>x.OrganizationId== organizations.FirstOrDefault(o=>o== ComboORG.SelectedItem).Id);
             }
             if (TextBoxSearch.Text!="")
             {
-                newRanks = (List<Rank>)newRanks.Where(x=>x.RankName==TextBoxSearch.Text);
+                newRanks = newRanks.Where(x=>x.RankName==TextBoxSearch.Text);
             }
             if (TextBoxMinMmr.Text!="")
             {
-                newRanks = (List<Rank>)newRanks.Where(x => x.MinMmr == int.Parse(TextBoxMinMmr.Text));
+                newRanks = newRanks.Where(x => x.MinMmr == int.Parse(TextBoxMinMmr.Text));
             }
             if (TextBoxMaxMmr.Text != "")
             {
-                newRanks = (List<Rank>)newRanks.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMmr.Text));
+                newRanks = newRanks.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMmr.Text));
             }
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = newRanks;

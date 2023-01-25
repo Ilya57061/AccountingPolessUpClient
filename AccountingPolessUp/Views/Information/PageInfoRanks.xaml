@@ -24,11 +24,11 @@ Background="Transparent"
             </Grid.RowDefinitions>
             <DataGrid x:Name="dataGrid" Margin="10" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
                 <DataGrid.Columns >
-                    <DataGridTextColumn Binding="{Binding Name}" Header="Наименование" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding Org}" Header="Организация" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding minMmr}" Header="Минимальный рейтинг" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding maxMmr}" Header="Максимальный рейтинг" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding Path = Organization.Fullname}" Header="Организация" Width="auto"/>
+                    <DataGridTextColumn Binding="{Binding RankName}" Header="Наименование" Width="100"/>
+                    <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="auto"/>
+                    <DataGridTextColumn Binding="{Binding MinMmr}" Header="Минимальный рейтинг" Width="auto"/>
+                    <DataGridTextColumn Binding="{Binding MaxMmr}" Header="Максимальный рейтинг" Width="auto"/>
+                    <DataGridTextColumn Binding="{Binding Path = Organizations.Fullname}" Header="Организация" Width="auto"/>
                     <DataGridTemplateColumn Header="Бонусы">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
