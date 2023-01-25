@@ -38,7 +38,19 @@ namespace AccountingPolessUp.Views.Information
         }
         private void ButtonOpen_Click(object sender, RoutedEventArgs e)
         {
+            if (dataGrid.SelectedItems.Count > 0 )
+            {
+                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+                {
+                    Rang rank = dataGrid.SelectedItems[i] as Rang;
 
+                    if (rank != null)
+                    {
+                    this.NavigationService.Content=new PageInfoBonus(1);
+
+                    }
+                }
+            }
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {

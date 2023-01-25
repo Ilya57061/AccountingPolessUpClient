@@ -28,9 +28,10 @@ namespace AccountingPolessUp.Views.Information
             InitializeComponent();
             BonusGrid.ItemsSource = _bonusService.Get();
         }
-        public PageInfoBonus(int RankId)
+        public PageInfoBonus(int rankId)
         {
-
+            InitializeComponent();
+            BonusGrid.ItemsSource = _bonusService.Get(rankId);
         }
     }
 }

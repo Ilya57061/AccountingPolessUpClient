@@ -23,6 +23,18 @@ namespace AccountingPolessUp.Implementations
                 else return Info;
             }
         }
+        public List<Bonus> Get(int rankId)
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.Encoding = System.Text.Encoding.UTF8;
+                string url = $"https://localhost:7273/GetBonus?id={rankId}";
+                var json = web.DownloadString(url);
+                List<Bonus> Info = JsonConvert.DeserializeObject<List<Bonus>>(json);
+                if (Info is null) throw new Exception("info - null");
+                else return Info;
+            }
+        }
         public void Create(Bonus model)
         {
             using (WebClient web = new WebClient())
