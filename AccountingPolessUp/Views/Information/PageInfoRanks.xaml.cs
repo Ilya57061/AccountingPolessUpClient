@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels.Information;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +26,9 @@ namespace AccountingPolessUp.Views.Information
         public PageInfoRanks()
         {
             InitializeComponent();
+          
         }
+
     }
+  
 }
