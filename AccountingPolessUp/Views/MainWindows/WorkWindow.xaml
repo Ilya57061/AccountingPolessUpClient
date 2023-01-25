@@ -167,7 +167,7 @@
                     <TreeViewItem Selected="ButtonAdmApplications_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
-                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Приложения в проекте" />
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Заявки в проект" />
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
