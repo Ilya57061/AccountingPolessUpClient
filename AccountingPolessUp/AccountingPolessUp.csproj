@@ -88,6 +88,9 @@
     <Compile Include="Models\EducationalPortals.cs" />
     <Compile Include="Models\RegistrationForCourses.cs" />
     <Compile Include="Models\ScheduleOfСlasses.cs" />
+    <Compile Include="Views\Administration\EditPages\PageEditApplicationsInTheProject.xaml.cs">
+      <DependentUpon>PageEditApplicationsInTheProject.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditBonus.xaml.cs">
       <DependentUpon>PageEditBonus.xaml</DependentUpon>
     </Compile>
@@ -138,6 +141,9 @@
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditWork.xaml.cs">
       <DependentUpon>PageEditWork.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmAppInTheProject.xaml.cs">
+      <DependentUpon>PageAdmAppInTheProject.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\PageAdmCustomer.xaml.cs">
       <DependentUpon>PageAdmCustomer.xaml</DependentUpon>
@@ -226,6 +232,10 @@
     <Compile Include="Views\MainWindows\WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\Administration\EditPages\PageEditApplicationsInTheProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Administration\EditPages\PageEditBonus.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -291,6 +301,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Administration\EditPages\PageEditWork.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmAppInTheProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -61,9 +61,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void WriteData()
         {
             _bonus.BonusName = BonusName.Text;
-            _bonus.BonusDescription= BonusDescription.Text;
-            _bonus.RangId = _rangs.FirstOrDefault(i=>i==BoxRang.SelectedItem).Id;
-
+            _bonus.BonusDescription = BonusDescription.Text;
+            _bonus.RangId = _rangs.FirstOrDefault(i => i == BoxRang.SelectedItem).Id;
         }
     }
 }
