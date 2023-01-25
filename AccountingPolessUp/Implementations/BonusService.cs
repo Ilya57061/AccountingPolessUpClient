@@ -23,6 +23,18 @@ namespace AccountingPolessUp.Implementations
                 else return Info;
             }
         }
+        public List<Bonus> Get(int rankId)
+        {
+            using (WebClient web = new WebClient())
+            {
+                web.Encoding = System.Text.Encoding.UTF8;
+                string url = $"https://localhost:7273/GetBonus?id={rankId}";
+                var json = web.DownloadString(url);
+                List<Bonus> Info = JsonConvert.DeserializeObject<List<Bonus>>(json);
+                if (Info is null) throw new Exception("info - null");
+                else return Info;
+            }
+        }
         public void Create(Bonus model)
         {
             using (WebClient web = new WebClient())
@@ -30,7 +42,7 @@ namespace AccountingPolessUp.Implementations
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("BonusName", $"{model.BonusName}");
                 reqparm.Add("BonusDescription", $"{ model.BonusDescription}");
-                reqparm.Add("RangId", $"{model.RangId}");
+                reqparm.Add("RankId", $"{model.RankId}");
 
 
                 web.UploadValues("https://localhost:7273/CreateBonus", "POST", reqparm);
@@ -45,7 +57,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("BonusName", $"{model.BonusName}");
                 reqparm.Add("BonusDescription", $"{model.BonusDescription}");
-                reqparm.Add("RangId ", $"{model.RangId}");
+                reqparm.Add("RankId ", $"{model.RankId}");
                 web.UploadValues("https://localhost:7273/UpdateBonus", "PUT", reqparm);
 
             }

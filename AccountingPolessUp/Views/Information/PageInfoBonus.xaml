@@ -18,10 +18,10 @@ Background="Transparent"
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         <Grid Background="Transparent">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
+                <RowDefinition />
             </Grid.RowDefinitions>
+            <Border  BorderThickness="1" Grid.RowSpan="2" CornerRadius="13" BorderBrush="White" Background="White" />
 
-            <Border  BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <StackPanel Margin="5" HorizontalAlignment="Right"  Orientation="Horizontal" Height="auto" VerticalAlignment="Top">
             </StackPanel>
             <Grid Margin="50 10">
@@ -41,7 +41,7 @@ Background="Transparent"
                                             <StackPanel Margin="-10 5"  Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">
                                                 <TextBlock Margin="0 5" x:Name="BonusDescription1" FontSize="16" FontWeight="DemiBold" Text="{Binding BonusDescription}"></TextBlock>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Margin="0 5" x:Name="InfoRang1" FontSize="16" FontWeight="DemiBold" Text="{Binding Rang.RangName}" ></TextBlock>
+                                                    <TextBlock Margin="0 5" x:Name="InfoRank1" FontSize="16" FontWeight="DemiBold" Text="{Binding Rank.RankName}" ></TextBlock>
                                                     <materialDesign:RatingBar Margin="20 0" VerticalAlignment="Center"  x:Name="BasicRatingBar1" IsReadOnly="True"  Value="1" />
                                                 </StackPanel>
                                             </StackPanel>

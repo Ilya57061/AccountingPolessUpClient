@@ -24,19 +24,19 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditBonus : Page
     {
         BonusService _bonusService = new BonusService();
-        RangService _rangService = new RangService();
-        List<Rang> _rangs;
+        RankService _RankService = new RankService();
+        List<Rank> _Ranks;
         Bonus _bonus;
         public PageEditBonus(Bonus bonus)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _rangs = _rangService.Get();
+            _Ranks = _RankService.Get();
             DataContext = bonus;
             _bonus = bonus;
-            BoxRang.ItemsSource = _rangs;
-            BoxRang.SelectedIndex = _rangs.IndexOf(_rangs.FirstOrDefault(r => r.Id == bonus.RangId));
+            BoxRank.ItemsSource = _Ranks;
+            BoxRank.SelectedIndex = _Ranks.IndexOf(_Ranks.FirstOrDefault(r => r.Id == bonus.RankId));
         }
         public PageEditBonus()
         {
@@ -62,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             _bonus.BonusName = BonusName.Text;
             _bonus.BonusDescription = BonusDescription.Text;
-            _bonus.RangId = _rangs.FirstOrDefault(i => i == BoxRang.SelectedItem).Id;
+            _bonus.RankId = _Ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id;
         }
     }
 }

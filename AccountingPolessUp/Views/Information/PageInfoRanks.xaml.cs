@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,72 @@ namespace AccountingPolessUp.Views.Information
     /// </summary>
     public partial class PageInfoRanks : Page
     {
+        RankService _RankService = new RankService();
+        OrganizationService _organizationService = new OrganizationService();
+        BonusService _bonusService = new BonusService();
+        List<Rank> Ranks;
+        List<Organization> organizations;
         public PageInfoRanks()
         {
             InitializeComponent();
+            Ranks= _RankService.Get();
+            organizations= _organizationService.Get();
+            dataGrid.ItemsSource = Ranks;
+            ComboORG.ItemsSource = organizations;
+        }
+        private void ButtonOpen_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGrid.SelectedItems.Count > 0 )
+            {
+                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+                {
+                    Rank rank = dataGrid.SelectedItems[i] as Rank;
+
+                    if (rank != null)
+                    {
+                    this.NavigationService.Content=new PageInfoBonus(1);
+
+                    }
+                }
+            }
+        }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            Confirm();
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            Clear();
+        }
+        private void Clear()
+        {
+            ComboORG.SelectedItem= null;
+            TextBoxMaxMMR.Text= string.Empty;
+            TextBoxMinMMR.Text= string.Empty;
+            TextBoxSearch.Text=string.Empty;
+        }
+        private void Confirm()
+        {
+            List<Rank> newRanks = Ranks;
+            if (ComboORG.SelectedItem!=null)
+            {
+                newRanks = (List<Rank>)newRanks.Where(x=>x.OrganizationId== organizations.FirstOrDefault(o=>o== ComboORG.SelectedItem).Id);
+            }
+            if (TextBoxSearch.Text!="")
+            {
+                newRanks = (List<Rank>)newRanks.Where(x=>x.RankName==TextBoxSearch.Text);
+            }
+            if (TextBoxMinMMR.Text!="")
+            {
+                newRanks = (List<Rank>)newRanks.Where(x => x.MinMmr == int.Parse(TextBoxMinMMR.Text));
+            }
+            if (TextBoxMaxMMR.Text != "")
+            {
+                newRanks = (List<Rank>)newRanks.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMMR.Text));
+            }
+            dataGrid.Items.Clear();
+            dataGrid.ItemsSource = newRanks;
         }
     }
+  
 }

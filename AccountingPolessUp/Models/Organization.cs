@@ -15,6 +15,6 @@ namespace AccountingPolessUp.Models
         public DateTime FoundationDate { get; set; }
         public List<Department> Departments { get; set; } 
         public List<Regulation> Regulations { get; set; } 
-        public List<Rang> Rangs { get; set; } 
+        public List<Rank> Ranks { get; set; } 
     }
 }
