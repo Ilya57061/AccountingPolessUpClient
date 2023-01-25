@@ -48,7 +48,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("UserId", $"{model.UserId}");
                 reqparm.Add("DateEntry", $"{model.DateEntry}");
                 reqparm.Add("DateExit", $"{model.DateExit}");
-                reqparm.Add("mmr", $"{model.mmr}");
+                reqparm.Add("Mmr", $"{model.Mmr}");
                 reqparm.Add("status", $"{model.Status}");
                 reqparm.Add("GitHub", $"{model.GitHub}");
                 web.UploadValues("https://localhost:7273/CreateParticipant", "POST", reqparm);
@@ -65,7 +65,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("UserId", $"{model.UserId}");
                 reqparm.Add("DateEntry", $"{model.DateEntry}");
                 reqparm.Add("DateExit", $"{model.DateExit}");
-                reqparm.Add("mmr", $"{model.mmr}");
+                reqparm.Add("Mmr", $"{model.Mmr}");
                 reqparm.Add("status", $"{model.Status}");
                 reqparm.Add("GitHub", $"{model.GitHub}");
                 web.UploadValues("https://localhost:7273/UpdateParticipant", "PUT", reqparm);

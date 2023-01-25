@@ -63,7 +63,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void WriteData()
         {
             _applications.WorkStatus = WorkStatus.Text;
-            _applications.DataEntry = DateTime.Parse(DataEntry.Text);
+            _applications.DateEntry = DateTime.Parse(DateEntry.Text);
             _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
             _applications.ParticipantsId = _vacancy.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
         }

@@ -31,7 +31,7 @@ Background="Transparent"
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding Path = Individuals.FIO, UpdateSourceTrigger=PropertyChanged}" Header="Физ.Лицо" />
-                        <DataGridTextColumn Binding="{Binding mmr, UpdateSourceTrigger=PropertyChanged}" Header="Mmr" />
+                        <DataGridTextColumn Binding="{Binding Mmr, UpdateSourceTrigger=PropertyChanged}" Header="Mmr" />
                         <DataGridTextColumn Binding="{Binding Path=User.Login, UpdateSourceTrigger=PropertyChanged}" Header="Пользователь" />
                         <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged}" Header="Вступление" />
                         <DataGridTextColumn Binding="{Binding DateExit, UpdateSourceTrigger=PropertyChanged}" Header="Выход" />

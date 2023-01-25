@@ -29,7 +29,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("WorkStatus", $"{model.WorkStatus}");
-                reqparm.Add("DataEntry", $"{model.DataEntry}");
+                reqparm.Add("DateEntry", $"{model.DateEntry}");
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
                 reqparm.Add("VacancyId ", $"{model.VacancyId}");
             
@@ -45,7 +45,7 @@ namespace AccountingPolessUp.Implementations
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("WorkStatus", $"{model.WorkStatus}");
-                reqparm.Add("DataEntry", $"{model.DataEntry}");
+                reqparm.Add("DateEntry", $"{model.DateEntry}");
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
                 reqparm.Add("VacancyId ", $"{model.VacancyId}");
 

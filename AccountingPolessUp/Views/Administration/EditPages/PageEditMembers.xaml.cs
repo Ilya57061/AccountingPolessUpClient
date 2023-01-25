@@ -73,7 +73,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void WriteData()
         {
             participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
-            participants.mmr = int.Parse(mmr.Text);
+            participants.Mmr = int.Parse(Mmr.Text);
             participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
             participants.DateEntry = DateTime.Parse(DateEntry.Text);
             participants.DateExit = DateExit.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateExit.Text);

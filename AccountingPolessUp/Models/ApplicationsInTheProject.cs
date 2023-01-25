@@ -8,7 +8,7 @@ namespace AccountingPolessUp.Models
     {
         public int Id { get; set; }
         public string WorkStatus { get; set; } = string.Empty;
-        public DateTime DataEntry { get; set; }
+        public DateTime DateEntry { get; set; }
         public Participants Participants { get; set; }
         public int ParticipantsId { get; set; }
         public Vacancy Vacancy { get; set; }

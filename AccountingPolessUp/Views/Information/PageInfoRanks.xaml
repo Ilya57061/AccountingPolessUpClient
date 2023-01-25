@@ -26,8 +26,8 @@ Background="Transparent"
                 <DataGrid.Columns >
                     <DataGridTextColumn Binding="{Binding Name}" Header="Наименование" Width="100"/>
                     <DataGridTextColumn Binding="{Binding Org}" Header="Организация" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding minMMR}" Header="Минимальный рейтинг" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding maxMMR}" Header="Максимальный рейтинг" Width="auto"/>
+                    <DataGridTextColumn Binding="{Binding minMmr}" Header="Минимальный рейтинг" Width="auto"/>
+                    <DataGridTextColumn Binding="{Binding maxMmr}" Header="Максимальный рейтинг" Width="auto"/>
                     <DataGridTextColumn Binding="{Binding Path = Organization.Fullname}" Header="Организация" Width="auto"/>
                     <DataGridTemplateColumn Header="Бонусы">
                         <DataGridTemplateColumn.CellTemplate>
@@ -46,8 +46,8 @@ Background="Transparent"
                         <ComboBox Margin="0 0 10 0" VerticalAlignment="Center" IsReadOnly="False" IsEditable="True" x:Name="ComboORG" SelectedItem="{Binding Organization}" DisplayMemberPath="Fullname" Width="auto" FontSize="16" materialDesign:HintAssist.Hint="Организация"></ComboBox>
 
                         <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxSearch" FontSize="16" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxMinMMR" FontSize="16" materialDesign:HintAssist.Hint="Минимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxMaxMMR" FontSize="16" materialDesign:HintAssist.Hint="Максимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxMinMmr" FontSize="16" materialDesign:HintAssist.Hint="Минимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxMaxMmr" FontSize="16" materialDesign:HintAssist.Hint="Максимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                         <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                     </StackPanel>

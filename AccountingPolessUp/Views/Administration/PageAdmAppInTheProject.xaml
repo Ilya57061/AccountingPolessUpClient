@@ -31,7 +31,7 @@ Background="Transparent"
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding WorkStatus, UpdateSourceTrigger=PropertyChanged}" Header="Рабочий статус" />
-                        <DataGridTextColumn Binding="{Binding DataEntry, UpdateSourceTrigger=PropertyChanged}" Header="Дата входа" />
+                        <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged}" Header="Дата входа" />
                         <DataGridTextColumn Binding="{Binding Path = Participants.Participants, UpdateSourceTrigger=PropertyChanged}" Header="Участник" />
                         <DataGridTextColumn Binding="{Binding Path = Vacancy.Vacancy, UpdateSourceTrigger=PropertyChanged}" Header="Вакансия" />
                         <DataGridTemplateColumn Header="Удалить">

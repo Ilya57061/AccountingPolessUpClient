@@ -63,8 +63,8 @@ namespace AccountingPolessUp.Views.Information
         private void Clear()
         {
             ComboORG.SelectedItem= null;
-            TextBoxMaxMMR.Text= string.Empty;
-            TextBoxMinMMR.Text= string.Empty;
+            TextBoxMaxMmr.Text= string.Empty;
+            TextBoxMinMmr.Text= string.Empty;
             TextBoxSearch.Text=string.Empty;
         }
         private void Confirm()
@@ -78,13 +78,13 @@ namespace AccountingPolessUp.Views.Information
             {
                 newRanks = (List<Rank>)newRanks.Where(x=>x.RankName==TextBoxSearch.Text);
             }
-            if (TextBoxMinMMR.Text!="")
+            if (TextBoxMinMmr.Text!="")
             {
-                newRanks = (List<Rank>)newRanks.Where(x => x.MinMmr == int.Parse(TextBoxMinMMR.Text));
+                newRanks = (List<Rank>)newRanks.Where(x => x.MinMmr == int.Parse(TextBoxMinMmr.Text));
             }
-            if (TextBoxMaxMMR.Text != "")
+            if (TextBoxMaxMmr.Text != "")
             {
-                newRanks = (List<Rank>)newRanks.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMMR.Text));
+                newRanks = (List<Rank>)newRanks.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMmr.Text));
             }
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = newRanks;
