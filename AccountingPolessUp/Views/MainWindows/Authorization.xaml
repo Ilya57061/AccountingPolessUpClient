@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AccountingPolessUp"
         mc:Ignorable="d"
-        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
           TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
@@ -13,19 +13,39 @@
      TextOptions.TextRenderingMode="Auto"
    Background="#EDEEF0"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="Authorization" Height="400" Width="384" ResizeMode="NoResize" >
+         Height="400" Width="384" ResizeMode="NoResize" >
 
-    <Grid Margin="0,0,0,0" Height="400" Width="370" Background="#EDEEF0" Cursor="Hand">
-        
-        <Label Content="Login to PolessUp" HorizontalAlignment="Left" Margin="12,30,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Roboto" Foreground="#696763"/>
-        <Grid Height="40" Width="360" Margin="12,90,12,270" Background="#F0F0E9">
-            <TextBox BorderBrush="Transparent" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Center"  Width="240" FontFamily="Roboto" FontSize="14" Foreground="#757575" Background="Transparent" />
+    <Grid Background="#EDEEF0" Cursor="Hand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="2" >
+            <TextBlock Margin="0,30,0,0" HorizontalAlignment="Center"
+  Style="{StaticResource MaterialDesignHeadline3TextBlock}"
+  Text="Авторизация" Foreground="#C9A97F" />
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="1" >
+            <materialDesign:PackIcon  Width="20" Height="20" Kind="BadgeAccount" Foreground="#C9A97F" HorizontalAlignment="Right" Margin="0,20,0,0"/>
+        </Grid>
+        <Grid Grid.Column="0" Grid.Row="3" >
+            <materialDesign:PackIcon  Width="20" Height="20" Kind="Key" Foreground="#C9A97F" HorizontalAlignment="Right" Margin="0,20,0,0"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <TextBox Margin="2,5,50,20" x:Name="Login" FontSize="14" materialDesign:HintAssist.Hint="Логин" materialDesign:TextFieldAssist.UnderlineBrush="#C9A97F" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True"   Text="{Binding Login}"/>
+        </Grid>
+        <Grid Grid.Row="3" Grid.Column="1">
 
+            <PasswordBox materialDesign:TextFieldAssist.UnderlineBrush="#C9A97F"  x:Name="Password" FontSize="14" Margin="2,5,50,20" materialDesign:HintAssist.Hint="Пароль" materialDesign:TextFieldAssist.HasClearButton="True"
+    Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Password" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
         </Grid>
-        <Grid Height="40" Width="360" Margin="12,150,12,210" Background="#F0F0E9">
-            
-            <TextBox x:Name="TextBoxPassword" BorderBrush="Transparent" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Password" VerticalAlignment="Center"  Width="240" FontFamily="Roboto" FontSize="14" Foreground="#757575" Background="Transparent" />
-        </Grid>
-        <Button BorderBrush="Transparent" Height="32" Width="85" Content="Login" HorizontalAlignment="Left" Margin="12,218,0,0" VerticalAlignment="Top" FontSize="13" FontFamily="Roboto" Foreground="#FFFF" Background="#C9A97F" Click="ButtonLogin_Click" Cursor="Hand"/>
+        <Button materialDesign:ButtonAssist.CornerRadius="10"  Grid.Row="4" Grid.ColumnSpan="2"  BorderBrush="Transparent" Height="40" Width="150" Content="Войти" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="14" FontFamily="Roboto" Foreground="#FFFF" Background="#C9A97F" Click="ButtonLogin_Click" Cursor="Hand" />
     </Grid>
 </Window>

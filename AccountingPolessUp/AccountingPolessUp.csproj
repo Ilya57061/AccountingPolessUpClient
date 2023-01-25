@@ -79,7 +79,7 @@
     <Compile Include="Implementations\ParticipantsService.cs" />
     <Compile Include="Implementations\PositionService.cs" />
     <Compile Include="Implementations\ProjectService.cs" />
-    <Compile Include="Implementations\RangService.cs" />
+    <Compile Include="Implementations\RankService.cs" />
     <Compile Include="Implementations\RegulationService.cs" />
     <Compile Include="Implementations\ScheduleOfClassesService.cs" />
     <Compile Include="Implementations\StagesOfProjectService.cs" />
@@ -87,6 +87,7 @@
     <Compile Include="Implementations\UserService.cs" />
     <Compile Include="Implementations\VacancyService.cs" />
     <Compile Include="Models\EducationalPortals.cs" />
+    <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\RegistrationForCourses.cs" />
     <Compile Include="Models\ScheduleOfСlasses.cs" />
     <Compile Include="Views\Administration\EditPages\PageEditApplicationsInTheProject.xaml.cs">
@@ -465,7 +466,6 @@
     <Compile Include="Models\Participants.cs" />
     <Compile Include="Models\Position.cs" />
     <Compile Include="Models\Project.cs" />
-    <Compile Include="Models\Rang.cs" />
     <Compile Include="Models\Regulation.cs" />
     <Compile Include="Models\StagesOfProject.cs" />
     <Compile Include="Models\Student.cs" />
