@@ -40,7 +40,7 @@
                             <TextBlock Margin="0 5" x:Name="InfoDateStart" FontSize="16" FontWeight="DemiBold" Text="Дата вступления: 01.01.2023"></TextBlock>
                             <TextBlock Margin="0 5" x:Name="InfoDayCount" FontSize="16" FontWeight="DemiBold" Text="Стаж: 11 дней"></TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="0 5" x:Name="InfoRang" FontSize="16" FontWeight="DemiBold" Text="Ранг: Джун"></TextBlock>
+                                <TextBlock Margin="0 5" x:Name="InfoRank" FontSize="16" FontWeight="DemiBold" Text="Ранг: Джун"></TextBlock>
                                 <materialDesign:RatingBar Margin="20 0" VerticalAlignment="Center"  x:Name="BasicRatingBar" IsReadOnly="True"  Value="1" />
                             </StackPanel>
                             <TextBlock Margin="0 5" x:Name="InfoPosition" FontSize="16" FontWeight="DemiBold" Text="Должности: Руководитель Волонтерского отдела, Тестировщик"></TextBlock>

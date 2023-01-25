@@ -22,37 +22,37 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditRank : Page
     {
-        RangService _rangService = new RangService();
+        RankService _RankService = new RankService();
         OrganizationService _organizationService=new OrganizationService();
         List<Organization> _organizations;
-        Rang _rang;
-        public PageEditRank(Rang rang)
+        Rank _Rank;
+        public PageEditRank(Rank Rank)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _rang = rang;
+            _Rank = Rank;
             _organizations = _organizationService.Get();
-            DataContext = rang;
+            DataContext = Rank;
             BoxOrganization.ItemsSource= _organizations;
-            BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o=>o.Id==rang.OrganizationId));
+            BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o=>o.Id==Rank.OrganizationId));
         }
         public PageEditRank()
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            _rang = new Rang();
+            _Rank = new Rank();
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             WriteData();
-            _rangService.Update(_rang);
+            _RankService.Update(_Rank);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             WriteData();
-            _rangService.Create(_rang);
+            _RankService.Create(_Rank);
         }
         private void OpenRank_Click(object sender, RoutedEventArgs e)
         {
@@ -60,11 +60,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
-            _rang.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganization.SelectedItem).Id;
-            _rang.RangName = RangName.Text;
-            _rang.Description=Description.Text;
-            _rang.MaxMmr = int.Parse(MaxMmr.Text);
-            _rang.MinMmr=int.Parse(MinMmr.Text);
+            _Rank.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganization.SelectedItem).Id;
+            _Rank.RankName = RankName.Text;
+            _Rank.Description=Description.Text;
+            _Rank.MaxMmr = int.Parse(MaxMmr.Text);
+            _Rank.MinMmr=int.Parse(MinMmr.Text);
         }
     }
 }

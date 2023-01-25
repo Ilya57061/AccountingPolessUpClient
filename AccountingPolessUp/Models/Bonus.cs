@@ -6,7 +6,7 @@ namespace AccountingPolessUp.Models
         public int Id { get; set; }
         public string BonusName { get; set; } = string.Empty;
         public string BonusDescription { get; set; } = string.Empty;
-        public int RangId { get; set; }
-        public Rang Rang { get; set; }
+        public int RankId { get; set; }
+        public Rank Rank { get; set; }
     }
 }

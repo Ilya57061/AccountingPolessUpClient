@@ -42,7 +42,7 @@ namespace AccountingPolessUp.Implementations
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("BonusName", $"{model.BonusName}");
                 reqparm.Add("BonusDescription", $"{ model.BonusDescription}");
-                reqparm.Add("RangId", $"{model.RangId}");
+                reqparm.Add("RankId", $"{model.RankId}");
 
 
                 web.UploadValues("https://localhost:7273/CreateBonus", "POST", reqparm);
@@ -57,7 +57,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("BonusName", $"{model.BonusName}");
                 reqparm.Add("BonusDescription", $"{model.BonusDescription}");
-                reqparm.Add("RangId ", $"{model.RangId}");
+                reqparm.Add("RankId ", $"{model.RankId}");
                 web.UploadValues("https://localhost:7273/UpdateBonus", "PUT", reqparm);
 
             }

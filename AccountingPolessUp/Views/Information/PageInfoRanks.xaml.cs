@@ -23,17 +23,17 @@ namespace AccountingPolessUp.Views.Information
     /// </summary>
     public partial class PageInfoRanks : Page
     {
-        RangService _rangService = new RangService();
+        RankService _RankService = new RankService();
         OrganizationService _organizationService = new OrganizationService();
         BonusService _bonusService = new BonusService();
-        List<Rang> rangs;
+        List<Rank> Ranks;
         List<Organization> organizations;
         public PageInfoRanks()
         {
             InitializeComponent();
-            rangs= _rangService.Get();
+            Ranks= _RankService.Get();
             organizations= _organizationService.Get();
-            dataGrid.ItemsSource = rangs;
+            dataGrid.ItemsSource = Ranks;
             ComboORG.ItemsSource = organizations;
         }
         private void ButtonOpen_Click(object sender, RoutedEventArgs e)
@@ -42,7 +42,7 @@ namespace AccountingPolessUp.Views.Information
             {
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    Rang rank = dataGrid.SelectedItems[i] as Rang;
+                    Rank rank = dataGrid.SelectedItems[i] as Rank;
 
                     if (rank != null)
                     {
@@ -69,25 +69,25 @@ namespace AccountingPolessUp.Views.Information
         }
         private void Confirm()
         {
-            List<Rang> newRangs = rangs;
+            List<Rank> newRanks = Ranks;
             if (ComboORG.SelectedItem!=null)
             {
-                newRangs = (List<Rang>)newRangs.Where(x=>x.OrganizationId== organizations.FirstOrDefault(o=>o== ComboORG.SelectedItem).Id);
+                newRanks = (List<Rank>)newRanks.Where(x=>x.OrganizationId== organizations.FirstOrDefault(o=>o== ComboORG.SelectedItem).Id);
             }
             if (TextBoxSearch.Text!="")
             {
-                newRangs = (List<Rang>)newRangs.Where(x=>x.RangName==TextBoxSearch.Text);
+                newRanks = (List<Rank>)newRanks.Where(x=>x.RankName==TextBoxSearch.Text);
             }
             if (TextBoxMinMMR.Text!="")
             {
-                newRangs = (List<Rang>)newRangs.Where(x => x.MinMmr == int.Parse(TextBoxMinMMR.Text));
+                newRanks = (List<Rank>)newRanks.Where(x => x.MinMmr == int.Parse(TextBoxMinMMR.Text));
             }
             if (TextBoxMaxMMR.Text != "")
             {
-                newRangs = (List<Rang>)newRangs.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMMR.Text));
+                newRanks = (List<Rank>)newRanks.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMMR.Text));
             }
             dataGrid.Items.Clear();
-            dataGrid.ItemsSource = newRangs;
+            dataGrid.ItemsSource = newRanks;
         }
     }
   

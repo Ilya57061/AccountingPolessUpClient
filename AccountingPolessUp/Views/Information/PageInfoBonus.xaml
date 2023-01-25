@@ -41,7 +41,7 @@ Background="Transparent"
                                             <StackPanel Margin="-10 5"  Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">
                                                 <TextBlock Margin="0 5" x:Name="BonusDescription1" FontSize="16" FontWeight="DemiBold" Text="{Binding BonusDescription}"></TextBlock>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <TextBlock Margin="0 5" x:Name="InfoRang1" FontSize="16" FontWeight="DemiBold" Text="{Binding Rang.RangName}" ></TextBlock>
+                                                    <TextBlock Margin="0 5" x:Name="InfoRank1" FontSize="16" FontWeight="DemiBold" Text="{Binding Rank.RankName}" ></TextBlock>
                                                     <materialDesign:RatingBar Margin="20 0" VerticalAlignment="Center"  x:Name="BasicRatingBar1" IsReadOnly="True"  Value="1" />
                                                 </StackPanel>
                                             </StackPanel>
