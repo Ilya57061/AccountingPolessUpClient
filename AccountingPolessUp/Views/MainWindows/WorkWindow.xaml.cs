@@ -22,8 +22,8 @@ namespace AccountingPolessUp
     /// Логика взаимодействия для WorkWindow.xaml
     /// </summary>
     public partial class WorkWindow : Window
-    { 
-    
+    {
+
         public WorkWindow()
         {
             InitializeComponent();
@@ -34,22 +34,18 @@ namespace AccountingPolessUp
         {
             MainFrame.Content = new PageProfile();
         }
-
         private void ButtonPositions_Click(object sender, RoutedEventArgs e) // вакансии
         {
             MainFrame.Content = new PagePositions();
         }
-
         private void ButtonMentor_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageMentor();
         }
-
         private void ButtonEmployment_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageEmployment();
         }
-
         private void ButtonProjects_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageProjects();
@@ -104,7 +100,6 @@ namespace AccountingPolessUp
         {
             MainFrame.Content = new PageAdmCourses();
         }
- 
         private void ButtonAdmRanks_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageAdmRanks();
@@ -160,6 +155,10 @@ namespace AccountingPolessUp
         private void ButtonAdmVacancy_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageAdmVacancy();
+        }
+        private void ButtonAdmSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageAdmScheduleOfClasses();
         }
         #endregion
     }
