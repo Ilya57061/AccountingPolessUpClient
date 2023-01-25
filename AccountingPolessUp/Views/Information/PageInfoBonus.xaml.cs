@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 
 namespace AccountingPolessUp.Views.Information
@@ -21,18 +22,15 @@ namespace AccountingPolessUp.Views.Information
     /// </summary>
     public partial class PageInfoBonus : Page
     {
+        BonusService _bonusService = new BonusService();
         public PageInfoBonus()
         {
             InitializeComponent();
-            List<Bonus> bonuses = new List<Bonus>()
-            {
-                new Bonus{BonusName = "Супер бонус", BonusDescription = "Этот бонус дает супер преимущества", Rang = new Rang{RangName="Ранг 1"}},
-                new Bonus{BonusName = "Мега бонус", BonusDescription = "Этот бонус дает мега преимущества", Rang = new Rang{RangName="Ранг 2"}},
-                new Bonus{BonusName = "Ультра бонус", BonusDescription = "Этот бонус дает ультра преимущества", Rang = new Rang{RangName="Ранг 3"}},
-                new Bonus{BonusName = "Пупер бонус", BonusDescription = "Этот бонус дает пупер преимущества", Rang = new Rang{RangName="Ранг 4"}},
-                new Bonus{BonusName = "Альфа бонус", BonusDescription = "Этот бонус дает альфа преимущества", Rang = new Rang{RangName="Ранг 5"}}
-            };
-            BonusGrid.ItemsSource = bonuses;
+            BonusGrid.ItemsSource = _bonusService.Get();
+        }
+        public PageInfoBonus(int RankId)
+        {
+
         }
     }
 }

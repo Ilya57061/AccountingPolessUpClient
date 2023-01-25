@@ -92,6 +92,10 @@ namespace AccountingPolessUp
         {
             MainFrame.Content = new PageAdmDepartments();
         }
+        private void ButtonAdmApplications_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageAdmAppInTheProject();
+        }
         private void ButtonAdmPositiones_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageInfoPositions();
