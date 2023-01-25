@@ -1,0 +1,61 @@
+﻿<Page x:Class="AccountingPolessUp.Views.Administration.EditPages.PageEditScheduleOfClasses"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AccountingPolessUp.Views.Administration.EditPages"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="200" d:DesignWidth="850"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+Background="Transparent"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Border Grid.ColumnSpan="7" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Button Click="Button_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <TextBox Margin="1,0,1,20"  x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CommentTextOutline" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="1">
+            <TextBox Margin="1,0,1,20"  x:Name="DateStart" FontSize="14" materialDesign:HintAssist.Hint="Дата начала" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CalendarRange" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding DateStart}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <TextBox Margin="1,0,1,20"  x:Name="DateEnd" FontSize="14" materialDesign:HintAssist.Hint="Дата окончания" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CalendarRange" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding DateEnd}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3">
+            <TextBox Margin="1,0,1,20"  x:Name="WorkSpaceLink" FontSize="14" materialDesign:HintAssist.Hint="Ссылка рабочего пространства" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CalendarRange" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding WorkSpaceLink}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="4">
+            <ComboBox x:Name="BoxTrainingCourses" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding TrainingCourses}" DisplayMemberPath="TrainingCourses.Name"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Тренировочные курсы" Margin="1,0,1,0" ></ComboBox>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="2">
+            <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
+                <materialDesign:PackIcon Kind="ContentSaveAll" />
+            </Button>
+            <Button x:Name="ButtonAdd" Click="ButtonAdd_Click">
+                <materialDesign:PackIcon Kind="DatabasePlus" />
+            </Button>
+        </Grid>
+    </Grid>
+</Page>
