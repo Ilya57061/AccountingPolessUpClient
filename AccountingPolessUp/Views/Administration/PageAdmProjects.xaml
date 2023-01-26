@@ -36,7 +36,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged}" Header="Дата окончания" />
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding TechnicalSpecification, UpdateSourceTrigger=PropertyChanged}" Header="Техн.спецификация" />
-                        <DataGridTextColumn Binding="{Binding CustomerId, UpdateSourceTrigger=PropertyChanged}" Header="Ид заказчика" />
+                        <DataGridTextColumn Binding="{Binding Customer.FullName, UpdateSourceTrigger=PropertyChanged}" Header="Заказчик" />
                         <DataGridTextColumn Binding="{Binding idLocalPM, UpdateSourceTrigger=PropertyChanged}" Header="idLocalPM" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>

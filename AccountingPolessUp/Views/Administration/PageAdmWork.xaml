@@ -34,9 +34,9 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged}" Header="Дата окончания" />
                         <DataGridTextColumn Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged}" Header="Статус" />
                         <DataGridTextColumn Binding="{Binding StatusDescription, UpdateSourceTrigger=PropertyChanged}" Header="Описание статуса" />
-                        <DataGridTextColumn Binding="{Binding IdMentor, UpdateSourceTrigger=PropertyChanged}" Header="Ид наставника" />
-                        <DataGridTextColumn Binding="{Binding ParticipantsId, UpdateSourceTrigger=PropertyChanged}" Header="Ид участника" />
-                        <DataGridTextColumn Binding="{Binding PositionId, UpdateSourceTrigger=PropertyChanged}" Header="Ид позиции" />
+                        <DataGridTextColumn Binding="{Binding IdMentor, UpdateSourceTrigger=PropertyChanged}" Header="Ид Ментора" />
+                        <DataGridTextColumn Binding="{Binding Path=ParticipantsId, UpdateSourceTrigger=PropertyChanged}" Header="Ид участника" />
+                        <DataGridTextColumn Binding="{Binding Position.FullName, UpdateSourceTrigger=PropertyChanged}" Header="Должность" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

@@ -14,3 +14,4 @@ namespace AccountingPolessUp.Models
         public string SocialNetwork { get; set; } = string.Empty;
     }
 }
+

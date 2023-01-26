@@ -14,7 +14,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetStudent";
+                string url = $"https://localhost:7273/GetStudents";
                 var json = web.DownloadString(url);
                 List<Student> Info = JsonConvert.DeserializeObject<List<Student>>(json);
                 if (Info is null) throw new Exception("info - null");
