@@ -35,6 +35,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _student = student;
             DataContext = student;
             _individuals = _individualsService.Get();
+            BoxIndividuals.ItemsSource=_individuals;
             BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == student.IndividualsId));
         }
         public PageEditStudents()
@@ -43,6 +44,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _student = new Student();
+            _individuals = _individualsService.Get();
+            BoxIndividuals.ItemsSource = _individuals;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

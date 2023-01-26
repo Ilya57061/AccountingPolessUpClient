@@ -44,6 +44,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _schedule = new ScheduleOfСlasses();
+            _trainingCourses = _trainingCoursesService.Get();
+            BoxTrainingCourses.ItemsSource = _trainingCourses;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {

@@ -44,6 +44,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _bonus = new Bonus();
+            _Ranks = _RankService.Get();
+            BoxRank.ItemsSource = _Ranks;
         }
         private void OpenRank_Click(object sender, RoutedEventArgs e)
         {
