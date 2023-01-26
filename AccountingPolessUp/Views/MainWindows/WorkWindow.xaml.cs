@@ -111,6 +111,10 @@ namespace AccountingPolessUp
         private void ButtonAdmStudents_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageAdmStudents();
+        } 
+        private void ButtonAdmRegistrationForCourses_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageAdmRegistrationForCourses();
         }
         private void ButtonAdmNatural_Click(object sender, RoutedEventArgs e)
         {

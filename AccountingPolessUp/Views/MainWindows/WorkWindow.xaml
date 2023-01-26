@@ -199,6 +199,13 @@
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
+                    <TreeViewItem Selected="ButtonAdmRegistrationForCourses_Click">
+                        <TreeViewItem.Header>
+                            <StackPanel  Orientation="Horizontal">
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Регистрация на курсы" />
+                            </StackPanel>
+                        </TreeViewItem.Header>
+                    </TreeViewItem>
                     <TreeViewItem Selected="ButtonAdmRules_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">

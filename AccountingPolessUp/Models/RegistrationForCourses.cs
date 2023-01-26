@@ -11,7 +11,7 @@ namespace AccountingPolessUp.Models
         public DateTime DateEntry { get; set; }
         public int ParticipantsId { get; set; }
         public Participants Participants { get; set; }
-        public int TrainingCousresId { get; set; }
+        public int TrainingCoursesId { get; set; }
         public TrainingCourses TrainingCourses { get; set; }
        
 
