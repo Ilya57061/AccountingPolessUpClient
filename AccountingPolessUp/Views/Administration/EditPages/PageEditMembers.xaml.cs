@@ -50,6 +50,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             participants= new Participants();
+            _users = _userService.Get();
+            _individuals = _individualsService.Get();
+            BoxIndividuals.ItemsSource = _individuals;
+            BoxUser.ItemsSource = _users;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

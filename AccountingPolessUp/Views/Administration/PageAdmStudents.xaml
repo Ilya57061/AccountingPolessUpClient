@@ -34,7 +34,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Group, UpdateSourceTrigger=PropertyChanged}" Header="Группа" />
                         <DataGridTextColumn Binding="{Binding CourseNumber, UpdateSourceTrigger=PropertyChanged}" Header="Номер курса" />
                         <DataGridTextColumn Binding="{Binding University, UpdateSourceTrigger=PropertyChanged}" Header="Университет" />
-                        <DataGridTextColumn Binding="{Binding IndividualsId, UpdateSourceTrigger=PropertyChanged}" Header="Ид лица" />
+                        <DataGridTextColumn Binding="{Binding Individuals.FIO, UpdateSourceTrigger=PropertyChanged}" Header="Физ.Лицо" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

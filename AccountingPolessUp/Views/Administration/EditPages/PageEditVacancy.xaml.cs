@@ -44,6 +44,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _vacancy=new Vacancy();
+            _stagesOfProjects = _stagesOfProjectService.Get();
+            BoxStagesOfProject.ItemsSource = _stagesOfProjects;
         }
         private void OpenStages_Click(object sender, RoutedEventArgs e)
         {

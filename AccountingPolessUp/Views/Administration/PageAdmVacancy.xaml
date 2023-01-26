@@ -36,6 +36,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged}" Header="Дата для начала" />
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged}" Header="Дата для окончания" />
                         <DataGridTextColumn Binding="{Binding Budjet, UpdateSourceTrigger=PropertyChanged}" Header="Бюджет" />
+                        <DataGridTextColumn Binding="{Binding StagesOfProject.Name, UpdateSourceTrigger=PropertyChanged}" Header="Стадия проекта" />
                         <DataGridTextColumn Binding="{Binding isOpened, UpdateSourceTrigger=PropertyChanged}" Header="Открыта" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>

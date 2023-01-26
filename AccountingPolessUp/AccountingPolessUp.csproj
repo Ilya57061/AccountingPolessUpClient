@@ -80,6 +80,7 @@
     <Compile Include="Implementations\PositionService.cs" />
     <Compile Include="Implementations\ProjectService.cs" />
     <Compile Include="Implementations\RankService.cs" />
+    <Compile Include="Implementations\RegistrationForCoursesService.cs" />
     <Compile Include="Implementations\RegulationService.cs" />
     <Compile Include="Implementations\ScheduleOfClassesService.cs" />
     <Compile Include="Implementations\StagesOfProjectService.cs" />
@@ -128,6 +129,9 @@
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditRank.xaml.cs">
       <DependentUpon>PageEditRank.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditRegistrationForCourses.xaml.cs">
+      <DependentUpon>PageEditRegistrationForCourses.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditRules.xaml.cs">
       <DependentUpon>PageEditRules.xaml</DependentUpon>
@@ -185,6 +189,9 @@
     </Compile>
     <Compile Include="Views\Administration\PageAdmRanks.xaml.cs">
       <DependentUpon>PageAdmRanks.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmRegistrationForCourses.xaml.cs">
+      <DependentUpon>PageAdmRegistrationForCourses.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\PageAdmRules.xaml.cs">
       <DependentUpon>PageAdmRules.xaml</DependentUpon>
@@ -292,6 +299,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Administration\EditPages\PageEditRegistrationForCourses.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Administration\EditPages\PageEditRules.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -365,6 +376,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Administration\PageAdmRanks.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Administration\PageAdmRegistrationForCourses.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
