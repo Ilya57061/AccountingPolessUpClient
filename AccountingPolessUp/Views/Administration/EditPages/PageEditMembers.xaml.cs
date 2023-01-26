@@ -38,8 +38,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _individuals=_individualsService.Get();
             this.participants = participants;
             this.DataContext = participants;
-            BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == participants.Individuals.Id));
-            BoxUser.SelectedIndex = _users.IndexOf(_users.FirstOrDefault(p => p.Id == participants.User.Id));
+            BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == participants.IndividualsId));
+            BoxUser.SelectedIndex = _users.IndexOf(_users.FirstOrDefault(p => p.Id == participants.UserId));
             BoxIndividuals.ItemsSource = _individuals;
             BoxUser.ItemsSource = _users;
             
