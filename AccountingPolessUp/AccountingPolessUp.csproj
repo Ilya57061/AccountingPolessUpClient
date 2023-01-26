@@ -73,6 +73,7 @@
     <Compile Include="Implementations\BonusService.cs" />
     <Compile Include="Implementations\CustomerService.cs" />
     <Compile Include="Implementations\DepartmentService.cs" />
+    <Compile Include="Implementations\EducationalPortalsService.cs" />
     <Compile Include="Implementations\EmploymentService.cs" />
     <Compile Include="Implementations\FinalProjectService.cs" />
     <Compile Include="Implementations\OrganizationService.cs" />
@@ -139,6 +140,9 @@
     <Compile Include="Views\Administration\EditPages\PageEditScheduleOfClasses.xaml.cs">
       <DependentUpon>PageEditScheduleOfClasses.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Administration\EditPages\PageEditStageOfProject.xaml.cs">
+      <DependentUpon>PageEditStageOfProject.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Administration\EditPages\PageEditStudents.xaml.cs">
       <DependentUpon>PageEditStudents.xaml</DependentUpon>
     </Compile>
@@ -198,6 +202,9 @@
     </Compile>
     <Compile Include="Views\Administration\PageAdmScheduleOfClasses.xaml.cs">
       <DependentUpon>PageAdmScheduleOfClasses.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Administration\PageAdmStageOfProject.xaml.cs">
+      <DependentUpon>PageAdmStageOfProject.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Administration\PageAdmStudents.xaml.cs">
       <DependentUpon>PageAdmStudents.xaml</DependentUpon>
@@ -311,6 +318,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Administration\EditPages\PageEditStageOfProject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Administration\EditPages\PageEditStudents.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -388,6 +399,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Administration\PageAdmScheduleOfClasses.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Administration\PageAdmStageOfProject.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
