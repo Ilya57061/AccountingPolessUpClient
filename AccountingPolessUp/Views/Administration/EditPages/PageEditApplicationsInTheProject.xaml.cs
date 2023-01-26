@@ -65,7 +65,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _applications.WorkStatus = WorkStatus.Text;
             _applications.DateEntry = DateTime.Parse(DateEntry.Text);
             _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
-            _applications.ParticipantsId = _vacancy.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
+            _applications.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
