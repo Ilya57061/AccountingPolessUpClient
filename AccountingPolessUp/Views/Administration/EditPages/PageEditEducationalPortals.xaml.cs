@@ -3,7 +3,6 @@ using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -23,21 +23,46 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditEducationalPortals : Page
     {
+        EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
+        List<Department> _department;
+        DepartmentService _departmentService = new DepartmentService();
+        EducationalPortals _educationalPortals;
+        public PageEditEducationalPortals(EducationalPortals educationalPortals)
+        {
+            InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+            _department = _departmentService.Get();
+            DataContext = educationalPortals;
+            _educationalPortals = educationalPortals;
+            BoxDepartment.ItemsSource = _department;
+            BoxDepartment.SelectedIndex = _department.IndexOf(_department.FirstOrDefault(r => r.Id == educationalPortals.DepartmentId));
+        }
         public PageEditEducationalPortals()
         {
             InitializeComponent();
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+            _educationalPortals = new EducationalPortals();
+            _department = _departmentService.Get();
+            BoxDepartment.ItemsSource = _department;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             WriteData();
+            _educationalPortalsService.Update(_educationalPortals);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             WriteData();
+            _educationalPortalsService.Create(_educationalPortals);
         }
         private void WriteData()
         {
-            
+            _educationalPortals.DepartmentId = _department.FirstOrDefault(i => i == BoxDepartment.SelectedItem).Id;
+            _educationalPortals.Name = Name.Text;
+            _educationalPortals.Description = Description.Text;
+            _educationalPortals.Link = Link.Text;
         }
     }
 }

@@ -9,44 +9,46 @@ using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Implementations
 {
-    public class RegistrationForCoursesService
+    public class EducationalPortalsService
     {
-        public List<RegistrationForCourses> Get()
+        public List<EducationalPortals> Get()
         {
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetRegistrationForCourses";
+                string url = $"https://localhost:7273/GetEducationalPortals";
                 var json = web.DownloadString(url);
-                List<RegistrationForCourses> Info = JsonConvert.DeserializeObject<List<RegistrationForCourses>>(json);
+                List<EducationalPortals> Info = JsonConvert.DeserializeObject<List<EducationalPortals>>(json);
                 if (Info is null) throw new Exception("info - null");
                 else return Info;
             }
         }
-        public void Create(RegistrationForCourses model)
+        public void Create(EducationalPortals model)
         {
             using (WebClient web = new WebClient())
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("DateEntry", $"{model.DateEntry}");
-                reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
-                reqparm.Add("TrainingCoursesId", $"{model.TrainingCoursesId}");
+                reqparm.Add("Name", $"{model.Name}");
+                reqparm.Add("DepartmentId", $"{model.DepartmentId}");
+                reqparm.Add("Description", $"{model.Description}");
+                reqparm.Add("Link", $"{model.Link}");
 
 
-                web.UploadValues("https://localhost:7273/CreateRegistrationForCourses", "POST", reqparm);
+                web.UploadValues("https://localhost:7273/CreateEducationalPortals", "POST", reqparm);
 
             }
         }
-        public void Update(RegistrationForCourses model)
+        public void Update(EducationalPortals model)
         {
             using (WebClient web = new WebClient())
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("DateEntry", $"{model.DateEntry}");
-                reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
-                reqparm.Add("TrainingCoursesId", $"{model.TrainingCoursesId}");
+                reqparm.Add("Name", $"{model.Name}");
+                reqparm.Add("DepartmentId", $"{model.DepartmentId}");
+                reqparm.Add("Description", $"{model.Description}");
+                reqparm.Add("Link", $"{model.Link}");
 
-                web.UploadValues("https://localhost:7273/UpdateRegistrationForCourses", "PUT", reqparm);
+                web.UploadValues("https://localhost:7273/UpdateEducationalPortals", "PUT", reqparm);
 
             }
         }
@@ -56,7 +58,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("Id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteRegistrationForCoursest", "DELETE", reqparm);
+                web.UploadValues("https://localhost:7273/DeleteEducationalPortals", "DELETE", reqparm);
 
             }
         }
