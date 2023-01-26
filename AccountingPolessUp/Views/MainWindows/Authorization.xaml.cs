@@ -28,6 +28,7 @@ namespace AccountingPolessUp
         {
             WorkWindow mainWindow = new WorkWindow();
             mainWindow.Show();
+            string pas = Password.Password;
             this.Close();
         }
     }

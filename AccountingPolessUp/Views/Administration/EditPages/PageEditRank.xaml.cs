@@ -68,5 +68,15 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _Rank.MaxMmr = int.Parse(MaxMmr.Text);
             _Rank.MinMmr=int.Parse(MinMmr.Text);
         }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            int result;
+            if (!int.TryParse(e.Text, out result))
+            {
+                e.Handled = true;
+            }
+        }
+
+
     }
 }

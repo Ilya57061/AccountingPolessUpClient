@@ -73,6 +73,7 @@
     <Compile Include="Implementations\BonusService.cs" />
     <Compile Include="Implementations\CustomerService.cs" />
     <Compile Include="Implementations\DepartmentService.cs" />
+    <Compile Include="Implementations\EducationalPortalsService.cs" />
     <Compile Include="Implementations\EmploymentService.cs" />
     <Compile Include="Implementations\FinalProjectService.cs" />
     <Compile Include="Implementations\OrganizationService.cs" />

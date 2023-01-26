@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System;
 using System.Collections.Generic;
@@ -22,10 +23,11 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmEducationalPortals : Page
     {
-        
+        EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
         public PageAdmEducationalPortals()
         {
             InitializeComponent();
+            dataGrid.ItemsSource = _educationalPortalsService.Get();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
