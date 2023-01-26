@@ -32,7 +32,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Header="Логин" />
                         <DataGridTextColumn Binding="{Binding IsAdmin, UpdateSourceTrigger=PropertyChanged}" Header="Админ" />
-                        <DataGridTextColumn Binding="{Binding IsGlobalPM, UpdateSourceTrigger=PropertyChanged}" Header="GlobalPM" />
+                        <DataGridTextColumn Binding="{Binding isGlobalPM, UpdateSourceTrigger=PropertyChanged}" Header="GlobalPM" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

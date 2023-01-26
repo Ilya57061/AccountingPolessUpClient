@@ -43,6 +43,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _position = new Position();
+            _departments = _departmentService.Get();
+            BoxDepartment.ItemsSource = _departments;
         }
         private void OpenDepartments_Click(object sender, RoutedEventArgs e)
         {
