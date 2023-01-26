@@ -30,7 +30,7 @@ namespace AccountingPolessUp.Implementations
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("DateEntry", $"{model.DateEntry}");
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
-                reqparm.Add("TrainingCoursesId", $"{model.TrainingCousresId}");
+                reqparm.Add("TrainingCoursesId", $"{model.TrainingCoursesId}");
 
 
                 web.UploadValues("https://localhost:7273/CreateRegistrationForCoursest", "POST", reqparm);
@@ -44,7 +44,7 @@ namespace AccountingPolessUp.Implementations
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("DateEntry", $"{model.DateEntry}");
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
-                reqparm.Add("TrainingCoursesId", $"{model.TrainingCousresId}");
+                reqparm.Add("TrainingCoursesId", $"{model.TrainingCoursesId}");
 
                 web.UploadValues("https://localhost:7273/UpdateRegistrationForCourses", "PUT", reqparm);
 

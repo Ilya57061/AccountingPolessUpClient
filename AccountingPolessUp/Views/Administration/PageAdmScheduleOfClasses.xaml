@@ -34,7 +34,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged}" Header="Дата начала" />
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged}" Header="Дата окончания" />
                         <DataGridTextColumn Binding="{Binding WorkSpaceLink, UpdateSourceTrigger=PropertyChanged}" Header="Ссылка рабочего пространства" />
-                        <DataGridTextColumn Binding="{Binding Path = TrainingCourses.TrainingCourses, UpdateSourceTrigger=PropertyChanged}" Header="Тренировочные курсы" />
+                        <DataGridTextColumn Binding="{Binding Path = TrainingCourses.Name, UpdateSourceTrigger=PropertyChanged}" Header="Тренировочные курсы" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

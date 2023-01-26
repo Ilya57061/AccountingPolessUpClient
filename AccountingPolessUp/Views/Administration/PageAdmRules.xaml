@@ -33,7 +33,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Text, UpdateSourceTrigger=PropertyChanged}" Header="Текст" />
                         <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
-                        <DataGridTextColumn Binding="{Binding Organization.Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Ид организации" />
+                        <DataGridTextColumn Binding="{Binding Organizations.Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Ид организации" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

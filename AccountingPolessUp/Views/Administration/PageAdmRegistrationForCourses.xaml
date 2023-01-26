@@ -31,8 +31,8 @@ Background="Transparent"
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged}" Header="Дата входа" />
-                        <DataGridTextColumn Binding="{Binding Path = Participants.Participants, UpdateSourceTrigger=PropertyChanged}" Header="Участник" />
-                        <DataGridTextColumn Binding="{Binding Path = TrainingCourses.TrainingCourses, UpdateSourceTrigger=PropertyChanged}" Header="Тренировочные курсы" />
+                        <DataGridTextColumn Binding="{Binding Path = ParticipantsId, UpdateSourceTrigger=PropertyChanged}" Header="Участник" />
+                        <DataGridTextColumn Binding="{Binding Path = TrainingCourses.Name, UpdateSourceTrigger=PropertyChanged}" Header="Тренировочные курсы" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
