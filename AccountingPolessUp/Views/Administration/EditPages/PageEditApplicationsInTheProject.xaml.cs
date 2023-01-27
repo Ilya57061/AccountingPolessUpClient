@@ -34,42 +34,88 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _vacancy = _vacancyService.Get();
-            _participants = _participantsService.Get();
-            DataContext = applications;
-            _applications = applications;
-            BoxVacancy.ItemsSource = _vacancy;
-            BoxParticipant.ItemsSource = _participants;
-            BoxVacancy.SelectedIndex = _vacancy.IndexOf(_vacancy.FirstOrDefault(r => r.Id == applications.VacancyId));
-            BoxParticipant.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(r => r.Id == applications.ParticipantsId));
+            try
+            {
+                _vacancy = _vacancyService.Get();
+                _participants = _participantsService.Get();
+                DataContext = applications;
+                _applications = applications;
+                BoxVacancy.ItemsSource = _vacancy;
+                BoxParticipant.ItemsSource = _participants;
+                BoxVacancy.SelectedIndex = _vacancy.IndexOf(_vacancy.FirstOrDefault(r => r.Id == applications.VacancyId));
+                BoxParticipant.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(r => r.Id == applications.ParticipantsId));
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Ошибка на стороне сервера","Ошибка");
+            }
+           
         }
         public PageEditApplicationsInTheProject()
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            _applications = new ApplicationsInTheProject();
-            _vacancy = _vacancyService.Get();
-            _participants = _participantsService.Get();
-            BoxVacancy.ItemsSource = _vacancy;
-            BoxParticipant.ItemsSource = _participants;
+            try
+            {
+                _applications = new ApplicationsInTheProject();
+                _vacancy = _vacancyService.Get();
+                _participants = _participantsService.Get();
+                BoxVacancy.ItemsSource = _vacancy;
+                BoxParticipant.ItemsSource = _participants;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Ошибка на стороне сервера", "Ошибка");
+            }
+           
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             WriteData();
-            _applicationService.Update(_applications);
+            try
+            {
+                _applicationService.Update(_applications);
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Ошибка API", "Ошибка");
+            }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _applicationService.Create(_applications);
+            
+            try
+            {
+                WriteData();
+                _applicationService.Create(_applications);
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Некорректный ввод данных", "Ошибка");
+            }
         }
         private void WriteData()
         {
-            _applications.WorkStatus = WorkStatus.Text;
-            _applications.DateEntry = DateTime.Parse(DateEntry.Text);
-            _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
-            _applications.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
+            try
+            {
+                _applications.WorkStatus = WorkStatus.Text;
+                _applications.DateEntry = DateTime.Parse(DateEntry.Text);
+                _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
+                _applications.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Некорректный ввод данных", "Ошибка");
+            }
+          
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Views;
+﻿using AccountingPolessUp.Models;
+using AccountingPolessUp.Views;
 using AccountingPolessUp.Views.Administration;
 using AccountingPolessUp.Views.Information;
 using System;
@@ -24,9 +25,17 @@ namespace AccountingPolessUp
     public partial class WorkWindow : Window
     {
 
-        public WorkWindow()
+        public WorkWindow(User user)
         {
             InitializeComponent();
+            if (user.IsAdmin==true)
+            {
+                Admin.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Admin.Visibility = Visibility.Hidden;
+            }
             MainFrame.Content = new PageProfile();
 
         }

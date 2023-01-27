@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +22,7 @@ namespace AccountingPolessUp
     /// </summary>
     public partial class Authorization : Window
     {
+        LoginService loginService = new LoginService();
         public Authorization()
         {
             InitializeComponent();
@@ -26,10 +30,29 @@ namespace AccountingPolessUp
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            WorkWindow mainWindow = new WorkWindow();
-            mainWindow.Show();
-            string pas = Password.Password;
-            this.Close();
+            try
+            {
+                if(string.IsNullOrEmpty(Login.Text)) throw new Exception("Неверный логин");
+                if(string.IsNullOrEmpty(Password.Password)) throw new Exception("Неверный пароль");
+                User user = loginService.Login(new LoginModel { Login = Login.Text, Password = Password.Password });
+                if (user ==null)
+                {
+                    throw new Exception("Некорректные логин и(или) пароль");
+                }
+                else
+                {
+                    WorkWindow mainWindow = new WorkWindow(user);
+                    mainWindow.Show();
+                    this.Close();
+                }
+              
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+           
         }
     }
 }

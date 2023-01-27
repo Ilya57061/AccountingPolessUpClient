@@ -114,7 +114,7 @@
                         </TreeViewItem.Header>
                     </TreeViewItem>
                 </TreeViewItem>
-                <TreeViewItem    Header="Администрирование" >
+                <TreeViewItem  x:Name="Admin"  Header="Администрирование" >
                     <TreeViewItem Selected="ButtonAdmBonus_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
