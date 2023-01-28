@@ -6,7 +6,6 @@
         xmlns:local="clr-namespace:AccountingPolessUp"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-        xmlns:local1="clr-namespace:AccountingPolessUp.Helpers"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"

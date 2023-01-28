@@ -28,13 +28,13 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.RowSpan="2">
-            <Border Width="auto"  BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <Border Width="auto" Margin="0,0,0,2" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <TreeView Margin="10 40"  Width="auto" FontSize="20">
-                <TreeViewItem Selected="ButtonProfile_Click">
+                <TreeViewItem  Selected="ButtonProfile_Click">
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AccountCircleOutline" Width="35" Height="35" VerticalAlignment="Center"/>
-                            <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Моя страница" />
+                            <TextBlock  VerticalAlignment="Center"  Foreground="Black" Margin="8,0,0,0" Text="Моя страница" />
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
@@ -42,7 +42,7 @@
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="BadgeAccountHorizontal" Width="35" Height="35" VerticalAlignment="Center"/>
-                            <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Трудоустройство" />
+                            <TextBlock VerticalAlignment="Center" Foreground="Black" Margin="8,0,0,0" Text="Трудоустройство" />
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
@@ -50,7 +50,7 @@
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AccountGroup" Width="35" Height="35" VerticalAlignment="Center"/>
-                            <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Менторство" />
+                            <TextBlock VerticalAlignment="Center" Foreground="Black" Margin="8,0,0,0" Text="Менторство" />
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
@@ -58,7 +58,7 @@
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="BriefcaseEye" Width="35" Height="35" VerticalAlignment="Center"/>
-                            <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Мои Проекты" />
+                            <TextBlock VerticalAlignment="Center" Foreground="Black" Margin="8,0,0,0" Text="Мои Проекты" />
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
@@ -66,7 +66,7 @@
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="BriefcasePlus" Width="35" Height="35" VerticalAlignment="Center"/>
-                            <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Вакансии" />
+                            <TextBlock VerticalAlignment="Center" Foreground="Black" Margin="8,0,0,0" Text="Вакансии" />
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>

@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Implementations;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditOrganization : Page
     {
+
+        FormValidator validator = new FormValidator();
         OrganizationService _organizationService = new OrganizationService();
         Organization _organization;
         public PageEditOrganization(Organization organization)

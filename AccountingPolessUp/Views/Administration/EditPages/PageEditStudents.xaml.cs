@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Implementations;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditStudents : Page
     {
+
+        FormValidator validator = new FormValidator();
         StudentService _studentService = new StudentService();
         IndividualsService _individualsService=new IndividualsService();
         List<Individuals> _individuals;
@@ -49,14 +52,33 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-           WriteData();
-            _studentService.Update(_student);
-         
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _studentService.Update(_student);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
+
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _studentService.Create(_student);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _studentService.Create(_student);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
+
         }
         private void WriteData()
         {

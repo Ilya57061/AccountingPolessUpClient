@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Implementations;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditRules : Page
     {
+
+        FormValidator validator = new FormValidator();
         RegulationService _regulationService = new RegulationService();
         OrganizationService _organizationService=new OrganizationService();
         List<Organization> _organizations;
@@ -48,18 +51,38 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            DataWrite();
-            _regulationService.Update(_regulation);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _regulationService.Update(_regulation);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
+
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            DataWrite();
-            _regulationService.Create(_regulation);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _regulationService.Create(_regulation);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
+
         }
         private void OpenRegulation_Click(object sender, RoutedEventArgs e)
         {
         }
-        private void DataWrite()
+        private void WriteData()
         {
             _regulation.Text = Text.Text;
             _regulation.Name = Name.Text;

@@ -23,6 +23,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditVacancy : Page
     {
+
+        FormValidator validator = new FormValidator();
         VacancyService _vacancyService = new VacancyService();
         StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
         List<StagesOfProject> _stagesOfProjects;
@@ -52,13 +54,33 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _vacancyService.Update(_vacancy);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _vacancyService.Update(_vacancy);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
+
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _vacancyService.Create(_vacancy);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _vacancyService.Create(_vacancy);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
+
         }
         private void WriteData()
         {

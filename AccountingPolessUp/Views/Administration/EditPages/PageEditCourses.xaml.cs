@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Implementations;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditCourses : Page
     {
+
+        FormValidator validator = new FormValidator();
         TrainingCoursesService _coursesService = new TrainingCoursesService();
         TrainingCourses _cours;
         public PageEditCourses(TrainingCourses cours)
