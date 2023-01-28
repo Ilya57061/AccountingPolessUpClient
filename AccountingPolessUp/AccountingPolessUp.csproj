@@ -82,6 +82,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\TextNotEmptyConverter.cs" />
     <Compile Include="Implementations\ApplicationsInTheProjectService.cs" />
     <Compile Include="Implementations\BonusService.cs" />
     <Compile Include="Implementations\CustomerService.cs" />

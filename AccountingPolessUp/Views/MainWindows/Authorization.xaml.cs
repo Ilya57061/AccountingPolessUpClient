@@ -26,17 +26,17 @@ namespace AccountingPolessUp
         public Authorization()
         {
             InitializeComponent();
+             Enter.IsEnabled = false;
         }
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if(string.IsNullOrEmpty(Login.Text)) throw new Exception("Неверный логин");
-                if(string.IsNullOrEmpty(Password.Password)) throw new Exception("Неверный пароль");
                 User user = loginService.Login(new LoginModel { Login = Login.Text, Password = Password.Password });
                 if (user ==null)
                 {
+                    
                     throw new Exception("Некорректные логин и(или) пароль");
                 }
                 else
@@ -53,6 +53,11 @@ namespace AccountingPolessUp
                 MessageBox.Show(ex.Message);
             }
            
+        }
+        private void CheckChangeText(object sender, RoutedEventArgs e)
+        { 
+            if(Password.Password.Length>0&&Login.Text.Length>0) Enter.IsEnabled= true;
+            else Enter.IsEnabled= false;
         }
     }
 }

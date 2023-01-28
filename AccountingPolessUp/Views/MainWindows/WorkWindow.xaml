@@ -13,7 +13,7 @@
      TextOptions.TextRenderingMode="Auto"
    Background="WhiteSmoke"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="PolessUp" Height="850" Width="1200"  >
+        Title="PolessUp" Height="850" Width="1200">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
