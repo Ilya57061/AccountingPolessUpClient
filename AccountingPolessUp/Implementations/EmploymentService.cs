@@ -23,6 +23,19 @@ namespace AccountingPolessUp.Implementations
                 else return Info;
             }
         }
+        public Employment GetByParticipants(int participantsId)
+        {
+            using (WebClient web = new WebClient())
+            {
+
+                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                reqparm.Add("ParticipantsId", $"{participantsId}");
+                var response = web.UploadValues("https://localhost:7273/GetByParticipants", "POST", reqparm);
+                var responseString = Encoding.Default.GetString(response);
+                Employment employment = JsonConvert.DeserializeObject<Employment>(responseString);
+                return employment;
+            }
+        }
         public void Create(Employment model)
         {
             using (WebClient web = new WebClient())
