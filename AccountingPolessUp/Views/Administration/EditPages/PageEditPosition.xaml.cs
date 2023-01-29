@@ -38,7 +38,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataContext = position;
             _departments = _departmentService.Get();
             BoxDepartment.ItemsSource = _departments;
-            BoxDepartment.SelectedIndex = _departments.IndexOf(_departments.FirstOrDefault(d=>d.Id==position.DepartmentId));
+            BoxDepartment.SelectedIndex = _departments.IndexOf(_departments.FirstOrDefault(d => d.Id == position.DepartmentId));
         }
         public PageEditPosition()
         {
@@ -54,19 +54,37 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _positionService.Update(_position);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
             WriteData();
-            _positionService.Update(_position);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _positionService.Create(_position);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _positionService.Create(_position);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void WriteData()
         {
             _position.FullName = Fullname.Text;
-            _position.Description= Description.Text;
-            _position.DepartmentId=_departments.FirstOrDefault(i=>i==BoxDepartment.SelectedItem).Id;
+            _position.Description = Description.Text;
+            _position.DepartmentId = _departments.FirstOrDefault(i => i == BoxDepartment.SelectedItem).Id;
         }
     }
 }
