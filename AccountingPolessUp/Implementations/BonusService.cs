@@ -1,4 +1,5 @@
 ﻿using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -27,10 +28,11 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/BonusForRankId?id={rankId}";
-                var json = web.DownloadString(url);
-                List<Bonus> Info = JsonConvert.DeserializeObject<List<Bonus>>(json);
+                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                reqparm.Add("id", $"{rankId}");
+                var response = web.UploadValues("https://localhost:7273/BonusForRankId", "POST", reqparm);
+                var responseString = Encoding.Default.GetString(response);
+                List<Bonus> Info = JsonConvert.DeserializeObject<List<Bonus>>(responseString);
                 if (Info is null) throw new Exception("info - null");
                 else return Info;
             }
