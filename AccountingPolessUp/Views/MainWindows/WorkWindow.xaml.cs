@@ -24,9 +24,10 @@ namespace AccountingPolessUp
     /// </summary>
     public partial class WorkWindow : Window
     {
-
+        User _user;
         public WorkWindow(User user)
         {
+            _user = user;
             InitializeComponent();
             if (user.IsAdmin==true)
             {
@@ -36,12 +37,12 @@ namespace AccountingPolessUp
             {
                 Admin.Visibility = Visibility.Hidden;
             }
-            MainFrame.Content = new PageProfile();
+            MainFrame.Content = new PageProfile(user);
 
         }
         private void ButtonProfile_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Content = new PageProfile();
+            MainFrame.Content = new PageProfile(_user);
         }
         private void ButtonPositions_Click(object sender, RoutedEventArgs e) // вакансии
         {

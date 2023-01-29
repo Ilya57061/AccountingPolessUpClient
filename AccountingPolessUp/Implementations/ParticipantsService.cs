@@ -1,4 +1,5 @@
 ﻿using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,19 @@ namespace AccountingPolessUp.Implementations
                 List<Participants> Info = JsonConvert.DeserializeObject<List<Participants>>(json);
                 if (Info is null) throw new Exception("info - null");
                 else return Info;
+            }
+        }
+        public Participants GetByUser(int userId)
+        {
+            using (WebClient web = new WebClient())
+            {
+
+                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                reqparm.Add("UserId", $"{userId}");
+                var response = web.UploadValues("https://localhost:7273/GetByUser", "POST", reqparm);
+                var responseString = Encoding.Default.GetString(response);
+                Participants participants = JsonConvert.DeserializeObject<Participants>(responseString);
+                return participants;
             }
         }
         public List<Participants> Get(int id)

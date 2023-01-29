@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Net;
+using System.Text;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -19,6 +20,19 @@ namespace AccountingPolessUp.Implementations
                 List<Student> Info = JsonConvert.DeserializeObject<List<Student>>(json);
                 if (Info is null) throw new Exception("info - null");
                 else return Info;
+            }
+        }
+        public Student GetByIndividuals(int individualsId)
+        {
+            using (WebClient web = new WebClient())
+            {
+
+                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                reqparm.Add("IndividualsId", $"{individualsId}");
+                var response = web.UploadValues("https://localhost:7273/GetByIndividuals", "POST", reqparm);
+                var responseString = Encoding.Default.GetString(response);
+                Student student = JsonConvert.DeserializeObject<Student>(responseString);
+                return student;
             }
         }
         public void Create(Student model)
