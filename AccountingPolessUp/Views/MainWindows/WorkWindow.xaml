@@ -28,7 +28,7 @@
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.RowSpan="2">
-            <Border Width="auto" Margin="0,0,0,2" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <Border Width="auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <TreeView Margin="10 40"  Width="auto" FontSize="20">
                 <TreeViewItem  Selected="ButtonProfile_Click">
                     <TreeViewItem.Header>
@@ -270,7 +270,7 @@
         <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Background="WhiteSmoke">
             <Frame Margin="5 0 0 0" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Background="Transparent">
+        <Grid Margin="0,2,0,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Background="Transparent">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
         </Grid>
     </Grid>
