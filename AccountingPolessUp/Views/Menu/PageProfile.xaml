@@ -35,7 +35,7 @@
                     </StackPanel>
                     <GroupBox Margin="3 15" BorderThickness="0">
                         <GroupBox.Header>
-                            <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="White" Text="Участие в лаборатории:"></TextBlock>
+                            <TextBlock HorizontalAlignment="Center" FontSize="18" Foreground="White"   Text="Участие в лаборатории"></TextBlock>
                         </GroupBox.Header>
                         <StackPanel Margin="-10 5"  Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">
                             <TextBlock Margin="0 5" x:Name="InfoDateStart" FontSize="16" FontWeight="DemiBold" Text="Дата вступления: 01.01.2023"></TextBlock>
