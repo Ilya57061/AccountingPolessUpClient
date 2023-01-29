@@ -33,5 +33,9 @@ namespace AccountingPolessUp.Views.Information
             InitializeComponent();
             BonusGrid.ItemsSource = _bonusService.Get(rankId);
         }
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
     }
 }

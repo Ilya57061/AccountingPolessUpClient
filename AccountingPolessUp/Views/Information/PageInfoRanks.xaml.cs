@@ -66,6 +66,9 @@ namespace AccountingPolessUp.Views.Information
             TextBoxMaxMmr.Text= string.Empty;
             TextBoxMinMmr.Text= string.Empty;
             TextBoxSearch.Text=string.Empty;
+            dataGrid.ItemsSource = null;
+            dataGrid.Items.Clear();
+            dataGrid.ItemsSource = Ranks;
         }
         private void Confirm()
         {
@@ -86,6 +89,7 @@ namespace AccountingPolessUp.Views.Information
             {
                 newRanks = newRanks.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMmr.Text));
             }
+            dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = newRanks;
         }

@@ -50,10 +50,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             }
             catch (Exception)
             {
-
-                MessageBox.Show("Ошибка на стороне сервера","Ошибка");
+                MessageBox.Show("Ошибка на стороне сервера", "Ошибка");
             }
-           
+
         }
         public PageEditApplicationsInTheProject()
         {
@@ -70,37 +69,37 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Ошибка на стороне сервера", "Ошибка");
             }
-           
+
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
             try
             {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
                 _applicationService.Update(_applications);
-
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Ошибка API", "Ошибка");
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            
+
             try
             {
                 WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
                 _applicationService.Create(_applications);
 
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Некорректный ввод данных", "Ошибка");
             }
         }
@@ -115,10 +114,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Некорректный ввод данных", "Ошибка");
             }
-          
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
