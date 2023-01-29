@@ -27,7 +27,7 @@ Background="Transparent"
             </Grid.ColumnDefinitions>
             <Grid  Grid.Row="0" Grid.ColumnSpan="2">
                 <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-                <DataGrid HorizontalAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
+                <DataGrid  HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
@@ -37,7 +37,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged}" Header="Дата для окончания" />
                         <DataGridTextColumn Binding="{Binding Budjet, UpdateSourceTrigger=PropertyChanged}" Header="Бюджет" />
                         <DataGridTextColumn Binding="{Binding StagesOfProject.Name, UpdateSourceTrigger=PropertyChanged}" Header="Стадия проекта" />
-                        <DataGridTextColumn Binding="{Binding isOpened, UpdateSourceTrigger=PropertyChanged}" Header="Открыта" />
+                        <DataGridTextColumn Binding="{Binding isOpened, UpdateSourceTrigger=PropertyChanged}" Header="Открыта" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

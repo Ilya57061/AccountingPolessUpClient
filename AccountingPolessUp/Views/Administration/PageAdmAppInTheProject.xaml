@@ -27,13 +27,13 @@ Background="Transparent"
             </Grid.ColumnDefinitions>
             <Grid  Grid.Row="0" Grid.ColumnSpan="2">
                 <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-                <DataGrid HorizontalAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
+                <DataGrid HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding WorkStatus, UpdateSourceTrigger=PropertyChanged}" Header="Рабочий статус" />
                         <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged}" Header="Дата входа" />
                         <DataGridTextColumn Binding="{Binding Path = ParticipantsId, UpdateSourceTrigger=PropertyChanged}" Header="Участник" />
-                        <DataGridTextColumn Binding="{Binding Path = Vacancy.Name, UpdateSourceTrigger=PropertyChanged}" Header="Вакансия" />
+                        <DataGridTextColumn Binding="{Binding Path = Vacancy.Name, UpdateSourceTrigger=PropertyChanged}" Header="Вакансия" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

@@ -28,7 +28,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetBonusForRank?id={rankId}";
+                string url = $"https://localhost:7273/BonusForRankId?id={rankId}";
                 var json = web.DownloadString(url);
                 List<Bonus> Info = JsonConvert.DeserializeObject<List<Bonus>>(json);
                 if (Info is null) throw new Exception("info - null");
