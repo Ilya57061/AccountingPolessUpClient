@@ -40,23 +40,41 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            _cours = new TrainingCourses(); 
+            _cours = new TrainingCourses();
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _coursesService.Update(_cours);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _coursesService.Update(_cours);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _coursesService.Create(_cours);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _coursesService.Create(_cours);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void WriteData()
         {
             _cours.Name = Name.Text;
             _cours.Description = Description.Text;
-            _cours.Link= Link.Text;
+            _cours.Link = Link.Text;
         }
     }
 }

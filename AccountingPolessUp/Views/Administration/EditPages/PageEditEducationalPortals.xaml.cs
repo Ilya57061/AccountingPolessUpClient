@@ -52,13 +52,31 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _educationalPortalsService.Update(_educationalPortals);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _educationalPortalsService.Update(_educationalPortals);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _educationalPortalsService.Create(_educationalPortals);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _educationalPortalsService.Create(_educationalPortals);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void WriteData()
         {

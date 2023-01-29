@@ -55,13 +55,31 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _bonusService.Update(_bonus);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _bonusService.Update(_bonus);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _bonusService.Create(_bonus);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _bonusService.Create(_bonus);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void WriteData()
         {

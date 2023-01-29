@@ -32,7 +32,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _customer= customer;
+            _customer = customer;
         }
         public PageEditCustomer()
         {
@@ -43,21 +43,39 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _customerService.Update(_customer);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _customerService.Update(_customer);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _customerService.Create(_customer);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _customerService.Create(_customer);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void WriteData()
         {
             _customer.FullName = Fullname.Text;
             _customer.Address = Address.Text;
-            _customer.Contacts= Contacts.Text;
-            _customer.WebSite= WebSite.Text;
-            _customer.Description= Description.Text;
+            _customer.Contacts = Contacts.Text;
+            _customer.WebSite = WebSite.Text;
+            _customer.Description = Description.Text;
         }
     }
 }

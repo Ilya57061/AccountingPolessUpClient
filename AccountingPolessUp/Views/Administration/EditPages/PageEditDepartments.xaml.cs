@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
 
         FormValidator validator = new FormValidator();
-        DepartmentService _departmentService=new DepartmentService();
+        DepartmentService _departmentService = new DepartmentService();
         OrganizationService _organizationService = new OrganizationService();
         Department _department;
         List<Organization> _organizations;
@@ -37,8 +37,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _department = department;
             _organizations = _organizationService.Get();
             DataContext = department;
-            BoxOrganizations.ItemsSource= _organizations;
-            BoxOrganizations.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o=>o.Id==department.OrganizationId));
+            BoxOrganizations.ItemsSource = _organizations;
+            BoxOrganizations.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o => o.Id == department.OrganizationId));
         }
         public PageEditDepartments()
         {
@@ -54,20 +54,38 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _departmentService.Update(_department);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _departmentService.Update(_department);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            WriteData();
-            _departmentService.Create(_department);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _departmentService.Create(_department);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void WriteData()
         {
             _department.FullName = FullName.Text;
-            _department.Description=Description.Text;
+            _department.Description = Description.Text;
             _department.DateStart = DateTime.Parse(DateStart.Text);
-            _department.DateEnd= DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
+            _department.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
             _department.Status = Status.Text;
             _department.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganizations.SelectedItem).Id;
         }

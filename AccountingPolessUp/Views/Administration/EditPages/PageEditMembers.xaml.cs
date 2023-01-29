@@ -27,7 +27,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         FormValidator validator = new FormValidator();
         ParticipantsService _participantsService = new ParticipantsService();
         UserService _userService = new UserService();
-        IndividualsService _individualsService=new IndividualsService();
+        IndividualsService _individualsService = new IndividualsService();
         List<User> _users;
         List<Individuals> _individuals;
 
@@ -38,21 +38,21 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _users = _userService.Get();
-            _individuals=_individualsService.Get();
+            _individuals = _individualsService.Get();
             this.participants = participants;
             this.DataContext = participants;
             BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == participants.IndividualsId));
             BoxUser.SelectedIndex = _users.IndexOf(_users.FirstOrDefault(p => p.Id == participants.UserId));
             BoxIndividuals.ItemsSource = _individuals;
             BoxUser.ItemsSource = _users;
-            
+
         }
         public PageEditMembers()
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            participants= new Participants();
+            participants = new Participants();
             _users = _userService.Get();
             _individuals = _individualsService.Get();
             BoxIndividuals.ItemsSource = _individuals;
@@ -63,25 +63,33 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
                 _participantsService.Update(participants);
-
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Заполните все поля");
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-
-            WriteData();
-            _participantsService.Create(participants);
+            try
+            {
+                WriteData();
+                if (validator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _participantsService.Create(participants);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
         private void OpenIndividuals_Click(object sender, RoutedEventArgs e)
         {
         }
-       
+
         private void OpenUser_Click(object sender, RoutedEventArgs e)
         {
         }
