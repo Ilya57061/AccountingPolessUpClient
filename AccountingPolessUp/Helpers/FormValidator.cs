@@ -20,10 +20,10 @@ namespace AccountingPolessUp.Helpers
                     || child is TextBox textBox && string.IsNullOrEmpty(textBox.Text)
                     || child is DatePicker datePicker && string.IsNullOrEmpty(datePicker.Text))
                 {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
     }
 }
