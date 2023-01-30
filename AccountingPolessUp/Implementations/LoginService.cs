@@ -22,7 +22,7 @@ namespace AccountingPolessUp.Implementations
                     System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                     reqparm.Add("Login", $"{loginModel.Login}");
                     reqparm.Add("Password", $"{loginModel.Password}");
-                    var response = web.UploadValues("http://127.0.0.1:5000/Login", "POST", reqparm);
+                    var response = web.UploadValues("https://polessu.by/polessup/Login", "POST", reqparm);
                     var responseString = Encoding.Default.GetString(response);
                     User user = JsonConvert.DeserializeObject<User>(responseString);
                     return user;

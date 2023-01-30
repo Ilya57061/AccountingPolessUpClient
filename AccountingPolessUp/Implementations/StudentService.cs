@@ -15,7 +15,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"http://127.0.0.1:5000/GetStudents";
+                string url = $"https://polessu.by/polessup/GetStudents";
                 var json = web.DownloadString(url);
                 List<Student> Info = JsonConvert.DeserializeObject<List<Student>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -29,7 +29,7 @@ namespace AccountingPolessUp.Implementations
 
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("individualsId", $"{individualsId}");
-                var response = web.UploadValues("http://127.0.0.1:5000/StudentByIndividuals", "POST", reqparm);
+                var response = web.UploadValues("https://polessu.by/polessup/StudentByIndividuals", "POST", reqparm);
                 var responseString = Encoding.Default.GetString(response);
                 Student student = JsonConvert.DeserializeObject<Student>(responseString);
                 return student;
@@ -47,7 +47,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("IndividualsId", $"{model.IndividualsId}");
              
 
-                web.UploadValues("http://127.0.0.1:5000/CreateStudent", "POST", reqparm);
+                web.UploadValues("https://polessu.by/polessup/CreateStudent", "POST", reqparm);
 
             }
         }
@@ -63,7 +63,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("University", $"{model.University}");
                 reqparm.Add("IndividualsId", $"{model.IndividualsId}");
 
-                web.UploadValues("http://127.0.0.1:5000/UpdateStudent", "PUT", reqparm);
+                web.UploadValues("https://polessu.by/polessup/UpdateStudent", "PUT", reqparm);
 
             }
         }
@@ -73,7 +73,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("http://127.0.0.1:5000/DeleteStudent", "DELETE", reqparm);
+                web.UploadValues("https://polessu.by/polessup/DeleteStudent", "DELETE", reqparm);
 
             }
         }

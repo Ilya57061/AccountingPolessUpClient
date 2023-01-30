@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"http://127.0.0.1:5000/GetEducationalPortals";
+                string url = $"https://polessu.by/polessup/GetEducationalPortals";
                 var json = web.DownloadString(url);
                 List<EducationalPortals> Info = JsonConvert.DeserializeObject<List<EducationalPortals>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -34,7 +34,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Link", $"{model.Link}");
 
 
-                web.UploadValues("http://127.0.0.1:5000/CreateEducationalPortals", "POST", reqparm);
+                web.UploadValues("https://polessu.by/polessup/CreateEducationalPortals", "POST", reqparm);
 
             }
         }
@@ -48,7 +48,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Description", $"{model.Description}");
                 reqparm.Add("Link", $"{model.Link}");
 
-                web.UploadValues("http://127.0.0.1:5000/UpdateEducationalPortals", "PUT", reqparm);
+                web.UploadValues("https://polessu.by/polessup/UpdateEducationalPortals", "PUT", reqparm);
 
             }
         }
@@ -58,7 +58,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("Id", $"{id}");
-                web.UploadValues("http://127.0.0.1:5000/DeleteEducationalPortals", "DELETE", reqparm);
+                web.UploadValues("https://polessu.by/polessup/DeleteEducationalPortals", "DELETE", reqparm);
 
             }
         }

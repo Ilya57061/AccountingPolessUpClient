@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"http://127.0.0.1:5000/GetPosition";
+                string url = $"https://polessu.by/polessup/GetPosition";
                 var json = web.DownloadString(url);
                 List<Position> Info = JsonConvert.DeserializeObject<List<Position>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -32,7 +32,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Description", $"{model.Description}");
                 reqparm.Add("DepartmentId", $"{model.DepartmentId}");
 
-                web.UploadValues("http://127.0.0.1:5000/CreatePosition", "POST", reqparm);
+                web.UploadValues("https://polessu.by/polessup/CreatePosition", "POST", reqparm);
 
             }
         }
@@ -45,7 +45,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("FullName", $"{model.FullName}");
                 reqparm.Add("Description", $"{model.Description}");
                 reqparm.Add("DepartmentId", $"{model.DepartmentId}");
-                web.UploadValues("http://127.0.0.1:5000/UpdatePosition", "PUT", reqparm);
+                web.UploadValues("https://polessu.by/polessup/UpdatePosition", "PUT", reqparm);
 
             }
         }
@@ -55,7 +55,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("http://127.0.0.1:5000/DeletePosition", "DELETE", reqparm);
+                web.UploadValues("https://polessu.by/polessup/DeletePosition", "DELETE", reqparm);
 
             }
         }

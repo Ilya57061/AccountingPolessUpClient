@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"http://127.0.0.1:5000/GetFinalProject";
+                string url = $"https://polessu.by/polessup/GetFinalProject";
                 var json = web.DownloadString(url);
                 List<FinalProject> Info = JsonConvert.DeserializeObject<List<FinalProject>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -30,7 +30,7 @@ namespace AccountingPolessUp.Implementations
 
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("EmploymentId", $"{employmentId}");
-                var response = web.UploadValues("http://127.0.0.1:5000/GetByEmployment", "POST", reqparm);
+                var response = web.UploadValues("https://polessu.by/polessup/GetByEmployment", "POST", reqparm);
                 var responseString = Encoding.Default.GetString(response);
                 List<FinalProject> list = JsonConvert.DeserializeObject<List<FinalProject>>(responseString);
                 return list;
@@ -50,7 +50,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("EmploymentId", $"{model.EmploymentId}");
 
 
-                web.UploadValues("http://127.0.0.1:5000/CreateFinalProject", "POST", reqparm);
+                web.UploadValues("https://polessu.by/polessup/CreateFinalProject", "POST", reqparm);
 
             }
         }
@@ -67,7 +67,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("DateStart", $"{model.DateStart}");
                 reqparm.Add("DateEnd", $"{model.DateEnd}");
                 reqparm.Add("EmploymentId", $"{model.EmploymentId}");
-                web.UploadValues("http://127.0.0.1:5000/UpdateFinalProject", "PUT", reqparm);
+                web.UploadValues("https://polessu.by/polessup/UpdateFinalProject", "PUT", reqparm);
 
             }
         }
@@ -77,7 +77,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("http://127.0.0.1:5000/DeleteFinalProject", "DELETE", reqparm);
+                web.UploadValues("https://polessu.by/polessup/DeleteFinalProject", "DELETE", reqparm);
 
             }
         }

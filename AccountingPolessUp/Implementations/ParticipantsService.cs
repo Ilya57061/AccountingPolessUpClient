@@ -21,7 +21,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"http://127.0.0.1:5000/GetParticipants";
+                string url = $"https://polessu.by/polessup/GetParticipants";
                 var json = web.DownloadString(url);
                 List<Participants> Info = JsonConvert.DeserializeObject<List<Participants>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -35,7 +35,7 @@ namespace AccountingPolessUp.Implementations
 
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("userId", $"{userId}");
-                var response = web.UploadValues("http://127.0.0.1:5000/ParticipantByUser", "POST", reqparm);
+                var response = web.UploadValues("https://polessu.by/polessup/ParticipantByUser", "POST", reqparm);
                 var responseString = Encoding.Default.GetString(response);
                 Participants participants = JsonConvert.DeserializeObject<Participants>(responseString);
                 return participants;
@@ -46,7 +46,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"http://127.0.0.1:5000/Get?id={id}";
+                string url = $"https://polessu.by/polessup/Get?id={id}";
                 var json = web.DownloadString(url);
                 List<Participants> Info = JsonConvert.DeserializeObject<List<Participants>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -65,7 +65,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Mmr", $"{model.Mmr}");
                 reqparm.Add("status", $"{model.Status}");
                 reqparm.Add("GitHub", $"{model.GitHub}");
-                web.UploadValues("http://127.0.0.1:5000/CreateParticipant", "POST", reqparm);
+                web.UploadValues("https://polessu.by/polessup/CreateParticipant", "POST", reqparm);
             
             }
         }
@@ -82,7 +82,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Mmr", $"{model.Mmr}");
                 reqparm.Add("status", $"{model.Status}");
                 reqparm.Add("GitHub", $"{model.GitHub}");
-                web.UploadValues("http://127.0.0.1:5000/UpdateParticipant", "PUT", reqparm);
+                web.UploadValues("https://polessu.by/polessup/UpdateParticipant", "PUT", reqparm);
          
             }
         }
@@ -92,7 +92,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("http://127.0.0.1:5000/DeleteParticipant", "DELETE", reqparm);
+                web.UploadValues("https://polessu.by/polessup/DeleteParticipant", "DELETE", reqparm);
            
             }
         }
