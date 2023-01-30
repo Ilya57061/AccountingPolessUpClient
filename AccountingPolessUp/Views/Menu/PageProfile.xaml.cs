@@ -23,39 +23,41 @@ namespace AccountingPolessUp
     public partial class PageProfile : Page
     {
         ParticipantsService _participantsService = new ParticipantsService();
-        //EmploymentService _employmentService = new EmploymentService();
-        FinalProjectService _finalProjectService = new FinalProjectService();
         StudentService _studentService = new StudentService();
         Participants _participant;
         Student _student;
-        //Employment _employment;
-        //List<FinalProject> _finalProjects;
         public PageProfile(User user)
         {
             InitializeComponent();
-            _participant = _participantsService.GetByUser(user.Id);
-            _student=_studentService.GetByIndividuals(_participant.IndividualsId);
-            //_employment = _employmentService.GetByParticipants(_participant.Id);
-            //_finalProjects = _finalProjectService.GetByEmployment(_employment.Id);
-            UserName.Text = _participant.Individuals.FIO;
-            InfoDateStart.Text="Дата вступления: "+_participant.DateEntry.ToString("d");
-            InfoDateStart.Text="Дата вступления: "+_participant.DateEntry.ToString("d");
-            InfoRank.Text="Ранг: "+_participant.Mmr.ToString()+" Mmr";
-            SetBasicRatingBar();
-            InfoDayCount.Text ="Дата вступления: " +(DateTime.Now - _participant.DateEntry).ToString("d") +" Дней";
-            //InfoCountEndProject.Text=_finalProjects.Count.ToString();
-            InfoGitHub.Text= "GitHub: "+_participant.GitHub.ToString();
+            try
+            {
+                _participant = _participantsService.GetByUser(user.Id);
+                _student = _studentService.GetByIndividuals(_participant.IndividualsId);
+                UserName.Text = _participant.Individuals.FIO.ToString();
+                InfoDateStart.Text = "Дата вступления: " + _participant.DateEntry.ToString("d");
+                InfoDateStart.Text = "Дата вступления: " + _participant.DateEntry.ToString("d");
+                InfoRank.Text = "Ранг: " + _participant.Mmr.ToString() + " Mmr";
+                SetBasicRatingBar();
+                InfoDayCount.Text = "Дата вступления: " + (DateTime.Now - _participant.DateEntry).Days + " Дней";
+                InfoGitHub.Text = "GitHub: " + _participant.GitHub.ToString();
 
-            InfoMale.Text = "Гендер: "+ _participant.Individuals.Gender.ToString();
-            InfoBirthday.Text= "Дата рождения: " + _participant.Individuals.DateOfBirth.ToString("d");
-            InfoPhone.Text= "Мобильный телефон: " +  _participant.Individuals.Phone.ToString();
-            InfoMail.Text= "Электронная почта: " + _participant.Individuals.Mail.ToString();
-            InfoSocial.Text= "Социальная сеть: " + _participant.Individuals.SocialNetwork.ToString();
+                InfoMale.Text = "Гендер: " + _participant.Individuals.Gender.ToString();
+                InfoBirthday.Text = "Дата рождения: " + _participant.Individuals.DateOfBirth.ToString("d");
+                InfoPhone.Text = "Мобильный телефон: " + _participant.Individuals.Phone.ToString();
+                InfoMail.Text = "Электронная почта: " + _participant.Individuals.Mail.ToString();
+                InfoSocial.Text = "Социальная сеть: " + _participant.Individuals.SocialNetwork.ToString();
 
-            InfoUniversity.Text= "Учебное заведение: " + _student.University.ToString();
-            InfoStudyNumber.Text= "Студенческий билет: " + _student.StudentCard.ToString();
-            InfoGroup.Text= "Группа: " + _student.Group.ToString();
-            InfoKurs.Text= "Курс: " + _student.CourseNumber.ToString();
+                InfoUniversity.Text = "Учебное заведение: " + _student.University.ToString();
+                InfoStudyNumber.Text = "Студенческий билет: " + _student.StudentCard.ToString();
+                InfoGroup.Text = "Группа: " + _student.Group.ToString();
+                InfoKurs.Text = "Курс: " + _student.CourseNumber.ToString();
+            }
+            catch (Exception)
+            {
+
+                UserName.Text="Нет данных";
+            }
+           
         }
 
         private void SetBasicRatingBar()

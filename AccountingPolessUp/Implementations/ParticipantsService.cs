@@ -34,8 +34,8 @@ namespace AccountingPolessUp.Implementations
             {
 
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("UserId", $"{userId}");
-                var response = web.UploadValues("https://localhost:7273/GetByUser", "POST", reqparm);
+                reqparm.Add("userId", $"{userId}");
+                var response = web.UploadValues("https://localhost:7273/ParticipantByUser", "POST", reqparm);
                 var responseString = Encoding.Default.GetString(response);
                 Participants participants = JsonConvert.DeserializeObject<Participants>(responseString);
                 return participants;

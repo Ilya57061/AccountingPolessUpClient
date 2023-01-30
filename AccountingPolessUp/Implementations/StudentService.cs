@@ -28,8 +28,8 @@ namespace AccountingPolessUp.Implementations
             {
 
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("IndividualsId", $"{individualsId}");
-                var response = web.UploadValues("https://localhost:7273/GetByIndividuals", "POST", reqparm);
+                reqparm.Add("individualsId", $"{individualsId}");
+                var response = web.UploadValues("https://localhost:7273/StudentByIndividuals", "POST", reqparm);
                 var responseString = Encoding.Default.GetString(response);
                 Student student = JsonConvert.DeserializeObject<Student>(responseString);
                 return student;

@@ -50,7 +50,7 @@
     Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Password" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
         </Grid>
         <Button x:Name="Enter" materialDesign:ButtonAssist.CornerRadius="10" Margin="0,30,0,0" Grid.Row="4" Grid.ColumnSpan="2"  BorderBrush="Transparent" Height="40" Width="150" Content="Войти" HorizontalAlignment="Center"  VerticalAlignment="Top" FontSize="14" FontFamily="Roboto" Foreground="#FFFF" Background="#C9A97F" Click="ButtonLogin_Click" Cursor="Hand"/>
-        <Label HorizontalAlignment="Center" FontFamily="Roboto" Grid.ColumnSpan="2" Grid.Row="4" FontSize="13" Margin="0,80,0,0" x:Name="ErrorMessage" Visibility="Collapsed" Foreground="#CC0000" VerticalAlignment="Top">
+        <Label HorizontalAlignment="Center" FontFamily="Roboto" Grid.ColumnSpan="2" Grid.Row="4" FontSize="13" Margin="0,80,0,0" x:Name="LabelErrorMessage" Visibility="Collapsed" Foreground="#CC0000" VerticalAlignment="Top">
             Неверный логин и(или) пароль
         </Label>
 

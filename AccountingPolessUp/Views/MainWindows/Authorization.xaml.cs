@@ -36,7 +36,7 @@ namespace AccountingPolessUp
                 User user = loginService.Login(new LoginModel { Login = Login.Text, Password = Password.Password });
                 if (user ==null)
                 {
-                    ErrorMessage.Visibility= Visibility.Visible;
+                    LabelErrorMessage.Visibility= Visibility.Visible;
                 }
                 else
                 {
@@ -55,7 +55,7 @@ namespace AccountingPolessUp
         }
         private void CheckChangeText(object sender, RoutedEventArgs e)
         {
-            ErrorMessage.Visibility = Visibility.Collapsed;
+            LabelErrorMessage.Visibility = Visibility.Collapsed;
    
             if (Password.Password.Length>0&&Login.Text.Length>0) Enter.IsEnabled= true;
             else Enter.IsEnabled= false;
