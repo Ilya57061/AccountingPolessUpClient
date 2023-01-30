@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetRegulation";
+                string url = $"http://127.0.0.1:5000/GetRegulation";
                 var json = web.DownloadString(url);
                 List<Regulation> Info = JsonConvert.DeserializeObject<List<Regulation>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -34,7 +34,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("OrganizationId", $"{model.OrganizationId}");
 
 
-                web.UploadValues("https://localhost:7273/CreateRegulation", "POST", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/CreateRegulation", "POST", reqparm);
 
             }
         }
@@ -48,7 +48,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Name", $"{model.Name}");
                 reqparm.Add("Description", $"{model.Description}");
                 reqparm.Add("OrganizationId", $"{model.OrganizationId}");
-                web.UploadValues("https://localhost:7273/UpdateRegulation", "PUT", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/UpdateRegulation", "PUT", reqparm);
 
             }
         }
@@ -58,7 +58,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteRegulation", "DELETE", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/DeleteRegulation", "DELETE", reqparm);
 
             }
         }

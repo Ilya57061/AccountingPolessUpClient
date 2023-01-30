@@ -17,7 +17,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetBonus";
+                string url = $"http://127.0.0.1:5000/GetBonus";
                 var json = web.DownloadString(url);
                 List<Bonus> Info = JsonConvert.DeserializeObject<List<Bonus>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -30,7 +30,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{rankId}");
-                var response = web.UploadValues("https://localhost:7273/BonusForRankId", "POST", reqparm);
+                var response = web.UploadValues("http://127.0.0.1:5000/BonusForRankId", "POST", reqparm);
                 var responseString = Encoding.Default.GetString(response);
                 List<Bonus> Info = JsonConvert.DeserializeObject<List<Bonus>>(responseString);
                 if (Info is null) throw new Exception("info - null");
@@ -47,7 +47,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("RankId", $"{model.RankId}");
 
 
-                web.UploadValues("https://localhost:7273/CreateBonus", "POST", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/CreateBonus", "POST", reqparm);
 
             }
         }
@@ -60,7 +60,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("BonusName", $"{model.BonusName}");
                 reqparm.Add("BonusDescription", $"{model.BonusDescription}");
                 reqparm.Add("RankId ", $"{model.RankId}");
-                web.UploadValues("https://localhost:7273/UpdateBonus", "PUT", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/UpdateBonus", "PUT", reqparm);
 
             }
         }
@@ -70,7 +70,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteBonus", "DELETE", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/DeleteBonus", "DELETE", reqparm);
 
             }
         }

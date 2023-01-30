@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetOrganization";
+                string url = $"http://127.0.0.1:5000/GetOrganization";
                 var json = web.DownloadString(url);
                 List<Organization> Info = JsonConvert.DeserializeObject<List<Organization>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -35,7 +35,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("FoundationDate", $"{model.FoundationDate}");
 
 
-                web.UploadValues("https://localhost:7273/CreateOrganization", "POST", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/CreateOrganization", "POST", reqparm);
 
             }
         }
@@ -50,7 +50,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Contacts", $"{model.Contacts}");
                 reqparm.Add("WebSite", $"{model.WebSite}");
                 reqparm.Add("FoundationDate", $"{model.FoundationDate}");
-                web.UploadValues("https://localhost:7273/UpdateOrganization", "PUT", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/UpdateOrganization", "PUT", reqparm);
 
             }
         }
@@ -60,7 +60,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteOrganization", "DELETE", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/DeleteOrganization", "DELETE", reqparm);
 
             }
         }

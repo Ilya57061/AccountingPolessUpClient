@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetVacancy";
+                string url = $"http://127.0.0.1:5000/GetVacancy";
                 var json = web.DownloadString(url);
                 List<Vacancy> Info = JsonConvert.DeserializeObject<List<Vacancy>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -37,7 +37,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("StagesOfProjectId", $"{model.StagesOfProjectId}");
 
 
-                web.UploadValues("https://localhost:7273/CreateVacancy", "POST", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/CreateVacancy", "POST", reqparm);
 
             }
         }
@@ -54,7 +54,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("DateEnd", $"{model.DateEnd}");
                 reqparm.Add("Budjet", $"{model.Budjet}");
                 reqparm.Add("StagesOfProjectId", $"{model.StagesOfProjectId}");
-                web.UploadValues("https://localhost:7273/UpdateVacancy", "PUT", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/UpdateVacancy", "PUT", reqparm);
 
             }
         }
@@ -64,7 +64,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteVacancy", "DELETE", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/DeleteVacancy", "DELETE", reqparm);
 
             }
         }

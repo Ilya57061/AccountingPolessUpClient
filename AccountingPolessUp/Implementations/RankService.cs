@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetRank";
+                string url = $"http://127.0.0.1:5000/GetRank";
                 var json = web.DownloadString(url);
                 List<Rank> Info = JsonConvert.DeserializeObject<List<Rank>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -33,7 +33,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("OrganizationId", $"{model.OrganizationId}");
 
 
-                web.UploadValues("https://localhost:7273/CreateRank", "POST", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/CreateRank", "POST", reqparm);
 
             }
         }
@@ -46,7 +46,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("RankName", $"{model.RankName}");
                 reqparm.Add("Description", $"{model.Description}");
                 reqparm.Add("OrganizationId", $"{model.OrganizationId}");
-                web.UploadValues("https://localhost:7273/UpdateRank", "PUT", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/UpdateRank", "PUT", reqparm);
 
             }
         }
@@ -56,7 +56,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteRank", "DELETE", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/DeleteRank", "DELETE", reqparm);
 
             }
         }

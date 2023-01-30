@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetCustomer";
+                string url = $"http://127.0.0.1:5000/GetCustomer";
                 var json = web.DownloadString(url);
                 List<Customer> Info = JsonConvert.DeserializeObject<List<Customer>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -35,7 +35,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Description", $"{model.Description}");
 
 
-                web.UploadValues("https://localhost:7273/CreateCustomer", "POST", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/CreateCustomer", "POST", reqparm);
 
             }
         }
@@ -50,7 +50,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Contracts", $"{model.Contacts}");
                 reqparm.Add("WebSite", $"{model.WebSite}");
                 reqparm.Add("Description", $"{model.Description}");
-                web.UploadValues("https://localhost:7273/UpdateCustomer", "PUT", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/UpdateCustomer", "PUT", reqparm);
 
             }
         }
@@ -60,7 +60,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteCustomer", "DELETE", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/DeleteCustomer", "DELETE", reqparm);
 
             }
         }

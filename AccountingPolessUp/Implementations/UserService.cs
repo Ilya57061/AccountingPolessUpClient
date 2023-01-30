@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetUsers";
+                string url = $"http://127.0.0.1:5000/GetUsers";
                 var json = web.DownloadString(url);
                 List<User> Info = JsonConvert.DeserializeObject<List<User>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -28,7 +28,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/idUser?id={id}";
+                string url = $"http://127.0.0.1:5000/idUser?id={id}";
                 var json = web.DownloadString(url);
                 List<User> Info = JsonConvert.DeserializeObject<List<User>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -40,7 +40,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/loginUser?login={login}";
+                string url = $"http://127.0.0.1:5000/loginUser?login={login}";
                 var json = web.DownloadString(url);
                 List<User> Info = JsonConvert.DeserializeObject<List<User>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -56,7 +56,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Login", $"{model.Login}");
                 reqparm.Add("Password", $"{model.Password}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
-                web.UploadValues("https://localhost:7273/CreateUser", "POST", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/CreateUser", "POST", reqparm);
             }
         }
         public void Update(User model)
@@ -67,7 +67,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("Login", $"{model.Login}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
-                web.UploadValues("https://localhost:7273/UpdateUser", "PUT", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/UpdateUser", "PUT", reqparm);
 
             }
         }
@@ -77,7 +77,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeletUser", "DELETE", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/DeletUser", "DELETE", reqparm);
             }
         }
     }

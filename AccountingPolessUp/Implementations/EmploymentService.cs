@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetEmployments";
+                string url = $"http://127.0.0.1:5000/GetEmployments";
                 var json = web.DownloadString(url);
                 List<Employment> Info = JsonConvert.DeserializeObject<List<Employment>>(json);
                 if (Info is null) throw new Exception("info - null");
@@ -30,7 +30,7 @@ namespace AccountingPolessUp.Implementations
 
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("ParticipantsId", $"{participantsId}");
-                var response = web.UploadValues("https://localhost:7273/GetByParticipants", "POST", reqparm);
+                var response = web.UploadValues("http://127.0.0.1:5000/GetByParticipants", "POST", reqparm);
                 var responseString = Encoding.Default.GetString(response);
                 Employment employment = JsonConvert.DeserializeObject<Employment>(responseString);
                 return employment;
@@ -49,7 +49,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
                 reqparm.Add("PositionId", $"{model.PositionId}");
 
-                web.UploadValues("https://localhost:7273/CreateEmployment", "POST", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/CreateEmployment", "POST", reqparm);
 
             }
         }
@@ -66,7 +66,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("IdMentor", $"{model.IdMentor}");
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
                 reqparm.Add("PositionId", $"{model.PositionId}");
-                web.UploadValues("https://localhost:7273/UpdateEmployment", "PUT", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/UpdateEmployment", "PUT", reqparm);
 
             }
         }
@@ -76,7 +76,7 @@ namespace AccountingPolessUp.Implementations
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteEmployment", "DELETE", reqparm);
+                web.UploadValues("http://127.0.0.1:5000/DeleteEmployment", "DELETE", reqparm);
 
             }
         }
