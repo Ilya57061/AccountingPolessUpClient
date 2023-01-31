@@ -45,7 +45,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageAdmScheduleOfClasses();
+            EditFrame.Content = new PageEditScheduleOfClasses();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
