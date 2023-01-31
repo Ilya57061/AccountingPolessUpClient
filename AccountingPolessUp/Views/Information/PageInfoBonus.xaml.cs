@@ -31,6 +31,7 @@ namespace AccountingPolessUp.Views.Information
         public PageInfoBonus(int rankId)
         {
             InitializeComponent();
+            ButtonBack.Visibility = Visibility.Visible;
             BonusGrid.ItemsSource = _bonusService.Get(rankId);
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
