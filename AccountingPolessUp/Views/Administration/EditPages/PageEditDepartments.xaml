@@ -32,25 +32,25 @@ Background="Transparent"
 
         <Border Grid.ColumnSpan="6" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
         <Grid Grid.Row="1" Grid.Column="0">
-            <TextBox Margin="1,0,1,20" x:Name="FullName" FontSize="14" materialDesign:HintAssist.Hint="Full Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="AccountAlert" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding FullName}"/>
+            <TextBox Margin="1,0,1,20" x:Name="FullName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="AccountAlert" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding FullName}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
-            <TextBox Margin="1,0,1,20" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="FormatListBulleted" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
+            <TextBox Margin="1,0,1,20" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="FormatListBulleted" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2">
             <DatePicker x:Name="DateStart" FontSize="14" Margin="1,0,1,12"
-  materialDesign:HintAssist.Hint="Date Start"
+  materialDesign:HintAssist.Hint="Дата начала"
   materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="3">
             <DatePicker x:Name="DateEnd" FontSize="14" Margin="1,0,1,12"
-  materialDesign:HintAssist.Hint="Date End"
+  materialDesign:HintAssist.Hint="Дата окончания"
   materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="4">
-            <TextBox Margin="1,0,1,20" x:Name="Status" FontSize="14" materialDesign:HintAssist.Hint="Status" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Status}"/>
+            <TextBox Margin="1,0,1,20" x:Name="Status" FontSize="14" materialDesign:HintAssist.Hint="Статус" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Status}"/>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="5">
             <Button Click="OpenOrganization_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
@@ -58,7 +58,7 @@ Background="Transparent"
             </Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
-            <ComboBox x:Name="BoxOrganizations" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Organizations}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Organization" Margin="1,0,1,0"></ComboBox>
+            <ComboBox x:Name="BoxOrganizations" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Organizations}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация" Margin="1,0,1,0"></ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
