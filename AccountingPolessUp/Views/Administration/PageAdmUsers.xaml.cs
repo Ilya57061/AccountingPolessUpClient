@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Implementations;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System;
@@ -27,7 +28,8 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmUsers()
         {
             InitializeComponent();
-            dataGrid.ItemsSource = _userService.Get();
+
+            DataGridUpdater.UpdateDataGrid(this, _userService.Get());
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
@@ -37,16 +39,17 @@ namespace AccountingPolessUp.Views.Administration
                 for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
                     User user = dataGrid.SelectedItems[i] as User;
-                    if (user!= null)
+                    if (user != null)
                     {
                         _userService.Delete(user.Id);
                     }
                 }
             }
+            DataGridUpdater.UpdateDataGrid(this, _userService.Get());
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditUser();
+            EditFrame.Content = new PageEditUser(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -55,7 +58,7 @@ namespace AccountingPolessUp.Views.Administration
                 User user = dataGrid.SelectedItems[i] as User;
                 if (user != null)
                 {
-                    EditFrame.Content = new PageEditUser(user);
+                    EditFrame.Content = new PageEditUser(user, this);
 
                 }
             }

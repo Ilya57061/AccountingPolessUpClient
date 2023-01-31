@@ -2,20 +2,9 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -24,20 +13,24 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditUser : Page
     {
+      
         FormValidator validator = new FormValidator();
         UserService _userService = new UserService();
         User user;
-        public PageEditUser(User user)
+        Page parent;
+        public PageEditUser(User user, Page page)
         {
             InitializeComponent();
+            parent = page;
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             this.user = user;
             DataContext = user;
         }
-        public PageEditUser()
+        public PageEditUser(Page page)
         {
             InitializeComponent();
+            parent = page;
             this.user = new User();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
@@ -50,10 +43,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (validator.AreAllElementsFilled(this))
                     throw new Exception();
                 _userService.Update(user);
+                DataGridUpdater.UpdateDataGrid(parent, _userService.Get());
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Заполните все поля");
             }
          
@@ -66,6 +59,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (validator.AreAllElementsFilled(this))
                     throw new Exception();
                 _userService.Create(user);
+                DataGridUpdater.UpdateDataGrid(parent,_userService.Get());
             }
             catch (Exception)
             {
