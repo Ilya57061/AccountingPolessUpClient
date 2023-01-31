@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditCustomer : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         CustomerService _customerService = new CustomerService();
         Customer _customer;
         public PageEditCustomer(Customer customer)
@@ -46,7 +46,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _customerService.Update(_customer);
             }
@@ -60,7 +60,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _customerService.Create(_customer);
             }

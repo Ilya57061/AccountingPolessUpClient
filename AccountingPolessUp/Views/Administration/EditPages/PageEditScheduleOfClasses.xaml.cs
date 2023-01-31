@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditScheduleOfClasses : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         ScheduleOfClassesService _scheduleService = new ScheduleOfClassesService();
         TrainingCoursesService _trainingCoursesService = new TrainingCoursesService();
         List<TrainingCourses> _trainingCourses;
@@ -58,7 +58,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _scheduleService.Update(_schedule);
             }
@@ -73,7 +73,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _scheduleService.Create(_schedule);
             }
@@ -90,6 +90,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _schedule.DateEnd = DateTime.Parse(DateEnd.Text);
             _schedule.WorkSpaceLink = WorkSpaceLink.Text;
             _schedule.TrainingCoursesId = _trainingCourses.FirstOrDefault(i => i == BoxTrainingCourses.SelectedItem).Id;
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditVacancy : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         VacancyService _vacancyService = new VacancyService();
         StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
         List<StagesOfProject> _stagesOfProjects;
@@ -58,7 +58,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _vacancyService.Update(_vacancy);
             }
@@ -73,7 +73,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _vacancyService.Create(_vacancy);
             }
@@ -93,6 +93,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _vacancy.Budjet = int.Parse(Budjet.Text);
             _vacancy.StagesOfProjectId = _stagesOfProjects.FirstOrDefault(i=>i==BoxStagesOfProject.SelectedItem).Id;
             _vacancy.isOpened = bool.Parse(IsOpened.Text);
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

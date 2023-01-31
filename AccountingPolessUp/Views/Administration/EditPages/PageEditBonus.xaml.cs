@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditBonus : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         BonusService _bonusService = new BonusService();
         RankService _RankService = new RankService();
         List<Rank> _Ranks;
@@ -58,7 +58,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _bonusService.Update(_bonus);
             }
@@ -72,7 +72,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _bonusService.Create(_bonus);
             }

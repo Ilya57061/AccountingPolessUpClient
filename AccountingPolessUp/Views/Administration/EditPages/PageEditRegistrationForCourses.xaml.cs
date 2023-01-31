@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditRegistrationForCourses : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         RegistrationForCoursesService _registrationForCoursesService = new RegistrationForCoursesService();
         List<Participants> _participants;
         ParticipantsService _participantsService = new ParticipantsService();
@@ -62,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _registrationForCoursesService.Update(_registrationForCourses);
             }
@@ -76,7 +76,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _registrationForCoursesService.Create(_registrationForCourses);
             }
@@ -96,6 +96,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

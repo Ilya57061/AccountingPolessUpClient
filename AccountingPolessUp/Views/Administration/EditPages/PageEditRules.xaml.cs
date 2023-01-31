@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditRules : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         RegulationService _regulationService = new RegulationService();
         OrganizationService _organizationService=new OrganizationService();
         List<Organization> _organizations;
@@ -54,7 +54,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _regulationService.Update(_regulation);
             }
@@ -69,7 +69,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _regulationService.Create(_regulation);
             }
