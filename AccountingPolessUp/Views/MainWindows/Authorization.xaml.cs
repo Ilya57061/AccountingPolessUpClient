@@ -3,6 +3,7 @@ using AccountingPolessUp.Models;
 using AccountingPolessUp.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,5 +64,6 @@ namespace AccountingPolessUp
             if (Password.Password.Length>0&&Login.Text.Length>0) Enter.IsEnabled= true;
             else Enter.IsEnabled= false;
         }
+      
     }
 }

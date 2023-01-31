@@ -2,6 +2,7 @@
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,16 +37,15 @@ namespace AccountingPolessUp
                 UserName.Text = _participant.Individuals.FIO.ToString();
                 InfoDateStart.Text = "Дата вступления: " + _participant.DateEntry.ToString("d");
                 InfoDateStart.Text = "Дата вступления: " + _participant.DateEntry.ToString("d");
-                InfoRank.Text = "Ранг: " + _participant.Mmr.ToString() + " Mmr";
                 SetBasicRatingBar();
                 InfoDayCount.Text = "Дата вступления: " + (DateTime.Now - _participant.DateEntry).Days + " Дней";
-                InfoGitHub.Text = "GitHub: " + _participant.GitHub.ToString();
+                InfoGitHub.Text = _participant.GitHub.ToString();
 
                 InfoMale.Text = "Гендер: " + _participant.Individuals.Gender.ToString();
                 InfoBirthday.Text = "Дата рождения: " + _participant.Individuals.DateOfBirth.ToString("d");
                 InfoPhone.Text = "Мобильный телефон: " + _participant.Individuals.Phone.ToString();
-                InfoMail.Text = "Электронная почта: " + _participant.Individuals.Mail.ToString();
-                InfoSocial.Text = "Социальная сеть: " + _participant.Individuals.SocialNetwork.ToString();
+                InfoMail.Text = _participant.Individuals.Mail.ToString();
+                InfoSocial.Text = _participant.Individuals.SocialNetwork.ToString();
 
                 InfoUniversity.Text = "Учебное заведение: " + _student.University.ToString();
                 InfoStudyNumber.Text = "Студенческий билет: " + _student.StudentCard.ToString();
@@ -55,24 +55,52 @@ namespace AccountingPolessUp
             catch (Exception)
             {
 
-                UserName.Text="Нет данных";
+                UserName.Text = "Нет данных";
             }
-           
+
         }
 
         private void SetBasicRatingBar()
         {
-            if (_participant.Mmr >= 2000 && _participant.Mmr < 4000)
-                BasicRatingBar.Value = 1;
-            else if (_participant.Mmr >= 4000 && _participant.Mmr < 6000)
-                BasicRatingBar.Value = 2;
-            else if (_participant.Mmr >= 6000 && _participant.Mmr < 8000)
-                BasicRatingBar.Value = 3;
-            else if (_participant.Mmr >= 8000 && _participant.Mmr < 10000)
-                BasicRatingBar.Value = 4;
-            else if (_participant.Mmr >= 10000)
-                BasicRatingBar.Value = 5;
-            else BasicRatingBar.Value = 0;
+            if (_participant.Mmr >= 100 && _participant.Mmr < 1000)
+            { BasicRatingBar.Value = 2; InfoRank.Text = "Ранг: Джун"; }
+            else if (_participant.Mmr >= 1000 && _participant.Mmr < 4000)
+            { BasicRatingBar.Value = 3; InfoRank.Text = "Ранг: Медл"; }
+            else if (_participant.Mmr >= 4000)
+            { BasicRatingBar.Value = 4; InfoRank.Text = "Ранг: Сеньер"; }
+            else
+            {
+                BasicRatingBar.Value = 1; InfoRank.Text = "Ранг: Стажер";
+            }
+        }
+        private void HyperlinkGitHub_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start(_participant.GitHub);
+
+            }
+            catch (Exception)
+            {
+                HyperlinkGitHub.IsEnabled = false;
+                InfoGitHub.Foreground = new SolidColorBrush(Colors.Gray);
+            }
+        }
+        private void HyperlinkMail_Click(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText(_participant.Individuals.Mail);
+        }
+        private void HyperlinkSocial_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Process.Start(_participant.Individuals.SocialNetwork);
+            }
+            catch (Exception)
+            {
+                HyperlinkSocial.IsEnabled = false;
+                InfoSocial.Foreground = new SolidColorBrush(Colors.Gray);
+            }
         }
     }
 }

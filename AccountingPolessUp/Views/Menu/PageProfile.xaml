@@ -42,12 +42,14 @@
                             <TextBlock Margin="0 5" x:Name="InfoDayCount" FontSize="16" FontWeight="DemiBold" Text="Стаж: 11 дней"></TextBlock>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Margin="0 5" x:Name="InfoRank" FontSize="16" FontWeight="DemiBold" Text="Ранг: Джун"></TextBlock>
-                                <materialDesign:RatingBar Margin="20 0" VerticalAlignment="Center"  x:Name="BasicRatingBar" IsReadOnly="True"  Value="1" />
+                                <materialDesign:RatingBar Margin="20 0" VerticalAlignment="Center"  x:Name="BasicRatingBar" IsReadOnly="True"  Value="0" Width="95" />
                             </StackPanel>
                             <TextBlock Margin="0 5" x:Name="InfoPosition" FontSize="16" FontWeight="DemiBold" Text="Должности: Руководитель Волонтерского отдела, Тестировщик"></TextBlock>
                             <TextBlock Margin="0 5" x:Name="InfoCountEndProject" FontSize="16" FontWeight="DemiBold" Text="Оконченные проекты: 3 (а можно через запятую перечислить названия)"></TextBlock>
                             <TextBlock Margin="0 5" x:Name="InfoCountStartProject" FontSize="16" FontWeight="DemiBold" Text="Текущие проекты: 1 (а можно через запятую перечислить названия)"></TextBlock>
-                            <TextBlock Margin="0 5" x:Name="InfoGitHub" FontSize="16" FontWeight="DemiBold" Text="GitHub: https://github.com/Stanislavcod/StudentAccountingServer"></TextBlock>
+                            <TextBlock Margin="0 5"  FontSize="16" FontWeight="DemiBold">
+                                 <Hyperlink x:Name="HyperlinkGitHub" Foreground="#3f3f3f" Click="HyperlinkGitHub_Click">GitHub: <Run x:Name="InfoGitHub" Text="Ссылка на GitHub"></Run></Hyperlink>
+                            </TextBlock>
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Margin="3 0" BorderThickness="0">
@@ -58,8 +60,18 @@
                             <TextBlock Margin="0 5" x:Name="InfoMale" FontSize="16" FontWeight="DemiBold" Text="Гендер: Мужчина"></TextBlock>
                             <TextBlock Margin="0 5" x:Name="InfoBirthday" FontSize="16" FontWeight="DemiBold" Text="Дата рождения: 10.01.2002"></TextBlock>
                             <TextBlock Margin="0 5" x:Name="InfoPhone" FontSize="16" FontWeight="DemiBold" Text="Мобильный телефон: +375 (29) 234-23-54"></TextBlock>
-                            <TextBlock Margin="0 5" x:Name="InfoMail" FontSize="16" FontWeight="DemiBold" Text="Электронная почта: ivanov@gmail.com"></TextBlock>
-                            <TextBlock Margin="0 5" x:Name="InfoSocial" FontSize="16" FontWeight="DemiBold" Text="Социальные сети: https://vk.com/id158119349"></TextBlock>
+                            <TextBlock Margin="0 5"  FontSize="16" FontWeight="DemiBold">
+                                <Hyperlink Foreground="#3f3f3f" Click="HyperlinkMail_Click">Электронная почта: <Run x:Name="InfoMail" Text="Почта"></Run></Hyperlink>
+                                <TextBlock.ToolTip>
+                                    <ToolTip Content="Скопировать"/>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
+                            <TextBlock Margin="0 5"  FontSize="16" FontWeight="DemiBold">
+                                <Hyperlink Foreground="#3f3f3f" x:Name="HyperlinkSocial" Click="HyperlinkSocial_Click">Социальная сеть: <Run x:Name="InfoSocial" Text="Соц.сеть"></Run></Hyperlink>
+                                <TextBlock.ToolTip>
+                                    <ToolTip Content="Перейти"/>
+                                </TextBlock.ToolTip>
+                            </TextBlock>
 
                         </StackPanel>
                     </GroupBox>
