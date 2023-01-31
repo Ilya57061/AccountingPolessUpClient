@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditWork : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         ParticipantsService _participantsService = new ParticipantsService();
         PositionService _positionsService = new PositionService();
         EmploymentService _employmentService = new EmploymentService();
@@ -63,7 +63,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _employmentService.Update(employment);
             }
@@ -77,7 +77,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _employmentService.Create(employment);
             }
@@ -91,6 +91,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             employment.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipants.SelectedItem).Id;
             employment.PositionId = _positions.FirstOrDefault(i => i == BoxPosition.SelectedItem).Id;
             employment.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

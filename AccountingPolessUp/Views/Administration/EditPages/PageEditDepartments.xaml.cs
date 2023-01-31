@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditDepartments : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         DepartmentService _departmentService = new DepartmentService();
         OrganizationService _organizationService = new OrganizationService();
         Department _department;
@@ -57,7 +57,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _departmentService.Update(_department);
             }
@@ -71,7 +71,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _departmentService.Create(_department);
             }
@@ -88,6 +88,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _department.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
             _department.Status = Status.Text;
             _department.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganizations.SelectedItem).Id;
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

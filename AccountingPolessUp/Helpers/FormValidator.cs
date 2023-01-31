@@ -5,9 +5,9 @@ using System.Windows.Media;
 
 namespace AccountingPolessUp.Helpers
 {
-    public class FormValidator
+    public static class FormValidator
     {
-        public bool AreAllElementsFilled(DependencyObject parent)
+        public static bool AreAllElementsFilled(DependencyObject parent)
         {
             int childrenCount = VisualTreeHelper.GetChildrenCount(parent);
 

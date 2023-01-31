@@ -42,10 +42,10 @@ Background="Transparent"
             <TextBox Margin="1,0,1,20"  x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2">
-            <TextBox Margin="1,0,1,20" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="ImageDescription" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
+            <TextBox Margin="1,0,1,20" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="3">
-            <TextBox Margin="1,0,1,20" x:Name="Link" FontSize="14" materialDesign:HintAssist.Hint="Ссылка" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="FolderInformation" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Link}"/>
+            <TextBox Margin="1,0,1,20" x:Name="Link" FontSize="14" materialDesign:HintAssist.Hint="Ссылка" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Link" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Link}"/>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">

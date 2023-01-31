@@ -13,8 +13,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditUser : Page
     {
-      
-        FormValidator validator = new FormValidator();
+        
         UserService _userService = new UserService();
         User user;
         Page parent;
@@ -40,7 +39,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _userService.Update(user);
                 DataGridUpdater.UpdateDataGrid(parent, _userService.Get());
@@ -56,7 +55,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _userService.Create(user);
                 DataGridUpdater.UpdateDataGrid(parent,_userService.Get());

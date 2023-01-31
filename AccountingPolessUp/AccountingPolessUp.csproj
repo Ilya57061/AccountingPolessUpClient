@@ -84,6 +84,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\DataGridUpdater.cs" />
     <Compile Include="Helpers\FormValidator.cs" />
+    <Compile Include="Helpers\NumberValidator.cs" />
     <Compile Include="Implementations\ApplicationsInTheProjectService.cs" />
     <Compile Include="Implementations\BonusService.cs" />
     <Compile Include="Implementations\CustomerService.cs" />

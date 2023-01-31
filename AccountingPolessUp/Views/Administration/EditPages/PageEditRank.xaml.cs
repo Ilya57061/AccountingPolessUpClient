@@ -24,9 +24,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditRank : Page
     {
 
-        FormValidator validator = new FormValidator();
+
         RankService _RankService = new RankService();
-        OrganizationService _organizationService=new OrganizationService();
+        OrganizationService _organizationService = new OrganizationService();
         List<Organization> _organizations;
         Rank _Rank;
         public PageEditRank(Rank Rank)
@@ -37,8 +37,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _Rank = Rank;
             _organizations = _organizationService.Get();
             DataContext = Rank;
-            BoxOrganization.ItemsSource= _organizations;
-            BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o=>o.Id==Rank.OrganizationId));
+            BoxOrganization.ItemsSource = _organizations;
+            BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o => o.Id == Rank.OrganizationId));
         }
         public PageEditRank()
         {
@@ -54,7 +54,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _RankService.Update(_Rank);
             }
@@ -68,7 +68,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _RankService.Create(_Rank);
             }
@@ -85,19 +85,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             _Rank.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganization.SelectedItem).Id;
             _Rank.RankName = RankName.Text;
-            _Rank.Description=Description.Text;
+            _Rank.Description = Description.Text;
             _Rank.MaxMmr = int.Parse(MaxMmr.Text);
-            _Rank.MinMmr=int.Parse(MinMmr.Text);
+            _Rank.MinMmr = int.Parse(MinMmr.Text);
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            int result;
-            if (!int.TryParse(e.Text, out result))
-            {
-                e.Handled = true;
-            }
+            NumberValidator.Validator(e);
         }
-
-
     }
 }

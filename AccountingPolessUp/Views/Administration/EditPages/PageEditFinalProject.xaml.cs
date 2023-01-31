@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditFinalProject : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         FinalProjectService _finalProjectService = new FinalProjectService();
         EmploymentService _employmentService = new EmploymentService();
         List<Employment> _employments;
@@ -58,7 +58,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _finalProjectService.Update(_finalProject);
                             }
@@ -72,7 +72,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _finalProjectService.Create(_finalProject);
             }
@@ -91,6 +91,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _finalProject.GitHub=GitHub.Text;
             _finalProject.Links= Links.Text;
 
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

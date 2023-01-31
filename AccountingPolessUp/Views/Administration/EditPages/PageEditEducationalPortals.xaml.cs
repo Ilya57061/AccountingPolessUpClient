@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditEducationalPortals : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
         List<Department> _department;
         DepartmentService _departmentService = new DepartmentService();
@@ -55,7 +55,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _educationalPortalsService.Update(_educationalPortals);
             }
@@ -69,7 +69,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _educationalPortalsService.Create(_educationalPortals);
             }

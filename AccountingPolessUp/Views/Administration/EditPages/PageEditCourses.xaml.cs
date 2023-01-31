@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditCourses : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         TrainingCoursesService _coursesService = new TrainingCoursesService();
         TrainingCourses _cours;
         public PageEditCourses(TrainingCourses cours)
@@ -47,7 +47,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _coursesService.Update(_cours);
             }
@@ -61,7 +61,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _coursesService.Create(_cours);
             }

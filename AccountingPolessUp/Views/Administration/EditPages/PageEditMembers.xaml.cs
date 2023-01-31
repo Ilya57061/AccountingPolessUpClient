@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditMembers : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         ParticipantsService _participantsService = new ParticipantsService();
         UserService _userService = new UserService();
         IndividualsService _individualsService = new IndividualsService();
@@ -63,7 +63,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _participantsService.Update(participants);
             }
@@ -77,7 +77,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _participantsService.Create(participants);
             }
@@ -102,6 +102,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             participants.DateExit = DateExit.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateExit.Text);
             participants.Status = Status.Text;
             participants.GitHub = GitHub.Text;
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

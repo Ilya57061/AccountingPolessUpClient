@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditIndividuals : Page // физ лицо
     {
 
-        FormValidator validator = new FormValidator();
+        
         IndividualsService _individualsService = new IndividualsService();
         Individuals _individuals;
         public PageEditIndividuals(Individuals individuals)
@@ -48,7 +48,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _individualsService.Update(_individuals);
             }
@@ -62,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _individualsService.Create(_individuals);
             }
@@ -78,6 +78,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _individuals.Mail = Mail.Text;
             _individuals.Gender= Gender.Text;
             _individuals.SocialNetwork= SocialNetwork.Text;
+            _individuals.DateOfBirth= DateTime.Parse(DateOfBirth.Text);
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }
