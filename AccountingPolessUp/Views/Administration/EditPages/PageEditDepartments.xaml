@@ -32,7 +32,7 @@ Background="Transparent"
 
         <Border Grid.ColumnSpan="6" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
         <Grid Grid.Row="1" Grid.Column="0">
-            <TextBox Margin="1,0,1,20" x:Name="FullName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="AccountAlert" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding FullName}"/>
+            <TextBox Margin="1,0,1,20" x:Name="FullName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Account" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding FullName}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <TextBox Margin="1,0,1,20" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="FormatListBulleted" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
