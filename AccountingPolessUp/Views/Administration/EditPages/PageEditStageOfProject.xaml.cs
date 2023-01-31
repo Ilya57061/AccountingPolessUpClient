@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditStageOfProject : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
         ProjectService _projectService = new ProjectService();
         List<Project> _project;
@@ -56,7 +56,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _stagesOfProjectService.Update(_stagesOfProject);
             }
@@ -71,7 +71,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _stagesOfProjectService.Create(_stagesOfProject);
             }
@@ -89,6 +89,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _stagesOfProject.DateStart = DateTime.Parse(DateEnd.Text);
             _stagesOfProject.Status = Status.Text;
             _stagesOfProject.ProjectId = _project.FirstOrDefault(i => i == BoxProject.SelectedItem).Id;
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

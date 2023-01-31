@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditApplicationsInTheProject : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         ApplicationsInTheProjectService _applicationService = new ApplicationsInTheProjectService();
         List<Vacancy> _vacancy;
         VacancyService _vacancyService = new VacancyService();
@@ -78,7 +78,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _applicationService.Update(_applications);
             }
@@ -93,7 +93,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _applicationService.Create(_applications);
 
@@ -105,23 +105,19 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
-            try
-            {
-                _applications.WorkStatus = WorkStatus.Text;
-                _applications.DateEntry = DateTime.Parse(DateEntry.Text);
-                _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
-                _applications.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Некорректный ввод данных", "Ошибка");
-            }
-
+            _applications.WorkStatus = WorkStatus.Text;
+            _applications.DateEntry = DateTime.Parse(DateEntry.Text);
+            _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
+            _applications.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

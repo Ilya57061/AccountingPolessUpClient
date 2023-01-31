@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditStudents : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         StudentService _studentService = new StudentService();
         IndividualsService _individualsService=new IndividualsService();
         List<Individuals> _individuals;
@@ -55,7 +55,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _studentService.Update(_student);
             }
@@ -70,7 +70,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _studentService.Create(_student);
             }
@@ -87,6 +87,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _student.IndividualsId= _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
             _student.CourseNumber = int.Parse(CourseNumber.Text);
             _student.University=University.Text;
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

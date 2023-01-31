@@ -51,16 +51,16 @@ Background="Transparent"
             <TextBox Margin="1,0,1,20" x:Name="GitHub" FontSize="14" materialDesign:HintAssist.Hint="GitHub" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Github" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding GitHub}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="4">
-            <TextBox Margin="1,0,1,20" x:Name="Links" FontSize="14" materialDesign:HintAssist.Hint="Ссылки" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Web" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Links}"/>
+            <TextBox Margin="1,0,1,20" x:Name="Links" FontSize="14" materialDesign:HintAssist.Hint="Ссылки" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Link" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Links}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
-            <DatePicker x:Name="DateStart" FontSize="14" Margin="1,0,1,12"
+            <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12"
  materialDesign:HintAssist.Hint="Дата начала"
  materialDesign:TextFieldAssist.HasClearButton="True"
  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="6">
-            <DatePicker x:Name="DateEnd" FontSize="14" Margin="1,0,1,12" 
+            <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12" 
  materialDesign:HintAssist.Hint="Дата окончания"
  materialDesign:TextFieldAssist.HasClearButton="True"
  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>

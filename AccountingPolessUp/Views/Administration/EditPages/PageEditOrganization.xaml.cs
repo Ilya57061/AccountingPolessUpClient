@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditOrganization : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         OrganizationService _organizationService = new OrganizationService();
         Organization _organization;
         public PageEditOrganization(Organization organization)
@@ -47,7 +47,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _organizationService.Update(_organization);
             }
@@ -61,7 +61,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _organizationService.Create(_organization);
             }
@@ -77,6 +77,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _organization.Contacts = Contacts.Text;
             _organization.WebSite = Website.Text;
             _organization.FoundationDate = DateTime.Parse(FoundationDate.Text);
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

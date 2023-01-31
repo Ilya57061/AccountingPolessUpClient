@@ -33,10 +33,10 @@ Background="Transparent"
 
         <Border Grid.ColumnSpan="7" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
         <Grid Grid.Row="1">
-            <DatePicker x:Name="DateStart" FontSize="14" Margin="1, 0, 1, 12" materialDesign:HintAssist.Hint="Дата начала" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}" />
+            <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1, 0, 1, 12" materialDesign:HintAssist.Hint="Дата начала" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
-            <DatePicker x:Name="DateEnd" FontSize="14" Margin="1, 0, 1, 12" materialDesign:HintAssist.Hint="Дата окончания" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}" />
+            <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1, 0, 1, 12" materialDesign:HintAssist.Hint="Дата окончания" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2">
             <ComboBox x:Name="BoxPosition" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Position}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Позиция" Margin="1,0,1,0"></ComboBox>
@@ -53,7 +53,7 @@ Background="Transparent"
             <TextBox Margin="1, 0, 1, 20" x:Name="StatusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание статуса" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding StatusDescription}" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
-            <TextBox Margin="1, 0, 1, 20" x:Name="IdMentor" FontSize="14" materialDesign:HintAssist.Hint="Mentor Id" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Person" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding IdMentor}" />
+            <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="1, 0, 1, 20" x:Name="IdMentor" FontSize="14" materialDesign:HintAssist.Hint="Mentor Id" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Person" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding IdMentor}" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="6">
             <ComboBox x:Name="BoxParticipants" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Participants}" DisplayMemberPath="IndividualsId"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Участник" Margin="1,0,1,0"></ComboBox>

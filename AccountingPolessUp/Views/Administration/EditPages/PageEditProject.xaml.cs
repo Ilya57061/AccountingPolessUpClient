@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditProject : Page
     {
 
-        FormValidator validator = new FormValidator();
+        
         ProjectService _projectService = new ProjectService();
         CustomerService _customerService = new CustomerService();
 
@@ -56,7 +56,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _projectService.Update(_project);
             }
@@ -71,7 +71,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (validator.AreAllElementsFilled(this))
+                if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _projectService.Create(_project);
             }
@@ -94,6 +94,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _project.CustomerId=_customers.FirstOrDefault(i=>i==BoxCustomer.SelectedItem).Id;
             _project.DateStart = DateTime.Parse(DateStart.Text);
             _project.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

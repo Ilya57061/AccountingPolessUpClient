@@ -46,7 +46,7 @@ Background="Transparent"
                         <ComboBox Margin="0 0 10 0" VerticalAlignment="Center" IsReadOnly="False" IsEditable="True" x:Name="ComboORG" SelectedItem="{Binding Organization}" DisplayMemberPath="Fullname" Width="auto" FontSize="16" materialDesign:HintAssist.Hint="Организация"></ComboBox>
 
                         <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxSearch" FontSize="16" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxMinMmr" FontSize="16" materialDesign:HintAssist.Hint="Минимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center"  x:Name="TextBoxMinMmr" FontSize="16" materialDesign:HintAssist.Hint="Минимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxMaxMmr" FontSize="16" materialDesign:HintAssist.Hint="Максимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                         <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
