@@ -39,8 +39,10 @@ Background="Transparent"
                 </DataGrid.Columns>
             </DataGrid>
             <Grid Grid.Row="0" Margin="10" x:Name="dg1">
-                <StackPanel Orientation="Vertical">
-                    <TextBlock Margin="0 0 0 20" Text="РАНГИ :" FontSize="20" HorizontalAlignment="Center"></TextBlock>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                    <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
+                        <TextBlock x:Name="LabelRanks" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Ранги"></TextBlock>
+                    </StackPanel>
 
                     <StackPanel Margin="0" VerticalAlignment="Center" Orientation="Horizontal">
                         <ComboBox Margin="0 0 10 0" VerticalAlignment="Center" IsReadOnly="False" IsEditable="True" x:Name="ComboORG" SelectedItem="{Binding Organization}" DisplayMemberPath="Fullname" Width="auto" FontSize="16" materialDesign:HintAssist.Hint="Организация"></ComboBox>

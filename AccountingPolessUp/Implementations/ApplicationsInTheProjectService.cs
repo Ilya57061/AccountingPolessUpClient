@@ -31,7 +31,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("WorkStatus", $"{model.WorkStatus}");
                 reqparm.Add("DateEntry", $"{model.DateEntry}");
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
-                reqparm.Add("VacancyId ", $"{model.VacancyId}");
+                reqparm.Add("VacancyId", $"{model.VacancyId}");
             
 
                 web.UploadValues("https://localhost:7273/CreateAppInTheProject", "POST", reqparm);
@@ -47,7 +47,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("WorkStatus", $"{model.WorkStatus}");
                 reqparm.Add("DateEntry", $"{model.DateEntry}");
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
-                reqparm.Add("VacancyId ", $"{model.VacancyId}");
+                reqparm.Add("VacancyId", $"{model.VacancyId}");
 
                 web.UploadValues("https://localhost:7273/UpdateAppInTheProject", "PUT", reqparm);
 

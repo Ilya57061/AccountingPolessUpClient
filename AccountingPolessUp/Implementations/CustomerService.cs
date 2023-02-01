@@ -47,7 +47,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("FullName", $"{model.FullName}");
                 reqparm.Add("Address", $"{model.Address}");
-                reqparm.Add("Contracts", $"{model.Contacts}");
+                reqparm.Add("Contacts", $"{model.Contacts}");
                 reqparm.Add("WebSite", $"{model.WebSite}");
                 reqparm.Add("Description", $"{model.Description}");
                 web.UploadValues("https://localhost:7273/UpdateCustomer", "PUT", reqparm);

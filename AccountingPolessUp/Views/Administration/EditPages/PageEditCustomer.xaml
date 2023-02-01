@@ -32,7 +32,7 @@ Background="Transparent"
         <Border Grid.ColumnSpan="7" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
 
         <Grid Grid.Row="1" Grid.Column="0">
-            <TextBox Margin="1,0,1,20"  x:Name="Fullname" FontSize="14" materialDesign:HintAssist.Hint="Полное название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Fullname}"/>
+            <TextBox Margin="1,0,1,20"  x:Name="Fullname" FontSize="14" materialDesign:HintAssist.Hint="Полное название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding FullName}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <TextBox Margin="1,0,1,20" x:Name="Address" FontSize="14" materialDesign:HintAssist.Hint="Адрес" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="MapMarker" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Address}"/>

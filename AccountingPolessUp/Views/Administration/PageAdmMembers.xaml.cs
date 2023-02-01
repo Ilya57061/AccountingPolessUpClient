@@ -29,17 +29,17 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmMembers()
         {
             InitializeComponent();
-            membersGrid.ItemsSource = _participantsService.Get();
+            dataGrid.ItemsSource = _participantsService.Get();
         }
 
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (membersGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                for (int i = 0; i < membersGrid.SelectedItems.Count; i++)
+                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
                 {
-                    Participants participants = membersGrid.SelectedItems[i] as Participants;
+                    Participants participants = dataGrid.SelectedItems[i] as Participants;
                     if (participants != null)
                     {
                         
@@ -54,9 +54,9 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < membersGrid.SelectedItems.Count; i++)
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
             {
-                Participants participants = membersGrid.SelectedItems[i] as Participants;
+                Participants participants = dataGrid.SelectedItems[i] as Participants;
                 if (participants != null)
                 {
                     EditFrame.Content = new PageEditMembers(participants);

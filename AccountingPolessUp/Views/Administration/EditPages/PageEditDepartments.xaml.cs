@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditDepartments : Page
     {
 
-        
+
         DepartmentService _departmentService = new DepartmentService();
         OrganizationService _organizationService = new OrganizationService();
         Department _department;
@@ -34,11 +34,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _department = department;
             _organizations = _organizationService.Get();
+            _department = department;
             DataContext = department;
             BoxOrganizations.ItemsSource = _organizations;
-            BoxOrganizations.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o => o.Id == department.OrganizationId));
+            BoxOrganizations.SelectedItem = _organizations.FirstOrDefault(i => i.Id == department.OrganizationId);
         }
         public PageEditDepartments()
         {

@@ -58,7 +58,7 @@ Background="Transparent"
             </Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
-            <ComboBox x:Name="BoxOrganizations" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Organizations}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация" Margin="1,0,1,0"></ComboBox>
+            <ComboBox x:Name="BoxOrganizations" IsEditable="True" IsReadOnly="False"  DisplayMemberPath="Fullname"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация" Margin="1,0,1,0"></ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">

@@ -56,10 +56,10 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
+                reqparm.Add("Id", $"{model.Id}");
                 reqparm.Add("BonusName", $"{model.BonusName}");
                 reqparm.Add("BonusDescription", $"{model.BonusDescription}");
-                reqparm.Add("RankId ", $"{model.RankId}");
+                reqparm.Add("RankId", $"{model.RankId}");
                 web.UploadValues("https://localhost:7273/UpdateBonus", "PUT", reqparm);
 
             }
