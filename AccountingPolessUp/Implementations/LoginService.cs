@@ -24,8 +24,9 @@ namespace AccountingPolessUp.Implementations
                     reqparm.Add("Password", $"{loginModel.Password}");
                     var response = web.UploadValues("https://localhost:7273/Login", "POST", reqparm);
                     var responseString = Encoding.Default.GetString(response);
-                    User user = JsonConvert.DeserializeObject<User>(responseString);
-                    return user;
+                    UserToken user = JsonConvert.DeserializeObject<UserToken>(responseString);
+                    TokenManager.AccessToken = user.Token;
+                    return user.User;
                 }
             }
             catch (Exception)

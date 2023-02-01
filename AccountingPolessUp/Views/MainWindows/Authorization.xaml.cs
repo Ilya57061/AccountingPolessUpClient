@@ -28,9 +28,9 @@ namespace AccountingPolessUp
         {
             InitializeComponent();
              Enter.IsEnabled = false;
-            WorkWindow mainWindow = new WorkWindow(new User { Id=1, IsAdmin=true});
-            mainWindow.Show();
-            this.Close();
+            //WorkWindow mainWindow = new WorkWindow(new User { Id=1, IsAdmin=true});
+            //mainWindow.Show();
+            //this.Close();
         }
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)

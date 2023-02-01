@@ -16,6 +16,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
+                web.Headers.Add("Authorization", "Bearer "+ TokenManager.AccessToken);
                 string url = $"https://localhost:7273/GetUsers";
                 var json = web.DownloadString(url);
                 List<User> Info = JsonConvert.DeserializeObject<List<User>>(json);
