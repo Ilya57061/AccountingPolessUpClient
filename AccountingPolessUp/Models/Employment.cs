@@ -1,5 +1,4 @@
-﻿
-using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 
@@ -18,5 +17,6 @@ namespace AccountingPolessUp.Models
         public List<FinalProject> FinalProjects { get; set; }
         public Position Position { get; set; }
         public int PositionId { get; set; }
+
     }
 }

@@ -53,10 +53,10 @@ Background="Transparent"
             <TextBox Margin="1, 0, 1, 20" x:Name="StatusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание статуса" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding StatusDescription}" />
         </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
-            <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="1, 0, 1, 20" x:Name="IdMentor" FontSize="14" materialDesign:HintAssist.Hint="Mentor Id" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Person" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding IdMentor}" />
+            <ComboBox x:Name="BoxMentors" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ментор" Margin="1,0,1,0"></ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="6">
-            <ComboBox x:Name="BoxParticipants" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Participants}" DisplayMemberPath="IndividualsId"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Участник" Margin="1,0,1,0"></ComboBox>
+            <ComboBox x:Name="BoxParticipants" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Участник" Margin="1,0,1,0"></ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">

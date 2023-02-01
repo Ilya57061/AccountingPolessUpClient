@@ -33,9 +33,9 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding GitHub, UpdateSourceTrigger=PropertyChanged}" Header="GitHub" />
-                        <DataGridTextColumn Binding="{Binding Links, UpdateSourceTrigger=PropertyChanged}" Header="Ссылки" />
-                        <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged}" Header="Дата начала" />
-                        <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged}" Header="Дата окончания" />
+                        <DataGridTextColumn Binding="{Binding Links, UpdateSourceTrigger=PropertyChanged}" Header="Ссылка" />
+                        <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата начала" />
+                        <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата окончания" />
                         <DataGridTextColumn Binding="{Binding Employment.StatusDescription, UpdateSourceTrigger=PropertyChanged}" Header="Тип занятости" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>

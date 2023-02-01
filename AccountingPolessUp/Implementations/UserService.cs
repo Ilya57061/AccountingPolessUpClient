@@ -52,7 +52,6 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("Login", $"{model.Login}");
                 reqparm.Add("Password", $"{model.Password}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
@@ -66,6 +65,7 @@ namespace AccountingPolessUp.Implementations
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("Login", $"{model.Login}");
+                reqparm.Add("Password", $"{model.Password}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
                 web.UploadValues("https://localhost:7273/UpdateUser", "PUT", reqparm);
 

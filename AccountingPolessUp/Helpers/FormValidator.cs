@@ -17,7 +17,7 @@ namespace AccountingPolessUp.Helpers
 
                 if (child is PasswordBox passwordBox && string.IsNullOrEmpty(passwordBox.Password)
                     || child is ComboBox comboBox && comboBox.SelectedItem == null
-                    || child is TextBox textBox && string.IsNullOrEmpty(textBox.Text)
+                    || child is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text)
                     || child is DatePicker datePicker && string.IsNullOrEmpty(datePicker.Text))
                 {
                     return true;

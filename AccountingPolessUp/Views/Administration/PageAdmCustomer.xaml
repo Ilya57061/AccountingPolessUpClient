@@ -33,7 +33,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding FullName, UpdateSourceTrigger=PropertyChanged}" Header="Полное наименование" />
                         <DataGridTextColumn Binding="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Header="Адрес" />
                         <DataGridTextColumn Binding="{Binding Contacts, UpdateSourceTrigger=PropertyChanged}" Header="Контакты" />
-                        <DataGridTextColumn Binding="{Binding WebSite, UpdateSourceTrigger=PropertyChanged}" Header="Вэб-сайт" />
+                        <DataGridTextColumn Binding="{Binding WebSite, UpdateSourceTrigger=PropertyChanged}" Header="Веб-сайт" />
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
