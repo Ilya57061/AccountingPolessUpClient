@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditCustomer : Page
     {
 
-        
+
         CustomerService _customerService = new CustomerService();
         Customer _customer;
         public PageEditCustomer(Customer customer)
@@ -33,6 +33,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _customer = customer;
+            DataContext = customer;
         }
         public PageEditCustomer()
         {

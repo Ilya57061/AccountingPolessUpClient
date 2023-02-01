@@ -83,6 +83,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
+            
             _bonus.BonusName = BonusName.Text;
             _bonus.BonusDescription = BonusDescription.Text;
             _bonus.RankId = _Ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id;

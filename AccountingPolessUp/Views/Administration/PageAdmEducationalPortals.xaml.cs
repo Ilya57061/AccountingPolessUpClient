@@ -39,7 +39,7 @@ namespace AccountingPolessUp.Views.Administration
                     if (EducationalPortals != null)
                     {
 
-                        //_educationalPortalsService.Delete(EducationalPortals.Id);
+                        _educationalPortalsService.Delete(EducationalPortals.Id);
                     }
                 }
             }
@@ -55,7 +55,7 @@ namespace AccountingPolessUp.Views.Administration
                 EducationalPortals EducationalPortals = dataGrid.SelectedItems[i] as EducationalPortals;
                 if (EducationalPortals != null)
                 {
-                    //EditFrame.Content = new PageEditEducationalPortals(EducationalPortals);
+                    EditFrame.Content = new PageEditEducationalPortals(EducationalPortals);
 
                 }
             }
