@@ -30,12 +30,12 @@ Background="Transparent"
                 <DataGrid HorizontalAlignment="Center" HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
-                        <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged}" Header="Дата начала" />
-                        <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged}" Header="Дата окончания" />
+                        <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата начала" />
+                        <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата окончания" />
                         <DataGridTextColumn Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged}" Header="Статус" />
                         <DataGridTextColumn Binding="{Binding StatusDescription, UpdateSourceTrigger=PropertyChanged}" Header="Описание статуса" />
-                        <DataGridTextColumn Binding="{Binding IdMentor, UpdateSourceTrigger=PropertyChanged}" Header="Ид Ментора" />
-                        <DataGridTextColumn Binding="{Binding Path=ParticipantsId, UpdateSourceTrigger=PropertyChanged}" Header="Ид участника" />
+                        <DataGridTextColumn Binding="{Binding Path=Mentor, UpdateSourceTrigger=PropertyChanged}" Header="Ментор" />
+                        <DataGridTextColumn Binding="{Binding Path=Participants.Individuals.FIO, UpdateSourceTrigger=PropertyChanged}" Header="Участник" />
                         <DataGridTextColumn Binding="{Binding Position.FullName, UpdateSourceTrigger=PropertyChanged}" Header="Должность" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>

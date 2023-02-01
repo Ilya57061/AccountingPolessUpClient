@@ -35,6 +35,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Description", $"{model.Description}");
                 reqparm.Add("TechnicalSpecification", $"{model.TechnicalSpecification}");
                 reqparm.Add("CustomerId", $"{model.CustomerId}");
+                reqparm.Add("idLocalPM", $"{model.idLocalPM}");
 
                 web.UploadValues("https://localhost:7273/CreateProject", "POST", reqparm);
 
@@ -53,6 +54,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Description", $"{model.Description}");
                 reqparm.Add("TechnicalSpecification", $"{model.TechnicalSpecification}");
                 reqparm.Add("CustomerId", $"{model.CustomerId}");
+                reqparm.Add("idLocalPM", $"{model.idLocalPM}");
                 web.UploadValues("https://localhost:7273/UpdateProject", "PUT", reqparm);
 
             }
@@ -67,4 +69,4 @@ namespace AccountingPolessUp.Implementations
             }
         }
     }
-}  
+}

@@ -33,8 +33,8 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Path = Individuals.FIO, UpdateSourceTrigger=PropertyChanged}" Header="Физ.Лицо" />
                         <DataGridTextColumn Binding="{Binding Mmr, UpdateSourceTrigger=PropertyChanged}" Header="Mmr" />
                         <DataGridTextColumn Binding="{Binding Path=User.Login, UpdateSourceTrigger=PropertyChanged}" Header="Пользователь" />
-                        <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged}" Header="Вступление" />
-                        <DataGridTextColumn Binding="{Binding DateExit, UpdateSourceTrigger=PropertyChanged}" Header="Выход" />
+                        <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата вступления" />
+                        <DataGridTextColumn Binding="{Binding DateExit, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата выхода" />
                         <DataGridTextColumn Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged}" Header="Статус" />
                         <DataGridTextColumn Binding="{Binding GitHub, UpdateSourceTrigger=PropertyChanged}" Header="GitHub" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">

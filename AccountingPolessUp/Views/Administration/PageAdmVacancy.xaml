@@ -33,8 +33,8 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
                         <DataGridTextColumn Binding="{Binding Descriptions, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding Responsibilities, UpdateSourceTrigger=PropertyChanged}" Header="Ответственности" />
-                        <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged}" Header="Дата для начала" />
-                        <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged}" Header="Дата для окончания" />
+                        <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата начала" />
+                        <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата окончания" />
                         <DataGridTextColumn Binding="{Binding Budjet, UpdateSourceTrigger=PropertyChanged}" Header="Бюджет" />
                         <DataGridTextColumn Binding="{Binding StagesOfProject.Name, UpdateSourceTrigger=PropertyChanged}" Header="Стадия проекта" />
                         <DataGridTextColumn Binding="{Binding isOpened, UpdateSourceTrigger=PropertyChanged}" Header="Открыта" Width="auto"/>

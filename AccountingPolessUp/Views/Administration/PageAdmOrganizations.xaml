@@ -30,11 +30,11 @@ Background="Transparent"
                 <DataGrid  HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
-                        <DataGridTextColumn Binding="{Binding Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Полное имя" />
+                        <DataGridTextColumn Binding="{Binding Fullname, UpdateSourceTrigger=PropertyChanged}" Header="ФИО" />
                         <DataGridTextColumn Binding="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Header="Адрес" />
                         <DataGridTextColumn Binding="{Binding Contacts, UpdateSourceTrigger=PropertyChanged}" Header="Контакты" />
                         <DataGridTextColumn Binding="{Binding WebSite, UpdateSourceTrigger=PropertyChanged}" Header="Веб-сайт" />
-                        <DataGridTextColumn Binding="{Binding FoundationDate, UpdateSourceTrigger=PropertyChanged}" Header="Начало" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding FoundationDate, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата вступления" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

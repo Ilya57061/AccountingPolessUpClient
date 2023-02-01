@@ -31,6 +31,8 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("RankName", $"{model.RankName}");
                 reqparm.Add("Description", $"{model.Description}");
                 reqparm.Add("OrganizationId", $"{model.OrganizationId}");
+                reqparm.Add("MaxMmr", $"{model.MaxMmr}");
+                reqparm.Add("MinMmr", $"{model.MinMmr}");
 
 
                 web.UploadValues("https://localhost:7273/CreateRank", "POST", reqparm);
@@ -44,6 +46,8 @@ namespace AccountingPolessUp.Implementations
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("RankName", $"{model.RankName}");
+                reqparm.Add("MaxMmr", $"{model.MaxMmr}");
+                reqparm.Add("MinMmr", $"{model.MinMmr}");
                 reqparm.Add("Description", $"{model.Description}");
                 reqparm.Add("OrganizationId", $"{model.OrganizationId}");
                 web.UploadValues("https://localhost:7273/UpdateRank", "PUT", reqparm);

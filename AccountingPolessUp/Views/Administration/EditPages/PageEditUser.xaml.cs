@@ -25,6 +25,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonAdd.Visibility = Visibility.Hidden;
             this.user = user;
             DataContext = user;
+            BoxIsAdmin.SelectedIndex = user.IsAdmin == true ? 0 : 1;
+            BoxIsGlobalPM.SelectedIndex = user.isGlobalPM == true ? 0 : 1;
         }
         public PageEditUser(Page page)
         {

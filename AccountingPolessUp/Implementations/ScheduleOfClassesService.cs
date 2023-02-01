@@ -44,6 +44,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                reqparm.Add("Id", $"{model.Id}");
                 reqparm.Add("Description", $"{model.Description}");
                 reqparm.Add("DateStart", $"{model.DateStart}");
                 reqparm.Add("DateEnd", $"{model.DateEnd}");

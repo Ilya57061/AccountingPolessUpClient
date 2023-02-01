@@ -30,8 +30,8 @@ Background="Transparent"
                 <DataGrid HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
-                        <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged}" Header="Дата входа" />
-                        <DataGridTextColumn Binding="{Binding Path = ParticipantsId, UpdateSourceTrigger=PropertyChanged}" Header="Участник" />
+                        <DataGridTextColumn Binding="{Binding DateEntry, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата начала" />
+                        <DataGridTextColumn Binding="{Binding Path = Participants.Individuals.FIO, UpdateSourceTrigger=PropertyChanged}" Header="Участник" />
                         <DataGridTextColumn Binding="{Binding Path = TrainingCourses.Name, UpdateSourceTrigger=PropertyChanged}" Header="Тренировочные курсы" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>

@@ -32,7 +32,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding FIO, UpdateSourceTrigger=PropertyChanged}" Header="ФИО" />
                         <DataGridTextColumn Binding="{Binding Phone, UpdateSourceTrigger=PropertyChanged}" Header="Телефон" />
-                        <DataGridTextColumn Binding="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}" Header="Дата рождения" />
+                        <DataGridTextColumn Binding="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата рождения" />
                         <DataGridTextColumn Binding="{Binding Mail, UpdateSourceTrigger=PropertyChanged}" Header="Эл.почта" />
                         <DataGridTextColumn Binding="{Binding Gender, UpdateSourceTrigger=PropertyChanged}" Header="Пол" />
                         <DataGridTextColumn Binding="{Binding SocialNetwork, UpdateSourceTrigger=PropertyChanged}" Header="Соц.Сети" Width="auto"/>

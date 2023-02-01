@@ -37,6 +37,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonAdd.Visibility = Visibility.Hidden;
             _vacancy = vacancy;
             DataContext = vacancy;
+            IsOpened.SelectedIndex = true ? 0 : 1;
             _stagesOfProjects = _stagesOfProjectService.Get();
             BoxStagesOfProject.ItemsSource= _stagesOfProjects;
             BoxStagesOfProject.SelectedIndex = _stagesOfProjects.IndexOf(_stagesOfProjects.FirstOrDefault(s=>s.Id==vacancy.StagesOfProjectId));
