@@ -66,6 +66,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 _participants = _participantsService.Get();
                 BoxVacancy.ItemsSource = _vacancy;
                 BoxParticipant.ItemsSource = _participants;
+
             }
             catch (Exception)
             {
@@ -81,6 +82,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _applicationService.Update(_applications);
+                DataGridUpdater.UpdateDataGrid(_applicationService.Get());
             }
             catch (Exception)
             {
@@ -96,6 +98,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _applicationService.Create(_applications);
+                DataGridUpdater.UpdateDataGrid(_applicationService.Get());
 
             }
             catch (Exception)

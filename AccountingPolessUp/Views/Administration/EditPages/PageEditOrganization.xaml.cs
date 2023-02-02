@@ -50,6 +50,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _organizationService.Update(_organization);
+                DataGridUpdater.UpdateDataGrid(_organizationService.Get());
             }
             catch (Exception)
             {
@@ -64,6 +65,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _organizationService.Create(_organization);
+                DataGridUpdater.UpdateDataGrid(_organizationService.Get());
             }
             catch (Exception)
             {

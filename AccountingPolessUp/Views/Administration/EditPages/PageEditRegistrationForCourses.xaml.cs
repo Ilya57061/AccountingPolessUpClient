@@ -65,6 +65,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _registrationForCoursesService.Update(_registrationForCourses);
+                DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get());
             }
             catch (Exception)
             {
@@ -79,6 +80,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _registrationForCoursesService.Create(_registrationForCourses);
+                DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get());
             }
             catch (Exception)
             {

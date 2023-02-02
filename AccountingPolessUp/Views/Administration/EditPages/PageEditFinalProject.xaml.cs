@@ -61,7 +61,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _finalProjectService.Update(_finalProject);
-                            }
+                DataGridUpdater.UpdateDataGrid(_finalProjectService.Get());
+            }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
@@ -75,6 +76,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _finalProjectService.Create(_finalProject);
+                DataGridUpdater.UpdateDataGrid(_finalProjectService.Get());
             }
             catch (Exception)
             {
