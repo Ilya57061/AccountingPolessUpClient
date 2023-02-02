@@ -35,6 +35,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("DateStart", $"{model.DateStart}");
                 reqparm.Add("DateEnd", $"{model.DateEnd}");
                 reqparm.Add("ProjectId", $"{model.ProjectId}");
+                reqparm.Add("Status", $"{model.Status}");
 
 
                 web.UploadValues("https://localhost:7273/CreateStagesOfProject", "POST", reqparm);
