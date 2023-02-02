@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditMembers : Page
     {
 
-        
+
         ParticipantsService _participantsService = new ParticipantsService();
         UserService _userService = new UserService();
         IndividualsService _individualsService = new IndividualsService();
@@ -101,9 +101,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             participants.Mmr = int.Parse(Mmr.Text);
             participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
             participants.DateEntry = DateTime.Parse(DateEntry.Text);
-            participants.DateExit = DateExit.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateExit.Text);
             participants.Status = Status.Text;
             participants.GitHub = GitHub.Text;
+            participants.DateExit = DateTime.TryParse(DateExit.Text, out var dateExitResult) ? dateExitResult : (DateTime?)null;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
