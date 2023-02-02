@@ -112,7 +112,7 @@
     <Compile Include="Models\ScheduleOfСlasses.cs" />
     <Compile Include="Models\TokenManager.cs" />
     <Compile Include="ViewModels\LoginDto.cs" />
-    <Compile Include="ViewModels\Mentor.cs" />
+    <Compile Include="ViewModels\RegistrationDto.cs" />
     <Compile Include="ViewModels\TokenDto.cs" />
     <Compile Include="Views\Administration\EditPages\PageEditApplicationsInTheProject.xaml.cs">
       <DependentUpon>PageEditApplicationsInTheProject.xaml</DependentUpon>
