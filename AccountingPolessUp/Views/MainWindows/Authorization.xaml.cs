@@ -23,21 +23,21 @@ namespace AccountingPolessUp
     /// </summary>
     public partial class Authorization : Window
     {
-        LoginService loginService = new LoginService();
+        AuthService loginService = new AuthService();
         public Authorization()
         {
             InitializeComponent();
              Enter.IsEnabled = false;
-            WorkWindow mainWindow = new WorkWindow(new User { Id=1, IsAdmin=true});
-            mainWindow.Show();
-            this.Close();
+            //WorkWindow mainWindow = new WorkWindow(new User { Id=1, IsAdmin=true});
+            //mainWindow.Show();
+            //this.Close();
         }
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                User user = loginService.Login(new LoginModel { Login = Login.Text, Password = Password.Password });
+                User user = loginService.Login(new LoginDto { Login = Login.Text, Password = Password.Password });
                 if (user ==null)
                 {
                     LabelErrorMessage.Visibility= Visibility.Visible;

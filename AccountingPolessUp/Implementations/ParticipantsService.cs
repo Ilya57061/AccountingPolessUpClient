@@ -20,6 +20,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 web.Encoding = System.Text.Encoding.UTF8;
                 string url = $"https://localhost:7273/GetParticipants";
                 var json = web.DownloadString(url);
@@ -32,7 +33,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
-
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("userId", $"{userId}");
                 var response = web.UploadValues("https://localhost:7273/ParticipantByUser", "POST", reqparm);
@@ -45,6 +46,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 web.Encoding = System.Text.Encoding.UTF8;
                 string url = $"https://localhost:7273/Get?id={id}";
                 var json = web.DownloadString(url);
@@ -57,6 +59,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("IndividualsId", $"{model.IndividualsId}");
                 reqparm.Add("UserId", $"{model.UserId}");
@@ -73,6 +76,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("IndividualsId", $"{model.IndividualsId}");
@@ -90,6 +94,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
                 web.UploadValues("https://localhost:7273/DeleteParticipant", "DELETE", reqparm);

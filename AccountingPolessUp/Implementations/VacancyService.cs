@@ -15,6 +15,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 web.Encoding = System.Text.Encoding.UTF8;
                 string url = $"https://localhost:7273/GetVacancy";
                 var json = web.DownloadString(url);
@@ -27,6 +28,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("Name", $"{model.Name}");
                 reqparm.Add("Descriptions", $"{model.Descriptions}");
@@ -45,6 +47,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("Name", $"{model.Name}");
@@ -62,6 +65,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
                 web.UploadValues("https://localhost:7273/DeleteVacancy", "DELETE", reqparm);

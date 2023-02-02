@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AccountingPolessUp.ViewModels
 {
-    public class LoginModel
+    public class LoginDto
     {
         [Required]
         public string Login { get; set; }

@@ -92,7 +92,7 @@
     <Compile Include="Implementations\EducationalPortalsService.cs" />
     <Compile Include="Implementations\EmploymentService.cs" />
     <Compile Include="Implementations\FinalProjectService.cs" />
-    <Compile Include="Implementations\LoginService.cs" />
+    <Compile Include="Implementations\AuthService.cs" />
     <Compile Include="Implementations\OrganizationService.cs" />
     <Compile Include="Implementations\ParticipantsService.cs" />
     <Compile Include="Implementations\PositionService.cs" />
@@ -109,7 +109,9 @@
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\RegistrationForCourses.cs" />
     <Compile Include="Models\ScheduleOfСlasses.cs" />
-    <Compile Include="ViewModels\LoginModel.cs" />
+    <Compile Include="Models\TokenManager.cs" />
+    <Compile Include="ViewModels\LoginDto.cs" />
+    <Compile Include="ViewModels\TokenDto.cs" />
     <Compile Include="Views\Administration\EditPages\PageEditApplicationsInTheProject.xaml.cs">
       <DependentUpon>PageEditApplicationsInTheProject.xaml</DependentUpon>
     </Compile>

@@ -9,10 +9,10 @@ using Newtonsoft.Json;
 namespace AccountingPolessUp.Implementations
 {
     
-    public class LoginService
+    public class AuthService
     {
 
-        public User Login(LoginModel loginModel)
+        public User Login(LoginDto loginModel)
         {
             try
             {
@@ -24,8 +24,9 @@ namespace AccountingPolessUp.Implementations
                     reqparm.Add("Password", $"{loginModel.Password}");
                     var response = web.UploadValues("https://localhost:7273/Login", "POST", reqparm);
                     var responseString = Encoding.Default.GetString(response);
-                    User user = JsonConvert.DeserializeObject<User>(responseString);
-                    return user;
+                    TokenDto token = JsonConvert.DeserializeObject<TokenDto>(responseString);
+                    TokenManager.AccessToken = token.Token;
+                    return token.User;
                 }
             }
             catch (Exception)
