@@ -29,6 +29,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 string url = $"https://localhost:7273/idUser?id={id}";
                 var json = web.DownloadString(url);
                 List<User> Info = JsonConvert.DeserializeObject<List<User>>(json);
@@ -41,6 +42,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 web.Encoding = System.Text.Encoding.UTF8;
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 string url = $"https://localhost:7273/loginUser?login={login}";
                 var json = web.DownloadString(url);
                 List<User> Info = JsonConvert.DeserializeObject<List<User>>(json);
@@ -53,6 +55,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("Login", $"{model.Login}");
                 reqparm.Add("Password", $"{model.Password}");
@@ -65,6 +68,7 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("Login", $"{model.Login}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
@@ -76,6 +80,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("id", $"{id}");
                 web.UploadValues("https://localhost:7273/DeletUser", "DELETE", reqparm);

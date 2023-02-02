@@ -23,7 +23,7 @@ namespace AccountingPolessUp
     /// </summary>
     public partial class Authorization : Window
     {
-        LoginService loginService = new LoginService();
+        AuthService loginService = new AuthService();
         public Authorization()
         {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace AccountingPolessUp
         {
             try
             {
-                User user = loginService.Login(new LoginModel { Login = Login.Text, Password = Password.Password });
+                User user = loginService.Login(new LoginDto { Login = Login.Text, Password = Password.Password });
                 if (user ==null)
                 {
                     LabelErrorMessage.Visibility= Visibility.Visible;

@@ -15,6 +15,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 web.Encoding = System.Text.Encoding.UTF8;
                 string url = $"https://localhost:7273/GetRegistrationForCourses";
                 var json = web.DownloadString(url);
@@ -27,6 +28,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("DateEntry", $"{model.DateEntry}");
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
@@ -41,6 +43,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("DateEntry", $"{model.DateEntry}");
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
@@ -54,6 +57,7 @@ namespace AccountingPolessUp.Implementations
         {
             using (WebClient web = new WebClient())
             {
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("Id", $"{id}");
                 web.UploadValues("https://localhost:7273/DeleteRegistrationForCourses", "DELETE", reqparm);
