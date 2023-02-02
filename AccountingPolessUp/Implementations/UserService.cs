@@ -51,7 +51,7 @@ namespace AccountingPolessUp.Implementations
                 else return Info;
             }
         }
-        public void Create(RegistrationDto model)
+        public void Create(User model)
         {
             using (WebClient web = new WebClient())
             {

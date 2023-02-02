@@ -60,12 +60,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                RegistrationDto registration = new RegistrationDto();
-                registration.Login = user.Login;
-                registration.Password=user.Password;
-                registration.IsAdmin = user.IsAdmin;
-                registration.isGlobalPM= user.isGlobalPM;
-                _userService.Create(registration);
                 DataGridUpdater.UpdateDataGrid(parent,_userService.Get());
             }
             catch (Exception)
