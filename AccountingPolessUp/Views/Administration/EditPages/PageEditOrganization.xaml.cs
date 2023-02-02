@@ -78,7 +78,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _organization.Address = Address.Text;
             _organization.Contacts = Contacts.Text;
             _organization.WebSite = Website.Text;
-            _organization.FoundationDate = DateTime.Parse(FoundationDate.Text);
+            _organization.FoundationDate = DateTime.TryParse(FoundationDate.Text, out var dateFoundation) ? dateFoundation : (DateTime?)null;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
