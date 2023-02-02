@@ -51,6 +51,18 @@ namespace AccountingPolessUp.Views.Administration
         {
             EditFrame.Content = new PageEditUser();
         }
+        private void ButtonEditPassword_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                User user = dataGrid.SelectedItems[i] as User;
+                if (user != null)
+                {
+                    EditFrame.Content = new PageEditUser(user, true);
+
+                }
+            }
+        }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)

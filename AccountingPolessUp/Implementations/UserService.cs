@@ -51,7 +51,7 @@ namespace AccountingPolessUp.Implementations
                 else return Info;
             }
         }
-        public void Create(User model)
+        public void Create(RegisterDto model)
         {
             using (WebClient web = new WebClient())
             {
@@ -71,10 +71,23 @@ namespace AccountingPolessUp.Implementations
                 web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("Login", $"{model.Login}");
-                reqparm.Add("Password", $"{model.Password}");
+                reqparm.Add("PasswordHash", $"{model.PasswordHash}");
+                reqparm.Add("PasswordSalt", $"{model.PasswordSalt}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
                 reqparm.Add("isGlobalPM", $"{model.isGlobalPM}");
                 web.UploadValues("https://localhost:7273/UpdateUser", "PUT", reqparm);
+
+            }
+        }
+        public void UpdatePassword(UpdatePasswordDto model)
+        {
+            using (WebClient web = new WebClient())
+            {
+                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
+                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
+                reqparm.Add("id", $"{model.Id}");
+                reqparm.Add("Password", $"{model.Password}");
+                web.UploadValues("https://localhost:7273/UpdatePasswordUser", "PUT", reqparm);
 
             }
         }
