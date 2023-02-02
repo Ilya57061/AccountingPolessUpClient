@@ -56,7 +56,6 @@ namespace AccountingPolessUp.Views.Administration
                 if (Customer != null)
                 {
                     EditFrame.Content = new PageEditCustomer(Customer);
-
                 }
             }
         }
