@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace AccountingPolessUp.Models
 {
-    public class Employment
+    public partial class Employment
     {
         public int Id { get; set; }
         public DateTime DateStart { get; set; }
