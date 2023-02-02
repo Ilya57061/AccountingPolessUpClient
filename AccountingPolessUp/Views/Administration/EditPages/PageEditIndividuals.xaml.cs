@@ -76,7 +76,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _individuals.FIO = FIO.Text;
             _individuals.Phone = Phone.Text; 
             _individuals.Mail = Mail.Text;
-            _individuals.Gender= Gender.Text;
+            _individuals.Gender = ((ComboBoxItem)BoxGender.SelectedItem).Content.ToString();
             _individuals.SocialNetwork= SocialNetwork.Text;
             _individuals.DateOfBirth= DateTime.Parse(DateOfBirth.Text);
         }

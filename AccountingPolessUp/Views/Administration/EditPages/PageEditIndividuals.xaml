@@ -49,7 +49,10 @@ Background="Transparent"
             <TextBox Margin="1,0,1,20" x:Name="Mail" FontSize="14" materialDesign:HintAssist.Hint="Почта" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="MailOutline" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Mail}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="4">
-            <TextBox Margin="1,0,1,20" x:Name="Gender" FontSize="14" materialDesign:HintAssist.Hint="Пол" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="GenderMaleFemale" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Gender}"/>
+            <ComboBox x:Name="BoxGender" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Пол" Margin="1,0,1,0">
+                <ComboBoxItem Content="Мужской" />
+                <ComboBoxItem Content="Женский" />
+            </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
             <TextBox Margin="1,0,1,20" x:Name="SocialNetwork" FontSize="14" materialDesign:HintAssist.Hint="Социальная сеть" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Share" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding SocialNetwork}"/>
