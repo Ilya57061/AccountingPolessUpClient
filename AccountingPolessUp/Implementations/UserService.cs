@@ -55,6 +55,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Login", $"{model.Login}");
                 reqparm.Add("Password", $"{model.Password}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
+                reqparm.Add("isGlobalPM", $"{model.isGlobalPM}");
                 web.UploadValues("https://localhost:7273/CreateUser", "POST", reqparm);
             }
         }
@@ -67,6 +68,7 @@ namespace AccountingPolessUp.Implementations
                 reqparm.Add("Login", $"{model.Login}");
                 reqparm.Add("Password", $"{model.Password}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
+                reqparm.Add("isGlobalPM", $"{model.isGlobalPM}");
                 web.UploadValues("https://localhost:7273/UpdateUser", "PUT", reqparm);
 
             }

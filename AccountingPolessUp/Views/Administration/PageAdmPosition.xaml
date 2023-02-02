@@ -30,7 +30,7 @@ Background="Transparent"
                 <DataGrid HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
-                        <DataGridTextColumn Binding="{Binding FullName, UpdateSourceTrigger=PropertyChanged}" Header="ФИО" />
+                        <DataGridTextColumn Binding="{Binding FullName, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding Path = Department.FullName, UpdateSourceTrigger=PropertyChanged}" Header="Отдел" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
