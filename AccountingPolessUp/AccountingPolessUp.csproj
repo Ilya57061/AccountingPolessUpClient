@@ -112,7 +112,9 @@
     <Compile Include="Models\ScheduleOfСlasses.cs" />
     <Compile Include="Models\TokenManager.cs" />
     <Compile Include="ViewModels\LoginDto.cs" />
+    <Compile Include="ViewModels\RegisterDto.cs" />
     <Compile Include="ViewModels\TokenDto.cs" />
+    <Compile Include="ViewModels\UpdatePasswordDto.cs" />
     <Compile Include="Views\Administration\EditPages\PageEditApplicationsInTheProject.xaml.cs">
       <DependentUpon>PageEditApplicationsInTheProject.xaml</DependentUpon>
     </Compile>

@@ -40,7 +40,7 @@ Background="Transparent"
         </Grid>
 
 
-        <Grid Grid.Row="1" Grid.Column="2">
+        <Grid Grid.Row="1" Grid.Column="4">
 
             <PasswordBox
                 x:Name="Password"
@@ -50,7 +50,7 @@ Background="Transparent"
     materialDesign:TextFieldAssist.HasClearButton="True"
     Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Password" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="3">
+        <Grid Grid.Row="1" Grid.Column="2">
             <ComboBox  x:Name="BoxIsAdmin"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Админ" Margin="1,0,1,12"   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <ComboBoxItem
     Content="True" />
@@ -58,7 +58,7 @@ Background="Transparent"
     Content="False" />
             </ComboBox>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="4">
+        <Grid Grid.Row="1" Grid.Column="3">
             <ComboBox  x:Name="BoxIsGlobalPM"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="GlobalPM" Margin="1,0,1,12"   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <ComboBoxItem
     Content="True" />
@@ -67,11 +67,14 @@ Background="Transparent"
             </ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
-            <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
+            <Button Visibility="Hidden" x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />
             </Button>
-            <Button x:Name="ButtonAdd" Click="ButtonAdd_Click">
+            <Button Visibility="Hidden" x:Name="ButtonAdd" Click="ButtonAdd_Click">
                 <materialDesign:PackIcon Kind="DatabasePlus" />
+            </Button>
+            <Button Visibility="Hidden" x:Name="ButtonEditPassword" Click="ButtonEditPassword_Click">
+                <materialDesign:PackIcon Kind="ContentSaveSettingsOutline" />
             </Button>
         </Grid>
        
