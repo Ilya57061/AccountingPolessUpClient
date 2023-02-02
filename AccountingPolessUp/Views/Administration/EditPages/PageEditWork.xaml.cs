@@ -62,6 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxParticipants.ItemsSource = _participants;
             BoxMentors.ItemsSource = _participants;
             BoxPosition.ItemsSource = _positions;
+            DataGridUpdater.UpdateDataGrid(_employmentService.Get());
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -71,6 +72,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _employmentService.Update(employment);
+                DataGridUpdater.UpdateDataGrid(_employmentService.Get());
             }
             catch (Exception)
             {
@@ -85,6 +87,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _employmentService.Create(employment);
+                DataGridUpdater.UpdateDataGrid(_employmentService.Get());
             }
             catch (Exception)
             {

@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Implementations;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System;
@@ -24,12 +25,11 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmWork : Page
     {
         EmploymentService _employmentService = new EmploymentService();
-        ParticipantsService _participantsService = new ParticipantsService();
         public PageAdmWork()
         {
             InitializeComponent();
-            dataGrid.ItemsSource = _employmentService.Get();
-            IEnumerable<object> mentors = _participantsService.Get().Select(x => _employmentService.Get().Select(e => e.IdMentor == x.Id));
+            DataGridUpdater.Page = this;
+            DataGridUpdater.UpdateDataGrid(_employmentService.Get());
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -44,6 +44,7 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
+            DataGridUpdater.UpdateDataGrid( _employmentService.Get());
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {

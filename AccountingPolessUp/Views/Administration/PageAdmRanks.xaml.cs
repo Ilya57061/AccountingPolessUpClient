@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Implementations;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System;
@@ -23,11 +24,12 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmRanks : Page
     {
-        RankService _RankService = new RankService();
+        RankService _rankService = new RankService();
         public PageAdmRanks()
         {
             InitializeComponent();
-            dataGrid.ItemsSource = _RankService.Get();
+            DataGridUpdater.Page = this;
+            DataGridUpdater.UpdateDataGrid(_rankService.Get());
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -39,10 +41,11 @@ namespace AccountingPolessUp.Views.Administration
                     if (Rank != null)
                     {
 
-                        _RankService.Delete(Rank.Id);
+                        _rankService.Delete(Rank.Id);
                     }
                 }
             }
+            DataGridUpdater.UpdateDataGrid(_rankService.Get());
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {

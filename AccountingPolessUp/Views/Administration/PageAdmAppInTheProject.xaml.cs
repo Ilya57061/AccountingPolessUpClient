@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Implementations;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System;
@@ -27,7 +28,8 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmAppInTheProject()
         {
             InitializeComponent();
-            dataGrid.ItemsSource = _appService.Get();
+            DataGridUpdater.Page = this;
+            DataGridUpdater.UpdateDataGrid(_appService.Get());
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -42,6 +44,7 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
+            DataGridUpdater.UpdateDataGrid(_appService.Get());
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {

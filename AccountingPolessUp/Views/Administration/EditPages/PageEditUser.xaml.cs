@@ -17,11 +17,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         
         UserService _userService = new UserService();
         User user;
-        Page parent;
-        public PageEditUser(User user, Page page)
+     
+        public PageEditUser(User user)
         {
             InitializeComponent();
-            parent = page;
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             this.user = user;
@@ -29,10 +28,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxIsAdmin.SelectedIndex = user.IsAdmin == true ? 0 : 1;
             BoxIsGlobalPM.SelectedIndex = user.isGlobalPM == true ? 0 : 1;
         }
-        public PageEditUser(Page page)
+        public PageEditUser()
         {
             InitializeComponent();
-            parent = page;
             this.user = new User();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
@@ -45,7 +43,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _userService.Update(user);
-                DataGridUpdater.UpdateDataGrid(parent, _userService.Get());
+                DataGridUpdater.UpdateDataGrid(_userService.Get());
             }
             catch (Exception)
             {
@@ -60,7 +58,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                DataGridUpdater.UpdateDataGrid(parent,_userService.Get());
+                DataGridUpdater.UpdateDataGrid(_userService.Get());
             }
             catch (Exception)
             {
