@@ -31,6 +31,7 @@ Background="Transparent"
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding Login, UpdateSourceTrigger=PropertyChanged}" Header="Логин" />
+                        <DataGridTextColumn Binding="{Binding Password, UpdateSourceTrigger=PropertyChanged}" Header="Пароль" />
                         <DataGridTextColumn Binding="{Binding IsAdmin, UpdateSourceTrigger=PropertyChanged}" Header="Админ" />
                         <DataGridTextColumn Binding="{Binding isGlobalPM, UpdateSourceTrigger=PropertyChanged}" Header="GlobalPM" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">

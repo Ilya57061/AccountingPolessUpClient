@@ -1,4 +1,5 @@
 ﻿using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace AccountingPolessUp.Implementations
                 else return Info;
             }
         }
-        public void Create(User model)
+        public void Create(RegistrationDto model)
         {
             using (WebClient web = new WebClient())
             {

@@ -1,6 +1,7 @@
 ﻿using AccountingPolessUp.Helpers;
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -59,7 +60,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                _userService.Create(user);
+                RegistrationDto registration = new RegistrationDto();
+                registration.Login = user.Login;
+                registration.Password=user.Password;
+                registration.IsAdmin = user.IsAdmin;
+                registration.isGlobalPM= user.isGlobalPM;
+                _userService.Create(registration);
                 DataGridUpdater.UpdateDataGrid(parent,_userService.Get());
             }
             catch (Exception)
