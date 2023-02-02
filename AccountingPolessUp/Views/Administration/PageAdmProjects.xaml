@@ -30,10 +30,10 @@ Background="Transparent"
                 <DataGrid HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
-                        <DataGridTextColumn Binding="{Binding Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Полное имя" />
+                        <DataGridTextColumn Binding="{Binding Fullname, UpdateSourceTrigger=PropertyChanged}" Header="ФИО" />
                         <DataGridTextColumn Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged}" Header="Статус" />
-                        <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged}" Header="Дата начала" />
-                        <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged}" Header="Дата окончания" />
+                        <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата начала" />
+                        <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата окончания" />
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding TechnicalSpecification, UpdateSourceTrigger=PropertyChanged}" Header="Техн.спецификация" />
                         <DataGridTextColumn Binding="{Binding Customer.FullName, UpdateSourceTrigger=PropertyChanged}" Header="Заказчик" />

@@ -54,7 +54,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             }
             catch (Exception)
             {
-                MessageBox.Show("Заполните все поля");
+                MessageBox.Show("Заполните все поля корректно!");
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
@@ -68,7 +68,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             }
             catch (Exception)
             {
-                MessageBox.Show("Заполните все поля");
+                MessageBox.Show("Заполните все поля корректно!");
             }
         }
         private void WriteData()

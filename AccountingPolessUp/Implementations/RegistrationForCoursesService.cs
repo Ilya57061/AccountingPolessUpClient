@@ -46,6 +46,7 @@ namespace AccountingPolessUp.Implementations
                 web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("DateEntry", $"{model.DateEntry}");
+                reqparm.Add("Id", $"{model.Id}");
                 reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
                 reqparm.Add("TrainingCoursesId", $"{model.TrainingCoursesId}");
 

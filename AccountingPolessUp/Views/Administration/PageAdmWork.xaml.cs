@@ -24,10 +24,12 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmWork : Page
     {
         EmploymentService _employmentService = new EmploymentService();
+        ParticipantsService _participantsService = new ParticipantsService();
         public PageAdmWork()
         {
             InitializeComponent();
             dataGrid.ItemsSource = _employmentService.Get();
+            IEnumerable<object> mentors = _participantsService.Get().Select(x => _employmentService.Get().Select(e => e.IdMentor == x.Id));
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {

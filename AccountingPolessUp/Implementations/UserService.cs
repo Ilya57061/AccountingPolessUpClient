@@ -55,12 +55,11 @@ namespace AccountingPolessUp.Implementations
             using (WebClient web = new WebClient())
             {
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("Login", $"{model.Login}");
                 reqparm.Add("Password", $"{model.Password}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
-                web.UploadValues("https://localhost:7273/CreateUser", "POST", reqparm);
+                reqparm.Add("isGlobalPM", $"{model.isGlobalPM}");
+                web.UploadValues("https://localhost:7273/Register", "POST", reqparm);
             }
         }
         public void Update(User model)
@@ -71,7 +70,9 @@ namespace AccountingPolessUp.Implementations
                 web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("Login", $"{model.Login}");
+                reqparm.Add("Password", $"{model.Password}");
                 reqparm.Add("isAdmin", $"{model.IsAdmin}");
+                reqparm.Add("isGlobalPM", $"{model.isGlobalPM}");
                 web.UploadValues("https://localhost:7273/UpdateUser", "PUT", reqparm);
 
             }
