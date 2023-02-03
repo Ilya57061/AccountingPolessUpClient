@@ -40,10 +40,10 @@ namespace AccountingPolessUp
                 {
                     item.Visibility = Visibility.Collapsed;
                     // TreeViewItem visible
-                    Projects.Visibility= Visibility.Visible;
-                    StageOfProject.Visibility= Visibility.Visible;
-                    Vacancy.Visibility= Visibility.Visible;
-                    AppInTheProject.Visibility= Visibility.Visible;
+                    Projects.Visibility = Visibility.Visible;
+                    StageOfProject.Visibility = Visibility.Visible;
+                    Vacancy.Visibility = Visibility.Visible;
+                    AppInTheProject.Visibility = Visibility.Visible;
                 }
             }
             else
@@ -134,11 +134,11 @@ namespace AccountingPolessUp
         private void ButtonAdmStudents_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageAdmStudents();
-        } 
+        }
         private void ButtonAdmRegistrationForCourses_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageAdmRegistrationForCourses();
-        } 
+        }
         private void ButtonAdmStageOfProject_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageAdmStageOfProject();
@@ -174,10 +174,6 @@ namespace AccountingPolessUp
         private void ButtonAdmEducationalPortals_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Content = new PageAdmEducationalPortals();
-        }
-        private void ButtonAdmFinalProject_Click(object sender, RoutedEventArgs e)
-        {
-            //MainFrame.Content = new PageAdmFinalProject();
         }
         private void ButtonAdmPosition_Click(object sender, RoutedEventArgs e)
         {
