@@ -177,7 +177,7 @@ namespace AccountingPolessUp
         }
         private void ButtonAdmFinalProject_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Content = new PageAdmFinalProject();
+            //MainFrame.Content = new PageAdmFinalProject();
         }
         private void ButtonAdmPosition_Click(object sender, RoutedEventArgs e)
         {

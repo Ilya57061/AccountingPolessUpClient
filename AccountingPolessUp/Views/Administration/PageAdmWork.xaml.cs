@@ -44,11 +44,23 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid( _employmentService.Get());
+            DataGridUpdater.UpdateDataGrid(_employmentService.Get());
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditWork();
+        }
+        private void ButtonFinalProject_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Employment employment = dataGrid.SelectedItems[i] as Employment;
+                if (employment != null)
+                {
+                    this.NavigationService.Content = new PageAdmFinalProject(employment);
+                }
+            }
+
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {

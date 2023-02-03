@@ -25,11 +25,13 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmFinalProject : Page
     {
         FinalProjectService _finalProjectService = new FinalProjectService();
-        public PageAdmFinalProject()
+        Employment _employment;
+        public PageAdmFinalProject(Employment employment)
         {
             InitializeComponent();
             DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_finalProjectService.Get());
+            _employment = employment;
+            DataGridUpdater.UpdateDataGrid(_finalProjectService.Get().Where(x=>x.EmploymentId==employment.Id));
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -45,11 +47,12 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_finalProjectService.Get());
+            DataGridUpdater.UpdateDataGrid(_finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id));
+
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditFinalProject();
+            EditFrame.Content = new PageEditFinalProject(_employment);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -59,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration
                 if (FinalProject != null)
                 {
 
-                    EditFrame.Content = new PageEditFinalProject(FinalProject);
+                    EditFrame.Content = new PageEditFinalProject(FinalProject, _employment);
 
                 }
             }
