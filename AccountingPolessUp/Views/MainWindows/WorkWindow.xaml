@@ -163,13 +163,6 @@
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonAdmFinalProject_Click">
-                        <TreeViewItem.Header>
-                            <StackPanel  Orientation="Horizontal">
-                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Проекты трудоустройств" />
-                            </StackPanel>
-                        </TreeViewItem.Header>
-                    </TreeViewItem>
                     <TreeViewItem Selected="ButtonAdmMembers_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">

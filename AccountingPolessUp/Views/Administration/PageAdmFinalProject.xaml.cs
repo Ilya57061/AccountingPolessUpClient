@@ -67,5 +67,61 @@ namespace AccountingPolessUp.Views.Administration
                 }
             }
         }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            Confirm();
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            Clear();
+        }
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+        private void Clear()
+        {
+            TextBoxName.Text = string.Empty;
+            TextBoxDescription.Text = string.Empty;
+            TextBoxGitHub.Text = string.Empty;
+            TextBoxLink.Text = string.Empty;
+            DateEnd.Text = string.Empty;
+            DateStart.Text = string.Empty;
+            dataGrid.ItemsSource = null;
+            dataGrid.Items.Clear();
+            dataGrid.ItemsSource = _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id);
+        }
+        private void Confirm()
+        {
+            IEnumerable<FinalProject> finalProjects = _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id);
+            
+            if (TextBoxName.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.Name == TextBoxName.Text);
+            }
+            if (TextBoxDescription.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.Description == TextBoxDescription.Text);
+            }
+            if (TextBoxGitHub.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.GitHub == TextBoxGitHub.Text);
+            }
+            if (TextBoxLink.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.Links == TextBoxLink.Text);
+            }
+            if (DateStart.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.DateStart == DateTime.Parse(DateStart.Text));
+            }
+            if (DateEnd.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.DateEnd == DateTime.Parse(DateEnd.Text));
+            }
+            dataGrid.ItemsSource = null;
+            dataGrid.Items.Clear();
+            dataGrid.ItemsSource = finalProjects;
+        }
     }
 }
