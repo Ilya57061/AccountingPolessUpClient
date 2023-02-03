@@ -67,5 +67,50 @@ namespace AccountingPolessUp.Views.Administration
                 }
             }
         }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            Confirm();
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            Clear();
+        }
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+        private void Clear()
+        {
+            //ComboORG.SelectedItem = null;
+            //TextBoxMaxMmr.Text = string.Empty;
+            //TextBoxMinMmr.Text = string.Empty;
+            //TextBoxSearch.Text = string.Empty;
+            //dataGrid.ItemsSource = null;
+            //dataGrid.Items.Clear();
+            //dataGrid.ItemsSource = Ranks;
+        }
+        private void Confirm()
+        {
+            //IEnumerable<Rank> newRanks = Ranks;
+            //if (ComboORG.SelectedItem != null)
+            //{
+            //    newRanks = newRanks.Where(x => x.OrganizationId == organizations.FirstOrDefault(o => o == ComboORG.SelectedItem).Id);
+            //}
+            //if (TextBoxSearch.Text != "")
+            //{
+            //    newRanks = newRanks.Where(x => x.RankName == TextBoxSearch.Text);
+            //}
+            //if (TextBoxMinMmr.Text != "")
+            //{
+            //    newRanks = newRanks.Where(x => x.MinMmr == int.Parse(TextBoxMinMmr.Text));
+            //}
+            //if (TextBoxMaxMmr.Text != "")
+            //{
+            //    newRanks = newRanks.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMmr.Text));
+            //}
+            //dataGrid.ItemsSource = null;
+            //dataGrid.Items.Clear();
+            //dataGrid.ItemsSource = newRanks;
+        }
     }
 }

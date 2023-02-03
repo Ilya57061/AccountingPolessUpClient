@@ -15,8 +15,9 @@
 Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <Grid>
+        <Grid Background="White">
             <Grid.RowDefinitions>
+                <RowDefinition  Height="auto"/>
                 <RowDefinition />
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="200"/>
@@ -25,7 +26,7 @@ Background="Transparent"
                 <ColumnDefinition Width="100"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Grid  Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid  Grid.Row="1" Grid.ColumnSpan="2">
                 <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
                 <DataGrid  HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
@@ -58,8 +59,25 @@ Background="Transparent"
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
+            <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="10" x:Name="dg1">
+                <Button x:Name="ButtonBack" Click="ButtonBack_Click" Grid.Column="1" Margin="0 30 20 0" Visibility="Visible" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center">Назад</Button>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                    <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
+                        <TextBlock x:Name="LabelFinalProject" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Проекты трудоустройств"></TextBlock>
+                    </StackPanel>
 
-            <Grid Grid.ColumnSpan="2" Grid.Row="1">
+                    <StackPanel Margin="0" VerticalAlignment="Center" Orientation="Horizontal">
+                        <ComboBox Margin="0 0 10 0" VerticalAlignment="Center" IsReadOnly="False" IsEditable="True" x:Name="ComboORG" SelectedItem="{Binding Organization}" DisplayMemberPath="Fullname" Width="auto" FontSize="16" materialDesign:HintAssist.Hint="Организация"></ComboBox>
+
+                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxSearch" FontSize="16" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center"  x:Name="TextBoxMinMmr" FontSize="16" materialDesign:HintAssist.Hint="Минимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxMaxMmr" FontSize="16" materialDesign:HintAssist.Hint="Максимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
+                        <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.ColumnSpan="2" Grid.Row="2">
                 <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
 
                 <Button  x:Name="ButtonAdd" Click="ButtonAdd_Click"  HorizontalAlignment="Left" Margin="10,0,0,0" >
@@ -67,7 +85,7 @@ Background="Transparent"
                 </Button>
 
             </Grid>
-            <Grid Grid.ColumnSpan="2" Grid.Row="2">
+            <Grid Grid.ColumnSpan="2" Grid.Row="3">
                 <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
                 <Frame x:Name="EditFrame" Content="" />
             </Grid>
