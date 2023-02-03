@@ -67,11 +67,19 @@ Background="Transparent"
                     </StackPanel>
 
                     <StackPanel Margin="0" VerticalAlignment="Center" Orientation="Horizontal">
-                        <ComboBox Margin="0 0 10 0" VerticalAlignment="Center" IsReadOnly="False" IsEditable="True" x:Name="ComboORG" SelectedItem="{Binding Organization}" DisplayMemberPath="Fullname" Width="auto" FontSize="16" materialDesign:HintAssist.Hint="Организация"></ComboBox>
+                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxName" FontSize="16" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center"  x:Name="TextBoxDescription" FontSize="16" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxGitHub" FontSize="16" materialDesign:HintAssist.Hint="GitHub" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxLink" FontSize="16" materialDesign:HintAssist.Hint="Ссылка" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                        <DatePicker  x:Name="DateStart" FontSize="14" Margin="1,0,1,12"
+ materialDesign:HintAssist.Hint="Дата начала"
+ materialDesign:TextFieldAssist.HasClearButton="True"
+ Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+                        <DatePicker x:Name="DateEnd" FontSize="14" Margin="1,0,1,12"
+ materialDesign:HintAssist.Hint="Дата окончания"
+ materialDesign:TextFieldAssist.HasClearButton="True"
+ Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
 
-                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxSearch" FontSize="16" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center"  x:Name="TextBoxMinMmr" FontSize="16" materialDesign:HintAssist.Hint="Минимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxMaxMmr" FontSize="16" materialDesign:HintAssist.Hint="Максимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
                         <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                         <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                     </StackPanel>

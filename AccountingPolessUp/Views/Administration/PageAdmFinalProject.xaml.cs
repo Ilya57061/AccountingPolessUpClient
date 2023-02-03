@@ -81,36 +81,47 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void Clear()
         {
-            //ComboORG.SelectedItem = null;
-            //TextBoxMaxMmr.Text = string.Empty;
-            //TextBoxMinMmr.Text = string.Empty;
-            //TextBoxSearch.Text = string.Empty;
-            //dataGrid.ItemsSource = null;
-            //dataGrid.Items.Clear();
-            //dataGrid.ItemsSource = Ranks;
+            TextBoxName.Text = string.Empty;
+            TextBoxDescription.Text = string.Empty;
+            TextBoxGitHub.Text = string.Empty;
+            TextBoxLink.Text = string.Empty;
+            DateEnd.Text = string.Empty;
+            DateStart.Text = string.Empty;
+            dataGrid.ItemsSource = null;
+            dataGrid.Items.Clear();
+            dataGrid.ItemsSource = _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id);
         }
         private void Confirm()
         {
-            //IEnumerable<Rank> newRanks = Ranks;
-            //if (ComboORG.SelectedItem != null)
-            //{
-            //    newRanks = newRanks.Where(x => x.OrganizationId == organizations.FirstOrDefault(o => o == ComboORG.SelectedItem).Id);
-            //}
-            //if (TextBoxSearch.Text != "")
-            //{
-            //    newRanks = newRanks.Where(x => x.RankName == TextBoxSearch.Text);
-            //}
-            //if (TextBoxMinMmr.Text != "")
-            //{
-            //    newRanks = newRanks.Where(x => x.MinMmr == int.Parse(TextBoxMinMmr.Text));
-            //}
-            //if (TextBoxMaxMmr.Text != "")
-            //{
-            //    newRanks = newRanks.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMmr.Text));
-            //}
-            //dataGrid.ItemsSource = null;
-            //dataGrid.Items.Clear();
-            //dataGrid.ItemsSource = newRanks;
+            IEnumerable<FinalProject> finalProjects = _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id);
+            
+            if (TextBoxName.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.Name == TextBoxName.Text);
+            }
+            if (TextBoxDescription.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.Description == TextBoxDescription.Text);
+            }
+            if (TextBoxGitHub.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.GitHub == TextBoxGitHub.Text);
+            }
+            if (TextBoxLink.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.Links == TextBoxLink.Text);
+            }
+            if (DateStart.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.DateStart == DateTime.Parse(DateStart.Text));
+            }
+            if (DateEnd.Text != "")
+            {
+                finalProjects = finalProjects.Where(x => x.DateEnd == DateTime.Parse(DateEnd.Text));
+            }
+            dataGrid.ItemsSource = null;
+            dataGrid.Items.Clear();
+            dataGrid.ItemsSource = finalProjects;
         }
     }
 }
