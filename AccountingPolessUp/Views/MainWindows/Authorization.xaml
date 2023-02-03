@@ -13,8 +13,12 @@
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
    Background="#EDEEF0"
+         WindowStartupLocation="CenterScreen"
      FontFamily="{DynamicResource MaterialDesignFont}"
-         Height="400" Width="384" ResizeMode="NoResize" Icon="https://material.io/tools/icons/static/icons/outline-account_circle-24px.svg">
+         Height="400" Width="384" ResizeMode="NoResize" >
+    <Window.Icon>
+        <BitmapImage UriSource="https://img.icons8.com/pastel-glyph/64/null/key--v2.png" />
+    </Window.Icon>
 
     <Grid Background="#EDEEF0" Cursor="Hand">
         <Grid.RowDefinitions>

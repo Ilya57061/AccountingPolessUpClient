@@ -6,14 +6,20 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:AccountingPolessUp"
         mc:Ignorable="d"
+    
+
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
    Background="WhiteSmoke"
+          WindowStartupLocation="CenterScreen"
      FontFamily="{DynamicResource MaterialDesignFont}"
         Title="PolessUp" Height="850" Width="1200">
+    <Window.Icon>
+        <BitmapImage UriSource="https://img.icons8.com/pastel-glyph/64/null/university-campus.png" />
+    </Window.Icon>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition/>
