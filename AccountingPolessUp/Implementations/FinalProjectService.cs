@@ -30,7 +30,7 @@ namespace AccountingPolessUp.Implementations
             {
                 web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("EmploymentId", $"{employmentId}");
+                reqparm.Add("id", $"{employmentId}");
                 var response = web.UploadValues("https://localhost:7273/GetFinalProjectForEmploymentId", "PUT", reqparm);
                 var responseString = Encoding.Default.GetString(response);
                 List<FinalProject> list = JsonConvert.DeserializeObject<List<FinalProject>>(responseString);

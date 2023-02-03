@@ -24,30 +24,27 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditFinalProject : Page
     {
 
-        
+
         FinalProjectService _finalProjectService = new FinalProjectService();
-        EmploymentService _employmentService = new EmploymentService();
-        List<Employment> _employments;
         FinalProject _finalProject;
-        public PageEditFinalProject(FinalProject finalProject)
+        Employment _employment;
+        public PageEditFinalProject(FinalProject finalProject, Employment employment)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _finalProject = finalProject;
             DataContext = finalProject;
-            _employments = _employmentService.Get();
-            BoxEmployment.ItemsSource = _employments;
-            BoxEmployment.SelectedIndex = _employments.IndexOf(_employments.FirstOrDefault(e => e.Id == finalProject.EmploymentId));
+            _employment = employment;
         }
-        public PageEditFinalProject()
+        public PageEditFinalProject(Employment employment)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _finalProject = new FinalProject();
-            _employments = _employmentService.Get();
-            BoxEmployment.ItemsSource = _employments;
+            _employment = employment;
+
         }
         private void OpenEmployment_Click(object sender, RoutedEventArgs e)
         {
@@ -61,7 +58,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _finalProjectService.Update(_finalProject);
-                DataGridUpdater.UpdateDataGrid(_finalProjectService.Get());
+                DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id));
             }
             catch (Exception)
             {
@@ -76,7 +73,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _finalProjectService.Create(_finalProject);
-                DataGridUpdater.UpdateDataGrid(_finalProjectService.Get());
+                DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id));
             }
             catch (Exception)
             {
@@ -87,11 +84,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             _finalProject.DateStart = DateTime.Parse(DateStart.Text);
             _finalProject.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
-            _finalProject.EmploymentId = _employments.FirstOrDefault(i => i == BoxEmployment.SelectedItem).Id;
+            _finalProject.EmploymentId = _employment.Id;
             _finalProject.Name = Name.Text;
             _finalProject.Description = Description.Text;
-            _finalProject.GitHub=GitHub.Text;
-            _finalProject.Links= Links.Text;
+            _finalProject.GitHub = GitHub.Text;
+            _finalProject.Links = Links.Text;
 
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
