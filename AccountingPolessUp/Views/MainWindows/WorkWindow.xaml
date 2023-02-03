@@ -129,7 +129,7 @@
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonAdmStageOfProject_Click">
+                    <TreeViewItem x:Name="StageOfProject" Selected="ButtonAdmStageOfProject_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
                                 <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Стадии проекта" />
@@ -171,7 +171,7 @@
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonAdmApplications_Click">
+                    <TreeViewItem x:Name="AppInTheProject" Selected="ButtonAdmApplications_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
                                 <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Заявки в проект" />
@@ -199,7 +199,7 @@
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonAdmProjects_Click">
+                    <TreeViewItem x:Name="Projects" Selected="ButtonAdmProjects_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
                                 <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Проекты" />
@@ -242,7 +242,7 @@
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonAdmVacancy_Click">
+                    <TreeViewItem x:Name="Vacancy" Selected="ButtonAdmVacancy_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
                                 <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Вакансии" />

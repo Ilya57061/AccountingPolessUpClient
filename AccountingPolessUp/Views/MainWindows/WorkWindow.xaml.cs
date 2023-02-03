@@ -29,9 +29,22 @@ namespace AccountingPolessUp
         {
             _user = user;
             InitializeComponent();
-            if (user.IsAdmin==true)
+            if (user.IsAdmin == true)
             {
                 Admin.Visibility = Visibility.Visible;
+            }
+            else if (user.isGlobalPM == true && user.IsAdmin == false)
+            {
+
+                foreach (TreeViewItem item in Admin.Items)
+                {
+                    item.Visibility = Visibility.Collapsed;
+                    // TreeViewItem visible
+                    Projects.Visibility= Visibility.Visible;
+                    StageOfProject.Visibility= Visibility.Visible;
+                    Vacancy.Visibility= Visibility.Visible;
+                    AppInTheProject.Visibility= Visibility.Visible;
+                }
             }
             else
             {

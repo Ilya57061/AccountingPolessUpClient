@@ -36,9 +36,8 @@ namespace AccountingPolessUp
                 _student = _studentService.GetByIndividuals(_participant.IndividualsId);
                 UserName.Text = _participant.Individuals.FIO.ToString();
                 InfoDateStart.Text = "Дата вступления: " + _participant.DateEntry.ToString("d");
-                InfoDateStart.Text = "Дата вступления: " + _participant.DateEntry.ToString("d");
                 SetBasicRatingBar();
-                InfoDayCount.Text = "Дата вступления: " + (DateTime.Now - _participant.DateEntry).Days + " Дней";
+                InfoDayCount.Text = "Стаж: " + (DateTime.Now - _participant.DateEntry).Days + " Дней";
                 InfoGitHub.Text = _participant.GitHub.ToString();
 
                 InfoMale.Text = "Гендер: " + _participant.Individuals.Gender.ToString();
@@ -56,6 +55,20 @@ namespace AccountingPolessUp
             {
 
                 UserName.Text = "Нет данных";
+                InfoDateStart.Text = "Дата вступления: Нет данных";
+                InfoDayCount.Text = "Стаж: Нет данных";
+                InfoGitHub.Text = "Нет данных";
+
+                InfoMale.Text = "Гендер: Нет данных";
+                InfoBirthday.Text = "Дата рождения: Нет данных";
+                InfoPhone.Text = "Мобильный телефон: Нет данных";
+                InfoMail.Text = "Нет данных";
+                InfoSocial.Text = "Нет данных";
+
+                InfoUniversity.Text = "Учебное заведение: Нет данных";
+                InfoStudyNumber.Text = "Студенческий билет: Нет данных";
+                InfoGroup.Text = "Группа: Нет данных";
+                InfoKurs.Text = "Курс: Нет данных";
             }
 
         }
@@ -67,7 +80,7 @@ namespace AccountingPolessUp
             else if (_participant.Mmr >= 1000 && _participant.Mmr < 4000)
             { BasicRatingBar.Value = 3; InfoRank.Text = "Ранг: Медл"; }
             else if (_participant.Mmr >= 4000)
-            { BasicRatingBar.Value = 4; InfoRank.Text = "Ранг: Сеньер"; }
+            { BasicRatingBar.Value = 4; InfoRank.Text = "Ранг: Сеньёр"; }
             else
             {
                 BasicRatingBar.Value = 1; InfoRank.Text = "Ранг: Стажер";
