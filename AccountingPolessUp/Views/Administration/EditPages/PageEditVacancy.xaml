@@ -61,7 +61,7 @@ Background="Transparent"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
-            <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="1,0,1,20" x:Name="Budjet" FontSize="14" materialDesign:HintAssist.Hint="Бюджет" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Budjet}"/>
+            <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,20" x:Name="Budjet" FontSize="14" materialDesign:HintAssist.Hint="Бюджет" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Budjet}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="6">
             <ComboBox x:Name="BoxStagesOfProject" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Name"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Стадия проекта" Margin="1,0,1,0"></ComboBox>

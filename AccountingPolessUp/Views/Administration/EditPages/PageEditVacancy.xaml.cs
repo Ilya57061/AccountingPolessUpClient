@@ -101,5 +101,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             NumberValidator.Validator(e);
         }
+        private void Number_PreviewTextDoubleInput(object sender, TextCompositionEventArgs e)
+        {
+          NumberValidator.DoubleValidator(e);
+        }
+    
     }
 }
