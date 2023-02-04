@@ -37,7 +37,6 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Links, UpdateSourceTrigger=PropertyChanged}" Header="Ссылка" />
                         <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата начала" />
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата окончания" />
-                        <DataGridTextColumn Binding="{Binding Employment.StatusDescription, UpdateSourceTrigger=PropertyChanged}" Header="Айди трудоустройства" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
