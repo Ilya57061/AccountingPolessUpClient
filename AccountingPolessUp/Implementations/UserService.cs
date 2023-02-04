@@ -59,8 +59,7 @@ namespace AccountingPolessUp.Implementations
                 System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
                 reqparm.Add("Login", $"{model.Login}");
                 reqparm.Add("Password", $"{model.Password}");
-                reqparm.Add("isAdmin", $"{model.IsAdmin}");
-                reqparm.Add("isGlobalPM", $"{model.isGlobalPM}");
+                reqparm.Add("RoleId", $"{model.RoleId}");
                 web.UploadValues("https://localhost:7273/Register", "POST", reqparm);
             }
         }
@@ -72,10 +71,7 @@ namespace AccountingPolessUp.Implementations
                 web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
                 reqparm.Add("id", $"{model.Id}");
                 reqparm.Add("Login", $"{model.Login}");
-                reqparm.Add("PasswordHash", $"{model.PasswordHash}");
-                reqparm.Add("PasswordSalt", $"{model.PasswordSalt}");
-                reqparm.Add("isAdmin", $"{model.IsAdmin}");
-                reqparm.Add("isGlobalPM", $"{model.isGlobalPM}");
+                reqparm.Add("RoleId", $"{model.RoleId}");
                 web.UploadValues("https://localhost:7273/UpdateUser", "PUT", reqparm);
 
             }

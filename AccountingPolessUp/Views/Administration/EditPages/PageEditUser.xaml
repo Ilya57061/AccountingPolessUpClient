@@ -27,7 +27,6 @@ Background="Transparent"
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Border Grid.ColumnSpan="7" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
 
@@ -40,8 +39,13 @@ Background="Transparent"
         </Grid>
 
 
-        <Grid Grid.Row="1" Grid.Column="4">
-
+       
+        <Grid Grid.Row="1" Grid.Column="2">
+            <ComboBox  x:Name="BoxRole"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Роль" Margin="1,0,1,12" DisplayMemberPath="Name"  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+     
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3">
             <PasswordBox
                 x:Name="Password"
                 FontSize="14"
@@ -50,23 +54,7 @@ Background="Transparent"
     materialDesign:TextFieldAssist.HasClearButton="True"
     Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Password" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="2">
-            <ComboBox  x:Name="BoxIsAdmin"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Админ" Margin="1,0,1,12"   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBoxItem
-    Content="True" />
-                <ComboBoxItem
-    Content="False" />
-            </ComboBox>
-        </Grid>
-        <Grid Grid.Row="1" Grid.Column="3">
-            <ComboBox  x:Name="BoxIsGlobalPM"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="GlobalPM" Margin="1,0,1,12"   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBoxItem
-    Content="True" />
-                <ComboBoxItem
-    Content="False" />
-            </ComboBox>
-        </Grid>
-        <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
+        <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1">
             <Button Visibility="Hidden" x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />
             </Button>

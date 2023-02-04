@@ -3,6 +3,8 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.ViewModels;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,8 +18,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
 
         UserService _userService = new UserService();
+        RoleService _roleService = new RoleService();
+        List<Role> roles;
         User user;
-
 
         public PageEditUser(User user)
         {
@@ -32,8 +35,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             FillDataContext(user);
             ButtonEditPassword.Visibility = Visibility.Visible;
             Login.IsEnabled = false;
-            BoxIsAdmin.IsEnabled = false;
-            BoxIsGlobalPM.IsEnabled = false;
+            BoxRole.IsEnabled = false;
        
         }
         public PageEditUser()
@@ -41,13 +43,17 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             InitializeComponent();
             this.user = new User();
             ButtonAdd.Visibility = Visibility.Visible;
+            roles = _roleService.Get();
+            BoxRole.ItemsSource = roles;
+            BoxRole.SelectedIndex = roles.IndexOf(roles.FirstOrDefault(x => x.Id == user.RoleId));
         }
         private void FillDataContext(User user)
         {
             this.user = user;
             DataContext = user;
-            BoxIsAdmin.SelectedIndex = user.IsAdmin == true ? 0 : 1;
-            BoxIsGlobalPM.SelectedIndex = user.isGlobalPM == true ? 0 : 1;
+            roles = _roleService.Get();
+            BoxRole.ItemsSource = roles;
+            BoxRole.SelectedIndex = roles.IndexOf(roles.FirstOrDefault(x=>x.Id==user.RoleId));
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -73,9 +79,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 RegisterDto registerDto = new RegisterDto();
                 registerDto.Login = Login.Text;
-                registerDto.IsAdmin = bool.Parse(BoxIsAdmin.Text);
                 registerDto.Password = Password.Password;
-                registerDto.isGlobalPM = bool.Parse(BoxIsGlobalPM.Text);
+                registerDto.RoleId= roles.FirstOrDefault(x => x == BoxRole.SelectedItem).Id;
                 _userService.Create(registerDto);
                 DataGridUpdater.UpdateDataGrid(_userService.Get());
             }
@@ -107,8 +112,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void WriteData()
         {
             user.Login = Login.Text;
-            user.IsAdmin = bool.Parse(BoxIsAdmin.Text);
-            user.isGlobalPM = bool.Parse(BoxIsGlobalPM.Text);
+            user.RoleId = roles.FirstOrDefault(x=>x==BoxRole.SelectedItem).Id;
         }
 
     }

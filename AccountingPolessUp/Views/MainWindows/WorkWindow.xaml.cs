@@ -29,11 +29,11 @@ namespace AccountingPolessUp
         {
             _user = user;
             InitializeComponent();
-            if (user.IsAdmin == true)
+            if (user.RoleId==2)
             {
                 Admin.Visibility = Visibility.Visible;
             }
-            else if (user.isGlobalPM == true && user.IsAdmin == false)
+            else if (user.RoleId== 3)
             {
 
                 foreach (TreeViewItem item in Admin.Items)

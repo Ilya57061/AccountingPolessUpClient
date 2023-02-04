@@ -100,6 +100,7 @@
     <Compile Include="Implementations\RankService.cs" />
     <Compile Include="Implementations\RegistrationForCoursesService.cs" />
     <Compile Include="Implementations\RegulationService.cs" />
+    <Compile Include="Implementations\RoleService.cs" />
     <Compile Include="Implementations\ScheduleOfClassesService.cs" />
     <Compile Include="Implementations\StagesOfProjectService.cs" />
     <Compile Include="Implementations\TrainingCoursesService.cs" />
@@ -109,6 +110,7 @@
     <Compile Include="Models\Employment.partial.cs" />
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\RegistrationForCourses.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\ScheduleOfСlasses.cs" />
     <Compile Include="Models\TokenManager.cs" />
     <Compile Include="ViewModels\LoginDto.cs" />
