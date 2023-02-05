@@ -44,9 +44,9 @@ Background="Transparent"
         <Grid Grid.Row="1" Grid.Column="3">
             <ComboBox  x:Name="BoxStatus"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,12"   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <ComboBoxItem
-    Content="True" />
+    Content="Трудоустроен" />
                 <ComboBoxItem
-    Content="False" />
+    Content="Не трудоустроен" />
             </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="4">
