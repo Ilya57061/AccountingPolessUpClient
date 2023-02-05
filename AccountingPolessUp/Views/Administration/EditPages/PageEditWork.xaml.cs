@@ -39,8 +39,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonAdd.Visibility = Visibility.Hidden;
             _positions = _positionsService.Get();
             _participants = _participantsService.Get();
-            BoxStatus.SelectedIndex = true ? 0 : 1;
-            _parent = parent;
+            BoxStatus.SelectedIndex = employment.Status== true ? 0 : 1;
             this.employment = employment;
             this.DataContext = employment;
             BoxParticipants.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == employment.ParticipantsId));

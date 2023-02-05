@@ -14,19 +14,19 @@
      TextOptions.TextRenderingMode="Auto"
 Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}">
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="200"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid  Grid.Row="0" Grid.ColumnSpan="2">
-                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid  Grid.Row="0" Grid.ColumnSpan="2">
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                 <DataGrid HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
@@ -54,20 +54,17 @@ Background="Transparent"
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-            </Grid>
-
-            <Grid Grid.ColumnSpan="2" Grid.Row="1">
-                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-
-                <Button  x:Name="ButtonAdd" Click="ButtonAdd_Click"  HorizontalAlignment="Left" Margin="10,0,0,0" >
-                    <materialDesign:PackIcon Kind="AccountPlus" />
-                </Button>
-
-            </Grid>
-            <Grid Grid.ColumnSpan="2" Grid.Row="2">
-                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-                <Frame x:Name="EditFrame" Content="" />
-            </Grid>
+            </ScrollViewer>
         </Grid>
-    </ScrollViewer>
+        <Grid Grid.ColumnSpan="2" Grid.Row="1">
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <Button  x:Name="ButtonAdd" Click="ButtonAdd_Click"  HorizontalAlignment="Left" Margin="10,0,0,0" >
+                <materialDesign:PackIcon Kind="AccountPlus" />
+            </Button>
+        </Grid>
+        <Grid Grid.ColumnSpan="2" Grid.Row="2">
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <Frame x:Name="EditFrame" Content="" />
+        </Grid>
+    </Grid>
 </Page>
