@@ -34,6 +34,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonAdd.Visibility = Visibility.Hidden;
             _individuals = individuals;
             DataContext = individuals;
+            BoxGender.SelectedIndex = _individuals.Gender == "Мужской" ? 0 : 1;
             _parent = parent;
         }
         public PageEditIndividuals(Page parent)

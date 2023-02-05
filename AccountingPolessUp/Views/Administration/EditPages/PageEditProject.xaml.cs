@@ -94,7 +94,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void WriteData()
         {
             _project.Fullname = Fullname.Text;
-            _project.Status = Status.Text;
+            _project.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             _project.Description= Description.Text;
             _project.TechnicalSpecification=TechnicalSpecification.Text;
             _project.idLocalPM = int.Parse(idLocalPM.Text);

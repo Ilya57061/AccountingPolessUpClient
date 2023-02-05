@@ -50,7 +50,10 @@ Background="Transparent"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="4">
-            <TextBox Margin="1,0,1,20" x:Name="Status" FontSize="14" materialDesign:HintAssist.Hint="Статус" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="ListStatus" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Status}"/>
+            <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
+                <ComboBoxItem Content="Статус 1" />
+                <ComboBoxItem Content="Статус 2" />
+            </ComboBox>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="5">
             <Button Click="OpenOrganization_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
