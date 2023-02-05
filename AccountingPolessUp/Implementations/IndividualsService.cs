@@ -65,7 +65,7 @@ namespace AccountingPolessUp.Implementations
             {
                 ["id"] = $"{id}"
             };
-            _webClient.UploadValues("DeleteIndividual", "DELETE", reqparm);
+            _webClient.UploadValues("DeletIndividual", "DELETE", reqparm);
         }
     }
 

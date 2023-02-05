@@ -78,7 +78,7 @@ namespace AccountingPolessUp
             if (_participant.Mmr >= 100 && _participant.Mmr < 1000)
             { BasicRatingBar.Value = 2; InfoRank.Text = "Ранг: Джун"; }
             else if (_participant.Mmr >= 1000 && _participant.Mmr < 4000)
-            { BasicRatingBar.Value = 3; InfoRank.Text = "Ранг: Медл"; }
+            { BasicRatingBar.Value = 3; InfoRank.Text = "Ранг: Мидл"; }
             else if (_participant.Mmr >= 4000)
             { BasicRatingBar.Value = 4; InfoRank.Text = "Ранг: Сеньёр"; }
             else
