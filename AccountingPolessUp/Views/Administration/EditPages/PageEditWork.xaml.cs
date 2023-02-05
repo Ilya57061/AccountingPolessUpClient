@@ -40,7 +40,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonAdd.Visibility = Visibility.Hidden;
             _positions = _positionsService.Get();
             _participants = _participantsService.Get();
-            BoxStatus.SelectedIndex = employment.Status== true ? 0 : 1;
             this.employment = employment;
             this.DataContext = employment;
             BoxParticipants.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == employment.ParticipantsId));
@@ -71,7 +70,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _employmentService.Update(employment);
-                DataGridUpdater.UpdateDataGrid(_employmentService.Get(),_parent);
+                DataGridUpdater.UpdateDataGrid(_employmentService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -92,7 +91,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _employmentService.Create(employment);
-                DataGridUpdater.UpdateDataGrid(_employmentService.Get(),_parent);
+                DataGridUpdater.UpdateDataGrid(_employmentService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -105,7 +104,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             employment.PositionId = _positions.FirstOrDefault(i => i == BoxPosition.SelectedItem).Id;
             employment.DateStart = DateStart.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateStart.Text);
             employment.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
-            employment.Status = bool.Parse(BoxStatus.Text);
+            employment.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             employment.StatusDescription = StatusDescription.Text;
             employment.IdMentor = _participants.FirstOrDefault(i => i == BoxMentors.SelectedItem).Id;
         }

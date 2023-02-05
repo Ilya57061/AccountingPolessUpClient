@@ -12,7 +12,6 @@ namespace AccountingPolessUp.Models
         static ParticipantsService _participantsService = new ParticipantsService();
         static List<Participants> participants = _participantsService.Get();
 
-        public string stringStatus => Status ? "Верно" : "Не верно";
         public string nameMentor => participants.FirstOrDefault(x => x.Id == IdMentor).Individuals.FIO;
 
     }
