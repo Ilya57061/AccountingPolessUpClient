@@ -35,6 +35,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditWork(Employment employment, Page parent)
         {
             InitializeComponent();
+            _parent = parent;
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _positions = _positionsService.Get();

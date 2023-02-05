@@ -87,6 +87,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void OpenCustomer_Click(object sender, RoutedEventArgs e)
         {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxCustomer.Name;
+            _parent.NavigationService.Content = new PageAdmCustomer(_customers);
         }
         private void WriteData()
         {

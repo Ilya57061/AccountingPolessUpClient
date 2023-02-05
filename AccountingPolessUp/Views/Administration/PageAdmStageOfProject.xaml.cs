@@ -25,11 +25,30 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmStageOfProject : Page
     {
         StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
+        List<StagesOfProject> _stagesOfProjects;
         public PageAdmStageOfProject()
         {
             InitializeComponent();
             
             DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), this);
+        }
+        public PageAdmStageOfProject(List<StagesOfProject> stagesOfProjects)
+        {
+
+            InitializeComponent();
+            ColumSelect.Visibility = Visibility.Visible;
+            DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), this);
+            _stagesOfProjects = stagesOfProjects;
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+               StagesOfProject stage = dataGrid.SelectedItems[i] as StagesOfProject;
+                DataNavigator.UpdateValueComboBox(_stagesOfProjects.FirstOrDefault(x => x.Id == stage.Id));
+            }
+
+            this.NavigationService.GoBack();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {

@@ -85,6 +85,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void OpenRegulation_Click(object sender, RoutedEventArgs e)
         {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxOrganization.Name;
+            _parent.NavigationService.Content = new PageAdmOrganizations(_organizations);
         }
         private void WriteData()
         {

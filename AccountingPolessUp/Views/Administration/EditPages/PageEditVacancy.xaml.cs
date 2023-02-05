@@ -56,6 +56,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void OpenStages_Click(object sender, RoutedEventArgs e)
         {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxStagesOfProject.Name;
+            _parent.NavigationService.Content = new PageAdmStageOfProject(_stagesOfProjects);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

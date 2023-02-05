@@ -52,8 +52,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxTrainingCourses.ItemsSource = _trainingCourses;
             _parent=parent;
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OpenCourses_Click(object sender, RoutedEventArgs e)
         {
+
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxTrainingCourses.Name;
+            _parent.NavigationService.Content = new PageAdmCourses(_trainingCourses);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

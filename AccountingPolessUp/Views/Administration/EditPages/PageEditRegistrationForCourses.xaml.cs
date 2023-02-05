@@ -97,9 +97,17 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _registrationForCourses.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void OpenParticipants_Click(object sender, RoutedEventArgs e)
         {
-
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxParticipant.Name;
+            _parent.NavigationService.Content = new PageAdmMembers(_participants);
+        }
+        private void OpenCourses_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxTrainingCourses.Name;
+            _parent.NavigationService.Content = new PageAdmCourses(_trainingCourses);
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

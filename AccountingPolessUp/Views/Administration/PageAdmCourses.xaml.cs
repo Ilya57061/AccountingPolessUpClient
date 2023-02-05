@@ -25,10 +25,28 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmCourses : Page
     {
         TrainingCoursesService _coursesService = new TrainingCoursesService();
+        List<TrainingCourses> _trainingCourses;
         public PageAdmCourses()
         {
             InitializeComponent();
             DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
+        }
+        public PageAdmCourses(List<TrainingCourses> trainingCourses)
+        {
+            InitializeComponent();
+            DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
+            ColumSelect.Visibility = Visibility.Visible;
+            _trainingCourses = trainingCourses;
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                TrainingCourses courses = dataGrid.SelectedItems[i] as TrainingCourses;
+                DataNavigator.UpdateValueComboBox(_trainingCourses.FirstOrDefault(x => x.Id == courses.Id));
+            }
+
+            this.NavigationService.GoBack();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {

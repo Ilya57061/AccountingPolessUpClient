@@ -25,10 +25,28 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmCustomer : Page
     {
         CustomerService _customerService = new CustomerService();
+        List<Customer> _customers;
         public PageAdmCustomer()
         {
             InitializeComponent();
             DataGridUpdater.UpdateDataGrid(_customerService.Get(), this);
+        }
+        public PageAdmCustomer(List<Customer> customers)
+        {
+            InitializeComponent();
+            DataGridUpdater.UpdateDataGrid(_customerService.Get(), this);
+            ColumSelect.Visibility = Visibility.Visible;
+            _customers=customers;
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Customer customer = dataGrid.SelectedItems[i] as Customer;
+                DataNavigator.UpdateValueComboBox(_customers.FirstOrDefault(x => x.Id == customer.Id));
+            }
+
+            this.NavigationService.GoBack();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
