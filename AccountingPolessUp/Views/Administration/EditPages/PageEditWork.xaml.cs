@@ -106,7 +106,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             employment.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
             employment.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             employment.StatusDescription = StatusDescription.Text;
-            employment.IdMentor = _participants.FirstOrDefault(i => i == BoxMentors.SelectedItem).Id;
+            var selectedMentor = _participants.FirstOrDefault(i => i == BoxMentors.SelectedItem);
+            if (selectedMentor != null)
+                employment.IdMentor = selectedMentor.Id;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
