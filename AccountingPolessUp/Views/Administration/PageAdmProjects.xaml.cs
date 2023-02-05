@@ -25,11 +25,28 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmProjects : Page
     {
         ProjectService _projectService = new ProjectService();
+        List<Project> _projects;
         public PageAdmProjects()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_projectService.Get());
+            DataGridUpdater.UpdateDataGrid(_projectService.Get(), this);
+        }
+        public PageAdmProjects(List<Project> projects)
+        {
+            InitializeComponent();
+            _projects = projects;
+            DataGridUpdater.UpdateDataGrid(_projectService.Get(), this);
+            ColumSelect.Visibility= Visibility.Visible;
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Project project = dataGrid.SelectedItems[i] as Project;
+                DataNavigator.UpdateValueComboBox(_projects.FirstOrDefault(x => x.Id == project.Id));
+            }
+
+            this.NavigationService.GoBack();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -45,11 +62,11 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_projectService.Get());
+            DataGridUpdater.UpdateDataGrid(_projectService.Get(), this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditProject();
+            EditFrame.Content = new PageEditProject(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -58,7 +75,7 @@ namespace AccountingPolessUp.Views.Administration
                 Project project = dataGrid.SelectedItems[i] as Project;
                 if (project != null)
                 {
-                    EditFrame.Content = new PageEditProject(project);
+                    EditFrame.Content = new PageEditProject(project, this);
 
                 }
             }

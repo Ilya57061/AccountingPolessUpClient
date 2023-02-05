@@ -25,13 +25,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditProject : Page
     {
 
-        
+        Page _parent;
         ProjectService _projectService = new ProjectService();
         CustomerService _customerService = new CustomerService();
 
         List<Customer> _customers;
         Project _project;
-        public PageEditProject(Project project)
+        public PageEditProject(Project project, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -39,10 +39,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _project = project;
             _customers = _customerService.Get();
             DataContext = project;
-            BoxCustomer.ItemsSource= _customers;
-            BoxCustomer.SelectedIndex = _customers.IndexOf(_customers.FirstOrDefault(c=>c.Id==project.CustomerId));
+            BoxCustomer.ItemsSource = _customers;
+            BoxCustomer.SelectedIndex = _customers.IndexOf(_customers.FirstOrDefault(c => c.Id == project.CustomerId));
+            _parent = parent;
         }
-        public PageEditProject()
+        public PageEditProject(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -50,6 +51,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _project= new Project();
             _customers = _customerService.Get();
             BoxCustomer.ItemsSource = _customers;
+            _parent = parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -59,7 +61,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _projectService.Update(_project);
-                DataGridUpdater.UpdateDataGrid(_projectService.Get());
+                DataGridUpdater.UpdateDataGrid(_projectService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -75,7 +77,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _projectService.Create(_project);
-                DataGridUpdater.UpdateDataGrid(_projectService.Get());
+                DataGridUpdater.UpdateDataGrid(_projectService.Get(), _parent);
             }
             catch (Exception)
             {

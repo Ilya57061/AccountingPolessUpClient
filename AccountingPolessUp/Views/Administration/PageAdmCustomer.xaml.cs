@@ -28,8 +28,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmCustomer()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_customerService.Get());
+            DataGridUpdater.UpdateDataGrid(_customerService.Get(), this);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -45,11 +44,11 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_customerService.Get());
+            DataGridUpdater.UpdateDataGrid(_customerService.Get(), this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditCustomer();
+            EditFrame.Content = new PageEditCustomer(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -58,7 +57,7 @@ namespace AccountingPolessUp.Views.Administration
                 Customer Customer = dataGrid.SelectedItems[i] as Customer;
                 if (Customer != null)
                 {
-                    EditFrame.Content = new PageEditCustomer(Customer);
+                    EditFrame.Content = new PageEditCustomer(Customer, this);
                 }
             }
         }

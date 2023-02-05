@@ -25,11 +25,18 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmDepartments : Page
     {
         DepartmentService _departmentService = new DepartmentService();
+        List<Department> _departments;
         public PageAdmDepartments()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_departmentService.Get());
+            DataGridUpdater.UpdateDataGrid(_departmentService.Get(), this);
+        }
+        public PageAdmDepartments(List<Department> departments)
+        {
+            InitializeComponent();
+            DataGridUpdater.UpdateDataGrid(_departmentService.Get(), this);
+            ColumSelect.Visibility = Visibility.Visible;
+            _departments=departments;
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -41,16 +48,25 @@ namespace AccountingPolessUp.Views.Administration
                     if (Department != null)
                     {
 
-
                         _departmentService.Delete(Department.Id);
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_departmentService.Get());
+            DataGridUpdater.UpdateDataGrid(_departmentService.Get(), this);
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Department department = dataGrid.SelectedItems[i] as Department;
+                DataNavigator.UpdateValueComboBox(_departments.FirstOrDefault(x => x.Id == department.Id));
+            }
+
+            this.NavigationService.GoBack();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditDepartments();
+            EditFrame.Content = new PageEditDepartments(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -59,7 +75,7 @@ namespace AccountingPolessUp.Views.Administration
                 Department Department = dataGrid.SelectedItems[i] as Department;
                 if (Department != null)
                 {
-                    EditFrame.Content = new PageEditDepartments(Department);
+                    EditFrame.Content = new PageEditDepartments(Department, this);
 
                 }
             }

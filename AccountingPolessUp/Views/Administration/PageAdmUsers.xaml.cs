@@ -29,13 +29,11 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmUsers()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
            DataGridUpdater.UpdateDataGrid(_userService.Get(),this);
         }
         public PageAdmUsers(List<User> users)
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
             DataGridUpdater.UpdateDataGrid(_userService.Get(), this);
             ColumSelect.Visibility = Visibility.Visible;
             _users = users;

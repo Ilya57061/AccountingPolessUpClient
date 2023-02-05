@@ -25,14 +25,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditRegistrationForCourses : Page
     {
 
-        
+        Page _parent;
         RegistrationForCoursesService _registrationForCoursesService = new RegistrationForCoursesService();
         List<Participants> _participants;
         ParticipantsService _participantsService = new ParticipantsService();
         TrainingCoursesService _trainingCoursesService = new TrainingCoursesService();
         List<TrainingCourses> _trainingCourses;
         RegistrationForCourses _registrationForCourses;
-        public PageEditRegistrationForCourses(RegistrationForCourses registrationForCourses)
+        public PageEditRegistrationForCourses(RegistrationForCourses registrationForCourses, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -45,8 +45,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxParticipant.ItemsSource = _participants;
             BoxTrainingCourses.SelectedIndex = _trainingCourses.IndexOf(_trainingCourses.FirstOrDefault(r => r.Id == registrationForCourses.TrainingCoursesId));
             BoxParticipant.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(r => r.Id == registrationForCourses.ParticipantsId));
+            _parent = parent;
         }
-        public PageEditRegistrationForCourses()
+        public PageEditRegistrationForCourses(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -56,6 +57,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _trainingCourses = _trainingCoursesService.Get();
             BoxParticipant.ItemsSource = _participants;
             BoxTrainingCourses.ItemsSource = _trainingCourses;
+            _parent = parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -65,7 +67,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _registrationForCoursesService.Update(_registrationForCourses);
-                DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get());
+                DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -80,7 +82,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _registrationForCoursesService.Create(_registrationForCourses);
-                DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get());
+                DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get(), _parent);
             }
             catch (Exception)
             {

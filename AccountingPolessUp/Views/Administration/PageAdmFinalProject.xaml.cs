@@ -29,7 +29,6 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmFinalProject(Employment employment)
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
             _employment = employment;
             DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(employment.Id), this);
         }
@@ -47,12 +46,12 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id));
+            DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id), this);
 
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditFinalProject(_employment);
+            EditFrame.Content = new PageEditFinalProject(_employment, this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -62,7 +61,7 @@ namespace AccountingPolessUp.Views.Administration
                 if (FinalProject != null)
                 {
 
-                    EditFrame.Content = new PageEditFinalProject(FinalProject, _employment);
+                    EditFrame.Content = new PageEditFinalProject(FinalProject, _employment, this);
 
                 }
             }

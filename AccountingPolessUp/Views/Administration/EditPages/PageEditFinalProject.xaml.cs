@@ -24,11 +24,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditFinalProject : Page
     {
 
-
+        Page _parent;
         FinalProjectService _finalProjectService = new FinalProjectService();
         FinalProject _finalProject;
         Employment _employment;
-        public PageEditFinalProject(FinalProject finalProject, Employment employment)
+        public PageEditFinalProject(FinalProject finalProject, Employment employment, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -36,15 +36,16 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _finalProject = finalProject;
             DataContext = finalProject;
             _employment = employment;
+            _parent = parent;
         }
-        public PageEditFinalProject(Employment employment)
+        public PageEditFinalProject(Employment employment,Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _finalProject = new FinalProject();
             _employment = employment;
-
+            _parent = parent;
         }
         private void OpenEmployment_Click(object sender, RoutedEventArgs e)
         {
@@ -58,7 +59,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _finalProjectService.Update(_finalProject);
-                DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id));
+                DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id), _parent);
             }
             catch (Exception)
             {
@@ -73,7 +74,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _finalProjectService.Create(_finalProject);
-                DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id));
+                DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id), _parent);
             }
             catch (Exception)
             {

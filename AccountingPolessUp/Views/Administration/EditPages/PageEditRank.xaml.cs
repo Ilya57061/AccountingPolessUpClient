@@ -24,12 +24,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditRank : Page
     {
 
-
+        Page _parent;
         RankService _RankService = new RankService();
         OrganizationService _organizationService = new OrganizationService();
         List<Organization> _organizations;
         Rank _Rank;
-        public PageEditRank(Rank Rank)
+        public PageEditRank(Rank Rank, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -39,8 +39,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataContext = Rank;
             BoxOrganization.ItemsSource = _organizations;
             BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o => o.Id == Rank.OrganizationId));
+            _parent = parent;
         }
-        public PageEditRank()
+        public PageEditRank(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -48,6 +49,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _Rank = new Rank();
             _organizations = _organizationService.Get();
             BoxOrganization.ItemsSource = _organizations;
+            _parent= parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +59,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _RankService.Update(_Rank);
-                DataGridUpdater.UpdateDataGrid(_RankService.Get());
+                DataGridUpdater.UpdateDataGrid(_RankService.Get(),_parent);
             }
             catch (Exception)
             {
@@ -72,16 +74,18 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _RankService.Create(_Rank);
-                DataGridUpdater.UpdateDataGrid(_RankService.Get());
+                DataGridUpdater.UpdateDataGrid(_RankService.Get(), _parent);
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
         }
-        private void OpenRank_Click(object sender, RoutedEventArgs e)
+        private void OpenOrganizations_Click(object sender, RoutedEventArgs e)
         {
-
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxOrganization.Name;
+            _parent.NavigationService.Content = new PageAdmOrganizations(_organizations);
         }
         private void WriteData()
         {

@@ -24,12 +24,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditPosition : Page
     {
 
-        
+        Page _parent;
         PositionService _positionService = new PositionService();
         DepartmentService _departmentService = new DepartmentService();
         List<Department> _departments;
         Position _position;
-        public PageEditPosition(Position position)
+        public PageEditPosition(Position position, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -39,8 +39,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _departments = _departmentService.Get();
             BoxDepartment.ItemsSource = _departments;
             BoxDepartment.SelectedIndex = _departments.IndexOf(_departments.FirstOrDefault(d => d.Id == position.DepartmentId));
+            _parent = parent;
         }
-        public PageEditPosition()
+        public PageEditPosition(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -48,24 +49,28 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _position = new Position();
             _departments = _departmentService.Get();
             BoxDepartment.ItemsSource = _departments;
+            _parent = parent;
         }
         private void OpenDepartments_Click(object sender, RoutedEventArgs e)
         {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxDepartment.Name;
+            _parent.NavigationService.Content = new PageAdmDepartments(_departments);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             try
             {
+                WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _positionService.Update(_position);
-                DataGridUpdater.UpdateDataGrid(_positionService.Get());
+                DataGridUpdater.UpdateDataGrid(_positionService.Get(),_parent);
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-            WriteData();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -75,7 +80,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _positionService.Create(_position);
-                DataGridUpdater.UpdateDataGrid(_positionService.Get());
+                DataGridUpdater.UpdateDataGrid(_positionService.Get(), _parent);
             }
             catch (Exception)
             {
