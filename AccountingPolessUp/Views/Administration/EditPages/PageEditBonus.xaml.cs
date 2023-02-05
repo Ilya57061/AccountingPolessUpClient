@@ -3,6 +3,7 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,33 +26,38 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditBonus : Page
     {
 
-        
+        Page _parent;
         BonusService _bonusService = new BonusService();
         RankService _RankService = new RankService();
-        List<Rank> _Ranks;
+        List<Rank> _ranks;
         Bonus _bonus;
-        public PageEditBonus(Bonus bonus)
+        public PageEditBonus(Bonus bonus, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _Ranks = _RankService.Get();
+            _ranks = _RankService.Get();
             DataContext = bonus;
             _bonus = bonus;
-            BoxRank.ItemsSource = _Ranks;
-            BoxRank.SelectedIndex = _Ranks.IndexOf(_Ranks.FirstOrDefault(r => r.Id == bonus.RankId));
+            _parent = parent;
+            BoxRank.ItemsSource = _ranks;
+            BoxRank.SelectedItem = _ranks.FirstOrDefault(r => r.Id == bonus.RankId);
         }
-        public PageEditBonus()
+        public PageEditBonus(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _bonus = new Bonus();
-            _Ranks = _RankService.Get();
-            BoxRank.ItemsSource = _Ranks;
+            _ranks = _RankService.Get();
+            _parent=parent;
+            BoxRank.ItemsSource = _ranks;
         }
         private void OpenRank_Click(object sender, RoutedEventArgs e)
         {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxRank.Name;
+            _parent.NavigationService.Content = new PageAdmRanks(_ranks);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -61,7 +67,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _bonusService.Update(_bonus);
-                DataGridUpdater.UpdateDataGrid(_bonusService.Get());
+                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -76,7 +82,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _bonusService.Create(_bonus);
-                DataGridUpdater.UpdateDataGrid(_bonusService.Get());
+                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -85,10 +91,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
-            
+
             _bonus.BonusName = BonusName.Text;
             _bonus.BonusDescription = BonusDescription.Text;
-            _bonus.RankId = _Ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id;
+            _bonus.RankId = _ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id;
         }
     }
 }

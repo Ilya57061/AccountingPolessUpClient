@@ -83,6 +83,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\DataGridUpdater.cs" />
+    <Compile Include="Helpers\DataNavigator.cs" />
     <Compile Include="Helpers\FormValidator.cs" />
     <Compile Include="Helpers\NumberValidator.cs" />
     <Compile Include="Implementations\ApplicationsInTheProjectService.cs" />

@@ -25,11 +25,21 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmRanks : Page
     {
         RankService _rankService = new RankService();
+        List<Rank> _ranks; // объявляем, чтобы получить список объектов ComboBox
         public PageAdmRanks()
         {
             InitializeComponent();
             DataGridUpdater.Page = this;
             DataGridUpdater.UpdateDataGrid(_rankService.Get());
+        }
+        public PageAdmRanks(List<Rank> ranks)
+        {
+
+            InitializeComponent();
+            _ranks=ranks; 
+            DataGridUpdater.Page = this;
+            DataGridUpdater.UpdateDataGrid(_rankService.Get());
+            ColumSelect.Visibility = Visibility.Visible;
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -40,12 +50,22 @@ namespace AccountingPolessUp.Views.Administration
                     Rank Rank = dataGrid.SelectedItems[i] as Rank;
                     if (Rank != null)
                     {
-
                         _rankService.Delete(Rank.Id);
                     }
                 }
             }
+            DataGridUpdater.Page = this;
             DataGridUpdater.UpdateDataGrid(_rankService.Get());
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Rank Rank = dataGrid.SelectedItems[i] as Rank;
+               DataNavigator.UpdateValueComboBox(_ranks.FirstOrDefault(x => x.Id == Rank.Id));
+            }
+            
+            this.NavigationService.GoBack();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -59,7 +79,6 @@ namespace AccountingPolessUp.Views.Administration
                 if (Rank != null)
                 {
                     EditFrame.Content = new PageEditRank(Rank);
-
                 }
             }
         }
