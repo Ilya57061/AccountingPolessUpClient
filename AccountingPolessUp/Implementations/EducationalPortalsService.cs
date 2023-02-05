@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,61 +12,57 @@ namespace AccountingPolessUp.Implementations
 {
     public class EducationalPortalsService
     {
+        private readonly WebClient _webClient;
+        public EducationalPortalsService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<EducationalPortals> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetEducationalPortals";
-                var json = web.DownloadString(url);
-                List<EducationalPortals> Info = JsonConvert.DeserializeObject<List<EducationalPortals>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetEducationalPortals");
+            var info = JsonConvert.DeserializeObject<List<EducationalPortals>>(json);
+            if (info is null) throw new Exception("info - null");
+            else return info;
         }
+
         public void Create(EducationalPortals model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Name", $"{model.Name}");
-                reqparm.Add("DepartmentId", $"{model.DepartmentId}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("Link", $"{model.Link}");
-
-
-                web.UploadValues("https://localhost:7273/CreateEducationalPortals", "POST", reqparm);
-
-            }
+                ["Name"] = $"{model.Name}",
+                ["DepartmentId"] = $"{model.DepartmentId}",
+                ["Description"] = $"{model.Description}",
+                ["Link"] = $"{model.Link}"
+            };
+            _webClient.UploadValues("CreateEducationalPortals", "POST", reqparm);
         }
+
         public void Update(EducationalPortals model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("Name", $"{model.Name}");
-                reqparm.Add("DepartmentId", $"{model.DepartmentId}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("Link", $"{model.Link}");
-
-                web.UploadValues("https://localhost:7273/UpdateEducationalPortals", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["Name"] = $"{model.Name}",
+                ["DepartmentId"] = $"{model.DepartmentId}",
+                ["Description"] = $"{model.Description}",
+                ["Link"] = $"{model.Link}"
+            };
+            _webClient.UploadValues("UpdateEducationalPortals", "PUT", reqparm);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteEducationalPortals", "DELETE", reqparm);
-
-            }
+                ["Id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteEducationalPortals", "DELETE", reqparm);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,62 +12,59 @@ namespace AccountingPolessUp.Implementations
 {
     public class RankService
     {
+        private readonly WebClient _webClient;
+        public RankService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<Rank> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetRank";
-                var json = web.DownloadString(url);
-                List<Rank> Info = JsonConvert.DeserializeObject<List<Rank>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetRank");
+            var Info = JsonConvert.DeserializeObject<List<Rank>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public void Create(Rank model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("RankName", $"{model.RankName}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("OrganizationId", $"{model.OrganizationId}");
-                reqparm.Add("MaxMmr", $"{model.MaxMmr}");
-                reqparm.Add("MinMmr", $"{model.MinMmr}");
-
-
-                web.UploadValues("https://localhost:7273/CreateRank", "POST", reqparm);
-
-            }
+                ["RankName"] = $"{model.RankName}",
+                ["Description"] = $"{model.Description}",
+                ["OrganizationId"] = $"{model.OrganizationId}",
+                ["MaxMmr"] = $"{model.MaxMmr}",
+                ["MinMmr"] = $"{model.MinMmr}"
+            };
+            _webClient.UploadValues("CreateRank", "POST", reqparm);
         }
+
         public void Update(Rank model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("RankName", $"{model.RankName}");
-                reqparm.Add("MaxMmr", $"{model.MaxMmr}");
-                reqparm.Add("MinMmr", $"{model.MinMmr}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("OrganizationId", $"{model.OrganizationId}");
-                web.UploadValues("https://localhost:7273/UpdateRank", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["RankName"] = $"{model.RankName}",
+                ["MaxMmr"] = $"{model.MaxMmr}",
+                ["MinMmr"] = $"{model.MinMmr}",
+                ["Description"] = $"{model.Description}",
+                ["OrganizationId"] = $"{model.OrganizationId}"
+            };
+            _webClient.UploadValues("UpdateRank", "PUT", reqparm);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteRank", "DELETE", reqparm);
-
-            }
+                ["id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteRank", "DELETE", reqparm);
         }
     }
 }

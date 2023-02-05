@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,78 +12,70 @@ namespace AccountingPolessUp.Implementations
 {
     public class EmploymentService
     {
+        private readonly WebClient _webClient;
+
+        public EmploymentService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<Employment> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetEmployments";
-                var json = web.DownloadString(url);
-                List<Employment> Info = JsonConvert.DeserializeObject<List<Employment>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetEmployments");
+            var info = JsonConvert.DeserializeObject<List<Employment>>(json);
+            if (info == null) throw new Exception("info - null");
+            return info;
         }
+
         public Employment GetByParticipants(int participantsId)
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("ParticipantsId", $"{participantsId}");
-                var response = web.UploadValues("https://localhost:7273/GetByParticipants", "POST", reqparm);
-                var responseString = Encoding.Default.GetString(response);
-                Employment employment = JsonConvert.DeserializeObject<Employment>(responseString);
-                return employment;
-            }
+            var values = new NameValueCollection { ["ParticipantsId"] = participantsId.ToString() };
+            var response = _webClient.UploadValues("GetByParticipants", "POST", values);
+            var responseString = Encoding.Default.GetString(response);
+            var employment = JsonConvert.DeserializeObject<Employment>(responseString);
+            return employment;
         }
+
         public void Create(Employment model)
         {
-            using (WebClient web = new WebClient())
+            var values = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("DateStart", $"{model.DateStart}");
-                reqparm.Add("DateEnd", $"{model.DateEnd}");
-                reqparm.Add("Status", $"{model.Status}");
-                reqparm.Add("StatusDescription", $"{model.StatusDescription}");
-                reqparm.Add("IdMentor", $"{model.IdMentor}");
-                reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
-                reqparm.Add("PositionId", $"{model.PositionId}");
-
-                web.UploadValues("https://localhost:7273/CreateEmployment", "POST", reqparm);
-
-            }
+                ["DateStart"] = model.DateStart.ToString(),
+                ["DateEnd"] = model.DateEnd.ToString(),
+                ["Status"] = model.Status.ToString(),
+                ["StatusDescription"] = model.StatusDescription,
+                ["IdMentor"] = model.IdMentor.ToString(),
+                ["ParticipantsId"] = model.ParticipantsId.ToString(),
+                ["PositionId"] = model.PositionId.ToString()
+            };
+            _webClient.UploadValues("CreateEmployment", "POST", values);
         }
+
         public void Update(Employment model)
         {
-            using (WebClient web = new WebClient())
+            var values = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("DateStart", $"{model.DateStart}");
-                reqparm.Add("DateEnd", $"{model.DateEnd}");
-                reqparm.Add("Status", $"{model.Status}");
-                reqparm.Add("StatusDescription", $"{model.StatusDescription}");
-                reqparm.Add("IdMentor", $"{model.IdMentor}");
-                reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
-                reqparm.Add("PositionId", $"{model.PositionId}");
-                web.UploadValues("https://localhost:7273/UpdateEmployment", "PUT", reqparm);
-
-            }
+                ["id"] = model.Id.ToString(),
+                ["DateStart"] = model.DateStart.ToString(),
+                ["DateEnd"] = model.DateEnd.ToString(),
+                ["Status"] = model.Status.ToString(),
+                ["StatusDescription"] = model.StatusDescription,
+                ["IdMentor"] = model.IdMentor.ToString(),
+                ["ParticipantsId"] = model.ParticipantsId.ToString(),
+                ["PositionId"] = model.PositionId.ToString()
+            };
+            _webClient.UploadValues("UpdateEmployment", "PUT", values);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteEmployment", "DELETE", reqparm);
-
-            }
+            var values = new NameValueCollection { ["id"] = id.ToString() };
+            _webClient.UploadValues("DeleteEmployment", "DELETE", values);
         }
     }
 }

@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,79 +12,69 @@ namespace AccountingPolessUp.Implementations
 {
     public class FinalProjectService
     {
+        private readonly WebClient _webClient;
+        public FinalProjectService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<FinalProject> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetFinalProject";
-                var json = web.DownloadString(url);
-                List<FinalProject> Info = JsonConvert.DeserializeObject<List<FinalProject>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetFinalProject");
+            List<FinalProject> Info = JsonConvert.DeserializeObject<List<FinalProject>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public List<FinalProject> GetByEmployment(int employmentId)
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{employmentId}");
-                var response = web.UploadValues("https://localhost:7273/GetFinalProjectForEmploymentId", "PUT", reqparm);
-                var responseString = Encoding.Default.GetString(response);
-                List<FinalProject> list = JsonConvert.DeserializeObject<List<FinalProject>>(responseString);
-                return list;
-            }
+            var request = new NameValueCollection { ["id"] = $"{employmentId}" };
+            var response = _webClient.UploadValues("GetFinalProjectForEmploymentId", "PUT", request);
+            var responseString = Encoding.Default.GetString(response);
+            List<FinalProject> list = JsonConvert.DeserializeObject<List<FinalProject>>(responseString);
+            return list;
         }
+
         public void Create(FinalProject model)
         {
-            using (WebClient web = new WebClient())
+            var request = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Name", $"{model.Name}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("GitHub", $"{model.GitHub}");
-                reqparm.Add("Links", $"{model.Links}");
-                reqparm.Add("DateStart", $"{model.DateStart}");
-                reqparm.Add("DateEnd", $"{model.DateEnd}");
-                reqparm.Add("EmploymentId", $"{model.EmploymentId}");
-
-
-                web.UploadValues("https://localhost:7273/CreateFinalProject", "POST", reqparm);
-
-            }
+                ["Name"] = $"{model.Name}",
+                ["Description"] = $"{model.Description}",
+                ["GitHub"] = $"{model.GitHub}",
+                ["Links"] = $"{model.Links}",
+                ["DateStart"] = $"{model.DateStart}",
+                ["DateEnd"] = $"{model.DateEnd}",
+                ["EmploymentId"] = $"{model.EmploymentId}"
+            };
+            _webClient.UploadValues("CreateFinalProject", "POST", request);
         }
+
         public void Update(FinalProject model)
         {
-            using (WebClient web = new WebClient())
+            var request = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("Name", $"{model.Name}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("GitHub", $"{model.GitHub}");
-                reqparm.Add("Links", $"{model.Links}");
-                reqparm.Add("DateStart", $"{model.DateStart}");
-                reqparm.Add("DateEnd", $"{model.DateEnd}");
-                reqparm.Add("EmploymentId", $"{model.EmploymentId}");
-                web.UploadValues("https://localhost:7273/UpdateFinalProject", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["Name"] = $"{model.Name}",
+                ["Description"] = $"{model.Description}",
+                ["GitHub"] = $"{model.GitHub}",
+                ["Links"] = $"{model.Links}",
+                ["DateStart"] = $"{model.DateStart}",
+                ["DateEnd"] = $"{model.DateEnd}",
+                ["EmploymentId"] = $"{model.EmploymentId}"
+            };
+            _webClient.UploadValues("UpdateFinalProject", "PUT", request);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteFinalProject", "DELETE", reqparm);
-
-            }
+            var request = new NameValueCollection { ["id"] = $"{id}" };
+            _webClient.UploadValues("DeleteFinalProject", "DELETE", request);
         }
     }
 }

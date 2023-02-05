@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,66 +12,63 @@ namespace AccountingPolessUp.Implementations
 {
     public class VacancyService
     {
+        private readonly WebClient _webClient;
+        public VacancyService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<Vacancy> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetVacancy";
-                var json = web.DownloadString(url);
-                List<Vacancy> Info = JsonConvert.DeserializeObject<List<Vacancy>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetVacancy");
+            var Info = JsonConvert.DeserializeObject<List<Vacancy>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public void Create(Vacancy model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Name", $"{model.Name}");
-                reqparm.Add("Descriptions", $"{model.Descriptions}");
-                reqparm.Add("Responsibilities", $"{model.Responsibilities}");
-                reqparm.Add("DateStart", $"{model.DateStart}");
-                reqparm.Add("DateEnd", $"{model.DateEnd}");
-                reqparm.Add("Budjet", $"{model.Budjet}");
-                reqparm.Add("StagesOfProjectId", $"{model.StagesOfProjectId}");
-
-
-                web.UploadValues("https://localhost:7273/CreateVacancy", "POST", reqparm);
-
-            }
+                ["Name"] = $"{model.Name}",
+                ["Descriptions"] = $"{model.Descriptions}",
+                ["Responsibilities"] = $"{model.Responsibilities}",
+                ["DateStart"] = $"{model.DateStart}",
+                ["DateEnd"] = $"{model.DateEnd}",
+                ["Budjet"] = $"{model.Budjet}",
+                ["StagesOfProjectId"] = $"{model.StagesOfProjectId}"
+            };
+            _webClient.UploadValues("CreateVacancy", "POST", reqparm);
         }
+
         public void Update(Vacancy model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("Name", $"{model.Name}");
-                reqparm.Add("Descriptions", $"{model.Descriptions}");
-                reqparm.Add("Responsibilities", $"{model.Responsibilities}");
-                reqparm.Add("DateStart", $"{model.DateStart}");
-                reqparm.Add("DateEnd", $"{model.DateEnd}");
-                reqparm.Add("Budjet", $"{model.Budjet}");
-                reqparm.Add("StagesOfProjectId", $"{model.StagesOfProjectId}");
-                web.UploadValues("https://localhost:7273/UpdateVacancy", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["Name"] = $"{model.Name}",
+                ["Descriptions"] = $"{model.Descriptions}",
+                ["Responsibilities"] = $"{model.Responsibilities}",
+                ["DateStart"] = $"{model.DateStart}",
+                ["DateEnd"] = $"{model.DateEnd}",
+                ["Budjet"] = $"{model.Budjet}",
+                ["StagesOfProjectId"] = $"{model.StagesOfProjectId}"
+            };
+            _webClient.UploadValues("UpdateVacancy", "PUT", reqparm);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteVacancy", "DELETE", reqparm);
-
-            }
+                ["id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteVacancy", "DELETE", reqparm);
         }
     }
 }

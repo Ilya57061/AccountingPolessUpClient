@@ -3,6 +3,7 @@ using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -12,91 +13,78 @@ namespace AccountingPolessUp.Implementations
 {
     public class UserService
     {
+        private readonly WebClient _webClient;
+        public UserService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<User> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Encoding = System.Text.Encoding.UTF8;
-                web.Headers.Add("Authorization", "Bearer "+ TokenManager.AccessToken);
-                string url = $"https://localhost:7273/GetUsers";
-                var json = web.DownloadString(url);
-                List<User> Info = JsonConvert.DeserializeObject<List<User>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetUsers");
+            var Info = JsonConvert.DeserializeObject<List<User>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public List<User> Get(int id)
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Encoding = System.Text.Encoding.UTF8;
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                string url = $"https://localhost:7273/idUser?id={id}";
-                var json = web.DownloadString(url);
-                List<User> Info = JsonConvert.DeserializeObject<List<User>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString($"idUser?id={id}");
+            var Info = JsonConvert.DeserializeObject<List<User>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public List<User> Get(string login)
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Encoding = System.Text.Encoding.UTF8;
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                string url = $"https://localhost:7273/loginUser?login={login}";
-                var json = web.DownloadString(url);
-                List<User> Info = JsonConvert.DeserializeObject<List<User>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString($"loginUser?login={login}");
+            var Info = JsonConvert.DeserializeObject<List<User>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public void Create(RegisterDto model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Login", $"{model.Login}");
-                reqparm.Add("Password", $"{model.Password}");
-                reqparm.Add("RoleId", $"{model.RoleId}");
-                web.UploadValues("https://localhost:7273/Register", "POST", reqparm);
-            }
+                ["Login"] = $"{model.Login}",
+                ["Password"] = $"{model.Password}",
+                ["RoleId"] = $"{model.RoleId}"
+            };
+            _webClient.UploadValues("Register", "POST", reqparm);
         }
+
         public void Update(User model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("Login", $"{model.Login}");
-                reqparm.Add("RoleId", $"{model.RoleId}");
-                web.UploadValues("https://localhost:7273/UpdateUser", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["Login"] = $"{model.Login}",
+                ["RoleId"] = $"{model.RoleId}"
+            };
+            _webClient.UploadValues("UpdateUser", "PUT", reqparm);
         }
         public void UpdatePassword(UpdatePasswordDto model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("Password", $"{model.Password}");
-                web.UploadValues("https://localhost:7273/UpdatePasswordUser", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["Password"] = $"{model.Password}",
+            };
+            _webClient.UploadValues("UpdateUser", "PUT", reqparm);
         }
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeletUser", "DELETE", reqparm);
-            }
+                ["id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteUser", "DELETE", reqparm);
         }
     }
-}
+    }

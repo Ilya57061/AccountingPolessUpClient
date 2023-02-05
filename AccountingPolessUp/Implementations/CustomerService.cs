@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,62 +12,60 @@ namespace AccountingPolessUp.Implementations
 {
     public class CustomerService
     {
+        private readonly WebClient _webClient;
+
+        public CustomerService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<Customer> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetCustomer";
-                var json = web.DownloadString(url);
-                List<Customer> Info = JsonConvert.DeserializeObject<List<Customer>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetCustomer");
+            var Info = JsonConvert.DeserializeObject<List<Customer>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public void Create(Customer model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("FullName", $"{model.FullName}");
-                reqparm.Add("Address", $"{model.Address}");
-                reqparm.Add("Contacts", $"{model.Contacts}");
-                reqparm.Add("WebSite", $"{model.WebSite}");
-                reqparm.Add("Description", $"{model.Description}");
-
-
-                web.UploadValues("https://localhost:7273/CreateCustomer", "POST", reqparm);
-
-            }
+                ["FullName"] = $"{model.FullName}",
+                ["Address"] = $"{model.Address}",
+                ["Contacts"] = $"{model.Contacts}",
+                ["WebSite"] = $"{model.WebSite}",
+                ["Description"] = $"{model.Description}"
+            };
+            _webClient.UploadValues("CreateCustomer", "POST", reqparm);
         }
+
         public void Update(Customer model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("FullName", $"{model.FullName}");
-                reqparm.Add("Address", $"{model.Address}");
-                reqparm.Add("Contacts", $"{model.Contacts}");
-                reqparm.Add("WebSite", $"{model.WebSite}");
-                reqparm.Add("Description", $"{model.Description}");
-                web.UploadValues("https://localhost:7273/UpdateCustomer", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["FullName"] = $"{model.FullName}",
+                ["Address"] = $"{model.Address}",
+                ["Contacts"] = $"{model.Contacts}",
+                ["WebSite"] = $"{model.WebSite}",
+                ["Description"] = $"{model.Description}"
+            };
+            _webClient.UploadValues("UpdateCustomer", "PUT", reqparm);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteCustomer", "DELETE", reqparm);
-
-            }
+                ["id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteCustomer", "DELETE", reqparm);
         }
     }
 }

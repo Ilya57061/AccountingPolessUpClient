@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Net;
 
 
@@ -9,63 +10,63 @@ namespace AccountingPolessUp.Implementations
 {
     public class IndividualsService
     {
+        private readonly WebClient _webClient;
+
+        public IndividualsService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<Individuals> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetIndividuals";
-                var json = web.DownloadString(url);
-                List<Individuals> Info = JsonConvert.DeserializeObject<List<Individuals>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }   
+            var json = _webClient.DownloadString("GetIndividuals");
+            var Info = JsonConvert.DeserializeObject<List<Individuals>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public void Create(Individuals model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("FIO", $"{model.FIO}");
-                reqparm.Add("Phone", $"{model.Phone}");
-                reqparm.Add("DateOfBirth", $"{model.DateOfBirth}");
-                reqparm.Add("Mail", $"{model.Mail}");
-                reqparm.Add("Gender", $"{model.Gender}");
-                reqparm.Add("SocialNetwork", $"{model.SocialNetwork}");
-                
-                web.UploadValues("https://localhost:7273/CreateIndividual", "POST", reqparm);
-
-            }
+                ["FIO"] = $"{model.FIO}",
+                ["Phone"] = $"{model.Phone}",
+                ["DateOfBirth"] = $"{model.DateOfBirth}",
+                ["Mail"] = $"{model.Mail}",
+                ["Gender"] = $"{model.Gender}",
+                ["SocialNetwork"] = $"{model.SocialNetwork}"
+            };
+            _webClient.UploadValues("CreateIndividual", "POST", reqparm);
         }
+
         public void Update(Individuals model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("FIO", $"{model.FIO}");
-                reqparm.Add("Phone", $"{model.Phone}");
-                reqparm.Add("DateOfBirth", $"{model.DateOfBirth}");
-                reqparm.Add("Mail", $"{model.Mail}");
-                reqparm.Add("Gender", $"{model.Gender}");
-                reqparm.Add("SocialNetwork", $"{model.SocialNetwork}");
-                web.UploadValues("https://localhost:7273/UpdateIndividual", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["FIO"] = $"{model.FIO}",
+                ["Phone"] = $"{model.Phone}",
+                ["DateOfBirth"] = $"{model.DateOfBirth}",
+                ["Mail"] = $"{model.Mail}",
+                ["Gender"] = $"{model.Gender}",
+                ["SocialNetwork"] = $"{model.SocialNetwork}"
+            };
+            _webClient.UploadValues("UpdateIndividual", "PUT", reqparm);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeletIndividual", "DELETE", reqparm);
-
-            }
+                ["id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteIndividual", "DELETE", reqparm);
         }
     }
+
 }

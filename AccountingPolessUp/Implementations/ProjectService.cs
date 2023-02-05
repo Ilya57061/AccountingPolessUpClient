@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,66 +12,65 @@ namespace AccountingPolessUp.Implementations
 {
     public class ProjectService
     {
+        private readonly WebClient _webClient;
+        public ProjectService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<Project> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetProject";
-                var json = web.DownloadString(url);
-                List<Project> Info = JsonConvert.DeserializeObject<List<Project>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetProject");
+            var Info = JsonConvert.DeserializeObject<List<Project>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public void Create(Project model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Fullname", $"{model.Fullname}");
-                reqparm.Add("Status", $"{model.Status}");
-                reqparm.Add("DateStart", $"{model.DateStart}");
-                reqparm.Add("DateEnd", $"{model.DateEnd}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("TechnicalSpecification", $"{model.TechnicalSpecification}");
-                reqparm.Add("CustomerId", $"{model.CustomerId}");
-                reqparm.Add("idLocalPM", $"{model.idLocalPM}");
-
-                web.UploadValues("https://localhost:7273/CreateProject", "POST", reqparm);
-
-            }
+                ["Fullname"] = $"{model.Fullname}",
+                ["Status"] = $"{model.Status}",
+                ["DateStart"] = $"{model.DateStart}",
+                ["DateEnd"] = $"{model.DateEnd}",
+                ["Description"] = $"{model.Description}",
+                ["TechnicalSpecification"] = $"{model.TechnicalSpecification}",
+                ["CustomerId"] = $"{model.CustomerId}",
+                ["idLocalPM"] = $"{model.idLocalPM}"
+            };
+            _webClient.UploadValues("CreateProject", "POST", reqparm);
         }
+
         public void Update(Project model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("Fullname", $"{model.Fullname}");
-                reqparm.Add("Status", $"{model.Status}");
-                reqparm.Add("DateStart", $"{model.DateStart}");
-                reqparm.Add("DateEnd", $"{model.DateEnd}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("TechnicalSpecification", $"{model.TechnicalSpecification}");
-                reqparm.Add("CustomerId", $"{model.CustomerId}");
-                reqparm.Add("idLocalPM", $"{model.idLocalPM}");
-                web.UploadValues("https://localhost:7273/UpdateProject", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["Fullname"] = $"{model.Fullname}",
+                ["Status"] = $"{model.Status}",
+                ["DateStart"] = $"{model.DateStart}",
+                ["DateEnd"] = $"{model.DateEnd}",
+                ["Description"] = $"{model.Description}",
+                ["TechnicalSpecification"] = $"{model.TechnicalSpecification}",
+                ["CustomerId"] = $"{model.CustomerId}",
+                ["idLocalPM"] = $"{model.idLocalPM}"
+            };
+            _webClient.UploadValues("UpdateProject", "PUT", reqparm);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteProject", "DELETE", reqparm);
-            }
+                ["id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteProject", "DELETE", reqparm);
         }
     }
-}
+    }

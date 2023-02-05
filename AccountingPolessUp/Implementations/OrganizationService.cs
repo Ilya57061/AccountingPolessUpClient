@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,62 +12,61 @@ namespace AccountingPolessUp.Implementations
 {
     public class OrganizationService
     {
+        private readonly WebClient _webClient;
+
+        public OrganizationService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<Organization> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetOrganization";
-                var json = web.DownloadString(url);
-                List<Organization> Info = JsonConvert.DeserializeObject<List<Organization>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetOrganization");
+            var Info = JsonConvert.DeserializeObject<List<Organization>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public void Create(Organization model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Fullname", $"{model.Fullname}");
-                reqparm.Add("Address", $"{model.Address}");
-                reqparm.Add("Contacts", $"{model.Contacts}");
-                reqparm.Add("WebSite", $"{model.WebSite}");
-                reqparm.Add("FoundationDate", $"{model.FoundationDate}");
-
-
-                web.UploadValues("https://localhost:7273/CreateOrganization", "POST", reqparm);
-
-            }
+                ["Fullname"] = $"{model.Fullname}",
+                ["Address"] = $"{model.Address}",
+                ["Contacts"] = $"{model.Contacts}",
+                ["WebSite"] = $"{model.WebSite}",
+                ["FoundationDate"] = $"{model.FoundationDate}"
+            };
+            _webClient.UploadValues("CreateOrganization", "POST", reqparm);
         }
+
         public void Update(Organization model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("Fullname", $"{model.Fullname}");
-                reqparm.Add("Address", $"{model.Address}");
-                reqparm.Add("Contacts", $"{model.Contacts}");
-                reqparm.Add("WebSite", $"{model.WebSite}");
-                reqparm.Add("FoundationDate", $"{model.FoundationDate}");
-                web.UploadValues("https://localhost:7273/UpdateOrganization", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["Fullname"] = $"{model.Fullname}",
+                ["Address"] = $"{model.Address}",
+                ["Contacts"] = $"{model.Contacts}",
+                ["WebSite"] = $"{model.WebSite}",
+                ["FoundationDate"] = $"{model.FoundationDate}"
+            };
+            _webClient.UploadValues("UpdateOrganization", "PUT", reqparm);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteOrganization", "DELETE", reqparm);
-
-            }
+                ["id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteOrganization", "DELETE", reqparm);
         }
     }
+
 }

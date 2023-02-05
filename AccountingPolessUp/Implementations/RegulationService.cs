@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,60 +12,57 @@ namespace AccountingPolessUp.Implementations
 {
     public class RegulationService
     {
+        private readonly WebClient _webClient;
+        public RegulationService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<Regulation> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetRegulation";
-                var json = web.DownloadString(url);
-                List<Regulation> Info = JsonConvert.DeserializeObject<List<Regulation>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetRegulation");
+            var Info = JsonConvert.DeserializeObject<List<Regulation>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public void Create(Regulation model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Text", $"{model.Text}");
-                reqparm.Add("Name", $"{model.Name}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("OrganizationId", $"{model.OrganizationId}");
-
-
-                web.UploadValues("https://localhost:7273/CreateRegulation", "POST", reqparm);
-
-            }
+                ["Text"] = $"{model.Text}",
+                ["Name"] = $"{model.Name}",
+                ["Description"] = $"{model.Description}",
+                ["OrganizationId"] = $"{model.OrganizationId}"
+            };
+            _webClient.UploadValues("CreateRegulation", "POST", reqparm);
         }
+
         public void Update(Regulation model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("Text", $"{model.Text}");
-                reqparm.Add("Name", $"{model.Name}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("OrganizationId", $"{model.OrganizationId}");
-                web.UploadValues("https://localhost:7273/UpdateRegulation", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["Text"] = $"{model.Text}",
+                ["Name"] = $"{model.Name}",
+                ["Description"] = $"{model.Description}",
+                ["OrganizationId"] = $"{model.OrganizationId}"
+            };
+            _webClient.UploadValues("UpdateRegulation", "PUT", reqparm);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteRegulation", "DELETE", reqparm);
-
-            }
+                ["id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteRegulation", "DELETE", reqparm);
         }
     }
 }

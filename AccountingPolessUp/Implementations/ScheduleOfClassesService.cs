@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,63 +12,59 @@ namespace AccountingPolessUp.Implementations
 {
     public class ScheduleOfClassesService
     {
+        private readonly WebClient _webClient;
+        public ScheduleOfClassesService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<ScheduleOfСlasses> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetScheduleOfСlasses";
-                var json = web.DownloadString(url);
-                List<ScheduleOfСlasses> Info = JsonConvert.DeserializeObject<List<ScheduleOfСlasses>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetScheduleOfClasses");
+            var Info = JsonConvert.DeserializeObject<List<ScheduleOfСlasses>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public void Create(ScheduleOfСlasses model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("DateStart", $"{model.DateStart}");
-                reqparm.Add("DateEnd", $"{model.DateEnd}");
-                reqparm.Add("WorkSpaceLink", $"{model.WorkSpaceLink}");
-                reqparm.Add("TrainingCoursesId", $"{model.TrainingCoursesId}");
-
-
-                web.UploadValues("https://localhost:7273/CreateScheduleOfСlasses", "POST", reqparm);
-
-            }
+                ["Description"] = $"{model.Description}",
+                ["DateStart"] = $"{model.DateStart}",
+                ["DateEnd"] = $"{model.DateEnd}",
+                ["WorkSpaceLink"] = $"{model.WorkSpaceLink}",
+                ["TrainingCoursesId"] = $"{model.TrainingCoursesId}"
+            };
+            _webClient.UploadValues("CreateScheduleOfClasses", "POST", reqparm);
         }
+
         public void Update(ScheduleOfСlasses model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Id", $"{model.Id}");
-                reqparm.Add("Description", $"{model.Description}");
-                reqparm.Add("DateStart", $"{model.DateStart}");
-                reqparm.Add("DateEnd", $"{model.DateEnd}");
-                reqparm.Add("WorkSpaceLink", $"{model.WorkSpaceLink}");
-                reqparm.Add("TrainingCoursesId", $"{model.TrainingCoursesId}");
-
-                web.UploadValues("https://localhost:7273/UpdateScheduleOfСlasses", "PUT", reqparm);
-
-            }
+                ["Id"] = $"{model.Id}",
+                ["Description"] = $"{model.Description}",
+                ["DateStart"] = $"{model.DateStart}",
+                ["DateEnd"] = $"{model.DateEnd}",
+                ["WorkSpaceLink"] = $"{model.WorkSpaceLink}",
+                ["TrainingCoursesId"] = $"{model.TrainingCoursesId}"
+            };
+            _webClient.UploadValues("UpdateScheduleOfClasses", "PUT", reqparm);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("Id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteScheduleOfСlasses","DELETE", reqparm);
-
-            }
+                ["id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteScheduleOfClasses", "DELETE", reqparm);
         }
     }
 }

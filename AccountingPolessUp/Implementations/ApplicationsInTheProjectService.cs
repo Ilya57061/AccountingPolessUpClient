@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -11,61 +12,58 @@ namespace AccountingPolessUp.Implementations
 {
     public class ApplicationsInTheProjectService
     {
+        private readonly WebClient _webClient;
+
+        public ApplicationsInTheProjectService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<ApplicationsInTheProject> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetAppInTheProject";
-                var json = web.DownloadString(url);
-                List<ApplicationsInTheProject> Info = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(json);
-                if (Info is null) throw new Exception("info - null");
-                else return Info;
-            }
+            var json = _webClient.DownloadString("GetAppInTheProject");
+            var Info = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
+
         public void Create(ApplicationsInTheProject model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("WorkStatus", $"{model.WorkStatus}");
-                reqparm.Add("DateEntry", $"{model.DateEntry}");
-                reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
-                reqparm.Add("VacancyId", $"{model.VacancyId}");
-            
-
-                web.UploadValues("https://localhost:7273/CreateAppInTheProject", "POST", reqparm);
-
-            }
+                ["WorkStatus"] = $"{model.WorkStatus}",
+                ["DateEntry"] = $"{model.DateEntry}",
+                ["ParticipantsId"] = $"{model.ParticipantsId}",
+                ["VacancyId"] = $"{model.VacancyId}"
+            };
+            _webClient.UploadValues("CreateAppInTheProject", "POST", reqparm);
         }
+
         public void Update(ApplicationsInTheProject model)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{model.Id}");
-                reqparm.Add("WorkStatus", $"{model.WorkStatus}");
-                reqparm.Add("DateEntry", $"{model.DateEntry}");
-                reqparm.Add("ParticipantsId", $"{model.ParticipantsId}");
-                reqparm.Add("VacancyId", $"{model.VacancyId}");
-
-                web.UploadValues("https://localhost:7273/UpdateAppInTheProject", "PUT", reqparm);
-
-            }
+                ["id"] = $"{model.Id}",
+                ["WorkStatus"] = $"{model.WorkStatus}",
+                ["DateEntry"] = $"{model.DateEntry}",
+                ["ParticipantsId"] = $"{model.ParticipantsId}",
+                ["VacancyId"] = $"{model.VacancyId}"
+            };
+            _webClient.UploadValues("UpdateAppInTheProject", "PUT", reqparm);
         }
+
         public void Delete(int id)
         {
-            using (WebClient web = new WebClient())
+            var reqparm = new NameValueCollection
             {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                System.Collections.Specialized.NameValueCollection reqparm = new System.Collections.Specialized.NameValueCollection();
-                reqparm.Add("id", $"{id}");
-                web.UploadValues("https://localhost:7273/DeleteAppInTheProject", "DELETE", reqparm);
-
-            }
+                ["id"] = $"{id}"
+            };
+            _webClient.UploadValues("DeleteAppInTheProject", "DELETE", reqparm);
         }
     }
 }

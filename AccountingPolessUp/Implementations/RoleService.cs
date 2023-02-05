@@ -8,19 +8,23 @@ namespace AccountingPolessUp.Implementations
 {
     public class RoleService
     {
+        private readonly WebClient _webClient;
+        public RoleService()
+        {
+            _webClient = new WebClient
+            {
+                BaseAddress = "https://localhost:7273/",
+                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+            };
+            _webClient.Encoding = System.Text.Encoding.UTF8;
+        }
+
         public List<Role> Get()
         {
-            using (WebClient web = new WebClient())
-            {
-                web.Headers.Add("Authorization", "Bearer " + TokenManager.AccessToken);
-                web.Encoding = System.Text.Encoding.UTF8;
-                string url = $"https://localhost:7273/GetRoles";
-                var json = web.DownloadString(url);
-                List<Role> Info = JsonConvert.DeserializeObject<List<Role>>(json);
-                if (Info is null) throw new Exception("info - null");
-                return Info;
-            }
-
+            var json = _webClient.DownloadString("GetRoles");
+            var Info = JsonConvert.DeserializeObject<List<Role>>(json);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
         }
     }
 }
