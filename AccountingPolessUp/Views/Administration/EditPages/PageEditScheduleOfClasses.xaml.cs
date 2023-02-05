@@ -25,12 +25,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditScheduleOfClasses : Page
     {
 
-        
+        Page _parent;
         ScheduleOfClassesService _scheduleService = new ScheduleOfClassesService();
         TrainingCoursesService _trainingCoursesService = new TrainingCoursesService();
         List<TrainingCourses> _trainingCourses;
         ScheduleOfСlasses _schedule;
-        public PageEditScheduleOfClasses(ScheduleOfСlasses schedule)
+        public PageEditScheduleOfClasses(ScheduleOfСlasses schedule, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -40,8 +40,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _schedule = schedule;
             BoxTrainingCourses.ItemsSource = _trainingCourses;
             BoxTrainingCourses.SelectedIndex = _trainingCourses.IndexOf(_trainingCourses.FirstOrDefault(r => r.Id == schedule.TrainingCoursesId));
+            _parent = parent;
         }
-        public PageEditScheduleOfClasses()
+        public PageEditScheduleOfClasses(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -49,6 +50,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _schedule = new ScheduleOfСlasses();
             _trainingCourses = _trainingCoursesService.Get();
             BoxTrainingCourses.ItemsSource = _trainingCourses;
+            _parent=parent;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -61,7 +63,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _scheduleService.Update(_schedule);
-                DataGridUpdater.UpdateDataGrid(_scheduleService.Get());
+                DataGridUpdater.UpdateDataGrid(_scheduleService.Get(),_parent);
             }
             catch (Exception)
             {
@@ -77,7 +79,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _scheduleService.Create(_schedule);
-                DataGridUpdater.UpdateDataGrid(_scheduleService.Get());
+                DataGridUpdater.UpdateDataGrid(_scheduleService.Get(),_parent);
             }
             catch (Exception)
             {

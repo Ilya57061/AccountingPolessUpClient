@@ -1,6 +1,7 @@
 ﻿using AccountingPolessUp.Helpers;
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditMembers : Page
     {
 
-
+        Page _parent;
         ParticipantsService _participantsService = new ParticipantsService();
         UserService _userService = new UserService();
         IndividualsService _individualsService = new IndividualsService();
@@ -32,9 +33,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         List<Individuals> _individuals;
 
         Participants participants;
-        public PageEditMembers(Participants participants)
+        public PageEditMembers(Participants participants, Page page)
         {
             InitializeComponent();
+            _parent = page;
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _users = _userService.Get();
@@ -47,9 +49,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxUser.ItemsSource = _users;
 
         }
-        public PageEditMembers()
+        public PageEditMembers(Page page)
         {
             InitializeComponent();
+            _parent = page;
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             participants = new Participants();
@@ -58,6 +61,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxIndividuals.ItemsSource = _individuals;
             BoxUser.ItemsSource = _users;
         }
+    
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -66,7 +70,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _participantsService.Update(participants);
-                DataGridUpdater.UpdateDataGrid(_participantsService.Get());
+                DataGridUpdater.UpdateDataGrid(_participantsService.Get(),_parent);
             }
             catch (Exception)
             {
@@ -81,7 +85,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _participantsService.Create(participants);
-                DataGridUpdater.UpdateDataGrid(_participantsService.Get());
+                DataGridUpdater.UpdateDataGrid(_participantsService.Get(),_parent);
             }
             catch (Exception)
             {
@@ -90,10 +94,16 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void OpenIndividuals_Click(object sender, RoutedEventArgs e)
         {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxIndividuals.Name;
+            _parent.NavigationService.Content = new PageAdmNatural(_individuals);
         }
 
         private void OpenUser_Click(object sender, RoutedEventArgs e)
         {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxUser.Name;
+            _parent.NavigationService.Content = new PageAdmUsers(_users);
         }
         private void WriteData()
         {

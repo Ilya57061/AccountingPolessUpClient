@@ -25,13 +25,31 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmUsers : Page
     {
         UserService _userService = new UserService();
+        List<User> _users;
         public PageAdmUsers()
         {
             InitializeComponent();
             DataGridUpdater.Page = this;
-           DataGridUpdater.UpdateDataGrid(_userService.Get());
+           DataGridUpdater.UpdateDataGrid(_userService.Get(),this);
         }
+        public PageAdmUsers(List<User> users)
+        {
+            InitializeComponent();
+            DataGridUpdater.Page = this;
+            DataGridUpdater.UpdateDataGrid(_userService.Get(), this);
+            ColumSelect.Visibility = Visibility.Visible;
+            _users = users;
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                User user = dataGrid.SelectedItems[i] as User;
+                DataNavigator.UpdateValueComboBox(_users.FirstOrDefault(x => x.Id == user.Id));
+            }
 
+            this.NavigationService.GoBack();
+        }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -45,11 +63,11 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_userService.Get());
+            DataGridUpdater.UpdateDataGrid(_userService.Get(),this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditUser();
+            EditFrame.Content = new PageEditUser(this);
         }
         private void ButtonEditPassword_Click(object sender, RoutedEventArgs e)
         {
@@ -58,7 +76,7 @@ namespace AccountingPolessUp.Views.Administration
                 User user = dataGrid.SelectedItems[i] as User;
                 if (user != null)
                 {
-                    EditFrame.Content = new PageEditUser(user, true);
+                    EditFrame.Content = new PageEditUser(user, true,this);
 
                 }
             }
@@ -70,7 +88,7 @@ namespace AccountingPolessUp.Views.Administration
                 User user = dataGrid.SelectedItems[i] as User;
                 if (user != null)
                 {
-                    EditFrame.Content = new PageEditUser(user);
+                    EditFrame.Content = new PageEditUser(user,this);
 
                 }
             }

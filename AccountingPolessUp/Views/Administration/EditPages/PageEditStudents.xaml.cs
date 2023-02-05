@@ -24,13 +24,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditStudents : Page
     {
-
+        Page _parent;
         
         StudentService _studentService = new StudentService();
         IndividualsService _individualsService=new IndividualsService();
         List<Individuals> _individuals;
         Student _student;
-        public PageEditStudents(Student student)
+        public PageEditStudents(Student student, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -40,8 +40,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _individuals = _individualsService.Get();
             BoxIndividuals.ItemsSource=_individuals;
             BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == student.IndividualsId));
+            _parent = parent;
         }
-        public PageEditStudents()
+        public PageEditStudents(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -49,6 +50,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _student = new Student();
             _individuals = _individualsService.Get();
             BoxIndividuals.ItemsSource = _individuals;
+            _parent = parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -58,13 +60,19 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _studentService.Update(_student);
-                DataGridUpdater.UpdateDataGrid(_studentService.Get());
+                DataGridUpdater.UpdateDataGrid(_studentService.Get(),_parent);
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
 
+        }
+        private void OpenIndividuals_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxIndividuals.Name;
+            _parent.NavigationService.Content = new PageAdmNatural(_individuals);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -74,7 +82,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _studentService.Create(_student);
-                DataGridUpdater.UpdateDataGrid(_studentService.Get());
+                DataGridUpdater.UpdateDataGrid(_studentService.Get(), _parent);
             }
             catch (Exception)
             {

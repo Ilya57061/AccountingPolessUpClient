@@ -28,8 +28,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmWork()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_employmentService.Get());
+            DataGridUpdater.UpdateDataGrid(_employmentService.Get(),this);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -44,11 +43,11 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_employmentService.Get());
+            DataGridUpdater.UpdateDataGrid(_employmentService.Get(),this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditWork();
+            EditFrame.Content = new PageEditWork(this);
         }
         private void ButtonFinalProject_Click(object sender, RoutedEventArgs e)
         {
@@ -69,7 +68,7 @@ namespace AccountingPolessUp.Views.Administration
                 Employment employment = dataGrid.SelectedItems[i] as Employment;
                 if (employment != null)
                 {
-                    EditFrame.Content = new PageEditWork(employment);
+                    EditFrame.Content = new PageEditWork(employment,this);
 
                 }
             }

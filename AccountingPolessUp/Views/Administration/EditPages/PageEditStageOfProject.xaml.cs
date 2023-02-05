@@ -3,6 +3,7 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,12 +26,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditStageOfProject : Page
     {
 
-        
+        Page _parent;
         StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
         ProjectService _projectService = new ProjectService();
         List<Project> _project;
         StagesOfProject _stagesOfProject;
-        public PageEditStageOfProject(StagesOfProject stagesOfProject)
+        public PageEditStageOfProject(StagesOfProject stagesOfProject, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -40,8 +41,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _stagesOfProject = stagesOfProject;
             BoxProject.ItemsSource = _project;
             BoxProject.SelectedIndex = _project.IndexOf(_project.FirstOrDefault(r => r.Id == stagesOfProject.ProjectId));
+              _parent= parent;
         }
-        public PageEditStageOfProject()
+        public PageEditStageOfProject(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -49,6 +51,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _stagesOfProject = new StagesOfProject();
             _project = _projectService.Get();
             BoxProject.ItemsSource = _project;
+            _parent= parent;
         }
 
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -59,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _stagesOfProjectService.Update(_stagesOfProject);
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get());
+                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(),_parent);
             }
             catch (Exception)
             {
@@ -75,7 +78,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _stagesOfProjectService.Create(_stagesOfProject);
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get());
+                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(),_parent);
             }
             catch (Exception)
             {

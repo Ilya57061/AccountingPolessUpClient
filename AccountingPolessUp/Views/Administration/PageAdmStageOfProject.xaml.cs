@@ -28,8 +28,8 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmStageOfProject()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get());
+            
+            DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), this);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -44,11 +44,11 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get());
+            DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditStageOfProject();
+            EditFrame.Content = new PageEditStageOfProject(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +57,7 @@ namespace AccountingPolessUp.Views.Administration
                 StagesOfProject stagesOfProject = dataGrid.SelectedItems[i] as StagesOfProject;
                 if (stagesOfProject != null)
                 {
-                    EditFrame.Content = new PageEditStageOfProject(stagesOfProject);
+                    EditFrame.Content = new PageEditStageOfProject(stagesOfProject, this);
 
                 }
             }

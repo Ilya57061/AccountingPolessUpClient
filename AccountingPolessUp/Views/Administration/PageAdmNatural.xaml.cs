@@ -25,11 +25,18 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmNatural : Page
     {
         IndividualsService _individualsService = new IndividualsService();
+        List<Individuals> _individuals;
         public PageAdmNatural()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_individualsService.Get());
+            DataGridUpdater.UpdateDataGrid(_individualsService.Get(),this);
+        }
+        public PageAdmNatural(List<Individuals> individuals)
+        {
+            InitializeComponent();
+            _individuals = individuals;
+            DataGridUpdater.UpdateDataGrid(_individualsService.Get(), this);
+            ColumSelect.Visibility = Visibility.Visible;
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -44,11 +51,21 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_individualsService.Get());
+            DataGridUpdater.UpdateDataGrid(_individualsService.Get(),this);
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Individuals Rank = dataGrid.SelectedItems[i] as Individuals;
+                DataNavigator.UpdateValueComboBox(_individuals.FirstOrDefault(x => x.Id == Rank.Id));
+            }
+
+            this.NavigationService.GoBack();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditIndividuals();
+            EditFrame.Content = new PageEditIndividuals(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +74,7 @@ namespace AccountingPolessUp.Views.Administration
                 Individuals individual = dataGrid.SelectedItems[i] as Individuals;
                 if (individual != null)
                 {
-                    EditFrame.Content = new PageEditIndividuals(individual);
+                    EditFrame.Content = new PageEditIndividuals(individual,this);
 
                 }
             }

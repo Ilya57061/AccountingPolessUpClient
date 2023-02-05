@@ -16,29 +16,30 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditUser : Page
     {
-
+        Page _parent;
         UserService _userService = new UserService();
         RoleService _roleService = new RoleService();
         List<Role> roles;
         User user;
 
-        public PageEditUser(User user)
+        public PageEditUser(User user, Page parent)
         {
             InitializeComponent();
             Password.IsEnabled = false;
             FillDataContext(user);
             ButtonSaveEdit.Visibility = Visibility.Visible;
+            _parent = parent;
         }
-        public PageEditUser(User user, bool changePassword)
+        public PageEditUser(User user, bool changePassword, Page parent)
         {
             InitializeComponent();
             FillDataContext(user);
             ButtonEditPassword.Visibility = Visibility.Visible;
             Login.IsEnabled = false;
             BoxRole.IsEnabled = false;
-       
+            _parent = parent;
         }
-        public PageEditUser()
+        public PageEditUser(Page parent)
         {
             InitializeComponent();
             this.user = new User();
@@ -46,6 +47,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             roles = _roleService.Get();
             BoxRole.ItemsSource = roles;
             BoxRole.SelectedIndex = roles.IndexOf(roles.FirstOrDefault(x => x.Id == user.RoleId));
+            _parent = parent;
         }
         private void FillDataContext(User user)
         {
@@ -53,7 +55,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataContext = user;
             roles = _roleService.Get();
             BoxRole.ItemsSource = roles;
-            BoxRole.SelectedIndex = roles.IndexOf(roles.FirstOrDefault(x=>x.Id==user.RoleId));
+            BoxRole.SelectedIndex = roles.IndexOf(roles.FirstOrDefault(x => x.Id == user.RoleId));
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -63,7 +65,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.ElementsFilledUpdateUser(this))
                     throw new Exception();
                 _userService.Update(user);
-                DataGridUpdater.UpdateDataGrid(_userService.Get());
+                DataGridUpdater.UpdateDataGrid(_userService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -80,9 +82,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 RegisterDto registerDto = new RegisterDto();
                 registerDto.Login = Login.Text;
                 registerDto.Password = Password.Password;
-                registerDto.RoleId= roles.FirstOrDefault(x => x == BoxRole.SelectedItem).Id;
+                registerDto.RoleId = roles.FirstOrDefault(x => x == BoxRole.SelectedItem).Id;
                 _userService.Create(registerDto);
-                DataGridUpdater.UpdateDataGrid(_userService.Get());
+                DataGridUpdater.UpdateDataGrid(_userService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -101,7 +103,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 upPassword.Id = user.Id;
                 upPassword.Password = Password.Password;
                 _userService.UpdatePassword(upPassword);
-                DataGridUpdater.UpdateDataGrid(_userService.Get());
+                DataGridUpdater.UpdateDataGrid(_userService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -112,7 +114,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void WriteData()
         {
             user.Login = Login.Text;
-            user.RoleId = roles.FirstOrDefault(x=>x==BoxRole.SelectedItem).Id;
+            user.RoleId = roles.FirstOrDefault(x => x == BoxRole.SelectedItem).Id;
         }
 
     }

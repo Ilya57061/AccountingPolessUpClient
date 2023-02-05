@@ -28,8 +28,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmScheduleOfClasses()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get());
+            DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -44,11 +43,11 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get());
+            DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditScheduleOfClasses();
+            EditFrame.Content = new PageEditScheduleOfClasses(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +56,7 @@ namespace AccountingPolessUp.Views.Administration
                 ScheduleOfСlasses Schedule = dataGrid.SelectedItems[i] as ScheduleOfСlasses;
                 if (Schedule != null)
                 {
-                    EditFrame.Content = new PageEditScheduleOfClasses(Schedule);
+                    EditFrame.Content = new PageEditScheduleOfClasses(Schedule, this);
                 }
             }
         }

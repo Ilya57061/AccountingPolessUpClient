@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditWork : Page
     {
 
-
+        Page _parent;
         ParticipantsService _participantsService = new ParticipantsService();
         PositionService _positionsService = new PositionService();
         EmploymentService _employmentService = new EmploymentService();
@@ -32,7 +32,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         List<Participants> _participants;
 
         Employment employment;
-        public PageEditWork(Employment employment)
+        public PageEditWork(Employment employment, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -48,10 +48,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxParticipants.ItemsSource = _participants;
             BoxMentors.ItemsSource = _participants;
             BoxPosition.ItemsSource = _positions;
-            
-
+            _parent=parent;
         }
-        public PageEditWork()
+        public PageEditWork(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -63,6 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxMentors.ItemsSource = _participants;
             BoxPosition.ItemsSource = _positions;
             DataGridUpdater.UpdateDataGrid(_employmentService.Get());
+            _parent=parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -72,12 +72,18 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _employmentService.Update(employment);
-                DataGridUpdater.UpdateDataGrid(_employmentService.Get());
+                DataGridUpdater.UpdateDataGrid(_employmentService.Get(),_parent);
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
+        }
+        private void OpenParticipants_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxParticipants.Name;
+            _parent.NavigationService.Content = new PageAdmMembers(_participants);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -87,7 +93,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _employmentService.Create(employment);
-                DataGridUpdater.UpdateDataGrid(_employmentService.Get());
+                DataGridUpdater.UpdateDataGrid(_employmentService.Get(),_parent);
             }
             catch (Exception)
             {

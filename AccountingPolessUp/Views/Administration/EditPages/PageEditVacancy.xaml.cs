@@ -3,6 +3,7 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -25,12 +26,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditVacancy : Page
     {
 
-        
+        Page _parent;
         VacancyService _vacancyService = new VacancyService();
         StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
         List<StagesOfProject> _stagesOfProjects;
         Vacancy _vacancy;
-        public PageEditVacancy(Vacancy vacancy)
+        public PageEditVacancy(Vacancy vacancy, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -41,8 +42,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _stagesOfProjects = _stagesOfProjectService.Get();
             BoxStagesOfProject.ItemsSource= _stagesOfProjects;
             BoxStagesOfProject.SelectedIndex = _stagesOfProjects.IndexOf(_stagesOfProjects.FirstOrDefault(s=>s.Id==vacancy.StagesOfProjectId));
+            _parent = parent;
         }
-        public PageEditVacancy()
+        public PageEditVacancy(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -50,6 +52,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _vacancy=new Vacancy();
             _stagesOfProjects = _stagesOfProjectService.Get();
             BoxStagesOfProject.ItemsSource = _stagesOfProjects;
+            _parent=parent;
         }
         private void OpenStages_Click(object sender, RoutedEventArgs e)
         {
@@ -62,7 +65,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _vacancyService.Update(_vacancy);
-                DataGridUpdater.UpdateDataGrid(_vacancyService.Get());
+                DataGridUpdater.UpdateDataGrid(_vacancyService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -78,7 +81,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _vacancyService.Create(_vacancy);
-                DataGridUpdater.UpdateDataGrid(_vacancyService.Get());
+                DataGridUpdater.UpdateDataGrid(_vacancyService.Get(),_parent);
             }
             catch (Exception)
             {

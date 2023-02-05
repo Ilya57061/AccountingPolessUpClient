@@ -27,13 +27,29 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmMembers : Page
     {
         ParticipantsService _participantsService = new ParticipantsService();
+        List<Participants> _participants;
         public PageAdmMembers()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_participantsService.Get());
+            DataGridUpdater.UpdateDataGrid(_participantsService.Get(),this);
         }
+        public PageAdmMembers(List<Participants> participants)
+        {
+            InitializeComponent();
+            _participants = participants;
+            DataGridUpdater.UpdateDataGrid(_participantsService.Get(), this);
+            ColumSelect.Visibility = Visibility.Visible;
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Participants participant = dataGrid.SelectedItems[i] as Participants;
+                DataNavigator.UpdateValueComboBox(_participants.FirstOrDefault(x => x.Id == participant.Id));
+            }
 
+            this.NavigationService.GoBack();
+        }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -49,11 +65,11 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_participantsService.Get());
+            DataGridUpdater.UpdateDataGrid(_participantsService.Get(), this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditMembers();
+            EditFrame.Content = new PageEditMembers(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -62,7 +78,7 @@ namespace AccountingPolessUp.Views.Administration
                 Participants participants = dataGrid.SelectedItems[i] as Participants;
                 if (participants != null)
                 {
-                    EditFrame.Content = new PageEditMembers(participants);
+                    EditFrame.Content = new PageEditMembers(participants,this);
 
                 }
             }

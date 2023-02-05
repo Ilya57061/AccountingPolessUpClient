@@ -36,6 +36,11 @@ Background="Transparent"
         <Grid Grid.Row="1" Grid.Column="1">
             <TextBox Margin="1, 0, 1, 20" x:Name="Group" FontSize="14" materialDesign:HintAssist.Hint="Группа" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="PeopleGroup" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Group}" />
         </Grid>
+        <Grid Grid.Column="2" >
+            <Button Click="OpenIndividuals_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <materialDesign:PackIcon  Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
+            </Button>
+        </Grid>
         <Grid Grid.Row="1" Grid.Column="2">
             <ComboBox x:Name="BoxIndividuals" IsEditable="True" IsReadOnly="False" DisplayMemberPath="FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="ФИО" Margin="1,0,1,0"></ComboBox>
         </Grid>

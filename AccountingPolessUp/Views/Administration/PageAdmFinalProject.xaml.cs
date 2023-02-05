@@ -31,7 +31,7 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             DataGridUpdater.Page = this;
             _employment = employment;
-            DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(employment.Id));
+            DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(employment.Id), this);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {

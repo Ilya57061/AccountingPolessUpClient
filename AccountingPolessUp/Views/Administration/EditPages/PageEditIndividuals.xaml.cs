@@ -24,19 +24,21 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditIndividuals : Page // физ лицо
     {
 
-        
+        Page _parent;
         IndividualsService _individualsService = new IndividualsService();
         Individuals _individuals;
-        public PageEditIndividuals(Individuals individuals)
+        public PageEditIndividuals(Individuals individuals, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _individuals = individuals;
             DataContext = individuals;
+            _parent = parent;
         }
-        public PageEditIndividuals()
+        public PageEditIndividuals(Page parent)
         {
+            _parent = parent;
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
