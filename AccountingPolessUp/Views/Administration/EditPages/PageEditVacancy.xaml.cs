@@ -96,7 +96,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _vacancy.Responsibilities=Responsibilities.Text;
             _vacancy.DateStart = DateTime.Parse(DateStart.Text);
             _vacancy.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
-            _vacancy.Budjet = int.Parse(Budjet.Text);
+            _vacancy.Budjet = double.Parse(Budjet.Text);
             _vacancy.StagesOfProjectId = _stagesOfProjects.FirstOrDefault(i=>i==BoxStagesOfProject.SelectedItem).Id;
             _vacancy.isOpened = bool.Parse(IsOpened.Text);
         }
