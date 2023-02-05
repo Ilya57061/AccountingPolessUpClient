@@ -24,12 +24,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditRules : Page
     {
 
-        
+        Page _parent;
         RegulationService _regulationService = new RegulationService();
         OrganizationService _organizationService=new OrganizationService();
         List<Organization> _organizations;
         Regulation _regulation;
-        public PageEditRules(Regulation regulation)
+        public PageEditRules(Regulation regulation, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -37,10 +37,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _regulation = regulation;
             DataContext = regulation;
             _organizations = _organizationService.Get();
-            BoxOrganization.ItemsSource= _organizations;
-            BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o=>o.Id==regulation.OrganizationId));
+            BoxOrganization.ItemsSource = _organizations;
+            BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o => o.Id == regulation.OrganizationId));
+            _parent = parent;
         }
-        public PageEditRules()
+        public PageEditRules(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -48,6 +49,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _regulation = new Regulation();
             _organizations = _organizationService.Get();
             BoxOrganization.ItemsSource = _organizations;
+            _parent = parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +59,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _regulationService.Update(_regulation);
-                DataGridUpdater.UpdateDataGrid(_regulationService.Get());
+                DataGridUpdater.UpdateDataGrid(_regulationService.Get(),_parent);
             }
             catch (Exception)
             {
@@ -73,7 +75,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _regulationService.Create(_regulation);
-                DataGridUpdater.UpdateDataGrid(_regulationService.Get());
+                DataGridUpdater.UpdateDataGrid(_regulationService.Get(),_parent);
             }
             catch (Exception)
             {

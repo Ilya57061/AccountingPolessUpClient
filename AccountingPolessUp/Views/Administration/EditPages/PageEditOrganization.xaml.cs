@@ -24,23 +24,25 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditOrganization : Page
     {
 
-        
+        Page _parent;
         OrganizationService _organizationService = new OrganizationService();
         Organization _organization;
-        public PageEditOrganization(Organization organization)
+        public PageEditOrganization(Organization organization, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _organization = organization;
             DataContext = organization;
+            _parent = parent;
         }
-        public PageEditOrganization()
+        public PageEditOrganization(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _organization = new Organization();
+            _parent= parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -50,7 +52,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _organizationService.Update(_organization);
-                DataGridUpdater.UpdateDataGrid(_organizationService.Get());
+                DataGridUpdater.UpdateDataGrid(_organizationService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -65,7 +67,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _organizationService.Create(_organization);
-                DataGridUpdater.UpdateDataGrid(_organizationService.Get());
+                DataGridUpdater.UpdateDataGrid(_organizationService.Get(), _parent);
             }
             catch (Exception)
             {

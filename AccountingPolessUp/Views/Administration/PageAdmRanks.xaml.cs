@@ -29,16 +29,14 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmRanks()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_rankService.Get());
+            DataGridUpdater.UpdateDataGrid(_rankService.Get(), this);
         }
         public PageAdmRanks(List<Rank> ranks)
         {
 
             InitializeComponent();
             _ranks=ranks; 
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_rankService.Get());
+            DataGridUpdater.UpdateDataGrid(_rankService.Get(), this);
             ColumSelect.Visibility = Visibility.Visible;
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
@@ -54,8 +52,7 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_rankService.Get());
+            DataGridUpdater.UpdateDataGrid(_rankService.Get(),this);
         }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
@@ -69,7 +66,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditRank();
+            EditFrame.Content = new PageEditRank(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -78,7 +75,7 @@ namespace AccountingPolessUp.Views.Administration
                 Rank Rank = dataGrid.SelectedItems[i] as Rank;
                 if (Rank != null)
                 {
-                    EditFrame.Content = new PageEditRank(Rank);
+                    EditFrame.Content = new PageEditRank(Rank, this);
                 }
             }
         }

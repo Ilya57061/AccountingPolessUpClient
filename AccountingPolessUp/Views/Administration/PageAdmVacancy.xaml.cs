@@ -25,11 +25,31 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmVacancy : Page
     {
         VacancyService _vacancyService = new VacancyService();
+        List<Vacancy> _vacancies;
         public PageAdmVacancy()
         {
             InitializeComponent();
             DataGridUpdater.UpdateDataGrid(_vacancyService.Get(),this);
         }
+        public PageAdmVacancy(List<Vacancy> vacancies)
+        {
+            InitializeComponent();
+            DataGridUpdater.UpdateDataGrid(_vacancyService.Get(), this);
+            ColumSelect.Visibility = Visibility.Visible;
+            _vacancies = vacancies;
+          _vacancies = vacancies;
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Vacancy vacancy = dataGrid.SelectedItems[i] as Vacancy;
+                DataNavigator.UpdateValueComboBox(_vacancies.FirstOrDefault(x => x.Id == vacancy.Id));
+            }
+
+            this.NavigationService.GoBack();
+        }
+
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)

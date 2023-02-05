@@ -25,11 +25,28 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmOrganizations : Page
     {
         OrganizationService _organizationService=new OrganizationService();
+        List<Organization> _organizations;
         public PageAdmOrganizations()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_organizationService.Get());
+            DataGridUpdater.UpdateDataGrid(_organizationService.Get(), this);
+        }
+        public PageAdmOrganizations(List<Organization> organizations)
+        {
+            InitializeComponent();
+            DataGridUpdater.UpdateDataGrid(_organizationService.Get(), this);
+            ColumSelect.Visibility = Visibility.Visible;
+            _organizations = organizations;
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Organization organization = dataGrid.SelectedItems[i] as Organization;
+                DataNavigator.UpdateValueComboBox(_organizations.FirstOrDefault(x => x.Id == organization.Id));
+            }
+
+            this.NavigationService.GoBack();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -46,11 +63,11 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_organizationService.Get());
+            DataGridUpdater.UpdateDataGrid(_organizationService.Get(), this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditOrganization();
+            EditFrame.Content = new PageEditOrganization(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +77,7 @@ namespace AccountingPolessUp.Views.Administration
                 if (Organization != null)
                 {
 
-                    EditFrame.Content = new PageEditOrganization(Organization);
+                    EditFrame.Content = new PageEditOrganization(Organization, this);
 
                 }
             }

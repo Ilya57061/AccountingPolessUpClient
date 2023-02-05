@@ -28,8 +28,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmCourses()
         {
             InitializeComponent();
-            DataGridUpdater.Page = this;
-            DataGridUpdater.UpdateDataGrid(_coursesService.Get());
+            DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -45,11 +44,11 @@ namespace AccountingPolessUp.Views.Administration
                     }
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_coursesService.Get());
+            DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditCourses();
+            EditFrame.Content = new PageEditCourses(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -58,7 +57,7 @@ namespace AccountingPolessUp.Views.Administration
                 TrainingCourses TrainingCourses = dataGrid.SelectedItems[i] as TrainingCourses;
                 if (TrainingCourses != null)
                 {
-                    EditFrame.Content = new PageEditCourses(TrainingCourses);
+                    EditFrame.Content = new PageEditCourses(TrainingCourses, this);
 
                 }
             }

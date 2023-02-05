@@ -25,14 +25,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditApplicationsInTheProject : Page
     {
 
-        
+        Page _parent;
         ApplicationsInTheProjectService _applicationService = new ApplicationsInTheProjectService();
         List<Vacancy> _vacancy;
         VacancyService _vacancyService = new VacancyService();
         ParticipantsService _participantsService = new ParticipantsService();
         List<Participants> _participants;
         ApplicationsInTheProject _applications;
-        public PageEditApplicationsInTheProject(ApplicationsInTheProject applications)
+        public PageEditApplicationsInTheProject(ApplicationsInTheProject applications, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -52,13 +52,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
                 MessageBox.Show("Ошибка на стороне сервера", "Ошибка");
             }
-
+            _parent = parent;
         }
-        public PageEditApplicationsInTheProject()
+        public PageEditApplicationsInTheProject(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
+            _parent = parent;
             try
             {
                 _applications = new ApplicationsInTheProject();
@@ -74,6 +75,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             }
 
         }
+        private void OpenVacancy_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxVacancy.Name;
+            _parent.NavigationService.Content = new PageAdmVacancy(_vacancy);
+        }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -82,7 +89,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _applicationService.Update(_applications);
-                DataGridUpdater.UpdateDataGrid(_applicationService.Get());
+                DataGridUpdater.UpdateDataGrid(_applicationService.Get(),_parent);
             }
             catch (Exception)
             {
@@ -98,7 +105,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _applicationService.Create(_applications);
-                DataGridUpdater.UpdateDataGrid(_applicationService.Get());
+                DataGridUpdater.UpdateDataGrid(_applicationService.Get(), _parent);
 
             }
             catch (Exception)

@@ -53,7 +53,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxProject.ItemsSource = _project;
             _parent= parent;
         }
-
+        private void OpenProject_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxProject.Name;
+            _parent.NavigationService.Content = new PageAdmProjects(_project);
+        }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             try

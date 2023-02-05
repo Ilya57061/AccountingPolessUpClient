@@ -24,23 +24,25 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditCourses : Page
     {
 
-        
+        Page _parent;
         TrainingCoursesService _coursesService = new TrainingCoursesService();
         TrainingCourses _cours;
-        public PageEditCourses(TrainingCourses cours)
+        public PageEditCourses(TrainingCourses cours,Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _cours = cours;
             DataContext = cours;
+            _parent = parent;
         }
-        public PageEditCourses()
+        public PageEditCourses(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _cours = new TrainingCourses();
+            _parent = parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -50,7 +52,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _coursesService.Update(_cours);
-                DataGridUpdater.UpdateDataGrid(_coursesService.Get());
+                DataGridUpdater.UpdateDataGrid(_coursesService.Get(),_parent);
             }
             catch (Exception)
             {
@@ -65,7 +67,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _coursesService.Create(_cours);
-                DataGridUpdater.UpdateDataGrid(_coursesService.Get());
+                DataGridUpdater.UpdateDataGrid(_coursesService.Get(), _parent);
             }
             catch (Exception)
             {

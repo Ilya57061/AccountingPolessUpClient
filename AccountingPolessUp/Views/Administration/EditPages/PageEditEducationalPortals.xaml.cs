@@ -25,12 +25,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditEducationalPortals : Page
     {
 
-        
+        Page _parent;
         EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
         List<Department> _department;
         DepartmentService _departmentService = new DepartmentService();
         EducationalPortals _educationalPortals;
-        public PageEditEducationalPortals(EducationalPortals educationalPortals)
+        public PageEditEducationalPortals(EducationalPortals educationalPortals, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -40,8 +40,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _educationalPortals = educationalPortals;
             BoxDepartment.ItemsSource = _department;
             BoxDepartment.SelectedIndex = _department.IndexOf(_department.FirstOrDefault(r => r.Id == educationalPortals.DepartmentId));
+            _parent = parent;
         }
-        public PageEditEducationalPortals()
+        public PageEditEducationalPortals(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -49,6 +50,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _educationalPortals = new EducationalPortals();
             _department = _departmentService.Get();
             BoxDepartment.ItemsSource = _department;
+            _parent= parent;
+        }
+        private void OpenDepartments_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxDepartment.Name;
+            _parent.NavigationService.Content = new PageAdmDepartments(_department);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -58,7 +66,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _educationalPortalsService.Update(_educationalPortals);
-                DataGridUpdater.UpdateDataGrid(_educationalPortalsService.Get());
+                DataGridUpdater.UpdateDataGrid(_educationalPortalsService.Get(),_parent);
             }
             catch (Exception)
             {
@@ -73,7 +81,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _educationalPortalsService.Create(_educationalPortals);
-                DataGridUpdater.UpdateDataGrid(_educationalPortalsService.Get());
+                DataGridUpdater.UpdateDataGrid(_educationalPortalsService.Get(), _parent);
             }
             catch (Exception)
             {

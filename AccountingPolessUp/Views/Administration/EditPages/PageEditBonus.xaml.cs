@@ -52,6 +52,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _ranks = _RankService.Get();
             _parent=parent;
             BoxRank.ItemsSource = _ranks;
+            _parent = parent;
         }
         private void OpenRank_Click(object sender, RoutedEventArgs e)
         {

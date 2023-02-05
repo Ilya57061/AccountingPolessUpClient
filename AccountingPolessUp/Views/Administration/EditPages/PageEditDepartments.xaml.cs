@@ -24,12 +24,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditDepartments : Page
     {
 
-
+        Page _parent;
         DepartmentService _departmentService = new DepartmentService();
         OrganizationService _organizationService = new OrganizationService();
         Department _department;
         List<Organization> _organizations;
-        public PageEditDepartments(Department department)
+        public PageEditDepartments(Department department, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -39,8 +39,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataContext = department;
             BoxOrganizations.ItemsSource = _organizations;
             BoxOrganizations.SelectedItem = _organizations.FirstOrDefault(i => i.Id == department.OrganizationId);
+            _parent = parent;
         }
-        public PageEditDepartments()
+        public PageEditDepartments(Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
@@ -48,9 +49,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _department = new Department();
             _organizations = _organizationService.Get();
             BoxOrganizations.ItemsSource = _organizations;
+            _parent = parent;
         }
         private void OpenOrganization_Click(object sender, RoutedEventArgs e)
         {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxOrganizations.Name;
+            _parent.NavigationService.Content = new PageAdmOrganizations(_organizations);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +65,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _departmentService.Update(_department);
-                DataGridUpdater.UpdateDataGrid(_departmentService.Get());
+                DataGridUpdater.UpdateDataGrid(_departmentService.Get(),_parent);
             }
             catch (Exception)
             {
@@ -75,7 +80,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _departmentService.Create(_department);
-                DataGridUpdater.UpdateDataGrid(_departmentService.Get());
+                DataGridUpdater.UpdateDataGrid(_departmentService.Get(),_parent);
             }
             catch (Exception)
             {
