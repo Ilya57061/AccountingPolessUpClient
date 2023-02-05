@@ -33,11 +33,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditUser(User user, bool changePassword, Page parent)
         {
             InitializeComponent();
+            _parent = parent;
             FillDataContext(user);
             ButtonEditPassword.Visibility = Visibility.Visible;
             Login.IsEnabled = false;
             BoxRole.IsEnabled = false;
-            _parent = parent;
         }
         public PageEditUser(Page parent)
         {

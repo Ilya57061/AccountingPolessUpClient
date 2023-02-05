@@ -40,6 +40,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _positions = _positionsService.Get();
             _participants = _participantsService.Get();
             BoxStatus.SelectedIndex = true ? 0 : 1;
+            _parent = parent;
             this.employment = employment;
             this.DataContext = employment;
             BoxParticipants.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == employment.ParticipantsId));
@@ -48,11 +49,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxParticipants.ItemsSource = _participants;
             BoxMentors.ItemsSource = _participants;
             BoxPosition.ItemsSource = _positions;
-            _parent=parent;
         }
         public PageEditWork(Page parent)
         {
             InitializeComponent();
+            _parent = parent;
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             employment = new Employment();
@@ -61,8 +62,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxParticipants.ItemsSource = _participants;
             BoxMentors.ItemsSource = _participants;
             BoxPosition.ItemsSource = _positions;
-            DataGridUpdater.UpdateDataGrid(_employmentService.Get());
-            _parent=parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

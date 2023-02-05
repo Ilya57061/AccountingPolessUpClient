@@ -47,12 +47,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditVacancy(Page parent)
         {
             InitializeComponent();
+            _parent = parent;
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _vacancy=new Vacancy();
             _stagesOfProjects = _stagesOfProjectService.Get();
             BoxStagesOfProject.ItemsSource = _stagesOfProjects;
-            _parent=parent;
         }
         private void OpenStages_Click(object sender, RoutedEventArgs e)
         {
