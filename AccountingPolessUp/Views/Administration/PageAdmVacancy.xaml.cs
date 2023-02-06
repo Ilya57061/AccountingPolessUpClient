@@ -93,5 +93,13 @@ namespace AccountingPolessUp.Views.Administration
                 }
             }
         }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
+        }
+        private void Number_PreviewTextDoubleInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DoubleValidator(e);
+        }
     }
 }
