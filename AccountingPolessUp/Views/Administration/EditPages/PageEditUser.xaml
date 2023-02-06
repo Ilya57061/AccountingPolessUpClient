@@ -29,20 +29,11 @@ Background="Transparent"
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Border Grid.ColumnSpan="7" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-
-
-
-
-
         <Grid Grid.Row="1" Grid.Column="1">
             <TextBox Margin="1,0,1,20" x:Name="Login" FontSize="14" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="BadgeAccount" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding Login}"/>
         </Grid>
-
-
-       
         <Grid Grid.Row="1" Grid.Column="2">
             <ComboBox  x:Name="BoxRole"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Роль" Margin="1,0,1,12" DisplayMemberPath="Name"  Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-     
             </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="3">
