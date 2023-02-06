@@ -91,6 +91,9 @@ namespace AccountingPolessUp.Views.Administration
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id);
         }
-       
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
+        }
     }
 }
