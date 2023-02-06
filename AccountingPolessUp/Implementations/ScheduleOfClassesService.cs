@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Implementations
 
         public List<ScheduleOfСlasses> Get()
         {
-            var json = _webClient.DownloadString("GetScheduleOfClasses");
+            var json = _webClient.DownloadString("GetScheduleOfСlasses");
             var Info = JsonConvert.DeserializeObject<List<ScheduleOfСlasses>>(json);
             if (Info is null) throw new Exception("info - null");
             else return Info;
