@@ -66,7 +66,10 @@ Background="Transparent"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateExit}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
-            <TextBox Margin="1,0,1,20" x:Name="Status" FontSize="14" materialDesign:HintAssist.Hint="Статус" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="ListStatus" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Status}"/>
+            <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
+                <ComboBoxItem Content="Активный" />
+                <ComboBoxItem Content="Не активный" />
+            </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="6">
             <TextBox Margin="1,0,1,20" x:Name="GitHub" FontSize="14" materialDesign:HintAssist.Hint="GitHub" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="GitHub" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding GitHub}"/>

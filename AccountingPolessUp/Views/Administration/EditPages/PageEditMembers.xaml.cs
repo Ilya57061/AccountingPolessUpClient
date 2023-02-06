@@ -43,6 +43,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _individuals = _individualsService.Get();
             this.participants = participants;
             this.DataContext = participants;
+            BoxStatus.SelectedIndex = participants.Status == "Активный" ? 0 : 1;
             BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == participants.IndividualsId));
             BoxUser.SelectedIndex = _users.IndexOf(_users.FirstOrDefault(p => p.Id == participants.UserId));
             BoxIndividuals.ItemsSource = _individuals;
@@ -111,7 +112,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             participants.Mmr = int.Parse(Mmr.Text);
             participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
             participants.DateEntry = DateTime.Parse(DateEntry.Text);
-            participants.Status = Status.Text;
+            participants.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             participants.GitHub = GitHub.Text;
             participants.DateExit = DateTime.TryParse(DateExit.Text, out var dateExitResult) ? dateExitResult : (DateTime?)null;
         }

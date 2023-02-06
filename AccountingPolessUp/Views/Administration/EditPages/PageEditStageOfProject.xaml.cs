@@ -40,8 +40,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataContext = stagesOfProject;
             _stagesOfProject = stagesOfProject;
             BoxProject.ItemsSource = _project;
+            BoxStatus.SelectedIndex = _stagesOfProject.Status == "Завершён" ? 0 : 1;
             BoxProject.SelectedIndex = _project.IndexOf(_project.FirstOrDefault(r => r.Id == stagesOfProject.ProjectId));
-              _parent= parent;
+            _parent = parent;
         }
         public PageEditStageOfProject(Page parent)
         {
@@ -51,7 +52,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _stagesOfProject = new StagesOfProject();
             _project = _projectService.Get();
             BoxProject.ItemsSource = _project;
-            _parent= parent;
+            _parent = parent;
         }
         private void OpenProject_Click(object sender, RoutedEventArgs e)
         {
@@ -67,7 +68,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _stagesOfProjectService.Update(_stagesOfProject);
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(),_parent);
+                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -83,7 +84,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _stagesOfProjectService.Create(_stagesOfProject);
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(),_parent);
+                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), _parent);
             }
             catch (Exception)
             {
