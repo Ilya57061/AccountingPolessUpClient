@@ -31,7 +31,7 @@ Background="Transparent"
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelPositions" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Должности"></TextBlock>
                 </StackPanel>
-                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
                     <TextBox Margin="1,0,1,12.5"  x:Name="Fullname" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding FullName}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
                     <ComboBox x:Name="BoxDepartment" IsEditable="True" IsReadOnly="False" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Отдел" Margin="1,0,1,0"></ComboBox>

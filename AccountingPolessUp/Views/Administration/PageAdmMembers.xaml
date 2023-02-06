@@ -31,7 +31,7 @@ Background="Transparent"
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelMembers" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Участники"></TextBlock>
                 </StackPanel>
-                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
                     <ComboBox x:Name="BoxIndividuals" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Individuals}" DisplayMemberPath="FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Физ.Лицо" Margin="1,0,1,0"></ComboBox>
                     <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="1,0,1,12.5" x:Name="Mmr" FontSize="14" materialDesign:HintAssist.Hint="ММР" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="BadgeAccount" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding Mmr}"/>
                     <ComboBox x:Name="BoxUser" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding User}" DisplayMemberPath="Login"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Пользователь" Margin="1,0,1,0"></ComboBox>

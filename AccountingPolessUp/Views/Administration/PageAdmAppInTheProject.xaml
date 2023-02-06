@@ -32,7 +32,7 @@ Background="Transparent"
                     <TextBlock x:Name="LabelApp" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Заявки в проект"></TextBlock>
                 </StackPanel>
 
-                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
                     <ComboBox x:Name="BoxWorkStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Рабочий статус" Margin="1,0,1,0">
                         <ComboBoxItem Content="Принят в работу" />
                         <ComboBoxItem Content="Не принят в работу" />

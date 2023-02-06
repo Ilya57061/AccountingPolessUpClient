@@ -67,10 +67,8 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            BoxWorkStatus.Text = String.Empty;
-            DateEntry.Text = String.Empty;
-            BoxParticipant.Text = String.Empty;
-            ComboBoxVacancy.Text = String.Empty;
+            FilterManager.ClearControls(panel);
+            DataGridUpdater.UpdateDataGrid(_appService.Get(), this);
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

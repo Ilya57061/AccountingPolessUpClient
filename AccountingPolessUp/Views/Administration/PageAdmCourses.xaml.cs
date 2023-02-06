@@ -85,11 +85,12 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-           
+            FilterManager.ConfirmFilter(dataGrid, _coursesService.Get(), Name.Text, Description.Text, Link.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-           
+            FilterManager.ClearControls(panel);
+            DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

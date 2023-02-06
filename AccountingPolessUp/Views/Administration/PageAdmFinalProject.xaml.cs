@@ -68,28 +68,16 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id), TextBoxName.Text,
-                TextBoxDescription.Text, TextBoxGitHub.Text, TextBoxLink.Text, DateStart.Text, DateEnd.Text);
+            FilterManager.ConfirmFilter(dataGrid,_finalProjectService.Get(),TextBoxName.Text, TextBoxDescription.Text, TextBoxGitHub.Text, TextBoxLink.Text, DateStart.Text, DateEnd.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            Clear();
+            FilterManager.ClearControls(panel);
+            DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id), this);
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();
-        }
-        private void Clear()
-        {
-            TextBoxName.Text = string.Empty;
-            TextBoxDescription.Text = string.Empty;
-            TextBoxGitHub.Text = string.Empty;
-            TextBoxLink.Text = string.Empty;
-            DateEnd.Text = string.Empty;
-            DateStart.Text = string.Empty;
-            dataGrid.ItemsSource = null;
-            dataGrid.Items.Clear();
-            dataGrid.ItemsSource = _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id);
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

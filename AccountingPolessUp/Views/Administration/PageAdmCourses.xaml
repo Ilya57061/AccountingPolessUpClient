@@ -31,7 +31,7 @@ Background="Transparent"
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelCourses" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Тренировочные курсы"></TextBlock>
                 </StackPanel>
-                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
                     <TextBox Margin="1,0,1,12.5" x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CardText" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding Name}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Link" FontSize="14" materialDesign:HintAssist.Hint="Ссылка" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Link" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Link}"/>
