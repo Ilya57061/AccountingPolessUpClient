@@ -51,8 +51,8 @@ Background="Transparent"
         </Grid>
         <Grid Grid.Row="1" Grid.Column="4">
             <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
-                <ComboBoxItem Content="Статус 1" />
-                <ComboBoxItem Content="Статус 2" />
+                <ComboBoxItem Content="Работает" />
+                <ComboBoxItem Content="Не работает" />
             </ComboBox>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="5">

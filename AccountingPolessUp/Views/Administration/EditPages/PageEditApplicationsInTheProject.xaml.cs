@@ -45,6 +45,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 _applications = applications;
                 BoxVacancy.ItemsSource = _vacancy;
                 BoxParticipant.ItemsSource = _participants;
+                BoxWorkStatus.SelectedIndex = _applications.WorkStatus == "Принят в работу" ? 0 : 1;
                 BoxVacancy.SelectedIndex = _vacancy.IndexOf(_vacancy.FirstOrDefault(r => r.Id == applications.VacancyId));
                 BoxParticipant.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(r => r.Id == applications.ParticipantsId));
             }
@@ -89,7 +90,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _applicationService.Update(_applications);
-                DataGridUpdater.UpdateDataGrid(_applicationService.Get(),_parent);
+                DataGridUpdater.UpdateDataGrid(_applicationService.Get(), _parent);
             }
             catch (Exception)
             {
