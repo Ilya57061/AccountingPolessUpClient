@@ -32,7 +32,7 @@ Background="Transparent"
                     <TextBlock x:Name="LabelRanks" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Трудоустройство"></TextBlock>
                 </StackPanel>
 
-                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="Panel">
                         <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1, 0, 1,12.5" materialDesign:HintAssist.Hint="Дата начала" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}" />
                     <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1, 0, 1,12.5" materialDesign:HintAssist.Hint="Дата окончания" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}" />
                         <ComboBox x:Name="BoxPosition" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Position}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Позиция" Margin="1,0,1,0"></ComboBox>

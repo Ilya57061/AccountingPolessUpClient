@@ -37,7 +37,8 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-           
+            FilterManager.ClearControls(Panel);
+            DataGridUpdater.UpdateDataGrid(_employmentService.Get(), this);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {

@@ -1,13 +1,36 @@
 using AccountingPolessUp.Models;
+using MaterialDesignThemes.Wpf.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Windows.Controls;
 
 namespace AccountingPolessUp.Helpers
 {
     public static class FilterManager
     {
+        public static void ClearControls(System.Windows.Controls.Panel panel, DataGrid dataGrid, IEnumerable<object> list)
+        {
+            foreach (var control in panel.Children)
+            {
+                if (control is ComboBox)
+                {
+                    ((ComboBox)control).SelectedIndex = -1;
+                }
+                else if (control is DatePicker)
+                {
+                    ((DatePicker)control).SelectedDate = null;
+                }
+                else if (control is TextBox)
+                {
+                    ((TextBox)control).Clear();
+                }
+            }
+            dataGrid.ItemsSource = null;
+            dataGrid.Items.Clear();
+            dataGrid.ItemsSource = list;
+        }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Organization> list, string name, string address, string contacts, string website, string dateFoundation)
         {
             if (!string.IsNullOrEmpty(name))
