@@ -15,16 +15,35 @@
 Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}">
         <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition Height="50"/>
-                <RowDefinition Height="200"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid  Grid.Row="0" Grid.ColumnSpan="2">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition />
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="200"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.ColumnSpan="2" Grid.Row="0" >
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top">
+                <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
+                    <TextBlock x:Name="LabelRanks" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Ранги"></TextBlock>
+                </StackPanel>
+
+                <StackPanel Margin="0" VerticalAlignment="Center" Orientation="Horizontal">
+                    <ComboBox Margin="0 0 10 0" VerticalAlignment="Center" IsReadOnly="False" IsEditable="True" x:Name="ComboORG" SelectedItem="{Binding Organization}" DisplayMemberPath="Fullname" Width="auto" FontSize="16" materialDesign:HintAssist.Hint="Организация"></ComboBox>
+
+                    <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxSearch" FontSize="16" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox Margin="10 0 10 15" VerticalAlignment="Center"  x:Name="TextBoxMinMmr" FontSize="16" materialDesign:HintAssist.Hint="Минимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxMaxMmr" FontSize="16" materialDesign:HintAssist.Hint="Максимальный рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
+                    <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Grid  Grid.Row="1" Grid.ColumnSpan="2">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
                 <DataGrid HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
@@ -73,7 +92,7 @@ Background="Transparent"
 
     </Grid>
 
-        <Grid Grid.ColumnSpan="2" Grid.Row="1">
+        <Grid Grid.ColumnSpan="2" Grid.Row="2">
                 <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
 
                 <Button  x:Name="ButtonAdd" Click="ButtonAdd_Click"  HorizontalAlignment="Left" Margin="10,0,0,0" >
@@ -81,7 +100,7 @@ Background="Transparent"
                 </Button>
 
             </Grid>
-            <Grid Grid.ColumnSpan="2" Grid.Row="2">
+            <Grid Grid.ColumnSpan="2" Grid.Row="3">
                 <Border  BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
                 <Frame x:Name="EditFrame" Content="" />
             </Grid>

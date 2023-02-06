@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -29,6 +30,15 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             DataGridUpdater.UpdateDataGrid(_employmentService.Get(),this);
+        }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            //FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id), TextBoxName.Text,
+            //    TextBoxDescription.Text, TextBoxGitHub.Text, TextBoxLink.Text, DateStart.Text, DateEnd.Text);
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+           
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
