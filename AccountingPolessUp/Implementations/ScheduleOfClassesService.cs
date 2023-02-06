@@ -25,46 +25,81 @@ namespace AccountingPolessUp.Implementations
 
         public List<ScheduleOfСlasses> Get()
         {
-            var json = _webClient.DownloadString("GetScheduleOfClasses");
-            var Info = JsonConvert.DeserializeObject<List<ScheduleOfСlasses>>(json);
-            if (Info is null) throw new Exception("info - null");
-            else return Info;
+            try
+            {
+                var json = _webClient.DownloadString("GetScheduleOfСlasses");
+                var Info = JsonConvert.DeserializeObject<List<ScheduleOfСlasses>>(json);
+                if (Info is null) throw new Exception("info - null");
+                else return Info;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
 
         public void Create(ScheduleOfСlasses model)
         {
-            var reqparm = new NameValueCollection
+            try
             {
-                ["Description"] = $"{model.Description}",
-                ["DateStart"] = $"{model.DateStart}",
-                ["DateEnd"] = $"{model.DateEnd}",
-                ["WorkSpaceLink"] = $"{model.WorkSpaceLink}",
-                ["TrainingCoursesId"] = $"{model.TrainingCoursesId}"
-            };
-            _webClient.UploadValues("CreateScheduleOfClasses", "POST", reqparm);
+                var reqparm = new NameValueCollection
+                {
+                    ["Description"] = $"{model.Description}",
+                    ["DateStart"] = $"{model.DateStart}",
+                    ["DateEnd"] = $"{model.DateEnd}",
+                    ["WorkSpaceLink"] = $"{model.WorkSpaceLink}",
+                    ["TrainingCoursesId"] = $"{model.TrainingCoursesId}"
+                };
+                _webClient.UploadValues("CreateScheduleOfClasses", "POST", reqparm);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
 
         public void Update(ScheduleOfСlasses model)
         {
-            var reqparm = new NameValueCollection
+            try
             {
-                ["Id"] = $"{model.Id}",
-                ["Description"] = $"{model.Description}",
-                ["DateStart"] = $"{model.DateStart}",
-                ["DateEnd"] = $"{model.DateEnd}",
-                ["WorkSpaceLink"] = $"{model.WorkSpaceLink}",
-                ["TrainingCoursesId"] = $"{model.TrainingCoursesId}"
-            };
-            _webClient.UploadValues("UpdateScheduleOfClasses", "PUT", reqparm);
+                var reqparm = new NameValueCollection
+                {
+                    ["Id"] = $"{model.Id}",
+                    ["Description"] = $"{model.Description}",
+                    ["DateStart"] = $"{model.DateStart}",
+                    ["DateEnd"] = $"{model.DateEnd}",
+                    ["WorkSpaceLink"] = $"{model.WorkSpaceLink}",
+                    ["TrainingCoursesId"] = $"{model.TrainingCoursesId}"
+                };
+                _webClient.UploadValues("UpdateScheduleOfClasses", "PUT", reqparm);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
         }
 
         public void Delete(int id)
         {
-            var reqparm = new NameValueCollection
+            try
             {
-                ["id"] = $"{id}"
-            };
-            _webClient.UploadValues("DeleteScheduleOfClasses", "DELETE", reqparm);
+                var reqparm = new NameValueCollection
+                {
+                    ["id"] = $"{id}"
+                };
+                _webClient.UploadValues("DeleteScheduleOfClasses", "DELETE", reqparm);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
         }
     }
 }
