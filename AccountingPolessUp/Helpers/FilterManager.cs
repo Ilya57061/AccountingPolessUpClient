@@ -11,6 +11,36 @@ namespace AccountingPolessUp.Helpers
 {
     public static class FilterManager
     {
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<ScheduleOfСlasses> list, string name, string description, string dateStart, string dateEnd, string status, string project)
+        {
+            if (!string.IsNullOrEmpty(name))
+            {
+                list = list.Where(x => x.Name == name);
+            }
+            if (!string.IsNullOrEmpty(description))
+            {
+                list = list.Where(x => x.Description == description);
+            }
+            if (!string.IsNullOrEmpty(status))
+            {
+                list = list.Where(x => x.Status == status);
+            }
+            if (!string.IsNullOrEmpty(project))
+            {
+                list = list.Where(x => x.Project.Fullname == project);
+            }
+            if (!string.IsNullOrEmpty(dateStart))
+            {
+                list = list.Where(x => x.DateStart == DateTime.Parse(dateStart));
+            }
+            if (!string.IsNullOrEmpty(dateEnd))
+            {
+                list = list.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+            }
+            dataGrid.ItemsSource = null;
+            dataGrid.Items.Clear();
+            dataGrid.ItemsSource = list;
+        }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<StagesOfProject> list, string name, string description, string dateStart, string dateEnd, string status, string project)
         {
             if (!string.IsNullOrEmpty(name))
