@@ -70,5 +70,9 @@ namespace AccountingPolessUp.Views.Administration
                 }
             }
         }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
+        }
     }
 }
