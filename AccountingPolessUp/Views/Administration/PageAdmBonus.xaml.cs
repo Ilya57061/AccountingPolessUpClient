@@ -63,11 +63,12 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-           
+            FilterManager.ConfirmFilter(dataGrid,_bonusService.Get(),BonusName.Text,BoxRank.Text,BonusDescription.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-           
+            FilterManager.ClearControls(panel);
+            DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

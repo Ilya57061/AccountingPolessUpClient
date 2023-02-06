@@ -10,7 +10,7 @@ namespace AccountingPolessUp.Helpers
 {
     public static class FilterManager
     {
-        public static void ClearControls(System.Windows.Controls.Panel panel)
+        public static void ClearControls(Panel panel)
         {
             foreach (var control in panel.Children)
             {
@@ -143,10 +143,10 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Bonus> list, string bonus, string rank, string description)
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Bonus> list, string name, string rank, string description)
         {
-            if (!string.IsNullOrEmpty(bonus))
-                list = list.Where(x => x.BonusName == bonus);
+            if (!string.IsNullOrEmpty(name))
+                list = list.Where(x => x.BonusName == name);
             if (!string.IsNullOrEmpty(rank))
                 list = list.Where(x => x.Rank.RankName == rank);
             if (!string.IsNullOrEmpty(description))

@@ -31,7 +31,7 @@ Background="Transparent"
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelBonus" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Бонусы"></TextBlock>
                 </StackPanel>
-                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
                     <TextBox Margin="1,0,1,12.5"  x:Name="BonusName" FontSize="14" materialDesign:HintAssist.Hint="Название бонуса" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding BonusName}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="BonusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание бонуса" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding BonusDescription}"/>
                     <ComboBox x:Name="BoxRank" IsEditable="True" IsReadOnly="False"  DisplayMemberPath="RankName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ранг" Margin="1,0,1,0"></ComboBox>

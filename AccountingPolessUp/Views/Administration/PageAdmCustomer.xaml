@@ -32,7 +32,7 @@ Background="Transparent"
                     <TextBlock x:Name="LabelCustomers" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Заказчики"></TextBlock>
                 </StackPanel>
 
-                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
                     <TextBox Margin="1,0,1,12.5"  x:Name="Fullname" FontSize="14" materialDesign:HintAssist.Hint="Полное наименование" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding FullName}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Address" FontSize="14" materialDesign:HintAssist.Hint="Адрес" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="MapMarker" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Address}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Contacts" FontSize="14" materialDesign:HintAssist.Hint="Контакты" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Phone" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Contacts}" />
