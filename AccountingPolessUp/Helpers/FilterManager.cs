@@ -167,7 +167,7 @@ namespace AccountingPolessUp.Helpers
             dataGrid.ItemsSource = list;
         }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Project> list, string customer, string status, string dateStart, 
-            string dateEnd, string description, string technicalSpecification, int idLocalPM)
+            string dateEnd, string description, string technicalSpecification, string idLocalPM)
         {
          
             if (!string.IsNullOrEmpty(description))
@@ -186,9 +186,9 @@ namespace AccountingPolessUp.Helpers
             {
                 list = list.Where(x => x.TechnicalSpecification == technicalSpecification);
             }
-            if (idLocalPM!=null)
+            if (!string.IsNullOrEmpty(idLocalPM))
             {
-                list = list.Where(x => x.idLocalPM == idLocalPM);
+                list = list.Where(x => x.idLocalPM == int.Parse(idLocalPM));
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
@@ -203,7 +203,7 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Rank> list, string name, string description, string organization, int minMmr, int maxMmr)
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Rank> list, string name, string description, string organization, string minMmr, string maxMmr)
         {
             if (!string.IsNullOrEmpty(organization))
             {
@@ -217,13 +217,13 @@ namespace AccountingPolessUp.Helpers
             {
                 list = list.Where(x => x.RankName == name);
             }
-            if (minMmr != null)
+            if (!string.IsNullOrEmpty(minMmr))
             {
-                list = list.Where(x => x.MinMmr == minMmr);
+                list = list.Where(x => x.MinMmr == int.Parse(minMmr));
             }
-            if (maxMmr != null)
+            if (!string.IsNullOrEmpty(maxMmr))
             {
-                list = list.Where(x => x.MaxMmr == maxMmr);
+                list = list.Where(x => x.MaxMmr == int.Parse(maxMmr));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -325,7 +325,7 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Student> list, int studentCard, string group, string individual,int coursNumber, string university )
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Student> list, int studentCard, string group, string individual,string coursNumber, string university )
         {
             if (studentCard!=null)
             {
@@ -339,9 +339,9 @@ namespace AccountingPolessUp.Helpers
             {
                 list = list.Where(x => x.Individuals.FIO == individual);
             }
-            if (coursNumber!=null)
+            if (!string.IsNullOrEmpty(coursNumber))
             {
-                list = list.Where(x => x.CourseNumber == coursNumber);
+                list = list.Where(x => x.CourseNumber == int.Parse(coursNumber));
             }
             if (!string.IsNullOrEmpty(university))
             {
@@ -367,7 +367,7 @@ namespace AccountingPolessUp.Helpers
         }
 
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Vacancy> list, string name, string description, string responsibilities,
-          string dateStart, string dateEnd, double budjet, string stagesOfProject, bool isOpened)
+          string dateStart, string dateEnd, string budjet, string stagesOfProject, string isOpened)
         {
             if (!string.IsNullOrEmpty(name))
             {
@@ -385,13 +385,13 @@ namespace AccountingPolessUp.Helpers
             {
                 list = list.Where(x => x.StagesOfProject.Name == responsibilities);
             }
-            if (budjet != null)
+            if (!string.IsNullOrEmpty(budjet))
             {
-                list = list.Where(x => x.Budjet == budjet);
+                list = list.Where(x => x.Budjet == double.Parse(budjet));
             }
-            if (isOpened != null)
+            if (!string.IsNullOrEmpty(isOpened))
             {
-                list = list.Where(x => x.isOpened == isOpened);
+                list = list.Where(x => x.isOpened == bool.Parse(isOpened));
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
@@ -406,7 +406,7 @@ namespace AccountingPolessUp.Helpers
             dataGrid.ItemsSource = list;
         }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Employment> employments, string dateStart, string dateEnd, string position,
-            string status, string description, int mentor)
+            string status, string description, string mentor)
         {
             if (!string.IsNullOrEmpty(position))
             {
@@ -420,9 +420,9 @@ namespace AccountingPolessUp.Helpers
             {
                 employments = employments.Where(x => x.Status == status);
             }
-            if (mentor!=null)
+            if (!string.IsNullOrEmpty(mentor))
             {
-                employments = employments.Where(x => x.IdMentor == mentor);
+                employments = employments.Where(x => x.IdMentor == int.Parse(mentor));
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
