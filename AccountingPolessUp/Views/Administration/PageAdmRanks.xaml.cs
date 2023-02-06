@@ -42,6 +42,15 @@ namespace AccountingPolessUp.Views.Administration
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
         }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            //FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id), TextBoxName.Text,
+            //    TextBoxDescription.Text, TextBoxGitHub.Text, TextBoxLink.Text, DateStart.Text, DateEnd.Text);
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)

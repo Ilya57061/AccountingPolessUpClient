@@ -45,6 +45,15 @@ namespace AccountingPolessUp.Views.Administration
             }
             DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
         }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            //FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id), TextBoxName.Text,
+            //    TextBoxDescription.Text, TextBoxGitHub.Text, TextBoxLink.Text, DateStart.Text, DateEnd.Text);
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditScheduleOfClasses(this);

@@ -38,6 +38,15 @@ namespace AccountingPolessUp.Views.Administration
             ColumSelect.Visibility = Visibility.Visible;
             _users = users;
         }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            //FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id), TextBoxName.Text,
+            //    TextBoxDescription.Text, TextBoxGitHub.Text, TextBoxLink.Text, DateStart.Text, DateEnd.Text);
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
