@@ -42,7 +42,7 @@ Background="Transparent"
  materialDesign:TextFieldAssist.HasClearButton="True"
  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEntry}"/>
                     <ComboBox x:Name="BoxParticipant" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Participants}" DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Участник" Margin="1,0,1,0" ></ComboBox>
-                    <ComboBox Margin="1,0,1,0" VerticalAlignment="Center" IsReadOnly="False" IsEditable="True" x:Name="ComboBoxVacancy" SelectedItem="{Binding Vacancy}" DisplayMemberPath="Fullname" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация"></ComboBox>
+                    <ComboBox Margin="1,0,1,0" VerticalAlignment="Center" IsReadOnly="False" IsEditable="True" x:Name="ComboBoxVacancy" SelectedItem="{Binding Vacancy}" DisplayMemberPath="Fullname" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Вакансия"></ComboBox>
                     <TextBox Margin="1,0,1,12.5"  x:Name="BonusName" FontSize="14" materialDesign:HintAssist.Hint="Название бонуса" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding BonusName}"/>
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
