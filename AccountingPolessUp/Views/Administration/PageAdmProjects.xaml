@@ -38,7 +38,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding TechnicalSpecification, UpdateSourceTrigger=PropertyChanged}" Header="Техн.спецификация" />
                         <DataGridTextColumn Binding="{Binding Customer.FullName, UpdateSourceTrigger=PropertyChanged}" Header="Заказчик" />
                         <DataGridTextColumn Binding="{Binding idLocalPM, UpdateSourceTrigger=PropertyChanged}" Header="idLocalPM" Width="auto"/>
-                        <DataGridTemplateColumn Header="Удалить">
+                        <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button x:Name="ButtonDelete" Click="ButtonDelete_Click">
@@ -47,7 +47,7 @@ Background="Transparent"
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Изменить">
+                        <DataGridTemplateColumn  x:Name="ColumEdit" Header="Изменить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button x:Name="ButtonEdit" Click="ButtonEdit_Click">
@@ -57,12 +57,12 @@ Background="Transparent"
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                         <DataGridTemplateColumn x:Name="ColumSelect" Visibility="Collapsed">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button x:Name="ButtonSelect" Click="ButtonSelect_Click" Content="Выбрать">
-                                </Button>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="ButtonSelect" Click="ButtonSelect_Click" Content="Выбрать">
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>

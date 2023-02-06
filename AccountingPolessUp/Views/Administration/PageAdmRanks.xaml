@@ -35,7 +35,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding MinMmr, UpdateSourceTrigger=PropertyChanged}" Header="МинММР" />
                         <DataGridTextColumn Binding="{Binding MaxMmr, UpdateSourceTrigger=PropertyChanged}" Header="МаксММР" />
                         <DataGridTextColumn Binding="{Binding Organizations.Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Организация" Width="auto"/>
-                        <DataGridTemplateColumn Header="Удалить">
+                        <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button x:Name="ButtonDelete" Click="ButtonDelete_Click">
@@ -44,7 +44,7 @@ Background="Transparent"
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Изменить">
+                        <DataGridTemplateColumn  x:Name="ColumEdit" Header="Изменить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button x:Name="ButtonEdit" Click="ButtonEdit_Click">

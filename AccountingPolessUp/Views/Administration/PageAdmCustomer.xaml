@@ -35,7 +35,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Contacts, UpdateSourceTrigger=PropertyChanged}" Header="Контакты" />
                         <DataGridTextColumn Binding="{Binding WebSite, UpdateSourceTrigger=PropertyChanged}" Header="Веб-сайт" />
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" Width="auto"/>
-                        <DataGridTemplateColumn Header="Удалить">
+                        <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button x:Name="ButtonDelete" Click="ButtonDelete_Click">
@@ -44,7 +44,7 @@ Background="Transparent"
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Изменить">
+                        <DataGridTemplateColumn  x:Name="ColumEdit" Header="Изменить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button x:Name="ButtonEdit" Click="ButtonEdit_Click">

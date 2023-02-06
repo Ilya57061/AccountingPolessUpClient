@@ -36,7 +36,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата окончания" />
                         <DataGridTextColumn Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged}" Header="Статус" />
                         <DataGridTextColumn Binding="{Binding Path = Project.Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Проект" Width="auto"/>
-                        <DataGridTemplateColumn Header="Удалить">
+                        <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button x:Name="ButtonDelete" Click="ButtonDelete_Click">
@@ -45,7 +45,7 @@ Background="Transparent"
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Изменить">
+                        <DataGridTemplateColumn  x:Name="ColumEdit" Header="Изменить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button x:Name="ButtonEdit" Click="ButtonEdit_Click">

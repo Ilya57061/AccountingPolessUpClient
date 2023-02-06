@@ -38,7 +38,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Budjet, UpdateSourceTrigger=PropertyChanged}" Header="Бюджет" />
                         <DataGridTextColumn Binding="{Binding StagesOfProject.Name, UpdateSourceTrigger=PropertyChanged}" Header="Стадия проекта" />
                         <DataGridTextColumn Binding="{Binding isOpened, UpdateSourceTrigger=PropertyChanged}" Header="Открыта" Width="auto"/>
-                        <DataGridTemplateColumn Header="Удалить">
+                        <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button x:Name="ButtonDelete" Click="ButtonDelete_Click">
@@ -47,7 +47,7 @@ Background="Transparent"
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Изменить">
+                        <DataGridTemplateColumn  x:Name="ColumEdit" Header="Изменить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button x:Name="ButtonEdit" Click="ButtonEdit_Click">

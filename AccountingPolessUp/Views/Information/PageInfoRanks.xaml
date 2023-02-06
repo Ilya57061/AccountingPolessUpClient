@@ -16,13 +16,16 @@ Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}"
     Title="PolessUp">
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        
         <Grid Background="White">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition />
                 <RowDefinition Height="200"/>
             </Grid.RowDefinitions>
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <DataGrid Background="Transparent" x:Name="dataGrid" Margin="10" Grid.Row="1" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True">
+                
                 <DataGrid.Columns >
                     <DataGridTextColumn Binding="{Binding RankName}" Header="Наименование" Width="100"/>
                     <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="auto"/>
