@@ -10,7 +10,7 @@ namespace AccountingPolessUp.Helpers
 {
     public static class FilterManager
     {
-        public static void ClearControls(System.Windows.Controls.Panel panel, DataGrid dataGrid, IEnumerable<object> list)
+        public static void ClearControls(System.Windows.Controls.Panel panel)
         {
             foreach (var control in panel.Children)
             {
@@ -27,9 +27,7 @@ namespace AccountingPolessUp.Helpers
                     ((TextBox)control).Clear();
                 }
             }
-            dataGrid.ItemsSource = null;
-            dataGrid.Items.Clear();
-            dataGrid.ItemsSource = list;
+
         }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Organization> list, string name, string address, string contacts, string website, string dateFoundation)
         {
@@ -64,12 +62,12 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Participants> list, string individual, int mmr, string user, string dateEntry, string dateExit, string status, string github)
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Participants> list, string individual, string mmr, string user, string dateEntry, string dateExit, string status, string github)
         {
             if (!string.IsNullOrEmpty(individual))
                 list = list.Where(x => x.Individuals.FIO == individual);
-            if (mmr != null)
-                list = list.Where(x => x.Mmr == mmr);
+            if (!string.IsNullOrEmpty(mmr))
+                list = list.Where(x => x.Mmr == int.Parse(mmr));
             if (!string.IsNullOrEmpty(user))
                 list = list.Where(x => x.User.Login == user);
             if (!string.IsNullOrEmpty(dateEntry))
