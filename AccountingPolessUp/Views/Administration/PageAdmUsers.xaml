@@ -32,7 +32,7 @@ Background="Transparent"
                     <TextBlock x:Name="LabelRanks" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Пользователи"></TextBlock>
                 </StackPanel>
 
-                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="Panel">
                         <TextBox Margin="1,0,1,12.5" x:Name="Login" FontSize="14" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="BadgeAccount" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding Login}"/>
                         <ComboBox  x:Name="BoxRole"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Роль" Margin="1,0,1,0" DisplayMemberPath="Name">
                         </ComboBox>

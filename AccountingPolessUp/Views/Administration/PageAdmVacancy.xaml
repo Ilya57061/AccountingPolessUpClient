@@ -32,7 +32,7 @@ Background="Transparent"
                     <TextBlock x:Name="LabelRanks" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Вакансии"></TextBlock>
                 </StackPanel>
 
-                <StackPanel Margin="0" VerticalAlignment="Center" Orientation="Horizontal">
+                <StackPanel Margin="0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="Panel">
                         <TextBox  Margin="1,0,1,12.5" x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Наименование" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="BadgeAccount" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
                         <TextBox Margin="1,0,1,12.5" x:Name="Descriptions" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Descriptions}"/>
                         <TextBox Margin="1,0,1,12.5" x:Name="Responsibilities" FontSize="14" materialDesign:HintAssist.Hint="Обязанности" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CheckboxMultipleMarked" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Responsibilities}"/>

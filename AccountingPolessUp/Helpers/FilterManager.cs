@@ -187,10 +187,13 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Project> list, string customer, string status, string dateStart, 
-            string dateEnd, string description, string technicalSpecification, string idLocalPM)
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Project> list, string customer,string status, string dateStart, 
+            string dateEnd, string description, string technicalSpecification, string idLocalPM, string name)
         {
-         
+            if (!string.IsNullOrEmpty(name))
+            {
+                list = list.Where(x => x.Fullname== name);
+            }
             if (!string.IsNullOrEmpty(description))
             {
                 list = list.Where(x => x.Description == description);
@@ -346,11 +349,11 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Student> list, int studentCard, string group, string individual,string coursNumber, string university )
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Student> list, string studentCard, string group, string individual,string coursNumber, string university )
         {
-            if (studentCard!=null)
+            if (!string.IsNullOrEmpty(studentCard))
             {
-                list = list.Where(x => x.StudentCard == studentCard);
+                list = list.Where(x => x.StudentCard == int.Parse(studentCard));
             }
             if (!string.IsNullOrEmpty(group))
             {

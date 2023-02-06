@@ -47,12 +47,12 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            //FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id), TextBoxName.Text,
-            //    TextBoxDescription.Text, TextBoxGitHub.Text, TextBoxLink.Text, DateStart.Text, DateEnd.Text);
+            FilterManager.ConfirmFilter(dataGrid, _scheduleOfClassesService.Get(), Description.Text, DateStart.Text, DateEnd.Text,WorkSpaceLink.Text,BoxTrainingCourses.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-
+            FilterManager.ClearControls(Panel);
+            DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {

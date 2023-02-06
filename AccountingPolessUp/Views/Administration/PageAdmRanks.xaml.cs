@@ -25,7 +25,7 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmRanks : Page
     {
         RankService _rankService = new RankService();
-        List<Rank> _ranks; // объявляем, чтобы получить список объектов ComboBox
+        List<Rank> _ranks;
         public PageAdmRanks()
         {
             InitializeComponent();
@@ -44,12 +44,12 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            //FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get().Where(x => x.EmploymentId == _employment.Id), TextBoxName.Text,
-            //    TextBoxDescription.Text, TextBoxGitHub.Text, TextBoxLink.Text, DateStart.Text, DateEnd.Text);
+            FilterManager.ConfirmFilter(dataGrid, _rankService.Get(), RankName.Text,Description.Text,BoxOrganization.Text,MinMmr.Text,MaxMmr.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-
+            FilterManager.ClearControls(Panel);
+            DataGridUpdater.UpdateDataGrid(_rankService.Get(), this);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
