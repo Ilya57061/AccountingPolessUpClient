@@ -37,6 +37,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _project = project;
+            BoxStatus.SelectedIndex = _project.Status == "Завершён" ? 0 : 1;
             _customers = _customerService.Get();
             DataContext = project;
             BoxCustomer.ItemsSource = _customers;
@@ -48,7 +49,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            _project= new Project();
+            _project = new Project();
             _customers = _customerService.Get();
             BoxCustomer.ItemsSource = _customers;
             _parent = parent;
@@ -95,10 +96,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             _project.Fullname = Fullname.Text;
             _project.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
-            _project.Description= Description.Text;
-            _project.TechnicalSpecification=TechnicalSpecification.Text;
+            _project.Description = Description.Text;
+            _project.TechnicalSpecification = TechnicalSpecification.Text;
             _project.idLocalPM = int.Parse(idLocalPM.Text);
-            _project.CustomerId=_customers.FirstOrDefault(i=>i==BoxCustomer.SelectedItem).Id;
+            _project.CustomerId = _customers.FirstOrDefault(i => i == BoxCustomer.SelectedItem).Id;
             _project.DateStart = DateTime.Parse(DateStart.Text);
             _project.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
         }

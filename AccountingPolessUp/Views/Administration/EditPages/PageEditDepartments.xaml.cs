@@ -38,6 +38,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _department = department;
             DataContext = department;
             BoxOrganizations.ItemsSource = _organizations;
+            BoxStatus.SelectedIndex = _department.Status == "Работает" ? 0 : 1;
             BoxOrganizations.SelectedItem = _organizations.FirstOrDefault(i => i.Id == department.OrganizationId);
             _parent = parent;
         }
@@ -65,7 +66,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _departmentService.Update(_department);
-                DataGridUpdater.UpdateDataGrid(_departmentService.Get(),_parent);
+                DataGridUpdater.UpdateDataGrid(_departmentService.Get(), _parent);
             }
             catch (Exception)
             {
@@ -80,7 +81,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _departmentService.Create(_department);
-                DataGridUpdater.UpdateDataGrid(_departmentService.Get(),_parent);
+                DataGridUpdater.UpdateDataGrid(_departmentService.Get(), _parent);
             }
             catch (Exception)
             {

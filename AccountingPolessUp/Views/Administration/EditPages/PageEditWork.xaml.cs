@@ -42,12 +42,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _participants = _participantsService.Get();
             this.employment = employment;
             this.DataContext = employment;
+            BoxMentors.ItemsSource = _participants;
+            BoxPosition.ItemsSource = _positions;
+            BoxStatus.SelectedIndex = employment.Status == "Завершено успешно" ? 0 : 1;
             BoxParticipants.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == employment.ParticipantsId));
             BoxMentors.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == employment.IdMentor));
             BoxPosition.SelectedIndex = _positions.IndexOf(_positions.FirstOrDefault(p => p.Id == employment.PositionId));
             BoxParticipants.ItemsSource = _participants;
-            BoxMentors.ItemsSource = _participants;
-            BoxPosition.ItemsSource = _positions;
+            
         }
         public PageEditWork(Page parent)
         {

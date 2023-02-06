@@ -25,6 +25,7 @@ namespace AccountingPolessUp.Implementations
 
         public List<ScheduleOfСlasses> Get()
         {
+
             try
             {
                 var json = _webClient.DownloadString("GetScheduleOfСlasses");
@@ -37,7 +38,7 @@ namespace AccountingPolessUp.Implementations
 
                 throw;
             }
-           
+
         }
 
         public void Create(ScheduleOfСlasses model)
