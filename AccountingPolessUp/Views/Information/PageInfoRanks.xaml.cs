@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AccountingPolessUp.Helpers;
 
 namespace AccountingPolessUp.Views.Information
 {
@@ -62,36 +63,11 @@ namespace AccountingPolessUp.Views.Information
         }
         private void Clear()
         {
-            ComboORG.SelectedItem= null;
-            TextBoxMaxMmr.Text= string.Empty;
-            TextBoxMinMmr.Text= string.Empty;
-            TextBoxSearch.Text=string.Empty;
-            dataGrid.ItemsSource = null;
-            dataGrid.Items.Clear();
-            dataGrid.ItemsSource = Ranks;
+
         }
         private void Confirm()
         {
-            IEnumerable<Rank> newRanks = Ranks;
-            if (ComboORG.SelectedItem!=null)
-            {
-                newRanks = newRanks.Where(x=>x.OrganizationId== organizations.FirstOrDefault(o=>o== ComboORG.SelectedItem).Id);
-            }
-            if (TextBoxSearch.Text!="")
-            {
-                newRanks = newRanks.Where(x=>x.RankName==TextBoxSearch.Text);
-            }
-            if (TextBoxMinMmr.Text!="")
-            {
-                newRanks = newRanks.Where(x => x.MinMmr == int.Parse(TextBoxMinMmr.Text));
-            }
-            if (TextBoxMaxMmr.Text != "")
-            {
-                newRanks = newRanks.Where(x => x.MaxMmr == int.Parse(TextBoxMaxMmr.Text));
-            }
-            dataGrid.ItemsSource = null;
-            dataGrid.Items.Clear();
-            dataGrid.ItemsSource = newRanks;
+           
         }
     }
   
