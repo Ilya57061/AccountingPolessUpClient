@@ -33,23 +33,23 @@ Background="Transparent"
                 </StackPanel>
 
                 <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="Panel">
-                        <ComboBox x:Name="BoxCustomer" IsEditable="True" IsReadOnly="False" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Заказчик" Margin="1,0,1,0"></ComboBox>
-                        <TextBox Margin="1,0,1,12.5"  x:Name="Fullname" FontSize="14" materialDesign:HintAssist.Hint="Полное название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Fullname}"/>
-                        <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
-                            <ComboBoxItem Content="Завершён" />
-                            <ComboBoxItem Content="Не завершён" />
-                        </ComboBox>
-                        <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12.5"
+                    <TextBox Margin="1,0,1,12.5"  x:Name="Fullname" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Fullname}"/>
+                    <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
+                        <ComboBoxItem Content="Завершён" />
+                        <ComboBoxItem Content="Не завершён" />
+                    </ComboBox>
+                    <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12.5"
  materialDesign:HintAssist.Hint="Дата начала"
  materialDesign:TextFieldAssist.HasClearButton="True"
  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}"/>
-                        <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12.5" 
+                    <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12.5" 
  materialDesign:HintAssist.Hint="Дата окончания"
  materialDesign:TextFieldAssist.HasClearButton="True"
  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
-                        <TextBox Margin="1,0,1,12.5" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
-                        <TextBox Margin="1,0,1,12.5" x:Name="TechnicalSpecification" FontSize="14" materialDesign:HintAssist.Hint="Спецификация" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="FolderInformation" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding TechnicalSpecification}"/>
-                        <TextBox Margin="1,0,1,12.5" x:Name="idLocalPM" FontSize="14" materialDesign:HintAssist.Hint="id PM" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Man" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding idLocalPM}"/>
+                    <TextBox Margin="1,0,1,12.5" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
+                    <TextBox Margin="1,0,1,12.5" x:Name="TechnicalSpecification" FontSize="14" materialDesign:HintAssist.Hint="Техн. спецификация" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="FolderInformation" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding TechnicalSpecification}"/>
+                    <ComboBox x:Name="BoxCustomer" IsEditable="True" IsReadOnly="False" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Заказчик" Margin="1,0,1,0"></ComboBox>
+                    <TextBox Margin="1,0,1,12.5" x:Name="idLocalPM" FontSize="14" materialDesign:HintAssist.Hint="id PM" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Man" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding idLocalPM}"/>
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>

@@ -430,7 +430,7 @@ namespace AccountingPolessUp.Helpers
             dataGrid.ItemsSource = list;
         }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Employment> employments, string dateStart, string dateEnd, string position,
-            string status, string description, string mentor)
+            string status, string description, string mentor, string participant)
         {
             if (!string.IsNullOrEmpty(position))
             {
@@ -455,6 +455,10 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(dateEnd))
             {
                 employments = employments.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+            }
+            if (!string.IsNullOrEmpty(participant))
+            {
+                employments = employments.Where(x => x.Participants.Individuals.FIO == participant);
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();

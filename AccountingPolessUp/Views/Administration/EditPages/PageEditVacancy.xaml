@@ -40,7 +40,7 @@ Background="Transparent"
         </Grid>
 
         <Grid Grid.Row="1">
-            <TextBox  Margin="1,0,1,20" x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Наименование" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="BadgeAccount" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
+            <TextBox  Margin="1,0,1,20" x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="BadgeAccount" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
             <TextBox Margin="1,0,1,20" x:Name="Descriptions" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Descriptions}"/>
