@@ -38,19 +38,19 @@ Background="Transparent"
         <Grid Grid.Row="1" Grid.Column="1">
             <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1, 0, 1, 12" materialDesign:HintAssist.Hint="Дата окончания" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}" />
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="2">
-            <ComboBox x:Name="BoxPosition" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Position}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Позиция" Margin="1,0,1,0"></ComboBox>
+        <Grid Grid.Row="1" Grid.Column="6">
+            <ComboBox x:Name="BoxPosition" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Position}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Должность" Margin="1,0,1,0"></ComboBox>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="3">
+        <Grid Grid.Row="1" Grid.Column="2">
             <ComboBox  x:Name="BoxStatus"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,12"   Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <ComboBoxItem Content="Завершено успешно" />
                 <ComboBoxItem Content="Не завершено" />
             </ComboBox>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="4">
+        <Grid Grid.Row="1" Grid.Column="3">
             <TextBox Margin="1, 0, 1, 20" x:Name="StatusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание статуса" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding StatusDescription}" />
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="5">
+        <Grid Grid.Row="1" Grid.Column="4">
             <ComboBox x:Name="BoxMentors" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ментор" Margin="1,0,1,0"></ComboBox>
         </Grid>
         <Grid Grid.Column="6" >
@@ -58,7 +58,7 @@ Background="Transparent"
                 <materialDesign:PackIcon  Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="6">
+        <Grid Grid.Row="1" Grid.Column="5">
             <ComboBox x:Name="BoxParticipants" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Участник" Margin="1,0,1,0"></ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
