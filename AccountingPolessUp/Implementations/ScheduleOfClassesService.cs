@@ -93,7 +93,7 @@ namespace AccountingPolessUp.Implementations
                 {
                     ["id"] = $"{id}"
                 };
-                _webClient.UploadValues("DeleteScheduleOfClasses", "DELETE", reqparm);
+                _webClient.UploadValues("DeleteScheduleOfСlasses", "DELETE", reqparm);
             }
             catch (Exception)
             {

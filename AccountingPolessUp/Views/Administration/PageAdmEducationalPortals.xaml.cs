@@ -24,28 +24,15 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmEducationalPortals : Page
     {
-        EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
+        private readonly EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
         public PageAdmEducationalPortals()
         {
             InitializeComponent();
-
-            DataGridUpdater.UpdateDataGrid(_educationalPortalsService.Get(), this);
+            UpdateDataGrid();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    EducationalPortals EducationalPortals = dataGrid.SelectedItems[i] as EducationalPortals;
-                    if (EducationalPortals != null)
-                    {
-
-                        _educationalPortalsService.Delete(EducationalPortals.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_educationalPortalsService.Get(), this);
+            DeleteSelectedEducationalPortals();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -53,28 +40,42 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                EducationalPortals EducationalPortals = dataGrid.SelectedItems[i] as EducationalPortals;
-                if (EducationalPortals != null)
-                {
-                    EditFrame.Content = new PageEditEducationalPortals(EducationalPortals, this);
-
-                }
-            }
+            EditSelectedEducationalPortals();
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid,_educationalPortalsService.Get(),BoxDepartment.Text, Name.Text, Description.Text, Link.Text);
+            FilterManager.ConfirmFilter(dataGrid, _educationalPortalsService.Get(), BoxDepartment.Text, Name.Text, Description.Text, Link.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
-            DataGridUpdater.UpdateDataGrid(_educationalPortalsService.Get(), this);
+            UpdateDataGrid();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void DeleteSelectedEducationalPortals()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (EducationalPortals educationalPortal in dataGrid.SelectedItems)
+                {
+                    _educationalPortalsService.Delete(educationalPortal.Id);
+                }
+                UpdateDataGrid();
+            }
+        }
+        private void EditSelectedEducationalPortals()
+        {
+            foreach (EducationalPortals educationalPortal in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditEducationalPortals(educationalPortal, this);
+            }
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_educationalPortalsService.Get(), this);
         }
     }
 }

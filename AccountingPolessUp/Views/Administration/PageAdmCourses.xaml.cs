@@ -24,17 +24,17 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmCourses : Page
     {
-        TrainingCoursesService _coursesService = new TrainingCoursesService();
+        private readonly TrainingCoursesService _coursesService = new TrainingCoursesService();
         List<TrainingCourses> _trainingCourses;
         public PageAdmCourses()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
+            UpdateDataGrid();
         }
         public PageAdmCourses(List<TrainingCourses> trainingCourses)
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
+            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _trainingCourses = trainingCourses;
             ButtonAdd.Visibility = Visibility.Hidden;
@@ -43,29 +43,15 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            foreach (TrainingCourses courses in dataGrid.SelectedItems)
             {
-                TrainingCourses courses = dataGrid.SelectedItems[i] as TrainingCourses;
                 DataNavigator.UpdateValueComboBox(_trainingCourses.FirstOrDefault(x => x.Id == courses.Id));
             }
-
             this.NavigationService.GoBack();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    TrainingCourses TrainingCourses = dataGrid.SelectedItems[i] as TrainingCourses;
-                    if (TrainingCourses != null)
-                    {
-
-                        _coursesService.Delete(TrainingCourses.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
+            DeleteSelectedCourses();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -73,15 +59,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                TrainingCourses TrainingCourses = dataGrid.SelectedItems[i] as TrainingCourses;
-                if (TrainingCourses != null)
-                {
-                    EditFrame.Content = new PageEditCourses(TrainingCourses, this);
-
-                }
-            }
+            EditSelectedCourses();
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
@@ -90,11 +68,34 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
-            DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
+            UpdateDataGrid();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void DeleteSelectedCourses()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (TrainingCourses TrainingCourses in dataGrid.SelectedItems)
+                {
+                    _coursesService.Delete(TrainingCourses.Id);
+                }
+            }
+            UpdateDataGrid();
+        }
+        private void EditSelectedCourses()
+        {
+            foreach (TrainingCourses TrainingCourses in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditCourses(TrainingCourses, this);
+                break;
+            }
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
         }
     }
 }

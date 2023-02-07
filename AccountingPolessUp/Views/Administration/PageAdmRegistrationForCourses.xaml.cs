@@ -28,31 +28,20 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmRegistrationForCourses()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get(), this);
+            UpdateDataGrid();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    RegistrationForCourses RegistrationForCourses = dataGrid.SelectedItems[i] as RegistrationForCourses;
-                    if (RegistrationForCourses != null)
-                    {
-                        _registrationForCoursesService.Delete(RegistrationForCourses.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get(), this);
+            DeleteSelectedRegistrationForCourses();
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _registrationForCoursesService.Get(),DateEntry.Text,BoxParticipant.Text,BoxTrainingCourses.Text);
+            FilterManager.ConfirmFilter(dataGrid, _registrationForCoursesService.Get(), DateEntry.Text, BoxParticipant.Text, BoxTrainingCourses.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(Panel);
-            DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get(), this);
+            UpdateDataGrid();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -60,19 +49,34 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                RegistrationForCourses RegistrationForCourses = dataGrid.SelectedItems[i] as RegistrationForCourses;
-                if (RegistrationForCourses != null)
-                {
-                    EditFrame.Content = new PageEditRegistrationForCourses(RegistrationForCourses, this);
-
-                }
-            }
+            EditSelectedRegistrationForCourses();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get(), this);
+        }
+        private void DeleteSelectedRegistrationForCourses()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (RegistrationForCourses RegistrationForCourses in dataGrid.SelectedItems)
+                {
+                    _registrationForCoursesService.Delete(RegistrationForCourses.Id);
+                }
+            }
+            UpdateDataGrid();
+        }
+        private void EditSelectedRegistrationForCourses()
+        {
+            foreach (RegistrationForCourses RegistrationForCourses in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditRegistrationForCourses(RegistrationForCourses, this);
+                break;
+            }
         }
     }
 }

@@ -122,10 +122,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _applications.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
