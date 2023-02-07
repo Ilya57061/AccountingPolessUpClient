@@ -40,7 +40,7 @@ namespace AccountingPolessUp.Implementations
                 ["Description"] = $"{model.Description}",
                 ["DateStart"] = $"{model.DateStart}",
                 ["DateEnd"] = $"{model.DateEnd}",
-                ["DirectorId"] = $"{model.GirectorId}",
+                ["DirectorId"] = $"{model.DirectorId}",
                 ["Status"] = $"{model.Status}",
                 ["OrganizationId"] = $"{model.OrganizationId}"
 
@@ -57,7 +57,7 @@ namespace AccountingPolessUp.Implementations
                 ["Description"] = $"{model.Description}",
                 ["DateStart"] = $"{model.DateStart}",
                 ["DateEnd"] = $"{model.DateEnd}",
-                ["DirectorId"] = $"{model.GirectorId}",
+                ["DirectorId"] = $"{model.DirectorId}",
                 ["Status"] = $"{model.Status}",
                 ["OrganizationId"] = $"{model.OrganizationId}"
             };
