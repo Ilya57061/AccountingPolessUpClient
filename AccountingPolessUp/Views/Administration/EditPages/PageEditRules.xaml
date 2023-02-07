@@ -29,22 +29,22 @@ Background="Transparent"
         </Grid.ColumnDefinitions>
 
         <Border Grid.ColumnSpan="7" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
-        <Grid Grid.Row="0" Grid.Column="1">
+        <Grid Grid.Row="0" Grid.Column="3">
             <Button Click="OpenRegulation_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="3">
             <ComboBox x:Name="BoxOrganization" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Fullname"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация" Margin="1,0,1,0"></ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
             <TextBox Margin="1,0,1,20"  x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="2">
+        <Grid Grid.Row="1" Grid.Column="1">
             <TextBox Margin="1,0,1,20" x:Name="Text" FontSize="14" materialDesign:HintAssist.Hint="Содержание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Text" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Text}"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="3">
+        <Grid Grid.Row="1" Grid.Column="2">
             <TextBox Margin="1,0,1,20" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">

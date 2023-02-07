@@ -43,8 +43,8 @@ Background="Transparent"
                     <ComboBox x:Name="BoxMentors" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ментор" Margin="1,0,1,0"></ComboBox>
                     <ComboBox x:Name="BoxParticipants" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Участник" Margin="1,0,1,0"></ComboBox>
                     <ComboBox x:Name="BoxPosition" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Position}" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Должность" Margin="1,0,1,0"></ComboBox>
-                    <Button Click="ButtonConfirm_Click" Margin="1 0 0 0" VerticalAlignment="Center">Применить</Button>
-                    <Button Click="ButtonClear_Click" Margin="1 0 0 0" VerticalAlignment="Center">Очистить</Button>
+                    <Button Click="ButtonConfirm_Click" Margin="10 0,0,0" VerticalAlignment="Center">Применить</Button>
+                    <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>
             </StackPanel>
         </Grid>
