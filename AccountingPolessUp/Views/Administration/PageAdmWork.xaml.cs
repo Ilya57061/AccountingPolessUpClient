@@ -42,7 +42,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _employmentService.Get(), DateStart.Text, DateEnd.Text, BoxPosition.Text, BoxStatus.Text, StatusDescription.Text, BoxMentors.Text);
+            FilterManager.ConfirmFilter(dataGrid, _employmentService.Get(),DateStart.Text,DateEnd.Text,BoxPosition.Text,BoxStatus.Text, StatusDescription.Text,BoxMentors.Text, BoxParticipants.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
