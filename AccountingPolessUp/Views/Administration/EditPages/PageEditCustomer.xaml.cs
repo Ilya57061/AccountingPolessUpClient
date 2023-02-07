@@ -53,6 +53,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _customerService.Update(_customer);
                 DataGridUpdater.UpdateDataGrid(_customerService.Get(),_parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -68,6 +69,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _customerService.Create(_customer);
                 DataGridUpdater.UpdateDataGrid(_customerService.Get(), _parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

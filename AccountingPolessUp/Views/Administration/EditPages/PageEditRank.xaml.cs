@@ -60,6 +60,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _RankService.Update(_Rank);
                 DataGridUpdater.UpdateDataGrid(_RankService.Get(),_parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -75,6 +76,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _RankService.Create(_Rank);
                 DataGridUpdater.UpdateDataGrid(_RankService.Get(), _parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

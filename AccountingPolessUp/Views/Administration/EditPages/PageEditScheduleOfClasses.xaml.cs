@@ -68,6 +68,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _scheduleService.Update(_schedule);
                 DataGridUpdater.UpdateDataGrid(_scheduleService.Get(),_parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -84,6 +85,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _scheduleService.Create(_schedule);
                 DataGridUpdater.UpdateDataGrid(_scheduleService.Get(),_parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

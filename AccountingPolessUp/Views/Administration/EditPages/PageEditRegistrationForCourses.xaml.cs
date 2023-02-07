@@ -68,6 +68,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _registrationForCoursesService.Update(_registrationForCourses);
                 DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get(), _parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -83,6 +84,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _registrationForCoursesService.Create(_registrationForCourses);
                 DataGridUpdater.UpdateDataGrid(_registrationForCoursesService.Get(), _parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

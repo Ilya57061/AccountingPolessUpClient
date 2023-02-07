@@ -63,6 +63,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _projectService.Update(_project);
                 DataGridUpdater.UpdateDataGrid(_projectService.Get(), _parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -79,6 +80,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _projectService.Create(_project);
                 DataGridUpdater.UpdateDataGrid(_projectService.Get(), _parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

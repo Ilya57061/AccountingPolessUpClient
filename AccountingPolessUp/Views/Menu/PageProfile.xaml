@@ -13,15 +13,13 @@
      TextOptions.TextRenderingMode="Auto"
    Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="PolessUp" d:DesignHeight="950" d:DesignWidth="800">
+        Title="PolessUp" d:DesignHeight="800" d:DesignWidth="800">
     
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
         
         <Grid Background="Transparent">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition />
             </Grid.RowDefinitions>
             <Border  BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <StackPanel Margin="5" HorizontalAlignment="Right"  Orientation="Horizontal" Height="auto" VerticalAlignment="Top">

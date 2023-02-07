@@ -56,6 +56,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxDepartment.Name;
             _parent.NavigationService.Content = new PageAdmDepartments(_departments);
+
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -66,6 +67,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _positionService.Update(_position);
                 DataGridUpdater.UpdateDataGrid(_positionService.Get(),_parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -81,6 +83,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _positionService.Create(_position);
                 DataGridUpdater.UpdateDataGrid(_positionService.Get(), _parent);
+                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
