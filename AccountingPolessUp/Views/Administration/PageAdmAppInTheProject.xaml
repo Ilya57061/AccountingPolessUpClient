@@ -30,10 +30,17 @@ Background="Transparent"
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelApp" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Заявки в проект"></TextBlock>
+                    <Button Visibility="Hidden" IsEnabled="False" Margin="0,0,0,0" MouseMove="ButtonLeft_Click" Background="Transparent" BorderBrush="Transparent">
+                        <materialDesign:PackIcon Foreground="Gray" Kind="ArrowLeft" />
+                    </Button>
+                    <Button Visibility="Hidden" IsEnabled="False" MouseMove="ButtonRight_Click" Background="Transparent" BorderBrush="Transparent">
+                        <materialDesign:PackIcon Foreground="Gray" Kind="ArrowRight" />
+                    </Button>
                 </StackPanel>
+                <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden">
 
-                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
-                    <ComboBox x:Name="BoxWorkStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Рабочий статус" Margin="1,0,1,0">
+                    <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
+                        <ComboBox x:Name="BoxWorkStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Рабочий статус" Margin="10,0,1,0">
                         <ComboBoxItem Content="Принят в работу" />
                         <ComboBoxItem Content="Не принят в работу" />
                     </ComboBox>
@@ -46,6 +53,7 @@ Background="Transparent"
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>
+                </ScrollViewer>
             </StackPanel>
         </Grid>
         <Grid  Grid.Row="1" Grid.ColumnSpan="2">

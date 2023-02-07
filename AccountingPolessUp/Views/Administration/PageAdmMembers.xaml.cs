@@ -42,7 +42,14 @@ namespace AccountingPolessUp.Views.Administration
             _participants = participants;
             ButtonAdd.Visibility = Visibility.Hidden;
         }
-
+        private void ButtonRight_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineRight(scroll);
+        }
+        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineLeft(scroll);
+        }
         private void UpdateDataGrid()
         {
             DataGridUpdater.UpdateDataGrid(_participantsService.Get(), this);

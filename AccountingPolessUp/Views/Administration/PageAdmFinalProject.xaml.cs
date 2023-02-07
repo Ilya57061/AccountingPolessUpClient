@@ -32,6 +32,14 @@ namespace AccountingPolessUp.Views.Administration
             _employment = employment;
             UpdateDataGrid();
         }
+        private void ButtonRight_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineRight(scroll);
+        }
+        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineLeft(scroll);
+        }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             DeleteSelectedFinalProjects();

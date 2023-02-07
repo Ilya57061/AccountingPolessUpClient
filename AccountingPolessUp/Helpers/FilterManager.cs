@@ -497,6 +497,6 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = finalProjects;
         }
-
+   
     }
 }

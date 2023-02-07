@@ -30,9 +30,15 @@ Background="Transparent"
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelRanks" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Проекты"></TextBlock>
+                    <Button Margin="0,0,0,0" MouseMove="ButtonLeft_Click" Background="Transparent" BorderBrush="Transparent">
+                        <materialDesign:PackIcon Foreground="Gray" Kind="ArrowLeft" />
+                    </Button>
+                    <Button MouseMove="ButtonRight_Click" Background="Transparent" BorderBrush="Transparent">
+                        <materialDesign:PackIcon Foreground="Gray" Kind="ArrowRight" />
+                    </Button>
                 </StackPanel>
-
-                <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="Panel">
+                <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden">
+                    <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="Panel">
                     <TextBox Margin="1,0,1,12.5"  x:Name="Fullname" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Fullname}"/>
                     <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
                         <ComboBoxItem Content="Завершён" />
@@ -53,6 +59,7 @@ Background="Transparent"
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>
+                </ScrollViewer>
             </StackPanel>
         </Grid>
         <Grid  Grid.Row="1" Grid.ColumnSpan="2">

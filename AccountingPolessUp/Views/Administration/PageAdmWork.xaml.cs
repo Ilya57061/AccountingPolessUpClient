@@ -24,6 +24,14 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             UpdateDataGrid();
         }
+        private void ButtonRight_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineRight(scroll);
+        }
+        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineLeft(scroll);
+        }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             DeleteSelectedEmployments();
