@@ -18,7 +18,7 @@ namespace AccountingPolessUp.Implementations
         {
             _webClient = new WebClient
             {
-                BaseAddress = "https://localhost:7273/",
+                BaseAddress = "https://polessu.by/polessup/",
             };
             _webClient.Encoding = System.Text.Encoding.UTF8;
         }

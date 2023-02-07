@@ -89,6 +89,7 @@
     <Compile Include="Helpers\NumberValidator.cs" />
     <Compile Include="Implementations\ApplicationsInTheProjectService.cs" />
     <Compile Include="Implementations\BonusService.cs" />
+    <Compile Include="Implementations\CreateAdmService.cs" />
     <Compile Include="Implementations\CustomerService.cs" />
     <Compile Include="Implementations\DepartmentService.cs" />
     <Compile Include="Implementations\EducationalPortalsService.cs" />

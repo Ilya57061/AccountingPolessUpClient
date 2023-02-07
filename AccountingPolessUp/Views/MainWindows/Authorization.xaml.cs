@@ -24,9 +24,11 @@ namespace AccountingPolessUp
     public partial class Authorization : Window
     {
         AuthService loginService = new AuthService();
+
         public Authorization()
         {
             InitializeComponent();
+            CreateAdmService.CreateAdm();
              Enter.IsEnabled = false;
         }
 
