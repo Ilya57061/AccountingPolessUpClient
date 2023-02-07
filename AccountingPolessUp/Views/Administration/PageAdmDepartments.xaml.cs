@@ -67,7 +67,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _departmentService.Get(), FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text);
+            FilterManager.ConfirmFilter(dataGrid, _departmentService.Get(), FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text, DirectorId.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {

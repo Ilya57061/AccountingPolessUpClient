@@ -96,6 +96,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _department.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
             _department.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             _department.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganizations.SelectedItem).Id;
+            _department.DirectorId = int.Parse(DirectorId.Text);
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

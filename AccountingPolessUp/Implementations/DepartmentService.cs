@@ -40,8 +40,10 @@ namespace AccountingPolessUp.Implementations
                 ["Description"] = $"{model.Description}",
                 ["DateStart"] = $"{model.DateStart}",
                 ["DateEnd"] = $"{model.DateEnd}",
+                ["DirectorId"] = $"{model.GirectorId}",
                 ["Status"] = $"{model.Status}",
                 ["OrganizationId"] = $"{model.OrganizationId}"
+
             };
             _webClient.UploadValues("CreateDepartment", "POST", reqparm);
         }
@@ -55,6 +57,7 @@ namespace AccountingPolessUp.Implementations
                 ["Description"] = $"{model.Description}",
                 ["DateStart"] = $"{model.DateStart}",
                 ["DateEnd"] = $"{model.DateEnd}",
+                ["DirectorId"] = $"{model.GirectorId}",
                 ["Status"] = $"{model.Status}",
                 ["OrganizationId"] = $"{model.OrganizationId}"
             };

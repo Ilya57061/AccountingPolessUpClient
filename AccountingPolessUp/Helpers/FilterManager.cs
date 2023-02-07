@@ -96,7 +96,7 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Department> list, string name, string description, string dateStart, string dateEnd, string status, string organization)
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Department> list, string name, string description, string dateStart, string dateEnd, string status, string organization, string director)
         {
             if (!string.IsNullOrEmpty(name))
                 list = list.Where(x => x.FullName.StartsWith(name));
@@ -110,6 +110,8 @@ namespace AccountingPolessUp.Helpers
                 list = list.Where(x => x.Status.StartsWith(status));
             if (!string.IsNullOrEmpty(organization))
                 list = list.Where(x => x.Organizations.Fullname.StartsWith(organization));
+            if (!string.IsNullOrEmpty(director))
+                list = list.Where(x => x.DirectorId==int.Parse(director));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;

@@ -18,7 +18,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
         Title="PolessUp" Height="800" Width="1200">
     <Window.Icon>
-        <BitmapImage UriSource="https://img.icons8.com/pastel-glyph/64/null/university-campus.png" />
+        <BitmapImage UriSource="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/000000/external-university-online-education-flaticons-lineal-color-flat-icons.png" />
     </Window.Icon>
     <Grid>
         <Grid.RowDefinitions>

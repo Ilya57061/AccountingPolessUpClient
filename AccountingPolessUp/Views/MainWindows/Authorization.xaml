@@ -17,7 +17,7 @@
      FontFamily="{DynamicResource MaterialDesignFont}"
          Height="400" Width="384" ResizeMode="NoResize" >
     <Window.Icon>
-        <BitmapImage UriSource="https://img.icons8.com/pastel-glyph/64/null/key--v2.png" />
+        <BitmapImage UriSource="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/64/000000/external-login-website-development-xnimrodx-lineal-color-xnimrodx.png" />
     </Window.Icon>
 
     <Grid Background="#EDEEF0" Cursor="Hand">
