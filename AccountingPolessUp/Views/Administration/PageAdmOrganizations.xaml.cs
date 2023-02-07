@@ -24,49 +24,30 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmOrganizations : Page
     {
-        OrganizationService _organizationService=new OrganizationService();
+        private readonly OrganizationService _organizationService = new OrganizationService();
         List<Organization> _organizations;
         public PageAdmOrganizations()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_organizationService.Get(), this);
+            UpdateDataGrid();
         }
         public PageAdmOrganizations(List<Organization> organizations)
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_organizationService.Get(), this);
+            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _organizations = organizations;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
         }
-        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
-        {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Organization organization = dataGrid.SelectedItems[i] as Organization;
-                DataNavigator.UpdateValueComboBox(_organizations.FirstOrDefault(x => x.Id == organization.Id));
-            }
-
-            this.NavigationService.GoBack();
-        }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Organization Organization = dataGrid.SelectedItems[i] as Organization;
-                    if (Organization != null)
-                    {
-
-
-                        _organizationService.Delete(Organization.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_organizationService.Get(), this);
+            DeleteSelectedOrganizations();
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            SelectSelectedOrganizations();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -74,29 +55,52 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Organization Organization = dataGrid.SelectedItems[i] as Organization;
-                if (Organization != null)
-                {
-
-                    EditFrame.Content = new PageEditOrganization(Organization, this);
-
-                }
-            }
+            EditSelectedOrganizations();
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid,_organizationService.Get(), FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text);
+            FilterManager.ConfirmFilter(dataGrid, _organizationService.Get(), FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
-            DataGridUpdater.UpdateDataGrid(_organizationService.Get(), this);
+            UpdateDataGrid();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_organizationService.Get(), this);
+        }
+        private void DeleteSelectedOrganizations()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (Organization organization in dataGrid.SelectedItems)
+                {
+                    _organizationService.Delete(organization.Id);
+                }
+            }
+            UpdateDataGrid();
+        }
+        private void SelectSelectedOrganizations()
+        {
+            foreach (Organization organization in dataGrid.SelectedItems)
+            {
+                DataNavigator.UpdateValueComboBox(_organizations.FirstOrDefault(x => x.Id == organization.Id));
+            }
+
+            this.NavigationService.GoBack();
+        }
+        private void EditSelectedOrganizations()
+        {
+            foreach (Organization organization in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditOrganization(organization, this);
+                break;
+            }
         }
     }
 }

@@ -24,36 +24,24 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmRules : Page
     {
-        RegulationService _regulationService = new RegulationService();
+        private readonly RegulationService _regulationService = new RegulationService();
         public PageAdmRules()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_regulationService.Get(), this);
+            UpdateDataGrid();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Regulation regulation = dataGrid.SelectedItems[i] as Regulation;
-                    if (regulation != null)
-                    {
-
-                 _regulationService.Delete(regulation.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_regulationService.Get(), this);
+            DeleteSelectedRegulations();
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _regulationService.Get(),BoxOrganization.Text, Name.Text,Text.Text, Description.Text );
+            FilterManager.ConfirmFilter(dataGrid, _regulationService.Get(), BoxOrganization.Text, Name.Text, Text.Text, Description.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(Panel);
-            DataGridUpdater.UpdateDataGrid(_regulationService.Get(), this);
+            UpdateDataGrid();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -61,14 +49,29 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            EditSelectedRules();
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_regulationService.Get(), this);
+        }
+        private void DeleteSelectedRegulations()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                Regulation regulation = dataGrid.SelectedItems[i] as Regulation;
-                if (regulation != null)
+                foreach (Regulation regulation in dataGrid.SelectedItems)
                 {
-                    EditFrame.Content = new PageEditRules(regulation, this);
-
+                    _regulationService.Delete(regulation.Id);
                 }
+            }
+            UpdateDataGrid();
+        }
+        private void EditSelectedRules()
+        {
+            foreach (Regulation regulation in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditRules(regulation, this);
+                break;
             }
         }
     }

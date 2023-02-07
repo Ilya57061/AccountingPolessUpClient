@@ -18,11 +18,27 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmWork : Page
     {
-        EmploymentService _employmentService = new EmploymentService();
+        private readonly EmploymentService _employmentService = new EmploymentService();
         public PageAdmWork()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_employmentService.Get(),this);
+            UpdateDataGrid();
+        }
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteSelectedEmployments();
+        }
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            EditFrame.Content = new PageEditWork(this);
+        }
+        private void ButtonFinalProject_Click(object sender, RoutedEventArgs e)
+        {
+            SelectSelectedEmployment();
+        }
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
+        {
+            EditSelectedEmployment();
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
@@ -31,54 +47,41 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(Panel);
-            DataGridUpdater.UpdateDataGrid(_employmentService.Get(), this);
-        }
-        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Employment employment = dataGrid.SelectedItems[i] as Employment;
-                    if (employment != null)
-                    {
-                        _employmentService.Delete(employment.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_employmentService.Get(),this);
-        }
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
-        {
-            EditFrame.Content = new PageEditWork(this);
-        }
-        private void ButtonFinalProject_Click(object sender, RoutedEventArgs e)
-        {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Employment employment = dataGrid.SelectedItems[i] as Employment;
-                if (employment != null)
-                {
-                    this.NavigationService.Content = new PageAdmFinalProject(employment);
-                }
-            }
-
-        }
-        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
-        {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Employment employment = dataGrid.SelectedItems[i] as Employment;
-                if (employment != null)
-                {
-                    EditFrame.Content = new PageEditWork(employment,this);
-
-                }
-            }
+            UpdateDataGrid();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_employmentService.Get(), this);
+        }
+        private void DeleteSelectedEmployments()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (Employment employment in dataGrid.SelectedItems)
+                {
+                    _employmentService.Delete(employment.Id);
+                }
+            }
+            UpdateDataGrid();
+        }
+        private void SelectSelectedEmployment()
+        {
+            foreach (Employment employment in dataGrid.SelectedItems)
+            {
+                this.NavigationService.Content = new PageAdmFinalProject(employment);
+            }
+        }
+        private void EditSelectedEmployment()
+        {
+            foreach (Employment employment in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditWork(employment, this);
+                break;
+            }
         }
     }
 }

@@ -31,15 +31,39 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmMembers()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_participantsService.Get(),this);
+            UpdateDataGrid();
         }
+
         public PageAdmMembers(List<Participants> participants)
         {
             InitializeComponent();
-            _participants = participants;
-            DataGridUpdater.UpdateDataGrid(_participantsService.Get(), this);
+            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
+            _participants = participants;
+            ButtonAdd.Visibility = Visibility.Hidden;
         }
+
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_participantsService.Get(), this);
+        }
+
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+                {
+                    Participants participants = dataGrid.SelectedItems[i] as Participants;
+                    if (participants != null)
+                    {
+                        _participantsService.Delete(participants.Id);
+                    }
+                }
+            }
+            UpdateDataGrid();
+        }
+
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
@@ -51,26 +75,11 @@ namespace AccountingPolessUp.Views.Administration
             this.NavigationService.GoBack();
         }
 
-        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Participants participants = dataGrid.SelectedItems[i] as Participants;
-                    if (participants != null)
-                    {
-                        
-                        _participantsService.Delete(participants.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_participantsService.Get(), this);
-        }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditMembers(this);
         }
+
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
@@ -78,20 +87,23 @@ namespace AccountingPolessUp.Views.Administration
                 Participants participants = dataGrid.SelectedItems[i] as Participants;
                 if (participants != null)
                 {
-                    EditFrame.Content = new PageEditMembers(participants,this);
+                    EditFrame.Content = new PageEditMembers(participants, this);
 
                 }
             }
         }
+
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid,_participantsService.Get(),BoxIndividuals.Text, Mmr.Text, BoxUser.Text, DateEntry.Text,DateEntry.Text,BoxStatus.Text, GitHub.Text);
+            FilterManager.ConfirmFilter(dataGrid, _participantsService.Get(), BoxIndividuals.Text, Mmr.Text, BoxUser.Text, DateEntry.Text, DateEntry.Text, BoxStatus.Text, GitHub.Text);
         }
+
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
-            DataGridUpdater.UpdateDataGrid(_participantsService.Get(), this);
+            UpdateDataGrid();
         }
+
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);

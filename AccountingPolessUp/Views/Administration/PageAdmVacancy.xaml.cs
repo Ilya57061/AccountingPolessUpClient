@@ -24,58 +24,30 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmVacancy : Page
     {
-        VacancyService _vacancyService = new VacancyService();
+        private readonly VacancyService _vacancyService = new VacancyService();
         List<Vacancy> _vacancies;
         public PageAdmVacancy()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_vacancyService.Get(),this);
+            UpdateDataGrid();
         }
         public PageAdmVacancy(List<Vacancy> vacancies)
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_vacancyService.Get(), this);
+            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _vacancies = vacancies;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
         }
-        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _vacancyService.Get(), Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text,Budjet.Text, BoxStagesOfProject.Text, IsOpened.Text);
-        }
-        private void ButtonClear_Click(object sender, RoutedEventArgs e)
-        {
-            FilterManager.ClearControls(Panel);
-            DataGridUpdater.UpdateDataGrid(_vacancyService.Get(), this);
+            DeleteSelectedVacancies();
         }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Vacancy vacancy = dataGrid.SelectedItems[i] as Vacancy;
-                DataNavigator.UpdateValueComboBox(_vacancies.FirstOrDefault(x => x.Id == vacancy.Id));
-            }
-
-            this.NavigationService.GoBack();
-        }
-
-        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Vacancy vacancy = dataGrid.SelectedItems[i] as Vacancy;
-                    if (vacancy != null)
-                    {
-
-                        _vacancyService.Delete(vacancy.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_vacancyService.Get(), this);
+            SelectSelectedVacancies();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -83,15 +55,16 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Vacancy vacancy = dataGrid.SelectedItems[i] as Vacancy;
-                if (vacancy != null)
-                {
-                    EditFrame.Content = new PageEditVacancy(vacancy, this);
-
-                }
-            }
+            EditSelectedVacancies();
+        }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ConfirmFilter(dataGrid, _vacancyService.Get(), Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text, Budjet.Text, BoxStagesOfProject.Text, IsOpened.Text);
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ClearControls(Panel);
+            UpdateDataGrid();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -100,6 +73,38 @@ namespace AccountingPolessUp.Views.Administration
         private void Number_PreviewTextDoubleInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.DoubleValidator(e);
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_vacancyService.Get(), this);
+        }
+        private void DeleteSelectedVacancies()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (Vacancy vacancy in dataGrid.SelectedItems)
+                {
+                    _vacancyService.Delete(vacancy.Id);
+                }
+            }
+            UpdateDataGrid();
+        }
+        private void SelectSelectedVacancies()
+        {
+            foreach (Vacancy vacancy in dataGrid.SelectedItems)
+            {
+                DataNavigator.UpdateValueComboBox(_vacancies.FirstOrDefault(x => x.Id == vacancy.Id));
+            }
+
+            this.NavigationService.GoBack();
+        }
+        private void EditSelectedVacancies()
+        {
+            foreach (Vacancy vacancy in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditVacancy(vacancy, this);
+                break;
+            }
         }
     }
 }
