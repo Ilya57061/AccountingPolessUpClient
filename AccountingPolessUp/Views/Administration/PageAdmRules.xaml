@@ -33,10 +33,10 @@ Background="Transparent"
                 </StackPanel>
 
                 <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="Panel">
-                        <ComboBox x:Name="BoxOrganization" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Fullname"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация" Margin="1,0,1,0"></ComboBox>
-                        <TextBox Margin="1,0,1,12.5"  x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
-                        <TextBox Margin="1,0,1,12.5" x:Name="Text" FontSize="14" materialDesign:HintAssist.Hint="Содержание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Text" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Text}"/>
-                        <TextBox Margin="1,0,1,12.5" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
+                    <TextBox Margin="1,0,1,12.5"  x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
+                    <TextBox Margin="1,0,1,12.5" x:Name="Text" FontSize="14" materialDesign:HintAssist.Hint="Содержание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Text" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Text}"/>
+                    <TextBox Margin="1,0,1,12.5" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
+                    <ComboBox x:Name="BoxOrganization" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Fullname"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация" Margin="1,0,1,0"></ComboBox>
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>
@@ -48,8 +48,8 @@ Background="Transparent"
                 <DataGrid HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
-                        <DataGridTextColumn Binding="{Binding Text, UpdateSourceTrigger=PropertyChanged}" Header="Текст" />
                         <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
+                        <DataGridTextColumn Binding="{Binding Text, UpdateSourceTrigger=PropertyChanged}" Header="Содержание" />
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding Organization.Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Организация" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">

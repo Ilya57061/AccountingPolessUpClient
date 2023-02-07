@@ -59,28 +59,36 @@ Background="Transparent"
                 </DataGrid>
             </ScrollViewer>
         </Grid>
-        <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="10" x:Name="dg1">
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" x:Name="dg1">
             <Button x:Name="ButtonBack" Click="ButtonBack_Click" Grid.Column="1" Margin="0 30 20 0" Visibility="Visible" Width="100" VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Center">Назад</Button>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelFinalProject" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Проекты трудоустройств"></TextBlock>
+                    <Button Margin="0,0,0,0" MouseMove="ButtonLeft_Click" Background="Transparent" BorderBrush="Transparent">
+                        <materialDesign:PackIcon Foreground="Gray" Kind="ArrowLeft" />
+                    </Button>
+                    <Button MouseMove="ButtonRight_Click" Background="Transparent" BorderBrush="Transparent">
+                        <materialDesign:PackIcon Foreground="Gray" Kind="ArrowRight" />
+                    </Button>
                 </StackPanel>
-                <StackPanel Margin="0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
-                    <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxName" FontSize="16" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox Margin="10 0 10 15" VerticalAlignment="Center"  x:Name="TextBoxDescription" FontSize="16" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxGitHub" FontSize="16" materialDesign:HintAssist.Hint="GitHub" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <TextBox Margin="10 0 10 15" VerticalAlignment="Center" x:Name="TextBoxLink" FontSize="16" materialDesign:HintAssist.Hint="Ссылка" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                    <DatePicker  x:Name="DateStart" FontSize="14" Margin="1,0,1,12"
+                <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Hidden">
+                <StackPanel Margin="10 0 0 0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
+                    <TextBox Margin="1,0,1,12.5"  x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
+                    <TextBox Margin="1,0,1,12.5" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
+                    <TextBox Margin="1,0,1,12.5" x:Name="GitHub" FontSize="14" materialDesign:HintAssist.Hint="GitHub" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Github" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding GitHub}"/>
+                    <TextBox Margin="1,0,1,12.5" x:Name="Links" FontSize="14" materialDesign:HintAssist.Hint="Ссылка" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Link" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Links}"/>
+                    <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12.5"
  materialDesign:HintAssist.Hint="Дата начала"
  materialDesign:TextFieldAssist.HasClearButton="True"
- Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
-                    <DatePicker x:Name="DateEnd" FontSize="14" Margin="1,0,1,12"
+ Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}"/>
+                    <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12.5" 
  materialDesign:HintAssist.Hint="Дата окончания"
  materialDesign:TextFieldAssist.HasClearButton="True"
- Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
+ Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>
+                </ScrollViewer>
             </StackPanel>
         </Grid>
         <Grid Grid.ColumnSpan="2" Grid.Row="2">

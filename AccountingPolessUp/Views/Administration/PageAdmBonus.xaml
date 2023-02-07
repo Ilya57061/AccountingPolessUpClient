@@ -32,8 +32,8 @@ Background="Transparent"
                     <TextBlock x:Name="LabelBonus" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Бонусы"></TextBlock>
                 </StackPanel>
                 <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
-                    <TextBox Margin="1,0,1,12.5"  x:Name="BonusName" FontSize="14" materialDesign:HintAssist.Hint="Название бонуса" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding BonusName}"/>
-                    <TextBox Margin="1,0,1,12.5" x:Name="BonusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание бонуса" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding BonusDescription}"/>
+                    <TextBox Margin="1,0,1,12.5"  x:Name="BonusName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding BonusName}"/>
+                    <TextBox Margin="1,0,1,12.5" x:Name="BonusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding BonusDescription}"/>
                     <ComboBox x:Name="BoxRank" IsEditable="True" IsReadOnly="False"  DisplayMemberPath="RankName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ранг" Margin="1,0,1,0"></ComboBox>
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
@@ -46,8 +46,8 @@ Background="Transparent"
                 <DataGrid  HorizontalContentAlignment="Center" IsReadOnly="True" AutoGenerateColumns="False" x:Name="dataGrid" CanUserAddRows="False" Background="Transparent">
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
-                        <DataGridTextColumn Binding="{Binding BonusName, UpdateSourceTrigger=PropertyChanged}" Header="Название Бонуса" />
-                        <DataGridTextColumn Binding="{Binding BonusDescription, UpdateSourceTrigger=PropertyChanged}" Header="Описание Бонуса" />
+                        <DataGridTextColumn Binding="{Binding BonusName, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
+                        <DataGridTextColumn Binding="{Binding BonusDescription, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding Path = Rank.RankName, UpdateSourceTrigger=PropertyChanged}" Header="Ранг" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>

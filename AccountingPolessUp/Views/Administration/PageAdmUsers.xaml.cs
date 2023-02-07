@@ -29,7 +29,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmUsers()
         {
             InitializeComponent();
-           DataGridUpdater.UpdateDataGrid(_userService.Get(),this);
+            DataGridUpdater.UpdateDataGrid(_userService.Get(), this);
         }
         public PageAdmUsers(List<User> users)
         {
@@ -49,9 +49,8 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            foreach (User user in dataGrid.SelectedItems)
             {
-                User user = dataGrid.SelectedItems[i] as User;
                 DataNavigator.UpdateValueComboBox(_users.FirstOrDefault(x => x.Id == user.Id));
             }
 
@@ -61,16 +60,12 @@ namespace AccountingPolessUp.Views.Administration
         {
             if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+                foreach (User user in dataGrid.SelectedItems)
                 {
-                    User user = dataGrid.SelectedItems[i] as User;
-                    if (user != null)
-                    {
-                        _userService.Delete(user.Id);
-                    }
+                    _userService.Delete(user.Id);
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_userService.Get(),this);
+            DataGridUpdater.UpdateDataGrid(_userService.Get(), this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -78,27 +73,23 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEditPassword_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            foreach (User user in dataGrid.SelectedItems)
             {
-                User user = dataGrid.SelectedItems[i] as User;
-                if (user != null)
-                {
-                    EditFrame.Content = new PageEditUser(user, true,this);
-
-                }
+                EditFrame.Content = new PageEditUser(user, true, this);
+                break;
             }
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            foreach (User user in dataGrid.SelectedItems)
             {
-                User user = dataGrid.SelectedItems[i] as User;
-                if (user != null)
-                {
-                    EditFrame.Content = new PageEditUser(user,this);
-
-                }
+                EditFrame.Content = new PageEditUser(user, this);
+                break;
             }
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

@@ -24,48 +24,39 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmCustomer : Page
     {
-        CustomerService _customerService = new CustomerService();
+        private readonly CustomerService _customerService = new CustomerService();
         List<Customer> _customers;
         public PageAdmCustomer()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_customerService.Get(), this);
+            UpdateDataGrid();
         }
         public PageAdmCustomer(List<Customer> customers)
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_customerService.Get(), this);
+            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
-            _customers=customers;
+            _customers = customers;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
         }
+        private void ButtonRight_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineRight(scroll);
+        }
+        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineLeft(scroll);
+        }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Customer customer = dataGrid.SelectedItems[i] as Customer;
-                DataNavigator.UpdateValueComboBox(_customers.FirstOrDefault(x => x.Id == customer.Id));
-            }
-
+            SelectCustomers();
             this.NavigationService.GoBack();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Customer Customer = dataGrid.SelectedItems[i] as Customer;
-                    if (Customer != null)
-                    {
-
-                        _customerService.Delete(Customer.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_customerService.Get(), this);
+            DeleteSelectedCustomers();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -73,28 +64,52 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Customer Customer = dataGrid.SelectedItems[i] as Customer;
-                if (Customer != null)
-                {
-                    EditFrame.Content = new PageEditCustomer(Customer, this);
-                }
-            }
+            EditSelectedCustomers();
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid,_customerService.Get(),Fullname.Text, Address.Text,Contacts.Text,WebSite.Text, Description.Text);
+            FilterManager.ConfirmFilter(dataGrid, _customerService.Get(), Fullname.Text, Address.Text, Contacts.Text, WebSite.Text, Description.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
-            DataGridUpdater.UpdateDataGrid(_customerService.Get(), this);
-
+            UpdateDataGrid();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_customerService.Get(), this);
+        }
+        private void DeleteSelectedCustomers()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (Customer customer in dataGrid.SelectedItems)
+                {
+                    _customerService.Delete(customer.Id);
+                }
+                UpdateDataGrid();
+            }
+        }
+        private void EditSelectedCustomers()
+        {
+            foreach (Customer customer in dataGrid.SelectedItems)
+            {
+                if (customer != null)
+                {
+                    EditFrame.Content = new PageEditCustomer(customer, this);
+                }
+            }
+        }
+        private void SelectCustomers()
+        {
+            foreach (Customer customer in dataGrid.SelectedItems)
+            {
+                DataNavigator.UpdateValueComboBox(_customers.FirstOrDefault(x => x.Id == customer.Id));
+            }
         }
     }
 }

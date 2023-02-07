@@ -35,10 +35,10 @@ Background="Transparent"
             </Button>
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="0">
             <ComboBox x:Name="BoxDepartment" IsEditable="True" IsReadOnly="False"  DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Отдел" Margin="1,0,1,0"></ComboBox>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="0">
+        <Grid Grid.Row="1" Grid.Column="1">
             <TextBox Margin="1,0,1,20"  x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2">

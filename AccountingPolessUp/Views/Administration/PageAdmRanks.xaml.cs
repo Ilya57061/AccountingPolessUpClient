@@ -24,57 +24,30 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmRanks : Page
     {
-        RankService _rankService = new RankService();
+        private readonly RankService _rankService = new RankService();
         List<Rank> _ranks;
         public PageAdmRanks()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_rankService.Get(), this);
+            UpdateDataGrid();
         }
         public PageAdmRanks(List<Rank> ranks)
         {
-
             InitializeComponent();
-            _ranks=ranks; 
-            DataGridUpdater.UpdateDataGrid(_rankService.Get(), this);
+            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
+            _ranks = ranks;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
         }
-        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
-        {
-            FilterManager.ConfirmFilter(dataGrid, _rankService.Get(), RankName.Text,Description.Text,BoxOrganization.Text,MinMmr.Text,MaxMmr.Text);
-        }
-        private void ButtonClear_Click(object sender, RoutedEventArgs e)
-        {
-            FilterManager.ClearControls(Panel);
-            DataGridUpdater.UpdateDataGrid(_rankService.Get(), this);
-        }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Rank Rank = dataGrid.SelectedItems[i] as Rank;
-                    if (Rank != null)
-                    {
-                        _rankService.Delete(Rank.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_rankService.Get(),this);
+            DeleteSelectedRanks();
         }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Rank Rank = dataGrid.SelectedItems[i] as Rank;
-               DataNavigator.UpdateValueComboBox(_ranks.FirstOrDefault(x => x.Id == Rank.Id));
-            }
-            
-            this.NavigationService.GoBack();
+            SelectSelectedRanks();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -82,18 +55,52 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Rank Rank = dataGrid.SelectedItems[i] as Rank;
-                if (Rank != null)
-                {
-                    EditFrame.Content = new PageEditRank(Rank, this);
-                }
-            }
+            EditSelectedRanks();
+        }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ConfirmFilter(dataGrid, _rankService.Get(), RankName.Text, Description.Text, BoxOrganization.Text, MinMmr.Text, MaxMmr.Text);
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ClearControls(Panel);
+            UpdateDataGrid();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_rankService.Get(), this);
+        }
+        private void DeleteSelectedRanks()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (Rank rank in dataGrid.SelectedItems)
+                {
+                    _rankService.Delete(rank.Id);
+                }
+            }
+            UpdateDataGrid();
+        }
+        private void SelectSelectedRanks()
+        {
+            foreach (Rank rank in dataGrid.SelectedItems)
+            {
+                DataNavigator.UpdateValueComboBox(_ranks.FirstOrDefault(x => x.Id == rank.Id));
+            }
+
+            this.NavigationService.GoBack();
+        }
+        private void EditSelectedRanks()
+        {
+            foreach (Rank rank in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditRank(rank, this);
+                break;
+            }
         }
     }
 }

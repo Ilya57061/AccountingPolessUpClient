@@ -24,57 +24,43 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmProjects : Page
     {
-        ProjectService _projectService = new ProjectService();
+        private readonly ProjectService _projectService = new ProjectService();
         List<Project> _projects;
         public PageAdmProjects()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_projectService.Get(), this);
+            UpdateDataGrid();
         }
         public PageAdmProjects(List<Project> projects)
         {
             InitializeComponent();
+            UpdateDataGrid();
+            ColumSelect.Visibility = Visibility.Visible;
             _projects = projects;
-            DataGridUpdater.UpdateDataGrid(_projectService.Get(), this);
-            ColumSelect.Visibility= Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
         }
+        private void ButtonRight_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineRight(scroll);
+        }
+        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineLeft(scroll);
+        }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _projectService.Get(), BoxCustomer.Text,BoxStatus.Text,DateStart.Text,DateEnd.Text, Description.Text,TechnicalSpecification.Text, idLocalPM.Text,Fullname.Text);
+            FilterManager.ConfirmFilter(dataGrid, _projectService.Get(), BoxCustomer.Text, BoxStatus.Text, DateStart.Text, DateEnd.Text, Description.Text, TechnicalSpecification.Text, idLocalPM.Text, Fullname.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(Panel);
-            DataGridUpdater.UpdateDataGrid(_projectService.Get(), this);
+            UpdateDataGrid();
         }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Project project = dataGrid.SelectedItems[i] as Project;
-                DataNavigator.UpdateValueComboBox(_projects.FirstOrDefault(x => x.Id == project.Id));
-            }
-
-            this.NavigationService.GoBack();
-        }
-        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
-        {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Project project = dataGrid.SelectedItems[i] as Project;
-                    if (project != null)
-                    {
-
-                        _projectService.Delete(project.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_projectService.Get(), this);
+            SelectSelectedProjects();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -82,19 +68,46 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Project project = dataGrid.SelectedItems[i] as Project;
-                if (project != null)
-                {
-                    EditFrame.Content = new PageEditProject(project, this);
-
-                }
-            }
+            EditSelectedProjects();
+        }
+        private void ButtonDelete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteSelectedProjects();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_projectService.Get(), this);
+        }
+        private void DeleteSelectedProjects()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (Project project in dataGrid.SelectedItems)
+                {
+                    _projectService.Delete(project.Id);
+                }
+            }
+            UpdateDataGrid();
+        }
+        private void SelectSelectedProjects()
+        {
+            foreach (Project project in dataGrid.SelectedItems)
+            {
+                DataNavigator.UpdateValueComboBox(_projects.FirstOrDefault(x => x.Id == project.Id));
+            }
+            this.NavigationService.GoBack();
+        }
+        private void EditSelectedProjects()
+        {
+            foreach (Project project in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditProject(project, this);
+                break;
+            }
         }
     }
 }

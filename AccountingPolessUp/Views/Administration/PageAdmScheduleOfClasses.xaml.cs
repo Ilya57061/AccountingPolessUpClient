@@ -24,35 +24,23 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmScheduleOfClasses : Page
     {
-        ScheduleOfClassesService _scheduleOfClassesService = new ScheduleOfClassesService();
+        private readonly ScheduleOfClassesService _scheduleOfClassesService = new ScheduleOfClassesService();
         public PageAdmScheduleOfClasses()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
+            UpdateDataGrid();
+        }
+        private void ButtonRight_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineRight(scroll);
+        }
+        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineLeft(scroll);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    ScheduleOfСlasses Schedule = dataGrid.SelectedItems[i] as ScheduleOfСlasses;
-                    if (Schedule != null)
-                    {
-                        _scheduleOfClassesService.Delete(Schedule.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
-        }
-        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
-        {
-            FilterManager.ConfirmFilter(dataGrid, _scheduleOfClassesService.Get(), Description.Text, DateStart.Text, DateEnd.Text,WorkSpaceLink.Text,BoxTrainingCourses.Text);
-        }
-        private void ButtonClear_Click(object sender, RoutedEventArgs e)
-        {
-            FilterManager.ClearControls(Panel);
-            DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
+            DeleteSelectedSchedule();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -60,18 +48,43 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                ScheduleOfСlasses Schedule = dataGrid.SelectedItems[i] as ScheduleOfСlasses;
-                if (Schedule != null)
-                {
-                    EditFrame.Content = new PageEditScheduleOfClasses(Schedule, this);
-                }
-            }
+            EditSelectedSchedule();
+        }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ConfirmFilter(dataGrid, _scheduleOfClassesService.Get(), Description.Text, DateStart.Text, DateEnd.Text, WorkSpaceLink.Text, BoxTrainingCourses.Text);
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ClearControls(Panel);
+            UpdateDataGrid();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
+        }
+        private void DeleteSelectedSchedule()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (ScheduleOfСlasses schedule in dataGrid.SelectedItems)
+                {
+                    _scheduleOfClassesService.Delete(schedule.Id);
+                }
+            }
+            UpdateDataGrid();
+        }
+        private void EditSelectedSchedule()
+        {
+            foreach (ScheduleOfСlasses schedule in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditScheduleOfClasses(schedule, this);
+                break;
+            }
         }
     }
 }

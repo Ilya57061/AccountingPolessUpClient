@@ -24,26 +24,15 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmPosition : Page
     {
-        PositionService _positionService = new PositionService();
+        private readonly PositionService _positionService = new PositionService();
         public PageAdmPosition()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_positionService.Get(), this);
+            UpdateDataGrid();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Position position = dataGrid.SelectedItems[i] as Position;
-                    if (position != null)
-                    {
-                        _positionService.Delete(position.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_positionService.Get(), this);
+            DeleteSelectedPositions();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -51,28 +40,39 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Position position = dataGrid.SelectedItems[i] as Position;
-                if (position != null)
-                {
-                    EditFrame.Content = new PageEditPosition(position, this);
-
-                }
-            }
+            EditSelectedPositions();
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid,_positionService.Get(),Fullname.Text, Description.Text, BoxDepartment.Text);
+            FilterManager.ConfirmFilter(dataGrid, _positionService.Get(), Fullname.Text, Description.Text, BoxDepartment.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
+            UpdateDataGrid();
+        }
+        private void UpdateDataGrid()
+        {
             DataGridUpdater.UpdateDataGrid(_positionService.Get(), this);
         }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void DeleteSelectedPositions()
         {
-            NumberValidator.Validator(e);
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (Position position in dataGrid.SelectedItems)
+                {
+                    _positionService.Delete(position.Id);
+                }
+            }
+            UpdateDataGrid();
+        }
+        private void EditSelectedPositions()
+        {
+            foreach (Position position in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditPosition(position, this);
+                break;
+            }
         }
     }
 }

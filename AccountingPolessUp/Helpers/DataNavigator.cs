@@ -17,6 +17,13 @@ namespace AccountingPolessUp.Helpers
             comboBox.SelectedItem = obj;
 
         }
-   
+        public static void LineLeft(ScrollViewer scroll)
+        {
+            scroll.LineLeft();
+        }
+        public static void LineRight(ScrollViewer scroll)
+        {
+            scroll.LineRight();
+        }
     }
 }

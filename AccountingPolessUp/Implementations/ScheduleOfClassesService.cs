@@ -53,7 +53,7 @@ namespace AccountingPolessUp.Implementations
                     ["WorkSpaceLink"] = $"{model.WorkSpaceLink}",
                     ["TrainingCoursesId"] = $"{model.TrainingCoursesId}"
                 };
-                _webClient.UploadValues("CreateScheduleOfClasses", "POST", reqparm);
+                _webClient.UploadValues("CreateScheduleOfСlasses", "POST", reqparm);
             }
             catch (Exception)
             {
@@ -75,7 +75,7 @@ namespace AccountingPolessUp.Implementations
                     ["WorkSpaceLink"] = $"{model.WorkSpaceLink}",
                     ["TrainingCoursesId"] = $"{model.TrainingCoursesId}"
                 };
-                _webClient.UploadValues("UpdateScheduleOfClasses", "PUT", reqparm);
+                _webClient.UploadValues("UpdateScheduleOfСlasses", "PUT", reqparm);
             }
             catch (Exception)
             {
@@ -93,7 +93,7 @@ namespace AccountingPolessUp.Implementations
                 {
                     ["id"] = $"{id}"
                 };
-                _webClient.UploadValues("DeleteScheduleOfClasses", "DELETE", reqparm);
+                _webClient.UploadValues("DeleteScheduleOfСlasses", "DELETE", reqparm);
             }
             catch (Exception)
             {

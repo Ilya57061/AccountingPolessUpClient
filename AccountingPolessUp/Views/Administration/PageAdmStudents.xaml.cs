@@ -24,36 +24,24 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmStudents : Page
     {
-        StudentService _studentService = new StudentService();
+        private readonly StudentService _studentService = new StudentService();
         public PageAdmStudents()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_studentService.Get(),this);
+            UpdateDataGrid();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Student student = dataGrid.SelectedItems[i] as Student;
-                    if (student != null)
-                    {
-
-                        _studentService.Delete(student.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_studentService.Get(),this);
+            DeleteSelectedStudents();
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _studentService.Get(), StudentCard.Text, Group.Text,BoxIndividuals.Text,CourseNumber.Text,University.Text );
+            FilterManager.ConfirmFilter(dataGrid, _studentService.Get(), StudentCard.Text, Group.Text, BoxIndividuals.Text, CourseNumber.Text, University.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(Panel);
-            DataGridUpdater.UpdateDataGrid(_studentService.Get(), this);
+            UpdateDataGrid();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -61,19 +49,34 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Student student = dataGrid.SelectedItems[i] as Student;
-                if (student != null)
-                {
-                    EditFrame.Content = new PageEditStudents(student,this);
-
-                }
-            }
+            EditSelectedStudents();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_studentService.Get(), this);
+        }
+        private void DeleteSelectedStudents()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (Student student in dataGrid.SelectedItems)
+                {
+                    _studentService.Delete(student.Id);
+                }
+            }
+            UpdateDataGrid();
+        }
+        private void EditSelectedStudents()
+        {
+            foreach (Student student in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditStudents(student, this);
+                break;
+            }
         }
     }
 }

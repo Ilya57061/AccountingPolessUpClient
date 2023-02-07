@@ -24,48 +24,38 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmDepartments : Page
     {
-        DepartmentService _departmentService = new DepartmentService();
+        private readonly DepartmentService _departmentService = new DepartmentService();
         List<Department> _departments;
         public PageAdmDepartments()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_departmentService.Get(), this);
+            UpdateDataGrid();
         }
         public PageAdmDepartments(List<Department> departments)
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_departmentService.Get(), this);
+            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
-            _departments=departments;
+            _departments = departments;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
         }
+        private void ButtonRight_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineRight(scroll);
+        }
+        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineLeft(scroll);
+        }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Department Department = dataGrid.SelectedItems[i] as Department;
-                    if (Department != null)
-                    {
-
-                        _departmentService.Delete(Department.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_departmentService.Get(), this);
+            DeleteSelectedDepartments();
         }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Department department = dataGrid.SelectedItems[i] as Department;
-                DataNavigator.UpdateValueComboBox(_departments.FirstOrDefault(x => x.Id == department.Id));
-            }
-
-            this.NavigationService.GoBack();
+            SelectSelectedDepartments();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -73,28 +63,50 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Department Department = dataGrid.SelectedItems[i] as Department;
-                if (Department != null)
-                {
-                    EditFrame.Content = new PageEditDepartments(Department, this);
-
-                }
-            }
+            EditSelectedDepartments();
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid,_departmentService.Get(),FullName.Text,Description.Text, DateStart.Text, DateEnd.Text,BoxStatus.Text, BoxOrganizations.Text);
+            FilterManager.ConfirmFilter(dataGrid, _departmentService.Get(), FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
-            DataGridUpdater.UpdateDataGrid(_departmentService.Get(), this);
+            UpdateDataGrid();
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void DeleteSelectedDepartments()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (Department department in dataGrid.SelectedItems)
+                {
+                    _departmentService.Delete(department.Id);
+                }
+                UpdateDataGrid();
+            }
+        }
+        private void SelectSelectedDepartments()
+        {
+            foreach (Department department in dataGrid.SelectedItems)
+            {
+                DataNavigator.UpdateValueComboBox(_departments.FirstOrDefault(x => x.Id == department.Id));
+            }
+            this.NavigationService.GoBack();
+        }
+        private void EditSelectedDepartments()
+        {
+            foreach (Department department in dataGrid.SelectedItems)
+            {
+                EditFrame.Content = new PageEditDepartments(department, this);
+            }
+        }
+        private void UpdateDataGrid()
+        {
+            DataGridUpdater.UpdateDataGrid(_departmentService.Get(), this);
         }
     }
 }

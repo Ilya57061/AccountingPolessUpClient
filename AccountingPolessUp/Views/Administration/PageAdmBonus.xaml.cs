@@ -24,55 +24,67 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmBonus : Page
     {
-        BonusService _bonusService = new BonusService();
+        private readonly BonusService _bonusService = new BonusService();
+
         public PageAdmBonus()
         {
             InitializeComponent();
             DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
         }
+
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Bonus Bonus = dataGrid.SelectedItems[i] as Bonus;
-                    if (Bonus != null)
-                    {
-                        _bonusService.Delete(Bonus.Id);
-                    }
-                }
-            }
-            DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
+            DeleteSelectedBonuses();
         }
+
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditBonus(this);
         }
+
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-            {
-                Bonus Bonus = dataGrid.SelectedItems[i] as Bonus;
-                if (Bonus != null)
-                {
-                    EditFrame.Content = new PageEditBonus(Bonus,this);
-
-                }
-            }
+            EditSelectedBonus();
         }
+
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid,_bonusService.Get(),BonusName.Text,BoxRank.Text,BonusDescription.Text);
+            FilterManager.ConfirmFilter(dataGrid, _bonusService.Get(), BonusName.Text, BoxRank.Text, BonusDescription.Text);
         }
+
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
             DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
         }
+
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+
+        private void DeleteSelectedBonuses()
+        {
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (Bonus bonus in dataGrid.SelectedItems)
+                {
+                    _bonusService.Delete(bonus.Id);
+                }
+                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
+            }
+        }
+
+        private void EditSelectedBonus()
+        {
+            if (dataGrid.SelectedItems.Count == 1)
+            {
+                Bonus bonus = dataGrid.SelectedItem as Bonus;
+                if (bonus != null)
+                {
+                    EditFrame.Content = new PageEditBonus(bonus, this);
+                }
+            }
         }
     }
 }
