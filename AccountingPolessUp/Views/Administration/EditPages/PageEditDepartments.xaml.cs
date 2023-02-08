@@ -95,7 +95,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _department.FullName = FullName.Text;
             _department.Description = Description.Text;
             _department.DateStart = DateTime.Parse(DateStart.Text);
-            _department.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
+            _department.DateEnd = DateTime.TryParse(DateEnd.Text, out var dateExitResult) ? dateExitResult : (DateTime?)null;
             _department.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             _department.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganizations.SelectedItem).Id;
             _department.DirectorId = int.Parse(DirectorId.Text);

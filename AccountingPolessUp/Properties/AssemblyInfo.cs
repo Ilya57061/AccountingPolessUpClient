@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("AccountingPolessUp")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("PolessUp")]
 [assembly: AssemblyProduct("AccountingPolessUp")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
