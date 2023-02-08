@@ -28,8 +28,7 @@ namespace AccountingPolessUp
         public Authorization()
         {
             InitializeComponent();
-            CreateAdmService.CreateAdm();
-             Enter.IsEnabled = false;
+            Enter.IsEnabled = false;
         }
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
@@ -37,9 +36,9 @@ namespace AccountingPolessUp
             try
             {
                 User user = loginService.Login(new LoginDto { Login = Login.Text, Password = Password.Password });
-                if (user ==null)
+                if (user == null)
                 {
-                    LabelErrorMessage.Visibility= Visibility.Visible;
+                    LabelErrorMessage.Visibility = Visibility.Visible;
                 }
                 else
                 {
@@ -47,22 +46,22 @@ namespace AccountingPolessUp
                     mainWindow.Show();
                     this.Close();
                 }
-              
+
             }
             catch (Exception ex)
             {
 
                 MessageBox.Show(ex.Message);
             }
-           
+
         }
         private void CheckChangeText(object sender, RoutedEventArgs e)
         {
             LabelErrorMessage.Visibility = Visibility.Collapsed;
-   
-            if (Password.Password.Length>0&&Login.Text.Length>0) Enter.IsEnabled= true;
-            else Enter.IsEnabled= false;
+
+            if (Password.Password.Length > 0 && Login.Text.Length > 0) Enter.IsEnabled = true;
+            else Enter.IsEnabled = false;
         }
-      
+
     }
 }
