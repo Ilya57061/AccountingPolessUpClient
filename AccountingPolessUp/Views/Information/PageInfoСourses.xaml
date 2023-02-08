@@ -5,10 +5,81 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AccountingPolessUp.Views.Information"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageInfoСourses">
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="950" d:DesignWidth="800"
+          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+Background="Transparent"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+    Title="PolessUp">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <TextBlock Margin="40,0,0,0" x:Name="LabelCourses" FontSize="34" VerticalAlignment="Center" FontWeight="Bold" Text="Обучающие курсы"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <ListView x:Name="LView"  ItemsSource="{Binding Courses}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                            <materialDesign:Flipper materialDesign:ElevationAssist.Elevation="Dp0" Style="{StaticResource MaterialDesignCardFlipper}"  Width="200" Height="256">
+                                <materialDesign:Flipper.BackContent>
+                                    <Grid Background="Gray" Width="200" Height="256">
+                                        <StackPanel    HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <TextBlock Foreground="White" Margin="0,20,0,0" FontSize="21" Text="{Binding Name}"/>
+                                            <TextBlock Foreground="White" Margin="0,30,0,0" FontSize="21" Text="{Binding Link}"/>
+                                            <Button Margin="0,40,0,0" Background="Yellow" Foreground="Black" Command="{x:Static materialDesign:Flipper.FlipCommand}"  Content="EDIT" Style="{StaticResource MaterialDesignFlatButton}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </materialDesign:Flipper.BackContent>
+                                <materialDesign:Flipper.FrontContent>
+                                    <!--оборот-->
+                                    <Grid Background="Gray" Width="200" Height="256">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <materialDesign:ColorZone Padding="6" Mode="SecondaryMid">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Button HorizontalAlignment="Left" Command="{x:Static materialDesign:Flipper.FlipCommand}" Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                                    <materialDesign:PackIcon HorizontalAlignment="Right"  Kind="ArrowLeft" />
+                                                </Button>
+                                                <TextBlock Margin="8,0,0,0" FontSize="18" VerticalAlignment="Center" Text="Вернуться" />
+                                            </StackPanel>
+                                        </materialDesign:ColorZone>
+                                        <Grid Grid.Row="1" Width="172" Margin="0,6,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                            <TextBlock TextWrapping="Wrap" Foreground="White" Margin="0,20,0,0" FontSize="21" Text="{Binding Description}"/>
+                                        </Grid>
+                                    </Grid>
+                                </materialDesign:Flipper.FrontContent>
+                            </materialDesign:Flipper>
+                        
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <!--<Grid Grid.Row="1">
+            
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <ListView x:Name="LView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn>
+
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View> 
+            </ListView>
+        </Grid>-->
     </Grid>
 </Page>

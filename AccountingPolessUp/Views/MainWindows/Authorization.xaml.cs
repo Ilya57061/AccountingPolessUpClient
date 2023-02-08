@@ -28,7 +28,6 @@ namespace AccountingPolessUp
         public Authorization()
         {
             InitializeComponent();
-            CreateAdmService.CreateAdm();
              Enter.IsEnabled = false;
         }
 

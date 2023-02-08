@@ -1,5 +1,8 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
+using AccountingPolessUp.Models;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,13 @@ namespace AccountingPolessUp.Views.Information
     /// </summary>
     public partial class PageInfoСourses : Page
     {
+       TrainingCoursesService _trainingCoursesService = new TrainingCoursesService();
+        public ObservableCollection<TrainingCourses> Courses { get; set; }
         public PageInfoСourses()
         {
             InitializeComponent();
+            Courses=new ObservableCollection<TrainingCourses> (_trainingCoursesService.Get());
+            DataContext = this;
         }
     }
 }
