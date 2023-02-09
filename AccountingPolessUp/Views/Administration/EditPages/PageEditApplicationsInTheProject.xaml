@@ -56,7 +56,7 @@ Background="Transparent"
             </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2">
-            <TextBox Margin="1,0,1,20"  x:Name="StatusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="ImageDescription" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
+            <TextBox Margin="1,0,1,20"  x:Name="StatusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="ImageDescription" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding StatusDescription}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="3">
             <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEntry" FontSize="14" Margin="1,0,1,12"
