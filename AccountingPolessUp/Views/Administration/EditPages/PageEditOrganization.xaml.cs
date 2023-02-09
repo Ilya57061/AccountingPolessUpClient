@@ -83,6 +83,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _organization.Contacts = Contacts.Text;
             _organization.WebSite = Website.Text;
             _organization.FoundationDate = DateTime.TryParse(FoundationDate.Text, out var dateFoundation) ? dateFoundation : (DateTime?)null;
+            _organization.BSR=double.TryParse(BSR.Text, out var bSR) ? bSR : (double?)null;
+            _organization.BSO=double.TryParse(BSR.Text, out var bSO) ? bSO : (double?)null;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
