@@ -60,7 +60,7 @@ Background="Transparent"
                     materialDesign:TextFieldAssist.HasClearButton="True"
                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding FoundationDate}"/>
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
+        <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3">
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />
             </Button>
