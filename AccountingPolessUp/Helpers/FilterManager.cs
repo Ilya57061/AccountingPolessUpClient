@@ -29,7 +29,7 @@ namespace AccountingPolessUp.Helpers
             }
 
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Organization> list, string name, string address, string contacts, string website, string dateFoundation)
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Organization> list, string name, string address, string contacts, string website, string dateFoundation, string bSR, string bSO)
         {
             if (!string.IsNullOrEmpty(name))
                 list = list.Where(x => x.Fullname.StartsWith(name));
@@ -41,6 +41,10 @@ namespace AccountingPolessUp.Helpers
                 list = list.Where(x => x.WebSite.StartsWith(website));
             if (!string.IsNullOrEmpty(dateFoundation))
                 list = list.Where(x => x.FoundationDate == DateTime.Parse(dateFoundation));
+            if (!string.IsNullOrEmpty(bSR))
+                list = list.Where(x => x.BSR == double.Parse(bSR));
+            if (!string.IsNullOrEmpty(bSO))
+                list = list.Where(x => x.BSO == double.Parse(bSO));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -400,7 +404,7 @@ namespace AccountingPolessUp.Helpers
         }
 
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Vacancy> list, string name, string description, string responsibilities,
-          string dateStart, string dateEnd,  string stagesOfProject, string isOpened, double? paymentRatio, double? ratingCoefficient)
+          string dateStart, string dateEnd,  string stagesOfProject, string isOpened, string paymentRatio, string ratingCoefficient)
         {
             if (!string.IsNullOrEmpty(name))
             {
@@ -418,13 +422,13 @@ namespace AccountingPolessUp.Helpers
             {
                 list = list.Where(x => x.StagesOfProject.Name.StartsWith(responsibilities));
             }
-            if (paymentRatio != null)
+            if (!string.IsNullOrEmpty(paymentRatio))
             {
-                list = list.Where(x=>x.PaymentRatio==paymentRatio);
+                list = list.Where(x=>x.PaymentRatio==double.Parse(paymentRatio));
             }
-            if (ratingCoefficient != null)
+            if (!string.IsNullOrEmpty(ratingCoefficient))
             {
-                list = list.Where(x=>x.RatingCoefficient==ratingCoefficient);
+                list = list.Where(x=>x.RatingCoefficient==double.Parse(ratingCoefficient));
             }
             if (!string.IsNullOrEmpty(isOpened))
             {

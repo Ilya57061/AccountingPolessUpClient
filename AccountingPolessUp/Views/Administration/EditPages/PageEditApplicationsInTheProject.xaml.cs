@@ -82,6 +82,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataNavigator.NameBox = BoxVacancy.Name;
             _parent.NavigationService.Content = new PageAdmVacancy(_vacancy);
         }
+        private void OpenParticipants_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxParticipant.Name;
+            _parent.NavigationService.Content = new PageAdmMembers(_participants);
+        }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -118,7 +124,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
-            
+            _applications.Status = BoxStatus.Text;
+            _applications.StatusDescription=StatusDescription.Text;
+            _applications.IsAccepted = bool.Parse(BoxIsAccepted.Text);
             _applications.DateEntry = DateTime.Parse(DateEntry.Text);
             _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
             _applications.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;

@@ -46,7 +46,7 @@ namespace AccountingPolessUp.Views.Administration
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _appService.Get(), BoxWorkStatus.Text, DateEntry.Text, BoxParticipant.Text, ComboBoxVacancy.Text);
+            FilterManager.ConfirmFilter(dataGrid, _appService.Get(), DateEntry.Text, Participants.Text,Vacancy.Text, IsAccepted.Text, Status.Text, StatusDescription.Text);
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

@@ -26,35 +26,52 @@ Background="Transparent"
             <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
         <Border Grid.ColumnSpan="7" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
 
-        <Grid Grid.Row="0" Grid.Column="3">
+        <Grid Grid.Row="0" Grid.Column="5">
             <Button Click="OpenVacancy_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="0">
-            <ComboBox x:Name="BoxWorkStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Рабочий статус" Margin="1,0,1,0">
-                <ComboBoxItem Content="Принят в работу" />
-                <ComboBoxItem Content="Не принят в работу" />
-            </ComboBox>
+        <Grid Grid.Row="0" Grid.Column="4">
+            <Button Click="OpenParticipants_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
+            </Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
+            <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Рабочий статус" Margin="1,0,1,0">
+                <ComboBoxItem Content="Завершено успешно" />
+                <ComboBoxItem Content="В работе" />
+                <ComboBoxItem Content="Провалено" />
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="0">
+            <ComboBox x:Name="BoxIsAccepted" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="IsAccepted" Margin="1,0,1,0">
+                <ComboBoxItem Content="True" />
+                <ComboBoxItem Content="False" />
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2">
+            <TextBox Margin="1,0,1,20"  x:Name="StatusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="ImageDescription" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="3">
             <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEntry" FontSize="14" Margin="1,0,1,12"
  materialDesign:HintAssist.Hint="Дата входа"
  materialDesign:TextFieldAssist.HasClearButton="True"
  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEntry}"/>
         </Grid>
-        <Grid Grid.Row="1" Grid.Column="2">
+        <Grid Grid.Row="1" Grid.Column="4">
             <ComboBox x:Name="BoxParticipant" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Participants}" DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Участник" Margin="1,0,1,0" ></ComboBox>
         </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="3">
+        <Grid Grid.Row="1" Grid.Column="5">
             <ComboBox x:Name="BoxVacancy" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Vacancy}" DisplayMemberPath="Name"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Вакансия" Margin="1,0,1,0"></ComboBox>
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2">
+        <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />
             </Button>
