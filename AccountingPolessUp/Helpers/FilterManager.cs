@@ -111,7 +111,7 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(organization))
                 list = list.Where(x => x.Organizations.Fullname.StartsWith(organization));
             if (!string.IsNullOrEmpty(director))
-                list = list.Where(x => x.DirectorId==int.Parse(director));
+                list = list.Where(x => x.DirectorId == int.Parse(director));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -157,14 +157,21 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<ApplicationsInTheProject> list, string workStatus, string dateEntry, string participant, string vacancy)
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<ApplicationsInTheProject> list, string dateEntry, string participant, string vacancy, string isAccepted, string status, string statusDescription)
         {
             if (!string.IsNullOrEmpty(participant))
                 list = list.Where(x => x.Participants.Individuals.FIO.StartsWith(participant));
             if (!string.IsNullOrEmpty(vacancy))
                 list = list.Where(x => x.Vacancy.Name.StartsWith(vacancy));
-            if (!string.IsNullOrEmpty(workStatus))
-                list = list.Where(x => x.WorkStatus.StartsWith(workStatus));
+            if (!string.IsNullOrEmpty(status))
+                list = list.Where(x => x.Status.StartsWith(status));
+            if (!string.IsNullOrEmpty(statusDescription))
+                list = list.Where(x => x.Status.StartsWith(statusDescription));
+            if (!string.IsNullOrEmpty(isAccepted))
+            {
+                list = list.Where(x=>x.IsAccepted==bool.Parse(isAccepted));
+            }
+
             if (!string.IsNullOrEmpty(dateEntry))
                 list = list.Where(x => x.DateEntry == DateTime.Parse(dateEntry));
             dataGrid.ItemsSource = null;
@@ -393,7 +400,7 @@ namespace AccountingPolessUp.Helpers
         }
 
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Vacancy> list, string name, string description, string responsibilities,
-          string dateStart, string dateEnd, string budjet, string stagesOfProject, string isOpened)
+          string dateStart, string dateEnd,  string stagesOfProject, string isOpened, double? paymentRatio, double? ratingCoefficient)
         {
             if (!string.IsNullOrEmpty(name))
             {
@@ -411,9 +418,13 @@ namespace AccountingPolessUp.Helpers
             {
                 list = list.Where(x => x.StagesOfProject.Name.StartsWith(responsibilities));
             }
-            if (!string.IsNullOrEmpty(budjet))
+            if (paymentRatio != null)
             {
-                list = list.Where(x => x.Budjet == double.Parse(budjet));
+                list = list.Where(x=>x.PaymentRatio==paymentRatio);
+            }
+            if (ratingCoefficient != null)
+            {
+                list = list.Where(x=>x.RatingCoefficient==ratingCoefficient);
             }
             if (!string.IsNullOrEmpty(isOpened))
             {
@@ -421,11 +432,11 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
-                list = list.Where(x => x.DateStart==DateTime.Parse(dateStart));
+                list = list.Where(x => x.DateStart == DateTime.Parse(dateStart));
             }
             if (!string.IsNullOrEmpty(dateEnd))
             {
-                list = list.Where(x => x.DateEnd==DateTime.Parse(dateEnd));
+                list = list.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -452,7 +463,7 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
-                employments = employments.Where(x => x.DateStart==DateTime.Parse(dateStart));
+                employments = employments.Where(x => x.DateStart == DateTime.Parse(dateStart));
             }
             if (!string.IsNullOrEmpty(dateEnd))
             {
@@ -499,6 +510,6 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = finalProjects;
         }
-   
+
     }
 }
