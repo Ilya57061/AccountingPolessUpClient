@@ -24,62 +24,96 @@ Background="Transparent"
 
         <Grid Grid.Row="0">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <TextBlock Margin="40,0,0,0" x:Name="LabelCourses" FontSize="34" VerticalAlignment="Center" FontWeight="Bold" Text="Обучающие курсы"></TextBlock>
+            <TextBlock Margin="40,0,0,0" x:Name="LabelCourses" FontSize="34" VerticalAlignment="Center" FontWeight="Bold" Text="Учебные курсы"></TextBlock>
         </Grid>
         <Grid Grid.Row="1">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <ListView x:Name="LView"  ItemsSource="{Binding Courses}">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListViewItem">
+                                    <Border Name="Border" BorderThickness="10" BorderBrush="Transparent">
+                                        <ContentPresenter />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="BorderBrush" Value="transparent" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Width="{Binding ElementName=LView, Path=ActualWidth}"/>
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
                 <ListView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate >
+                        <WrapPanel>
                             <materialDesign:Flipper materialDesign:ElevationAssist.Elevation="Dp0" Style="{StaticResource MaterialDesignCardFlipper}"  Width="200" Height="256">
-                                <materialDesign:Flipper.BackContent>
-                                    <Grid Background="Gray" Width="200" Height="256">
-                                        <StackPanel    HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <TextBlock Foreground="White" Margin="0,20,0,0" FontSize="21" Text="{Binding Name}"/>
-                                            <TextBlock Foreground="White" Margin="0,30,0,0" FontSize="21" Text="{Binding Link}"/>
-                                            <Button Margin="0,40,0,0" Background="Yellow" Foreground="Black" Command="{x:Static materialDesign:Flipper.FlipCommand}"  Content="EDIT" Style="{StaticResource MaterialDesignFlatButton}" />
+                                <materialDesign:Flipper.FrontContent>
+                                    <Grid Background="Transparent" Width="200" Height="256">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="auto" />
+                                            <RowDefinition Height="*" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Border Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="#c9a97f" Background="#c9a97f" />
+                                        <StackPanel Background="#FFE7BF8B" Height="40" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                            <TextBlock Margin="0,10,0,0" Foreground="White" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Name}"/>
+                                        </StackPanel>
+                                        <StackPanel  Margin="0,15,0,0" Height="80" Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"  Margin="20,0,20,0" FontSize="21">
+                                                 <Hyperlink x:Name="HyperlinkCourses" Foreground="White" Click="HyperlinkCourses_Click">
+                                                          <Run x:Name="linkCourses" Text="{Binding Link}"/></Hyperlink>
+                                                </TextBlock>
+                                            </ScrollViewer>
+                                        </StackPanel>
+                                        <StackPanel  Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                                            <Button Margin="10,0,10,0" Background="#FFDAAC95" Foreground="White" Command="{x:Static materialDesign:Flipper.FlipCommand}" materialDesign:ButtonAssist.CornerRadius="10"   Content="Описание" Style="{StaticResource MaterialDesignFlatButton}" />
+                                            <Button Margin="10,15,10,0" Background="#FFE9B3BB" Foreground="White" Click="Button_RegistrationCourses" materialDesign:ButtonAssist.CornerRadius="10"   Content="Записаться" Style="{StaticResource MaterialDesignFlatButton}" />
                                         </StackPanel>
                                     </Grid>
-                                </materialDesign:Flipper.BackContent>
-                                <materialDesign:Flipper.FrontContent>
+                                </materialDesign:Flipper.FrontContent>
+                                <materialDesign:Flipper.BackContent>
                                     <!--оборот-->
-                                    <Grid Background="Gray" Width="200" Height="256">
+
+                                    <Grid Background="Transparent" Width="200" Height="256" >
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
                                             <RowDefinition Height="*" />
                                         </Grid.RowDefinitions>
-                                        <materialDesign:ColorZone Padding="6" Mode="SecondaryMid">
+                                        <Border Grid.RowSpan="2" BorderThickness="1" CornerRadius="13" BorderBrush="#c9a97f" Background="#c9a97f" />
+                                        <materialDesign:ColorZone Padding="6" Background="#FFE7BF8B" Mode="SecondaryMid">
                                             <StackPanel Orientation="Horizontal">
                                                 <Button HorizontalAlignment="Left" Command="{x:Static materialDesign:Flipper.FlipCommand}" Style="{StaticResource MaterialDesignToolForegroundButton}">
                                                     <materialDesign:PackIcon HorizontalAlignment="Right"  Kind="ArrowLeft" />
                                                 </Button>
-                                                <TextBlock Margin="8,0,0,0" FontSize="18" VerticalAlignment="Center" Text="Вернуться" />
+                                                <TextBlock  Margin="0,0,0,0" FontSize="18" VerticalAlignment="Center" Text="Вернуться" />
                                             </StackPanel>
                                         </materialDesign:ColorZone>
                                         <Grid Grid.Row="1" Width="172" Margin="0,6,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
-                                            <TextBlock TextWrapping="Wrap" Foreground="White" Margin="0,20,0,0" FontSize="21" Text="{Binding Description}"/>
+                                            <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Stretch" TextWrapping="Wrap" Foreground="White" Margin="0,20,0,0" FontSize="21" Text="{Binding Description}"/>
+                                            </ScrollViewer>
                                         </Grid>
+
                                     </Grid>
-                                </materialDesign:Flipper.FrontContent>
+                                </materialDesign:Flipper.BackContent>
                             </materialDesign:Flipper>
-                        
+                        </WrapPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>
-
-        <!--<Grid Grid.Row="1">
-            
-            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <ListView x:Name="LView">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn>
-
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View> 
-            </ListView>
-        </Grid>-->
     </Grid>
 </Page>

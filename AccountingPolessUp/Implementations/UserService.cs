@@ -75,7 +75,7 @@ namespace AccountingPolessUp.Implementations
                 ["id"] = $"{model.Id}",
                 ["Password"] = $"{model.Password}",
             };
-            _webClient.UploadValues("UpdateUser", "PUT", reqparm);
+            _webClient.UploadValues("UpdatePasswordUser", "PUT", reqparm);
         }
         public void Delete(int id)
         {
