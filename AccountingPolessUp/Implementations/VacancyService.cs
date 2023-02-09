@@ -40,7 +40,8 @@ namespace AccountingPolessUp.Implementations
                 ["Responsibilities"] = $"{model.Responsibilities}",
                 ["DateStart"] = $"{model.DateStart}",
                 ["DateEnd"] = $"{model.DateEnd}",
-                ["Budjet"] = $"{model.Budjet}",
+                ["PaymentRatio"] = $"{model.PaymentRatio}",
+                ["RatingCoefficient"] = $"{model.RatingCoefficient}",
                 ["StagesOfProjectId"] = $"{model.StagesOfProjectId}"
             };
             _webClient.UploadValues("CreateVacancy", "POST", reqparm);
@@ -56,7 +57,8 @@ namespace AccountingPolessUp.Implementations
                 ["Responsibilities"] = $"{model.Responsibilities}",
                 ["DateStart"] = $"{model.DateStart}",
                 ["DateEnd"] = $"{model.DateEnd}",
-                ["Budjet"] = $"{model.Budjet}",
+                ["PaymentRatio"] = $"{model.PaymentRatio}",
+                ["RatingCoefficient"] = $"{model.RatingCoefficient}",
                 ["StagesOfProjectId"] = $"{model.StagesOfProjectId}"
             };
             _webClient.UploadValues("UpdateVacancy", "PUT", reqparm);

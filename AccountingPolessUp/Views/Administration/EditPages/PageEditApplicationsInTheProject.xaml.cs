@@ -45,7 +45,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 _applications = applications;
                 BoxVacancy.ItemsSource = _vacancy;
                 BoxParticipant.ItemsSource = _participants;
-                BoxWorkStatus.SelectedIndex = _applications.WorkStatus == "Принят в работу" ? 0 : 1;
+                
                 BoxVacancy.SelectedIndex = _vacancy.IndexOf(_vacancy.FirstOrDefault(r => r.Id == applications.VacancyId));
                 BoxParticipant.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(r => r.Id == applications.ParticipantsId));
             }
@@ -118,7 +118,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
-            _applications.WorkStatus = ((ComboBoxItem)BoxWorkStatus.SelectedItem).Content.ToString();
+            
             _applications.DateEntry = DateTime.Parse(DateEntry.Text);
             _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
             _applications.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;

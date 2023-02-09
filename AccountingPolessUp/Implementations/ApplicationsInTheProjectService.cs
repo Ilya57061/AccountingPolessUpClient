@@ -36,9 +36,12 @@ namespace AccountingPolessUp.Implementations
         {
             var reqparm = new NameValueCollection
             {
-                ["WorkStatus"] = $"{model.WorkStatus}",
+                
                 ["DateEntry"] = $"{model.DateEntry}",
                 ["ParticipantsId"] = $"{model.ParticipantsId}",
+                ["IsAccepted"] = $"{model.IsAccepted}",
+                ["Status"] = $"{model.Status}",
+                ["StatusDescription"] = $"{model.StatusDescription}",
                 ["VacancyId"] = $"{model.VacancyId}"
             };
             _webClient.UploadValues("CreateAppInTheProject", "POST", reqparm);
@@ -49,9 +52,12 @@ namespace AccountingPolessUp.Implementations
             var reqparm = new NameValueCollection
             {
                 ["id"] = $"{model.Id}",
-                ["WorkStatus"] = $"{model.WorkStatus}",
+                
                 ["DateEntry"] = $"{model.DateEntry}",
                 ["ParticipantsId"] = $"{model.ParticipantsId}",
+                ["IsAccepted"] = $"{model.IsAccepted}",
+                ["Status"] = $"{model.Status}",
+                ["StatusDescription"] = $"{model.StatusDescription}",
                 ["VacancyId"] = $"{model.VacancyId}"
             };
             _webClient.UploadValues("UpdateAppInTheProject", "PUT", reqparm);
