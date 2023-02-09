@@ -5,10 +5,61 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:AccountingPolessUp.Views.Information"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="950" d:DesignWidth="800"
+          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+Background="Transparent"
+     FontFamily="{DynamicResource MaterialDesignFont}"
       Title="PageInfoRules">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <TextBlock Margin="40,0,0,0" x:Name="LabelRules" FontSize="34" FontWeight="Bold" Text="Уставы" VerticalAlignment="Center"></TextBlock>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <ListBox ItemsSource="{Binding regulations}" HorizontalContentAlignment="Stretch">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Expander Header="{Binding Path=DataContext.regulations[0][0].Organization.Fullname, 
+           RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}" >
+                            <StackPanel Margin="24,8,24,16" Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                                <ItemsControl ItemsSource="{Binding}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Expander Header="{Binding Name}">
+                                                <StackPanel Margin="24,8,24,16" Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                                                    <ItemsControl ItemsSource="{Binding}" >
+                                                        <ItemsControl.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Expander  Header="{Binding Description}">
+                                                                    <StackPanel>
+                                                                        <TextBlock Style="{StaticResource HorizontalExpanderContentTextBlock}" Margin="50,0,0,0" Text="{Binding Text}"/>
+                                                                    </StackPanel>
+                                                                </Expander>
+                                                            </DataTemplate>
+                                                        </ItemsControl.ItemTemplate>
+                                                    </ItemsControl>
+                                                </StackPanel>
+                                            </Expander>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+                            </StackPanel>
+                        </Expander>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </Grid>
     </Grid>
 </Page>

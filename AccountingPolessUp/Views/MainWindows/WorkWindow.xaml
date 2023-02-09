@@ -80,7 +80,7 @@
                     <TreeViewItem Selected="ButtonInfoRules_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal" >
-                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Уставы PolessUP" />
+                                <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Уставы" />
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
