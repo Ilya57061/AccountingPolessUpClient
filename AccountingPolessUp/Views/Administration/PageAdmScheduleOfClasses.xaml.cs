@@ -86,5 +86,9 @@ namespace AccountingPolessUp.Views.Administration
                 break;
             }
         }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
+        }
     }
 }
