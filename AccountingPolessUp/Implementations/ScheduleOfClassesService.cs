@@ -40,6 +40,18 @@ namespace AccountingPolessUp.Implementations
             }
 
         }
+        public List<ScheduleOfСlasses> Get(int coursesId)
+        {
+            var reqparm = new NameValueCollection
+            {
+                ["id"] = $"{coursesId}"
+            };
+            var response = _webClient.UploadValues("GetScheduleOfСlassesForCoursesId", "POST", reqparm);
+            var responseString = Encoding.Default.GetString(response);
+            var Info = JsonConvert.DeserializeObject<List<ScheduleOfСlasses>>(responseString);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
+        }
 
         public void Create(ScheduleOfСlasses model)
         {

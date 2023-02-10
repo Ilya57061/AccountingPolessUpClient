@@ -30,6 +30,18 @@ namespace AccountingPolessUp.Implementations
             if (Info is null) throw new Exception("info - null");
             else return Info;
         }
+        public List<StagesOfProject> Get(int projectId)
+        {
+            var reqparm = new NameValueCollection
+            {
+                ["id"] = $"{projectId}"
+            };
+            var response = _webClient.UploadValues("StagesOfProjectForProjectId", "POST", reqparm);
+            var responseString = Encoding.Default.GetString(response);
+            var Info = JsonConvert.DeserializeObject<List<StagesOfProject>>(responseString);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
+        }
 
         public void Create(StagesOfProject model)
         {

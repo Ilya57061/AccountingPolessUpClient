@@ -26,20 +26,29 @@ namespace AccountingPolessUp.Views.Administration
     {
         private readonly VacancyService _vacancyService = new VacancyService();
         List<Vacancy> _vacancies;
+        StagesOfProject _stagesOfProject;
         public PageAdmVacancy()
         {
             InitializeComponent();
+            ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
         }
         public PageAdmVacancy(List<Vacancy> vacancies)
         {
             InitializeComponent();
+            ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _vacancies = vacancies;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
+        }
+        public PageAdmVacancy(StagesOfProject stagesOfProject)
+        {
+            InitializeComponent();
+            _stagesOfProject = stagesOfProject;
+            UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
@@ -84,7 +93,10 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
+            if(_stagesOfProject==null)
             DataGridUpdater.UpdateDataGrid(_vacancyService.Get(), this);
+            else
+                DataGridUpdater.UpdateDataGrid(_vacancyService.Get(_stagesOfProject.Id), this);
         }
         private void DeleteSelectedVacancies()
         {
@@ -112,6 +124,21 @@ namespace AccountingPolessUp.Views.Administration
             {
                 EditFrame.Content = new PageEditVacancy(vacancy, this);
                 break;
+            }
+        }
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+        private void ButtonAppInTheProject_Click(object sender, RoutedEventArgs e)
+        {
+            OpenAppInTheProject();
+        }
+        private void OpenAppInTheProject()
+        {
+            foreach (Vacancy vacancy in dataGrid.SelectedItems)
+            {
+                this.NavigationService.Content = new PageAdmAppInTheProject(vacancy);
             }
         }
     }

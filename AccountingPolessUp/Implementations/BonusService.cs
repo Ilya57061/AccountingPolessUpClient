@@ -39,7 +39,7 @@ namespace AccountingPolessUp.Implementations
             {
                 ["id"] = $"{rankId}"
             };
-            var response = _webClient.UploadValues("BonusForRankId", "POST", reqparm);
+            var response = _webClient.UploadValues("GetBonusForRankId", "POST", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var Info = JsonConvert.DeserializeObject<List<Bonus>>(responseString);
             if (Info is null) throw new Exception("info - null");
