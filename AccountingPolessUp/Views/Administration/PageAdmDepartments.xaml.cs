@@ -26,6 +26,7 @@ namespace AccountingPolessUp.Views.Administration
     {
         private readonly DepartmentService _departmentService = new DepartmentService();
         List<Department> _departments;
+        Position _position;
         public PageAdmDepartments()
         {
             InitializeComponent();
@@ -107,6 +108,17 @@ namespace AccountingPolessUp.Views.Administration
         private void UpdateDataGrid()
         {
             DataGridUpdater.UpdateDataGrid(_departmentService.Get(), this);
+        }
+        private void ButtonPositions_Click(object sender, RoutedEventArgs e)
+        {
+            OpenPositions();
+        }
+        private void OpenPositions()
+        {
+            foreach (Department department in dataGrid.SelectedItems)
+            {
+                this.NavigationService.Content = new PageAdmPosition(department);
+            }
         }
     }
 }
