@@ -25,9 +25,16 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmPosition : Page
     {
         private readonly PositionService _positionService = new PositionService();
+        Department _department;
         public PageAdmPosition()
         {
             InitializeComponent();
+            UpdateDataGrid();
+        }
+        public PageAdmPosition(Department department)
+        {
+            InitializeComponent();
+            _department = department;
             UpdateDataGrid();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
@@ -53,7 +60,14 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_positionService.Get(), this);
+            if (_department ==null)
+            {
+                DataGridUpdater.UpdateDataGrid(_positionService.Get(), this);
+            }
+            else
+            {
+                DataGridUpdater.UpdateDataGrid(_positionService.Get(_department.Id), this);
+            }
         }
         private void DeleteSelectedPositions()
         {
@@ -73,6 +87,10 @@ namespace AccountingPolessUp.Views.Administration
                 EditFrame.Content = new PageEditPosition(position, this);
                 break;
             }
+        }
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

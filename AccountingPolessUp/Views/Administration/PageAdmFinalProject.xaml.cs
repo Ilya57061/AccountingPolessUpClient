@@ -35,8 +35,8 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmFinalProject()
         {
             InitializeComponent();
-            ButtonBack.Visibility=Visibility.Hidden;
-            _finalProjectService.Get();
+            ButtonBack.Visibility = Visibility.Hidden;
+            UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +60,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid,_finalProjectService.Get(),Name.Text,Description.Text,GitHub.Text,Links.Text, DateStart.Text,DateEnd.Text);
+            FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get(), Name.Text, Description.Text, GitHub.Text, Links.Text, DateStart.Text, DateEnd.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -77,7 +77,10 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id), this);
+            if (_employment.Id == null)
+                DataGridUpdater.UpdateDataGrid(_finalProjectService.Get(), this);
+            else
+                DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id), this);
         }
         private void DeleteSelectedFinalProjects()
         {

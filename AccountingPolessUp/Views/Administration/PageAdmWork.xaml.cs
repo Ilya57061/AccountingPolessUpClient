@@ -42,7 +42,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonFinalProject_Click(object sender, RoutedEventArgs e)
         {
-            SelectSelectedEmployment();
+            OpenFinalProjects();
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -76,7 +76,7 @@ namespace AccountingPolessUp.Views.Administration
             }
             UpdateDataGrid();
         }
-        private void SelectSelectedEmployment()
+        private void OpenFinalProjects()
         {
             foreach (Employment employment in dataGrid.SelectedItems)
             {

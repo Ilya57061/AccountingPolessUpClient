@@ -102,5 +102,16 @@ namespace AccountingPolessUp.Views.Administration
                 break;
             }
         }
+        private void ButtonBonuses_Click(object sender, RoutedEventArgs e)
+        {
+            OpenBonuses();
+        }
+        private void OpenBonuses()
+        {
+            foreach (Rank rank in dataGrid.SelectedItems)
+            {
+                this.NavigationService.Content = new PageAdmBonus(rank);
+            }
+        }
     }
 }
