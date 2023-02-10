@@ -70,7 +70,17 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
-                        <DataGridTextColumn Binding="{Binding Link, UpdateSourceTrigger=PropertyChanged}" Header="Ссылка" Width="auto"/>
+                        <DataGridTemplateColumn Header="Ссылка">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                <Hyperlink NavigateUri="{Binding Link}" RequestNavigate="Hyperlink_RequestNavigate">
+                    <TextBlock Text="{Binding Link}" />
+                </Hyperlink>
+            </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn Binding="{Binding LectorFIO, UpdateSourceTrigger=PropertyChanged}" Header="ФИО лектора" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding LectorDescription, UpdateSourceTrigger=PropertyChanged}" Header="Описание лектора" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged}" Header="Дата начала" Width="auto"/>

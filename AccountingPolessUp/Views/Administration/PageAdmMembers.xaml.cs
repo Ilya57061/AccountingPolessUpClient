@@ -102,7 +102,7 @@ namespace AccountingPolessUp.Views.Administration
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _participantsService.Get(), BoxIndividuals.Text, Mmr.Text, BoxUser.Text, DateEntry.Text, DateEntry.Text, BoxStatus.Text, GitHub.Text);
+            FilterManager.ConfirmFilter(dataGrid, _participantsService.Get(), BoxIndividuals.Text, Mmr.Text, BoxUser.Text, DateEntry.Text, DateExit.Text, BoxStatus.Text, GitHub.Text);
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -114,6 +114,10 @@ namespace AccountingPolessUp.Views.Administration
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
         }
     }
 }

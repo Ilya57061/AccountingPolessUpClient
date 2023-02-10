@@ -55,7 +55,17 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
                         <DataGridTextColumn Binding="{Binding Address, UpdateSourceTrigger=PropertyChanged}" Header="Адрес" />
                         <DataGridTextColumn Binding="{Binding Contacts, UpdateSourceTrigger=PropertyChanged}" Header="Контакты" />
-                        <DataGridTextColumn Binding="{Binding WebSite, UpdateSourceTrigger=PropertyChanged}" Header="Веб-сайт" />
+                        <DataGridTemplateColumn Header="Веб-сайт">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                <Hyperlink NavigateUri="{Binding WebSite}" RequestNavigate="Hyperlink_RequestNavigate">
+                    <TextBlock Text="{Binding WebSite}" />
+                </Hyperlink>
+            </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn Binding="{Binding BSR, UpdateSourceTrigger=PropertyChanged}" Header="БСР" />
                         <DataGridTextColumn Binding="{Binding FoundationDate, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата основания" Width="auto"/>
                         <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">

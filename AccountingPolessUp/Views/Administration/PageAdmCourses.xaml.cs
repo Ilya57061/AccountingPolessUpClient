@@ -4,6 +4,7 @@ using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -104,6 +105,17 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonLeft_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.LineLeft(scroll);
+        }
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            try
+            {
+                Process.Start(e.Uri.AbsoluteUri);
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 }

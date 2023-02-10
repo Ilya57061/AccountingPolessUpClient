@@ -60,7 +60,17 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата рождения" />
                         <DataGridTextColumn Binding="{Binding Mail, UpdateSourceTrigger=PropertyChanged}" Header="Эл.почта" />
                         <DataGridTextColumn Binding="{Binding Gender, UpdateSourceTrigger=PropertyChanged}" Header="Пол" />
-                        <DataGridTextColumn Binding="{Binding SocialNetwork, UpdateSourceTrigger=PropertyChanged}" Header="Соц.Сети" Width="auto"/>
+                        <DataGridTemplateColumn Header="Соц.Сети">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                <Hyperlink NavigateUri="{Binding SocialNetwork}" RequestNavigate="Hyperlink_RequestNavigate">
+                    <TextBlock Text="{Binding SocialNetwork}" />
+                </Hyperlink>
+            </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

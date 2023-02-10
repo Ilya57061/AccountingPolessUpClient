@@ -40,7 +40,7 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(website))
                 list = list.Where(x => x.WebSite.StartsWith(website));
             if (!string.IsNullOrEmpty(dateFoundation))
-                list = list.Where(x => x.FoundationDate == DateTime.Parse(dateFoundation));
+                list = list.Where(x => x.FoundationDate.ToString().StartsWith(DateTime.Parse(dateFoundation).ToString()));
             if (!string.IsNullOrEmpty(bSR))
                 list = list.Where(x => x.BSR == double.Parse(bSR));
             dataGrid.ItemsSource = null;
@@ -55,7 +55,7 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(phone))
                 list = list.Where(x => x.Phone.StartsWith(phone));
             if (!string.IsNullOrEmpty(birthday))
-                list = list.Where(x => x.DateOfBirth == DateTime.Parse(birthday));
+                list = list.Where(x => x.DateOfBirth.ToString().StartsWith(DateTime.Parse(birthday).ToString()));
             if (!string.IsNullOrEmpty(email))
                 list = list.Where(x => x.Gender.StartsWith(gender));
             if (!string.IsNullOrEmpty(socialNetwork))
@@ -73,9 +73,9 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(user))
                 list = list.Where(x => x.User.Login.StartsWith(user));
             if (!string.IsNullOrEmpty(dateEntry))
-                list = list.Where(x => x.DateEntry == DateTime.Parse(dateEntry));
+                list = list.Where(x => x.DateEntry.ToString().StartsWith(DateTime.Parse(dateEntry).ToString()));
             if (!string.IsNullOrEmpty(dateExit))
-                list = list.Where(x => x.DateExit == DateTime.Parse(dateExit));
+                list = list.Where(x => x.DateExit.ToString().StartsWith(DateTime.Parse(dateExit).ToString()));
             if (!string.IsNullOrEmpty(status))
                 list = list.Where(x => x.Status.StartsWith(status));
             if (!string.IsNullOrEmpty(github))
@@ -105,15 +105,15 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(description))
                 list = list.Where(x => x.Description.StartsWith(description));
             if (!string.IsNullOrEmpty(dateStart))
-                list = list.Where(x => x.DateStart == DateTime.Parse(dateStart));
+                list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             if (!string.IsNullOrEmpty(dateEnd))
-                list = list.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+                list = list.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
             if (!string.IsNullOrEmpty(status))
                 list = list.Where(x => x.Status.StartsWith(status));
             if (!string.IsNullOrEmpty(organization))
                 list = list.Where(x => x.Organizations.Fullname.StartsWith(organization));
             if (!string.IsNullOrEmpty(director))
-                list = list.Where(x => x.DirectorId == int.Parse(director));
+                list = list.Where(x => x.DirectorId.ToString().StartsWith(director));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -149,11 +149,11 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(lectorDescription))
                 list = list.Where(x => x.LectorDescription.StartsWith(lectorDescription));
             if (!string.IsNullOrEmpty(dateStart))
-                list = list.Where(x => x.DateStart == DateTime.Parse(dateStart));
+                list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             if (!string.IsNullOrEmpty(dateEnd))
-                list = list.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+                list = list.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
             if (!string.IsNullOrEmpty(isActive))
-                list = list.Where(x => x.IsActive==bool.Parse(isActive));
+                list = list.Where(x => x.IsActive.ToString().StartsWith(isActive));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -182,11 +182,11 @@ namespace AccountingPolessUp.Helpers
                 list = list.Where(x => x.Status.StartsWith(statusDescription));
             if (!string.IsNullOrEmpty(isAccepted))
             {
-                list = list.Where(x=>x.IsAccepted==bool.Parse(isAccepted));
+                list = list.Where(x=>x.IsAccepted.ToString().StartsWith(isAccepted));
             }
 
             if (!string.IsNullOrEmpty(dateEntry))
-                list = list.Where(x => x.DateEntry == DateTime.Parse(dateEntry));
+                list = list.Where(x => x.DateEntry.ToString().StartsWith(DateTime.Parse(dateEntry).ToString()));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -234,15 +234,15 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(idLocalPM))
             {
-                list = list.Where(x => x.idLocalPM == int.Parse(idLocalPM));
+                list = list.Where(x => x.idLocalPM.ToString().StartsWith(idLocalPM));
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
-                list = list.Where(x => x.DateStart == DateTime.Parse(dateStart));
+                list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             }
             if (!string.IsNullOrEmpty(dateEnd))
             {
-                list = list.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+                list = list.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
             }
 
             dataGrid.ItemsSource = null;
@@ -265,11 +265,11 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(minMmr))
             {
-                list = list.Where(x => x.MinMmr == int.Parse(minMmr));
+                list = list.Where(x => x.MinMmr.ToString().StartsWith(minMmr));
             }
             if (!string.IsNullOrEmpty(maxMmr))
             {
-                list = list.Where(x => x.MaxMmr == int.Parse(maxMmr));
+                list = list.Where(x => x.MaxMmr.ToString().StartsWith(maxMmr));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -287,7 +287,7 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(dateEntry))
             {
-                list = list.Where(x => x.DateEntry == DateTime.Parse(dateEntry));
+                list = list.Where(x => x.DateEntry.ToString().StartsWith(DateTime.Parse(dateEntry).ToString()));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -331,11 +331,11 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
-                list = list.Where(x => x.DateStart == DateTime.Parse(dateStart));
+                list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             }
             if (!string.IsNullOrEmpty(dateEnd))
             {
-                list = list.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+                list = list.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -361,11 +361,11 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
-                list = list.Where(x => x.DateStart == DateTime.Parse(dateStart));
+                list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             }
             if (!string.IsNullOrEmpty(dateEnd))
             {
-                list = list.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+                list = list.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -387,7 +387,7 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(coursNumber))
             {
-                list = list.Where(x => x.CourseNumber == int.Parse(coursNumber));
+                list = list.Where(x => x.CourseNumber.ToString().StartsWith(coursNumber));
             }
             if (!string.IsNullOrEmpty(university))
             {
@@ -433,23 +433,23 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(budget))
             {
-                list = list.Where(x=>x.Budget==double.Parse(budget));
+                list = list.Where(x=>x.Budget.ToString().StartsWith(budget));
             }
             if (!string.IsNullOrEmpty(ratingCoefficient))
             {
-                list = list.Where(x=>x.RatingCoefficient==double.Parse(ratingCoefficient));
+                list = list.Where(x=>x.RatingCoefficient.ToString().StartsWith(ratingCoefficient));
             }
             if (!string.IsNullOrEmpty(isOpened))
             {
-                list = list.Where(x => x.isOpened == bool.Parse(isOpened));
+                list = list.Where(x => x.isOpened.ToString().StartsWith(isOpened));
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
-                list = list.Where(x => x.DateStart == DateTime.Parse(dateStart));
+                list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             }
             if (!string.IsNullOrEmpty(dateEnd))
             {
-                list = list.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+                list = list.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -472,15 +472,15 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(mentor))
             {
-                employments = employments.Where(x => x.IdMentor == int.Parse(mentor));
+                employments = employments.Where(x => x.IdMentor.ToString().StartsWith(mentor));
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
-                employments = employments.Where(x => x.DateStart == DateTime.Parse(dateStart));
+                employments = employments.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             }
             if (!string.IsNullOrEmpty(dateEnd))
             {
-                employments = employments.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+                employments = employments.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
             }
             if (!string.IsNullOrEmpty(participant))
             {
@@ -513,11 +513,11 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
-                finalProjects = finalProjects.Where(x => x.DateStart == DateTime.Parse(dateStart));
+                finalProjects = finalProjects.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             }
             if (!string.IsNullOrEmpty(dateEnd))
             {
-                finalProjects = finalProjects.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+                finalProjects = finalProjects.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
