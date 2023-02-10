@@ -60,7 +60,17 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged, StringFormat=dd.MM.yyyy HH:mm}" Header="Дата начала" />
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged,  StringFormat=dd.MM.yyyy HH:mm}" Header="Дата окончания" />
-                        <DataGridTextColumn Binding="{Binding WorkSpaceLink, UpdateSourceTrigger=PropertyChanged}" Header="Ссылка рабочего пространства" />
+                        <DataGridTemplateColumn Header="Ссылка рабочего пространства">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                <Hyperlink NavigateUri="{Binding WorkSpaceLink}" RequestNavigate="Hyperlink_RequestNavigate">
+                    <TextBlock Text="{Binding WorkSpaceLink}" />
+                </Hyperlink>
+            </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn Binding="{Binding Path = TrainingCourses.Name, UpdateSourceTrigger=PropertyChanged}" Header="Тренировочные курсы" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>

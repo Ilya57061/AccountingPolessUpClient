@@ -366,7 +366,7 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(studentCard))
             {
-                list = list.Where(x => x.StudentCard == int.Parse(studentCard));
+                list = list.Where(x => x.StudentCard.ToString().StartsWith(studentCard));
             }
             if (!string.IsNullOrEmpty(group))
             {
