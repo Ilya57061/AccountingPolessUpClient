@@ -104,6 +104,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+
+        }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
         }
     }
 }
