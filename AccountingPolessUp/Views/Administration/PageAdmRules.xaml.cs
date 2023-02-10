@@ -2,6 +2,7 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
+using AccountingPolessUp.Views.TextViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -74,5 +75,15 @@ namespace AccountingPolessUp.Views.Administration
                 break;
             }
         }
+        private void ButtonText_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Regulation regulation in dataGrid.SelectedItems)
+            {
+                WindowRegulationText windowText = new WindowRegulationText(regulation);
+                windowText.Show();
+            }
+            
+        }
+    
     }
 }

@@ -49,7 +49,14 @@ Background="Transparent"
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
-                        <DataGridTextColumn Binding="{Binding Text, UpdateSourceTrigger=PropertyChanged}" Header="Содержание" />
+                        <DataGridTemplateColumn Header="Содержание">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="ButtonText" Click="ButtonText_Click" Content="Текст">
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding Organization.Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Организация" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">

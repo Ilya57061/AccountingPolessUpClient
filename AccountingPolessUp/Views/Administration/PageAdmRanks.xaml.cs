@@ -2,6 +2,7 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
+using AccountingPolessUp.Views.TextViews;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -112,6 +113,15 @@ namespace AccountingPolessUp.Views.Administration
             {
                 this.NavigationService.Content = new PageAdmBonus(rank);
             }
+        }
+        private void ButtonDescription_Click(object sender, RoutedEventArgs e)
+        {
+            foreach (Rank rank in dataGrid.SelectedItems)
+            {
+                WindowRankDescription windowRank = new WindowRankDescription(rank);
+                windowRank.Show();
+            }
+
         }
     }
 }

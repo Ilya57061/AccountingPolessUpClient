@@ -50,7 +50,14 @@ Background="Transparent"
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding RankName, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
-                        <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
+                        <DataGridTemplateColumn Header="Описание">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button x:Name="ButtonDescription" Click="ButtonDescription_Click" Content="Текст">
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn Binding="{Binding MinMmr, UpdateSourceTrigger=PropertyChanged}" Header="МинММР" />
                         <DataGridTextColumn Binding="{Binding MaxMmr, UpdateSourceTrigger=PropertyChanged}" Header="МаксММР" />
                         <DataGridTextColumn Binding="{Binding Organizations.Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Организация" Width="auto"/>
