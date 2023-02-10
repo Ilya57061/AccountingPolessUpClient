@@ -32,13 +32,13 @@ namespace AccountingPolessUp.Helpers
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Organization> list, string name, string address, string contacts, string website, string dateFoundation, string bSR)
         {
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.Fullname.StartsWith(name));
+                list = list.Where(x => x.Fullname.ToLower().StartsWith(name.ToLower()));
             if (!string.IsNullOrEmpty(address))
-                list = list.Where(x => x.Address.StartsWith(address));
+                list = list.Where(x => x.Address.ToLower().StartsWith(address.ToLower()));
             if (!string.IsNullOrEmpty(contacts))
-                list = list.Where(x => x.Contacts.StartsWith(contacts));
+                list = list.Where(x => x.Contacts.ToLower().StartsWith(contacts.ToLower()));
             if (!string.IsNullOrEmpty(website))
-                list = list.Where(x => x.WebSite.StartsWith(website));
+                list = list.Where(x => x.WebSite.ToLower().StartsWith(website.ToLower()));
             if (!string.IsNullOrEmpty(dateFoundation))
                 list = list.Where(x => x.FoundationDate.ToString().StartsWith(DateTime.Parse(dateFoundation).ToString()));
             if (!string.IsNullOrEmpty(bSR))
@@ -51,15 +51,15 @@ namespace AccountingPolessUp.Helpers
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Individuals> list, string name, string phone, string birthday, string email, string gender, string socialNetwork)
         {
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.FIO.StartsWith(name));
+                list = list.Where(x => x.FIO.ToLower().StartsWith(name.ToLower()));
             if (!string.IsNullOrEmpty(phone))
-                list = list.Where(x => x.Phone.StartsWith(phone));
+                list = list.Where(x => x.Phone.ToLower().StartsWith(phone.ToLower()));
             if (!string.IsNullOrEmpty(birthday))
                 list = list.Where(x => x.DateOfBirth.ToString().StartsWith(DateTime.Parse(birthday).ToString()));
             if (!string.IsNullOrEmpty(email))
-                list = list.Where(x => x.Gender.StartsWith(gender));
+                list = list.Where(x => x.Gender.ToLower().StartsWith(gender.ToLower()));
             if (!string.IsNullOrEmpty(socialNetwork))
-                list = list.Where(x => x.SocialNetwork.StartsWith(socialNetwork));
+                list = list.Where(x => x.SocialNetwork.ToLower().StartsWith(socialNetwork.ToLower()));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -67,19 +67,19 @@ namespace AccountingPolessUp.Helpers
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Participants> list, string individual, string mmr, string user, string dateEntry, string dateExit, string status, string github)
         {
             if (!string.IsNullOrEmpty(individual))
-                list = list.Where(x => x.Individuals.FIO.StartsWith(individual));
+                list = list.Where(x => x.Individuals.FIO.ToLower().StartsWith(individual.ToLower()));
             if (!string.IsNullOrEmpty(mmr))
-                list = list.Where(x => x.Mmr == int.Parse(mmr));
+                list = list.Where(x => x.Mmr.ToString().ToLower().StartsWith(mmr.ToLower()));
             if (!string.IsNullOrEmpty(user))
-                list = list.Where(x => x.User.Login.StartsWith(user));
+                list = list.Where(x => x.User.Login.ToLower().StartsWith(user.ToLower()));
             if (!string.IsNullOrEmpty(dateEntry))
                 list = list.Where(x => x.DateEntry.ToString().StartsWith(DateTime.Parse(dateEntry).ToString()));
             if (!string.IsNullOrEmpty(dateExit))
                 list = list.Where(x => x.DateExit.ToString().StartsWith(DateTime.Parse(dateExit).ToString()));
             if (!string.IsNullOrEmpty(status))
-                list = list.Where(x => x.Status.StartsWith(status));
+                list = list.Where(x => x.Status.ToLower().StartsWith(status.ToLower()));
             if (!string.IsNullOrEmpty(github))
-                list = list.Where(x => x.GitHub.StartsWith(github));
+                list = list.Where(x => x.GitHub.ToLower().StartsWith(github.ToLower()));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -87,13 +87,13 @@ namespace AccountingPolessUp.Helpers
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<EducationalPortals> list, string department, string name, string description, string link)
         {
             if (!string.IsNullOrEmpty(department))
-                list = list.Where(x => x.Department.FullName.StartsWith(department));
+                list = list.Where(x => x.Department.FullName.ToLower().StartsWith(department.ToLower()));
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.Name.StartsWith(name));
+                list = list.Where(x => x.Name.ToLower().StartsWith(name.ToLower()));
             if (!string.IsNullOrEmpty(description))
-                list = list.Where(x => x.Description.StartsWith(description));
+                list = list.Where(x => x.Description.   StartsWith(description));
             if (!string.IsNullOrEmpty(link))
-                list = list.Where(x => x.Link.StartsWith(link));
+                list = list.Where(x => x.Link.ToLower().StartsWith(link.ToLower()));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -101,19 +101,19 @@ namespace AccountingPolessUp.Helpers
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Department> list, string name, string description, string dateStart, string dateEnd, string status, string organization, string director)
         {
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.FullName.StartsWith(name));
+                list = list.Where(x => x.FullName.ToLower().StartsWith(name.ToLower()));
             if (!string.IsNullOrEmpty(description))
-                list = list.Where(x => x.Description.StartsWith(description));
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
             if (!string.IsNullOrEmpty(dateStart))
                 list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             if (!string.IsNullOrEmpty(dateEnd))
                 list = list.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
             if (!string.IsNullOrEmpty(status))
-                list = list.Where(x => x.Status.StartsWith(status));
+                list = list.Where(x => x.Status.ToLower().StartsWith(status.ToLower()));
             if (!string.IsNullOrEmpty(organization))
-                list = list.Where(x => x.Organizations.Fullname.StartsWith(organization));
+                list = list.Where(x => x.Organizations.Fullname.ToLower().StartsWith(organization.ToLower()));
             if (!string.IsNullOrEmpty(director))
-                list = list.Where(x => x.DirectorId.ToString().StartsWith(director));
+                list = list.Where(x => x.DirectorId.ToString().ToLower().StartsWith(director.ToLower()));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -121,16 +121,16 @@ namespace AccountingPolessUp.Helpers
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Customer> list, string name, string address, string contacts, string website, string description)
         {
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.FullName.StartsWith(name));
+                list = list.Where(x => x.FullName.ToLower().StartsWith(name.ToLower()));
             if
             (!string.IsNullOrEmpty(address))
-                list = list.Where(x => x.Address.StartsWith(address));
+                list = list.Where(x => x.Address.ToLower().StartsWith(address.ToLower()));
             if (!string.IsNullOrEmpty(contacts))
-                list = list.Where(x => x.Contacts.StartsWith(contacts));
+                list = list.Where(x => x.Contacts.ToLower().StartsWith(contacts.ToLower()));
             if (!string.IsNullOrEmpty(website))
-                list = list.Where(x => x.WebSite.StartsWith(website));
+                list = list.Where(x => x.WebSite.ToLower().StartsWith(website.ToLower()));
             if (!string.IsNullOrEmpty(description))
-                list = list.Where(x => x.Description.StartsWith(description));
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -139,21 +139,21 @@ namespace AccountingPolessUp.Helpers
             string lectorFIO, string lectorDescription, string dateStart, string dateEnd, string isActive)
         {
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.Name.StartsWith(name));
+                list = list.Where(x => x.Name.ToLower().StartsWith(name.ToLower()));
             if (!string.IsNullOrEmpty(description))
-                list = list.Where(x => x.Description.StartsWith(description));
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
             if (!string.IsNullOrEmpty(description))
-                list = list.Where(x => x.Link.StartsWith(link));
+                list = list.Where(x => x.Link.ToLower().StartsWith(link.ToLower()));
             if (!string.IsNullOrEmpty(lectorFIO))
-                list = list.Where(x => x.LectorFIO.StartsWith(lectorFIO));
+                list = list.Where(x => x.LectorFIO.ToLower().StartsWith(lectorFIO.ToLower()));
             if (!string.IsNullOrEmpty(lectorDescription))
-                list = list.Where(x => x.LectorDescription.StartsWith(lectorDescription));
+                list = list.Where(x => x.LectorDescription.ToLower().StartsWith(lectorDescription.ToLower()));
             if (!string.IsNullOrEmpty(dateStart))
                 list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             if (!string.IsNullOrEmpty(dateEnd))
                 list = list.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
             if (!string.IsNullOrEmpty(isActive))
-                list = list.Where(x => x.IsActive.ToString().StartsWith(isActive));
+                list = list.Where(x => x.IsActive.ToString().ToLower().StartsWith(isActive.ToLower()));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -161,11 +161,11 @@ namespace AccountingPolessUp.Helpers
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Bonus> list, string name, string rank, string description)
         {
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.BonusName.StartsWith(name));
+                list = list.Where(x => x.BonusName.ToLower().StartsWith(name.ToLower()));
             if (!string.IsNullOrEmpty(rank))
-                list = list.Where(x => x.Rank.RankName.StartsWith(rank));
+                list = list.Where(x => x.Rank.RankName.ToLower().StartsWith(rank.ToLower()));
             if (!string.IsNullOrEmpty(description))
-                list = list.Where(x => x.BonusDescription.StartsWith(description));
+                list = list.Where(x => x.BonusDescription.ToLower().StartsWith(description.ToLower()));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -173,16 +173,16 @@ namespace AccountingPolessUp.Helpers
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<ApplicationsInTheProject> list, string dateEntry, string participant, string vacancy, string isAccepted, string status, string statusDescription)
         {
             if (!string.IsNullOrEmpty(participant))
-                list = list.Where(x => x.Participants.Individuals.FIO.StartsWith(participant));
+                list = list.Where(x => x.Participants.Individuals.FIO.ToLower().StartsWith(participant.ToLower()));
             if (!string.IsNullOrEmpty(vacancy))
-                list = list.Where(x => x.Vacancy.Name.StartsWith(vacancy));
+                list = list.Where(x => x.Vacancy.Name.ToLower().StartsWith(vacancy.ToLower()));
             if (!string.IsNullOrEmpty(status))
-                list = list.Where(x => x.Status.StartsWith(status));
+                list = list.Where(x => x.Status.ToLower().StartsWith(status.ToLower()));
             if (!string.IsNullOrEmpty(statusDescription))
-                list = list.Where(x => x.Status.StartsWith(statusDescription));
+                list = list.Where(x => x.Status.ToLower().StartsWith(statusDescription.ToLower()));
             if (!string.IsNullOrEmpty(isAccepted))
             {
-                list = list.Where(x=>x.IsAccepted.ToString().StartsWith(isAccepted));
+                list = list.Where(x=>x.IsAccepted.ToString().ToLower().StartsWith(isAccepted.ToLower()));
             }
 
             if (!string.IsNullOrEmpty(dateEntry))
@@ -195,15 +195,15 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(name))
             {
-                list = list.Where(x => x.FullName.StartsWith(name));
+                list = list.Where(x => x.FullName.ToLower().StartsWith(name.ToLower()));
             }
             if (!string.IsNullOrEmpty(description))
             {
-                list = list.Where(x => x.Description.StartsWith(description));
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
             }
             if (!string.IsNullOrEmpty(department))
             {
-                list = list.Where(x => x.Department.FullName.StartsWith(department));
+                list = list.Where(x => x.Department.FullName.ToLower().StartsWith(department.ToLower()));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -214,23 +214,23 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(name))
             {
-                list = list.Where(x => x.Fullname.StartsWith(name));
+                list = list.Where(x => x.Fullname.ToLower().StartsWith(name.ToLower()));
             }
             if (!string.IsNullOrEmpty(description))
             {
-                list = list.Where(x => x.Description.StartsWith(description));
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
             }
             if (!string.IsNullOrEmpty(customer))
             {
-                list = list.Where(x => x.Customer.FullName.StartsWith(customer));
+                list = list.Where(x => x.Customer.FullName.ToLower().StartsWith(customer.ToLower()));
             }
             if (!string.IsNullOrEmpty(status))
             {
-                list = list.Where(x => x.Status.StartsWith(status));
+                list = list.Where(x => x.Status.ToLower().StartsWith(status.ToLower()));
             }
             if (!string.IsNullOrEmpty(technicalSpecification))
             {
-                list = list.Where(x => x.TechnicalSpecification.StartsWith(technicalSpecification));
+                list = list.Where(x => x.TechnicalSpecification.ToLower().StartsWith(technicalSpecification.ToLower()));
             }
             if (!string.IsNullOrEmpty(idLocalPM))
             {
@@ -253,15 +253,15 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(organization))
             {
-                list = list.Where(x => x.Organizations.Fullname.StartsWith(organization));
+                list = list.Where(x => x.Organizations.Fullname.ToLower().StartsWith(organization.ToLower()));
             }
             if (!string.IsNullOrEmpty(description))
             {
-                list = list.Where(x => x.Description.StartsWith(description));
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
             }
             if (!string.IsNullOrEmpty(name))
             {
-                list = list.Where(x => x.RankName.StartsWith(name));
+                list = list.Where(x => x.RankName.ToLower().StartsWith(name.ToLower()));
             }
             if (!string.IsNullOrEmpty(minMmr))
             {
@@ -279,11 +279,11 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(participant))
             {
-                list = list.Where(x => x.Participants.Individuals.FIO.StartsWith(participant));
+                list = list.Where(x => x.Participants.Individuals.FIO.ToLower().StartsWith(participant.ToLower()));
             }
             if (!string.IsNullOrEmpty(course))
             {
-                list = list.Where(x => x.TrainingCourses.Name.StartsWith(course));
+                list = list.Where(x => x.TrainingCourses.Name.ToLower().StartsWith(course.ToLower()));
             }
             if (!string.IsNullOrEmpty(dateEntry))
             {
@@ -297,19 +297,19 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(organization))
             {
-                list = list.Where(x => x.Organization.Fullname.StartsWith(organization));
+                list = list.Where(x => x.Organization.Fullname.ToLower().StartsWith(organization.ToLower()));
             }
             if (!string.IsNullOrEmpty(description))
             {
-                list = list.Where(x => x.Description.StartsWith(description));
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
             }
             if (!string.IsNullOrEmpty(name))
             {
-                list = list.Where(x => x.Name.StartsWith(name));
+                list = list.Where(x => x.Name.ToLower().StartsWith(name.ToLower()));
             }
             if (!string.IsNullOrEmpty(text))
             {
-                list = list.Where(x => x.Text.StartsWith(text));
+                list = list.Where(x => x.Text.ToLower().StartsWith(text.ToLower()));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -319,15 +319,15 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(link))
             {
-                list = list.Where(x => x.WorkSpaceLink.StartsWith(link));
+                list = list.Where(x => x.WorkSpaceLink.ToLower().StartsWith(link.ToLower()));
             }
             if (!string.IsNullOrEmpty(description))
             {
-                list = list.Where(x => x.Description.StartsWith(description));
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
             }
             if (!string.IsNullOrEmpty(course))
             {
-                list = list.Where(x => x.TrainingCourses.Name.StartsWith(course));
+                list = list.Where(x => x.TrainingCourses.Name.ToLower().StartsWith(course.ToLower()));
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
@@ -345,19 +345,19 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(name))
             {
-                list = list.Where(x => x.Name.StartsWith(name));
+                list = list.Where(x => x.Name.ToLower().StartsWith(name.ToLower()));
             }
             if (!string.IsNullOrEmpty(description))
             {
-                list = list.Where(x => x.Description.StartsWith(description));
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
             }
             if (!string.IsNullOrEmpty(status))
             {
-                list = list.Where(x => x.Status.StartsWith(status));
+                list = list.Where(x => x.Status.ToLower().StartsWith(status.ToLower()));
             }
             if (!string.IsNullOrEmpty(project))
             {
-                list = list.Where(x => x.Project.Fullname.StartsWith(project));
+                list = list.Where(x => x.Project.Fullname.ToLower().StartsWith(project.ToLower()));
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
@@ -379,11 +379,11 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(group))
             {
-                list = list.Where(x => x.Group.StartsWith(group));
+                list = list.Where(x => x.Group.ToLower().StartsWith(group.ToLower()));
             }
             if (!string.IsNullOrEmpty(individual))
             {
-                list = list.Where(x => x.Individuals.FIO.StartsWith(individual));
+                list = list.Where(x => x.Individuals.FIO.ToLower().StartsWith(individual.ToLower()));
             }
             if (!string.IsNullOrEmpty(coursNumber))
             {
@@ -391,7 +391,7 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(university))
             {
-                list = list.Where(x => x.University.StartsWith(university));
+                list = list.Where(x => x.University.ToLower().StartsWith(university.ToLower()));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -401,11 +401,11 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(login))
             {
-                list = list.Where(x => x.Login.StartsWith(login));
+                list = list.Where(x => x.Login.ToLower().StartsWith(login.ToLower()));
             }
             if (!string.IsNullOrEmpty(role))
             {
-                list = list.Where(x => x.Role.Name.StartsWith(role));
+                list = list.Where(x => x.Role.Name.ToLower().StartsWith(role.ToLower()));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -417,19 +417,19 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(name))
             {
-                list = list.Where(x => x.Name.StartsWith(name));
+                list = list.Where(x => x.Name.ToLower().StartsWith(name.ToLower()));
             }
             if (!string.IsNullOrEmpty(description))
             {
-                list = list.Where(x => x.Descriptions.StartsWith(description));
+                list = list.Where(x => x.Descriptions.ToLower().StartsWith(description.ToLower()));
             }
             if (!string.IsNullOrEmpty(responsibilities))
             {
-                list = list.Where(x => x.Responsibilities.StartsWith(responsibilities));
+                list = list.Where(x => x.Responsibilities.ToLower().StartsWith(responsibilities.ToLower()));
             }
             if (!string.IsNullOrEmpty(stagesOfProject))
             {
-                list = list.Where(x => x.StagesOfProject.Name.StartsWith(responsibilities));
+                list = list.Where(x => x.StagesOfProject.Name.ToLower().StartsWith(responsibilities.ToLower()));
             }
             if (!string.IsNullOrEmpty(budget))
             {
@@ -441,7 +441,7 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(isOpened))
             {
-                list = list.Where(x => x.isOpened.ToString().StartsWith(isOpened));
+                list = list.Where(x => x.isOpened.ToString().ToLower().StartsWith(isOpened.ToLower()));
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
@@ -460,15 +460,15 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(position))
             {
-                employments = employments.Where(x => x.Position.FullName.StartsWith(position));
+                employments = employments.Where(x => x.Position.FullName.ToLower().StartsWith(position.ToLower()));
             }
             if (!string.IsNullOrEmpty(description))
             {
-                employments = employments.Where(x => x.StatusDescription.StartsWith(description));
+                employments = employments.Where(x => x.StatusDescription.ToLower().StartsWith(description.ToLower()));
             }
             if (!string.IsNullOrEmpty(status))
             {
-                employments = employments.Where(x => x.Status.StartsWith(status));
+                employments = employments.Where(x => x.Status.ToLower().StartsWith(status.ToLower()));
             }
             if (!string.IsNullOrEmpty(mentor))
             {
@@ -484,7 +484,7 @@ namespace AccountingPolessUp.Helpers
             }
             if (!string.IsNullOrEmpty(participant))
             {
-                employments = employments.Where(x => x.Participants.Individuals.FIO.StartsWith(participant));
+                employments = employments.Where(x => x.Participants.Individuals.FIO.ToLower().StartsWith(participant.ToLower()));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
@@ -497,19 +497,19 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(name))
             {
-                finalProjects = finalProjects.Where(x => x.Name.StartsWith(name));
+                finalProjects = finalProjects.Where(x => x.Name.ToLower().StartsWith(name.ToLower()));
             }
             if (!string.IsNullOrEmpty(description))
             {
-                finalProjects = finalProjects.Where(x => x.Description.StartsWith(description));
+                finalProjects = finalProjects.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
             }
             if (!string.IsNullOrEmpty(gitHub))
             {
-                finalProjects = finalProjects.Where(x => x.GitHub.StartsWith(gitHub));
+                finalProjects = finalProjects.Where(x => x.GitHub.ToLower().StartsWith(gitHub.ToLower()));
             }
             if (!string.IsNullOrEmpty(link))
             {
-                finalProjects = finalProjects.Where(x => x.Links.StartsWith(link));
+                finalProjects = finalProjects.Where(x => x.Links.ToLower().StartsWith(link.ToLower()));
             }
             if (!string.IsNullOrEmpty(dateStart))
             {
