@@ -187,6 +187,10 @@ namespace AccountingPolessUp
         {
             MainFrame.Content = new PageAdmScheduleOfClasses();
         }
+        private void ButtonAdmFinalProjects_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageAdmFinalProject();
+        }
         #endregion
     }
 }

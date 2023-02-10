@@ -59,7 +59,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _organizationService.Get(), FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text,BSR.Text,BSO.Text);
+            FilterManager.ConfirmFilter(dataGrid, _organizationService.Get(), FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text,BSR.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {

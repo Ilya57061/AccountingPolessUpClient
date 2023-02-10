@@ -25,9 +25,14 @@ Background="Transparent"
             <ColumnDefinition/>
             <ColumnDefinition/>
             <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.ColumnSpan="5" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+        <Border Grid.ColumnSpan="8" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
         <Grid Grid.Row="1" Grid.Column="0">
             <TextBox Margin="1,0,1,20" x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CardText" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding Name}"/>
         </Grid>
@@ -37,7 +42,33 @@ Background="Transparent"
         <Grid Grid.Row="1" Grid.Column="2">
             <TextBox Margin="1,0,1,20" x:Name="Link" FontSize="14" materialDesign:HintAssist.Hint="Ссылка" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Link" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Link}"/>
         </Grid>
-        <Grid Grid.Row="2" Grid.Column="1">
+        <Grid Grid.Row="1" Grid.Column="3">
+            <TextBox Margin="1,0,1,20" x:Name="LectorFio" FontSize="14" materialDesign:HintAssist.Hint="ФИО лектора" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Man" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding LectorFIO}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="4">
+            <TextBox Margin="1,0,1,20" x:Name="LectorDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание лектора" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding LectorDescription}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="5">
+            <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12"
+ materialDesign:HintAssist.Hint="Дата начала"
+ materialDesign:TextFieldAssist.HasClearButton="True"
+ Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="6">
+            <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12"
+ materialDesign:HintAssist.Hint="Дата окончания"
+ materialDesign:TextFieldAssist.HasClearButton="True"
+ Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="7">
+            <ComboBox  x:Name="IsActive"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Is Active" Margin="1,0,1,12" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                <ComboBoxItem
+    Content="True" />
+                <ComboBoxItem
+    Content="False" />
+            </ComboBox>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2">
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />
             </Button>

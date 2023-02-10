@@ -41,7 +41,6 @@ namespace AccountingPolessUp.Implementations
                 ["Contacts"] = $"{model.Contacts}",
                 ["WebSite"] = $"{model.WebSite}",
                 ["BSR"] = $"{model.BSR}",
-                ["BSO"] = $"{model.BSO}",
                 ["FoundationDate"] = $"{model.FoundationDate}"
             };
             _webClient.UploadValues("CreateOrganization", "POST", reqparm);
@@ -57,7 +56,6 @@ namespace AccountingPolessUp.Implementations
                 ["Contacts"] = $"{model.Contacts}",
                 ["WebSite"] = $"{model.WebSite}",
                 ["BSR"] = $"{model.BSR}",
-                ["BSO"] = $"{model.BSO}",
                 ["FoundationDate"] = $"{model.FoundationDate}"
             };
             _webClient.UploadValues("UpdateOrganization", "PUT", reqparm);

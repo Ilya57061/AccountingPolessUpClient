@@ -32,6 +32,12 @@ namespace AccountingPolessUp.Views.Administration
             _employment = employment;
             UpdateDataGrid();
         }
+        public PageAdmFinalProject()
+        {
+            InitializeComponent();
+            ButtonBack.Visibility=Visibility.Hidden;
+            _finalProjectService.Get();
+        }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.LineRight(scroll);

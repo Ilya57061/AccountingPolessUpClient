@@ -63,7 +63,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _coursesService.Get(), Name.Text, Description.Text, Link.Text);
+            FilterManager.ConfirmFilter(dataGrid, _coursesService.Get(), Name.Text, Description.Text, Link.Text, LectorFio.Text, LectorDescription.Text, DateStart.Text, DateEnd.Text, IsActive.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +96,14 @@ namespace AccountingPolessUp.Views.Administration
         private void UpdateDataGrid()
         {
             DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
+        }
+        private void ButtonRight_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineRight(scroll);
+        }
+        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineLeft(scroll);
         }
     }
 }
