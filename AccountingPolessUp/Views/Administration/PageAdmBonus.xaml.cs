@@ -25,11 +25,19 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmBonus : Page
     {
         private readonly BonusService _bonusService = new BonusService();
+        Rank _rank;
 
         public PageAdmBonus()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
+            ButtonBack.Visibility = Visibility.Hidden;
+            UpdateDataGrid();
+        }
+        public PageAdmBonus(Rank rank)
+        {
+            InitializeComponent();
+            _rank = rank;
+            UpdateDataGrid();
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
@@ -55,11 +63,11 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
-            DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
+            UpdateDataGrid();
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
-         
+            this.NavigationService.GoBack();
         }
 
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -75,10 +83,16 @@ namespace AccountingPolessUp.Views.Administration
                 {
                     _bonusService.Delete(bonus.Id);
                 }
-                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
+                UpdateDataGrid();
             }
         }
-
+        private void UpdateDataGrid()
+        {
+            if (_rank == null)
+                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
+            else
+                DataGridUpdater.UpdateDataGrid(_bonusService.Get(_rank.Id), this);
+        }
         private void EditSelectedBonus()
         {
             if (dataGrid.SelectedItems.Count == 1)
