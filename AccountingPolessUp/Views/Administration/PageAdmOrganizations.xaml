@@ -31,14 +31,12 @@ Background="Transparent"
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelOrganizations" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Организации"></TextBlock>
                 </StackPanel>
-
                 <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
                     <TextBox Margin="1,0,1,12.5" x:Name="FullName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding Fullname}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Address" FontSize="14" materialDesign:HintAssist.Hint="Адрес" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="MapMarker" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding Address}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Contacts" FontSize="14" materialDesign:HintAssist.Hint="Контакты" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Phone" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Contacts}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Website" FontSize="14" materialDesign:HintAssist.Hint="Веб-сайт" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Web" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding WebSite}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="BSR" FontSize="14" materialDesign:HintAssist.Hint="БСР" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="StarCog" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding BSR}"/>
-                    <TextBox Margin="1,0,1,12.5" x:Name="BSO" FontSize="14" materialDesign:HintAssist.Hint="БСО" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Money" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding BSO}"/>
                     <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="FoundationDate" FontSize="14" Margin="1,0,1,12.5"
                     materialDesign:HintAssist.Hint="Дата основания"
                     materialDesign:TextFieldAssist.HasClearButton="True"
@@ -59,7 +57,6 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Contacts, UpdateSourceTrigger=PropertyChanged}" Header="Контакты" />
                         <DataGridTextColumn Binding="{Binding WebSite, UpdateSourceTrigger=PropertyChanged}" Header="Веб-сайт" />
                         <DataGridTextColumn Binding="{Binding BSR, UpdateSourceTrigger=PropertyChanged}" Header="БСР" />
-                        <DataGridTextColumn Binding="{Binding BSO, UpdateSourceTrigger=PropertyChanged}" Header="БСО" />
                         <DataGridTextColumn Binding="{Binding FoundationDate, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата основания" Width="auto"/>
                         <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>

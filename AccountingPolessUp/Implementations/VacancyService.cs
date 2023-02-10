@@ -40,7 +40,7 @@ namespace AccountingPolessUp.Implementations
                 ["Responsibilities"] = $"{model.Responsibilities}",
                 ["DateStart"] = $"{model.DateStart}",
                 ["DateEnd"] = $"{model.DateEnd}",
-                ["PaymentRatio"] = $"{model.PaymentRatio}",
+                ["Budget"] = $"{model.Budget}",
                 ["RatingCoefficient"] = $"{model.RatingCoefficient}",
                 ["StagesOfProjectId"] = $"{model.StagesOfProjectId}"
             };
@@ -57,7 +57,7 @@ namespace AccountingPolessUp.Implementations
                 ["Responsibilities"] = $"{model.Responsibilities}",
                 ["DateStart"] = $"{model.DateStart}",
                 ["DateEnd"] = $"{model.DateEnd}",
-                ["PaymentRatio"] = $"{model.PaymentRatio}",
+                ["Budget"] = $"{model.Budget}",
                 ["RatingCoefficient"] = $"{model.RatingCoefficient}",
                 ["StagesOfProjectId"] = $"{model.StagesOfProjectId}"
             };

@@ -67,7 +67,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _vacancyService.Get(),Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text, StagesOfProject.Text,IsOpened.Text, PaymentRatio.Text, RatingCoefficient.Text);
+            FilterManager.ConfirmFilter(dataGrid, _vacancyService.Get(),Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text, StagesOfProject.Text,IsOpened.Text, Budjet.Text, RatingCoefficient.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {

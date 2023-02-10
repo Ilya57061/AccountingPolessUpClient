@@ -81,6 +81,15 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _cours.Name = Name.Text;
             _cours.Description = Description.Text;
             _cours.Link = Link.Text;
+            _cours.LectorFIO = LectorFio.Text;
+            _cours.LectorDescription = LectorDescription.Text;
+            _cours.DateStart = DateTime.Parse(DateStart.Text);
+            _cours.DateEnd = DateTime.Parse(DateEnd.Text);
+            _cours.IsActive = bool.Parse(IsActive.Text);
+        }
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.Validator(e);
         }
     }
 }

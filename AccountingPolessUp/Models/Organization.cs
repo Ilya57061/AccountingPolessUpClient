@@ -13,7 +13,6 @@ namespace AccountingPolessUp.Models
         public string Contacts { get; set; } = string.Empty;
         public string WebSite { get; set; } = string.Empty;
         public double? BSR { get; set; }
-        public double? BSO { get; set; }
         public DateTime? FoundationDate { get; set; }
         public List<Department> Departments { get; set; } 
         public List<Regulation> Regulations { get; set; } 

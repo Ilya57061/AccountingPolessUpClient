@@ -11,7 +11,7 @@ namespace AccountingPolessUp.Models
         public string Responsibilities { get; set; } = string.Empty;
         public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
-        public double? PaymentRatio { get; set; }
+        public double? Budget { get; set; }
         public double? RatingCoefficient { get; set; }
         public StagesOfProject StagesOfProject { get; set; }
         public int StagesOfProjectId { get; set; } 

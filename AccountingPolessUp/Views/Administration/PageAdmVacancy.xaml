@@ -50,7 +50,7 @@ Background="Transparent"
   materialDesign:HintAssist.Hint="Дата окончания"
   materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
-                        <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,12.5" x:Name="PaymentRatio" FontSize="14" materialDesign:HintAssist.Hint="Коэффициент оплаты" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" />
+                        <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,12.5" x:Name="Budjet" FontSize="14" materialDesign:HintAssist.Hint="Бюджет" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" />
                         <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,12.5" x:Name="RatingCoefficient" FontSize="14" materialDesign:HintAssist.Hint="Рейтинговый коэффициент" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" />
                         <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,12.5" x:Name="StagesOfProject" FontSize="14" materialDesign:HintAssist.Hint="Стадия проекта" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="ListStatus" materialDesign:TextFieldAssist.LeadingIconSize="20" />
                         <ComboBox  x:Name="IsOpened"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Is Opened" Margin="1,0,1,0">
@@ -74,7 +74,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Responsibilities, UpdateSourceTrigger=PropertyChanged}" Header="Обязанности" />
                         <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата начала" />
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата окончания" />
-                        <DataGridTextColumn Binding="{Binding PaymentRatio, UpdateSourceTrigger=PropertyChanged}" Header="Коэффициент оплаты" />
+                        <DataGridTextColumn Binding="{Binding Budjet, UpdateSourceTrigger=PropertyChanged}" Header="Бюджет" />
                         <DataGridTextColumn Binding="{Binding RatingCoefficient, UpdateSourceTrigger=PropertyChanged}" Header="Рейтинговый коэффициент" />
                         <DataGridTextColumn Binding="{Binding StagesOfProject.Name, UpdateSourceTrigger=PropertyChanged}" Header="Стадия проекта" />
                         <DataGridTextColumn Binding="{Binding isOpened, UpdateSourceTrigger=PropertyChanged}" Header="Открыта" Width="auto"/>

@@ -62,7 +62,7 @@ Background="Transparent"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
-            <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,20" x:Name="PaymentRatio" FontSize="14" materialDesign:HintAssist.Hint="Коэффициент оплаты" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding PaymentRatio}"/>
+            <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,20" x:Name="Budget" FontSize="14" materialDesign:HintAssist.Hint="Бюджет" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Budget}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="6">
             <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,20" x:Name="RatingCoefficient" FontSize="14" materialDesign:HintAssist.Hint="Рейтинговый коэффициент" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding RatingCoefficient}"/>

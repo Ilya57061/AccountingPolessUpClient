@@ -47,10 +47,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _employment = employment;
             _parent = parent;
         }
-        private void OpenEmployment_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -87,7 +83,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             _finalProject.DateStart = DateTime.Parse(DateStart.Text);
             _finalProject.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
-            _finalProject.EmploymentId = _employment.Id;
+            //_finalProject.EmploymentId = _employment.Id;
+            if (_finalProject.EmploymentId == null) _finalProject.EmploymentId = _employment.Id;
             _finalProject.Name = Name.Text;
             _finalProject.Description = Description.Text;
             _finalProject.GitHub = GitHub.Text;

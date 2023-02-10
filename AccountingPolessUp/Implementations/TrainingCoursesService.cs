@@ -37,7 +37,12 @@ namespace AccountingPolessUp.Implementations
             {
                 ["Name"] = $"{model.Name}",
                 ["Description"] = $"{model.Description}",
-                ["Link"] = $"{model.Link}"
+                ["Link"] = $"{model.Link}",
+                ["LectorFIO"] = $"{model.LectorFIO}",
+                ["LectorDescription"] = $"{model.LectorDescription}",
+                ["DateStart"] = $"{model.DateStart}",
+                ["DateEnd"] = $"{model.DateEnd}",
+                ["IsActive"] = $"{model.IsActive}"
             };
             _webClient.UploadValues("CreateTrainingCourses", "POST", reqparm);
         }
@@ -49,7 +54,12 @@ namespace AccountingPolessUp.Implementations
                 ["id"] = $"{model.Id}",
                 ["Name"] = $"{model.Name}",
                 ["Description"] = $"{model.Description}",
-                ["Link"] = $"{model.Link}"
+                ["Link"] = $"{model.Link}",
+                ["LectorFIO"] = $"{model.LectorFIO}",
+                ["LectorDescription"] = $"{model.LectorDescription}",
+                ["DateStart"] = $"{model.DateStart}",
+                ["DateEnd"] = $"{model.DateEnd}",
+                ["IsActive"] = $"{model.IsActive}"
             };
             _webClient.UploadValues("UpdateTrainingCourses", "PUT", reqparm);
         }

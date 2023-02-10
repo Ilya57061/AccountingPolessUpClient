@@ -57,6 +57,10 @@ namespace AccountingPolessUp.Views.Administration
             FilterManager.ClearControls(panel);
             DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
         }
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+         
+        }
 
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

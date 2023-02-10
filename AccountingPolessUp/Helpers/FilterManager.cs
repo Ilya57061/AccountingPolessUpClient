@@ -29,7 +29,7 @@ namespace AccountingPolessUp.Helpers
             }
 
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Organization> list, string name, string address, string contacts, string website, string dateFoundation, string bSR, string bSO)
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Organization> list, string name, string address, string contacts, string website, string dateFoundation, string bSR)
         {
             if (!string.IsNullOrEmpty(name))
                 list = list.Where(x => x.Fullname.StartsWith(name));
@@ -43,8 +43,6 @@ namespace AccountingPolessUp.Helpers
                 list = list.Where(x => x.FoundationDate == DateTime.Parse(dateFoundation));
             if (!string.IsNullOrEmpty(bSR))
                 list = list.Where(x => x.BSR == double.Parse(bSR));
-            if (!string.IsNullOrEmpty(bSO))
-                list = list.Where(x => x.BSO == double.Parse(bSO));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -137,7 +135,8 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
-        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<TrainingCourses> list, string name, string description, string link)
+        public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<TrainingCourses> list, string name, string description, string link,
+            string lectorFIO, string lectorDescription, string dateStart, string dateEnd, string isActive)
         {
             if (!string.IsNullOrEmpty(name))
                 list = list.Where(x => x.Name.StartsWith(name));
@@ -145,6 +144,16 @@ namespace AccountingPolessUp.Helpers
                 list = list.Where(x => x.Description.StartsWith(description));
             if (!string.IsNullOrEmpty(description))
                 list = list.Where(x => x.Link.StartsWith(link));
+            if (!string.IsNullOrEmpty(lectorFIO))
+                list = list.Where(x => x.LectorFIO.StartsWith(lectorFIO));
+            if (!string.IsNullOrEmpty(lectorDescription))
+                list = list.Where(x => x.LectorDescription.StartsWith(lectorDescription));
+            if (!string.IsNullOrEmpty(dateStart))
+                list = list.Where(x => x.DateStart == DateTime.Parse(dateStart));
+            if (!string.IsNullOrEmpty(dateEnd))
+                list = list.Where(x => x.DateEnd == DateTime.Parse(dateEnd));
+            if (!string.IsNullOrEmpty(isActive))
+                list = list.Where(x => x.IsActive==bool.Parse(isActive));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -404,7 +413,7 @@ namespace AccountingPolessUp.Helpers
         }
 
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Vacancy> list, string name, string description, string responsibilities,
-          string dateStart, string dateEnd,  string stagesOfProject, string isOpened, string paymentRatio, string ratingCoefficient)
+          string dateStart, string dateEnd,  string stagesOfProject, string isOpened, string budget, string ratingCoefficient)
         {
             if (!string.IsNullOrEmpty(name))
             {
@@ -422,9 +431,9 @@ namespace AccountingPolessUp.Helpers
             {
                 list = list.Where(x => x.StagesOfProject.Name.StartsWith(responsibilities));
             }
-            if (!string.IsNullOrEmpty(paymentRatio))
+            if (!string.IsNullOrEmpty(budget))
             {
-                list = list.Where(x=>x.PaymentRatio==double.Parse(paymentRatio));
+                list = list.Where(x=>x.Budget==double.Parse(budget));
             }
             if (!string.IsNullOrEmpty(ratingCoefficient))
             {
