@@ -31,6 +31,18 @@ namespace AccountingPolessUp.Implementations
             if (Info is null) throw new Exception("info - null");
             else return Info;
         }
+        public List<ApplicationsInTheProject> Get(int vacancyId)
+        {
+            var reqparm = new NameValueCollection
+            {
+                ["id"] = $"{vacancyId}"
+            };
+            var response = _webClient.UploadValues("GetAppInTheProjectForVacancyId", "POST", reqparm);
+            var responseString = Encoding.Default.GetString(response);
+            var Info = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(responseString);
+            if (Info is null) throw new Exception("info - null");
+            else return Info;
+        }
 
         public void Create(ApplicationsInTheProject model)
         {

@@ -126,5 +126,16 @@ namespace AccountingPolessUp.Views.Administration
         {
             this.NavigationService.GoBack();
         }
+        private void ButtonVacancy_Click(object sender, RoutedEventArgs e)
+        {
+            OpenVacancy();
+        }
+        private void OpenVacancy()
+        {
+            foreach (StagesOfProject stagesOfProject in dataGrid.SelectedItems)
+            {
+                this.NavigationService.Content = new PageAdmVacancy(stagesOfProject);
+            }
+        }
     }
 }

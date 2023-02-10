@@ -36,7 +36,7 @@ namespace AccountingPolessUp.Implementations
             {
                 ["id"] = $"{departmentId}"
             };
-            var response = _webClient.UploadValues("PositionForDepartmentId", "POST", reqparm);
+            var response = _webClient.UploadValues("GetPositionForDepartmentId", "POST", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var Info = JsonConvert.DeserializeObject<List<Position>>(responseString);
             if (Info is null) throw new Exception("info - null");
