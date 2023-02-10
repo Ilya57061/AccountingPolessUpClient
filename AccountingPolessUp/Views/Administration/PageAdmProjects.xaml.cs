@@ -109,5 +109,16 @@ namespace AccountingPolessUp.Views.Administration
                 break;
             }
         }
+        private void ButtonStages_Click(object sender, RoutedEventArgs e)
+        {
+            OpenStagesOfProject();
+        }
+        private void OpenStagesOfProject()
+        {
+            foreach (Project project in dataGrid.SelectedItems)
+            {
+                this.NavigationService.Content = new PageAdmStageOfProject(project);
+            }
+        }
     }
 }

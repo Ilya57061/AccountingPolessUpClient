@@ -26,7 +26,6 @@ namespace AccountingPolessUp.Views.Administration
     {
         private readonly DepartmentService _departmentService = new DepartmentService();
         List<Department> _departments;
-        Position _position;
         public PageAdmDepartments()
         {
             InitializeComponent();

@@ -14,11 +14,26 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmAppInTheProject : Page
     {
         private readonly ApplicationsInTheProjectService _appService = new ApplicationsInTheProjectService();
+        Vacancy _vacancy;
 
         public PageAdmAppInTheProject()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_appService.Get(), this);
+            ButtonBack.Visibility = Visibility.Hidden;
+            UpdateDataGrid();
+        }
+        public PageAdmAppInTheProject(Vacancy vacancy)
+        {
+            InitializeComponent();
+            _vacancy = vacancy;
+            UpdateDataGrid();
+        }
+        private void UpdateDataGrid()
+        {
+            if(_vacancy==null)
+                DataGridUpdater.UpdateDataGrid(_appService.Get(), this);
+            else
+                DataGridUpdater.UpdateDataGrid(_appService.Get(_vacancy.Id), this);
         }
 
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -52,7 +67,7 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
-            DataGridUpdater.UpdateDataGrid(_appService.Get(), this);
+            UpdateDataGrid();
         }
 
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -68,7 +83,7 @@ namespace AccountingPolessUp.Views.Administration
                 {
                     _appService.Delete(app.Id);
                 }
-                DataGridUpdater.UpdateDataGrid(_appService.Get(), this);
+                UpdateDataGrid();
             }
         }
 
@@ -82,6 +97,10 @@ namespace AccountingPolessUp.Views.Administration
                     EditFrame.Content = new PageEditApplicationsInTheProject(app, this);
                 }
             }
+        }
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

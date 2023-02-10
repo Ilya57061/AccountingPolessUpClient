@@ -29,6 +29,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmPosition()
         {
             InitializeComponent();
+            ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
         }
         public PageAdmPosition(Department department)
@@ -60,14 +61,10 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            if (_department ==null)
-            {
+            if (_department == null)
                 DataGridUpdater.UpdateDataGrid(_positionService.Get(), this);
-            }
             else
-            {
                 DataGridUpdater.UpdateDataGrid(_positionService.Get(_department.Id), this);
-            }
         }
         private void DeleteSelectedPositions()
         {

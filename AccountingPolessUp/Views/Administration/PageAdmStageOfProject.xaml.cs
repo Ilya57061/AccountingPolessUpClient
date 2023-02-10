@@ -26,9 +26,17 @@ namespace AccountingPolessUp.Views.Administration
     {
         private readonly StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
         List<StagesOfProject> _stagesOfProjects;
+        Project _project;
         public PageAdmStageOfProject()
         {
             InitializeComponent();
+            ButtonBack.Visibility = Visibility.Hidden;
+            UpdateDataGrid();
+        }
+        public PageAdmStageOfProject(Project project)
+        {
+            InitializeComponent();
+            _project = project;
             UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -80,7 +88,11 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), this);
+            if (_project==null)
+                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), this);
+            else
+                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(_project.Id), this);
+
         }
         private void DeleteSelectedStagesOfProjects()
         {
@@ -108,6 +120,21 @@ namespace AccountingPolessUp.Views.Administration
             {
                 EditFrame.Content = new PageEditStageOfProject(stagesOfProject, this);
                 break;
+            }
+        }
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+        private void ButtonVacancy_Click(object sender, RoutedEventArgs e)
+        {
+            OpenVacancy();
+        }
+        private void OpenVacancy()
+        {
+            foreach (StagesOfProject stagesOfProject in dataGrid.SelectedItems)
+            {
+                this.NavigationService.Content = new PageAdmVacancy(stagesOfProject);
             }
         }
     }

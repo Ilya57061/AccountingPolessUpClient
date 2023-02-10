@@ -117,5 +117,16 @@ namespace AccountingPolessUp.Views.Administration
 
             }
         }
+        private void ButtonSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            OpenSchedule();
+        }
+        private void OpenSchedule()
+        {
+            foreach (TrainingCourses trainingCourses in dataGrid.SelectedItems)
+            {
+                this.NavigationService.Content = new PageAdmScheduleOfClasses(trainingCourses);
+            }
+        }
     }
 }
