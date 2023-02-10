@@ -26,9 +26,17 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmScheduleOfClasses : Page
     {
         private readonly ScheduleOfClassesService _scheduleOfClassesService = new ScheduleOfClassesService();
+        TrainingCourses _trainingCourses;
         public PageAdmScheduleOfClasses()
         {
             InitializeComponent();
+            ButtonBack.Visibility = Visibility.Hidden;
+            UpdateDataGrid();
+        }
+        public PageAdmScheduleOfClasses(TrainingCourses trainingCourses)
+        {
+            InitializeComponent();
+            _trainingCourses = trainingCourses;
             UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -66,7 +74,10 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
+            if (_trainingCourses == null)
+                DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
+            else
+                DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(_trainingCourses.Id), this);
         }
         private void DeleteSelectedSchedule()
         {
@@ -99,8 +110,11 @@ namespace AccountingPolessUp.Views.Administration
             }
             catch (Exception)
             {
-               
             }
+        }
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

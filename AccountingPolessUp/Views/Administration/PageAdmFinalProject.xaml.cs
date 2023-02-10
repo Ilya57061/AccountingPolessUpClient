@@ -77,7 +77,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            if (_employment.Id == null)
+            if (_employment == null)
                 DataGridUpdater.UpdateDataGrid(_finalProjectService.Get(), this);
             else
                 DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id), this);
