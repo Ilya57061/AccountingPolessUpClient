@@ -30,13 +30,13 @@ namespace AccountingPolessUp.Implementations
             if (Info is null) throw new Exception("info - null");
             else return Info;
         }
-        public List<Vacancy> Get(int StagesId)
+        public List<Vacancy> Get(int stagesId)
         {
             var reqparm = new NameValueCollection
             {
-                ["id"] = $"{StagesId}"
+                ["stagesId"] = $"{stagesId}"
             };
-            var response = _webClient.UploadValues("GetVacancyForStagesId", "POST", reqparm);
+            var response = _webClient.UploadValues("GetVacancyForStagesId", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var Info = JsonConvert.DeserializeObject<List<Vacancy>>(responseString);
             if (Info is null) throw new Exception("info - null");

@@ -162,7 +162,7 @@
                         <TreeViewItem x:Name="StageOfProject" Selected="ButtonAdmStageOfProject_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
-                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Стадии проекта" />
+                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Этапы проекта" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
