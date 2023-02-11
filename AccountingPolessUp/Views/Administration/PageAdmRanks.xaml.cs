@@ -31,6 +31,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             UpdateDataGrid();
+            FilterComboBox.SetBoxOrganizations(BoxOrganization);
         }
         public PageAdmRanks(List<Rank> ranks)
         {
@@ -41,6 +42,7 @@ namespace AccountingPolessUp.Views.Administration
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
+            FilterComboBox.SetBoxOrganizations(BoxOrganization);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {

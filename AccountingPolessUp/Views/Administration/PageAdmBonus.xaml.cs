@@ -32,12 +32,14 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
+            BoxsSetData();
         }
         public PageAdmBonus(Rank rank)
         {
             InitializeComponent();
             _rank = rank;
             UpdateDataGrid();
+            BoxsSetData();
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
@@ -103,6 +105,10 @@ namespace AccountingPolessUp.Views.Administration
                     EditFrame.Content = new PageEditBonus(bonus, this);
                 }
             }
+        }
+        private void BoxsSetData()
+        {
+            FilterComboBox.SetBoxRank(BoxRank);
         }
     }
 }

@@ -23,6 +23,8 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             UpdateDataGrid();
+            FilterComboBox.SetBoxPositions(BoxPosition);
+            FilterComboBox.SetBoxParticipants(BoxParticipants);
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {

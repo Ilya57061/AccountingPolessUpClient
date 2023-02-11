@@ -30,6 +30,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             DataGridUpdater.UpdateDataGrid(_userService.Get(), this);
+            FilterComboBox.SetBoxRole(BoxRole);
         }
         public PageAdmUsers(List<User> users)
         {
@@ -37,6 +38,7 @@ namespace AccountingPolessUp.Views.Administration
             DataGridUpdater.UpdateDataGrid(_userService.Get(), this);
             ColumSelect.Visibility = Visibility.Visible;
             _users = users;
+            FilterComboBox.SetBoxRole(BoxRole);
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {

@@ -29,6 +29,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             UpdateDataGrid();
+            FilterComboBox.SetBoxIndividuals(BoxIndividuals);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {

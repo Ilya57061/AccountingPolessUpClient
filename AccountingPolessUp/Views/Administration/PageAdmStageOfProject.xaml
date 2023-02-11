@@ -54,7 +54,7 @@ Background="Transparent"
                             <ComboBoxItem Content="Завершён" />
                             <ComboBoxItem Content="Не завершён" />
                         </ComboBox>
-                        <ComboBox x:Name="BoxProject" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Project}" DisplayMemberPath="Fullname"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Проект" Margin="1,0,1,0" ></ComboBox>
+                        <ComboBox x:Name="BoxProject" IsEditable="True" IsReadOnly="False"  DisplayMemberPath="Fullname"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Проект" Margin="1,0,1,0" ></ComboBox>
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>

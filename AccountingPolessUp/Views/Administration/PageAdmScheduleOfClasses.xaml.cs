@@ -32,12 +32,14 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
+            FilterComboBox.SetBoxCourses(BoxTrainingCourses);
         }
         public PageAdmScheduleOfClasses(TrainingCourses trainingCourses)
         {
             InitializeComponent();
             _trainingCourses = trainingCourses;
             UpdateDataGrid();
+            FilterComboBox.SetBoxCourses(BoxTrainingCourses);
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {

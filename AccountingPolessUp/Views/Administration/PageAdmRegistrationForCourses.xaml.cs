@@ -29,6 +29,8 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             UpdateDataGrid();
+            FilterComboBox.SetBoxCourses(BoxTrainingCourses);
+            FilterComboBox.SetBoxParticipants(BoxParticipant);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -51,9 +53,9 @@ namespace AccountingPolessUp.Views.Administration
         {
             EditSelectedRegistrationForCourses();
         }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {
-            NumberValidator.Validator(e);
+            NumberValidator.DateValidator(e);
         }
         private void UpdateDataGrid()
         {

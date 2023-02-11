@@ -49,7 +49,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding BonusName, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
                         <DataGridTextColumn Binding="{Binding BonusDescription, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
-                        <DataGridTextColumn Binding="{Binding Path = Rank.RankName, UpdateSourceTrigger=PropertyChanged}" Header="Ранг" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding Path = RankBonus.RankName, UpdateSourceTrigger=PropertyChanged}" Header="Ранг" Width="auto"/>
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

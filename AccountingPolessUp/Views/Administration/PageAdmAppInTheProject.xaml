@@ -31,10 +31,10 @@ Background="Transparent"
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelApp" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Заявки в проект"></TextBlock>
-                    <Button  IsEnabled="False" Margin="0,0,0,0" MouseMove="ButtonLeft_Click" Background="Transparent" BorderBrush="Transparent">
+                    <Button   Margin="0,0,0,0" MouseMove="ButtonLeft_Click" Background="Transparent" BorderBrush="Transparent">
                         <materialDesign:PackIcon Foreground="Gray" Kind="ArrowLeft" />
                     </Button>
-                    <Button IsEnabled="False" MouseMove="ButtonRight_Click" Background="Transparent" BorderBrush="Transparent">
+                    <Button  MouseMove="ButtonRight_Click" Background="Transparent" BorderBrush="Transparent">
                         <materialDesign:PackIcon Foreground="Gray" Kind="ArrowRight" />
                     </Button>
                 </StackPanel>

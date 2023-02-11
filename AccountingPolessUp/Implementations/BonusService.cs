@@ -52,7 +52,7 @@ namespace AccountingPolessUp.Implementations
             {
                 ["BonusName"] = $"{model.BonusName}",
                 ["BonusDescription"] = $"{model.BonusDescription}",
-                ["RankId"] = $"{model.RankId}"
+                //["RankId"] = $"{model.RankId}"
             };
             _webClient.UploadValues("CreateBonus", "POST", reqparm);
         }
@@ -64,7 +64,7 @@ namespace AccountingPolessUp.Implementations
                 ["Id"] = $"{model.Id}",
                 ["BonusName"] = $"{model.BonusName}",
                 ["BonusDescription"] = $"{model.BonusDescription}",
-                ["RankId"] = $"{model.RankId}"
+                //["RankId"] = $"{model.RankId}"
             };
             _webClient.UploadValues("UpdateBonus", "PUT", reqparm);
         }

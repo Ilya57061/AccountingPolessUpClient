@@ -31,12 +31,14 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
+            FilterComboBox.SetBoxDepartments(BoxDepartment);
         }
         public PageAdmPosition(Department department)
         {
             InitializeComponent();
             _department = department;
             UpdateDataGrid();
+            FilterComboBox.SetBoxDepartments(BoxDepartment);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {

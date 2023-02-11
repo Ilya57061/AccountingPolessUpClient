@@ -87,6 +87,7 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\DataGridUpdater.cs" />
     <Compile Include="Helpers\DataNavigator.cs" />
+    <Compile Include="Helpers\FilterComboBox.cs" />
     <Compile Include="Helpers\FilterManager.cs" />
     <Compile Include="Helpers\FormValidator.cs" />
     <Compile Include="Helpers\NumberValidator.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Models\EducationalPortals.cs" />
     <Compile Include="Models\Employment.partial.cs" />
     <Compile Include="Models\Rank.cs" />
+    <Compile Include="Models\RankBonus.cs" />
     <Compile Include="Models\RegistrationForCourses.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\ScheduleOfСlasses.cs" />

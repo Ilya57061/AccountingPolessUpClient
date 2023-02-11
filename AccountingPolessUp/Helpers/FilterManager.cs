@@ -162,8 +162,8 @@ namespace AccountingPolessUp.Helpers
         {
             if (!string.IsNullOrEmpty(name))
                 list = list.Where(x => x.BonusName.ToLower().StartsWith(name.ToLower()));
-            if (!string.IsNullOrEmpty(rank))
-                list = list.Where(x => x.Rank.RankName.ToLower().StartsWith(rank.ToLower()));
+            //if (!string.IsNullOrEmpty(rank))
+            //    list = list.Where(x => x.RankBonus.Rank.RankName.ToLower().StartsWith(rank.ToLower()));
             if (!string.IsNullOrEmpty(description))
                 list = list.Where(x => x.BonusDescription.ToLower().StartsWith(description.ToLower()));
             dataGrid.ItemsSource = null;

@@ -30,6 +30,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             UpdateDataGrid();
+            FilterComboBox.SetBoxCustomers(BoxCustomer);
         }
         public PageAdmProjects(List<Project> projects)
         {
@@ -40,6 +41,7 @@ namespace AccountingPolessUp.Views.Administration
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
+            FilterComboBox.SetBoxCustomers(BoxCustomer);
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
