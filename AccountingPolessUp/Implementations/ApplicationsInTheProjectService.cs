@@ -35,9 +35,9 @@ namespace AccountingPolessUp.Implementations
         {
             var reqparm = new NameValueCollection
             {
-                ["id"] = $"{vacancyId}"
+                ["vacancyId"] = $"{vacancyId}"
             };
-            var response = _webClient.UploadValues("GetAppInTheProjectForVacancyId", "POST", reqparm);
+            var response = _webClient.UploadValues("GetAppInTheProjectForVacancyId", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var Info = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(responseString);
             if (Info is null) throw new Exception("info - null");

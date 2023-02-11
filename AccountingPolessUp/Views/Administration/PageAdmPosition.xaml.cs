@@ -46,8 +46,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditPosition(this);
-        }
+            EditFrame.Content = new PageEditPosition(this);      }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedPositions();
@@ -83,7 +82,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             foreach (Position position in dataGrid.SelectedItems)
             {
-                EditFrame.Content = new PageEditPosition(position, this);
+                EditFrame.Content = new PageEditPosition(position, this, _department);
                 break;
             }
         }

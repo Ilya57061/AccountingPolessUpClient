@@ -29,12 +29,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         DepartmentService _departmentService = new DepartmentService();
         List<Department> _departments;
         Position _position;
-        public PageEditPosition(Position position, Page parent)
+        Department _department;
+        public PageEditPosition(Position position, Page parent, Department department)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _position = position;
+            _department = department;
             DataContext = position;
             _departments = _departmentService.Get();
             BoxDepartment.ItemsSource = _departments;
@@ -65,8 +67,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
+                _position.DepartmentId = _department.Id;
                 _positionService.Update(_position);
-                DataGridUpdater.UpdateDataGrid(_positionService.Get(),_parent);
+                DataGridUpdater.UpdateDataGrid(_positionService.Get(_department.Id),_parent);
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -94,6 +97,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             _position.FullName = Fullname.Text;
             _position.Description = Description.Text;
+
+            
             _position.DepartmentId = _departments.FirstOrDefault(i => i == BoxDepartment.SelectedItem).Id;
         }
     }
