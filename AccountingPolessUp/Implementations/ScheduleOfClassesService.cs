@@ -44,9 +44,9 @@ namespace AccountingPolessUp.Implementations
         {
             var reqparm = new NameValueCollection
             {
-                ["id"] = $"{coursesId}"
+                ["coursesId"] = $"{coursesId}"
             };
-            var response = _webClient.UploadValues("GetScheduleOfСlassesForCoursesId", "POST", reqparm);
+            var response = _webClient.UploadValues("GetScheduleOfClassesForCoursesId", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var Info = JsonConvert.DeserializeObject<List<ScheduleOfСlasses>>(responseString);
             if (Info is null) throw new Exception("info - null");
