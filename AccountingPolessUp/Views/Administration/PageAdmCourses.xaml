@@ -83,8 +83,8 @@ Background="Transparent"
                         </DataGridTemplateColumn>
                         <DataGridTextColumn Binding="{Binding LectorFIO, UpdateSourceTrigger=PropertyChanged}" Header="ФИО лектора" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding LectorDescription, UpdateSourceTrigger=PropertyChanged}" Header="Описание лектора" Width="auto"/>
-                        <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged}" Header="Дата начала" Width="auto"/>
-                        <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged}" Header="Дата окончания" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged,StringFormat=dd.MM.yyyy HH:mm}" Header="Дата начала" Width="auto"/>
+                        <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged,StringFormat=dd.MM.yyyy HH:mm}" Header="Дата окончания" Width="auto"/>
                         <DataGridTextColumn Binding="{Binding IsActive, UpdateSourceTrigger=PropertyChanged}" Header="Is active" Width="auto"/>
                         <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
