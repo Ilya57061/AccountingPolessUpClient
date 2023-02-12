@@ -61,11 +61,9 @@ Background="Transparent"
  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="7">
-            <ComboBox  x:Name="IsActive"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Is Active" Margin="1,0,1,12" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
-                <ComboBoxItem
-    Content="True" />
-                <ComboBoxItem
-    Content="False" />
+            <ComboBox x:Name="BoxIsActive" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="IsActive" Margin="1,0,1,0">
+                <ComboBoxItem Content="True" />
+                <ComboBoxItem Content="False" />
             </ComboBox>
         </Grid>
         <Grid Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2">

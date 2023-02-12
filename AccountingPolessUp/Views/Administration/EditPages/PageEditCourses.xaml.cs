@@ -33,6 +33,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _cours = cours;
+            BoxIsActive.SelectedIndex = _cours.IsActive ? 0 : 1;
             DataContext = cours;
             _parent = parent;
         }
@@ -85,7 +86,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _cours.LectorDescription = LectorDescription.Text;
             _cours.DateStart = DateTime.Parse(DateStart.Text);
             _cours.DateEnd = DateTime.Parse(DateEnd.Text);
-            _cours.IsActive = bool.Parse(IsActive.Text);
+            _cours.IsActive = bool.Parse(BoxIsActive.Text);
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

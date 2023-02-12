@@ -493,7 +493,7 @@ namespace AccountingPolessUp.Helpers
 
 
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<FinalProject> finalProjects, string name, string description, string gitHub,
-              string link, string dateStart, string dateEnd)
+              string link, string dateStart, string dateEnd, string employment)
         {
             if (!string.IsNullOrEmpty(name))
             {
@@ -518,6 +518,10 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(dateEnd))
             {
                 finalProjects = finalProjects.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
+            }
+            if (!string.IsNullOrEmpty(employment))
+            {
+                finalProjects = finalProjects.Where(x=>x.EmploymentId==int.Parse(employment));
             }
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();

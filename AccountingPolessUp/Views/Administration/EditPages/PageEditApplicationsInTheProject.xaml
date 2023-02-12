@@ -43,7 +43,7 @@ Background="Transparent"
             </Button>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
-            <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Рабочий статус" Margin="1,0,1,0">
+            <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Cтатус" Margin="1,0,1,0">
                 <ComboBoxItem Content="Завершено успешно" />
                 <ComboBoxItem Content="В работе" />
                 <ComboBoxItem Content="Провалено" />
