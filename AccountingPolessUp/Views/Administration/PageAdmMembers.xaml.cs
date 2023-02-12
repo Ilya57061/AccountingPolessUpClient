@@ -33,6 +33,7 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             UpdateDataGrid();
             FilterComboBox.SetBoxUsers(BoxUser);
+            FilterComboBox.SetBoxIndividuals(BoxIndividuals);
         }
 
         public PageAdmMembers(List<Participants> participants)
@@ -43,6 +44,7 @@ namespace AccountingPolessUp.Views.Administration
             _participants = participants;
             ButtonAdd.Visibility = Visibility.Hidden;
             FilterComboBox.SetBoxUsers(BoxUser);
+            FilterComboBox.SetBoxIndividuals(BoxIndividuals);
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
