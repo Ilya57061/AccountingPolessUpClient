@@ -103,6 +103,7 @@
     <Compile Include="Implementations\ParticipantsService.cs" />
     <Compile Include="Implementations\PositionService.cs" />
     <Compile Include="Implementations\ProjectService.cs" />
+    <Compile Include="Implementations\RankBonusService.cs" />
     <Compile Include="Implementations\RankService.cs" />
     <Compile Include="Implementations\RegistrationForCoursesService.cs" />
     <Compile Include="Implementations\RegulationService.cs" />

@@ -41,7 +41,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _bonus = bonus;
             _parent = parent;
             BoxRank.ItemsSource = _ranks;
-            //BoxRank.SelectedItem = _ranks.FirstOrDefault(r => r.Id == bonus.RankId);
         }
         public PageEditBonus(Page parent)
         {
@@ -94,10 +93,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
-
             _bonus.BonusName = BonusName.Text;
             _bonus.BonusDescription = BonusDescription.Text;
-            //_bonus.RankId = _ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id;
         }
     }
 }
