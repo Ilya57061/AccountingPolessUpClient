@@ -27,16 +27,19 @@ namespace AccountingPolessUp.Views.Administration
         private readonly VacancyService _vacancyService = new VacancyService();
         List<Vacancy> _vacancies;
         StagesOfProject _stagesOfProject;
+        StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
         public PageAdmVacancy()
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
+            BoxStagesOfProject.ItemsSource = _stagesOfProjectService.Get();
             UpdateDataGrid();
         }
         public PageAdmVacancy(List<Vacancy> vacancies)
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
+            BoxStagesOfProject.ItemsSource = _stagesOfProjectService.Get();
             UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _vacancies = vacancies;
@@ -47,6 +50,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmVacancy(StagesOfProject stagesOfProject)
         {
             InitializeComponent();
+            BoxStagesOfProject.ItemsSource = _stagesOfProjectService.Get();
             _stagesOfProject = stagesOfProject;
             UpdateDataGrid();
         }
@@ -76,7 +80,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _vacancyService.Get(),Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text, StagesOfProject.Text,IsOpened.Text, Budget.Text, RatingCoefficient.Text);
+            FilterManager.ConfirmFilter(dataGrid, _vacancyService.Get(),Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text, BoxStagesOfProject.Text,IsOpened.Text, Budget.Text, RatingCoefficient.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
