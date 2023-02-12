@@ -25,10 +25,12 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmDepartments : Page
     {
         private readonly DepartmentService _departmentService = new DepartmentService();
+        ParticipantsService _participantsService = new ParticipantsService();
         List<Department> _departments;
         public PageAdmDepartments()
         {
             InitializeComponent();
+            BoxDirector.ItemsSource = _participantsService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxOrganizations(BoxOrganizations);
         }
@@ -69,7 +71,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _departmentService.Get(), FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text, DirectorId.Text);
+            FilterManager.ConfirmFilter(dataGrid, _departmentService.Get(), FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text, _participantsService.Get().FirstOrDefault(x => x.Individuals.FIO == BoxDirector.Text).Id.ToString());
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {

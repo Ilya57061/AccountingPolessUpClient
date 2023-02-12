@@ -49,7 +49,7 @@ Background="Transparent"
   materialDesign:HintAssist.Hint="Дата окончания"
   materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
-                        <TextBox Margin="1,0,1,12.5" x:Name="DirectorId" FontSize="14" materialDesign:HintAssist.Hint="Ид руководителя" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Man" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding DirectorId}"/>
+                        <ComboBox x:Name="BoxDirector" IsEditable="True" IsReadOnly="False"  DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Руководитель" Margin="1,0,1,0"></ComboBox>
                         <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
                         <ComboBoxItem Content="Работает" />
                         <ComboBoxItem Content="Не работает" />
@@ -71,7 +71,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Description, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
                         <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата начала" />
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата окончания" />
-                        <DataGridTextColumn Binding="{Binding DirectorId, UpdateSourceTrigger=PropertyChanged}" Header="Ид руководителя" />
+                        <DataGridTextColumn Binding="{Binding Path=nameDirector, UpdateSourceTrigger=PropertyChanged}" Header="Руководитель"/>
                         <DataGridTextColumn Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged}" Header="Статус" />
                         <DataGridTextColumn Binding="{Binding Organizations.Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Организация" Width="auto"/>
                         <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">

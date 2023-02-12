@@ -45,6 +45,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataContext = project;
             BoxCustomer.ItemsSource = _customers;
             BoxCustomer.SelectedIndex = _customers.IndexOf(_customers.FirstOrDefault(c => c.Id == project.CustomerId));
+            BoxLocalPM.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == project.idLocalPM));
             _parent = parent;
         }
         public PageEditProject(Page parent)
