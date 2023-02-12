@@ -24,7 +24,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
-            _scheduleOfClasses = _scheduleOfClassesService.Get();
+            
             UpdateDataGrid();
             FilterComboBox.SetBoxCourses(BoxTrainingCourses);
         }
@@ -32,7 +32,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             _trainingCourses = trainingCourses;
-            _scheduleOfClasses = _scheduleOfClassesService.Get(_trainingCourses.Id);
+           
             UpdateDataGrid();
             FilterComboBox.SetBoxCourses(BoxTrainingCourses);
         }
@@ -58,6 +58,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _scheduleOfClasses, Description.Text, DateStart.Text, DateEnd.Text, WorkSpaceLink.Text, BoxTrainingCourses.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -71,7 +72,9 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-                DataGridUpdater.UpdateDataGrid(_scheduleOfClasses, this);
+            if(_trainingCourses==null) _scheduleOfClasses = _scheduleOfClassesService.Get();
+            else _scheduleOfClasses = _scheduleOfClassesService.Get(_trainingCourses.Id);
+            DataGridUpdater.UpdateDataGrid(_scheduleOfClasses, this);
         }
         private void DeleteSelectedSchedule()
         {

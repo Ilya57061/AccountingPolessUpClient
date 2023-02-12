@@ -22,7 +22,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
-            _vacancies = _vacancyService.Get();
+            
             UpdateDataGrid();
         }
         public PageAdmVacancy(List<Vacancy> vacancies)
@@ -41,7 +41,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             _stagesOfProject = stagesOfProject;
-            _vacancies = _vacancyService.Get(_stagesOfProject.Id);
+            
             UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -70,6 +70,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _vacancies, Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text, StagesOfProject.Text,IsOpened.Text, Budget.Text, RatingCoefficient.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -87,7 +88,8 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-    
+            if(_stagesOfProject==null) _vacancies = _vacancyService.Get();
+            else _vacancies = _vacancyService.Get(_stagesOfProject.Id);
             DataGridUpdater.UpdateDataGrid(_vacancies, this);
          
         }
