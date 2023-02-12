@@ -3,20 +3,9 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using AccountingPolessUp.Views.TextViews;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -26,9 +15,11 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmRules : Page
     {
         private readonly RegulationService _regulationService = new RegulationService();
+        List<Regulation> _regulations;
         public PageAdmRules()
         {
             InitializeComponent();
+            _regulations = _regulationService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxOrganizations(BoxOrganization);
         }
@@ -38,7 +29,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _regulationService.Get(), BoxOrganization.Text, Name.Text, Text.Text, Description.Text);
+            FilterManager.ConfirmFilter(dataGrid, _regulations, BoxOrganization.Text, Name.Text, Text.Text, Description.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -55,7 +46,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_regulationService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_regulations, this);
         }
         private void DeleteSelectedRegulations()
         {

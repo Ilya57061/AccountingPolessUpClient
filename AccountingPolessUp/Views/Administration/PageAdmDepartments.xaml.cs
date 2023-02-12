@@ -2,20 +2,11 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -31,19 +22,21 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             BoxDirector.ItemsSource = _participantsService.Get();
+            _departments = _departmentService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxOrganizations(BoxOrganizations);
         }
         public PageAdmDepartments(List<Department> departments)
         {
             InitializeComponent();
-            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _departments = departments;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
             FilterComboBox.SetBoxOrganizations(BoxOrganizations);
+            UpdateDataGrid();
+
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
@@ -71,7 +64,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _departmentService.Get(), FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text, _participantsService.Get().FirstOrDefault(x => x.Individuals.FIO == BoxDirector.Text).Id.ToString());
+            FilterManager.ConfirmFilter(dataGrid, _departments, FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text, _participantsService.Get().FirstOrDefault(x => x.Individuals.FIO == BoxDirector.Text).Id.ToString());
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -110,7 +103,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_departmentService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_departments, this);
         }
         private void ButtonPositions_Click(object sender, RoutedEventArgs e)
         {

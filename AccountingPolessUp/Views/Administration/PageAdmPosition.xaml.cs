@@ -2,20 +2,9 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -24,14 +13,14 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmPosition : Page
     {
-        private readonly PositionService _positionService = new PositionService();
+        public PositionService _positionService = new PositionService();
         List<Position> positions;
         Department _department;
+      
         public PageAdmPosition()
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
-            positions = _positionService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxDepartments(BoxDepartment);
         }
@@ -39,9 +28,12 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             _department = department;
-            positions = _positionService.Get(_department.Id);
             UpdateDataGrid();
             FilterComboBox.SetBoxDepartments(BoxDepartment);
+        }
+        public void CreateRefresh()
+        {
+            positions = _positionService.Get();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -56,6 +48,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, positions, Fullname.Text, Description.Text, BoxDepartment.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -65,10 +58,11 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            if (_department == null)
-                DataGridUpdater.UpdateDataGrid(positions, this);
-            else
-                DataGridUpdater.UpdateDataGrid(positions, this);
+            if(_department==null)
+                positions= _positionService.Get();
+            else positions= _positionService.Get(_department.Id);
+
+            DataGridUpdater.UpdateDataGrid(positions, this);
         }
         private void DeleteSelectedPositions()
         {

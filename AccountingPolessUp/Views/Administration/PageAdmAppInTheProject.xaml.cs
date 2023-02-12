@@ -2,6 +2,7 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,6 +15,7 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmAppInTheProject : Page
     {
         private readonly ApplicationsInTheProjectService _appService = new ApplicationsInTheProjectService();
+        List<ApplicationsInTheProject> _applicationsInTheProject;
         Vacancy _vacancy;
         ParticipantsService _participantsService = new ParticipantsService();
         VacancyService _vacancyService = new VacancyService();
@@ -35,10 +37,9 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            if(_vacancy==null)
-                DataGridUpdater.UpdateDataGrid(_appService.Get(), this);
-            else
-                DataGridUpdater.UpdateDataGrid(_appService.Get(_vacancy.Id), this);
+            if(_vacancy == null) _applicationsInTheProject = _appService.Get();
+            else _applicationsInTheProject = _appService.Get(_vacancy.Id);
+            DataGridUpdater.UpdateDataGrid(_applicationsInTheProject, this);
         }
 
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -66,7 +67,8 @@ namespace AccountingPolessUp.Views.Administration
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _appService.Get(), DateEntry.Text, BoxParticipant.Text,BoxVacancy.Text, BoxIsAccepted.Text, Status.Text, StatusDescription.Text);
+            UpdateDataGrid();
+            FilterManager.ConfirmFilter(dataGrid, _applicationsInTheProject, DateEntry.Text, Participants.Text,Vacancy.Text, BoxIsAccepted.Text, Status.Text, StatusDescription.Text);
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

@@ -2,20 +2,11 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -29,25 +20,26 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmUsers()
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_userService.Get(), this);
+            _users = _userService.Get();
+            DataGridUpdater.UpdateDataGrid(_users, this);
             FilterComboBox.SetBoxRole(BoxRole);
         }
         public PageAdmUsers(List<User> users)
         {
             InitializeComponent();
-            DataGridUpdater.UpdateDataGrid(_userService.Get(), this);
             ColumSelect.Visibility = Visibility.Visible;
             _users = users;
+            DataGridUpdater.UpdateDataGrid(_users, this);
             FilterComboBox.SetBoxRole(BoxRole);
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _userService.Get(), Login.Text, BoxRole.Text);
+            FilterManager.ConfirmFilter(dataGrid, _users, Login.Text, BoxRole.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(Panel);
-            DataGridUpdater.UpdateDataGrid(_userService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_users, this);
         }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
@@ -67,7 +59,7 @@ namespace AccountingPolessUp.Views.Administration
                     _userService.Delete(user.Id);
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_userService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_users, this);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {

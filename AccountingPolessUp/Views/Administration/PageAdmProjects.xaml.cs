@@ -31,6 +31,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             BoxLocalPM.ItemsSource = _participantsService.Get();
+            _projects = _projectService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxCustomers(BoxCustomer);
         }
@@ -38,13 +39,13 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             UpdateDataGrid();
-
             ColumSelect.Visibility = Visibility.Visible;
             _projects = projects;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
             FilterComboBox.SetBoxCustomers(BoxCustomer);
+            UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
@@ -56,7 +57,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _projectService.Get(), BoxCustomer.Text, BoxStatus.Text, DateStart.Text, DateEnd.Text, Description.Text, TechnicalSpecification.Text, _participantsService.Get().FirstOrDefault(x=>x.Individuals.FIO==BoxLocalPM.Text).Id.ToString(), Fullname.Text);
+            FilterManager.ConfirmFilter(dataGrid, _projects, BoxCustomer.Text, BoxStatus.Text, DateStart.Text, DateEnd.Text, Description.Text, TechnicalSpecification.Text, _participantsService.Get().FirstOrDefault(x=>x.Individuals.FIO==BoxLocalPM.Text).Id.ToString(), Fullname.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -85,7 +86,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_projectService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_projects, this);
         }
         private void DeleteSelectedProjects()
         {

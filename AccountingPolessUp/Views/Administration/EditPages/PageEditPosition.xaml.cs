@@ -28,6 +28,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         PositionService _positionService = new PositionService();
         DepartmentService _departmentService = new DepartmentService();
         List<Department> _departments;
+        List<Position> positions;
         Position _position;
         Department _department;
         public PageEditPosition(Position position, Page parent, Department department)
@@ -69,7 +70,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _position.DepartmentId = _department.Id;
                 _positionService.Update(_position);
-                DataGridUpdater.UpdateDataGrid(_positionService.Get(_department.Id),_parent);
+                UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -85,7 +86,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _positionService.Create(_position);
-                DataGridUpdater.UpdateDataGrid(_positionService.Get(), _parent);
+                UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -93,12 +94,18 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 MessageBox.Show("Заполните все поля корректно!");
             }
         }
+        private void UpdateDataGrid()
+        {
+            if (_department == null)
+                positions = _positionService.Get();
+            else positions = _positionService.Get(_department.Id);
+
+            DataGridUpdater.UpdateDataGrid(positions, _parent);
+        }
         private void WriteData()
         {
             _position.FullName = Fullname.Text;
             _position.Description = Description.Text;
-
-            
             _position.DepartmentId = _departments.FirstOrDefault(i => i == BoxDepartment.SelectedItem).Id;
         }
     }

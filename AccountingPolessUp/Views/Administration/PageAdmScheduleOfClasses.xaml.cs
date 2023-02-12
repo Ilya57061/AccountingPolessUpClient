@@ -5,18 +5,10 @@ using AccountingPolessUp.Views.Administration.EditPages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -26,11 +18,13 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmScheduleOfClasses : Page
     {
         private readonly ScheduleOfClassesService _scheduleOfClassesService = new ScheduleOfClassesService();
+        List<ScheduleOfСlasses> _scheduleOfClasses;
         TrainingCourses _trainingCourses;
         public PageAdmScheduleOfClasses()
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
+            
             UpdateDataGrid();
             FilterComboBox.SetBoxCourses(BoxTrainingCourses);
         }
@@ -38,6 +32,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             _trainingCourses = trainingCourses;
+           
             UpdateDataGrid();
             FilterComboBox.SetBoxCourses(BoxTrainingCourses);
         }
@@ -63,7 +58,8 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _scheduleOfClassesService.Get(), Description.Text, DateStart.Text, DateEnd.Text, WorkSpaceLink.Text, BoxTrainingCourses.Text);
+            UpdateDataGrid();
+            FilterManager.ConfirmFilter(dataGrid, _scheduleOfClasses, Description.Text, DateStart.Text, DateEnd.Text, WorkSpaceLink.Text, BoxTrainingCourses.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -76,10 +72,9 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            if (_trainingCourses == null)
-                DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(), this);
-            else
-                DataGridUpdater.UpdateDataGrid(_scheduleOfClassesService.Get(_trainingCourses.Id), this);
+            if(_trainingCourses==null) _scheduleOfClasses = _scheduleOfClassesService.Get();
+            else _scheduleOfClasses = _scheduleOfClassesService.Get(_trainingCourses.Id);
+            DataGridUpdater.UpdateDataGrid(_scheduleOfClasses, this);
         }
         private void DeleteSelectedSchedule()
         {

@@ -32,14 +32,6 @@ namespace AccountingPolessUp.Views.Administration
             UpdateDataGrid();
             FilterComboBox.SetBoxProjects(BoxProject);
         }
-        private void ButtonRight_Click(object sender, RoutedEventArgs e)
-        {
-            DataNavigator.LineRight(scroll);
-        }
-        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
-        {
-            DataNavigator.LineLeft(scroll);
-        }
         public PageAdmStageOfProject(List<StagesOfProject> stagesOfProjects)
         {
             InitializeComponent();
@@ -50,6 +42,15 @@ namespace AccountingPolessUp.Views.Administration
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
         }
+        private void ButtonRight_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineRight(scroll);
+        }
+        private void ButtonLeft_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.LineLeft(scroll);
+        }
+    
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             DeleteSelectedStagesOfProjects();
@@ -68,7 +69,8 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _stagesOfProjectService.Get(), Name.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxProject.Text);
+            UpdateDataGrid();
+            FilterManager.ConfirmFilter(dataGrid, _stagesOfProjects, Name.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxProject.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -81,11 +83,9 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            if (_project==null)
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), this);
-            else
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(_project.Id), this);
-
+                if(_project==null) _stagesOfProjects = _stagesOfProjectService.Get();
+                else _stagesOfProjects = _stagesOfProjectService.Get(_project.Id);
+                DataGridUpdater.UpdateDataGrid(_stagesOfProjects, this);
         }
         private void DeleteSelectedStagesOfProjects()
         {

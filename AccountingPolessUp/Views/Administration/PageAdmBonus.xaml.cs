@@ -2,20 +2,10 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -25,12 +15,14 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmBonus : Page
     {
         private readonly BonusService _bonusService = new BonusService();
+        List<Bonus> _bonuses;
         Rank _rank;
 
         public PageAdmBonus()
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
+            _bonuses = _bonusService.Get();
             UpdateDataGrid();
             BoxsSetData();
         }
@@ -38,6 +30,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             _rank = rank;
+            _bonuses = _bonusService.Get(_rank.Id);
             UpdateDataGrid();
             BoxsSetData();
         }
@@ -59,7 +52,7 @@ namespace AccountingPolessUp.Views.Administration
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _bonusService.Get(), BonusName.Text, BoxRank.Text, BonusDescription.Text);
+            FilterManager.ConfirmFilter(dataGrid, _bonuses, BonusName.Text, BoxRank.Text, BonusDescription.Text);
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -90,10 +83,8 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            if (_rank == null)
-                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), this);
-            else
-                DataGridUpdater.UpdateDataGrid(_bonusService.Get(_rank.Id), this);
+      
+                DataGridUpdater.UpdateDataGrid(_bonuses, this);
         }
         private void EditSelectedBonus()
         {

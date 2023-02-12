@@ -241,8 +241,8 @@
                             </TreeViewItem.Header>
                         </TreeViewItem>
                     </TreeViewItem>
-                    <TreeViewItem x:Name="Departments" Header="Отделы">
-                        <TreeViewItem Selected="ButtonAdmDepartments_Click">
+                    <TreeViewItem x:Name="MainDepartments" Header="Отделы">
+                        <TreeViewItem x:Name="Departments" Selected="ButtonAdmDepartments_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Отделы" />
@@ -256,21 +256,21 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmPosition_Click">
+                        <TreeViewItem  x:Name="Positions" Selected="ButtonAdmPosition_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Должности" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmWork_Click">
+                        <TreeViewItem x:Name="Employments" Selected="ButtonAdmWork_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Трудоустройства" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmFinalProjects_Click">
+                        <TreeViewItem x:Name="FinalProjects" Selected="ButtonAdmFinalProjects_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Проекты трудоустройств" />

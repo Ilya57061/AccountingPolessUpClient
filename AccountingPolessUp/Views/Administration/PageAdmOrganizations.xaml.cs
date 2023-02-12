@@ -30,17 +30,19 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmOrganizations()
         {
             InitializeComponent();
+            _organizations = _organizationService.Get();
             UpdateDataGrid();
         }
         public PageAdmOrganizations(List<Organization> organizations)
         {
             InitializeComponent();
-            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _organizations = organizations;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
+            UpdateDataGrid();
+
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _organizationService.Get(), FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text,BSR.Text);
+            FilterManager.ConfirmFilter(dataGrid, _organizations, FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text,BSR.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -73,7 +75,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_organizationService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_organizations, this);
         }
         private void DeleteSelectedOrganizations()
         {

@@ -6,17 +6,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -30,17 +23,19 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmNatural()
         {
             InitializeComponent();
+            _individuals = _individualsService.Get();
             UpdateDataGrid();
         }
         public PageAdmNatural(List<Individuals> individuals)
         {
             InitializeComponent();
-            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _individuals = individuals;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
+            UpdateDataGrid();
+
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -60,7 +55,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _individualsService.Get(), FIO.Text, Phone.Text, DateOfBirth.Text, Mail.Text, BoxGender.Text, SocialNetwork.Text);
+            FilterManager.ConfirmFilter(dataGrid, _individuals, FIO.Text, Phone.Text, DateOfBirth.Text, Mail.Text, BoxGender.Text, SocialNetwork.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -105,7 +100,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_individualsService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_individuals, this);
         }
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
