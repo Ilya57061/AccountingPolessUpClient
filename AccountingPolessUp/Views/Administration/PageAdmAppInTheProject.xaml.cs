@@ -2,6 +2,7 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,26 +15,27 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmAppInTheProject : Page
     {
         private readonly ApplicationsInTheProjectService _appService = new ApplicationsInTheProjectService();
+        List<ApplicationsInTheProject> _applicationsInTheProject;
         Vacancy _vacancy;
 
         public PageAdmAppInTheProject()
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
+            _applicationsInTheProject = _appService.Get();
             UpdateDataGrid();
         }
         public PageAdmAppInTheProject(Vacancy vacancy)
         {
             InitializeComponent();
             _vacancy = vacancy;
+            _applicationsInTheProject = _appService.Get(_vacancy.Id);
             UpdateDataGrid();
         }
         private void UpdateDataGrid()
         {
-            if(_vacancy==null)
-                DataGridUpdater.UpdateDataGrid(_appService.Get(), this);
-            else
-                DataGridUpdater.UpdateDataGrid(_appService.Get(_vacancy.Id), this);
+
+                DataGridUpdater.UpdateDataGrid(_applicationsInTheProject, this);
         }
 
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -61,7 +63,7 @@ namespace AccountingPolessUp.Views.Administration
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _appService.Get(), DateEntry.Text, Participants.Text,Vacancy.Text, IsAccepted.Text, Status.Text, StatusDescription.Text);
+            FilterManager.ConfirmFilter(dataGrid, _applicationsInTheProject, DateEntry.Text, Participants.Text,Vacancy.Text, IsAccepted.Text, Status.Text, StatusDescription.Text);
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

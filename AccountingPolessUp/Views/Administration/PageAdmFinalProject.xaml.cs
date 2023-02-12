@@ -2,20 +2,10 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -25,17 +15,20 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmFinalProject : Page
     {
         private readonly FinalProjectService _finalProjectService = new FinalProjectService();
+        List<FinalProject> _finalProjects;
         Employment _employment;
         public PageAdmFinalProject(Employment employment)
         {
             InitializeComponent();
             _employment = employment;
+            _finalProjects = _finalProjectService.GetByEmployment(_employment.Id);
             UpdateDataGrid();
         }
         public PageAdmFinalProject()
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
+            _finalProjects = _finalProjectService.Get();
             UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -60,7 +53,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get(), Name.Text, Description.Text, GitHub.Text, Links.Text, DateStart.Text, DateEnd.Text);
+            FilterManager.ConfirmFilter(dataGrid, _finalProjects, Name.Text, Description.Text, GitHub.Text, Links.Text, DateStart.Text, DateEnd.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -78,9 +71,9 @@ namespace AccountingPolessUp.Views.Administration
         private void UpdateDataGrid()
         {
             if (_employment == null)
-                DataGridUpdater.UpdateDataGrid(_finalProjectService.Get(), this);
+                DataGridUpdater.UpdateDataGrid(_finalProjects, this);
             else
-                DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id), this);
+                DataGridUpdater.UpdateDataGrid(_finalProjects, this);
         }
         private void DeleteSelectedFinalProjects()
         {

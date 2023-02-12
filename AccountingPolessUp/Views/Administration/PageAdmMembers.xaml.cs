@@ -31,6 +31,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmMembers()
         {
             InitializeComponent();
+            _participants = _participantsService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxUsers(BoxUser);
             FilterComboBox.SetBoxIndividuals(BoxIndividuals);
@@ -39,12 +40,13 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmMembers(List<Participants> participants)
         {
             InitializeComponent();
-            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _participants = participants;
             ButtonAdd.Visibility = Visibility.Hidden;
             FilterComboBox.SetBoxUsers(BoxUser);
             FilterComboBox.SetBoxIndividuals(BoxIndividuals);
+            UpdateDataGrid();
+
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
@@ -56,7 +58,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_participantsService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_participants, this);
         }
 
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
@@ -106,7 +108,7 @@ namespace AccountingPolessUp.Views.Administration
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _participantsService.Get(), BoxIndividuals.Text, Mmr.Text, BoxUser.Text, DateEntry.Text, DateExit.Text, BoxStatus.Text, GitHub.Text);
+            FilterManager.ConfirmFilter(dataGrid, _participants, BoxIndividuals.Text, Mmr.Text, BoxUser.Text, DateEntry.Text, DateExit.Text, BoxStatus.Text, GitHub.Text);
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

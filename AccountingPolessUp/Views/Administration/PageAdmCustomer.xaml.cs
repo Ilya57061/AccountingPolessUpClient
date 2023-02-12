@@ -30,17 +30,18 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmCustomer()
         {
             InitializeComponent();
+            _customers = _customerService.Get();
             UpdateDataGrid();
         }
         public PageAdmCustomer(List<Customer> customers)
         {
             InitializeComponent();
-            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _customers = customers;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
+            UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
@@ -69,7 +70,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _customerService.Get(), Fullname.Text, Address.Text, Contacts.Text, WebSite.Text, Description.Text);
+            FilterManager.ConfirmFilter(dataGrid, _customers, Fullname.Text, Address.Text, Contacts.Text, WebSite.Text, Description.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -82,7 +83,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_customerService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_customers, this);
         }
         private void DeleteSelectedCustomers()
         {
@@ -90,8 +91,10 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Customer customer in dataGrid.SelectedItems)
                 {
+                    
                     _customerService.Delete(customer.Id);
                 }
+             
                 UpdateDataGrid();
             }
         }

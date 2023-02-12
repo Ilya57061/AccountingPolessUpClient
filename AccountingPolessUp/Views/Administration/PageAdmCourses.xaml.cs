@@ -30,17 +30,18 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmCourses()
         {
             InitializeComponent();
+            _trainingCourses = _coursesService.Get();
             UpdateDataGrid();
         }
         public PageAdmCourses(List<TrainingCourses> trainingCourses)
         {
             InitializeComponent();
-            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _trainingCourses = trainingCourses;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
+            UpdateDataGrid();
         }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
@@ -64,7 +65,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _coursesService.Get(), Name.Text, Description.Text, Link.Text, LectorFio.Text, LectorDescription.Text, DateStart.Text, DateEnd.Text, IsActive.Text);
+            FilterManager.ConfirmFilter(dataGrid, _trainingCourses, Name.Text, Description.Text, Link.Text, LectorFio.Text, LectorDescription.Text, DateStart.Text, DateEnd.Text, IsActive.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -96,7 +97,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_coursesService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_trainingCourses, this);
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {

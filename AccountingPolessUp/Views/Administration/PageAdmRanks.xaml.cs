@@ -3,20 +3,11 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using AccountingPolessUp.Views.TextViews;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -30,19 +21,20 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmRanks()
         {
             InitializeComponent();
+            _ranks = _rankService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxOrganizations(BoxOrganization);
         }
         public PageAdmRanks(List<Rank> ranks)
         {
             InitializeComponent();
-            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _ranks = ranks;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
             FilterComboBox.SetBoxOrganizations(BoxOrganization);
+            UpdateDataGrid();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -62,7 +54,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _rankService.Get(), RankName.Text, Description.Text, BoxOrganization.Text, MinMmr.Text, MaxMmr.Text);
+            FilterManager.ConfirmFilter(dataGrid, _ranks, RankName.Text, Description.Text, BoxOrganization.Text, MinMmr.Text, MaxMmr.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -75,7 +67,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_rankService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_ranks, this);
         }
         private void DeleteSelectedRanks()
         {

@@ -2,20 +2,11 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -31,23 +22,26 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
+            _vacancies = _vacancyService.Get();
             UpdateDataGrid();
         }
         public PageAdmVacancy(List<Vacancy> vacancies)
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
-            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _vacancies = vacancies;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
+            UpdateDataGrid();
+
         }
         public PageAdmVacancy(StagesOfProject stagesOfProject)
         {
             InitializeComponent();
             _stagesOfProject = stagesOfProject;
+            _vacancies = _vacancyService.Get(_stagesOfProject.Id);
             UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -76,7 +70,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _vacancyService.Get(),Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text, StagesOfProject.Text,IsOpened.Text, Budget.Text, RatingCoefficient.Text);
+            FilterManager.ConfirmFilter(dataGrid, _vacancies, Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text, StagesOfProject.Text,IsOpened.Text, Budget.Text, RatingCoefficient.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -93,10 +87,9 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            if(_stagesOfProject==null)
-            DataGridUpdater.UpdateDataGrid(_vacancyService.Get(), this);
-            else
-                DataGridUpdater.UpdateDataGrid(_vacancyService.Get(_stagesOfProject.Id), this);
+    
+            DataGridUpdater.UpdateDataGrid(_vacancies, this);
+         
         }
         private void DeleteSelectedVacancies()
         {

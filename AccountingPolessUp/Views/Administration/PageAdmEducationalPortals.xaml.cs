@@ -5,18 +5,10 @@ using AccountingPolessUp.Views.Administration.EditPages;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -26,9 +18,11 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmEducationalPortals : Page
     {
         private readonly EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
+        List<EducationalPortals> _educationalPortals;
         public PageAdmEducationalPortals()
         {
             InitializeComponent();
+            _educationalPortals = _educationalPortalsService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxDepartments(BoxDepartment);
         }
@@ -46,7 +40,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _educationalPortalsService.Get(), BoxDepartment.Text, Name.Text, Description.Text, Link.Text);
+            FilterManager.ConfirmFilter(dataGrid, _educationalPortals, BoxDepartment.Text, Name.Text, Description.Text, Link.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -77,7 +71,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_educationalPortalsService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_educationalPortals, this);
         }
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {

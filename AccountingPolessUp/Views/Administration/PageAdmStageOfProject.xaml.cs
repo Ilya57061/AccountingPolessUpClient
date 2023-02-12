@@ -22,6 +22,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Hidden;
+            _stagesOfProjects = _stagesOfProjectService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxProjects(BoxProject);
         }
@@ -29,6 +30,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             _project = project;
+            _stagesOfProjects = _stagesOfProjectService.Get(_project.Id);
             UpdateDataGrid();
             FilterComboBox.SetBoxProjects(BoxProject);
         }
@@ -68,7 +70,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _stagesOfProjectService.Get(), Name.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxProject.Text);
+            FilterManager.ConfirmFilter(dataGrid, _stagesOfProjects, Name.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxProject.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -81,10 +83,8 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            if (_project==null)
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), this);
-            else
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(_project.Id), this);
+                DataGridUpdater.UpdateDataGrid(_stagesOfProjects, this);
+          
 
         }
         private void DeleteSelectedStagesOfProjects()

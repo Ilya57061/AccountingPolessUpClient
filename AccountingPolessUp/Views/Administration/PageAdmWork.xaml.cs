@@ -2,11 +2,7 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -19,9 +15,11 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmWork : Page
     {
         private readonly EmploymentService _employmentService = new EmploymentService();
+        List<Employment> _employments;
         public PageAdmWork()
         {
             InitializeComponent();
+            _employments = _employmentService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxPositions(BoxPosition);
             FilterComboBox.SetBoxParticipants(BoxParticipants);
@@ -52,7 +50,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _employmentService.Get(),DateStart.Text,DateEnd.Text,BoxPosition.Text,BoxStatus.Text, StatusDescription.Text,BoxMentors.Text, BoxParticipants.Text);
+            FilterManager.ConfirmFilter(dataGrid, _employments, DateStart.Text,DateEnd.Text,BoxPosition.Text,BoxStatus.Text, StatusDescription.Text,BoxMentors.Text, BoxParticipants.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -65,7 +63,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_employmentService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_employments, this);
         }
         private void DeleteSelectedEmployments()
         {

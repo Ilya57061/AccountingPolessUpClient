@@ -2,20 +2,10 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -25,9 +15,11 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmStudents : Page
     {
         private readonly StudentService _studentService = new StudentService();
+        List<Student> _students;
         public PageAdmStudents()
         {
             InitializeComponent();
+            _students = _studentService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxIndividuals(BoxIndividuals);
         }
@@ -37,7 +29,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _studentService.Get(), StudentCard.Text, Group.Text, BoxIndividuals.Text, CourseNumber.Text, University.Text);
+            FilterManager.ConfirmFilter(dataGrid, _students, StudentCard.Text, Group.Text, BoxIndividuals.Text, CourseNumber.Text, University.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -58,7 +50,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_studentService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_students, this);
         }
         private void DeleteSelectedStudents()
         {

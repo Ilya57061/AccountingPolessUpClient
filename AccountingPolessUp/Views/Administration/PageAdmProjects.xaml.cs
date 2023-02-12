@@ -29,19 +29,20 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmProjects()
         {
             InitializeComponent();
+            _projects = _projectService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxCustomers(BoxCustomer);
         }
         public PageAdmProjects(List<Project> projects)
         {
             InitializeComponent();
-            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _projects = projects;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
             FilterComboBox.SetBoxCustomers(BoxCustomer);
+            UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
@@ -53,7 +54,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _projectService.Get(), BoxCustomer.Text, BoxStatus.Text, DateStart.Text, DateEnd.Text, Description.Text, TechnicalSpecification.Text, idLocalPM.Text, Fullname.Text);
+            FilterManager.ConfirmFilter(dataGrid, _projects, BoxCustomer.Text, BoxStatus.Text, DateStart.Text, DateEnd.Text, Description.Text, TechnicalSpecification.Text, idLocalPM.Text, Fullname.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -82,7 +83,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
-            DataGridUpdater.UpdateDataGrid(_projectService.Get(), this);
+            DataGridUpdater.UpdateDataGrid(_projects, this);
         }
         private void DeleteSelectedProjects()
         {
