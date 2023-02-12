@@ -22,6 +22,8 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             _employment = employment;
+            BoxEmployment.IsEnabled = false;
+            BoxEmployment.ItemsSource = _employmentService.Get();
             _finalProjects = _finalProjectService.GetByEmployment(_employment.Id);
             UpdateDataGrid();
         }
