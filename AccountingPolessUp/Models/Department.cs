@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace AccountingPolessUp.Models
 {
-    public class Department
+    public partial class Department
     {
         public int Id { get; set; }
         public string FullName { get; set; } = string.Empty;

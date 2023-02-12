@@ -27,30 +27,37 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         Page _parent;
         DepartmentService _departmentService = new DepartmentService();
         OrganizationService _organizationService = new OrganizationService();
+        ParticipantsService _participantsService = new ParticipantsService();
         Department _department;
         List<Organization> _organizations;
+        List<Participants> _participants;
         public PageEditDepartments(Department department, Page parent)
         {
             InitializeComponent();
+            _participants = _participantsService.Get();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _organizations = _organizationService.Get();
             _department = department;
+            BoxDirector.ItemsSource = _participants;
             DataContext = department;
             BoxOrganizations.ItemsSource = _organizations;
             BoxStatus.SelectedIndex = _department.Status == "Работает" ? 0 : 1;
             BoxOrganizations.SelectedItem = _organizations.FirstOrDefault(i => i.Id == department.OrganizationId);
+            BoxDirector.SelectedIndex= _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == _department.DirectorId));
             _parent = parent;
         }
         public PageEditDepartments(Page parent)
         {
             InitializeComponent();
+            _participants = _participantsService.Get();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _department = new Department();
             _organizations = _organizationService.Get();
             BoxOrganizations.ItemsSource = _organizations;
             _parent = parent;
+            BoxDirector.ItemsSource = _participants;
         }
         private void OpenOrganization_Click(object sender, RoutedEventArgs e)
         {
@@ -98,7 +105,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _department.DateEnd = DateTime.TryParse(DateEnd.Text, out var dateExitResult) ? dateExitResult : (DateTime?)null;
             _department.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             _department.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganizations.SelectedItem).Id;
-            _department.DirectorId = int.Parse(DirectorId.Text);
+            var selectedDirector = _participants.FirstOrDefault(i => i == BoxDirector.SelectedItem);
+            if (selectedDirector != null)
+                _department.DirectorId = selectedDirector.Id;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

@@ -112,8 +112,10 @@
     <Compile Include="Implementations\TrainingCoursesService.cs" />
     <Compile Include="Implementations\UserService.cs" />
     <Compile Include="Implementations\VacancyService.cs" />
+    <Compile Include="Models\Department.partial.cs" />
     <Compile Include="Models\EducationalPortals.cs" />
     <Compile Include="Models\Employment.partial.cs" />
+    <Compile Include="Models\Project.partial.cs" />
     <Compile Include="Models\Rank.cs" />
     <Compile Include="Models\RankBonus.cs" />
     <Compile Include="Models\RegistrationForCourses.cs" />

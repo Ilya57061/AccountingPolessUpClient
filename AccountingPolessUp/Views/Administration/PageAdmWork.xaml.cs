@@ -15,10 +15,12 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmWork : Page
     {
         private readonly EmploymentService _employmentService = new EmploymentService();
-        List<Employment> _employments;
+List<Employment> _employments;
+        ParticipantsService _participantsService = new ParticipantsService();
         public PageAdmWork()
         {
             InitializeComponent();
+            BoxMentors.ItemsSource = _participantsService.Get();
             _employments = _employmentService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxPositions(BoxPosition);
@@ -50,7 +52,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _employments, DateStart.Text,DateEnd.Text,BoxPosition.Text,BoxStatus.Text, StatusDescription.Text,BoxMentors.Text, BoxParticipants.Text);
+            FilterManager.ConfirmFilter(dataGrid, _employments, DateStart.Text,DateEnd.Text,BoxPosition.Text,BoxStatus.Text, StatusDescription.Text,_participantsService.Get().FirstOrDefault(x => x.Individuals.FIO == BoxMentors.Text).Id.ToString(), BoxParticipants.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
