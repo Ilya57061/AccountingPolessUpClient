@@ -32,6 +32,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmAppInTheProject(Vacancy vacancy)
         {
             InitializeComponent();
+            BoxVacancy.IsEnabled = false;
             _vacancy = vacancy;
             UpdateDataGrid();
         }
@@ -68,7 +69,7 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             UpdateDataGrid();
-            FilterManager.ConfirmFilter(dataGrid, _applicationsInTheProject, DateEntry.Text, Participants.Text,Vacancy.Text, BoxIsAccepted.Text, Status.Text, StatusDescription.Text);
+            FilterManager.ConfirmFilter(dataGrid, _applicationsInTheProject, DateEntry.Text, BoxParticipant.Text,BoxVacancy.Text, BoxIsAccepted.Text, Status.Text, StatusDescription.Text);
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
