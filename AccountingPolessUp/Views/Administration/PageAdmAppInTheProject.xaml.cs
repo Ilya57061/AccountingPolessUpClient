@@ -15,10 +15,15 @@ namespace AccountingPolessUp.Views.Administration
     {
         private readonly ApplicationsInTheProjectService _appService = new ApplicationsInTheProjectService();
         Vacancy _vacancy;
+        ParticipantsService _participantsService = new ParticipantsService();
+        VacancyService _vacancyService = new VacancyService();
 
         public PageAdmAppInTheProject()
         {
             InitializeComponent();
+
+            BoxVacancy.ItemsSource = _vacancyService.Get();
+            BoxParticipant.ItemsSource = _participantsService.Get();
             ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
         }
@@ -61,7 +66,7 @@ namespace AccountingPolessUp.Views.Administration
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _appService.Get(), DateEntry.Text, Participants.Text,Vacancy.Text, IsAccepted.Text, Status.Text, StatusDescription.Text);
+            FilterManager.ConfirmFilter(dataGrid, _appService.Get(), DateEntry.Text, BoxParticipant.Text,BoxVacancy.Text, BoxIsAccepted.Text, Status.Text, StatusDescription.Text);
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

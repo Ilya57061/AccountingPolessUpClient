@@ -25,10 +25,12 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmProjects : Page
     {
         private readonly ProjectService _projectService = new ProjectService();
+        ParticipantsService _participantsService = new ParticipantsService();
         List<Project> _projects;
         public PageAdmProjects()
         {
             InitializeComponent();
+            BoxLocalPM.ItemsSource = _participantsService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxCustomers(BoxCustomer);
         }
@@ -36,6 +38,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             UpdateDataGrid();
+
             ColumSelect.Visibility = Visibility.Visible;
             _projects = projects;
             ButtonAdd.Visibility = Visibility.Hidden;
@@ -53,7 +56,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _projectService.Get(), BoxCustomer.Text, BoxStatus.Text, DateStart.Text, DateEnd.Text, Description.Text, TechnicalSpecification.Text, idLocalPM.Text, Fullname.Text);
+            FilterManager.ConfirmFilter(dataGrid, _projectService.Get(), BoxCustomer.Text, BoxStatus.Text, DateStart.Text, DateEnd.Text, Description.Text, TechnicalSpecification.Text, _participantsService.Get().FirstOrDefault(x=>x.Individuals.FIO==BoxLocalPM.Text).Id.ToString(), Fullname.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {

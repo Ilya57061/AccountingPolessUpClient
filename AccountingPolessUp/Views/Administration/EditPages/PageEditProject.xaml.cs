@@ -28,16 +28,19 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         Page _parent;
         ProjectService _projectService = new ProjectService();
         CustomerService _customerService = new CustomerService();
-
+        ParticipantsService _participantsService = new ParticipantsService();
         List<Customer> _customers;
+        List<Participants> _participants;
         Project _project;
         public PageEditProject(Project project, Page parent)
         {
             InitializeComponent();
+            _participants = _participantsService.Get();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _project = project;
             BoxStatus.SelectedIndex = _project.Status == "Завершён" ? 0 : 1;
+            BoxLocalPM.ItemsSource = _participants;
             _customers = _customerService.Get();
             DataContext = project;
             BoxCustomer.ItemsSource = _customers;
@@ -47,12 +50,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditProject(Page parent)
         {
             InitializeComponent();
+            _participants = _participantsService.Get();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _project = new Project();
             _customers = _customerService.Get();
             BoxCustomer.ItemsSource = _customers;
             _parent = parent;
+            BoxLocalPM.ItemsSource = _participants;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -100,10 +105,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _project.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             _project.Description = Description.Text;
             _project.TechnicalSpecification = TechnicalSpecification.Text;
-            _project.idLocalPM = int.Parse(idLocalPM.Text);
             _project.CustomerId = _customers.FirstOrDefault(i => i == BoxCustomer.SelectedItem).Id;
             _project.DateStart = DateTime.Parse(DateStart.Text);
             _project.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
+            var selectedLocalPM = _participants.FirstOrDefault(i => i == BoxLocalPM.SelectedItem);
+            if (selectedLocalPM != null)
+                _project.idLocalPM = selectedLocalPM.Id;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

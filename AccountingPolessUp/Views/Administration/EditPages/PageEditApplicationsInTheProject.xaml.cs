@@ -45,7 +45,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 _applications = applications;
                 BoxVacancy.ItemsSource = _vacancy;
                 BoxParticipant.ItemsSource = _participants;
-                
+                BoxIsAccepted.SelectedIndex = (bool)_applications.IsAccepted ? 0 : 1;
+                BoxStatus.SelectedIndex = _applications.Status == "Завершено успешно" ? 0 : _applications.Status == "В работе" ? 1 : 2;
                 BoxVacancy.SelectedIndex = _vacancy.IndexOf(_vacancy.FirstOrDefault(r => r.Id == applications.VacancyId));
                 BoxParticipant.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(r => r.Id == applications.ParticipantsId));
             }
@@ -125,7 +126,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void WriteData()
         {
             _applications.Status = BoxStatus.Text;
-            _applications.StatusDescription=StatusDescription.Text;
+            _applications.StatusDescription = StatusDescription.Text;
             _applications.IsAccepted = bool.Parse(BoxIsAccepted.Text);
             _applications.DateEntry = DateTime.Parse(DateEntry.Text);
             _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
