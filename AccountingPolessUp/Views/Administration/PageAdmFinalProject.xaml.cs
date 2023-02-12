@@ -26,6 +26,7 @@ namespace AccountingPolessUp.Views.Administration
     {
         private readonly FinalProjectService _finalProjectService = new FinalProjectService();
         Employment _employment;
+        EmploymentService _employmentService = new EmploymentService();
         public PageAdmFinalProject(Employment employment)
         {
             InitializeComponent();
@@ -35,6 +36,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmFinalProject()
         {
             InitializeComponent();
+            BoxEmployment.ItemsSource = _employmentService.Get();
             ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
         }
@@ -60,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get(), Name.Text, Description.Text, GitHub.Text, Links.Text, DateStart.Text, DateEnd.Text);
+            FilterManager.ConfirmFilter(dataGrid, _finalProjectService.Get(), Name.Text, Description.Text, GitHub.Text, Links.Text, DateStart.Text, DateEnd.Text,BoxEmployment.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {

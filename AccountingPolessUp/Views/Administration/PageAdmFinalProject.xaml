@@ -37,6 +37,7 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding Links, UpdateSourceTrigger=PropertyChanged}" Header="Ссылка" />
                         <DataGridTextColumn Binding="{Binding DateStart, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата начала" />
                         <DataGridTextColumn Binding="{Binding DateEnd, UpdateSourceTrigger=PropertyChanged, StringFormat=dd/MM/yyyy}" Header="Дата окончания" />
+                        <DataGridTextColumn Binding="{Binding EmploymentId, UpdateSourceTrigger=PropertyChanged}" Header="Ид трудоустройства" />
                         <DataGridTemplateColumn Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -86,7 +87,8 @@ Background="Transparent"
  materialDesign:HintAssist.Hint="Дата окончания"
  materialDesign:TextFieldAssist.HasClearButton="True"
  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
-                    <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
+                        <ComboBox x:Name="BoxEmployment" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Id"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ид трудоустройства" Margin="1,0,1,0"></ComboBox>
+                        <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>
                 </ScrollViewer>
