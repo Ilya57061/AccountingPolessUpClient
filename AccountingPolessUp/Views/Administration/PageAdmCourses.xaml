@@ -29,7 +29,7 @@ Background="Transparent"
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
-                    <TextBlock x:Name="LabelCourses" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Тренировочные курсы"></TextBlock>
+                    <TextBlock x:Name="LabelCourses" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Учебные курсы"></TextBlock>
                     <Button Margin="0,0,0,0" MouseMove="ButtonLeft_Click" Background="Transparent" BorderBrush="Transparent">
                         <materialDesign:PackIcon Foreground="Gray" Kind="ArrowLeft" />
                     </Button>
@@ -44,14 +44,8 @@ Background="Transparent"
                         <TextBox Margin="1,0,1,12.5" x:Name="Link" FontSize="14" materialDesign:HintAssist.Hint="Ссылка" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Link" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Link}"/>
                         <TextBox Margin="1,0,1,12.5" x:Name="LectorFio" FontSize="14" materialDesign:HintAssist.Hint="ФИО лектора" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Man" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding LectorFIO}"/>
                         <TextBox Margin="1,0,1,12.5" x:Name="LectorDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание лектора" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding LectorDescription}"/>
-                        <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12.5"
- materialDesign:HintAssist.Hint="Дата начала"
- materialDesign:TextFieldAssist.HasClearButton="True"
- Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}"/>
-                        <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12.5"
- materialDesign:HintAssist.Hint="Дата окончания"
- materialDesign:TextFieldAssist.HasClearButton="True"
- Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
+                        <TextBox Margin="1,0,1,12.5" PreviewTextInput="Number_PreviewDateInput" x:Name="DateStart" FontSize="14" materialDesign:HintAssist.Hint="Дата начала" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="DateRange" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding DateStart}"/>
+                        <TextBox Margin="1,0,1,12.5" PreviewTextInput="Number_PreviewDateInput" x:Name="DateEnd" FontSize="14" materialDesign:HintAssist.Hint="Дата окончания" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="DateRange" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding DateEnd}"/>
                         <ComboBox  x:Name="IsActive"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Is Active" Margin="1,0,1,0">
                             <ComboBoxItem Content="True" />
                             <ComboBoxItem Content="False" />

@@ -34,7 +34,7 @@ Background="Transparent"
                 <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
                     <TextBox Margin="1,0,1,12.5" x:Name="FIO" FontSize="14" materialDesign:HintAssist.Hint="ФИО" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="AccountCircle" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding FIO}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Phone" FontSize="14" materialDesign:HintAssist.Hint="Телефон" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Phone" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Phone}"/>
-                    <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateOfBirth" FontSize="14" Margin="1,0,1,12.5"
+                    <DatePicker PreviewTextInput="Number_PreviewDateInput" x:Name="DateOfBirth" FontSize="14" Margin="1,0,1,12.5"
   materialDesign:HintAssist.Hint="Дата рождения"
   materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateOfBirth}"/>

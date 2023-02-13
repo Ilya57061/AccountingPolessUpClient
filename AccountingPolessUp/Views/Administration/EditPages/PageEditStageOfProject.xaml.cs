@@ -99,7 +99,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _stagesOfProject.Name = Name.Text;
             _stagesOfProject.Description = Description.Text;
             _stagesOfProject.DateStart = DateTime.Parse(DateStart.Text);
-            _stagesOfProject.DateStart = DateTime.Parse(DateEnd.Text);
+            _stagesOfProject.DateEnd = DateTime.Parse(DateEnd.Text);
             _stagesOfProject.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             _stagesOfProject.ProjectId = _project.FirstOrDefault(i => i == BoxProject.SelectedItem).Id;
         }

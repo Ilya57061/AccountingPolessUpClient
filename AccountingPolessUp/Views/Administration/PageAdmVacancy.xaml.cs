@@ -91,6 +91,10 @@ namespace AccountingPolessUp.Views.Administration
         {
             NumberValidator.DoubleValidator(e);
         }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
+        }
         private void UpdateDataGrid()
         {
             if(_stagesOfProject==null) _vacancies = _vacancyService.Get();

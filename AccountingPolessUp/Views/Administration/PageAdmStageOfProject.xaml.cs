@@ -82,6 +82,10 @@ namespace AccountingPolessUp.Views.Administration
         {
             NumberValidator.Validator(e);
         }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
+        }
         private void UpdateDataGrid()
         {
                 if(_project==null) _stagesOfProjects = _stagesOfProjectService.Get();
@@ -90,7 +94,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void DeleteSelectedStagesOfProjects()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (StagesOfProject stagesOfProject in dataGrid.SelectedItems)
                 {

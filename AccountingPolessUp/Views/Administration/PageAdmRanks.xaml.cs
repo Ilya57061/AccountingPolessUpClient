@@ -71,7 +71,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void DeleteSelectedRanks()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (Rank rank in dataGrid.SelectedItems)
                 {
