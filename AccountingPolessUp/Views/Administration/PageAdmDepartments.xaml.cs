@@ -75,10 +75,6 @@ namespace AccountingPolessUp.Views.Administration
             FilterManager.ClearControls(panel);
             UpdateDataGrid();
         }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
-        }
         private void DeleteSelectedDepartments()
         {
 
