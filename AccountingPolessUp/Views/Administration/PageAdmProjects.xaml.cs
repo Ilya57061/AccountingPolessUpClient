@@ -57,7 +57,8 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _projects, BoxCustomer.Text, BoxStatus.Text, DateStart.Text, DateEnd.Text, Description.Text, TechnicalSpecification.Text, _participantsService.Get().FirstOrDefault(x=>x.Individuals.FIO==BoxLocalPM.Text).Id.ToString(), Fullname.Text);
+            string localPMId = string.IsNullOrEmpty(BoxLocalPM.Text) ? "" : _participantsService.GetByParticipantName(BoxLocalPM.Text).Id.ToString();
+            FilterManager.ConfirmFilter(dataGrid, _projects, BoxCustomer.Text, BoxStatus.Text, DateStart.Text, DateEnd.Text, Description.Text, TechnicalSpecification.Text, localPMId, Fullname.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -90,7 +91,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void DeleteSelectedProjects()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (Project project in dataGrid.SelectedItems)
                 {
@@ -125,6 +126,10 @@ namespace AccountingPolessUp.Views.Administration
             {
                 this.NavigationService.Content = new PageAdmStageOfProject(project);
             }
+        }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
         }
     }
 }

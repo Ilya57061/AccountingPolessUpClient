@@ -43,6 +43,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmVacancy(StagesOfProject stagesOfProject)
         {
             InitializeComponent();
+            BoxStagesOfProject.IsEnabled = false;
             BoxStagesOfProject.ItemsSource = _stagesOfProjectService.Get();
             _stagesOfProject = stagesOfProject;
             
@@ -89,6 +90,10 @@ namespace AccountingPolessUp.Views.Administration
         private void Number_PreviewTextDoubleInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.DoubleValidator(e);
+        }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
         }
         private void UpdateDataGrid()
         {

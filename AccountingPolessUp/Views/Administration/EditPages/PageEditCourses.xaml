@@ -49,16 +49,10 @@ Background="Transparent"
             <TextBox Margin="1,0,1,20" x:Name="LectorDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание лектора" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding LectorDescription}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="5">
-            <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12"
- materialDesign:HintAssist.Hint="Дата начала"
- materialDesign:TextFieldAssist.HasClearButton="True"
- Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}"/>
+            <TextBox Margin="1,0,1,20" PreviewTextInput="Number_PreviewDateInput" x:Name="DateStart" FontSize="14" materialDesign:HintAssist.Hint="Дата начала" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="DateRange" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding DateStart}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="6">
-            <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12"
- materialDesign:HintAssist.Hint="Дата окончания"
- materialDesign:TextFieldAssist.HasClearButton="True"
- Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
+            <TextBox Margin="1,0,1,20" PreviewTextInput="Number_PreviewDateInput" x:Name="DateEnd" FontSize="14" materialDesign:HintAssist.Hint="Дата окончания" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="DateRange" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding DateEnd}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="7">
             <ComboBox x:Name="BoxIsActive" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="IsActive" Margin="1,0,1,0">

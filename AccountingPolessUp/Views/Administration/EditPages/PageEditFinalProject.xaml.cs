@@ -43,7 +43,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxEmployment.SelectedIndex = _employments.IndexOf(_employments.FirstOrDefault(p => p.Id == _finalProject.EmploymentId));
             _parent = parent;
         }
-        public PageEditFinalProject(Employment employment,Page parent)
+        public PageEditFinalProject(Employment employment, Page parent)
         {
             InitializeComponent();
             _employments = _employmentService.Get();
@@ -90,7 +90,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             _finalProject.DateStart = DateTime.Parse(DateStart.Text);
             _finalProject.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
-            //_finalProject.EmploymentId = _employment.Id;
             _finalProject.Name = Name.Text;
             _finalProject.Description = Description.Text;
             _finalProject.GitHub = GitHub.Text;
@@ -102,6 +101,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);
+        }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
         }
     }
 }

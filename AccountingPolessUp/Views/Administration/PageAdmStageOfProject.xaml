@@ -42,11 +42,11 @@ Background="Transparent"
                     <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="Panel">
                         <TextBox Margin="1,0,1,12.5"  x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название этапа" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="RenameOutline" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
                         <TextBox Margin="1,0,1,12.5"  x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
-                        <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12.5"
+                        <DatePicker PreviewTextInput="Number_PreviewDateInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12.5"
  materialDesign:HintAssist.Hint="Дата начала"
  materialDesign:TextFieldAssist.HasClearButton="True"
  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}"/>
-                        <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12.5"
+                        <DatePicker PreviewTextInput="Number_PreviewDateInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12.5"
  materialDesign:HintAssist.Hint="Дата окончания"
  materialDesign:TextFieldAssist.HasClearButton="True"
  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>

@@ -28,6 +28,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             _department = department;
+            BoxDepartment.IsEnabled = false;
             UpdateDataGrid();
             FilterComboBox.SetBoxDepartments(BoxDepartment);
         }

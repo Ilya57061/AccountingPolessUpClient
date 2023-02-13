@@ -16,7 +16,7 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmWork : Page
     {
         private readonly EmploymentService _employmentService = new EmploymentService();
-List<Employment> _employments;
+        List<Employment> _employments;
         ParticipantsService _participantsService = new ParticipantsService();
         public PageAdmWork()
         {
@@ -53,16 +53,18 @@ List<Employment> _employments;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _employments, DateStart.Text,DateEnd.Text,BoxPosition.Text,BoxStatus.Text, StatusDescription.Text,_participantsService.Get().FirstOrDefault(x => x.Individuals.FIO == BoxMentors.Text).Id.ToString(), BoxParticipants.Text);
+            string mentorId = string.IsNullOrEmpty(BoxMentors.Text) ? "" : _participantsService.GetByParticipantName(BoxMentors.Text).Id.ToString();
+
+            FilterManager.ConfirmFilter(dataGrid, _employments, DateStart.Text, DateEnd.Text, BoxPosition.Text, BoxStatus.Text, StatusDescription.Text, mentorId, BoxParticipants.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(Panel);
             UpdateDataGrid();
         }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {
-            NumberValidator.Validator(e);
+            NumberValidator.DateValidator(e);
         }
         private void UpdateDataGrid()
         {
@@ -70,7 +72,7 @@ List<Employment> _employments;
         }
         private void DeleteSelectedEmployments()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (Employment employment in dataGrid.SelectedItems)
                 {

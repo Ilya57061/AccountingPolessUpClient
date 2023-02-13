@@ -43,17 +43,17 @@ Background="Transparent"
                         <TextBox  Margin="1,0,1,12.5" x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="BadgeAccount" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Name}"/>
                         <TextBox Margin="1,0,1,12.5" x:Name="Descriptions" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Descriptions}"/>
                         <TextBox Margin="1,0,1,12.5" x:Name="Responsibilities" FontSize="14" materialDesign:HintAssist.Hint="Обязанности" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CheckboxMultipleMarked" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Responsibilities}"/>
-                        <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12.5"
+                        <DatePicker PreviewTextInput="Number_PreviewDateInput" x:Name="DateStart" FontSize="14" Margin="1,0,1,12.5"
   materialDesign:HintAssist.Hint="Дата начала"
   materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateStart}"/>
-                        <DatePicker PreviewTextInput="Number_PreviewTextInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12.5"
+                        <DatePicker PreviewTextInput="Number_PreviewDateInput" x:Name="DateEnd" FontSize="14" Margin="1,0,1,12.5"
   materialDesign:HintAssist.Hint="Дата окончания"
   materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
                         <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,12.5" x:Name="Budget" FontSize="14" materialDesign:HintAssist.Hint="Бюджет" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" />
                         <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,12.5" x:Name="RatingCoefficient" FontSize="14" materialDesign:HintAssist.Hint="Рейтинговый коэффициент" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" />
-                        <ComboBox x:Name="BoxStagesOfProject" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Name"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Стадия проекта" Margin="1,0,1,0"></ComboBox>
+                        <ComboBox x:Name="BoxStagesOfProject" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Name"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Этап проекта" Margin="1,0,1,0"></ComboBox>
                         <ComboBox  x:Name="IsOpened"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Is Opened" Margin="1,0,1,0">
                             <ComboBoxItem Content="True" />
                             <ComboBoxItem Content="False" />
