@@ -61,12 +61,18 @@ namespace AccountingPolessUp.Implementations
 
         public void Delete(int id)
         {
-            var reqparm = new NameValueCollection
+            try
             {
-                ["id"] = $"{id}"
-            };
-            _webClient.UploadValues("DeletIndividual", "DELETE", reqparm);
+                var reqparm = new NameValueCollection
+                {
+                    ["id"] = $"{id}"
+                };
+                _webClient.UploadValues("DeletIndividual", "DELETE", reqparm);
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
-
 }

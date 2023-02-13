@@ -31,7 +31,7 @@ namespace AccountingPolessUp
             
             InitializeComponent();
              Enter.IsEnabled = false;
-            User user = loginService.Login(new LoginDto { Login = "LocalPM", Password = "LocalPM" });
+            User user = loginService.Login(new LoginDto { Login = "stasikr", Password = "123" });
             if (user == null)
             {
                 LabelErrorMessage.Visibility = Visibility.Visible;

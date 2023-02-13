@@ -33,6 +33,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             BoxVacancy.IsEnabled = false;
+            BoxParticipant.ItemsSource = _participantsService.Get();
             _vacancy = vacancy;
             UpdateDataGrid();
         }
