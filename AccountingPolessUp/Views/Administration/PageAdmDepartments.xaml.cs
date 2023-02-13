@@ -75,10 +75,6 @@ namespace AccountingPolessUp.Views.Administration
             FilterManager.ClearControls(panel);
             UpdateDataGrid();
         }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
-        }
         private void DeleteSelectedDepartments()
         {
             if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)

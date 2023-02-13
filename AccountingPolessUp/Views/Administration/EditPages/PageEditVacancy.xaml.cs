@@ -103,8 +103,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _vacancy.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
             _vacancy.StagesOfProjectId = _stagesOfProjects.FirstOrDefault(i=>i==BoxStagesOfProject.SelectedItem).Id;
             _vacancy.isOpened = bool.Parse(IsOpened.Text);
-            _vacancy.Budget= double.TryParse(Budget.Text, out var pr) ? pr : (double?)null;
-            _vacancy.RatingCoefficient = double.TryParse(RatingCoefficient.Text, out var rc) ? rc : (double?)null;
+            _vacancy.Budget= double.TryParse(Budget.Text.Replace('.',','), out var pr) ? pr : (double?)null;
+            _vacancy.RatingCoefficient = double.TryParse(RatingCoefficient.Text.Replace('.', ','), out var rc) ? rc : (double?)null;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

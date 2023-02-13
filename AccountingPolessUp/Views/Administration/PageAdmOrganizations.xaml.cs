@@ -62,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _organizations, FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text,BSR.Text);
+            FilterManager.ConfirmFilter(dataGrid, _organizations, FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text,BSR.Text.Replace('.', ','));
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -119,6 +119,10 @@ namespace AccountingPolessUp.Views.Administration
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.DateValidator(e);
+        }
+        private void Number_PreviewTextDoubleInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DoubleValidator(e);
         }
     }
 }

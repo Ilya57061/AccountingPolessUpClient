@@ -83,7 +83,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _organization.Contacts = Contacts.Text;
             _organization.WebSite = Website.Text;
             _organization.FoundationDate = DateTime.TryParse(FoundationDate.Text, out var dateFoundation) ? dateFoundation : (DateTime?)null;
-            _organization.BSR=double.TryParse(BSR.Text, out var bSR) ? bSR : (double?)null;
+            _organization.BSR=double.TryParse(BSR.Text.Replace('.', ','), out var bSR) ? bSR : (double?)null;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -92,6 +92,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.DateValidator(e);
+        }
+        private void Number_PreviewTextDoubleInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DoubleValidator(e);
         }
     }
 }
