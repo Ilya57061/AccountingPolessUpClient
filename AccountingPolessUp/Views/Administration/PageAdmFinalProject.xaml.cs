@@ -24,7 +24,6 @@ namespace AccountingPolessUp.Views.Administration
             _employment = employment;
             BoxEmployment.IsEnabled = false;
             BoxEmployment.ItemsSource = _employmentService.Get();
-            _finalProjects = _finalProjectService.GetByEmployment(_employment.Id);
             UpdateDataGrid();
         }
         public PageAdmFinalProject()
@@ -32,7 +31,6 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             BoxEmployment.ItemsSource = _employmentService.Get();
             ButtonBack.Visibility = Visibility.Hidden;
-            _finalProjects = _finalProjectService.Get();
             UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -57,6 +55,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _finalProjects, Name.Text, Description.Text, GitHub.Text, Links.Text, DateStart.Text, DateEnd.Text, BoxEmployment.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -75,9 +74,11 @@ namespace AccountingPolessUp.Views.Administration
         private void UpdateDataGrid()
         {
             if (_employment == null)
-                DataGridUpdater.UpdateDataGrid(_finalProjects, this);
+                _finalProjects = _finalProjectService.Get();
             else
-                DataGridUpdater.UpdateDataGrid(_finalProjects, this);
+                _finalProjects = _finalProjectService.GetByEmployment(_employment.Id);
+            DataGridUpdater.UpdateDataGrid(_finalProjects, this);
+
         }
         private void DeleteSelectedFinalProjects()
         {

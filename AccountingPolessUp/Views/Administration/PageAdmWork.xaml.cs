@@ -22,7 +22,6 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             BoxMentors.ItemsSource = _participantsService.Get();
-            _employments = _employmentService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxPositions(BoxPosition);
             FilterComboBox.SetBoxParticipants(BoxParticipants);
@@ -68,6 +67,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
+            _employments = _employmentService.Get();
             DataGridUpdater.UpdateDataGrid(_employments, this);
         }
         private void DeleteSelectedEmployments()
@@ -76,7 +76,7 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Employment employment in dataGrid.SelectedItems)
                 {
-                        _employmentService.Delete(employment.Id);  
+                 _employmentService.Delete(employment.Id);  
                 }
             }
             UpdateDataGrid();
