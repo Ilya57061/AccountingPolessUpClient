@@ -53,7 +53,7 @@ Background="Transparent"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
                         <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,12.5" x:Name="Budget" FontSize="14" materialDesign:HintAssist.Hint="Бюджет" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" />
                         <TextBox PreviewTextInput="Number_PreviewTextDoubleInput" Margin="1,0,1,12.5" x:Name="RatingCoefficient" FontSize="14" materialDesign:HintAssist.Hint="Рейтинговый коэффициент" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="CashMultiple" materialDesign:TextFieldAssist.LeadingIconSize="20" />
-                        <ComboBox x:Name="BoxStagesOfProject" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Name"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Стадия проекта" Margin="1,0,1,0"></ComboBox>
+                        <ComboBox x:Name="BoxStagesOfProject" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Name"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Этап проекта" Margin="1,0,1,0"></ComboBox>
                         <ComboBox  x:Name="IsOpened"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Is Opened" Margin="1,0,1,0">
                             <ComboBoxItem Content="True" />
                             <ComboBoxItem Content="False" />

@@ -31,6 +31,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmScheduleOfClasses(TrainingCourses trainingCourses)
         {
             InitializeComponent();
+            BoxTrainingCourses.IsEnabled = false;
             _trainingCourses = trainingCourses;
            
             UpdateDataGrid();

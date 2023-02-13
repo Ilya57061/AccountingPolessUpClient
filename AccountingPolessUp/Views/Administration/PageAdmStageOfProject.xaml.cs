@@ -28,6 +28,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmStageOfProject(Project project)
         {
             InitializeComponent();
+            BoxProject.IsEnabled = false;
             _project = project;
             UpdateDataGrid();
             FilterComboBox.SetBoxProjects(BoxProject);

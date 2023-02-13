@@ -43,6 +43,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmVacancy(StagesOfProject stagesOfProject)
         {
             InitializeComponent();
+            BoxStagesOfProject.IsEnabled = false;
             BoxStagesOfProject.ItemsSource = _stagesOfProjectService.Get();
             _stagesOfProject = stagesOfProject;
             

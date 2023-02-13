@@ -30,6 +30,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             _rank = rank;
+            BoxRank.IsEnabled = false;
             _bonuses = _bonusService.Get(_rank.Id);
             UpdateDataGrid();
             BoxsSetData();
