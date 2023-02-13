@@ -89,11 +89,18 @@ namespace AccountingPolessUp.Implementations
 
         public void Delete(int id)
         {
-            var reqparm = new NameValueCollection
+            try
             {
-                ["id"] = $"{id}"
-            };
-            _webClient.UploadValues("DeleteParticipant", "DELETE", reqparm);
+                var reqparm = new NameValueCollection
+                {
+                    ["id"] = $"{id}"
+                };
+                _webClient.UploadValues("DeleteParticipant", "DELETE", reqparm);
+            }
+            catch (Exception)
+            {
+
+            }
         }
         public Participants GetByParticipantName(string name)
         {

@@ -33,7 +33,7 @@ namespace AccountingPolessUp
             {
                 Admin.Visibility = Visibility.Visible;
             }
-            else if (user.Role.Name == "GlobalPM")//7
+            else if (user.Role.Name == "GlobalPm")//7
             {
                 foreach (TreeViewItem item in Admin.Items)
                 {

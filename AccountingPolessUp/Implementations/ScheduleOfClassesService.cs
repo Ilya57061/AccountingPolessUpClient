@@ -110,7 +110,6 @@ namespace AccountingPolessUp.Implementations
             catch (Exception)
             {
 
-                throw;
             }
            
         }
