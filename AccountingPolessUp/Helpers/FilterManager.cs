@@ -42,7 +42,7 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(dateFoundation))
                 list = list.Where(x => x.FoundationDate.ToString().StartsWith(DateTime.Parse(dateFoundation).ToString()));
             if (!string.IsNullOrEmpty(bSR))
-                list = list.Where(x => x.BSR == double.Parse(bSR));
+                list = list.Where(x => x.BSR.ToString().StartsWith(bSR));
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
