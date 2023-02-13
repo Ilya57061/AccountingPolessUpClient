@@ -108,7 +108,8 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Vacancy vacancy in dataGrid.SelectedItems)
                 {
-                    _vacancyService.Delete(vacancy.Id);
+                    if (RoleValidator.RoleChecker((int) vacancy.StagesOfProject.Project.idLocalPM))
+                        _vacancyService.Delete(vacancy.Id);
                 }
             }
             UpdateDataGrid();
@@ -126,8 +127,11 @@ namespace AccountingPolessUp.Views.Administration
         {
             foreach (Vacancy vacancy in dataGrid.SelectedItems)
             {
-                EditFrame.Content = new PageEditVacancy(vacancy, this);
-                break;
+                if (RoleValidator.RoleChecker((int)vacancy.StagesOfProject.Project.idLocalPM))
+                {
+                    EditFrame.Content = new PageEditVacancy(vacancy, this);
+                    break;
+                }
             }
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

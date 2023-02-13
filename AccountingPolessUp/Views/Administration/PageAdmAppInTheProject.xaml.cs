@@ -89,7 +89,8 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (ApplicationsInTheProject app in dataGrid.SelectedItems)
                 {
-                    _appService.Delete(app.Id);
+                    if (RoleValidator.RoleChecker((int)app.Vacancy.StagesOfProject.Project.idLocalPM))
+                        _appService.Delete(app.Id);
                 }
                 UpdateDataGrid();
             }
@@ -102,7 +103,8 @@ namespace AccountingPolessUp.Views.Administration
                 ApplicationsInTheProject app = dataGrid.SelectedItem as ApplicationsInTheProject;
                 if (app != null)
                 {
-                    EditFrame.Content = new PageEditApplicationsInTheProject(app, this);
+                    if (RoleValidator.RoleChecker((int)app.Vacancy.StagesOfProject.Project.idLocalPM))
+                        EditFrame.Content = new PageEditApplicationsInTheProject(app, this);
                 }
             }
         }

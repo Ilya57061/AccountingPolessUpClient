@@ -22,7 +22,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             BoxDirector.ItemsSource = _participantsService.Get();
-            
+
             UpdateDataGrid();
             FilterComboBox.SetBoxOrganizations(BoxOrganizations);
         }
@@ -81,11 +81,15 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void DeleteSelectedDepartments()
         {
+
             if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (Department department in dataGrid.SelectedItems)
                 {
-                    _departmentService.Delete(department.Id);
+                    if (RoleValidator.RoleChecker((int)department.DirectorId))
+                    {
+                        _departmentService.Delete(department.Id);
+                    }
                 }
                 UpdateDataGrid();
             }
@@ -102,7 +106,10 @@ namespace AccountingPolessUp.Views.Administration
         {
             foreach (Department department in dataGrid.SelectedItems)
             {
-                EditFrame.Content = new PageEditDepartments(department, this);
+                if (RoleValidator.RoleChecker((int)department.DirectorId))
+                {
+                    EditFrame.Content = new PageEditDepartments(department, this);
+                }
             }
         }
         private void UpdateDataGrid()

@@ -75,17 +75,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             try
             {
-                if (RoleValidator.RoleChecker((int)_department.DirectorId))
-                {
                     WriteData();
                     if (FormValidator.AreAllElementsFilled(this))
                         throw new Exception();
                     _departmentService.Update(_department);
                     DataGridUpdater.UpdateDataGrid(_departmentService.Get(), _parent);
                     this.NavigationService.GoBack();
-                }
-                
-             
             }
             catch (Exception)
             {

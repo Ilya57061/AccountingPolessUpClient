@@ -76,7 +76,7 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Employment employment in dataGrid.SelectedItems)
                 {
-                    _employmentService.Delete(employment.Id);
+                        _employmentService.Delete(employment.Id);  
                 }
             }
             UpdateDataGrid();

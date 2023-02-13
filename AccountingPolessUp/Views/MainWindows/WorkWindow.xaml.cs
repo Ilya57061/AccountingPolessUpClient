@@ -90,12 +90,11 @@ namespace AccountingPolessUp
                 }
 
             }
-            else if (user.Role.Name == "LocalPM")
+            else if (user.Role.Name == "LocalPm")
             {
                 foreach (TreeViewItem item in Admin.Items)
                 {
                     item.Visibility = Visibility.Collapsed;
-                    MainDepartments.Visibility = Visibility.Visible;
                     CommerceProjects.Visibility = Visibility.Visible;
 
                 }

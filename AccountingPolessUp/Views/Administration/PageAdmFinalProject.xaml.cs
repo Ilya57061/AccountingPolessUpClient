@@ -85,7 +85,7 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (FinalProject finalProject in dataGrid.SelectedItems)
                 {
-                    _finalProjectService.Delete(finalProject.Id);
+                   _finalProjectService.Delete(finalProject.Id);
                 }
             }
             UpdateDataGrid();
