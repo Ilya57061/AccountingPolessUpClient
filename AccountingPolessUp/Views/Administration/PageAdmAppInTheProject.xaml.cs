@@ -85,7 +85,7 @@ namespace AccountingPolessUp.Views.Administration
 
         private void DeleteSelectedApplications()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (ApplicationsInTheProject app in dataGrid.SelectedItems)
                 {
@@ -109,6 +109,10 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();
+        }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
         }
     }
 }

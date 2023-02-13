@@ -88,9 +88,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _cours.DateEnd = DateTime.Parse(DateEnd.Text);
             _cours.IsActive = bool.Parse(BoxIsActive.Text);
         }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {
-            NumberValidator.Validator(e);
+            NumberValidator.DateValidator(e);
         }
     }
 }

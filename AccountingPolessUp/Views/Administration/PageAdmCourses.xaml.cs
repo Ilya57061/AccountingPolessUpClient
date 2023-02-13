@@ -129,5 +129,9 @@ namespace AccountingPolessUp.Views.Administration
                 this.NavigationService.Content = new PageAdmScheduleOfClasses(trainingCourses);
             }
         }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
+        }
     }
 }

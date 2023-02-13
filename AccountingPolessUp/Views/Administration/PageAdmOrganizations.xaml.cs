@@ -79,7 +79,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void DeleteSelectedOrganizations()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (Organization organization in dataGrid.SelectedItems)
                 {
@@ -115,6 +115,10 @@ namespace AccountingPolessUp.Views.Administration
             {
 
             }
+        }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
         }
     }
 }

@@ -95,5 +95,13 @@ namespace AccountingPolessUp.Implementations
             };
             _webClient.UploadValues("DeleteParticipant", "DELETE", reqparm);
         }
+        public Participants GetByParticipantName(string name)
+        {
+            var values = new NameValueCollection { ["name"] = name };
+            var response = _webClient.UploadValues("GetByIndividualsFIO", "PUT", values);
+            var responseString = Encoding.Default.GetString(response);
+            Participants participants = JsonConvert.DeserializeObject<Participants>(responseString);
+            return participants;
+        }
     }
 }

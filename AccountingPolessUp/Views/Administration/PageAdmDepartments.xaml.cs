@@ -65,7 +65,10 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             UpdateDataGrid();
-            FilterManager.ConfirmFilter(dataGrid, _departments, FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text, _participantsService.Get().FirstOrDefault(x => x.Individuals.FIO == BoxDirector.Text).Id.ToString());
+
+            string directorId = string.IsNullOrEmpty(BoxDirector.Text) ? "" : _participantsService.GetByParticipantName(BoxDirector.Text).Id.ToString();
+
+            FilterManager.ConfirmFilter(dataGrid, _departments, FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text, directorId);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -78,7 +81,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void DeleteSelectedDepartments()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (Department department in dataGrid.SelectedItems)
                 {
@@ -117,6 +120,10 @@ namespace AccountingPolessUp.Views.Administration
             {
                 this.NavigationService.Content = new PageAdmPosition(department);
             }
+        }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
         }
     }
 }

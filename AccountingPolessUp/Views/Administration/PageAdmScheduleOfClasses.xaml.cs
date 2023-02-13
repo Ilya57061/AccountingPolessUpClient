@@ -31,6 +31,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmScheduleOfClasses(TrainingCourses trainingCourses)
         {
             InitializeComponent();
+            BoxTrainingCourses.IsEnabled = false;
             _trainingCourses = trainingCourses;
            
             UpdateDataGrid();
@@ -78,7 +79,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void DeleteSelectedSchedule()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (ScheduleOfСlasses schedule in dataGrid.SelectedItems)
                 {

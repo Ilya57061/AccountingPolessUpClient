@@ -81,7 +81,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void DeleteSelectedFinalProjects()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Confirm deletion", "Deletion", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (FinalProject finalProject in dataGrid.SelectedItems)
                 {
@@ -100,6 +100,10 @@ namespace AccountingPolessUp.Views.Administration
                     EditFrame.Content = new PageEditFinalProject(finalProject, _employment, this);
                 }
             }
+        }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
         }
     }
 }
