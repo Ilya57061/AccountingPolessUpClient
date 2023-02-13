@@ -65,6 +65,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataNavigator.NameBox = BoxOrganizations.Name;
             _parent.NavigationService.Content = new PageAdmOrganizations(_organizations);
         }
+        private void OpenDirector_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxDirector.Name;
+            _parent.NavigationService.Content = new PageAdmMembers(_participants);
+        }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             try

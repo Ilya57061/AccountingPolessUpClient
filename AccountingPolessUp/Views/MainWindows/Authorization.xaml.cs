@@ -27,6 +27,7 @@ namespace AccountingPolessUp
 
         public Authorization()
         {
+            
             InitializeComponent();
              Enter.IsEnabled = false;
             User user = loginService.Login(new LoginDto { Login = "Admin", Password = "admin" });
@@ -36,6 +37,8 @@ namespace AccountingPolessUp
             }
             else
             {
+                //    RankBonusService rankBonusService = new RankBonusService();
+                //    rankBonusService.Create(new RankBonus { RankId = 2, BonusId = 1 });
                 WorkWindow mainWindow = new WorkWindow(user);
                 mainWindow.Show();
                 this.Close();

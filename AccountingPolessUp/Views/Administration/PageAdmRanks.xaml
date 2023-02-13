@@ -38,6 +38,7 @@ Background="Transparent"
                     <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="1,0,1,12.5"   x:Name="MinMmr" FontSize="14" materialDesign:HintAssist.Hint="МинММР" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="UnfoldLessHorizontal" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding MinMmr}"/>
                     <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="1,0,1,12.5" x:Name="MaxMmr" FontSize="14" materialDesign:HintAssist.Hint="МаксММР" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="UnfoldMoreHorizontal" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding MaxMmr}"/>
                     <ComboBox x:Name="BoxOrganization" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Fullname"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация" Margin="1,0,1,0"></ComboBox>
+                    
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>
@@ -61,6 +62,21 @@ Background="Transparent"
                         <DataGridTextColumn Binding="{Binding MinMmr, UpdateSourceTrigger=PropertyChanged}" Header="МинММР" />
                         <DataGridTextColumn Binding="{Binding MaxMmr, UpdateSourceTrigger=PropertyChanged}" Header="МаксММР" />
                         <DataGridTextColumn Binding="{Binding Organizations.Fullname, UpdateSourceTrigger=PropertyChanged}" Header="Организация" Width="auto"/>
+                        <DataGridTemplateColumn Header="Бонус">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding RankBonus}" DisplayMemberPath="Bonus.BonusName" SelectedIndex="0" SelectedValuePath="Bonus.Id">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel>
+                                                    <TextBlock Text="{Binding Bonus.BonusName}" />
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn x:Name="ColumDelete" Header="Удалить">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

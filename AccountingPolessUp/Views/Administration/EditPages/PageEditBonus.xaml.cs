@@ -3,20 +3,9 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -29,6 +18,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         Page _parent;
         BonusService _bonusService = new BonusService();
         RankService _RankService = new RankService();
+        RankBonusService _rankBonusService = new RankBonusService();
         List<Rank> _ranks;
         Bonus _bonus;
         public PageEditBonus(Bonus bonus, Page parent)
@@ -49,9 +39,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonAdd.Visibility = Visibility.Visible;
             _bonus = new Bonus();
             _ranks = _RankService.Get();
-            _parent=parent;
+            _parent = parent;
             BoxRank.ItemsSource = _ranks;
             _parent = parent;
+            ButtonSaveRankBonus.IsEnabled = false;
+            ButtonDeleteRankBonus.IsEnabled = false;
         }
         private void OpenRank_Click(object sender, RoutedEventArgs e)
         {
@@ -90,6 +82,38 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
+        }
+        private void ButtonSaveRankBonus_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                _rankBonusService.Create(new RankBonus { RankId = _ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id, BonusId = _bonus.Id });
+                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), _parent);
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Ошибка при создании связи");
+            }
+
+        }
+        private void ButtonDeleteRankBonus_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                _rankBonusService.Delete(_ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id, _bonus.Id);
+                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), _parent);
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Ошибка при удалении связи");
+            }
+
         }
         private void WriteData()
         {

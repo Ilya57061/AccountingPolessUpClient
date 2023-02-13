@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -31,13 +32,21 @@ namespace AccountingPolessUp.Implementations
         }
         public void Create(RankBonus model)
         {
-            var reqparm = new NameValueCollection
+            try
             {
-                ["RankId"] = $"{model.RankId}",
-                ["BonusId"] = $"{model.BonusId}",
-                
-            };
-            _webClient.UploadValues("CreateRankBonus", "POST", reqparm);
+                var reqparm = new NameValueCollection
+                {
+                    ["RankId"] = $"{model.RankId}",
+                    ["BonusId"] = $"{model.BonusId}",
+                };
+                _webClient.UploadValues("CreateRankBonus", "POST", reqparm);
+            }
+            catch (Exception)
+            {
+
+                throw new Exception("Ошибка при создании связи RankBonus");
+            }
+          
         }
         public void Edit(RankBonus model)
         {
@@ -50,11 +59,12 @@ namespace AccountingPolessUp.Implementations
             };
             _webClient.UploadValues("UpdateRankBonus", "PUT", reqparm);
         }
-        public void Delete(int id)
+        public void Delete(int rankId, int bonusId)
         {
             var reqparm = new NameValueCollection
             {
-                ["id"] = $"{id}"
+                ["RankId"] = $"{rankId}",
+                ["BonusId"] = $"{bonusId}"
             };
             _webClient.UploadValues("DeleteRankBonus", "DELETE", reqparm);
         }
