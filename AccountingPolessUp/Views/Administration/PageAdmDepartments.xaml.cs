@@ -22,7 +22,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             BoxDirector.ItemsSource = _participantsService.Get();
-            _departments = _departmentService.Get();
+            
             UpdateDataGrid();
             FilterComboBox.SetBoxOrganizations(BoxOrganizations);
         }
@@ -64,6 +64,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _departments, FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text, _participantsService.Get().FirstOrDefault(x => x.Individuals.FIO == BoxDirector.Text).Id.ToString());
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -103,6 +104,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void UpdateDataGrid()
         {
+            _departments = _departmentService.Get();
             DataGridUpdater.UpdateDataGrid(_departments, this);
         }
         private void ButtonPositions_Click(object sender, RoutedEventArgs e)

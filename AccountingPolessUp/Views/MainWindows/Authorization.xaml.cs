@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Implementations;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.ViewModels;
 using System;
@@ -37,8 +38,7 @@ namespace AccountingPolessUp
             }
             else
             {
-                //    RankBonusService rankBonusService = new RankBonusService();
-                //    rankBonusService.Create(new RankBonus { RankId = 2, BonusId = 1 });
+                RoleValidator.User = user;
                 WorkWindow mainWindow = new WorkWindow(user);
                 mainWindow.Show();
                 this.Close();

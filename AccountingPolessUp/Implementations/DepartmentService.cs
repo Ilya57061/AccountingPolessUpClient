@@ -1,12 +1,10 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -50,6 +48,7 @@ namespace AccountingPolessUp.Implementations
 
         public void Update(Department model)
         {
+         
             var reqparm = new NameValueCollection
             {
                 ["id"] = $"{model.Id}",

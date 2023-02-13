@@ -75,12 +75,17 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             try
             {
-                WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _departmentService.Update(_department);
-                DataGridUpdater.UpdateDataGrid(_departmentService.Get(), _parent);
-                this.NavigationService.GoBack();
+                if (RoleValidator.RoleChecker((int)_department.DirectorId))
+                {
+                    WriteData();
+                    if (FormValidator.AreAllElementsFilled(this))
+                        throw new Exception();
+                    _departmentService.Update(_department);
+                    DataGridUpdater.UpdateDataGrid(_departmentService.Get(), _parent);
+                    this.NavigationService.GoBack();
+                }
+                
+             
             }
             catch (Exception)
             {
@@ -91,12 +96,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             try
             {
-                WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _departmentService.Create(_department);
-                DataGridUpdater.UpdateDataGrid(_departmentService.Get(), _parent);
-                this.NavigationService.GoBack();
+                    WriteData();
+                    if (FormValidator.AreAllElementsFilled(this))
+                        throw new Exception();
+                    _departmentService.Create(_department);
+                    DataGridUpdater.UpdateDataGrid(_departmentService.Get(), _parent);
+                    this.NavigationService.GoBack();
             }
             catch (Exception)
             {
