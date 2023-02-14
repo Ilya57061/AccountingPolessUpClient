@@ -29,7 +29,7 @@ namespace AccountingPolessUp.Implementations
             var Info = JsonConvert.DeserializeObject<List<Regulation>>(json);
             if (Info is null) throw new Exception("info - null");
             else return Info;
-        }
+        } 
 
         public void Create(Regulation model)
         {

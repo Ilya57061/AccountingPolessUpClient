@@ -15,50 +15,55 @@
 Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}"
       Title="PageInfoRules">
-
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="110"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <TextBlock Margin="40,0,0,0" x:Name="LabelRules" FontSize="34" FontWeight="Bold" Text="Уставы" VerticalAlignment="Center"></TextBlock>
+    <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="110"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+                <TextBlock Margin="40,0,0,0" x:Name="LabelRules" FontSize="34" FontWeight="Bold" Text="Уставы" VerticalAlignment="Center"></TextBlock>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+                <ListView ItemsSource="{Binding regulations}" HorizontalContentAlignment="Stretch">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Expander Header="{Binding Path=[0][0].Organization.Fullname}" PreviewMouseWheel="TextBlock_PreviewMouseWheel">
+                                <VirtualizingStackPanel Margin="24,8,24,16" Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                                    <ItemsControl ItemsSource="{Binding}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Expander Header="{Binding Name}" PreviewMouseWheel="TextBlock_PreviewMouseWheel">
+                                                    <VirtualizingStackPanel Margin="24,8,24,16" Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
+                                                        <ItemsControl ItemsSource="{Binding}">
+                                                            <ItemsControl.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Expander Header="{Binding Description}" x:Name="ExpanderDescription">
+                                                                        <StackPanel>
+                                                                            <TextBlock Text="{Binding Text}" Width="{Binding ElementName=ExpanderDescription, Path=ActualWidth}" Style="{StaticResource HorizontalExpanderContentTextBlock}" TextAlignment="Justify" ScrollViewer.CanContentScroll="False" IsEnabled="True" PreviewMouseWheel="TextBlock_PreviewMouseWheel"/>
+                                                                        </StackPanel>
+                                                                    </Expander>
+                                                                </DataTemplate>
+                                                            </ItemsControl.ItemTemplate>
+                                                        </ItemsControl>
+                                                    </VirtualizingStackPanel>
+                                                </Expander>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </VirtualizingStackPanel>
+                            </Expander>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                </ListView>
+            </Grid>
         </Grid>
-        <Grid Grid.Row="1">
-            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <ListBox ItemsSource="{Binding regulations}" HorizontalContentAlignment="Stretch">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Expander Header="{Binding Path=[0][0].Organization.Fullname}">
-                            <StackPanel Margin="24,8,24,16" Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                                <ItemsControl ItemsSource="{Binding}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Expander Header="{Binding Name}">
-                                                <StackPanel Margin="24,8,24,16" Orientation="Vertical" TextBlock.Foreground="{DynamicResource MaterialDesignBody}">
-                                                    <ItemsControl ItemsSource="{Binding}" >
-                                                        <ItemsControl.ItemTemplate>
-                                                            <DataTemplate>
-                                                                <Expander  Header="{Binding Description}">
-                                                                    <StackPanel>
-                                                                        <TextBlock Style="{StaticResource HorizontalExpanderContentTextBlock}" Margin="50,0,0,0" Text="{Binding Text}"/>
-                                                                    </StackPanel>
-                                                                </Expander>
-                                                            </DataTemplate>
-                                                        </ItemsControl.ItemTemplate>
-                                                    </ItemsControl>
-                                                </StackPanel>
-                                            </Expander>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-                            </StackPanel>
-                        </Expander>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </Grid>
-    </Grid>
+    </ScrollViewer>
 </Page>
