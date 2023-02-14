@@ -71,7 +71,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             NumberValidator.Validator(e);
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             if(_trainingCourses==null) _scheduleOfClasses = _scheduleOfClassesService.Get();
             else _scheduleOfClasses = _scheduleOfClassesService.Get(_trainingCourses.Id);

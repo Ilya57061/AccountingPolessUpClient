@@ -49,7 +49,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             NumberValidator.DateValidator(e);
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             DataGridUpdater.UpdateDataGrid(_registrationForCourses, this);
         }

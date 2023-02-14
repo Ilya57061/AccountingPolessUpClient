@@ -59,8 +59,8 @@ namespace AccountingPolessUp.Views.Administration
                 {
                     _educationalPortalsService.Delete(educationalPortal.Id);
                 }
-                UpdateDataGrid();
             }
+            UpdateDataGrid();
         }
         private void EditSelectedEducationalPortals()
         {
@@ -69,7 +69,7 @@ namespace AccountingPolessUp.Views.Administration
                 EditFrame.Content = new PageEditEducationalPortals(educationalPortal, this);
             }
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             DataGridUpdater.UpdateDataGrid(_educationalPortals, this);
         }

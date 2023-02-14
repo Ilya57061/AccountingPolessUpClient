@@ -73,7 +73,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             NumberValidator.Validator(e);
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             DataGridUpdater.UpdateDataGrid(_organizations, this);
         }

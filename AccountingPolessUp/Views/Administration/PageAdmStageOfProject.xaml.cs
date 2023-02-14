@@ -86,7 +86,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             NumberValidator.DateValidator(e);
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
                 if(_project==null) _stagesOfProjects = _stagesOfProjectService.Get();
                 else _stagesOfProjects = _stagesOfProjectService.Get(_project.Id);

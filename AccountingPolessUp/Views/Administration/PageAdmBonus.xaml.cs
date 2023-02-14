@@ -82,7 +82,7 @@ namespace AccountingPolessUp.Views.Administration
                 UpdateDataGrid();
             }
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
       
                 DataGridUpdater.UpdateDataGrid(_bonuses, this);
