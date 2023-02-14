@@ -39,5 +39,10 @@ namespace AccountingPolessUp.Views.Information
         .ToList());
             DataContext = this;
         }
+        private void TextBlock_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            scroll.ScrollToVerticalOffset(scroll.VerticalOffset - e.Delta);
+            e.Handled = true;
+        }
     }
 }
