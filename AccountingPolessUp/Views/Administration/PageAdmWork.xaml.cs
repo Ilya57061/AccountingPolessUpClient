@@ -21,6 +21,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmWork()
         {
             InitializeComponent();
+            DataGridUpdater.AdmWork=this;
             BoxMentors.ItemsSource = _participantsService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxPositions(BoxPosition);

@@ -23,6 +23,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmScheduleOfClasses()
         {
             InitializeComponent();
+            DataGridUpdater.AdmScheduleOfClasses = this;
             ButtonBack.Visibility = Visibility.Hidden;
             
             UpdateDataGrid();
@@ -31,6 +32,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmScheduleOfClasses(TrainingCourses trainingCourses)
         {
             InitializeComponent();
+            DataGridUpdater.AdmScheduleOfClasses = this;
             BoxTrainingCourses.IsEnabled = false;
             _trainingCourses = trainingCourses;
            

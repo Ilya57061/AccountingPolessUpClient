@@ -68,7 +68,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _vacancyService.Update(_vacancy);
-                DataGridUpdater.UpdateDataGrid(_vacancyService.Get(), _parent);
+                DataGridUpdater.AdmVacancy.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -85,7 +85,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _vacancyService.Create(_vacancy);
-                DataGridUpdater.UpdateDataGrid(_vacancyService.Get(),_parent);
+                DataGridUpdater.AdmVacancy.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)

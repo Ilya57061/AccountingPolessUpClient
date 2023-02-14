@@ -21,6 +21,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmStageOfProject()
         {
             InitializeComponent();
+            DataGridUpdater.AdmStageOfProject = this;
             ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
             FilterComboBox.SetBoxProjects(BoxProject);
@@ -28,6 +29,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmStageOfProject(Project project)
         {
             InitializeComponent();
+            DataGridUpdater.AdmStageOfProject = this;
             BoxProject.IsEnabled = false;
             _project = project;
             UpdateDataGrid();
@@ -36,6 +38,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmStageOfProject(List<StagesOfProject> stagesOfProjects)
         {
             InitializeComponent();
+            DataGridUpdater.AdmStageOfProject = this;
             UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _stagesOfProjects = stagesOfProjects;
