@@ -21,6 +21,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmDepartments()
         {
             InitializeComponent();
+            DataGridUpdater.AdmDepartments = this;
             BoxDirector.ItemsSource = _participantsService.Get();
 
             UpdateDataGrid();
@@ -29,6 +30,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmDepartments(List<Department> departments)
         {
             InitializeComponent();
+            DataGridUpdater.AdmDepartments = this;
             ColumSelect.Visibility = Visibility.Visible;
             _departments = departments;
             ButtonAdd.Visibility = Visibility.Hidden;

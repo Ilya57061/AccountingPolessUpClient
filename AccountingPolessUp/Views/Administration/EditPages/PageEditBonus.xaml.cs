@@ -59,7 +59,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _bonusService.Update(_bonus);
-                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), _parent);
+                DataGridUpdater.AdmBonus.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -75,7 +75,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _bonusService.Create(_bonus);
-                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), _parent);
+                DataGridUpdater.AdmBonus.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -89,7 +89,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
 
                 _rankBonusService.Create(new RankBonus { RankId = _ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id, BonusId = _bonus.Id });
-                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), _parent);
+                DataGridUpdater.AdmBonus.UpdateDataGrid();
 
             }
             catch (Exception)
@@ -105,7 +105,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
 
                 _rankBonusService.Delete(_ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id, _bonus.Id);
-                DataGridUpdater.UpdateDataGrid(_bonusService.Get(), _parent);
+                DataGridUpdater.AdmBonus.UpdateDataGrid();
 
             }
             catch (Exception)

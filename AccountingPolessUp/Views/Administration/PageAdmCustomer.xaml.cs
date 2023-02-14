@@ -30,12 +30,13 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmCustomer()
         {
             InitializeComponent();
-            _customers = _customerService.Get();
+            DataGridUpdater.AdmCustomer = this;
             UpdateDataGrid();
         }
         public PageAdmCustomer(List<Customer> customers)
         {
             InitializeComponent();
+            DataGridUpdater.AdmCustomer = this;
             ColumSelect.Visibility = Visibility.Visible;
             _customers = customers;
             ButtonAdd.Visibility = Visibility.Hidden;
@@ -83,6 +84,7 @@ namespace AccountingPolessUp.Views.Administration
         }
        public void UpdateDataGrid()
         {
+            _customers = _customerService.Get();
             DataGridUpdater.UpdateDataGrid(_customers, this);
         }
         private void DeleteSelectedCustomers()

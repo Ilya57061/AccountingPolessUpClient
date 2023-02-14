@@ -96,11 +96,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void UpdateDataGrid()
         {
-            if (_department == null)
-                positions = _positionService.Get();
-            else positions = _positionService.Get(_department.Id);
+            DataGridUpdater.AdmPosition.UpdateDataGrid();
+            //if (_department == null)
+            //    positions = _positionService.Get();
+            //else positions = _positionService.Get(_department.Id);
 
-            DataGridUpdater.UpdateDataGrid(positions, _parent);
+            //DataGridUpdater.UpdateDataGrid(positions, _parent);
         }
         private void WriteData()
         {

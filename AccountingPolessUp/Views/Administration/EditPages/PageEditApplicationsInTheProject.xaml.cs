@@ -97,7 +97,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _applicationService.Update(_applications);
-                DataGridUpdater.UpdateDataGrid(_applicationService.Get(), _parent);
+                DataGridUpdater.AdmAppInTheProject.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -114,7 +114,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _applicationService.Create(_applications);
-                DataGridUpdater.UpdateDataGrid(_applicationService.Get(), _parent);
+                DataGridUpdater.AdmAppInTheProject.UpdateDataGrid();
                 this.NavigationService.GoBack();
 
             }

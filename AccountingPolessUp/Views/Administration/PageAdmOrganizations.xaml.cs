@@ -30,12 +30,13 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmOrganizations()
         {
             InitializeComponent();
-            _organizations = _organizationService.Get();
+            DataGridUpdater.AdmOrganizations = this;
             UpdateDataGrid();
         }
         public PageAdmOrganizations(List<Organization> organizations)
         {
             InitializeComponent();
+            DataGridUpdater.AdmOrganizations = this;
             ColumSelect.Visibility = Visibility.Visible;
             _organizations = organizations;
             ButtonAdd.Visibility = Visibility.Hidden;
@@ -75,6 +76,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
+            _organizations = _organizationService.Get();
             DataGridUpdater.UpdateDataGrid(_organizations, this);
         }
         private void DeleteSelectedOrganizations()

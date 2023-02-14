@@ -23,12 +23,14 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmNatural()
         {
             InitializeComponent();
-            _individuals = _individualsService.Get();
+            DataGridUpdater.AdmNatural = this;
+            
             UpdateDataGrid();
         }
         public PageAdmNatural(List<Individuals> individuals)
         {
             InitializeComponent();
+            DataGridUpdater.AdmNatural = this;
             ColumSelect.Visibility = Visibility.Visible;
             _individuals = individuals;
             ButtonAdd.Visibility = Visibility.Hidden;
@@ -100,6 +102,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
+            _individuals = _individualsService.Get();
             DataGridUpdater.UpdateDataGrid(_individuals, this);
         }
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

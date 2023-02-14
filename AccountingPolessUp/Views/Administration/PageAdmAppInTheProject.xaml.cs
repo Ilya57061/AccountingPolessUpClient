@@ -23,7 +23,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmAppInTheProject()
         {
             InitializeComponent();
-
+            DataGridUpdater.AdmAppInTheProject = this;
             BoxVacancy.ItemsSource = _vacancyService.Get();
             BoxParticipant.ItemsSource = _participantsService.Get();
             ButtonBack.Visibility = Visibility.Hidden;
@@ -32,6 +32,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmAppInTheProject(Vacancy vacancy)
         {
             InitializeComponent();
+            DataGridUpdater.AdmAppInTheProject = this;
             BoxVacancy.IsEnabled = false;
             BoxParticipant.ItemsSource = _participantsService.Get();
             _vacancy = vacancy;

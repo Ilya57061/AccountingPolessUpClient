@@ -22,7 +22,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmEducationalPortals()
         {
             InitializeComponent();
-            _educationalPortals = _educationalPortalsService.Get();
+            DataGridUpdater.AdmEducationalPortals = this;
             UpdateDataGrid();
             FilterComboBox.SetBoxDepartments(BoxDepartment);
         }
@@ -71,6 +71,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
+            _educationalPortals = _educationalPortalsService.Get();
             DataGridUpdater.UpdateDataGrid(_educationalPortals, this);
         }
         private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)

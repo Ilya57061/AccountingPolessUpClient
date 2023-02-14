@@ -30,12 +30,13 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmCourses()
         {
             InitializeComponent();
-            _trainingCourses = _coursesService.Get();
+            DataGridUpdater.AdmCourses = this;
             UpdateDataGrid();
         }
         public PageAdmCourses(List<TrainingCourses> trainingCourses)
         {
             InitializeComponent();
+            DataGridUpdater.AdmCourses = this;
             ColumSelect.Visibility = Visibility.Visible;
             _trainingCourses = trainingCourses;
             ButtonAdd.Visibility = Visibility.Hidden;
@@ -97,6 +98,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
+            _trainingCourses = _coursesService.Get();
             DataGridUpdater.UpdateDataGrid(_trainingCourses, this);
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)

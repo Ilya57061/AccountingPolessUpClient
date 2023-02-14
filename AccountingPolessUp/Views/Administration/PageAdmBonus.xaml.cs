@@ -21,6 +21,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmBonus()
         {
             InitializeComponent();
+            DataGridUpdater.AdmBonus = this;
             ButtonBack.Visibility = Visibility.Hidden;
             _bonuses = _bonusService.Get();
             UpdateDataGrid();
@@ -29,6 +30,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmBonus(Rank rank)
         {
             InitializeComponent();
+            DataGridUpdater.AdmBonus = this;
             _rank = rank;
             BoxRank.IsEnabled = false;
             _bonuses = _bonusService.Get(_rank.Id);

@@ -20,6 +20,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmPosition()
         {
             InitializeComponent();
+            DataGridUpdater.AdmPosition = this;
             ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
             FilterComboBox.SetBoxDepartments(BoxDepartment);
@@ -27,6 +28,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmPosition(Department department)
         {
             InitializeComponent();
+            DataGridUpdater.AdmPosition = this;
             _department = department;
             BoxDepartment.IsEnabled = false;
             UpdateDataGrid();
