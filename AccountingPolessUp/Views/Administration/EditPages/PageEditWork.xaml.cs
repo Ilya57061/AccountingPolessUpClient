@@ -30,6 +30,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         EmploymentService _employmentService = new EmploymentService();
         List<Position> _positions;
         List<Participants> _participants;
+        
 
         Employment employment;
         public PageEditWork(Employment employment, Page parent)
@@ -85,6 +86,18 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxParticipants.Name;
             _parent.NavigationService.Content = new PageAdmMembers(_participants);
+        }
+        private void OpenMentors_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxMentors.Name;
+            _parent.NavigationService.Content = new PageAdmMembers(_participants);
+        }
+        private void OpenPositions_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxPosition.Name;
+            _parent.NavigationService.Content = new PageAdmPosition(_positions);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {

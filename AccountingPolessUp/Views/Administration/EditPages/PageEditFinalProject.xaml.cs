@@ -106,5 +106,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             NumberValidator.DateValidator(e);
         }
+        private void OpenEmployment_Click(object sender, RoutedEventArgs e)
+        {
+            DataNavigator.ChangePage = this;
+            DataNavigator.NameBox = BoxEmployment.Name;
+            _parent.NavigationService.Content = new PageAdmWork(_employments);
+        }
     }
 }

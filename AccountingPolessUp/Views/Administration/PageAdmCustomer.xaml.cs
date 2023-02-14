@@ -42,7 +42,7 @@ namespace AccountingPolessUp.Views.Administration
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
-            UpdateDataGrid();
+            DataGridUpdater.UpdateDataGrid(_customers, this);
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {

@@ -59,6 +59,11 @@ Background="Transparent"
         <Grid Grid.Row="1" Grid.Column="6">
             <ComboBox x:Name="BoxEmployment" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Id"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ид трудоустройства" Margin="1,0,1,0"></ComboBox>
         </Grid>
+        <Grid Grid.Column="6" >
+            <Button Click="OpenEmployment_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <materialDesign:PackIcon  Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
+            </Button>
+        </Grid>
             <Grid Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2">
             <Button x:Name="ButtonSaveEdit" Click="ButtonSaveEdit_Click">
                 <materialDesign:PackIcon Kind="ContentSaveAll" />

@@ -53,8 +53,18 @@ Background="Transparent"
         <Grid Grid.Row="1" Grid.Column="4">
             <ComboBox x:Name="BoxMentors" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ментор" Margin="1,0,1,0"></ComboBox>
         </Grid>
-        <Grid Grid.Column="6" >
+        <Grid Grid.Column="4" >
+            <Button Click="OpenMentors_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <materialDesign:PackIcon  Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="5" >
             <Button Click="OpenParticipants_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <materialDesign:PackIcon  Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
+            </Button>
+        </Grid>
+        <Grid Grid.Column="6" >
+            <Button Click="OpenPositions_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon  Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>

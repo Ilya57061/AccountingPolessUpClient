@@ -3,6 +3,7 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,7 +17,7 @@ namespace AccountingPolessUp.Views.Administration
         public PositionService _positionService = new PositionService();
         List<Position> positions;
         Department _department;
-      
+
         public PageAdmPosition()
         {
             InitializeComponent();
@@ -24,6 +25,17 @@ namespace AccountingPolessUp.Views.Administration
             ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
             FilterComboBox.SetBoxDepartments(BoxDepartment);
+        }
+        public PageAdmPosition(List<Position> _positions)
+        {
+            InitializeComponent();
+            DataGridUpdater.AdmPosition = this;
+            ColumSelect.Visibility = Visibility.Visible;
+            ButtonBack.Visibility = Visibility.Hidden;
+            positions = _positions;
+            ButtonAdd.Visibility = Visibility.Hidden;
+            FilterComboBox.SetBoxDepartments(BoxDepartment);
+            DataGridUpdater.UpdateDataGrid(positions, this);
         }
         public PageAdmPosition(Department department)
         {
@@ -33,6 +45,16 @@ namespace AccountingPolessUp.Views.Administration
             BoxDepartment.IsEnabled = false;
             UpdateDataGrid();
             FilterComboBox.SetBoxDepartments(BoxDepartment);
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Position position = dataGrid.SelectedItems[i] as Position;
+                DataNavigator.UpdateValueComboBox(positions.FirstOrDefault(x => x.Id == position.Id));
+            }
+
+            this.NavigationService.GoBack();
         }
         public void CreateRefresh()
         {
@@ -44,7 +66,8 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditPosition(this);      }
+            EditFrame.Content = new PageEditPosition(this);
+        }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedPositions();
@@ -61,9 +84,9 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-            if(_department==null)
-                positions= _positionService.Get();
-            else positions= _positionService.Get(_department.Id);
+            if (_department == null)
+                positions = _positionService.Get();
+            else positions = _positionService.Get(_department.Id);
 
             DataGridUpdater.UpdateDataGrid(positions, this);
         }

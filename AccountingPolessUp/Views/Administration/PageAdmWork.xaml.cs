@@ -27,6 +27,18 @@ namespace AccountingPolessUp.Views.Administration
             FilterComboBox.SetBoxPositions(BoxPosition);
             FilterComboBox.SetBoxParticipants(BoxParticipants);
         }
+        public PageAdmWork(List<Employment> employments)
+        {
+            InitializeComponent();
+            DataGridUpdater.AdmWork = this;
+            ColumSelect.Visibility = Visibility.Visible;
+            _employments = employments;
+            ButtonAdd.Visibility = Visibility.Hidden;
+            FilterComboBox.SetBoxPositions(BoxPosition);
+            FilterComboBox.SetBoxParticipants(BoxParticipants);
+            FilterComboBox.SetBoxParticipants(BoxMentors);
+            DataGridUpdater.UpdateDataGrid(_employments, this);
+        }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.LineRight(scroll);
@@ -96,6 +108,16 @@ namespace AccountingPolessUp.Views.Administration
                 EditFrame.Content = new PageEditWork(employment, this);
                 break;
             }
+        }
+        private void ButtonSelect_Click(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
+            {
+                Employment employment = dataGrid.SelectedItems[i] as Employment;
+                DataNavigator.UpdateValueComboBox(_employments.FirstOrDefault(x => x.Id == employment.Id));
+            }
+
+            this.NavigationService.GoBack();
         }
     }
 }
