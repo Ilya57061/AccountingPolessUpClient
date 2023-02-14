@@ -29,15 +29,7 @@ namespace AccountingPolessUp.Implementations
             var Info = JsonConvert.DeserializeObject<List<Regulation>>(json);
             if (Info is null) throw new Exception("info - null");
             else return Info;
-        }
-        public Regulation Get(int id)
-        {
-            var values = new NameValueCollection { ["id"] =$"{id}" };
-            var response = _webClient.UploadValues("GetRegulationId", "PUT", values);
-            var responseString = Encoding.Default.GetString(response);
-            Regulation regulation = JsonConvert.DeserializeObject<Regulation>(responseString);
-            return regulation;
-        }   
+        } 
 
         public void Create(Regulation model)
         {

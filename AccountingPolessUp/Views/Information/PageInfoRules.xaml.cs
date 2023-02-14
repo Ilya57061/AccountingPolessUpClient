@@ -39,13 +39,10 @@ namespace AccountingPolessUp.Views.Information
         .ToList());
             DataContext = this;
         }
-        private void GetById(object sender, RoutedEventArgs e)
+        private void TextBlock_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
         {
-            var id = (sender as Expander)?.Tag as int?;
-            if (id.HasValue)
-            {
-              _regulationService.Get(id.Value);
-            }
+            scroll.ScrollToVerticalOffset(scroll.VerticalOffset - e.Delta);
+            e.Handled = true;
         }
     }
 }
