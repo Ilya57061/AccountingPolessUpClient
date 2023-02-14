@@ -19,7 +19,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmRegistrationForCourses()
         {
             InitializeComponent();
-            _registrationForCourses = _registrationForCoursesService.Get();
+            DataGridUpdater.AdmRegistrationForCourses = this;
             UpdateDataGrid();
             FilterComboBox.SetBoxCourses(BoxTrainingCourses);
             FilterComboBox.SetBoxParticipants(BoxParticipant);
@@ -51,6 +51,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
+            _registrationForCourses = _registrationForCoursesService.Get();
             DataGridUpdater.UpdateDataGrid(_registrationForCourses, this);
         }
         private void DeleteSelectedRegistrationForCourses()

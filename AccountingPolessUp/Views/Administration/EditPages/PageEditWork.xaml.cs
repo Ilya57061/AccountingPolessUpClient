@@ -72,7 +72,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _employmentService.Update(employment);
-                DataGridUpdater.UpdateDataGrid(_employmentService.Get(), _parent);
+                DataGridUpdater.AdmWork.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -94,7 +94,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _employmentService.Create(employment);
-                DataGridUpdater.UpdateDataGrid(_employmentService.Get(), _parent);
+                DataGridUpdater.AdmWork.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)

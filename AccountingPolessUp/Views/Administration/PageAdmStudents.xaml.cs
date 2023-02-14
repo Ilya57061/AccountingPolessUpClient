@@ -19,7 +19,8 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmStudents()
         {
             InitializeComponent();
-            _students = _studentService.Get();
+            DataGridUpdater.AdmStudents = this;
+            
             UpdateDataGrid();
             FilterComboBox.SetBoxIndividuals(BoxIndividuals);
         }
@@ -50,6 +51,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
+            _students = _studentService.Get();
             DataGridUpdater.UpdateDataGrid(_students, this);
         }
         private void DeleteSelectedStudents()

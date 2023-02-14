@@ -68,7 +68,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _stagesOfProjectService.Update(_stagesOfProject);
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), _parent);
+                DataGridUpdater.AdmStageOfProject.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -85,7 +85,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _stagesOfProjectService.Create(_stagesOfProject);
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjectService.Get(), _parent);
+                DataGridUpdater.AdmStudents.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
