@@ -23,7 +23,6 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             DataGridUpdater.AdmBonus = this;
             ButtonBack.Visibility = Visibility.Hidden;
-            _bonuses = _bonusService.Get();
             UpdateDataGrid();
             BoxsSetData();
         }
@@ -33,7 +32,6 @@ namespace AccountingPolessUp.Views.Administration
             DataGridUpdater.AdmBonus = this;
             _rank = rank;
             BoxRank.IsEnabled = false;
-            _bonuses = _bonusService.Get(_rank.Id);
             UpdateDataGrid();
             BoxsSetData();
         }
@@ -86,8 +84,10 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-      
-                DataGridUpdater.UpdateDataGrid(_bonuses, this);
+
+            if (_rank == null) _bonuses = _bonusService.Get();
+            else _bonuses = _bonusService.Get(_rank.Id);
+            DataGridUpdater.UpdateDataGrid(_bonuses, this);
         }
         private void EditSelectedBonus()
         {

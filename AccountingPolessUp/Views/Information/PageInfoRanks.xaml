@@ -15,49 +15,155 @@
 Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}"
     Title="PolessUp">
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
 
-        <Grid Background="White">
+
+        <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto"/>
-                <RowDefinition />
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="110"/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <DataGrid Background="Transparent" x:Name="dataGrid" Margin="10" Grid.Row="1" CanUserAddRows="False" AutoGenerateColumns="False" IsReadOnly="True">
-
-                <DataGrid.Columns >
-                    <DataGridTextColumn Binding="{Binding RankName}" Header="Название" Width="100"/>
-                    <DataGridTextColumn Binding="{Binding Description}" Header="Описание" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding MinMmr}" Header="Минимальный рейтинг" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding MaxMmr}" Header="Максимальный рейтинг" Width="auto"/>
-                    <DataGridTextColumn Binding="{Binding Path = Organizations.Fullname}" Header="Организация" Width="auto"/>
-                    <DataGridTemplateColumn Header="Бонусы">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button Click="ButtonOpen_Click" Content="Открыть"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
-                </DataGrid.Columns>
-            </DataGrid>
-            <Grid Grid.Row="0" x:Name="dg1">
-                <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                    <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
-                        <TextBlock x:Name="LabelRanks" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Ранги"></TextBlock>
-                    </StackPanel>
-
-                    <StackPanel Margin="10 0 0 0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="panel">
-                        <TextBox Margin="1,0,1,12.5"  x:Name="RankName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding RankName}"/>
-                        <TextBox Margin="1,0,1,12.5" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
-                        <TextBox Margin="1 0 1 12.5" VerticalAlignment="Center"  x:Name="TextBoxMinMmr" FontSize="14" materialDesign:HintAssist.Hint="Мин. рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <TextBox Margin="1 0 1 12.5" VerticalAlignment="Center" x:Name="TextBoxMaxMmr" FontSize="14" materialDesign:HintAssist.Hint="Макс. рейтинг" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                        <ComboBox Margin="1 0 1 0" VerticalAlignment="Center" IsReadOnly="False" IsEditable="True" x:Name="ComboORG" SelectedItem="{Binding Organization}" DisplayMemberPath="Fullname" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация"></ComboBox>
-                        <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
-                        <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
-                    </StackPanel>
-                </StackPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="250"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" >
+                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+                <TextBlock Margin="40,0,0,0" x:Name="LabelCourses" FontSize="34" VerticalAlignment="Center" FontWeight="Bold" Text="Ранги"></TextBlock>
+            </Grid>
+        <Grid Grid.Row="1" Grid.Column="2" x:Name="filter">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition  Height="50"/>
+                <RowDefinition  Height="50"/>
+                <RowDefinition  Height="50"/>
+                <RowDefinition  Height="80"/>
+                <RowDefinition  Height="50"/>
+                <RowDefinition  Height="50"/>
+                <RowDefinition  Height="*"/>
+            </Grid.RowDefinitions>
+             <Border BorderThickness="1" Grid.RowSpan="8" CornerRadius="13" BorderBrush="White" Background="White" />
+            
+            <Grid Grid.Row="0">
+                <TextBox Margin="10,0,10,0"  x:Name="RankName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBox Margin="10,0,10,0" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <TextBox PreviewTextInput="Number_PreviewTextInput" x:Name="MinMmr" Margin="10,0,10,0" FontSize="14" materialDesign:HintAssist.Hint="МинММР" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="UnfoldLessHorizontal" materialDesign:TextFieldAssist.LeadingIconSize="20" />
+            </Grid>
+            <Grid Grid.Row="3">
+                <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="10,0,10,0" x:Name="MaxMmr" FontSize="14" materialDesign:HintAssist.Hint="МаксММР" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="UnfoldMoreHorizontal" materialDesign:TextFieldAssist.LeadingIconSize="20" />
+            </Grid>
+            <Grid Grid.Row="4">
+                <ComboBox x:Name="BoxOrganization" Margin="10,0,10,0" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Fullname"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация"></ComboBox>
+            </Grid>
+            <Grid Grid.Row="5">
+                <Button Margin="20,0,20,0" Click="ButtonConfirm_Click"  VerticalAlignment="Center">Применить</Button>
+            </Grid>
+            <Grid Grid.Row="6">
+                <Button Margin="20,0,20,0" Click="ButtonClear_Click"  VerticalAlignment="Center">Очистить</Button>
             </Grid>
         </Grid>
-    </ScrollViewer>
+        <Grid Grid.Row="1">
+                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+                <ListView x:Name="LView"  ItemsSource="{Binding}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Border Name="Border" BorderThickness="10" BorderBrush="Transparent">
+                                            <ContentPresenter />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="Border" Property="BorderBrush" Value="transparent" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding ElementName=LView, Path=ActualWidth}"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <WrapPanel>
+                                <materialDesign:Flipper materialDesign:ElevationAssist.Elevation="Dp0" Style="{StaticResource MaterialDesignCardFlipper}"  Width="200" Height="256">
+                    <materialDesign:Flipper.FrontContent>
+                                    <Grid Background="Transparent" Width="200" Height="256" Margin="0,1,0,1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.RowSpan="5" BorderThickness="1" CornerRadius="13" BorderBrush="#c9a97f" Background="#c9a97f" />
+                           
+                                            <StackPanel Background="#FFE7BF8B" Height="40" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                <TextBlock Margin="0,10,0,0" Foreground="White" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding RankName}"/>
+                            </StackPanel>
+                            <StackPanel Margin="0,10,0,0"  Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"   Margin="20,0,20,0" FontSize="18">
+                                                        <Run Text="MaxMmr:"/> <Run Text="{Binding MaxMmr}"/>
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="0,10,0,0" Grid.Row="2"  HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"   Margin="20,0,20,0" FontSize="18">
+                                                      <Run Text="MinMmr:"/> <Run Text="{Binding MinMmr}"/>
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel Margin="0,10,0,0"  Grid.Row="3"  HorizontalAlignment="Left" VerticalAlignment="Center">
+                                <TextBlock Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Margin="20,0,20,0" FontSize="18">
+                                                        <Run Text="Организация: "/><Run Text="{Binding Organizations.Fullname}"/>
+                                </TextBlock>
+                            </StackPanel>
+                            <StackPanel  Grid.Row="4"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Button Margin="0,10,0,0" Background="#FFDAAC95" Foreground="White" Command="{x:Static materialDesign:Flipper.FlipCommand}" materialDesign:ButtonAssist.CornerRadius="10"   Content="Описание" Style="{StaticResource MaterialDesignFlatButton}" />
+                                <Button Margin="0,10,0,0" Background="#FFE9B3BB" Foreground="White" Click="ButtonOpenBonuses_Click" materialDesign:ButtonAssist.CornerRadius="10"   Content="Бонусы" Style="{StaticResource MaterialDesignFlatButton}" />
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Flipper.FrontContent>
+                    <materialDesign:Flipper.BackContent>
+                        <!--оборот-->
+
+                                    <Grid Background="Transparent" Width="200"  Height="256" Margin="0,1,0,1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Border Grid.RowSpan="2" BorderThickness="1" CornerRadius="13" BorderBrush="#c9a97f" Background="#c9a97f" />
+                            <materialDesign:ColorZone Padding="6" Background="#FFE7BF8B" Mode="SecondaryMid">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button HorizontalAlignment="Left" Command="{x:Static materialDesign:Flipper.FlipCommand}" Style="{StaticResource MaterialDesignToolForegroundButton}">
+                                        <materialDesign:PackIcon HorizontalAlignment="Right"  Kind="ArrowLeft" />
+                                    </Button>
+                                    <TextBlock  Margin="0,0,0,0" FontSize="18" VerticalAlignment="Center" Text="Вернуться" />
+                                </StackPanel>
+                            </materialDesign:ColorZone>
+                            <Grid Grid.Row="1" Width="172" Margin="0,6,0,0" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                    <TextBlock HorizontalAlignment="Center" VerticalAlignment="Stretch" TextWrapping="Wrap" Foreground="White" Margin="0,20,0,0" FontSize="21" Text="{Binding Description}"/>
+                                </ScrollViewer>
+                            </Grid>
+
+                        </Grid>
+                    </materialDesign:Flipper.BackContent>
+                </materialDesign:Flipper>
+                </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </Grid>
+   
 </Page>

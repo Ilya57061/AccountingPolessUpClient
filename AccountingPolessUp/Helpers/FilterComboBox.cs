@@ -11,6 +11,7 @@ namespace AccountingPolessUp.Helpers
 {
     public static class FilterComboBox
     {
+        
         static RankService rankService = new RankService();
         static ParticipantsService participantsService = new ParticipantsService();
         static TrainingCoursesService coursesService = new TrainingCoursesService();

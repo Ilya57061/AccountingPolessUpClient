@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using AccountingPolessUp.Helpers;
+using MaterialDesignThemes.Wpf;
 
 namespace AccountingPolessUp.Views.Information
 {
@@ -24,51 +25,36 @@ namespace AccountingPolessUp.Views.Information
     /// </summary>
     public partial class PageInfoRanks : Page
     {
-        RankService _RankService = new RankService();
-        OrganizationService _organizationService = new OrganizationService();
-        BonusService _bonusService = new BonusService();
-        IEnumerable<Rank> Ranks;
-        List<Organization> organizations;
+        RankService _rankService = new RankService();
+       
+        public ObservableCollection<Rank> Ranks { get; set; }
         public PageInfoRanks()
         {
             InitializeComponent();
-            Ranks= _RankService.Get();
-            organizations= _organizationService.Get();
-            dataGrid.ItemsSource = Ranks;
-            ComboORG.ItemsSource = organizations;
+            Ranks = new ObservableCollection<Rank>(_rankService.Get());
+            DataContext = Ranks;
+            FilterComboBox.SetBoxOrganizations(BoxOrganization);
         }
-        private void ButtonOpen_Click(object sender, RoutedEventArgs e)
+        private void ButtonOpenBonuses_Click(object sender, RoutedEventArgs e)
         {
-            if (dataGrid.SelectedItems.Count > 0 )
-            {
-                for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
-                {
-                    Rank rank = dataGrid.SelectedItems[i] as Rank;
-
-                    if (rank != null)
-                    {
-                    this.NavigationService.Content=new PageInfoBonus(rank.Id);
-
-                    }
-                }
-            }
+            var selectedRank = (Rank)((Button)sender).DataContext;
+            this.NavigationService.Content = new PageInfoBonus(selectedRank.Id);
+    
         }
+   
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            Confirm();
+            FilterManager.ConfirmFilter(this, Ranks, RankName.Text, Description.Text, BoxOrganization.Text, MinMmr.Text, MaxMmr.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            Clear();
+            FilterManager.ClearControls(filter);
+            DataContext = Ranks;
         }
-        private void Clear()
+        private void Number_PreviewTextInput(object sender, RoutedEventArgs e)
         {
 
         }
-        private void Confirm()
-        {
-           
-        }
     }
-  
+
 }

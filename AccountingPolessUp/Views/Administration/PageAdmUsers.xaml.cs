@@ -22,6 +22,7 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             DataGridUpdater.AdmUsers = this;
             FilterComboBox.SetBoxRole(BoxRole);
+            UpdateDataGrid();
         }
         public PageAdmUsers(List<User> users)
         {

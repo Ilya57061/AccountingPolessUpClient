@@ -1,7 +1,9 @@
 using AccountingPolessUp.Models;
+using MaterialDesignThemes.Wpf;
 using MaterialDesignThemes.Wpf.Internal;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Windows.Controls;
@@ -27,8 +29,32 @@ namespace AccountingPolessUp.Helpers
                     ((TextBox)control).Clear();
                 }
             }
-
         }
+        public static void ClearControls(Grid panel)
+        {
+            foreach (var control in panel.Children)
+            {
+                if (control is Grid)
+                {
+                    foreach (var subChild in ((Grid)control).Children)
+                    {
+                        if (subChild is ComboBox)
+                        {
+                            ((ComboBox)subChild).SelectedIndex = -1;
+                        }
+                        else if (subChild is DatePicker)
+                        {
+                            ((DatePicker)subChild).SelectedDate = null;
+                        }
+                        else if (subChild is TextBox)
+                        {
+                            ((TextBox)subChild).Clear();
+                        }
+                    }
+                }
+            }
+        }
+
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Organization> list, string name, string address, string contacts, string website, string dateFoundation, string bSR)
         {
             if (!string.IsNullOrEmpty(name))
@@ -249,6 +275,7 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
+        
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Rank> list, string name, string description, string organization, string minMmr, string maxMmr)
         {
             if (!string.IsNullOrEmpty(organization))
@@ -274,6 +301,31 @@ namespace AccountingPolessUp.Helpers
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
+        }
+        public static void ConfirmFilter(Page page, IEnumerable<Rank> list, string name, string description, string organization, string minMmr, string maxMmr)
+        {
+            if (!string.IsNullOrEmpty(organization))
+            {
+                list = list.Where(x => x.Organizations.Fullname.ToLower().StartsWith(organization.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(description))
+            {
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(name))
+            {
+                list = list.Where(x => x.RankName.ToLower().StartsWith(name.ToLower()));
+            }
+            if (!string.IsNullOrEmpty(minMmr))
+            {
+                list = list.Where(x => x.MinMmr.ToString().StartsWith(minMmr));
+            }
+            if (!string.IsNullOrEmpty(maxMmr))
+            {
+                list = list.Where(x => x.MaxMmr.ToString().StartsWith(maxMmr));
+            }
+            page.DataContext = new ObservableCollection<Rank>(list);
+           
         }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<RegistrationForCourses> list, string dateEntry, string participant, string course)
         {
