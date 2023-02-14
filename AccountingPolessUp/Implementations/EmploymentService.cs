@@ -74,8 +74,14 @@ namespace AccountingPolessUp.Implementations
 
         public void Delete(int id)
         {
-            var values = new NameValueCollection { ["id"] = id.ToString() };
-            _webClient.UploadValues("DeleteEmployment", "DELETE", values);
+            try
+            {
+                var values = new NameValueCollection { ["id"] = id.ToString() };
+                _webClient.UploadValues("DeleteEmployment", "DELETE", values);
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

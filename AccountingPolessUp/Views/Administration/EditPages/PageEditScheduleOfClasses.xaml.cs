@@ -67,7 +67,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _scheduleService.Update(_schedule);
-                DataGridUpdater.UpdateDataGrid(_scheduleService.Get(),_parent);
+                DataGridUpdater.AdmScheduleOfClasses.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -84,7 +84,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _scheduleService.Create(_schedule);
-                DataGridUpdater.UpdateDataGrid(_scheduleService.Get(),_parent);
+                DataGridUpdater.AdmScheduleOfClasses.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)

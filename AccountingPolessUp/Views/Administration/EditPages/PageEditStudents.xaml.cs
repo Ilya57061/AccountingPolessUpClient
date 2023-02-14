@@ -60,7 +60,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _studentService.Update(_student);
-                DataGridUpdater.UpdateDataGrid(_studentService.Get(),_parent);
+                DataGridUpdater.AdmStudents.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -83,7 +83,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _studentService.Create(_student);
-                DataGridUpdater.UpdateDataGrid(_studentService.Get(), _parent);
+                DataGridUpdater.AdmStudents.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)

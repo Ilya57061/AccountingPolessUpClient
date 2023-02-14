@@ -47,7 +47,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _Rank = new Rank();
-            _organizations = _organizationService.Get();
+            DataGridUpdater.AdmRanks.UpdateDataGrid();
             BoxOrganization.ItemsSource = _organizations;
             _parent= parent;
         }
@@ -59,7 +59,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _RankService.Update(_Rank);
-                DataGridUpdater.UpdateDataGrid(_RankService.Get(),_parent);
+                DataGridUpdater.AdmRanks.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)

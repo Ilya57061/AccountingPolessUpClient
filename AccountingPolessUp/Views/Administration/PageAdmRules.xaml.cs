@@ -19,7 +19,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmRules()
         {
             InitializeComponent();
-            _regulations = _regulationService.Get();
+            DataGridUpdater.AdmRules = this;
             UpdateDataGrid();
             FilterComboBox.SetBoxOrganizations(BoxOrganization);
         }
@@ -46,6 +46,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
+            _regulations = _regulationService.Get();
             DataGridUpdater.UpdateDataGrid(_regulations, this);
         }
         private void DeleteSelectedRegulations()
@@ -74,8 +75,8 @@ namespace AccountingPolessUp.Views.Administration
                 WindowRegulationText windowText = new WindowRegulationText(regulation);
                 windowText.Show();
             }
-            
+
         }
-    
+
     }
 }

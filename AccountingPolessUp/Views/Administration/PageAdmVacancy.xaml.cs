@@ -22,6 +22,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmVacancy()
         {
             InitializeComponent();
+            DataGridUpdater.AdmVacancy = this;
             ButtonBack.Visibility = Visibility.Hidden;
             BoxStagesOfProject.ItemsSource = _stagesOfProjectService.Get();
             UpdateDataGrid();
@@ -29,8 +30,8 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmVacancy(List<Vacancy> vacancies)
         {
             InitializeComponent();
+            DataGridUpdater.AdmVacancy = this;
             ButtonBack.Visibility = Visibility.Hidden;
-
             BoxStagesOfProject.ItemsSource = _stagesOfProjectService.Get();
             UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
@@ -46,7 +47,7 @@ namespace AccountingPolessUp.Views.Administration
             BoxStagesOfProject.IsEnabled = false;
             BoxStagesOfProject.ItemsSource = _stagesOfProjectService.Get();
             _stagesOfProject = stagesOfProject;
-            
+
             UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -76,7 +77,7 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             UpdateDataGrid();
-            FilterManager.ConfirmFilter(dataGrid, _vacancies, Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text, BoxStagesOfProject.Text,IsOpened.Text, Budget.Text.Replace('.', ','), RatingCoefficient.Text.Replace('.', ','));
+            FilterManager.ConfirmFilter(dataGrid, _vacancies, Name.Text, Descriptions.Text, Responsibilities.Text, DateStart.Text, DateEnd.Text, BoxStagesOfProject.Text, IsOpened.Text, Budget.Text.Replace('.', ','), RatingCoefficient.Text.Replace('.', ','));
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
@@ -97,10 +98,10 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-            if(_stagesOfProject==null) _vacancies = _vacancyService.Get();
+            if (_stagesOfProject == null) _vacancies = _vacancyService.Get();
             else _vacancies = _vacancyService.Get(_stagesOfProject.Id);
             DataGridUpdater.UpdateDataGrid(_vacancies, this);
-         
+
         }
         private void DeleteSelectedVacancies()
         {
@@ -108,7 +109,7 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Vacancy vacancy in dataGrid.SelectedItems)
                 {
-                    if (RoleValidator.RoleChecker((int) vacancy.StagesOfProject.Project.idLocalPM))
+                    if (RoleValidator.RoleChecker((int)vacancy.StagesOfProject.Project.idLocalPM))
                         _vacancyService.Delete(vacancy.Id);
                 }
             }

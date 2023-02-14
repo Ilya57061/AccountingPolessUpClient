@@ -21,13 +21,14 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmRanks()
         {
             InitializeComponent();
-            _ranks = _rankService.Get();
+            DataGridUpdater.AdmRanks = this;
             UpdateDataGrid();
             FilterComboBox.SetBoxOrganizations(BoxOrganization);
         }
         public PageAdmRanks(List<Rank> ranks)
         {
             InitializeComponent();
+            DataGridUpdater.AdmRanks = this;
             ColumSelect.Visibility = Visibility.Visible;
             _ranks = ranks;
             ButtonAdd.Visibility = Visibility.Hidden;
@@ -67,6 +68,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
+            _ranks = _rankService.Get();
             DataGridUpdater.UpdateDataGrid(_ranks, this);
         }
         private void DeleteSelectedRanks()
