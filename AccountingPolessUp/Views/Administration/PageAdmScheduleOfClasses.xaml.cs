@@ -110,6 +110,7 @@ namespace AccountingPolessUp.Views.Administration
             }
             catch (Exception)
             {
+                MessageBox.Show("Ресурс не найден");
             }
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

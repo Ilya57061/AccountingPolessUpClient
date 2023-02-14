@@ -28,23 +28,8 @@ namespace AccountingPolessUp
 
         public Authorization()
         {
-            
             InitializeComponent();
              Enter.IsEnabled = false;
-
-            User user = loginService.Login(new LoginDto { Login = "admin", Password = "admin" });
-
-            if (user == null)
-            {
-                LabelErrorMessage.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                RoleValidator.User = user;
-                WorkWindow mainWindow = new WorkWindow(user);
-                mainWindow.Show();
-                this.Close();
-            }
         }
 
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
@@ -58,6 +43,7 @@ namespace AccountingPolessUp
                 }
                 else
                 {
+                    RoleValidator.User = user;
                     WorkWindow mainWindow = new WorkWindow(user);
                     mainWindow.Show();
                     this.Close();

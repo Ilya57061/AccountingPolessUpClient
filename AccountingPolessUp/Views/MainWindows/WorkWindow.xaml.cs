@@ -48,7 +48,7 @@ namespace AccountingPolessUp
                     Departments.Visibility = Visibility.Visible;
                     Positions.Visibility = Visibility.Visible;
                     Employments.Visibility = Visibility.Visible;
-                    FinalProjects.Visibility=Visibility.Visible;
+                    FinalProjects.Visibility = Visibility.Visible;
                 }
             }
             else if (user.Role.Name == "Director")
@@ -58,7 +58,7 @@ namespace AccountingPolessUp
                     item.Visibility = Visibility.Collapsed;
                     MainDepartments.Visibility = Visibility.Visible;
                 }
-          
+
                 foreach (TreeViewItem item in MainDepartments.Items)
                 {
                     item.Visibility = Visibility.Collapsed;
@@ -86,7 +86,7 @@ namespace AccountingPolessUp
                     Departments.Visibility = Visibility.Visible;
                     Positions.Visibility = Visibility.Visible;
                     Employments.Visibility = Visibility.Visible;
-                    FinalProjects.Visibility=Visibility.Visible;
+                    FinalProjects.Visibility = Visibility.Visible;
                 }
 
             }
@@ -105,7 +105,7 @@ namespace AccountingPolessUp
                     Vacancy.Visibility = Visibility.Visible;
                     AppInTheProject.Visibility = Visibility.Visible;
                 }
-               
+
             }
             else
             {
@@ -113,6 +113,12 @@ namespace AccountingPolessUp
             }
             MainFrame.Content = new PageProfile(user);
 
+        }
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            Authorization authorization = new Authorization();
+            authorization.Show();
+            this.Close();
         }
         private void ButtonProfile_Click(object sender, RoutedEventArgs e)
         {

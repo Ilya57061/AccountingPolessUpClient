@@ -117,7 +117,7 @@ namespace AccountingPolessUp.Views.Administration
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Ресурс не найден");
             }
         }
         private void ButtonSchedule_Click(object sender, RoutedEventArgs e)

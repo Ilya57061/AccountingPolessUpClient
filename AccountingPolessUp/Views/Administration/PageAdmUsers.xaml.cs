@@ -20,8 +20,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmUsers()
         {
             InitializeComponent();
-            _users = _userService.Get();
-            DataGridUpdater.UpdateDataGrid(_users, this);
+            DataGridUpdater.AdmUsers = this;
             FilterComboBox.SetBoxRole(BoxRole);
         }
         public PageAdmUsers(List<User> users)
@@ -29,17 +28,23 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             ColumSelect.Visibility = Visibility.Visible;
             _users = users;
-            DataGridUpdater.UpdateDataGrid(_users, this);
+            UpdateDataGrid();
             FilterComboBox.SetBoxRole(BoxRole);
+        }
+        public void UpdateDataGrid()
+        {
+            _users = _userService.Get();
+            DataGridUpdater.UpdateDataGrid(_users, this);
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _users, Login.Text, BoxRole.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(Panel);
-            DataGridUpdater.UpdateDataGrid(_users, this);
+            UpdateDataGrid();
         }
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
@@ -59,7 +64,7 @@ namespace AccountingPolessUp.Views.Administration
                     _userService.Delete(user.Id);
                 }
             }
-            DataGridUpdater.UpdateDataGrid(_users, this);
+            UpdateDataGrid();
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
