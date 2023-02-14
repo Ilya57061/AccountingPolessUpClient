@@ -65,7 +65,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.ElementsFilledUpdateUser(this))
                     throw new Exception();
                 _userService.Update(user);
-                DataGridUpdater.UpdateDataGrid(_userService.Get(), _parent);
+
+                DataGridUpdater.AdmUsers.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -85,7 +86,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 registerDto.Password = Password.Password;
                 registerDto.RoleId = roles.FirstOrDefault(x => x == BoxRole.SelectedItem).Id;
                 _userService.Create(registerDto);
-                DataGridUpdater.UpdateDataGrid(_userService.Get(), _parent);
+                DataGridUpdater.AdmUsers.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -105,7 +106,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 upPassword.Id = user.Id;
                 upPassword.Password = Password.Password;
                 _userService.UpdatePassword(upPassword);
-                DataGridUpdater.UpdateDataGrid(_userService.Get(), _parent);
+                DataGridUpdater.AdmUsers.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
