@@ -39,12 +39,12 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             DataGridUpdater.AdmStageOfProject = this;
-            UpdateDataGrid();
             ColumSelect.Visibility = Visibility.Visible;
             _stagesOfProjects = stagesOfProjects;
             ButtonAdd.Visibility = Visibility.Hidden;
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
+            DataGridUpdater.UpdateDataGrid(_stagesOfProjects, this);
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
@@ -54,7 +54,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             DataNavigator.LineLeft(scroll);
         }
-    
+
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             DeleteSelectedStagesOfProjects();
@@ -91,9 +91,9 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-                if(_project==null) _stagesOfProjects = _stagesOfProjectService.Get();
-                else _stagesOfProjects = _stagesOfProjectService.Get(_project.Id);
-                DataGridUpdater.UpdateDataGrid(_stagesOfProjects, this);
+            if (_project == null) _stagesOfProjects = _stagesOfProjectService.Get();
+            else _stagesOfProjects = _stagesOfProjectService.Get(_project.Id);
+            DataGridUpdater.UpdateDataGrid(_stagesOfProjects, this);
         }
         private void DeleteSelectedStagesOfProjects()
         {

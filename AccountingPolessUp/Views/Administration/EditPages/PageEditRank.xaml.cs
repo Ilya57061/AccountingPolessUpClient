@@ -44,6 +44,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditRank(Page parent)
         {
             InitializeComponent();
+            _organizations = _organizationService.Get();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _Rank = new Rank();

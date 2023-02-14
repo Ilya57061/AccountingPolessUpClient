@@ -46,7 +46,7 @@ namespace AccountingPolessUp.Views.Administration
             ColumDelete.Visibility = Visibility.Hidden;
             ColumEdit.Visibility = Visibility.Hidden;
             FilterComboBox.SetBoxCustomers(BoxCustomer);
-            UpdateDataGrid();
+            DataGridUpdater.UpdateDataGrid(_projects, this);
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
