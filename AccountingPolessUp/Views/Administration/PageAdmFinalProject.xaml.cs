@@ -24,6 +24,7 @@ namespace AccountingPolessUp.Views.Administration
             _employment = employment;
             BoxEmployment.IsEnabled = false;
             BoxEmployment.ItemsSource = _employmentService.Get();
+            DataGridUpdater.AdmFinalProject = this;
             UpdateDataGrid();
         }
         public PageAdmFinalProject()
@@ -31,6 +32,7 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             BoxEmployment.ItemsSource = _employmentService.Get();
             ButtonBack.Visibility = Visibility.Hidden;
+            DataGridUpdater.AdmFinalProject = this;
             UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -71,7 +73,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             NumberValidator.Validator(e);
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             if (_employment == null)
                 _finalProjects = _finalProjectService.Get();

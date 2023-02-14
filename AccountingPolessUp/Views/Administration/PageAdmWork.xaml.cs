@@ -65,7 +65,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             NumberValidator.DateValidator(e);
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             _employments = _employmentService.Get();
             DataGridUpdater.UpdateDataGrid(_employments, this);

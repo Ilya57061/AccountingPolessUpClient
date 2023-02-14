@@ -37,7 +37,7 @@ namespace AccountingPolessUp.Views.Administration
             _vacancy = vacancy;
             UpdateDataGrid();
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             if(_vacancy == null) _applicationsInTheProject = _appService.Get();
             else _applicationsInTheProject = _appService.Get(_vacancy.Id);

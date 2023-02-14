@@ -95,7 +95,7 @@ namespace AccountingPolessUp.Views.Administration
                 break;
             }
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             DataGridUpdater.UpdateDataGrid(_trainingCourses, this);
         }

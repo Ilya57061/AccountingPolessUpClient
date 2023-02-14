@@ -56,7 +56,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             DataNavigator.LineLeft(scroll);
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             DataGridUpdater.UpdateDataGrid(_participants, this);
         }

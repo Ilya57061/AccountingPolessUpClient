@@ -87,8 +87,8 @@ namespace AccountingPolessUp.Views.Administration
                         _departmentService.Delete(department.Id);
                     }
                 }
-                UpdateDataGrid();
             }
+            UpdateDataGrid();
         }
         private void SelectSelectedDepartments()
         {
@@ -108,7 +108,7 @@ namespace AccountingPolessUp.Views.Administration
                 }
             }
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             _departments = _departmentService.Get();
             DataGridUpdater.UpdateDataGrid(_departments, this);

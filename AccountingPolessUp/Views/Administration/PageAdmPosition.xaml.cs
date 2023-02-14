@@ -57,7 +57,7 @@ namespace AccountingPolessUp.Views.Administration
             FilterManager.ClearControls(panel);
             UpdateDataGrid();
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             if(_department==null)
                 positions= _positionService.Get();

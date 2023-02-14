@@ -44,7 +44,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             EditSelectedRules();
         }
-        private void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             DataGridUpdater.UpdateDataGrid(_regulations, this);
         }

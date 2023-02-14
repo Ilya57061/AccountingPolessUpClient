@@ -32,7 +32,7 @@ namespace AccountingPolessUp
             InitializeComponent();
              Enter.IsEnabled = false;
 
-            User user = loginService.Login(new LoginDto { Login = "check", Password = "check" });
+            User user = loginService.Login(new LoginDto { Login = "admin", Password = "admin" });
 
             if (user == null)
             {

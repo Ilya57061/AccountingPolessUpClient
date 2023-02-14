@@ -62,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _finalProjectService.Update(_finalProject);
-                DataGridUpdater.UpdateDataGrid(_finalProjectService.GetByEmployment(_employment.Id), _parent);
+                DataGridUpdater.AdmFinalProject.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
@@ -78,7 +78,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
                 _finalProjectService.Create(_finalProject);
-                DataGridUpdater.UpdateDataGrid(_finalProjectService.Get(), _parent);
+                DataGridUpdater.AdmFinalProject.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
             catch (Exception)
