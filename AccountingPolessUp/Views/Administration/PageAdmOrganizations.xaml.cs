@@ -115,7 +115,7 @@ namespace AccountingPolessUp.Views.Administration
             }
             catch (Exception)
             {
-
+                MessageBox.Show("Ресурс не найден");
             }
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)

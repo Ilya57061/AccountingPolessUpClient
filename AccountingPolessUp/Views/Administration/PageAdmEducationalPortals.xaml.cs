@@ -82,7 +82,7 @@ namespace AccountingPolessUp.Views.Administration
             }
             catch (Exception)
             {
-                throw new Exception();  
+                MessageBox.Show("Ресурс не найден");
             }
         }
     }
