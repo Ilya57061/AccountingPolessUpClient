@@ -196,6 +196,16 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
+        public static void ConfirmFilter(Page page, IEnumerable<Bonus> list, string name, string rank, string description)
+        {
+            if (!string.IsNullOrEmpty(name))
+                list = list.Where(x => x.BonusName.ToLower().StartsWith(name.ToLower()));
+            if (!string.IsNullOrEmpty(rank))
+                list = list.Where(x => x.RankBonus.Any(rb => rb.Rank.RankName.ToLower().StartsWith(rank.ToLower())));
+            if (!string.IsNullOrEmpty(description))
+                list = list.Where(x => x.BonusDescription.ToLower().StartsWith(description.ToLower()));
+            page.DataContext = new ObservableCollection<Bonus>(list);
+        }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<ApplicationsInTheProject> list, string dateEntry, string participant, string vacancy, string isAccepted, string status, string statusDescription)
         {
             if (!string.IsNullOrEmpty(participant))

@@ -286,7 +286,7 @@
         </Grid>
         <Grid Margin="0,2,0,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Background="Transparent">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <Button x:Name="ButtonExit" Margin="0,0,40,0" HorizontalAlignment="Right" Click="ButtonExit_Click" Visibility="Visible" Width="100" >
+            <Button x:Name="ButtonExit" Margin="40,0,0,0" HorizontalAlignment="Left" Click="ButtonExit_Click" Visibility="Visible" Width="100" >
                 <materialDesign:PackIcon Width="20" Height="20" Kind="ExitToApp" />
             </Button>
         </Grid>

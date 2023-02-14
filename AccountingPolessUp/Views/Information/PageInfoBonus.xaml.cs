@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using AccountingPolessUp.Helpers;
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 
@@ -23,20 +25,38 @@ namespace AccountingPolessUp.Views.Information
     public partial class PageInfoBonus : Page
     {
         BonusService _bonusService = new BonusService();
+        public ObservableCollection<Bonus> Bonuses { get; set; }
         public PageInfoBonus()
         {
             InitializeComponent();
-            BonusGrid.ItemsSource = _bonusService.Get();
+            Bonuses =new ObservableCollection<Bonus>(_bonusService.Get());
+            DataContext = Bonuses;
+            FilterComboBox.SetBoxRank(BoxRank);
         }
         public PageInfoBonus(int rankId)
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Visible;
-            BonusGrid.ItemsSource = _bonusService.Get(rankId);
+            Bonuses = new ObservableCollection<Bonus>(_bonusService.Get(rankId));
+            DataContext = Bonuses;
+            FilterComboBox.SetBoxRank(BoxRank);
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
         {
             this.NavigationService.GoBack();
+        }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ConfirmFilter(this, Bonuses, BonusName.Text, BoxRank.Text, BonusDescription.Text);
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ClearControls(filter);
+            DataContext = Bonuses;
+        }
+        private void MouseWheel(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ConfirmFilter(this, Bonuses, BonusName.Text, BoxRank.Text, BonusDescription.Text);
         }
     }
 }
