@@ -19,6 +19,10 @@ namespace AccountingPolessUp.Models
                 var director = participants.FirstOrDefault(x => x.Id == DirectorId);
                 return director?.Individuals.FIO ?? string.Empty;
             }
+            set
+            {
+
+            }
         }
     }
 }
