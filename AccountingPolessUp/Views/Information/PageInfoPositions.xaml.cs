@@ -51,6 +51,10 @@ namespace AccountingPolessUp.Views.Information
             FilterManager.ClearControls(filter);
             DataContext = Positions;
         }
-      
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+
     }
 }
