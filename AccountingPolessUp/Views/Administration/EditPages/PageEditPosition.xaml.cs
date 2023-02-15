@@ -68,7 +68,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                _position.DepartmentId = _department.Id;
                 _positionService.Update(_position);
                 UpdateDataGrid();
                 this.NavigationService.GoBack();

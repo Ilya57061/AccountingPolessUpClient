@@ -25,8 +25,8 @@ namespace AccountingPolessUp.Views.Information
     /// </summary>
     public partial class PageInfoRanks : Page
     {
-        RankService _rankService = new RankService();
-       
+        private readonly RankService _rankService = new RankService();
+
         public ObservableCollection<Rank> Ranks { get; set; }
         public PageInfoRanks()
         {
@@ -39,9 +39,9 @@ namespace AccountingPolessUp.Views.Information
         {
             var selectedRank = (Rank)((Button)sender).DataContext;
             this.NavigationService.Content = new PageInfoBonus(selectedRank.Id);
-    
+
         }
-   
+
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ConfirmFilter(this, Ranks, RankName.Text, Description.Text, BoxOrganization.Text, MinMmr.Text, MaxMmr.Text);
@@ -53,7 +53,7 @@ namespace AccountingPolessUp.Views.Information
         }
         private void Number_PreviewTextInput(object sender, RoutedEventArgs e)
         {
-
+           
         }
     }
 
