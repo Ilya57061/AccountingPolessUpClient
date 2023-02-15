@@ -54,9 +54,10 @@ namespace AccountingPolessUp.Views.Information
             FilterManager.ClearControls(filter);
             DataContext = Bonuses;
         }
-        private void MouseWheel(object sender, RoutedEventArgs e)
+        private void MouseWheel(object sender, MouseWheelEventArgs e)
         {
-            FilterManager.ConfirmFilter(this, Bonuses, BonusName.Text, BoxRank.Text, BonusDescription.Text);
+            scroll.ScrollToVerticalOffset(scroll.VerticalOffset - e.Delta);
+            e.Handled = true;
         }
     }
 }

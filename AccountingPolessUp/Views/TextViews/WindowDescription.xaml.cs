@@ -18,13 +18,19 @@ namespace AccountingPolessUp.Views.TextViews
     /// <summary>
     /// Логика взаимодействия для WindowRankDescription.xaml
     /// </summary>
-    public partial class WindowRankDescription : Window
+    public partial class WindowDescription : Window
     {
-        public WindowRankDescription(Rank rank)
+        public WindowDescription(Rank rank)
         {
             InitializeComponent();
             this.Title = rank.RankName;
             Text.Text = rank.Description;
+        }
+        public WindowDescription(Bonus bonus)
+        {
+            InitializeComponent();
+            this.Title = bonus.BonusName;
+            Text.Text = bonus.BonusDescription;
         }
         private void ButtonCopy_Click(object sender, RoutedEventArgs e)
         {

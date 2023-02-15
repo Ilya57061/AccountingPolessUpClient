@@ -3,9 +3,12 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using AccountingPolessUp.Views.TextViews;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -68,14 +71,13 @@ namespace AccountingPolessUp.Views.Administration
                 break;
             }
         }
-        private void ButtonText_Click(object sender, RoutedEventArgs e)
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             foreach (Regulation regulation in dataGrid.SelectedItems)
             {
                 WindowRegulationText windowText = new WindowRegulationText(regulation);
                 windowText.Show();
             }
-
         }
 
     }

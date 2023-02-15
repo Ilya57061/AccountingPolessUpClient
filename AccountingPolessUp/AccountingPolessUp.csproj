@@ -290,8 +290,8 @@
     <Compile Include="Views\MainWindows\WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\TextViews\WindowRankDescription.xaml.cs">
-      <DependentUpon>WindowRankDescription.xaml</DependentUpon>
+    <Compile Include="Views\TextViews\WindowDescription.xaml.cs">
+      <DependentUpon>WindowDescription.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TextViews\WindowRegulationText.xaml.cs">
       <DependentUpon>WindowRegulationText.xaml</DependentUpon>
@@ -525,7 +525,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\TextViews\WindowRankDescription.xaml">
+    <Page Include="Views\TextViews\WindowDescription.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

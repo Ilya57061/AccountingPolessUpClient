@@ -38,7 +38,7 @@ Background="Transparent"
                     <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="1,0,1,12.5"   x:Name="MinMmr" FontSize="14" materialDesign:HintAssist.Hint="МинММР" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="UnfoldLessHorizontal" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding MinMmr}"/>
                     <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="1,0,1,12.5" x:Name="MaxMmr" FontSize="14" materialDesign:HintAssist.Hint="МаксММР" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="UnfoldMoreHorizontal" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding MaxMmr}"/>
                     <ComboBox x:Name="BoxOrganization" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Fullname"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация" Margin="1,0,1,0"></ComboBox>
-                    
+
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>
@@ -51,11 +51,17 @@ Background="Transparent"
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding RankName, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
-                        <DataGridTemplateColumn Header="Описание">
+                        <DataGridTemplateColumn MaxWidth="150" Header="Описание">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button x:Name="ButtonDescription" Click="ButtonDescription_Click" Content="Текст">
-                                    </Button>
+                                    <TextBlock>
+                                        <Hyperlink Foreground="Black" NavigateUri="" RequestNavigate="Hyperlink_RequestNavigate">
+                                         <TextBlock Foreground="Black" Text="{Binding Description}" />
+                                            </Hyperlink>
+                                        <TextBlock.ToolTip>
+                                    <ToolTip Content="Открыть"/>
+                                </TextBlock.ToolTip>
+                                                    </TextBlock>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

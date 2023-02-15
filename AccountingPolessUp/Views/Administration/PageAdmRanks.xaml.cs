@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -110,14 +111,13 @@ namespace AccountingPolessUp.Views.Administration
                 this.NavigationService.Content = new PageAdmBonus(rank);
             }
         }
-        private void ButtonDescription_Click(object sender, RoutedEventArgs e)
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
         {
             foreach (Rank rank in dataGrid.SelectedItems)
             {
-                WindowRankDescription windowRank = new WindowRankDescription(rank);
+                WindowDescription windowRank = new WindowDescription(rank);
                 windowRank.Show();
             }
-
         }
     }
 }

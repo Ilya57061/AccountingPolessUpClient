@@ -49,11 +49,17 @@ Background="Transparent"
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
-                        <DataGridTemplateColumn Header="Содержание">
+                        <DataGridTemplateColumn MaxWidth="150" Header="Содержание">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button x:Name="ButtonText" Click="ButtonText_Click" Content="Текст">
-                                    </Button>
+                                    <TextBlock>
+                                        <Hyperlink Foreground="Black" NavigateUri="" RequestNavigate="Hyperlink_RequestNavigate">
+                                         <TextBlock Foreground="Black" Text="{Binding Text}" />
+                                            </Hyperlink>
+                                        <TextBlock.ToolTip>
+                                    <ToolTip Content="Открыть"/>
+                                </TextBlock.ToolTip>
+                                                    </TextBlock>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

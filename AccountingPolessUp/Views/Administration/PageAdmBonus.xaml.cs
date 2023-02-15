@@ -2,10 +2,12 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
+using AccountingPolessUp.Views.TextViews;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -29,6 +31,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmBonus(Rank rank)
         {
             InitializeComponent();
+            ButtonAdd.Visibility=Visibility.Hidden;
             DataGridUpdater.AdmBonus = this;
             _rank = rank;
             BoxRank.IsEnabled = false;
@@ -103,6 +106,14 @@ namespace AccountingPolessUp.Views.Administration
         private void BoxsSetData()
         {
             FilterComboBox.SetBoxRank(BoxRank);
+        }
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            foreach (Bonus bonus in dataGrid.SelectedItems)
+            {
+                WindowDescription windowRank = new WindowDescription(bonus);
+                windowRank.Show();
+            }
         }
     }
 }

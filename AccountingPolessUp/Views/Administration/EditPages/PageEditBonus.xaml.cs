@@ -103,14 +103,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             try
             {
-
                 _rankBonusService.Delete(_ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id, _bonus.Id);
                 DataGridUpdater.AdmBonus.UpdateDataGrid();
-
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Ошибка при удалении связи");
             }
 

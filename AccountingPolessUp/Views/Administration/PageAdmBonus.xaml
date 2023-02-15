@@ -48,7 +48,20 @@ Background="Transparent"
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding Id, UpdateSourceTrigger=PropertyChanged}" Header="Ид"/>
                         <DataGridTextColumn Binding="{Binding BonusName, UpdateSourceTrigger=PropertyChanged}" Header="Название" />
-                        <DataGridTextColumn Binding="{Binding BonusDescription, UpdateSourceTrigger=PropertyChanged}" Header="Описание" />
+                        <DataGridTemplateColumn MaxWidth="150" Header="Описание">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock>
+                                        <Hyperlink Foreground="Black" NavigateUri="" RequestNavigate="Hyperlink_RequestNavigate">
+                                         <TextBlock Foreground="Black" Text="{Binding BonusDescription}" />
+                                            </Hyperlink>
+                                        <TextBlock.ToolTip>
+                                    <ToolTip Content="Открыть"/>
+                                </TextBlock.ToolTip>
+                                                    </TextBlock>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn Header="Ранг">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

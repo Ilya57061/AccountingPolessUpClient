@@ -15,8 +15,8 @@
 Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}"
     Title="PolessUp">
-
-    <Grid>
+    <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Hidden">
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="110"/>
             <RowDefinition/>
@@ -73,6 +73,7 @@ Background="Transparent"
         <Grid Grid.Row="1" >
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden"  x:Name="LView" ItemsSource="{Binding}" HorizontalAlignment="Center"  Width="550">
+                
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Template">
@@ -97,7 +98,7 @@ Background="Transparent"
                     </ItemsPanelTemplate>
                 </ListView.ItemsPanel>
                 <ListView.ItemTemplate >
-                    <DataTemplate >
+                        <DataTemplate >
                         <WrapPanel PreviewMouseWheel="MouseWheel">
                                 <materialDesign:Flipper materialDesign:ElevationAssist.Elevation="Dp0"   Style="{StaticResource MaterialDesignCardFlipper}"  >
                                 <materialDesign:Flipper.FrontContent>
@@ -129,4 +130,5 @@ Background="Transparent"
             </ListView>
         </Grid>
     </Grid>
+    </ScrollViewer>
 </Page>
