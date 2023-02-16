@@ -29,90 +29,53 @@ namespace AccountingPolessUp
         {
             _user = user;
             InitializeComponent();
-            if (user.Role.Name == "Admin") //6
-            {
-                Admin.Visibility = Visibility.Visible;
-            }
-            else if (user.Role.Name == "GlobalPm")//7
-            {
-                foreach (TreeViewItem item in Admin.Items)
-                {
-                    item.Visibility = Visibility.Collapsed;
-                    MainDepartments.Visibility = Visibility.Visible;
-                    CommerceProjects.Visibility = Visibility.Visible;
-                }
-                foreach (TreeViewItem item in MainDepartments.Items)
-                {
-                    item.Visibility = Visibility.Collapsed;
-                    // TreeViewItem visible
-                    Departments.Visibility = Visibility.Visible;
-                    Positions.Visibility = Visibility.Visible;
-                    Employments.Visibility = Visibility.Visible;
-                    FinalProjects.Visibility = Visibility.Visible;
-                }
-            }
-            else if (user.Role.Name == "Director")
-            {
-                foreach (TreeViewItem item in Admin.Items)
-                {
-                    item.Visibility = Visibility.Collapsed;
-                    MainDepartments.Visibility = Visibility.Visible;
-                }
-
-                foreach (TreeViewItem item in MainDepartments.Items)
-                {
-                    item.Visibility = Visibility.Collapsed;
-                    // TreeViewItem visible
-                    Departments.Visibility = Visibility.Visible;
-                    Positions.Visibility = Visibility.Visible;
-                    Employments.Visibility = Visibility.Visible;
-                    FinalProjects.Visibility = Visibility.Visible;
-                }
-
-            }
-            else if (user.Role.Name == "DirectorOrganizational")
-            {
-                foreach (TreeViewItem item in Admin.Items)
-                {
-                    item.Visibility = Visibility.Collapsed;
-                    MainDepartments.Visibility = Visibility.Visible;
-                    Courses.Visibility = Visibility.Visible;
-                    Participants.Visibility = Visibility.Visible;
-                }
-                foreach (TreeViewItem item in MainDepartments.Items)
-                {
-                    item.Visibility = Visibility.Collapsed;
-                    // TreeViewItem visible
-                    Departments.Visibility = Visibility.Visible;
-                    Positions.Visibility = Visibility.Visible;
-                    Employments.Visibility = Visibility.Visible;
-                    FinalProjects.Visibility = Visibility.Visible;
-                }
-
-            }
-            else if (user.Role.Name == "LocalPm")
-            {
-                foreach (TreeViewItem item in Admin.Items)
-                {
-                    item.Visibility = Visibility.Collapsed;
-                    CommerceProjects.Visibility = Visibility.Visible;
-
-                }
-                foreach (TreeViewItem item in CommerceProjects.Items)
-                {
-                    item.Visibility = Visibility.Collapsed;
-                    Projects.Visibility = Visibility.Visible;
-                    Vacancy.Visibility = Visibility.Visible;
-                    AppInTheProject.Visibility = Visibility.Visible;
-                }
-
-            }
-            else
-            {
-                Admin.Visibility = Visibility.Hidden;
-            }
+            SetCommonUIElementsVisibility();
             MainFrame.Content = new PageProfile(user);
 
+        }
+        private void SetCommonUIElementsVisibility()
+        {
+            switch (_user.Role.Name)
+            {
+                case "Admin":
+                    Admin.Visibility = Visibility.Visible;
+                    break;
+                case "GlobalPm":
+                case "Director":
+                case "DirectorOrganizational":
+                    foreach (TreeViewItem item in Admin.Items)
+                    {
+                        item.Visibility = Visibility.Collapsed;
+                        MainDepartments.Visibility = Visibility.Visible;
+                        Departments.Visibility = Visibility.Visible;
+                        Positions.Visibility = Visibility.Visible;
+                        Employments.Visibility = Visibility.Visible;
+                        FinalProjects.Visibility = Visibility.Visible;
+                    }
+                    if (_user.Role.Name == "DirectorOrganizational")
+                    {
+                        Courses.Visibility = Visibility.Visible;
+                        Participants.Visibility = Visibility.Visible;
+                    }
+                    break;
+                case "LocalPm":
+                    foreach (TreeViewItem item in Admin.Items)
+                    {
+                        item.Visibility = Visibility.Collapsed;
+                        CommerceProjects.Visibility = Visibility.Visible;
+                    }
+                    foreach (TreeViewItem item in CommerceProjects.Items)
+                    {
+                        item.Visibility = Visibility.Collapsed;
+                        Projects.Visibility = Visibility.Visible;
+                        Vacancy.Visibility = Visibility.Visible;
+                        AppInTheProject.Visibility = Visibility.Visible;
+                    }
+                    break;
+                default:
+                    Admin.Visibility = Visibility.Hidden;
+                    break;
+            }
         }
         private void ButtonExit_Click(object sender, RoutedEventArgs e)
         {
