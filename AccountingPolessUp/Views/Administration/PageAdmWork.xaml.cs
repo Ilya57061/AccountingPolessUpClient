@@ -21,7 +21,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmWork()
         {
             InitializeComponent();
-            DataGridUpdater.AdmWork=this;
+            DataGridUpdater.AdmWork = this;
             BoxMentors.ItemsSource = _participantsService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxPositions(BoxPosition);
@@ -81,6 +81,8 @@ namespace AccountingPolessUp.Views.Administration
         public void UpdateDataGrid()
         {
             _employments = _employmentService.Get();
+            if (RoleValidator.User.Role.Name != "Admin")
+                _employments = _employments.Where(x => RoleValidator.RoleChecker((int)x.Position.Department.DirectorId) == true).ToList();
             DataGridUpdater.UpdateDataGrid(_employments, this);
         }
         private void DeleteSelectedEmployments()
@@ -89,7 +91,7 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Employment employment in dataGrid.SelectedItems)
                 {
-                 _employmentService.Delete(employment.Id);  
+                    _employmentService.Delete(employment.Id);
                 }
             }
             UpdateDataGrid();

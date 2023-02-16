@@ -84,10 +84,7 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Department department in dataGrid.SelectedItems)
                 {
-                    if (RoleValidator.RoleChecker((int)department.DirectorId))
-                    {
                         _departmentService.Delete(department.Id);
-                    }
                 }
             }
             UpdateDataGrid();
@@ -104,15 +101,14 @@ namespace AccountingPolessUp.Views.Administration
         {
             foreach (Department department in dataGrid.SelectedItems)
             {
-                if (RoleValidator.RoleChecker((int)department.DirectorId))
-                {
                     EditFrame.Content = new PageEditDepartments(department, this);
-                }
             }
         }
         public void UpdateDataGrid()
         {
             _departments = _departmentService.Get();
+              if (RoleValidator.User.Role.Name != "Admin")
+                _departments = _departments.Where(x => RoleValidator.RoleChecker((int)x.DirectorId) == true).ToList();
             DataGridUpdater.UpdateDataGrid(_departments, this);
         }
         private void ButtonPositions_Click(object sender, RoutedEventArgs e)

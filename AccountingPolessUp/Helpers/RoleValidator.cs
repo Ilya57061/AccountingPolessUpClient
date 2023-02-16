@@ -16,24 +16,9 @@ namespace AccountingPolessUp.Helpers
         private static Participants _participant;
         public static User User { get; set; }
 
-        public static bool RoleChecker(int id) //check department,position
+        public static bool RoleChecker(int id) 
         {
             _participant = _participantsService.GetByUser(User.Id);
-            //switch (User.Role.Name)
-            //{
-            //    case "Admin":
-            //        return true;
-            //    case "GlobalPm":
-            //    case "Director":
-            //    case "DirectorOrganizational":
-            //        if (_participant.Id == id) return true;
-            //        else return false;
-            //    case "LocalPm":
-
-            //        break;
-            //    default:
-            //        break;
-            //}
             if (User.Role.Name == "Admin")
                 return true;
             else if (_participant.Id == id)

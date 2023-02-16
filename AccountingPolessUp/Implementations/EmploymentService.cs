@@ -30,8 +30,6 @@ namespace AccountingPolessUp.Implementations
             var json = _webClient.DownloadString("GetEmployments");
             var employments = JsonConvert.DeserializeObject<List<Employment>>(json);
             if (employments == null) throw new Exception("employments - null");
-            else if (RoleValidator.User.Role.Name != "Admin")
-                employments = employments.Where(x => RoleValidator.RoleChecker((int)x.Position.Department.DirectorId) == true).ToList();
             return employments;
         }
 

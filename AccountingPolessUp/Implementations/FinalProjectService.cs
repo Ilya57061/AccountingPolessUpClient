@@ -29,8 +29,6 @@ namespace AccountingPolessUp.Implementations
             var json = _webClient.DownloadString("GetFinalProject");
             var finalProject = JsonConvert.DeserializeObject<List<FinalProject>>(json);
             if (finalProject == null) throw new Exception("FinalProject - null");
-            else if (RoleValidator.User.Role.Name != "Admin")
-                finalProject = finalProject.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.Employment.ParticipantsId)) == true).ToList();
             return finalProject;
         }
 
@@ -41,8 +39,6 @@ namespace AccountingPolessUp.Implementations
             var responseString = Encoding.Default.GetString(response);
             var finalProject = JsonConvert.DeserializeObject<List<FinalProject>>(responseString);
             if (finalProject == null) throw new Exception("FinalProject - null");
-            else if (RoleValidator.User.Role.Name != "Admin")
-                finalProject = finalProject.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.Employment.ParticipantsId)) == true).ToList();
             return finalProject;
          
         }

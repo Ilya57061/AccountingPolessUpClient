@@ -29,9 +29,7 @@ namespace AccountingPolessUp.Implementations
         {
             var json = _webClient.DownloadString("GetAppInTheProject");
             var applicationsInTheProject = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(json);
-            if (applicationsInTheProject is null) throw new Exception("applicationsInTheProject - null");
-            else if (RoleValidator.User.Role.Name != "Admin")
-                applicationsInTheProject = applicationsInTheProject.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.ParticipantsId)) == true).ToList();
+            if (applicationsInTheProject is null) throw new Exception("applicationsInTheProject - null"); 
             return applicationsInTheProject;
         }
         public List<ApplicationsInTheProject> Get(int vacancyId)

@@ -3,6 +3,7 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -79,6 +80,8 @@ namespace AccountingPolessUp.Views.Administration
                 _finalProjects = _finalProjectService.Get();
             else
                 _finalProjects = _finalProjectService.GetByEmployment(_employment.Id);
+           if (RoleValidator.User.Role.Name != "Admin")
+                _finalProjects = _finalProjects.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.Employment.ParticipantsId)) == true).ToList();
             DataGridUpdater.UpdateDataGrid(_finalProjects, this);
 
         }

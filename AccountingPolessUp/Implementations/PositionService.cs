@@ -29,8 +29,6 @@ namespace AccountingPolessUp.Implementations
             var json = _webClient.DownloadString("GetPosition");
             var position = JsonConvert.DeserializeObject<List<Position>>(json);
             if (position is null) throw new Exception("position  - null");
-            else if (RoleValidator.User.Role.Name !="Admin")
-                position = position.Where(x => RoleValidator.RoleChecker((int)x.Department.DirectorId) == true).ToList();
             return position;
         }
         public List<Position> Get(int departmentId)
@@ -43,8 +41,6 @@ namespace AccountingPolessUp.Implementations
             var responseString = Encoding.Default.GetString(response);
             var position = JsonConvert.DeserializeObject<List<Position>>(responseString);
             if (position is null) throw new Exception("position - null");
-            else if (RoleValidator.User.Role.Name != "Admin")
-                position = position.Where(x => RoleValidator.RoleChecker((int)x.Department.DirectorId) == true).ToList();
             return position;
 
 
