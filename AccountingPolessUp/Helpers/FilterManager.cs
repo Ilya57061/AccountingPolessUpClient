@@ -144,6 +144,21 @@ namespace AccountingPolessUp.Helpers
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
         }
+        public static void ConfirmFilter(Page page, IEnumerable<Department> list, string name, string description, string dateStart, string organization, string director)
+        {
+            list = list.Where(x => x.DateEnd == null && x.Status.StartsWith("Работает"));
+            if (!string.IsNullOrEmpty(name))
+                list = list.Where(x => x.FullName.ToLower().StartsWith(name.ToLower()));
+            if (!string.IsNullOrEmpty(description))
+                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
+            if (!string.IsNullOrEmpty(dateStart))
+                list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
+            if (!string.IsNullOrEmpty(organization))
+                list = list.Where(x => x.Organizations.Fullname.ToLower().StartsWith(organization.ToLower()));
+            if (!string.IsNullOrEmpty(director))
+                list = list.Where(x => x.nameDirector.ToString().ToLower().StartsWith(director.ToLower()));
+            page.DataContext = new ObservableCollection<Department>(list);
+        }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<Customer> list, string name, string address, string contacts, string website, string description)
         {
             if (!string.IsNullOrEmpty(name))

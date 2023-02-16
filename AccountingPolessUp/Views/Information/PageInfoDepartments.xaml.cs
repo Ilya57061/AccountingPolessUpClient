@@ -29,9 +29,10 @@ namespace AccountingPolessUp.Views.Information
         public PageInfoDepartments()
         {
             InitializeComponent();
-            Departments = new ObservableCollection<Department>(_departmentService.Get());
+            Departments = new ObservableCollection<Department>(_departmentService.Get().Where(x=>x.DateEnd==null));
             DataContext = Departments;
-            //FilterComboBox.SetBoxOrganizations(BoxOrganization);
+            FilterComboBox.SetBoxOrganizations(BoxOrganization);
+            FilterComboBox.SetBoxParticipants(BoxParticipant);
         }
         private void ButtonOpenPositions_Click(object sender, RoutedEventArgs e)
         {
@@ -42,16 +43,16 @@ namespace AccountingPolessUp.Views.Information
 
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            //FilterManager.ConfirmFilter(this, Ranks, RankName.Text, Description.Text, BoxOrganization.Text, MinMmr.Text, MaxMmr.Text);
+            FilterManager.ConfirmFilter(this, Departments, FullName.Text, Description.Text, DateStart.Text, BoxOrganization.Text, BoxParticipant.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
-            //FilterManager.ClearControls(filter);
-            //DataContext = Ranks;
+            FilterManager.ClearControls(filter);
+            DataContext = Departments;
         }
-        private void Number_PreviewTextInput(object sender, RoutedEventArgs e)
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {
-
+            NumberValidator.DateValidator(e);
         }
     }
 }

@@ -102,7 +102,7 @@ Background="Transparent"
                         <WrapPanel PreviewMouseWheel="MouseWheel">
                                 <materialDesign:Flipper materialDesign:ElevationAssist.Elevation="Dp0"   Style="{StaticResource MaterialDesignCardFlipper}"  >
                                 <materialDesign:Flipper.FrontContent>
-                                    <Grid Background="Transparent" Width="500" Height="240" Margin="0,1,0,1">
+                                    <Grid Background="Transparent" Width="500" Height="140" Margin="0,1,0,1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="auto" />
                                             <RowDefinition Height="*" />
@@ -111,7 +111,7 @@ Background="Transparent"
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
                                         <Border Grid.RowSpan="5" BorderThickness="1" CornerRadius="13" BorderBrush="#c9a97f" Background="#c9a97f" />
-                                            <Grid Background="#FFE7BF8B" Height="70" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                            <Grid Background="#FFE7BF8B" Height="50" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
                                             <ScrollViewer VerticalScrollBarVisibility="Hidden">
                                             <TextBlock Margin="0,10,0,0" Foreground="White" FontSize="21" HorizontalAlignment="Center" FontFamily="Boud"  VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding BonusName}"/>
                                             </ScrollViewer>
