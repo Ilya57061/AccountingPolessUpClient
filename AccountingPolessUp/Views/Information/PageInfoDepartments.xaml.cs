@@ -29,7 +29,7 @@ namespace AccountingPolessUp.Views.Information
         public PageInfoDepartments()
         {
             InitializeComponent();
-            Departments = new ObservableCollection<Department>(_departmentService.Get().Where(x=>x.DateEnd==null));
+            Departments = new ObservableCollection<Department>(_departmentService.Get().Where(x => x.DateEnd == null && x.Status == "Работает"));
             DataContext = Departments;
             FilterComboBox.SetBoxOrganizations(BoxOrganization);
             FilterComboBox.SetBoxParticipants(BoxParticipant);

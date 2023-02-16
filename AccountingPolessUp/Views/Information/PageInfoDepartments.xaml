@@ -27,7 +27,7 @@ Background="Transparent"
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.ColumnSpan="2" >
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <TextBlock Margin="40,0,0,0" x:Name="LabelCourses" FontSize="34" VerticalAlignment="Center" FontWeight="Bold" Text="Отделы"></TextBlock>
+            <TextBlock Margin="40,0,0,0" x:Name="LabelDepartments" FontSize="34" VerticalAlignment="Center" FontWeight="Bold" Text="Отделы"></TextBlock>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="2" x:Name="filter">
             <Grid.RowDefinitions>
@@ -98,7 +98,6 @@ Background="Transparent"
                         <WrapPanel>
                             <materialDesign:Flipper materialDesign:ElevationAssist.Elevation="Dp0" Style="{StaticResource MaterialDesignCardFlipper}"  Width="200" Height="300">
                                 <materialDesign:Flipper.FrontContent>
-
                                     <Grid Background="Transparent" Width="200" Height="300" Margin="0,1,0,1">
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="40" />
@@ -115,39 +114,25 @@ Background="Transparent"
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="auto" />
                                                     <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
-                                                    <RowDefinition Height="auto" />
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-                                                
+
                                                 <Grid Margin="0,10,0,0" Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Center">
                                                     <TextBlock Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"   Margin="20,0,20,0" FontSize="18">
-                                                        <Run Text="Организация:"/> <Run Text="{Binding Organizations.Fullname}"/>
+                                                        <Run Text="Организация:"/> <Run Text="{Binding Organizations.Fullname}" />
                                                     </TextBlock>
                                                 </Grid>
-                                                <Grid Margin="0,10,0,0" Grid.Row="2"  HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                <Grid Margin="0,10,0,0" Grid.Row="1"  HorizontalAlignment="Left" VerticalAlignment="Center">
                                                     <TextBlock Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"   Margin="20,0,20,0" FontSize="18">
                                                       <Run Text="Дата начала:"/> <Run Text="{Binding DateStart,  StringFormat=dd/MM/yyyy}"/>
                                                     </TextBlock>
                                                 </Grid>
-                                                <!--<Grid Margin="0,10,0,0"  Grid.Row="3"  HorizontalAlignment="Left" VerticalAlignment="Center">
+                                                <Grid Margin="0,10,0,0"  Grid.Row="2" VerticalAlignment="Center">
                                                     <TextBlock  Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Margin="20,0,20,0" FontSize="18">
-                                                        <Run Text="Дата окончания: "/><Run Text="{Binding DateEnd, StringFormat=dd/MM/yyyy}"/>
-                                                    </TextBlock>
-                                                </Grid>-->
-                                                <Grid Margin="0,10,0,0"  Grid.Row="4"  HorizontalAlignment="Left" VerticalAlignment="Center">
-                                                    <TextBlock  Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Margin="20,0,20,0" FontSize="18">
-                                                        <Run Text="Статус: "/><Run Text="{Binding Status}"/>
-                                                    </TextBlock>
-                                                </Grid>
-                                                <Grid Margin="0,10,0,0"  Grid.Row="5"  HorizontalAlignment="Left" VerticalAlignment="Center">
-                                                    <TextBlock  Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap" Margin="20,0,20,0" FontSize="18">
-                                                        <Run Text="Руководитель: "/><Run Text="{Binding Path= nameDirector}"/>
+                                                        <Run Text="Руководитель: "/><Run Text="{Binding Path= nameDirector}" />
                                                     </TextBlock>
                                                 </Grid>
                                             </Grid>
@@ -157,7 +142,6 @@ Background="Transparent"
                                             <Button Margin="0,30,0,0" Background="#FFE9B3BB" Foreground="White" Click="ButtonOpenPositions_Click" materialDesign:ButtonAssist.CornerRadius="10" Content="Должности" Style="{StaticResource MaterialDesignFlatButton}" />
                                         </Grid>
                                     </Grid>
-
                                 </materialDesign:Flipper.FrontContent>
                                 <materialDesign:Flipper.BackContent>
                                     <!--оборот-->
