@@ -145,6 +145,13 @@
                         </TreeViewItem>
                     </TreeViewItem>
                     <TreeViewItem x:Name="CommerceProjects" Header="Коммерческие проекты">
+                        <TreeViewItem x:Name="AppInTheProject" Selected="Button_Click">
+                            <TreeViewItem.Header>
+                                <StackPanel  Orientation="Horizontal">
+                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Заявки в проект" />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
                         <TreeViewItem x:Name="ButtonAdmCustomer" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
@@ -173,13 +180,7 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem x:Name="AppInTheProject" Selected="Button_Click">
-                            <TreeViewItem.Header>
-                                <StackPanel  Orientation="Horizontal">
-                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Заявки в проект" />
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
+                        
                     </TreeViewItem>
                     <TreeViewItem x:Name="Participants" Header="Участники">
                         <TreeViewItem x:Name="ButtonAdmMembers" Selected="Button_Click">
@@ -249,13 +250,7 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem x:Name="ButtonAdmEducationalPortals" Selected="Button_Click">
-                            <TreeViewItem.Header>
-                                <StackPanel  Orientation="Horizontal">
-                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Обучающие порталы" />
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
+                      
                         <TreeViewItem  x:Name="ButtonAdmPosition" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
@@ -274,6 +269,13 @@
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Проекты трудоустройств" />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem x:Name="ButtonAdmEducationalPortals" Selected="Button_Click">
+                            <TreeViewItem.Header>
+                                <StackPanel  Orientation="Horizontal">
+                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Обучающие порталы" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>

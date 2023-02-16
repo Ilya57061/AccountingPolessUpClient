@@ -34,11 +34,18 @@ namespace AccountingPolessUp
                     foreach (TreeViewItem item in Admin.Items)
                     {
                         item.Visibility = Visibility.Collapsed;
+                        CommerceProjects.Visibility= Visibility.Visible;
                         MainDepartments.Visibility = Visibility.Visible;
-                        Departments.Visibility = Visibility.Visible;
-                        ButtonAdmPosition.Visibility = Visibility.Visible;
-                        ButtonAdmWork.Visibility = Visibility.Visible;
-                        ButtonAdmFinalProjects.Visibility = Visibility.Visible;
+                        ButtonAdmEducationalPortals.Visibility = Visibility.Hidden;
+                        //Departments.Visibility = Visibility.Visible;
+                        //ButtonAdmPosition.Visibility = Visibility.Visible; // director
+                        //ButtonAdmWork.Visibility = Visibility.Visible;
+                        //ButtonAdmFinalProjects.Visibility = Visibility.Visible;
+                    }
+                    foreach (TreeViewItem i in CommerceProjects.Items)
+                    {
+                        i.Visibility = Visibility.Collapsed;
+                        AppInTheProject.Visibility= Visibility.Visible;
                     }
                     if (_user.Role.Name == "DirectorOrganizational")
                     {

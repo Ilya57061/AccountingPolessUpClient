@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -26,9 +27,11 @@ namespace AccountingPolessUp.Implementations
         public List<FinalProject> Get()
         {
             var json = _webClient.DownloadString("GetFinalProject");
-            List<FinalProject> Info = JsonConvert.DeserializeObject<List<FinalProject>>(json);
-            if (Info is null) throw new Exception("info - null");
-            else return Info;
+            var finalProject = JsonConvert.DeserializeObject<List<FinalProject>>(json);
+            if (finalProject == null) throw new Exception("FinalProject - null");
+            else if (RoleValidator.User.Role.Name != "Admin")
+                finalProject = finalProject.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.Employment.ParticipantsId)) == true).ToList();
+            return finalProject;
         }
 
         public List<FinalProject> GetByEmployment(int employmentId)
@@ -36,8 +39,12 @@ namespace AccountingPolessUp.Implementations
             var request = new NameValueCollection { ["id"] = $"{employmentId}" };
             var response = _webClient.UploadValues("GetFinalProjectForEmploymentId", "PUT", request);
             var responseString = Encoding.Default.GetString(response);
-            List<FinalProject> list = JsonConvert.DeserializeObject<List<FinalProject>>(responseString);
-            return list;
+            var finalProject = JsonConvert.DeserializeObject<List<FinalProject>>(responseString);
+            if (finalProject == null) throw new Exception("FinalProject - null");
+            else if (RoleValidator.User.Role.Name != "Admin")
+                finalProject = finalProject.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.Employment.ParticipantsId)) == true).ToList();
+            return finalProject;
+         
         }
 
         public void Create(FinalProject model)

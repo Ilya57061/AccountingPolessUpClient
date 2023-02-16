@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -27,9 +28,11 @@ namespace AccountingPolessUp.Implementations
         public List<ApplicationsInTheProject> Get()
         {
             var json = _webClient.DownloadString("GetAppInTheProject");
-            var Info = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(json);
-            if (Info is null) throw new Exception("info - null");
-            else return Info;
+            var applicationsInTheProject = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(json);
+            if (applicationsInTheProject is null) throw new Exception("applicationsInTheProject - null");
+            else if (RoleValidator.User.Role.Name != "Admin")
+                applicationsInTheProject = applicationsInTheProject.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.ParticipantsId)) == true).ToList();
+            return applicationsInTheProject;
         }
         public List<ApplicationsInTheProject> Get(int vacancyId)
         {
