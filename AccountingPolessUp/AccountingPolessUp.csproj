@@ -85,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\AccessChecker.cs" />
     <Compile Include="Helpers\DataGridUpdater.cs" />
     <Compile Include="Helpers\DataNavigator.cs" />
     <Compile Include="Helpers\FilterComboBox.cs" />

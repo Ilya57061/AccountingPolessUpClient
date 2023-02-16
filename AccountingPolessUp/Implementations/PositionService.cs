@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -26,9 +27,11 @@ namespace AccountingPolessUp.Implementations
         public List<Position> Get()
         {
             var json = _webClient.DownloadString("GetPosition");
-            var Info = JsonConvert.DeserializeObject<List<Position>>(json);
-            if (Info is null) throw new Exception("info - null");
-            else return Info;
+            var position = JsonConvert.DeserializeObject<List<Position>>(json);
+            if (position is null) throw new Exception("position  - null");
+            else if (RoleValidator.User.Role.Name !="Admin")
+                position = position.Where(x => RoleValidator.RoleChecker((int)x.Department.DirectorId) == true).ToList();
+            return position;
         }
         public List<Position> Get(int departmentId)
         {
@@ -38,9 +41,13 @@ namespace AccountingPolessUp.Implementations
             };
             var response = _webClient.UploadValues("GetPositionForDepartmentId", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
-            var Info = JsonConvert.DeserializeObject<List<Position>>(responseString);
-            if (Info is null) throw new Exception("info - null");
-            else return Info;
+            var position = JsonConvert.DeserializeObject<List<Position>>(responseString);
+            if (position is null) throw new Exception("position - null");
+            else if (RoleValidator.User.Role.Name != "Admin")
+                position = position.Where(x => RoleValidator.RoleChecker((int)x.Department.DirectorId) == true).ToList();
+            return position;
+
+
         }
 
         public void Create(Position model)

@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -27,9 +28,11 @@ namespace AccountingPolessUp.Implementations
         public List<Employment> Get()
         {
             var json = _webClient.DownloadString("GetEmployments");
-            var info = JsonConvert.DeserializeObject<List<Employment>>(json);
-            if (info == null) throw new Exception("info - null");
-            return info;
+            var employments = JsonConvert.DeserializeObject<List<Employment>>(json);
+            if (employments == null) throw new Exception("employments - null");
+            else if (RoleValidator.User.Role.Name != "Admin")
+                employments = employments.Where(x => RoleValidator.RoleChecker((int)x.Position.Department.DirectorId) == true).ToList();
+            return employments;
         }
 
         public Employment GetByParticipants(int participantsId)
@@ -38,6 +41,7 @@ namespace AccountingPolessUp.Implementations
             var response = _webClient.UploadValues("GetByParticipants", "POST", values);
             var responseString = Encoding.Default.GetString(response);
             var employment = JsonConvert.DeserializeObject<Employment>(responseString);
+            if (employment == null) throw new Exception("employment - null");
             return employment;
         }
 

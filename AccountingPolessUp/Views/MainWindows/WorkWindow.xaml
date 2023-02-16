@@ -36,7 +36,7 @@
         <Grid Grid.Row="0" Grid.RowSpan="2">
             <Border Width="auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <TreeView Margin="10 40"  Width="auto" FontSize="20">
-                <TreeViewItem  Selected="ButtonProfile_Click">
+                <TreeViewItem x:Name="ButtonProfile" Selected="Button_Click">
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AccountCircleOutline" Width="35" Height="35" VerticalAlignment="Center"/>
@@ -44,7 +44,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem Selected="ButtonEmployment_Click">
+                <TreeViewItem x:Name="ButtonEmployment" Selected="Button_Click">
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="BadgeAccountHorizontal" Width="35" Height="35" VerticalAlignment="Center"/>
@@ -52,7 +52,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem Selected="ButtonMentor_Click">
+                <TreeViewItem x:Name="ButtonMentor" Selected="Button_Click">
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="AccountGroup" Width="35" Height="35" VerticalAlignment="Center"/>
@@ -60,7 +60,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem Selected="ButtonProjects_Click">
+                <TreeViewItem x:Name="ButtonProjects" Selected="Button_Click">
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="BriefcaseEye" Width="35" Height="35" VerticalAlignment="Center"/>
@@ -68,7 +68,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem Selected="ButtonPositions_Click">
+                <TreeViewItem x:Name="ButtonPositions" Selected="Button_Click">
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="BriefcasePlus" Width="35" Height="35" VerticalAlignment="Center"/>
@@ -76,43 +76,43 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem   Header="Справочники" >
-                    <TreeViewItem Selected="ButtonInfoRules_Click">
+                <TreeViewItem Header="Справочники" >
+                    <TreeViewItem x:Name="ButtonInfoRules" Selected="Button_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal" >
                                 <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Уставы" />
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonInfoDepartments_Click">
+                    <TreeViewItem x:Name="ButtonInfoDepartments" Selected="Button_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
                                 <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Отделы" />
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonInfoPositions_Click">
+                    <TreeViewItem x:Name="ButtonInfoPositions" Selected="Button_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
                                 <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Должности" />
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonInfoСourses_Click">
+                    <TreeViewItem x:Name="ButtonInfoСourses" Selected="Button_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
                                 <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Учебные Курсы" />
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonInfoRanks_Click">
+                    <TreeViewItem x:Name="ButtonInfoRanks" Selected="Button_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
                                 <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Ранги" />
                             </StackPanel>
                         </TreeViewItem.Header>
                     </TreeViewItem>
-                    <TreeViewItem Selected="ButtonInfoBonus_Click">
+                    <TreeViewItem x:Name="ButtonInfoBonus" Selected="Button_Click">
                         <TreeViewItem.Header>
                             <StackPanel  Orientation="Horizontal">
                                 <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Бонусы" />
@@ -122,21 +122,21 @@
                 </TreeViewItem>
                 <TreeViewItem  x:Name="Admin"  Header="Администрирование" >
                     <TreeViewItem x:Name="Courses" Header="Учебные курсы">
-                        <TreeViewItem Selected="ButtonAdmCourses_Click">
+                        <TreeViewItem x:Name="ButtonAdmCourses" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Учебные курсы" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmRegistrationForCourses_Click">
+                        <TreeViewItem x:Name="ButtonAdmRegistrationForCourses" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Регистрация на курсы" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmSchedule_Click">
+                        <TreeViewItem x:Name="ButtonAdmSchedule" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Расписание занятий" />
@@ -145,65 +145,66 @@
                         </TreeViewItem>
                     </TreeViewItem>
                     <TreeViewItem x:Name="CommerceProjects" Header="Коммерческие проекты">
-                        <TreeViewItem Selected="ButtonAdmCustomer_Click">
-                            <TreeViewItem.Header>
-                                <StackPanel  Orientation="Horizontal">
-                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Заказчики" />
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem x:Name="Projects" Selected="ButtonAdmProjects_Click">
-                            <TreeViewItem.Header>
-                                <StackPanel  Orientation="Horizontal">
-                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Проекты" />
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem x:Name="StageOfProject" Selected="ButtonAdmStageOfProject_Click">
-                            <TreeViewItem.Header>
-                                <StackPanel  Orientation="Horizontal">
-                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Этапы проекта" />
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem x:Name="Vacancy" Selected="ButtonAdmVacancy_Click">
-                            <TreeViewItem.Header>
-                                <StackPanel  Orientation="Horizontal">
-                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Вакансии" />
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem x:Name="AppInTheProject" Selected="ButtonAdmApplications_Click">
+                        <TreeViewItem x:Name="AppInTheProject" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Заявки в проект" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
+                        <TreeViewItem x:Name="ButtonAdmCustomer" Selected="Button_Click">
+                            <TreeViewItem.Header>
+                                <StackPanel  Orientation="Horizontal">
+                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Заказчики" />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem x:Name="Projects" Selected="Button_Click">
+                            <TreeViewItem.Header>
+                                <StackPanel  Orientation="Horizontal">
+                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Проекты" />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem x:Name="StageOfProject" Selected="Button_Click">
+                            <TreeViewItem.Header>
+                                <StackPanel  Orientation="Horizontal">
+                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Этапы проекта" />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem x:Name="Vacancy" Selected="Button_Click">
+                            <TreeViewItem.Header>
+                                <StackPanel  Orientation="Horizontal">
+                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Вакансии" />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        
                     </TreeViewItem>
                     <TreeViewItem x:Name="Participants" Header="Участники">
-                        <TreeViewItem Selected="ButtonAdmMembers_Click">
+                        <TreeViewItem x:Name="ButtonAdmMembers" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Участники" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmNatural_Click">
+                        <TreeViewItem x:Name="ButtonAdmNatural" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Физические лица" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmStudents_Click">
+                        <TreeViewItem x:Name="ButtonAdmStudents" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Студенты" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmUsers_Click">
+                        <TreeViewItem x:Name="ButtonAdmUsers" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Пользователи" />
@@ -212,28 +213,28 @@
                         </TreeViewItem>
                     </TreeViewItem>
                     <TreeViewItem x:Name="Organizations" Header="Организации">
-                        <TreeViewItem Selected="ButtonAdmBonus_Click">
+                        <TreeViewItem x:Name="ButtonAdmBonus" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Бонусы" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmOrganization_Click">
+                        <TreeViewItem x:Name="ButtonAdmOrganization" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Организации" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmRules_Click">
+                        <TreeViewItem x:Name="ButtonAdmRules" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Уставы" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmRanks_Click">
+                        <TreeViewItem x:Name="ButtonAdmRanks" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Ранги" />
@@ -242,38 +243,39 @@
                         </TreeViewItem>
                     </TreeViewItem>
                     <TreeViewItem x:Name="MainDepartments" Header="Отделы">
-                        <TreeViewItem x:Name="Departments" Selected="ButtonAdmDepartments_Click">
+                        <TreeViewItem x:Name="Departments" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Отделы" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem Selected="ButtonAdmEducationalPortals_Click">
-                            <TreeViewItem.Header>
-                                <StackPanel  Orientation="Horizontal">
-                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Обучающие порталы" />
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem  x:Name="Positions" Selected="ButtonAdmPosition_Click">
+                      
+                        <TreeViewItem  x:Name="ButtonAdmPosition" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Должности" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem x:Name="Employments" Selected="ButtonAdmWork_Click">
+                        <TreeViewItem x:Name="ButtonAdmWork" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Трудоустройства" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem x:Name="FinalProjects" Selected="ButtonAdmFinalProjects_Click">
+                        <TreeViewItem x:Name="ButtonAdmFinalProjects" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Проекты трудоустройств" />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem x:Name="ButtonAdmEducationalPortals" Selected="Button_Click">
+                            <TreeViewItem.Header>
+                                <StackPanel  Orientation="Horizontal">
+                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Обучающие порталы" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
