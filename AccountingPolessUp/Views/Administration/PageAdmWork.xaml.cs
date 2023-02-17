@@ -80,10 +80,18 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-            _employments = _employmentService.Get();
-            if (RoleValidator.User.Role.Name != "Admin")
-                _employments = _employments.Where(x => RoleValidator.RoleChecker((int)x.Position.Department.DirectorId) == true).ToList();
-            DataGridUpdater.UpdateDataGrid(_employments, this);
+            try
+            {
+                _employments = _employmentService.Get();
+                if (RoleValidator.User.Role.Name != "Admin")
+                    _employments = _employments.Where(x => RoleValidator.RoleChecker((int)x.Position.Department.DirectorId) == true).ToList();
+                DataGridUpdater.UpdateDataGrid(_employments, this);
+            }
+            catch (System.Exception)
+            {
+
+            }
+           
         }
         private void DeleteSelectedEmployments()
         {

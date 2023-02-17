@@ -52,7 +52,7 @@ namespace AccountingPolessUp
                     {
                         CommerceProjects.Visibility = Visibility.Visible;
                         Vacancy.Visibility = Visibility.Collapsed;
-                        Projects.Visibility = Visibility.Collapsed;
+                        Projects.Visibility = Visibility.Visible;
                     }    
                     break;
                 case "LocalPm":

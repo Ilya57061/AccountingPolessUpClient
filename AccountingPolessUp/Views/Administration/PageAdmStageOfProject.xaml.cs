@@ -93,11 +93,19 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-            if (_project == null) _stagesOfProjects = _stagesOfProjectService.Get();
-            else _stagesOfProjects = _stagesOfProjectService.Get(_project.Id);
-            if (RoleValidator.User.Role.Name == "LocalPm")
-                _stagesOfProjects = _stagesOfProjects.Where(x => RoleValidator.RoleChecker((int)x.Project.idLocalPM) == true).ToList();
-            DataGridUpdater.UpdateDataGrid(_stagesOfProjects, this);
+            try
+            {
+                if (_project == null) _stagesOfProjects = _stagesOfProjectService.Get();
+                else _stagesOfProjects = _stagesOfProjectService.Get(_project.Id);
+                if (RoleValidator.User.Role.Name == "LocalPm")
+                    _stagesOfProjects = _stagesOfProjects.Where(x => RoleValidator.RoleChecker((int)x.Project.idLocalPM) == true).ToList();
+                DataGridUpdater.UpdateDataGrid(_stagesOfProjects, this);
+            }
+            catch (System.Exception)
+            {
+
+            }
+           
         }
         private void DeleteSelectedStagesOfProjects()
         {

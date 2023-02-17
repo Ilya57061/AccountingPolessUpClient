@@ -118,7 +118,6 @@ namespace AccountingPolessUp.Views.Administration
             catch (System.Exception)
             {
 
-                throw;
             }
            
         }

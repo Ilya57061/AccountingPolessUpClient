@@ -24,12 +24,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditApplicationsInTheProject : Page
     {
+        ApplicationsInTheProjectService _applicationService = new ApplicationsInTheProjectService();
+        ParticipantsService _participantsService = new ParticipantsService();
+        VacancyService _vacancyService = new VacancyService();
 
         Page _parent;
-        ApplicationsInTheProjectService _applicationService = new ApplicationsInTheProjectService();
         List<Vacancy> _vacancy;
-        VacancyService _vacancyService = new VacancyService();
-        ParticipantsService _participantsService = new ParticipantsService();
         List<Participants> _participants;
         ApplicationsInTheProject _applications;
         public PageEditApplicationsInTheProject(ApplicationsInTheProject applications, Page parent)
