@@ -52,7 +52,7 @@ namespace AccountingPolessUp.Helpers
             switch (RoleValidator.User.Role.Name)
             {
                 case "GlobalPm":
-                    if (page.Title== "PageAdmVacancy")
+                    if (page.Title== "PageAdmVacancy" || page.Title== "PageAdmProjects")
                         return false;
                     else
                         return true;
