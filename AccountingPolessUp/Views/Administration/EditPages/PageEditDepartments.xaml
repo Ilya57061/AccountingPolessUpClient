@@ -60,12 +60,12 @@ Background="Transparent"
             </ComboBox>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="5">
-            <Button Click="OpenDirector_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  x:Name="OpenDirector" Click="OpenDirector_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="6">
-            <Button Click="OpenOrganization_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  x:Name="OpenOrganization" Click="OpenOrganization_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>

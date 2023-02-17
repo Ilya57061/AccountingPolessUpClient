@@ -24,12 +24,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditEducationalPortals : Page
     {
+        private DepartmentService _departmentService = new DepartmentService();
+        private EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
+        
+        private List<Department> _department;
+        private EducationalPortals _educationalPortals;
+        private Page _parent;
 
-        Page _parent;
-        EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
-        List<Department> _department;
-        DepartmentService _departmentService = new DepartmentService();
-        EducationalPortals _educationalPortals;
         public PageEditEducationalPortals(EducationalPortals educationalPortals, Page parent)
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxDepartment.ItemsSource = _department;
             BoxDepartment.SelectedIndex = _department.IndexOf(_department.FirstOrDefault(r => r.Id == educationalPortals.DepartmentId));
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditEducationalPortals(Page parent)
         {
@@ -51,6 +53,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _department = _departmentService.Get();
             BoxDepartment.ItemsSource = _department;
             _parent= parent;
+            AccessChecker.AccessOpenButton(this);
         }
         private void OpenDepartments_Click(object sender, RoutedEventArgs e)
         {

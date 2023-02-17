@@ -24,13 +24,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditPosition : Page
     {
 
-        Page _parent;
-        PositionService _positionService = new PositionService();
-        DepartmentService _departmentService = new DepartmentService();
-        List<Department> _departments;
-        List<Position> positions;
-        Position _position;
-        Department _department;
+        private PositionService _positionService = new PositionService();
+        private DepartmentService _departmentService = new DepartmentService();
+        private List<Department> _departments;
+        private List<Position> positions;
+        private Position _position;
+        private Department _department;
+        private Page _parent;
+
         public PageEditPosition(Position position, Page parent, Department department)
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxDepartment.ItemsSource = _departments;
             BoxDepartment.SelectedIndex = _departments.IndexOf(_departments.FirstOrDefault(d => d.Id == position.DepartmentId));
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditPosition(Page parent)
         {
@@ -53,6 +55,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _departments = _departmentService.Get();
             BoxDepartment.ItemsSource = _departments;
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         private void OpenDepartments_Click(object sender, RoutedEventArgs e)
         {
@@ -96,11 +99,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void UpdateDataGrid()
         {
             DataGridUpdater.AdmPosition.UpdateDataGrid();
-            //if (_department == null)
-            //    positions = _positionService.Get();
-            //else positions = _positionService.Get(_department.Id);
-
-            //DataGridUpdater.UpdateDataGrid(positions, _parent);
         }
         private void WriteData()
         {

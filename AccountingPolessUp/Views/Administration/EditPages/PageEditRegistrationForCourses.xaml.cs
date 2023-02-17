@@ -15,14 +15,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditRegistrationForCourses : Page
     {
+        private RegistrationForCoursesService _registrationForCoursesService = new RegistrationForCoursesService();
+        private ParticipantsService _participantsService = new ParticipantsService();
+        private TrainingCoursesService _trainingCoursesService = new TrainingCoursesService();
 
-        Page _parent;
-        RegistrationForCoursesService _registrationForCoursesService = new RegistrationForCoursesService();
-        List<Participants> _participants;
-        ParticipantsService _participantsService = new ParticipantsService();
-        TrainingCoursesService _trainingCoursesService = new TrainingCoursesService();
-        List<TrainingCourses> _trainingCourses;
-        RegistrationForCourses _registrationForCourses;
+        private Page _parent;
+        private List<Participants> _participants;
+        private List<TrainingCourses> _trainingCourses;
+        private RegistrationForCourses _registrationForCourses;
         public PageEditRegistrationForCourses(RegistrationForCourses registrationForCourses, Page parent)
         {
             InitializeComponent();

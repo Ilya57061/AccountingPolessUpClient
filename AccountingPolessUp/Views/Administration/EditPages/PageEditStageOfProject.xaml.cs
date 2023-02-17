@@ -26,11 +26,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditStageOfProject : Page
     {
 
-        Page _parent;
-        StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
-        ProjectService _projectService = new ProjectService();
-        List<Project> _project;
-        StagesOfProject _stagesOfProject;
+        private StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
+        private ProjectService _projectService = new ProjectService();
+        private List<Project> _project;
+        private StagesOfProject _stagesOfProject;
+        private Page _parent;
+
         public PageEditStageOfProject(StagesOfProject stagesOfProject, Page parent)
         {
             InitializeComponent();
@@ -43,6 +44,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxStatus.SelectedIndex = _stagesOfProject.Status == "Завершён" ? 0 : 1;
             BoxProject.SelectedIndex = _project.IndexOf(_project.FirstOrDefault(r => r.Id == stagesOfProject.ProjectId));
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditStageOfProject(Page parent)
         {
@@ -53,6 +55,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _project = _projectService.Get();
             BoxProject.ItemsSource = _project;
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         private void OpenProject_Click(object sender, RoutedEventArgs e)
         {

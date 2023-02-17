@@ -33,12 +33,12 @@ Background="Transparent"
         <Border Grid.ColumnSpan="7" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
 
         <Grid Grid.Row="0" Grid.Column="5">
-            <Button Click="OpenVacancy_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  x:Name="OpenVacancy" Click="OpenVacancy_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>
         <Grid Grid.Row="0" Grid.Column="4">
-            <Button Click="OpenParticipants_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  x:Name="OpenParticipants" Click="OpenParticipants_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>

@@ -24,13 +24,15 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditDepartments : Page
     {
 
-        Page _parent;
-        DepartmentService _departmentService = new DepartmentService();
-        OrganizationService _organizationService = new OrganizationService();
-        ParticipantsService _participantsService = new ParticipantsService();
-        Department _department;
-        List<Organization> _organizations;
-        List<Participants> _participants;
+        private DepartmentService _departmentService = new DepartmentService();
+        private OrganizationService _organizationService = new OrganizationService();
+        private ParticipantsService _participantsService = new ParticipantsService();
+        
+        private Department _department;
+        private List<Organization> _organizations;
+        private List<Participants> _participants;
+        private Page _parent;
+
         public PageEditDepartments(Department department, Page parent)
         {
             InitializeComponent();
@@ -46,6 +48,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxOrganizations.SelectedItem = _organizations.FirstOrDefault(i => i.Id == department.OrganizationId);
             BoxDirector.SelectedIndex= _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == _department.DirectorId));
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditDepartments(Page parent)
         {
@@ -58,6 +61,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxOrganizations.ItemsSource = _organizations;
             _parent = parent;
             BoxDirector.ItemsSource = _participants;
+            AccessChecker.AccessOpenButton(this);
         }
         private void OpenOrganization_Click(object sender, RoutedEventArgs e)
         {

@@ -45,6 +45,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxStagesOfProject.ItemsSource= _stagesOfProjects;
             BoxStagesOfProject.SelectedIndex = _stagesOfProjects.IndexOf(_stagesOfProjects.FirstOrDefault(s=>s.Id==vacancy.StagesOfProjectId));
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditVacancy(Page parent)
         {
@@ -55,6 +56,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _vacancy=new Vacancy();
             _stagesOfProjects = _stagesOfProjectService.Get();
             BoxStagesOfProject.ItemsSource = _stagesOfProjects;
+            AccessChecker.AccessOpenButton(this);
         }
         private void OpenStages_Click(object sender, RoutedEventArgs e)
         {

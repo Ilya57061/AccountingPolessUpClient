@@ -41,6 +41,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxIndividuals.ItemsSource=_individuals;
             BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == student.IndividualsId));
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditStudents(Page parent)
         {
@@ -51,6 +52,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _individuals = _individualsService.Get();
             BoxIndividuals.ItemsSource = _individuals;
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

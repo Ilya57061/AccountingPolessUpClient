@@ -33,13 +33,13 @@ Background="Transparent"
         
         <Border Grid.ColumnSpan="7" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
         <Grid>
-            <Button Click="OpenIndividuals_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  x:Name="OpenIndividuals" Click="OpenIndividuals_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon  Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>
      
         <Grid Grid.Column="2" >
-            <Button Click="OpenUser_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button  x:Name="OpenUser" Click="OpenUser_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon  Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>

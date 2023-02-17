@@ -50,7 +50,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxMentors.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == employment.IdMentor));
             BoxPosition.SelectedIndex = _positions.IndexOf(_positions.FirstOrDefault(p => p.Id == employment.PositionId));
             BoxParticipants.ItemsSource = _participants;
-            
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditWork(Page parent)
         {
@@ -64,6 +64,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxParticipants.ItemsSource = _participants;
             BoxMentors.ItemsSource = _participants;
             BoxPosition.ItemsSource = _positions;
+            AccessChecker.AccessOpenButton(this);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

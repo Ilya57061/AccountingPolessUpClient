@@ -1,21 +1,12 @@
 ﻿using AccountingPolessUp.Helpers;
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
-using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -25,14 +16,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditMembers : Page
     {
 
-        Page _parent;
-        ParticipantsService _participantsService = new ParticipantsService();
-        UserService _userService = new UserService();
-        IndividualsService _individualsService = new IndividualsService();
-        List<User> _users;
-        List<Individuals> _individuals;
-
-        Participants participants;
+        private ParticipantsService _participantsService = new ParticipantsService();
+        private UserService _userService = new UserService();
+        private IndividualsService _individualsService = new IndividualsService();
+        
+        private List<User> _users;
+        private List<Individuals> _individuals;
+        private Page _parent;
+        private Participants _participants;
         public PageEditMembers(Participants participants, Page page)
         {
             InitializeComponent();
@@ -41,14 +32,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonAdd.Visibility = Visibility.Hidden;
             _users = _userService.Get();
             _individuals = _individualsService.Get();
-            this.participants = participants;
+            _participants = participants;
             this.DataContext = participants;
             BoxStatus.SelectedIndex = participants.Status == "Активный" ? 0 : 1;
             BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == participants.IndividualsId));
             BoxUser.SelectedIndex = _users.IndexOf(_users.FirstOrDefault(p => p.Id == participants.UserId));
             BoxIndividuals.ItemsSource = _individuals;
             BoxUser.ItemsSource = _users;
-
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditMembers(Page page)
         {
@@ -56,11 +47,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _parent = page;
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            participants = new Participants();
+            _participants = new Participants();
             _users = _userService.Get();
             _individuals = _individualsService.Get();
             BoxIndividuals.ItemsSource = _individuals;
             BoxUser.ItemsSource = _users;
+            AccessChecker.AccessOpenButton(this);
         }
     
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -70,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                _participantsService.Update(participants);
+                _participantsService.Update(_participants);
                 DataGridUpdater.AdmMembers.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
@@ -86,7 +78,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                _participantsService.Create(participants);
+                _participantsService.Create(_participants);
                 DataGridUpdater.AdmMembers.UpdateDataGrid();
                 this.NavigationService.GoBack();
             }
@@ -110,13 +102,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
-            participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
-            participants.Mmr = int.Parse(Mmr.Text);
-            participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
-            participants.DateEntry = DateTime.Parse(DateEntry.Text);
-            participants.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
-            participants.GitHub = GitHub.Text;
-            participants.DateExit = DateTime.TryParse(DateExit.Text, out var dateExitResult) ? dateExitResult : (DateTime?)null;
+            _participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
+            _participants.Mmr = int.Parse(Mmr.Text);
+            _participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
+            _participants.DateEntry = DateTime.Parse(DateEntry.Text);
+            _participants.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
+            _participants.GitHub = GitHub.Text;
+            _participants.DateExit = DateTime.TryParse(DateExit.Text, out var dateExitResult) ? dateExitResult : (DateTime?)null;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

@@ -4,18 +4,9 @@ using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -24,36 +15,31 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditApplicationsInTheProject : Page
     {
-        ApplicationsInTheProjectService _applicationService = new ApplicationsInTheProjectService();
-        ParticipantsService _participantsService = new ParticipantsService();
-        VacancyService _vacancyService = new VacancyService();
+        private ApplicationsInTheProjectService _applicationService = new ApplicationsInTheProjectService();
+        private ParticipantsService _participantsService = new ParticipantsService();
+        private VacancyService _vacancyService = new VacancyService();
 
-        Page _parent;
-        List<Vacancy> _vacancy;
-        List<Participants> _participants;
-        ApplicationsInTheProject _applications;
+        private Page _parent;
+        private List<Vacancy> _vacancy;
+        private List<Participants> _participants;
+        private ApplicationsInTheProject _applications;
         public PageEditApplicationsInTheProject(ApplicationsInTheProject applications, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            try
-            {
-                _vacancy = _vacancyService.Get();
-                _participants = _participantsService.Get();
-                DataContext = applications;
-                _applications = applications;
-                BoxVacancy.ItemsSource = _vacancy;
-                BoxParticipant.ItemsSource = _participants;
-                BoxIsAccepted.SelectedIndex = (bool)_applications.IsAccepted ? 0 : 1;
-                BoxStatus.SelectedIndex = _applications.Status == "Завершено успешно" ? 0 : _applications.Status == "В работе" ? 1 : 2;
-                BoxVacancy.SelectedIndex = _vacancy.IndexOf(_vacancy.FirstOrDefault(r => r.Id == applications.VacancyId));
-                BoxParticipant.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(r => r.Id == applications.ParticipantsId));
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка на стороне сервера", "Ошибка");
-            }
+
+            _vacancy = _vacancyService.Get();
+            _participants = _participantsService.Get();
+            DataContext = applications;
+            _applications = applications;
+            BoxVacancy.ItemsSource = _vacancy;
+            BoxParticipant.ItemsSource = _participants;
+            BoxIsAccepted.SelectedIndex = (bool)_applications.IsAccepted ? 0 : 1;
+            BoxStatus.SelectedIndex = _applications.Status == "Завершено успешно" ? 0 : _applications.Status == "В работе" ? 1 : 2;
+            BoxVacancy.SelectedIndex = _vacancy.IndexOf(_vacancy.FirstOrDefault(r => r.Id == applications.VacancyId));
+            BoxParticipant.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(r => r.Id == applications.ParticipantsId));
+            AccessChecker.AccessOpenButton(this);
             _parent = parent;
         }
         public PageEditApplicationsInTheProject(Page parent)
@@ -62,20 +48,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _parent = parent;
-            try
-            {
-                _applications = new ApplicationsInTheProject();
-                _vacancy = _vacancyService.Get();
-                _participants = _participantsService.Get();
-                BoxVacancy.ItemsSource = _vacancy;
-                BoxParticipant.ItemsSource = _participants;
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ошибка на стороне сервера", "Ошибка");
-            }
-
+            _applications = new ApplicationsInTheProject();
+            _vacancy = _vacancyService.Get();
+            _participants = _participantsService.Get();
+            BoxVacancy.ItemsSource = _vacancy;
+            BoxParticipant.ItemsSource = _participants;
+            AccessChecker.AccessOpenButton(this);
         }
         private void OpenVacancy_Click(object sender, RoutedEventArgs e)
         {
