@@ -31,7 +31,7 @@ namespace AccountingPolessUp.Views.Administration
             UpdateDataGrid();
             ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
             ButtonEdit.Visibility = AccessChecker.AccessEditButton(this) ? Visibility.Hidden : Visibility.Visible;
-            AccessChecker.AccessEditButton(this);
+            ButtonAdd.Visibility = AccessChecker.AccessAddButton(this) ? Visibility.Hidden : Visibility.Visible;
         }
         public PageAdmAppInTheProject(Vacancy vacancy)
         {
@@ -42,7 +42,7 @@ namespace AccountingPolessUp.Views.Administration
             BoxParticipant.ItemsSource = _participantsService.Get();
             UpdateDataGrid();
             ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
-            AccessChecker.AccessEditButton(this);
+            ButtonEdit.Visibility = AccessChecker.AccessEditButton(this) ? Visibility.Hidden : Visibility.Visible;
         }
         public void UpdateDataGrid()
         {
