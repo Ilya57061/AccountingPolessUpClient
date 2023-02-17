@@ -19,10 +19,10 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmStudents()
         {
             InitializeComponent();
-            DataGridUpdater.AdmStudents = this;
-            
+            DataGridUpdater.AdmStudents = this;            
             UpdateDataGrid();
             FilterComboBox.SetBoxIndividuals(BoxIndividuals);
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {

@@ -37,8 +37,8 @@ namespace AccountingPolessUp.Views.Administration
             ColumSelect.Visibility = Visibility.Visible;
             _vacancies = vacancies;
             ButtonAdd.Visibility = Visibility.Hidden;
-            ColumDelete.Visibility = Visibility.Hidden;
-            ColumEdit.Visibility = Visibility.Hidden;
+            ButtonDelete.Visibility = Visibility.Hidden;
+            ButtonEdit.Visibility = Visibility.Hidden;
             DataGridUpdater.UpdateDataGrid(_vacancies, this);
         }
         public PageAdmVacancy(StagesOfProject stagesOfProject)
@@ -47,6 +47,8 @@ namespace AccountingPolessUp.Views.Administration
             BoxStagesOfProject.IsEnabled = false;
             BoxStagesOfProject.ItemsSource = _stagesOfProjectService.Get();
             _stagesOfProject = stagesOfProject;
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
+            ButtonAdd.Visibility = AccessChecker.AccessAddButton(this) ? Visibility.Hidden : Visibility.Visible;
 
             UpdateDataGrid();
         }

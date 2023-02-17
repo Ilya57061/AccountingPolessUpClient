@@ -77,19 +77,19 @@ Background="Transparent"
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Удалить">
+                        <DataGridTemplateColumn Header="Удалить" x:Name="ButtonDelete">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button x:Name="ButtonDelete" Click="ButtonDelete_Click">
+                                    <Button Click="ButtonDelete_Click">
                                         <materialDesign:PackIcon Kind="DeleteEmpty" />
                                     </Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
-                        <DataGridTemplateColumn Header="Изменить">
+                        <DataGridTemplateColumn Header="Изменить" x:Name="ButtonEdit">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button x:Name="ButtonEdit" Click="ButtonEdit_Click">
+                                    <Button Click="ButtonEdit_Click">
                                         <materialDesign:PackIcon Kind="AccountEdit" />
                                     </Button>
                                 </DataTemplate>
