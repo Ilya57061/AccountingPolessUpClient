@@ -35,7 +35,7 @@ namespace AccountingPolessUp.Helpers
             switch (RoleValidator.User.Role.Name)
             {
                 case "GlobalPm":
-                    if (typeof(Page).Name == "PageAdmAppInTheProject")
+                    if (page.Title == "PageAdmAppInTheProject")
                         return false;
                     else
                         return true;
@@ -51,7 +51,7 @@ namespace AccountingPolessUp.Helpers
             switch (RoleValidator.User.Role.Name)
             {
                 case "GlobalPm":
-                    if (typeof(Page).Name == "PageAdmProjects")
+                    if (page.Title== "PageAdmVacancy")
                         return false;
                     else
                         return true;
