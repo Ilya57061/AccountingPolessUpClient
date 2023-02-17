@@ -37,6 +37,7 @@ namespace AccountingPolessUp
                         CommerceProjects.Visibility= Visibility.Visible;
                         MainDepartments.Visibility = Visibility.Visible;
                         ButtonAdmEducationalPortals.Visibility = Visibility.Collapsed;
+                        AppInTheProject.Visibility = Visibility.Collapsed;
                         //Departments.Visibility = Visibility.Visible;
                         //ButtonAdmPosition.Visibility = Visibility.Visible; // director
                         //ButtonAdmWork.Visibility = Visibility.Visible;
@@ -53,6 +54,7 @@ namespace AccountingPolessUp
                         CommerceProjects.Visibility = Visibility.Visible;
                         Vacancy.Visibility = Visibility.Collapsed;
                         Projects.Visibility = Visibility.Visible;
+                        AppInTheProject.Visibility = Visibility.Visible;
                     }    
                     break;
                 case "LocalPm":
@@ -66,7 +68,7 @@ namespace AccountingPolessUp
                         item.Visibility = Visibility.Collapsed;
                         Projects.Visibility = Visibility.Visible;
                         StageOfProject.Visibility = Visibility.Visible;
-                        AppInTheProject.Visibility = Visibility.Visible;
+                   
                     }
                     break;
                 default:

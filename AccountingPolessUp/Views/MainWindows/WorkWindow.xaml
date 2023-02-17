@@ -68,6 +68,14 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
+                <TreeViewItem x:Name="ButtonMenuProjectApplications" Selected="Button_Click">
+                    <TreeViewItem.Header>
+                        <StackPanel  Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="PlusCircle" Width="35" Height="35" VerticalAlignment="Center"/>
+                            <TextBlock VerticalAlignment="Center" Foreground="Black" Margin="8,0,0,0" Text="Заявки в проекты" />
+                        </StackPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
                 <TreeViewItem x:Name="ButtonPositions" Selected="Button_Click">
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
