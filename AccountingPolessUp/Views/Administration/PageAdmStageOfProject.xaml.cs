@@ -95,6 +95,8 @@ namespace AccountingPolessUp.Views.Administration
         {
             if (_project == null) _stagesOfProjects = _stagesOfProjectService.Get();
             else _stagesOfProjects = _stagesOfProjectService.Get(_project.Id);
+            if (RoleValidator.User.Role.Name == "LocalPm")
+                _stagesOfProjects = _stagesOfProjects.Where(x => RoleValidator.RoleChecker((int)x.Project.idLocalPM) == true).ToList();
             DataGridUpdater.UpdateDataGrid(_stagesOfProjects, this);
         }
         private void DeleteSelectedStagesOfProjects()

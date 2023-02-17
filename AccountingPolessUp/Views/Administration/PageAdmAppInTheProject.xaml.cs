@@ -51,7 +51,7 @@ namespace AccountingPolessUp.Views.Administration
                 if (_vacancy == null) _applicationsInTheProject = _appService.Get();
                 else _applicationsInTheProject = _appService.Get(_vacancy.Id);
                 if (RoleValidator.User.Role.Name != "Admin")
-                    _applicationsInTheProject = _applicationsInTheProject.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.ParticipantsId)) == true).ToList();
+                    _applicationsInTheProject = _applicationsInTheProject.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.ParticipantsId)) != true).ToList();
                 DataGridUpdater.UpdateDataGrid(_applicationsInTheProject, this);
             }
             catch (System.Exception)

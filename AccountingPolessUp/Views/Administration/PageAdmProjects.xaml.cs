@@ -93,8 +93,18 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-            _projects = _projectService.Get();
-            DataGridUpdater.UpdateDataGrid(_projects, this);
+            try
+            {
+                _projects = _projectService.Get();
+                if (RoleValidator.User.Role.Name == "LocalPm")
+                    _projects = _projects.Where(x => RoleValidator.RoleChecker((int)x.idLocalPM) == true).ToList();
+                DataGridUpdater.UpdateDataGrid(_projects, this);
+            }
+            catch (Exception)
+            {
+
+            }
+          
         }
         private void DeleteSelectedProjects()
         {
@@ -102,8 +112,7 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Project project in dataGrid.SelectedItems)
                 {
-                    if (RoleValidator.RoleChecker((int)project.idLocalPM))
-                        _projectService.Delete(project.Id);
+                _projectService.Delete(project.Id);
                 }
             }
             UpdateDataGrid();

@@ -65,7 +65,7 @@ namespace AccountingPolessUp
                     {
                         item.Visibility = Visibility.Collapsed;
                         Projects.Visibility = Visibility.Visible;
-                        Vacancy.Visibility = Visibility.Collapsed;
+                        StageOfProject.Visibility = Visibility.Visible;
                         AppInTheProject.Visibility = Visibility.Visible;
                     }
                     break;
