@@ -76,13 +76,22 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-            if (_employment == null)
-                _finalProjects = _finalProjectService.Get();
-            else
-                _finalProjects = _finalProjectService.GetByEmployment(_employment.Id);
-           if (RoleValidator.User.Role.Name != "Admin")
-                _finalProjects = _finalProjects.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.Employment.ParticipantsId)) == true).ToList();
-            DataGridUpdater.UpdateDataGrid(_finalProjects, this);
+            try
+            {
+                if (_employment == null)
+                    _finalProjects = _finalProjectService.Get();
+                else
+                    _finalProjects = _finalProjectService.GetByEmployment(_employment.Id);
+                if (RoleValidator.User.Role.Name != "Admin")
+                    _finalProjects = _finalProjects.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.Employment.ParticipantsId)) == true).ToList();
+                DataGridUpdater.UpdateDataGrid(_finalProjects, this);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+           
 
         }
         private void DeleteSelectedFinalProjects()

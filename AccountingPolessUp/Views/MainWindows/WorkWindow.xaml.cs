@@ -36,22 +36,24 @@ namespace AccountingPolessUp
                         item.Visibility = Visibility.Collapsed;
                         CommerceProjects.Visibility= Visibility.Visible;
                         MainDepartments.Visibility = Visibility.Visible;
-                        ButtonAdmEducationalPortals.Visibility = Visibility.Hidden;
+                        ButtonAdmEducationalPortals.Visibility = Visibility.Collapsed;
                         //Departments.Visibility = Visibility.Visible;
                         //ButtonAdmPosition.Visibility = Visibility.Visible; // director
                         //ButtonAdmWork.Visibility = Visibility.Visible;
                         //ButtonAdmFinalProjects.Visibility = Visibility.Visible;
                     }
-                    foreach (TreeViewItem i in CommerceProjects.Items)
-                    {
-                        i.Visibility = Visibility.Collapsed;
-                        AppInTheProject.Visibility= Visibility.Visible;
-                    }
+                   
                     if (_user.Role.Name == "DirectorOrganizational")
                     {
                         Courses.Visibility = Visibility.Visible;
                         Participants.Visibility = Visibility.Visible;
                     }
+                    if (_user.Role.Name == "GlobalPm")
+                    {
+                        CommerceProjects.Visibility = Visibility.Visible;
+                        Vacancy.Visibility = Visibility.Collapsed;
+                        Projects.Visibility = Visibility.Collapsed;
+                    }    
                     break;
                 case "LocalPm":
                     foreach (TreeViewItem item in Admin.Items)
@@ -68,7 +70,7 @@ namespace AccountingPolessUp
                     }
                     break;
                 default:
-                    Admin.Visibility = Visibility.Hidden;
+                    Admin.Visibility = Visibility.Collapsed;
                     break;
             }
         }

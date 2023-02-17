@@ -27,20 +27,37 @@ namespace AccountingPolessUp.Implementations
 
         public List<Employment> Get()
         {
-            var json = _webClient.DownloadString("GetEmployments");
-            var employments = JsonConvert.DeserializeObject<List<Employment>>(json);
-            if (employments == null) throw new Exception("employments - null");
-            return employments;
+            try
+            {
+                var json = _webClient.DownloadString("GetEmployments");
+                var employments = JsonConvert.DeserializeObject<List<Employment>>(json);
+                if (employments == null) throw new Exception("employments - null");
+                return employments;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        
         }
 
         public Employment GetByParticipants(int participantsId)
         {
-            var values = new NameValueCollection { ["ParticipantsId"] = participantsId.ToString() };
-            var response = _webClient.UploadValues("GetByParticipants", "POST", values);
-            var responseString = Encoding.Default.GetString(response);
-            var employment = JsonConvert.DeserializeObject<Employment>(responseString);
-            if (employment == null) throw new Exception("employment - null");
-            return employment;
+            try
+            {
+                var values = new NameValueCollection { ["ParticipantsId"] = participantsId.ToString() };
+                var response = _webClient.UploadValues("GetByParticipants", "POST", values);
+                var responseString = Encoding.Default.GetString(response);
+                var employment = JsonConvert.DeserializeObject<Employment>(responseString);
+                if (employment == null) throw new Exception("employment - null");
+                return employment;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+           
         }
 
         public void Create(Employment model)

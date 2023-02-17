@@ -84,13 +84,21 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-          
-            if (_department == null)
-                positions = _positionService.Get();
-            else positions = _positionService.Get(_department.Id);
-            if (RoleValidator.User.Role.Name != "Admin")
-                positions = positions.Where(x => RoleValidator.RoleChecker((int)x.Department.DirectorId) == true).ToList();
-            DataGridUpdater.UpdateDataGrid(positions, this);
+            try
+            {
+                if (_department == null)
+                    positions = _positionService.Get();
+                else positions = _positionService.Get(_department.Id);
+                if (RoleValidator.User.Role.Name != "Admin")
+                    positions = positions.Where(x => RoleValidator.RoleChecker((int)x.Department.DirectorId) == true).ToList();
+                DataGridUpdater.UpdateDataGrid(positions, this);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+       
         }
         private void DeleteSelectedPositions()
         {

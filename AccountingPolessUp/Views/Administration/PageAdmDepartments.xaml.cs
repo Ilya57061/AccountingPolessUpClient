@@ -108,10 +108,19 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-            _departments = _departmentService.Get();
-              if (RoleValidator.User.Role.Name != "Admin")
-                _departments = _departments.Where(x => RoleValidator.RoleChecker((int)x.DirectorId) == true).ToList();
-            DataGridUpdater.UpdateDataGrid(_departments, this);
+            try
+            {
+                _departments = _departmentService.Get();
+                if (RoleValidator.User.Role.Name != "Admin")
+                    _departments = _departments.Where(x => RoleValidator.RoleChecker((int)x.DirectorId) == true).ToList();
+                DataGridUpdater.UpdateDataGrid(_departments, this);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+           
         }
         private void ButtonPositions_Click(object sender, RoutedEventArgs e)
         {

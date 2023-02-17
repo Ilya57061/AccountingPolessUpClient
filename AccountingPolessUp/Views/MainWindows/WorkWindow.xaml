@@ -159,17 +159,17 @@
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
-                        <TreeViewItem x:Name="Projects" Selected="Button_Click">
-                            <TreeViewItem.Header>
-                                <StackPanel  Orientation="Horizontal">
-                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Проекты" />
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
                         <TreeViewItem x:Name="StageOfProject" Selected="Button_Click">
                             <TreeViewItem.Header>
                                 <StackPanel  Orientation="Horizontal">
                                     <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Этапы проекта" />
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem x:Name="Projects" Selected="Button_Click">
+                            <TreeViewItem.Header>
+                                <StackPanel  Orientation="Horizontal">
+                                    <TextBlock Foreground="Black" Margin="8,0,0,0" Text="Проекты" />
                                 </StackPanel>
                             </TreeViewItem.Header>
                         </TreeViewItem>
