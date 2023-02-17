@@ -23,6 +23,7 @@ namespace AccountingPolessUp.Views.Administration
             DataGridUpdater.AdmUsers = this;
             FilterComboBox.SetBoxRole(BoxRole);
             UpdateDataGrid();
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
         }
         public PageAdmUsers(List<User> users)
         {
@@ -31,6 +32,7 @@ namespace AccountingPolessUp.Views.Administration
             _users = users;
             UpdateDataGrid();
             FilterComboBox.SetBoxRole(BoxRole);
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
         }
         public void UpdateDataGrid()
         {

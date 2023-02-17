@@ -1,6 +1,7 @@
 ﻿using AccountingPolessUp.Helpers;
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
+using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -30,7 +31,7 @@ namespace AccountingPolessUp.Views.Information
         public PageInfoPositions()
         {
             InitializeComponent();
-            Positions= new ObservableCollection<Position>(_positionService.Get());
+            Positions = new ObservableCollection<Position>(_positionService.Get());
             DataContext = Positions;
             FilterComboBox.SetBoxDepartments(BoxDepartment);
         }

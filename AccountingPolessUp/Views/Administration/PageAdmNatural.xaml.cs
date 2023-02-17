@@ -24,8 +24,8 @@ namespace AccountingPolessUp.Views.Administration
         {
             InitializeComponent();
             DataGridUpdater.AdmNatural = this;
-            
             UpdateDataGrid();
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
         }
         public PageAdmNatural(List<Individuals> individuals)
         {
@@ -34,10 +34,10 @@ namespace AccountingPolessUp.Views.Administration
             ColumSelect.Visibility = Visibility.Visible;
             _individuals = individuals;
             ButtonAdd.Visibility = Visibility.Hidden;
-            ColumDelete.Visibility = Visibility.Hidden;
-            ColumEdit.Visibility = Visibility.Hidden;
+            ButtonDelete.Visibility = Visibility.Hidden;
+            ButtonEdit.Visibility = Visibility.Hidden;
             DataGridUpdater.UpdateDataGrid(_individuals, this);
-
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {

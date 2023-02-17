@@ -35,6 +35,7 @@ namespace AccountingPolessUp.Views.Administration
             UpdateDataGrid();
             FilterComboBox.SetBoxUsers(BoxUser);
             FilterComboBox.SetBoxIndividuals(BoxIndividuals);
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
         }
 
         public PageAdmMembers(List<Participants> participants)
@@ -47,6 +48,7 @@ namespace AccountingPolessUp.Views.Administration
             FilterComboBox.SetBoxUsers(BoxUser);
             FilterComboBox.SetBoxIndividuals(BoxIndividuals);
             DataGridUpdater.UpdateDataGrid(_participants, this);
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
