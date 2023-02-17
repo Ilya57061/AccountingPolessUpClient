@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace AccountingPolessUp.Helpers
 {
@@ -15,6 +17,50 @@ namespace AccountingPolessUp.Helpers
         public static int ApplicationsInTheProjectCheck(int participantId)
         {
             return (int)_employmentService.GetByParticipants(participantId).Position.Department.DirectorId;
+        }
+        public static bool AccessDeleteButton()
+        {
+            switch (RoleValidator.User.Role.Name)
+            {
+                case "GlobalPm":
+                case "Director":
+                case "DirectorOrganizational":
+                case "LocalPm":
+                    return true;
+                default: return false;
+            }
+        }
+        public static bool AccessEditButton(Page page)
+        {
+            switch (RoleValidator.User.Role.Name)
+            {
+                case "GlobalPm":
+                    if (typeof(Page).Name == "PageAdmAppInTheProject")
+                        return false;
+                    else
+                        return true;
+                case "Director":
+                case "DirectorOrganizational":
+                case "LocalPm":
+                    return true;
+                default: return false;
+            }
+        }
+        public static bool AccessAddButton(Page page)
+        {
+            switch (RoleValidator.User.Role.Name)
+            {
+                case "GlobalPm":
+                    if (typeof(Page).Name == "PageAdmProjects")
+                        return false;
+                    else
+                        return true;
+                case "Director":
+                case "DirectorOrganizational":
+                case "LocalPm":
+                    return true;
+                default: return false;
+            }
         }
     }
 }

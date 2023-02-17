@@ -29,6 +29,9 @@ namespace AccountingPolessUp.Views.Administration
             BoxParticipant.ItemsSource = _participantsService.Get();
             ButtonBack.Visibility = Visibility.Hidden;
             UpdateDataGrid();
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
+            ButtonEdit.Visibility = AccessChecker.AccessEditButton(this) ? Visibility.Hidden : Visibility.Visible;
+            AccessChecker.AccessEditButton(this);
         }
         public PageAdmAppInTheProject(Vacancy vacancy)
         {
@@ -38,10 +41,12 @@ namespace AccountingPolessUp.Views.Administration
             BoxParticipant.ItemsSource = _participantsService.Get();
             _vacancy = vacancy;
             UpdateDataGrid();
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
+            AccessChecker.AccessEditButton(this);
         }
         public void UpdateDataGrid()
         {
-            if(_vacancy == null) _applicationsInTheProject = _appService.Get();
+            if (_vacancy == null) _applicationsInTheProject = _appService.Get();
             else _applicationsInTheProject = _appService.Get(_vacancy.Id);
            if (RoleValidator.User.Role.Name != "Admin")
                 _applicationsInTheProject = _applicationsInTheProject.Where(x => RoleValidator.RoleChecker(AccessChecker.ApplicationsInTheProjectCheck(x.ParticipantsId)) == true).ToList();
@@ -74,7 +79,7 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             UpdateDataGrid();
-            FilterManager.ConfirmFilter(dataGrid, _applicationsInTheProject, DateEntry.Text, BoxParticipant.Text,BoxVacancy.Text, BoxIsAccepted.Text, Status.Text, StatusDescription.Text);
+            FilterManager.ConfirmFilter(dataGrid, _applicationsInTheProject, DateEntry.Text, BoxParticipant.Text, BoxVacancy.Text, BoxIsAccepted.Text, Status.Text, StatusDescription.Text);
         }
 
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

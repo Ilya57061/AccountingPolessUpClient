@@ -34,6 +34,8 @@ namespace AccountingPolessUp.Views.Administration
             BoxLocalPM.ItemsSource = _participantsService.Get();
             UpdateDataGrid();
             FilterComboBox.SetBoxCustomers(BoxCustomer);
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
+            ButtonAdd.Visibility = AccessChecker.AccessAddButton(this) ? Visibility.Hidden : Visibility.Visible;
         }
         public PageAdmProjects(List<Project> projects)
         {
@@ -43,10 +45,12 @@ namespace AccountingPolessUp.Views.Administration
             ColumSelect.Visibility = Visibility.Visible;
             _projects = projects;
             ButtonAdd.Visibility = Visibility.Hidden;
-            ColumDelete.Visibility = Visibility.Hidden;
-            ColumEdit.Visibility = Visibility.Hidden;
+            ButtonDelete.Visibility = Visibility.Hidden;
+            ButtonEdit.Visibility = Visibility.Hidden;
             FilterComboBox.SetBoxCustomers(BoxCustomer);
             DataGridUpdater.UpdateDataGrid(_projects, this);
+            ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
+            ButtonAdd.Visibility = AccessChecker.AccessAddButton(this) ? Visibility.Hidden : Visibility.Visible;
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
