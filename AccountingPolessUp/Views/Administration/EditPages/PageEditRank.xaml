@@ -30,7 +30,7 @@ Background="Transparent"
 
         <Border Grid.ColumnSpan="5" Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White"/>
         <Grid Grid.Row="0" Grid.Column="4">
-            <Button Click="OpenOrganizations_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button x:Name="OpenOrganization" Click="OpenOrganizations_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>

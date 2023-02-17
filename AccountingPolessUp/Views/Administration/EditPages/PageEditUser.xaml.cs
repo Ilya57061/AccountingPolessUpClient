@@ -16,11 +16,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditUser : Page
     {
-        Page _parent;
-        UserService _userService = new UserService();
-        RoleService _roleService = new RoleService();
-        List<Role> roles;
-        User user;
+        private UserService _userService = new UserService();
+        private RoleService _roleService = new RoleService();
+
+        private List<Role> roles;
+        private User user;
+        private Page _parent;
 
         public PageEditUser(User user, Page parent)
         {

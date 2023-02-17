@@ -24,41 +24,43 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditProject : Page
     {
+        private ProjectService _projectService = new ProjectService();
+        private CustomerService _customerService = new CustomerService();
+        private ParticipantsService _participantsService = new ParticipantsService();
+        private List<Customer> _customers;
+        private List<Participants> _participants;
+        private Project _project;
+        private Page _parent;
 
-        Page _parent;
-        ProjectService _projectService = new ProjectService();
-        CustomerService _customerService = new CustomerService();
-        ParticipantsService _participantsService = new ParticipantsService();
-        List<Customer> _customers;
-        List<Participants> _participants;
-        Project _project;
         public PageEditProject(Project project, Page parent)
         {
+            _parent = parent;
+            _project = project;
             InitializeComponent();
             _participants = _participantsService.Get();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
-            _project = project;
-            BoxStatus.SelectedIndex = _project.Status == "Завершён" ? 0 : 1;
-            BoxLocalPM.ItemsSource = _participants;
             _customers = _customerService.Get();
             DataContext = project;
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+            BoxStatus.SelectedIndex = _project.Status == "Завершён" ? 0 : 1;
+            BoxLocalPM.ItemsSource = _participants;
             BoxCustomer.ItemsSource = _customers;
             BoxCustomer.SelectedIndex = _customers.IndexOf(_customers.FirstOrDefault(c => c.Id == project.CustomerId));
             BoxLocalPM.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == project.idLocalPM));
-            _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditProject(Page parent)
         {
+            _parent = parent;
+            _project = new Project();
             InitializeComponent();
+            _customers = _customerService.Get();
             _participants = _participantsService.Get();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            _project = new Project();
-            _customers = _customerService.Get();
             BoxCustomer.ItemsSource = _customers;
-            _parent = parent;
             BoxLocalPM.ItemsSource = _participants;
+            AccessChecker.AccessOpenButton(this);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -96,6 +98,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void OpenCustomer_Click(object sender, RoutedEventArgs e)
         {
+           
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxCustomer.Name;
             _parent.NavigationService.Content = new PageAdmCustomer(_customers);

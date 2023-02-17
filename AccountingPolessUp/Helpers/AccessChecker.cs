@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace AccountingPolessUp.Helpers
 {
@@ -60,6 +61,24 @@ namespace AccountingPolessUp.Helpers
                 case "LocalPm":
                     return true;
                 default: return false;
+            }
+        }
+        public static void AccessOpenButton(Page page)
+        {
+            if (RoleValidator.User.Role.Name != "Admin")
+            {
+                int count = VisualTreeHelper.GetChildrenCount(page);
+
+                for (int i = 0; i < count; i++)
+                {
+                    var child = VisualTreeHelper.GetChild(page, i);
+
+                    if (child is Button && (child as Button).Content.ToString().StartsWith("Open"))
+                    {
+                        (child as Button).Visibility = Visibility.Hidden;
+                    }
+
+                }
             }
         }
     }

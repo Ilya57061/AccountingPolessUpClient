@@ -4,18 +4,9 @@ using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -46,6 +37,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxTrainingCourses.SelectedIndex = _trainingCourses.IndexOf(_trainingCourses.FirstOrDefault(r => r.Id == registrationForCourses.TrainingCoursesId));
             BoxParticipant.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(r => r.Id == registrationForCourses.ParticipantsId));
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditRegistrationForCourses(Page parent)
         {
@@ -58,6 +50,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxParticipant.ItemsSource = _participants;
             BoxTrainingCourses.ItemsSource = _trainingCourses;
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

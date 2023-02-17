@@ -15,11 +15,11 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmAppInTheProject : Page
     {
-        private readonly ApplicationsInTheProjectService _appService = new ApplicationsInTheProjectService();
-        List<ApplicationsInTheProject> _applicationsInTheProject;
-        Vacancy _vacancy;
-        ParticipantsService _participantsService = new ParticipantsService();
-        VacancyService _vacancyService = new VacancyService();
+        private ApplicationsInTheProjectService _appService = new ApplicationsInTheProjectService();
+        private ParticipantsService _participantsService = new ParticipantsService();
+        private VacancyService _vacancyService = new VacancyService();
+        private List<ApplicationsInTheProject> _applicationsInTheProject;
+        private Vacancy _vacancy;
 
         public PageAdmAppInTheProject()
         {
@@ -35,11 +35,11 @@ namespace AccountingPolessUp.Views.Administration
         }
         public PageAdmAppInTheProject(Vacancy vacancy)
         {
+            _vacancy = vacancy;
             InitializeComponent();
             DataGridUpdater.AdmAppInTheProject = this;
             BoxVacancy.IsEnabled = false;
             BoxParticipant.ItemsSource = _participantsService.Get();
-            _vacancy = vacancy;
             UpdateDataGrid();
             ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
             AccessChecker.AccessEditButton(this);
@@ -57,8 +57,7 @@ namespace AccountingPolessUp.Views.Administration
             catch (System.Exception)
             {
                
-            }
-         
+            }        
         }
 
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -107,7 +106,6 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (ApplicationsInTheProject app in dataGrid.SelectedItems)
                 {
-                    if (RoleValidator.RoleChecker((int)app.Vacancy.StagesOfProject.Project.idLocalPM))
                         _appService.Delete(app.Id);
                 }
                 UpdateDataGrid();
@@ -121,7 +119,6 @@ namespace AccountingPolessUp.Views.Administration
                 ApplicationsInTheProject app = dataGrid.SelectedItem as ApplicationsInTheProject;
                 if (app != null)
                 {
-                    if (RoleValidator.RoleChecker((int)app.Vacancy.StagesOfProject.Project.idLocalPM))
                         EditFrame.Content = new PageEditApplicationsInTheProject(app, this);
                 }
             }

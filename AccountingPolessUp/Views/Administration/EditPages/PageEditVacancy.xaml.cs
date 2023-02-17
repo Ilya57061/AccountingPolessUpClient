@@ -26,11 +26,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditVacancy : Page
     {
 
-        Page _parent;
-        VacancyService _vacancyService = new VacancyService();
-        StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
-        List<StagesOfProject> _stagesOfProjects;
-        Vacancy _vacancy;
+        private VacancyService _vacancyService = new VacancyService();
+        private StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
+
+        private List<StagesOfProject> _stagesOfProjects;
+        private Vacancy _vacancy;
+        private Page _parent;
+
         public PageEditVacancy(Vacancy vacancy, Page parent)
         {
             InitializeComponent();
