@@ -28,40 +28,46 @@ namespace AccountingPolessUp.Views.Administration.EditPages
 
         private StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
         private ProjectService _projectService = new ProjectService();
-        private List<Project> _project;
+        private List<Project> _projects;
         private StagesOfProject _stagesOfProject;
         private Page _parent;
 
         public PageEditStageOfProject(StagesOfProject stagesOfProject, Page parent)
         {
             InitializeComponent();
+            SetProjects();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _project = _projectService.Get();
             DataContext = stagesOfProject;
             _stagesOfProject = stagesOfProject;
-            BoxProject.ItemsSource = _project;
             BoxStatus.SelectedIndex = _stagesOfProject.Status == "Завершён" ? 0 : 1;
-            BoxProject.SelectedIndex = _project.IndexOf(_project.FirstOrDefault(r => r.Id == stagesOfProject.ProjectId));
+            BoxProject.SelectedIndex = _projects.IndexOf(_projects.FirstOrDefault(r => r.Id == stagesOfProject.ProjectId));
             _parent = parent;
             AccessChecker.AccessOpenButton(this);
         }
+     
         public PageEditStageOfProject(Page parent)
         {
             InitializeComponent();
+            SetProjects();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _stagesOfProject = new StagesOfProject();
-            _project = _projectService.Get();
-            BoxProject.ItemsSource = _project;
             _parent = parent;
             AccessChecker.AccessOpenButton(this);
+        }
+        private void SetProjects()
+        {
+            _projects = _projectService.Get();
+            if (RoleValidator.User.Role.Name == "LocalPm")
+                _projects = _projects.Where(x => RoleValidator.RoleChecker((int)x.idLocalPM) == true).ToList();
+            BoxProject.ItemsSource = _projects;
         }
         private void OpenProject_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxProject.Name;
-            _parent.NavigationService.Content = new PageAdmProjects(_project);
+            _parent.NavigationService.Content = new PageAdmProjects(_projects);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -104,7 +110,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _stagesOfProject.DateStart = DateTime.Parse(DateStart.Text);
             _stagesOfProject.DateEnd = DateTime.Parse(DateEnd.Text);
             _stagesOfProject.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
-            _stagesOfProject.ProjectId = _project.FirstOrDefault(i => i == BoxProject.SelectedItem).Id;
+            _stagesOfProject.ProjectId = _projects.FirstOrDefault(i => i == BoxProject.SelectedItem).Id;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

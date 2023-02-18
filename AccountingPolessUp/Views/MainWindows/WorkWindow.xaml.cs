@@ -34,7 +34,6 @@ namespace AccountingPolessUp
                     foreach (TreeViewItem item in Admin.Items)
                     {
                         item.Visibility = Visibility.Collapsed;
-                        CommerceProjects.Visibility= Visibility.Visible;
                         MainDepartments.Visibility = Visibility.Visible;
                         ButtonAdmEducationalPortals.Visibility = Visibility.Collapsed;
                         AppInTheProject.Visibility = Visibility.Collapsed;

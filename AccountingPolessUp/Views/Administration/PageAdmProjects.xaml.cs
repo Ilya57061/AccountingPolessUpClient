@@ -104,7 +104,6 @@ namespace AccountingPolessUp.Views.Administration
             {
 
             }
-          
         }
         private void DeleteSelectedProjects()
         {
