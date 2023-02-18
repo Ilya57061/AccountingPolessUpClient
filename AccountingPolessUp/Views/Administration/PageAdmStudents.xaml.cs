@@ -30,6 +30,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _students, StudentCard.Text, Group.Text, BoxIndividuals.Text, CourseNumber.Text, University.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

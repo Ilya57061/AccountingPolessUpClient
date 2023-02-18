@@ -69,6 +69,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _organizations, FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text, BSR.Text.Replace('.', ','));
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

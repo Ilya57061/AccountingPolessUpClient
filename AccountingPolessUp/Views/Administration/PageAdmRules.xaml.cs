@@ -32,6 +32,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _regulations, BoxOrganization.Text, Name.Text, Text.Text, Description.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

@@ -15,13 +15,11 @@
 Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}"
     Title="PolessUp">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="110"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-
         <Grid Grid.Row="0">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <TextBlock Margin="40,0,0,0" x:Name="LabelCourses" FontSize="34" VerticalAlignment="Center" FontWeight="Bold" Text="Учебные курсы"></TextBlock>
@@ -80,13 +78,11 @@ Background="Transparent"
                                         </StackPanel>
                                         <StackPanel  Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <Button Margin="10,0,10,0" Background="#FFDAAC95" Foreground="White" Command="{x:Static materialDesign:Flipper.FlipCommand}" materialDesign:ButtonAssist.CornerRadius="10"   Content="Описание" Style="{StaticResource MaterialDesignFlatButton}" />
-                                            <Button Margin="10,15,10,0" Background="#FFE9B3BB" Foreground="White" Click="Button_RegistrationCourses" materialDesign:ButtonAssist.CornerRadius="10"   Content="Записаться" Style="{StaticResource MaterialDesignFlatButton}" />
                                         </StackPanel>
                                     </Grid>
                                 </materialDesign:Flipper.FrontContent>
                                 <materialDesign:Flipper.BackContent>
                                     <!--оборот-->
-
                                     <Grid Background="Transparent" Width="200" Height="256" >
                                         <Grid.RowDefinitions>
                                             <RowDefinition Height="Auto" />
@@ -106,7 +102,6 @@ Background="Transparent"
                                                 <TextBlock HorizontalAlignment="Center" VerticalAlignment="Stretch" TextWrapping="Wrap" Foreground="White" Margin="0,20,0,0" FontSize="21" Text="{Binding Description}"/>
                                             </ScrollViewer>
                                         </Grid>
-
                                     </Grid>
                                 </materialDesign:Flipper.BackContent>
                             </materialDesign:Flipper>
