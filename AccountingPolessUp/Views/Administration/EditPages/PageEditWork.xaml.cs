@@ -23,15 +23,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditWork : Page
     {
-
         Page _parent;
         ParticipantsService _participantsService = new ParticipantsService();
         PositionService _positionsService = new PositionService();
         EmploymentService _employmentService = new EmploymentService();
         List<Position> _positions;
         List<Participants> _participants;
-        
-
         Employment employment;
         public PageEditWork(Employment employment, Page parent)
         {
@@ -75,7 +72,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _employmentService.Update(employment);
                 DataGridUpdater.AdmWork.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -109,7 +105,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _employmentService.Create(employment);
                 DataGridUpdater.AdmWork.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -127,10 +122,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             var selectedMentor = _participants.FirstOrDefault(i => i == BoxMentors.SelectedItem);
             if (selectedMentor != null)
                 employment.IdMentor = selectedMentor.Id;
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

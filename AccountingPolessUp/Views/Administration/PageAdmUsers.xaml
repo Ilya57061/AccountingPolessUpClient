@@ -31,7 +31,6 @@ Background="Transparent"
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelRanks" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Пользователи"></TextBlock>
                 </StackPanel>
-
                 <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="Panel">
                         <TextBox Margin="1,0,1,12.5" x:Name="Login" FontSize="14" materialDesign:HintAssist.Hint="Логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="BadgeAccount" materialDesign:TextFieldAssist.LeadingIconSize="20"  Text="{Binding Login}"/>
                         <ComboBox  x:Name="BoxRole"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Роль" Margin="1,0,1,0" DisplayMemberPath="Name">
@@ -87,16 +86,15 @@ Background="Transparent"
                     </DataGrid.Columns>
                 </DataGrid>
         </ScrollViewer>
-
     </Grid>
-
         <Grid Grid.ColumnSpan="2" Grid.Row="2">
                 <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-
                 <Button  x:Name="ButtonAdd" Click="ButtonAdd_Click"  HorizontalAlignment="Left" Margin="10,0,0,0" >
                     <materialDesign:PackIcon Kind="AccountPlus" />
                 </Button>
-
+            <Button  x:Name="ButtonCancel" Click="ButtonCancel_Click" Visibility="Hidden" HorizontalAlignment="Right" Margin="0,0,10,0" >
+                <materialDesign:PackIcon Kind="CancelBold" />
+            </Button>
             </Grid>
             <Grid Grid.ColumnSpan="2" Grid.Row="3">
                 <Border  BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />

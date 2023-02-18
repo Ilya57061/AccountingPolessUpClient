@@ -25,13 +25,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditStageOfProject : Page
     {
-
         private StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
         private ProjectService _projectService = new ProjectService();
         private List<Project> _project;
         private StagesOfProject _stagesOfProject;
         private Page _parent;
-
         public PageEditStageOfProject(StagesOfProject stagesOfProject, Page parent)
         {
             InitializeComponent();
@@ -72,13 +70,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _stagesOfProjectService.Update(_stagesOfProject);
                 DataGridUpdater.AdmStageOfProject.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -89,13 +85,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _stagesOfProjectService.Create(_stagesOfProject);
                 DataGridUpdater.AdmStudents.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void WriteData()
         {
@@ -105,10 +99,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _stagesOfProject.DateEnd = DateTime.Parse(DateEnd.Text);
             _stagesOfProject.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             _stagesOfProject.ProjectId = _project.FirstOrDefault(i => i == BoxProject.SelectedItem).Id;
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

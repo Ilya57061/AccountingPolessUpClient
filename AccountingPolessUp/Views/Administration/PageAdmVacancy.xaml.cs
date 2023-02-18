@@ -49,7 +49,6 @@ namespace AccountingPolessUp.Views.Administration
             _stagesOfProject = stagesOfProject;
             ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
             ButtonAdd.Visibility = AccessChecker.AccessAddButton(this) ? Visibility.Hidden : Visibility.Visible;
-
             UpdateDataGrid();
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -71,10 +70,17 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditVacancy(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedVacancies();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
@@ -85,10 +91,6 @@ namespace AccountingPolessUp.Views.Administration
         {
             FilterManager.ClearControls(Panel);
             UpdateDataGrid();
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         private void Number_PreviewTextDoubleInput(object sender, TextCompositionEventArgs e)
         {
@@ -103,7 +105,6 @@ namespace AccountingPolessUp.Views.Administration
             if (_stagesOfProject == null) _vacancies = _vacancyService.Get();
             else _vacancies = _vacancyService.Get(_stagesOfProject.Id);
             DataGridUpdater.UpdateDataGrid(_vacancies, this);
-
         }
         private void DeleteSelectedVacancies()
         {
@@ -123,7 +124,6 @@ namespace AccountingPolessUp.Views.Administration
             {
                 DataNavigator.UpdateValueComboBox(_vacancies.FirstOrDefault(x => x.Id == vacancy.Id));
             }
-
             this.NavigationService.GoBack();
         }
         private void EditSelectedVacancies()

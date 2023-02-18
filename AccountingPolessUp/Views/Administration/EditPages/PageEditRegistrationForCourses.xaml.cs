@@ -18,7 +18,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private RegistrationForCoursesService _registrationForCoursesService = new RegistrationForCoursesService();
         private ParticipantsService _participantsService = new ParticipantsService();
         private TrainingCoursesService _trainingCoursesService = new TrainingCoursesService();
-
         private Page _parent;
         private List<Participants> _participants;
         private List<TrainingCourses> _trainingCourses;
@@ -61,7 +60,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _registrationForCoursesService.Update(_registrationForCourses);
                 DataGridUpdater.AdmRegistrationForCourses.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -77,13 +75,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _registrationForCoursesService.Create(_registrationForCourses);
                 DataGridUpdater.AdmRegistrationForCourses.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void WriteData()
         {
@@ -91,7 +87,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _registrationForCourses.TrainingCoursesId = _trainingCourses.FirstOrDefault(i => i == BoxTrainingCourses.SelectedItem).Id;
             _registrationForCourses.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
         }
-
         private void OpenParticipants_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.ChangePage = this;
@@ -103,10 +98,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxTrainingCourses.Name;
             _parent.NavigationService.Content = new PageAdmCourses(_trainingCourses);
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

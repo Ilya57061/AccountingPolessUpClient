@@ -23,7 +23,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditFinalProject : Page
     {
-
         Page _parent;
         FinalProjectService _finalProjectService = new FinalProjectService();
         FinalProject _finalProject;
@@ -63,7 +62,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _finalProjectService.Update(_finalProject);
                 DataGridUpdater.AdmFinalProject.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -79,7 +77,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _finalProjectService.Create(_finalProject);
                 DataGridUpdater.AdmFinalProject.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -97,10 +94,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             var selectedEmployment = _employments.FirstOrDefault(i => i == BoxEmployment.SelectedItem);
             if (selectedEmployment != null)
                 _finalProject.EmploymentId = selectedEmployment.Id;
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

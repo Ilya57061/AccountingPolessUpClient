@@ -85,6 +85,9 @@ Background="Transparent"
             <Button  x:Name="ButtonAdd" Click="ButtonAdd_Click"  HorizontalAlignment="Left" Margin="10,0,0,0" >
                 <materialDesign:PackIcon Kind="AccountPlus" />
             </Button>
+            <Button  x:Name="ButtonCancel" Click="ButtonCancel_Click" Visibility="Hidden" HorizontalAlignment="Right" Margin="0,0,10,0" >
+                <materialDesign:PackIcon Kind="CancelBold" />
+            </Button>
         </Grid>
         <Grid Grid.ColumnSpan="2" Grid.Row="3">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />

@@ -56,7 +56,6 @@ namespace AccountingPolessUp.Views.Administration
         {
             DataNavigator.LineLeft(scroll);
         }
-
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             DeleteSelectedStagesOfProjects();
@@ -68,10 +67,17 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditStageOfProject(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedStagesOfProjects();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
@@ -82,10 +88,6 @@ namespace AccountingPolessUp.Views.Administration
         {
             FilterManager.ClearControls(Panel);
             UpdateDataGrid();
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {
@@ -103,9 +105,7 @@ namespace AccountingPolessUp.Views.Administration
             }
             catch (System.Exception)
             {
-
             }
-           
         }
         private void DeleteSelectedStagesOfProjects()
         {
@@ -124,7 +124,6 @@ namespace AccountingPolessUp.Views.Administration
             {
                 DataNavigator.UpdateValueComboBox(_stagesOfProjects.FirstOrDefault(x => x.Id == stagesOfProject.Id));
             }
-
             this.NavigationService.GoBack();
         }
         private void EditSelectedStagesOfProjects()

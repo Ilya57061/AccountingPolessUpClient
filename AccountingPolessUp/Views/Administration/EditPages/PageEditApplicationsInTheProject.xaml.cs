@@ -18,7 +18,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private ApplicationsInTheProjectService _applicationService = new ApplicationsInTheProjectService();
         private ParticipantsService _participantsService = new ParticipantsService();
         private VacancyService _vacancyService = new VacancyService();
-
         private Page _parent;
         private List<Vacancy> _vacancy;
         private List<Participants> _participants;
@@ -28,7 +27,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-
             _vacancy = _vacancyService.Get();
             _participants = _participantsService.Get();
             DataContext = applications;
@@ -76,7 +74,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _applicationService.Update(_applications);
                 DataGridUpdater.AdmAppInTheProject.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -85,7 +82,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 WriteData();
@@ -93,8 +89,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _applicationService.Create(_applications);
                 DataGridUpdater.AdmAppInTheProject.UpdateDataGrid();
-                this.NavigationService.GoBack();
-
             }
             catch (Exception)
             {
@@ -109,11 +103,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _applications.DateEntry = DateTime.Parse(DateEntry.Text);
             _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
             _applications.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
-        }
-
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

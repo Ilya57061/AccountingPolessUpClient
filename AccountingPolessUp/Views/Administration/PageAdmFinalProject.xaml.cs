@@ -51,10 +51,17 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditFinalProject(_employment, this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedFinalProjects();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
@@ -70,10 +77,6 @@ namespace AccountingPolessUp.Views.Administration
         {
             this.NavigationService.GoBack();
         }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
-        }
         public void UpdateDataGrid()
         {
             try
@@ -88,11 +91,8 @@ namespace AccountingPolessUp.Views.Administration
             }
             catch (System.Exception)
             {
-
                 throw;
             }
-           
-
         }
         private void DeleteSelectedFinalProjects()
         {
@@ -100,7 +100,7 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (FinalProject finalProject in dataGrid.SelectedItems)
                 {
-                   _finalProjectService.Delete(finalProject.Id);
+                    _finalProjectService.Delete(finalProject.Id);
                 }
             }
             UpdateDataGrid();

@@ -24,7 +24,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditScheduleOfClasses : Page
     {
-
         Page _parent;
         ScheduleOfClassesService _scheduleService = new ScheduleOfClassesService();
         TrainingCoursesService _trainingCoursesService = new TrainingCoursesService();
@@ -50,11 +49,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _schedule = new ScheduleOfСlasses();
             _trainingCourses = _trainingCoursesService.Get();
             BoxTrainingCourses.ItemsSource = _trainingCourses;
-            _parent=parent;
+            _parent = parent;
         }
         private void OpenCourses_Click(object sender, RoutedEventArgs e)
         {
-
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxTrainingCourses.Name;
             _parent.NavigationService.Content = new PageAdmCourses(_trainingCourses);
@@ -68,13 +66,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _scheduleService.Update(_schedule);
                 DataGridUpdater.AdmScheduleOfClasses.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -85,13 +81,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _scheduleService.Create(_schedule);
                 DataGridUpdater.AdmScheduleOfClasses.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void WriteData()
         {

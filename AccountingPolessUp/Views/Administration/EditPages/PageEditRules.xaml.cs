@@ -23,10 +23,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditRules : Page
     {
-
         Page _parent;
         RegulationService _regulationService = new RegulationService();
-        OrganizationService _organizationService=new OrganizationService();
+        OrganizationService _organizationService = new OrganizationService();
         List<Organization> _organizations;
         Regulation _regulation;
         public PageEditRules(Regulation regulation, Page parent)
@@ -60,13 +59,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _regulationService.Update(_regulation);
                 DataGridUpdater.AdmRules.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -77,13 +74,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _regulationService.Create(_regulation);
                 DataGridUpdater.AdmRules.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void OpenRegulation_Click(object sender, RoutedEventArgs e)
         {
@@ -96,7 +91,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _regulation.Text = Text.Text;
             _regulation.Name = Name.Text;
             _regulation.Description = Description.Text;
-            _regulation.OrganizationId = _organizations.FirstOrDefault(i=>i==BoxOrganization.SelectedItem).Id;
+            _regulation.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganization.SelectedItem).Id;
         }
     }
 }

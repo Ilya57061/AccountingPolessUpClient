@@ -15,11 +15,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditMembers : Page
     {
-
         private ParticipantsService _participantsService = new ParticipantsService();
         private UserService _userService = new UserService();
         private IndividualsService _individualsService = new IndividualsService();
-        
         private List<User> _users;
         private List<Individuals> _individuals;
         private Page _parent;
@@ -54,7 +52,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxUser.ItemsSource = _users;
             AccessChecker.AccessOpenButton(this);
         }
-    
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -64,7 +61,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _participantsService.Update(_participants);
                 DataGridUpdater.AdmMembers.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -80,7 +76,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _participantsService.Create(_participants);
                 DataGridUpdater.AdmMembers.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -93,7 +88,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataNavigator.NameBox = BoxIndividuals.Name;
             _parent.NavigationService.Content = new PageAdmNatural(_individuals);
         }
-
         private void OpenUser_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.ChangePage = this;
