@@ -37,7 +37,6 @@ namespace AccountingPolessUp.Views.Administration
             FilterComboBox.SetBoxIndividuals(BoxIndividuals);
             ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
         }
-
         public PageAdmMembers(List<Participants> participants)
         {
             InitializeComponent();
@@ -72,14 +71,11 @@ namespace AccountingPolessUp.Views.Administration
                 {
                     Participants participants = dataGrid.SelectedItems[i] as Participants;
                     if (participants != null)
-                    {
                         _participantsService.Delete(participants.Id);
-                    }
                 }
             }
             UpdateDataGrid();
         }
-
         private void ButtonSelect_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
@@ -87,15 +83,18 @@ namespace AccountingPolessUp.Views.Administration
                 Participants participant = dataGrid.SelectedItems[i] as Participants;
                 DataNavigator.UpdateValueComboBox(_participants.FirstOrDefault(x => x.Id == participant.Id));
             }
-
             this.NavigationService.GoBack();
         }
-
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditMembers(this);
+            ButtonCancel.Visibility = Visibility.Visible;
         }
-
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
+        }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < dataGrid.SelectedItems.Count; i++)
@@ -104,22 +103,20 @@ namespace AccountingPolessUp.Views.Administration
                 if (participants != null)
                 {
                     EditFrame.Content = new PageEditMembers(participants, this);
-
+                    ButtonCancel.Visibility = Visibility.Visible;
                 }
             }
         }
-
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _participants, BoxIndividuals.Text, Mmr.Text, BoxUser.Text, DateEntry.Text, DateExit.Text, BoxStatus.Text, GitHub.Text);
         }
-
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
             UpdateDataGrid();
         }
-
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.Validator(e);

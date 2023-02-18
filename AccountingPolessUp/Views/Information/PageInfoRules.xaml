@@ -27,7 +27,7 @@ Background="Transparent"
             </Grid>
             <Grid Grid.Row="1">
                 <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-                <ListView ItemsSource="{Binding regulations}" HorizontalContentAlignment="Stretch">
+                <ListView ItemsSource="{Binding regulations}" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Expander Header="{Binding Path=[0][0].Organization.Fullname}" PreviewMouseWheel="TextBlock_PreviewMouseWheel">

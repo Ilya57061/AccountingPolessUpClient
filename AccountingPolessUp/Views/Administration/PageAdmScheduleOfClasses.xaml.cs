@@ -25,7 +25,6 @@ namespace AccountingPolessUp.Views.Administration
             InitializeComponent();
             DataGridUpdater.AdmScheduleOfClasses = this;
             ButtonBack.Visibility = Visibility.Hidden;
-            
             UpdateDataGrid();
             FilterComboBox.SetBoxCourses(BoxTrainingCourses);
         }
@@ -35,7 +34,6 @@ namespace AccountingPolessUp.Views.Administration
             DataGridUpdater.AdmScheduleOfClasses = this;
             BoxTrainingCourses.IsEnabled = false;
             _trainingCourses = trainingCourses;
-           
             UpdateDataGrid();
             FilterComboBox.SetBoxCourses(BoxTrainingCourses);
         }
@@ -54,10 +52,17 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditScheduleOfClasses(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedSchedule();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
@@ -69,13 +74,9 @@ namespace AccountingPolessUp.Views.Administration
             FilterManager.ClearControls(Panel);
             UpdateDataGrid();
         }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
-        }
         public void UpdateDataGrid()
         {
-            if(_trainingCourses==null) _scheduleOfClasses = _scheduleOfClassesService.Get();
+            if (_trainingCourses == null) _scheduleOfClasses = _scheduleOfClassesService.Get();
             else _scheduleOfClasses = _scheduleOfClassesService.Get(_trainingCourses.Id);
             DataGridUpdater.UpdateDataGrid(_scheduleOfClasses, this);
         }

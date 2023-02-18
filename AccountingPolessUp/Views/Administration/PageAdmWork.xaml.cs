@@ -55,6 +55,12 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditWork(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonFinalProject_Click(object sender, RoutedEventArgs e)
         {
@@ -63,11 +69,12 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedEmployment();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             string mentorId = string.IsNullOrEmpty(BoxMentors.Text) ? "" : _participantsService.GetByParticipantName(BoxMentors.Text).Id.ToString();
-
             FilterManager.ConfirmFilter(dataGrid, _employments, DateStart.Text, DateEnd.Text, BoxPosition.Text, BoxStatus.Text, StatusDescription.Text, mentorId, BoxParticipants.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -92,7 +99,6 @@ namespace AccountingPolessUp.Views.Administration
             {
 
             }
-           
         }
         private void DeleteSelectedEmployments()
         {
@@ -127,7 +133,6 @@ namespace AccountingPolessUp.Views.Administration
                 Employment employment = dataGrid.SelectedItems[i] as Employment;
                 DataNavigator.UpdateValueComboBox(_employments.FirstOrDefault(x => x.Id == employment.Id));
             }
-
             this.NavigationService.GoBack();
         }
     }

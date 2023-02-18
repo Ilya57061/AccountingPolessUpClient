@@ -20,7 +20,6 @@ namespace AccountingPolessUp.Views.Administration
         private VacancyService _vacancyService = new VacancyService();
         private List<ApplicationsInTheProject> _applicationsInTheProject;
         private Vacancy _vacancy;
-
         public PageAdmAppInTheProject()
         {
             InitializeComponent();
@@ -56,10 +55,9 @@ namespace AccountingPolessUp.Views.Administration
             }
             catch (System.Exception)
             {
-               
-            }        
-        }
 
+            }
+        }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.LineRight(scroll);
@@ -72,41 +70,38 @@ namespace AccountingPolessUp.Views.Administration
         {
             DeleteSelectedApplications();
         }
-
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditApplicationsInTheProject(this);
+            ButtonCancel.Visibility = Visibility.Visible;
         }
-
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
+        }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedApplications();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
-
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _applicationsInTheProject, DateEntry.Text, BoxParticipant.Text, BoxVacancy.Text, BoxIsAccepted.Text, Status.Text, StatusDescription.Text);
         }
-
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
             UpdateDataGrid();
         }
-
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
-        }
-
         private void DeleteSelectedApplications()
         {
             if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (ApplicationsInTheProject app in dataGrid.SelectedItems)
                 {
-                        _appService.Delete(app.Id);
+                    _appService.Delete(app.Id);
                 }
                 UpdateDataGrid();
             }
@@ -119,7 +114,7 @@ namespace AccountingPolessUp.Views.Administration
                 ApplicationsInTheProject app = dataGrid.SelectedItem as ApplicationsInTheProject;
                 if (app != null)
                 {
-                        EditFrame.Content = new PageEditApplicationsInTheProject(app, this);
+                    EditFrame.Content = new PageEditApplicationsInTheProject(app, this);
                 }
             }
         }

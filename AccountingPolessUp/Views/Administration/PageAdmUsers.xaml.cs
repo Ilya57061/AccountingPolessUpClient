@@ -55,7 +55,6 @@ namespace AccountingPolessUp.Views.Administration
             {
                 DataNavigator.UpdateValueComboBox(_users.FirstOrDefault(x => x.Id == user.Id));
             }
-
             this.NavigationService.GoBack();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
@@ -72,12 +71,19 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditUser(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonEditPassword_Click(object sender, RoutedEventArgs e)
         {
             foreach (User user in dataGrid.SelectedItems)
             {
                 EditFrame.Content = new PageEditUser(user, true, this);
+                ButtonCancel.Visibility = Visibility.Visible;
                 break;
             }
         }
@@ -86,12 +92,9 @@ namespace AccountingPolessUp.Views.Administration
             foreach (User user in dataGrid.SelectedItems)
             {
                 EditFrame.Content = new PageEditUser(user, this);
+                ButtonCancel.Visibility = Visibility.Visible;
                 break;
             }
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
     }
 }

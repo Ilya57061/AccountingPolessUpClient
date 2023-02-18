@@ -23,10 +23,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditRank : Page
     {
-
         private RankService _RankService = new RankService();
         private OrganizationService _organizationService = new OrganizationService();
-        
         private List<Organization> _organizations;
         private Rank _Rank;
         private Page _parent;
@@ -53,7 +51,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _Rank = new Rank();
             DataGridUpdater.AdmRanks.UpdateDataGrid();
             BoxOrganization.ItemsSource = _organizations;
-            _parent= parent;
+            _parent = parent;
             AccessChecker.AccessOpenButton(this);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -65,7 +63,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _RankService.Update(_Rank);
                 DataGridUpdater.AdmRanks.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -81,7 +78,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _RankService.Create(_Rank);
                 DataGridUpdater.UpdateDataGrid(_RankService.Get(), _parent);
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

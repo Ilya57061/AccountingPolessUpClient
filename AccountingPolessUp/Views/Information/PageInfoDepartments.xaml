@@ -69,7 +69,7 @@ Background="Transparent"
         </Grid>
         <Grid Grid.Row="1">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <ListView x:Name="LView"  ItemsSource="{Binding}">
+            <ListView x:Name="LView"  ItemsSource="{Binding}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Template">

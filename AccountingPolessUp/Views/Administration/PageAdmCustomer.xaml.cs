@@ -59,6 +59,11 @@ namespace AccountingPolessUp.Views.Administration
             SelectCustomers();
             this.NavigationService.GoBack();
         }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
+        }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             DeleteSelectedCustomers();
@@ -66,13 +71,16 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditCustomer(this);
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedCustomers();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _customers, Fullname.Text, Address.Text, Contacts.Text, WebSite.Text, Description.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -80,11 +88,7 @@ namespace AccountingPolessUp.Views.Administration
             FilterManager.ClearControls(panel);
             UpdateDataGrid();
         }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
-        }
-       public void UpdateDataGrid()
+        public void UpdateDataGrid()
         {
             _customers = _customerService.Get();
             DataGridUpdater.UpdateDataGrid(_customers, this);
@@ -95,10 +99,9 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Customer customer in dataGrid.SelectedItems)
                 {
-                    
+
                     _customerService.Delete(customer.Id);
                 }
-             
                 UpdateDataGrid();
             }
         }

@@ -21,9 +21,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// <summary>
     /// Логика взаимодействия для PageEditIndividuals.xaml
     /// </summary>
-    public partial class PageEditIndividuals : Page // физ лицо
+    public partial class PageEditIndividuals : Page
     {
-
         Page _parent;
         IndividualsService _individualsService = new IndividualsService();
         Individuals _individuals;
@@ -45,7 +44,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonAdd.Visibility = Visibility.Visible;
             _individuals = new Individuals();
         }
-
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -55,7 +53,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _individualsService.Update(_individuals);
                 DataGridUpdater.AdmNatural.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -71,7 +68,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _individualsService.Create(_individuals);
                 DataGridUpdater.AdmNatural.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -81,15 +77,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void WriteData()
         {
             _individuals.FIO = FIO.Text;
-            _individuals.Phone = Phone.Text; 
+            _individuals.Phone = Phone.Text;
             _individuals.Mail = Mail.Text;
             _individuals.Gender = ((ComboBoxItem)BoxGender.SelectedItem).Content.ToString();
-            _individuals.SocialNetwork= SocialNetwork.Text;
-            _individuals.DateOfBirth= DateTime.Parse(DateOfBirth.Text);
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
+            _individuals.SocialNetwork = SocialNetwork.Text;
+            _individuals.DateOfBirth = DateTime.Parse(DateOfBirth.Text);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

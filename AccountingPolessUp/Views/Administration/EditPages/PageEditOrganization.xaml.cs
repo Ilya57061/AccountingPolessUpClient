@@ -23,7 +23,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditOrganization : Page
     {
-
         Page _parent;
         OrganizationService _organizationService = new OrganizationService();
         Organization _organization;
@@ -42,7 +41,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _organization = new Organization();
-            _parent= parent;
+            _parent = parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -53,7 +52,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _organizationService.Update(_organization);
                 DataGridUpdater.AdmOrganizations.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -69,7 +67,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _organizationService.Create(_organization);
                 DataGridUpdater.AdmOrganizations.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -83,11 +80,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _organization.Contacts = Contacts.Text;
             _organization.WebSite = Website.Text;
             _organization.FoundationDate = DateTime.TryParse(FoundationDate.Text, out var dateFoundation) ? dateFoundation : (DateTime?)null;
-            _organization.BSR=double.TryParse(BSR.Text.Replace('.', ','), out var bSR) ? bSR : (double?)null;
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
+            _organization.BSR = double.TryParse(BSR.Text.Replace('.', ','), out var bSR) ? bSR : (double?)null;
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

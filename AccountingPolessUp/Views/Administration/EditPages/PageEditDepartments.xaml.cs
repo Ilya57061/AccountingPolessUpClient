@@ -23,11 +23,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditDepartments : Page
     {
-
         private DepartmentService _departmentService = new DepartmentService();
         private OrganizationService _organizationService = new OrganizationService();
         private ParticipantsService _participantsService = new ParticipantsService();
-        
         private Department _department;
         private List<Organization> _organizations;
         private List<Participants> _participants;
@@ -46,7 +44,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             BoxOrganizations.ItemsSource = _organizations;
             BoxStatus.SelectedIndex = _department.Status == "Работает" ? 0 : 1;
             BoxOrganizations.SelectedItem = _organizations.FirstOrDefault(i => i.Id == department.OrganizationId);
-            BoxDirector.SelectedIndex= _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == _department.DirectorId));
+            BoxDirector.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(p => p.Id == _department.DirectorId));
             _parent = parent;
             AccessChecker.AccessOpenButton(this);
         }
@@ -79,12 +77,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             try
             {
-                    WriteData();
-                    if (FormValidator.AreAllElementsFilled(this))
-                        throw new Exception();
-                    _departmentService.Update(_department);
+                WriteData();
+                if (FormValidator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _departmentService.Update(_department);
                 DataGridUpdater.AdmDepartments.UpdateDataGrid();
-                    this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -95,12 +92,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             try
             {
-                    WriteData();
-                    if (FormValidator.AreAllElementsFilled(this))
-                        throw new Exception();
-                    _departmentService.Create(_department);
+                WriteData();
+                if (FormValidator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _departmentService.Create(_department);
                 DataGridUpdater.AdmDepartments.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -118,10 +114,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             var selectedDirector = _participants.FirstOrDefault(i => i == BoxDirector.SelectedItem);
             if (selectedDirector != null)
                 _department.DirectorId = selectedDirector.Id;
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

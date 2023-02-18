@@ -25,9 +25,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditStudents : Page
     {
         Page _parent;
-        
         StudentService _studentService = new StudentService();
-        IndividualsService _individualsService=new IndividualsService();
+        IndividualsService _individualsService = new IndividualsService();
         List<Individuals> _individuals;
         Student _student;
         public PageEditStudents(Student student, Page parent)
@@ -38,7 +37,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _student = student;
             DataContext = student;
             _individuals = _individualsService.Get();
-            BoxIndividuals.ItemsSource=_individuals;
+            BoxIndividuals.ItemsSource = _individuals;
             BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == student.IndividualsId));
             _parent = parent;
             AccessChecker.AccessOpenButton(this);
@@ -63,13 +62,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _studentService.Update(_student);
                 DataGridUpdater.AdmStudents.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void OpenIndividuals_Click(object sender, RoutedEventArgs e)
         {
@@ -86,21 +83,19 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _studentService.Create(_student);
                 DataGridUpdater.AdmStudents.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void WriteData()
         {
             _student.StudentCard = long.Parse(StudentCard.Text);
             _student.Group = Group.Text;
-            _student.IndividualsId= _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
+            _student.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
             _student.CourseNumber = int.Parse(CourseNumber.Text);
-            _student.University=University.Text;
+            _student.University = University.Text;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

@@ -49,13 +49,21 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditRank(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedRanks();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _ranks, RankName.Text, Description.Text, BoxOrganization.Text, MinMmr.Text, MaxMmr.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -89,7 +97,6 @@ namespace AccountingPolessUp.Views.Administration
             {
                 DataNavigator.UpdateValueComboBox(_ranks.FirstOrDefault(x => x.Id == rank.Id));
             }
-
             this.NavigationService.GoBack();
         }
         private void EditSelectedRanks()

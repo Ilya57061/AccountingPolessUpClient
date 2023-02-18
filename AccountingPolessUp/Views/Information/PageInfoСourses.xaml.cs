@@ -34,24 +34,18 @@ namespace AccountingPolessUp.Views.Information
         }
         private void HyperlinkCourses_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 Hyperlink hyperlink = sender as Hyperlink;
                 Run run = hyperlink.Inlines.FirstInline as Run;
                 string text = run.Text;
                 Process.Start(text);
-
             }
             catch (Exception)
             {
                 Hyperlink hyperlink = sender as Hyperlink;
                 hyperlink.IsEnabled = false;
             }
-        }
-        private void Button_RegistrationCourses(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

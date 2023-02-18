@@ -43,7 +43,6 @@ namespace AccountingPolessUp.Views.Administration
             ButtonDelete.Visibility = Visibility.Hidden;
             ButtonEdit.Visibility = Visibility.Hidden;
             DataGridUpdater.UpdateDataGrid(_organizations, this);
-
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -56,23 +55,27 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditOrganization(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedOrganizations();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(dataGrid, _organizations, FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text,BSR.Text.Replace('.', ','));
+            UpdateDataGrid();
+            FilterManager.ConfirmFilter(dataGrid, _organizations, FullName.Text, Address.Text, Contacts.Text, Website.Text, FoundationDate.Text, BSR.Text.Replace('.', ','));
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
             UpdateDataGrid();
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         public void UpdateDataGrid()
         {
