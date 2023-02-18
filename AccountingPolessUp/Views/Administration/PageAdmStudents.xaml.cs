@@ -40,10 +40,17 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditStudents(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedStudents();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

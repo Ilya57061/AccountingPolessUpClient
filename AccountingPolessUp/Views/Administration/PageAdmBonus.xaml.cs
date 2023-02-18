@@ -31,34 +31,36 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmBonus(Rank rank)
         {
             InitializeComponent();
-            ButtonAdd.Visibility=Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Hidden;
             DataGridUpdater.AdmBonus = this;
             _rank = rank;
             BoxRank.IsEnabled = false;
             UpdateDataGrid();
             BoxsSetData();
         }
-
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
             DeleteSelectedBonuses();
         }
-
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditBonus(this);
+            ButtonCancel.Visibility = Visibility.Visible;
         }
-
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
+        }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedBonus();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
-
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ConfirmFilter(dataGrid, _bonuses, BonusName.Text, BoxRank.Text, BonusDescription.Text);
         }
-
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(panel);
@@ -68,12 +70,6 @@ namespace AccountingPolessUp.Views.Administration
         {
             this.NavigationService.GoBack();
         }
-
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
-        }
-
         private void DeleteSelectedBonuses()
         {
             if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)

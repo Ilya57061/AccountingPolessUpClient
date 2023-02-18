@@ -12,7 +12,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditCustomer : Page
     {
-
         Page _parent;
         CustomerService _customerService = new CustomerService();
         Customer _customer;
@@ -31,7 +30,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _customer = new Customer();
-            _parent= parent;
+            _parent = parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -42,7 +41,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _customerService.Update(_customer);
                 DataGridUpdater.AdmCustomer.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -58,7 +56,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _customerService.Create(_customer);
                 DataGridUpdater.AdmCustomer.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

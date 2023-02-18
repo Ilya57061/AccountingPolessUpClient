@@ -14,7 +14,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditPosition : Page
     {
-
         private PositionService _positionService = new PositionService();
         private DepartmentService _departmentService = new DepartmentService();
         private List<Department> _departments;
@@ -22,7 +21,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private Position _position;
         private Department _department;
         private Page _parent;
-
         public PageEditPosition(Position position, Page parent, Department department)
         {
             InitializeComponent();
@@ -58,7 +56,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxDepartment.Name;
             _parent.NavigationService.Content = new PageAdmDepartments(_departments);
-
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -69,7 +66,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _positionService.Update(_position);
                 UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -85,7 +81,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _positionService.Create(_position);
                 UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

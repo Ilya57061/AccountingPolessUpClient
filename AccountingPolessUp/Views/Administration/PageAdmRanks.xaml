@@ -31,14 +31,12 @@ Background="Transparent"
                 <StackPanel Margin="0 20 0 10" Orientation="Horizontal" VerticalAlignment="Top" >
                     <TextBlock x:Name="LabelRanks" Margin="40,0,0,0" FontSize="34" FontWeight="Bold" Text="Ранги"></TextBlock>
                 </StackPanel>
-
                 <StackPanel Margin="10,0,0,0" VerticalAlignment="Center" Orientation="Horizontal" x:Name="Panel">
                     <TextBox Margin="1,0,1,12.5"  x:Name="RankName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding RankName}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Description}"/>
                     <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="1,0,1,12.5"   x:Name="MinMmr" FontSize="14" materialDesign:HintAssist.Hint="МинММР" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="UnfoldLessHorizontal" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding MinMmr}"/>
                     <TextBox PreviewTextInput="Number_PreviewTextInput" Margin="1,0,1,12.5" x:Name="MaxMmr" FontSize="14" materialDesign:HintAssist.Hint="МаксММР" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="UnfoldMoreHorizontal" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding MaxMmr}"/>
                     <ComboBox x:Name="BoxOrganization" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Fullname"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация" Margin="1,0,1,0"></ComboBox>
-
                     <Button Click="ButtonConfirm_Click" Margin="10 0 0 0" VerticalAlignment="Center">Применить</Button>
                     <Button Click="ButtonClear_Click" Margin="10 0 0 0" VerticalAlignment="Center">Очистить</Button>
                 </StackPanel>
@@ -126,6 +124,9 @@ Background="Transparent"
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <Button  x:Name="ButtonAdd" Click="ButtonAdd_Click"  HorizontalAlignment="Left" Margin="10,0,0,0" >
                 <materialDesign:PackIcon Kind="AccountPlus" />
+            </Button>
+            <Button  x:Name="ButtonCancel" Click="ButtonCancel_Click" Visibility="Hidden" HorizontalAlignment="Right" Margin="0,0,10,0" >
+                <materialDesign:PackIcon Kind="CancelBold" />
             </Button>
         </Grid>
         <Grid Grid.ColumnSpan="2" Grid.Row="3">

@@ -26,11 +26,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
         private DepartmentService _departmentService = new DepartmentService();
         private EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
-        
         private List<Department> _department;
         private EducationalPortals _educationalPortals;
         private Page _parent;
-
         public PageEditEducationalPortals(EducationalPortals educationalPortals, Page parent)
         {
             InitializeComponent();
@@ -52,7 +50,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _educationalPortals = new EducationalPortals();
             _department = _departmentService.Get();
             BoxDepartment.ItemsSource = _department;
-            _parent= parent;
+            _parent = parent;
             AccessChecker.AccessOpenButton(this);
         }
         private void OpenDepartments_Click(object sender, RoutedEventArgs e)
@@ -70,7 +68,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _educationalPortalsService.Update(_educationalPortals);
                 DataGridUpdater.AdmEducationalPortals.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -86,7 +83,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _educationalPortalsService.Create(_educationalPortals);
                 DataGridUpdater.AdmEducationalPortals.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

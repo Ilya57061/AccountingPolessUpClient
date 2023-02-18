@@ -14,14 +14,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditBonus : Page
     {
-
         private BonusService _bonusService = new BonusService();
         private RankService _RankService = new RankService();
         private RankBonusService _rankBonusService = new RankBonusService();
         private List<Rank> _ranks;
         private Bonus _bonus;
         private Page _parent;
-
+        
         public PageEditBonus(Bonus bonus, Page parent)
         {
             InitializeComponent();
@@ -61,7 +60,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _bonusService.Update(_bonus);
                 DataGridUpdater.AdmBonus.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -77,7 +75,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _bonusService.Create(_bonus);
                 DataGridUpdater.AdmBonus.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -88,14 +85,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             try
             {
-
                 _rankBonusService.Create(new RankBonus { RankId = _ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id, BonusId = _bonus.Id });
                 DataGridUpdater.AdmBonus.UpdateDataGrid();
-
             }
             catch (Exception)
             {
-
                 MessageBox.Show("Ошибка при создании связи");
             }
 
@@ -111,7 +105,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
                 MessageBox.Show("Ошибка при удалении связи");
             }
-
         }
         private void WriteData()
         {

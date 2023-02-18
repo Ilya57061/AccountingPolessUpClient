@@ -31,7 +31,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private List<Participants> _participants;
         private Project _project;
         private Page _parent;
-
         public PageEditProject(Project project, Page parent)
         {
             _parent = parent;
@@ -71,13 +70,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _projectService.Update(_project);
                 DataGridUpdater.AdmProjects.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -88,17 +85,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _projectService.Create(_project);
                 DataGridUpdater.AdmProjects.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
-
         }
         private void OpenCustomer_Click(object sender, RoutedEventArgs e)
         {
-           
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxCustomer.Name;
             _parent.NavigationService.Content = new PageAdmCustomer(_customers);
@@ -115,10 +109,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             var selectedLocalPM = _participants.FirstOrDefault(i => i == BoxLocalPM.SelectedItem);
             if (selectedLocalPM != null)
                 _project.idLocalPM = selectedLocalPM.Id;
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

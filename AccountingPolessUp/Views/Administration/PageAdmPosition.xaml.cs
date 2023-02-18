@@ -53,12 +53,7 @@ namespace AccountingPolessUp.Views.Administration
                 Position position = dataGrid.SelectedItems[i] as Position;
                 DataNavigator.UpdateValueComboBox(positions.FirstOrDefault(x => x.Id == position.Id));
             }
-
             this.NavigationService.GoBack();
-        }
-        public void CreateRefresh()
-        {
-            positions = _positionService.Get();
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -67,10 +62,17 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditPosition(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedPositions();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
@@ -95,10 +97,8 @@ namespace AccountingPolessUp.Views.Administration
             }
             catch (System.Exception)
             {
-
                 throw;
             }
-       
         }
         private void DeleteSelectedPositions()
         {
@@ -106,7 +106,7 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Position position in dataGrid.SelectedItems)
                 {
-                        _positionService.Delete(position.Id);
+                    _positionService.Delete(position.Id);
                 }
             }
             UpdateDataGrid();
@@ -115,8 +115,8 @@ namespace AccountingPolessUp.Views.Administration
         {
             foreach (Position position in dataGrid.SelectedItems)
             {
-                    EditFrame.Content = new PageEditPosition(position, this, _department);
-                    break;
+                EditFrame.Content = new PageEditPosition(position, this, _department);
+                break;
             }
         }
         private void ButtonBack_Click(object sender, RoutedEventArgs e)

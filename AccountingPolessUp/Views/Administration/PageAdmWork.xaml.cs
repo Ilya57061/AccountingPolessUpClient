@@ -55,6 +55,12 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditWork(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonFinalProject_Click(object sender, RoutedEventArgs e)
         {
@@ -63,6 +69,7 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedEmployment();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {

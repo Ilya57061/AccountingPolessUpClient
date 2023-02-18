@@ -23,14 +23,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditFinalProject : Page
     {
-
         private FinalProjectService _finalProjectService = new FinalProjectService();
         private EmploymentService _employmentService = new EmploymentService();
         private List<Employment> _employments;
         private FinalProject _finalProject;
         private Employment _employment;
         private Page _parent;
-
+        
         public PageEditFinalProject(FinalProject finalProject, Employment employment, Page parent)
         {
             InitializeComponent();
@@ -69,7 +68,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _finalProjectService.Update(_finalProject);
                 DataGridUpdater.AdmFinalProject.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {
@@ -85,7 +83,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _finalProjectService.Create(_finalProject);
                 DataGridUpdater.AdmFinalProject.UpdateDataGrid();
-                this.NavigationService.GoBack();
             }
             catch (Exception)
             {

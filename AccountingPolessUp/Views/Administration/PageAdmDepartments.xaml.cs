@@ -61,17 +61,22 @@ namespace AccountingPolessUp.Views.Administration
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
             EditFrame.Content = new PageEditDepartments(this);
+            ButtonCancel.Visibility = Visibility.Visible;
+        }
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+            ButtonCancel.Visibility = Visibility.Hidden;
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
             EditSelectedDepartments();
+            ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
             UpdateDataGrid();
-
             string directorId = string.IsNullOrEmpty(BoxDirector.Text) ? "" : _participantsService.GetByParticipantName(BoxDirector.Text).Id.ToString();
-
             FilterManager.ConfirmFilter(dataGrid, _departments, FullName.Text, Description.Text, DateStart.Text, DateEnd.Text, BoxStatus.Text, BoxOrganizations.Text, directorId);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -86,7 +91,7 @@ namespace AccountingPolessUp.Views.Administration
             {
                 foreach (Department department in dataGrid.SelectedItems)
                 {
-                        _departmentService.Delete(department.Id);
+                    _departmentService.Delete(department.Id);
                 }
             }
             UpdateDataGrid();
@@ -103,7 +108,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             foreach (Department department in dataGrid.SelectedItems)
             {
-                    EditFrame.Content = new PageEditDepartments(department, this);
+                EditFrame.Content = new PageEditDepartments(department, this);
             }
         }
         public void UpdateDataGrid()
@@ -119,7 +124,7 @@ namespace AccountingPolessUp.Views.Administration
             {
 
             }
-           
+
         }
         private void ButtonPositions_Click(object sender, RoutedEventArgs e)
         {
