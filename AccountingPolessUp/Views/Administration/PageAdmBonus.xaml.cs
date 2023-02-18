@@ -59,6 +59,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _bonuses, BonusName.Text, BoxRank.Text, BonusDescription.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
@@ -83,7 +84,6 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
-
             if (_rank == null) _bonuses = _bonusService.Get();
             else _bonuses = _bonusService.Get(_rank.Id);
             DataGridUpdater.UpdateDataGrid(_bonuses, this);

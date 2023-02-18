@@ -62,6 +62,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             string localPMId = string.IsNullOrEmpty(BoxLocalPM.Text) ? "" : _participantsService.GetByParticipantName(BoxLocalPM.Text).Id.ToString();
             FilterManager.ConfirmFilter(dataGrid, _projects, BoxCustomer.Text, BoxStatus.Text, DateStart.Text, DateEnd.Text, Description.Text, TechnicalSpecification.Text, localPMId, Fullname.Text);
         }

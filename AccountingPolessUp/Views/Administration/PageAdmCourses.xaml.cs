@@ -73,6 +73,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _trainingCourses, Name.Text, Description.Text, Link.Text, LectorFio.Text, LectorDescription.Text, DateStart.Text, DateEnd.Text, IsActive.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

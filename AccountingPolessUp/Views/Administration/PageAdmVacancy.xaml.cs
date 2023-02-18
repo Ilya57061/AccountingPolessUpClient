@@ -25,6 +25,7 @@ namespace AccountingPolessUp.Views.Administration
             DataGridUpdater.AdmVacancy = this;
             ButtonBack.Visibility = Visibility.Hidden;
             BoxStagesOfProject.ItemsSource = _stagesOfProjectService.Get();
+            FilterComboBox.SetBoxStagesProjects(BoxStagesOfProject);
             UpdateDataGrid();
         }
         public PageAdmVacancy(List<Vacancy> vacancies)

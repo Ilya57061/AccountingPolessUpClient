@@ -47,6 +47,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _educationalPortals, BoxDepartment.Text, Name.Text, Description.Text, Link.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

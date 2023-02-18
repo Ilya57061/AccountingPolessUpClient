@@ -63,6 +63,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _ranks, RankName.Text, Description.Text, BoxOrganization.Text, MinMmr.Text, MaxMmr.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

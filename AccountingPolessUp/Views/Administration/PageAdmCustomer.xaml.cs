@@ -80,6 +80,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _customers, Fullname.Text, Address.Text, Contacts.Text, WebSite.Text, Description.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)

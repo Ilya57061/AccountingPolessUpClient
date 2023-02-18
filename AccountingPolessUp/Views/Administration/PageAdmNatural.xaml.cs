@@ -64,6 +64,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
+            UpdateDataGrid();
             FilterManager.ConfirmFilter(dataGrid, _individuals, FIO.Text, Phone.Text, DateOfBirth.Text, Mail.Text, BoxGender.Text, SocialNetwork.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
