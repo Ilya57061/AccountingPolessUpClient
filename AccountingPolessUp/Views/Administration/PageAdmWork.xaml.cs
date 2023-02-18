@@ -15,9 +15,10 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmWork : Page
     {
-        private readonly EmploymentService _employmentService = new EmploymentService();
-        List<Employment> _employments;
-        ParticipantsService _participantsService = new ParticipantsService();
+        private EmploymentService _employmentService = new EmploymentService();
+        private ParticipantsService _participantsService = new ParticipantsService();
+        private List<Employment> _employments;
+
         public PageAdmWork()
         {
             InitializeComponent();

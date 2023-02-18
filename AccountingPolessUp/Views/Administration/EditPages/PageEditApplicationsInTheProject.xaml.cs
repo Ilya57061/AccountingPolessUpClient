@@ -77,7 +77,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             }
             catch (Exception)
             {
-                MessageBox.Show("Ошибка API", "Ошибка");
+                MessageBox.Show("Некорректный ввод данных", "Ошибка");
             }
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)

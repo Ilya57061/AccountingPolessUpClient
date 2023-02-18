@@ -4,17 +4,8 @@ using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -33,13 +24,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditPosition(Position position, Page parent, Department department)
         {
             InitializeComponent();
+            SetDepartments();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _position = position;
             _department = department;
             DataContext = position;
-            _departments = _departmentService.Get();
-            BoxDepartment.ItemsSource = _departments;
             BoxDepartment.SelectedIndex = _departments.IndexOf(_departments.FirstOrDefault(d => d.Id == position.DepartmentId));
             _parent = parent;
             AccessChecker.AccessOpenButton(this);
@@ -47,13 +37,19 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditPosition(Page parent)
         {
             InitializeComponent();
+            SetDepartments();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _position = new Position();
-            _departments = _departmentService.Get();
-            BoxDepartment.ItemsSource = _departments;
             _parent = parent;
             AccessChecker.AccessOpenButton(this);
+        }
+        private void SetDepartments()
+        {
+            _departments = _departmentService.Get();
+            if (RoleValidator.User.Role.Name != "Admin")
+                _departments = _departments.Where(x => RoleValidator.RoleChecker((int)x.DirectorId) == true).ToList();
+            BoxDepartment.ItemsSource = _departments;
         }
         private void OpenDepartments_Click(object sender, RoutedEventArgs e)
         {

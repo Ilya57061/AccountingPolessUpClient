@@ -1,17 +1,12 @@
 ﻿using AccountingPolessUp.Implementations;
-using System;
-using System.Collections.Generic;
+using AccountingPolessUp.Models;
 using System.Linq;
-using System.Security.RightsManagement;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace AccountingPolessUp.Helpers
 {
     public static class FilterComboBox
     {
-        
         static RankService rankService = new RankService();
         static ParticipantsService participantsService = new ParticipantsService();
         static TrainingCoursesService coursesService = new TrainingCoursesService();
@@ -59,7 +54,10 @@ namespace AccountingPolessUp.Helpers
         }
         public static void SetBoxDepartments(ComboBox box)
         {
-            SetBox(box, departmentService.Get());
+            var departments = departmentService.Get();
+            if (RoleValidator.User.Role.Name != "Admin")
+                departments = departments.Where(x => RoleValidator.RoleChecker((int)x.DirectorId) == true).ToList();
+            SetBox(box, departments);
         }
         public static void SetBoxIndividuals(ComboBox box)
         {
@@ -75,7 +73,12 @@ namespace AccountingPolessUp.Helpers
         }
         public static void SetBoxPositions(ComboBox box)
         {
-            SetBox(box, positionService.Get());
+            var positions = positionService.Get();
+            if (RoleValidator.User.Role.Name!="Admin")
+            {
+                positions = positions.Where(x => RoleValidator.RoleChecker((int)x.Department.DirectorId) == true).ToList();
+            }
+            SetBox(box, positions);
         }
     }
 }
