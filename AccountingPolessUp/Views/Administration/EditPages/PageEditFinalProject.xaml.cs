@@ -41,6 +41,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _employment = employment;
             BoxEmployment.SelectedIndex = _employments.IndexOf(_employments.FirstOrDefault(p => p.Id == _finalProject.EmploymentId));
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         public PageEditFinalProject(Employment employment, Page parent)
         {
@@ -51,6 +52,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _finalProject = new FinalProject();
             _employment = employment;
             _parent = parent;
+            AccessChecker.AccessOpenButton(this);
         }
         private void SetEmployments()
         {

@@ -60,7 +60,7 @@ Background="Transparent"
             <ComboBox x:Name="BoxEmployment" IsEditable="True" IsReadOnly="False" DisplayMemberPath="Id"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ид трудоустройства" Margin="1,0,1,0"></ComboBox>
         </Grid>
         <Grid Grid.Column="6" >
-            <Button Click="OpenEmployment_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button x:Name="OpenEmployment" Click="OpenEmployment_Click" Height="auto" Background="Transparent" BorderBrush="Transparent" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <materialDesign:PackIcon  Width="20" Height="20" Kind="OpenInNew" Foreground="DarkSlateGray"/>
             </Button>
         </Grid>
