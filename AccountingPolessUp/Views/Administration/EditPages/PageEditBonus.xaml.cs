@@ -15,12 +15,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditBonus : Page
     {
 
-        Page _parent;
-        BonusService _bonusService = new BonusService();
-        RankService _RankService = new RankService();
-        RankBonusService _rankBonusService = new RankBonusService();
-        List<Rank> _ranks;
-        Bonus _bonus;
+        private BonusService _bonusService = new BonusService();
+        private RankService _RankService = new RankService();
+        private RankBonusService _rankBonusService = new RankBonusService();
+        private List<Rank> _ranks;
+        private Bonus _bonus;
+        private Page _parent;
+
         public PageEditBonus(Bonus bonus, Page parent)
         {
             InitializeComponent();

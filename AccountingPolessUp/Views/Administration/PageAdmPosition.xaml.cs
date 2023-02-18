@@ -14,9 +14,9 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmPosition : Page
     {
-        public PositionService _positionService = new PositionService();
-        List<Position> positions;
-        Department _department;
+        private PositionService _positionService = new PositionService();
+        private List<Position> positions;
+        private Department _department;
 
         public PageAdmPosition()
         {

@@ -24,20 +24,20 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditFinalProject : Page
     {
 
-        Page _parent;
-        FinalProjectService _finalProjectService = new FinalProjectService();
-        FinalProject _finalProject;
-        Employment _employment;
-        EmploymentService _employmentService = new EmploymentService();
-        List<Employment> _employments;
+        private FinalProjectService _finalProjectService = new FinalProjectService();
+        private EmploymentService _employmentService = new EmploymentService();
+        private List<Employment> _employments;
+        private FinalProject _finalProject;
+        private Employment _employment;
+        private Page _parent;
+
         public PageEditFinalProject(FinalProject finalProject, Employment employment, Page parent)
         {
             InitializeComponent();
-            _employments = _employmentService.Get();
+            SetEmployments();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             _finalProject = finalProject;
-            BoxEmployment.ItemsSource = _employments;
             DataContext = finalProject;
             _employment = employment;
             BoxEmployment.SelectedIndex = _employments.IndexOf(_employments.FirstOrDefault(p => p.Id == _finalProject.EmploymentId));
@@ -46,12 +46,18 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditFinalProject(Employment employment, Page parent)
         {
             InitializeComponent();
-            _employments = _employmentService.Get();
+            SetEmployments();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _finalProject = new FinalProject();
             _employment = employment;
             _parent = parent;
+        }
+        private void SetEmployments()
+        {
+            _employments = _employmentService.Get();
+            if (RoleValidator.User.Role.Name != "Admin")
+                _employments = _employments.Where(x => RoleValidator.RoleChecker((int)x.Position.Department.DirectorId) == true).ToList();
             BoxEmployment.ItemsSource = _employments;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -97,10 +103,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             var selectedEmployment = _employments.FirstOrDefault(i => i == BoxEmployment.SelectedItem);
             if (selectedEmployment != null)
                 _finalProject.EmploymentId = selectedEmployment.Id;
-        }
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.Validator(e);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

@@ -15,9 +15,9 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmDepartments : Page
     {
-        private readonly DepartmentService _departmentService = new DepartmentService();
-        ParticipantsService _participantsService = new ParticipantsService();
-        List<Department> _departments;
+        private DepartmentService _departmentService = new DepartmentService();
+        private ParticipantsService _participantsService = new ParticipantsService();
+        private List<Department> _departments;
         public PageAdmDepartments()
         {
             InitializeComponent();

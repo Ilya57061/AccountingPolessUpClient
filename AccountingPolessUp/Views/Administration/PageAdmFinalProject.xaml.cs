@@ -15,10 +15,10 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmFinalProject : Page
     {
-        private readonly FinalProjectService _finalProjectService = new FinalProjectService();
-        List<FinalProject> _finalProjects;
-        Employment _employment;
-        EmploymentService _employmentService = new EmploymentService();
+        private FinalProjectService _finalProjectService = new FinalProjectService();
+        private List<FinalProject> _finalProjects;
+        private Employment _employment;
+        private EmploymentService _employmentService = new EmploymentService();
         public PageAdmFinalProject(Employment employment)
         {
             InitializeComponent();

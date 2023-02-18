@@ -4,17 +4,9 @@ using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -24,13 +16,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditWork : Page
     {
 
-        Page _parent;
-        ParticipantsService _participantsService = new ParticipantsService();
-        PositionService _positionsService = new PositionService();
-        EmploymentService _employmentService = new EmploymentService();
-        List<Position> _positions;
-        List<Participants> _participants;
-        
+        private ParticipantsService _participantsService = new ParticipantsService();
+        private PositionService _positionsService = new PositionService();
+        private EmploymentService _employmentService = new EmploymentService();
+        private List<Position> _positions;
+        private List<Participants> _participants;
+        private Page _parent;
+
 
         Employment employment;
         public PageEditWork(Employment employment, Page parent)
@@ -39,7 +31,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _parent = parent;
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _positions = _positionsService.Get();
+            SetPositions();
             _participants = _participantsService.Get();
             this.employment = employment;
             this.DataContext = employment;
@@ -58,13 +50,22 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _parent = parent;
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
+            SetPositions();
             employment = new Employment();
-            _positions = _positionsService.Get();
             _participants = _participantsService.Get();
             BoxParticipants.ItemsSource = _participants;
             BoxMentors.ItemsSource = _participants;
             BoxPosition.ItemsSource = _positions;
             AccessChecker.AccessOpenButton(this);
+        }
+        private void SetPositions()
+        {
+            _positions = _positionsService.Get();
+            if (RoleValidator.User.Role.Name != "Admin")
+            {
+                _positions = _positions.Where(x => RoleValidator.RoleChecker((int)x.Department.DirectorId) == true).ToList();
+            }
+            BoxPosition.ItemsSource = _positions;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
