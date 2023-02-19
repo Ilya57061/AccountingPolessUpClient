@@ -61,7 +61,7 @@ Background="Transparent"
         </Grid>
         <Grid Grid.Row="1">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" x:Name="LView"  ItemsSource="{Binding}">
+            <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Hidden" x:Name="LView"  ItemsSource="{Binding}">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Template">
@@ -90,30 +90,32 @@ Background="Transparent"
                         <WrapPanel>
                             <materialDesign:Flipper materialDesign:ElevationAssist.Elevation="Dp0" Style="{StaticResource MaterialDesignCardFlipper}"  Width="200" Height="256">
                                 <materialDesign:Flipper.FrontContent>
-                                    <Grid Background="Transparent" Width="200" Height="256" Margin="0,1,0,1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="*" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Border Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="#c9a97f" Background="#c9a97f" />
-                                        <StackPanel Background="#FFE7BF8B" Height="40" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                                            <TextBlock Margin="0,10,0,0" Foreground="White" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding FullName}"/>
-                                        </StackPanel>
-                                        <Grid  Height="120" Margin="0,15,0,0"  Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                                                <TextBlock Foreground="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"   Margin="20,0,20,0" FontSize="21">
+                                    <ScrollViewer Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                                        <Grid Background="Transparent" Width="200" Height="256" Margin="0,1,0,1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="#c9a97f" Background="#c9a97f" />
+                                            <StackPanel Background="#FFE7BF8B" Height="40" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                                <TextBlock Margin="0,10,0,0" Foreground="White" FontSize="21" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding FullName}"/>
+                                            </StackPanel>
+                                            <Grid  Height="120" Margin="0,15,0,0"  Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center">
+                                                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                                    <TextBlock Foreground="WhiteSmoke" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap"   Margin="20,0,20,0" FontSize="21">
                                                          <Run Text="{Binding Description}"/>
-                                                </TextBlock>
-                                            </ScrollViewer>
+                                                    </TextBlock>
+                                                </ScrollViewer>
+                                            </Grid>
+                                            <StackPanel Grid.Row="2" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100">
+                                                <Button Margin="0,0,0,0" Background="#FFDAAC95" Foreground="White" Command="{x:Static materialDesign:Flipper.FlipCommand}" materialDesign:ButtonAssist.CornerRadius="10" Content="Отдел" Style="{StaticResource MaterialDesignFlatButton}" />
+                                            </StackPanel>
                                         </Grid>
-                                        <StackPanel Grid.Row="2" Margin="0,10,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <Button Margin="0,0,0,0" Background="#FFDAAC95" Foreground="White" Command="{x:Static materialDesign:Flipper.FlipCommand}" materialDesign:ButtonAssist.CornerRadius="10" Content="Отдел" Style="{StaticResource MaterialDesignFlatButton}" />
-                                        </StackPanel>
-                                    </Grid>
+                                    </ScrollViewer>
                                 </materialDesign:Flipper.FrontContent>
                                 <materialDesign:Flipper.BackContent>
                                     <!--оборот-->
