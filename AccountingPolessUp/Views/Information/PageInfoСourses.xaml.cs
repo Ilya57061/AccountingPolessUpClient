@@ -1,4 +1,5 @@
-﻿using AccountingPolessUp.Implementations;
+﻿using AccountingPolessUp.Helpers;
+using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace AccountingPolessUp.Views.Information
         {
             InitializeComponent();
             Courses = new ObservableCollection<TrainingCourses>(_trainingCoursesService.Get());
-            DataContext = this;
+            DataContext = Courses;
         }
         private void HyperlinkCourses_Click(object sender, RoutedEventArgs e)
         {
@@ -46,6 +47,19 @@ namespace AccountingPolessUp.Views.Information
                 Hyperlink hyperlink = sender as Hyperlink;
                 hyperlink.IsEnabled = false;
             }
+        }
+        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ConfirmFilter(this, Courses, Name.Text,Description.Text,DateStart.Text,DateEnd.Text,LectorFio.Text,LectorDescription.Text);
+        }
+        private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        {
+            FilterManager.ClearControls(filter);
+            DataContext =Courses;
+        }
+        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        {
+            NumberValidator.DateValidator(e);
         }
     }
 }
