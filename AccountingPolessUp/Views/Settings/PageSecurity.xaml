@@ -67,7 +67,7 @@ Background="Transparent"
                         <PasswordBox Margin="15,0,15,0" x:Name="RepeatPassword" FontSize="14" materialDesign:HintAssist.Hint="Повторите пароль" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Password" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
                     </Grid>
                     <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="50,30,50,0">
-                        <Button Content="Сменить пароль" Click="ButtonChangePassword_Click" materialDesign:ButtonAssist.CornerRadius="10"/>
+                        <Button x:Name="ButtonChangePassword" Content="Сменить пароль" Click="ButtonChangePassword_Click" materialDesign:ButtonAssist.CornerRadius="10"/>
                     </Grid>
                 </Grid>
             </materialDesign:Flipper.BackContent>

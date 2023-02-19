@@ -42,6 +42,7 @@ namespace AccountingPolessUp.Views.Settings
                 if (Password.Password == RepeatPassword.Password)
                 {
                     _userService.UpdatePassword(new UpdatePasswordDto { Id = RoleValidator.User.Id, Password = Password.Password });
+                    ButtonChangePassword.Background = new SolidColorBrush(Color.FromArgb(181, 217, 140,0));
                 }
                 else
                 {
