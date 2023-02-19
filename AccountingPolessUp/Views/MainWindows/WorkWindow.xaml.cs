@@ -2,6 +2,7 @@
 using AccountingPolessUp.Views;
 using AccountingPolessUp.Views.Administration;
 using AccountingPolessUp.Views.Information;
+using AccountingPolessUp.Views.Menu;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -37,10 +38,6 @@ namespace AccountingPolessUp
                         MainDepartments.Visibility = Visibility.Visible;
                         ButtonAdmEducationalPortals.Visibility = Visibility.Collapsed;
                         AppInTheProject.Visibility = Visibility.Collapsed;
-                        //Departments.Visibility = Visibility.Visible;
-                        //ButtonAdmPosition.Visibility = Visibility.Visible; // director
-                        //ButtonAdmWork.Visibility = Visibility.Visible;
-                        //ButtonAdmFinalProjects.Visibility = Visibility.Visible;
                     }
                    
                     if (_user.Role.Name == "DirectorOrganizational")
@@ -80,6 +77,10 @@ namespace AccountingPolessUp
             Authorization authorization = new Authorization();
             authorization.Show();
             this.Close();
+        }
+        private void ButtonSettings_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Content = new PageSettings();
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {

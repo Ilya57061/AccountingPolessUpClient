@@ -1,0 +1,76 @@
+﻿<Page x:Class="AccountingPolessUp.Views.Settings.PageSecurity"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AccountingPolessUp.Views.Settings"
+   mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="300" d:DesignWidth="350"
+          TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+Background="Transparent"
+     FontFamily="{DynamicResource MaterialDesignFont}">
+    <Grid>
+        <Border BorderThickness="1" CornerRadius="13" BorderBrush="WhiteSmoke" Background="WhiteSmoke" />
+        <materialDesign:Flipper x:Name="Flipper" VerticalAlignment="Top" Style="{StaticResource MaterialDesignCardFlipper}" Width="350" Margin="0,10,0,0">
+            <materialDesign:Flipper.FrontContent >
+                <Button VerticalAlignment="Top" Width="350" Margin="8" Click="FlipperFront_Click" Command="{x:Static materialDesign:Flipper.FlipCommand}"  Style="{StaticResource MaterialDesignFlatButton}" >
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="250"/>
+                            <ColumnDefinition Width="30"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="0">
+                            <materialDesign:PackIcon FontSize="16" Foreground="Gray" Margin="0,0,0,0" Kind="Key" HorizontalAlignment="Left"/>
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <TextBlock FontSize="16"  Foreground="Gray" Text="Пароль" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <materialDesign:PackIcon Foreground="Gray" FontSize="16"  Kind="ArrowRight" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Grid>
+                </Button>
+            </materialDesign:Flipper.FrontContent>
+            <materialDesign:Flipper.BackContent>
+                <Grid Width="350" Height="256" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Row="0" Grid.Column="0" Margin="0,0,0,0">
+                        <TextBlock Margin="15,0,0,0" VerticalAlignment="Center" FontSize="16" Text="Сменить пароль" Foreground="Gray" Style="{StaticResource MaterialDesignSubtitle2TextBlock}" />
+                    </Grid>
+                    <Grid Grid.Row="0" Grid.Column="1">
+                        <Button Click="FlipperBack_Click" Background="Transparent" Foreground="Black" BorderBrush="Transparent" Height="30" HorizontalAlignment="Right" Command="{x:Static materialDesign:Flipper.FlipCommand}"  Style="{StaticResource MaterialDesignFlatButton}">
+                            <materialDesign:PackIcon Kind="Close" />
+                        </Button>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.ColumnSpan="2"  Margin="20,15,20,0">
+                        <PasswordBox Margin="15,0,15,0" x:Name="Password" FontSize="14" materialDesign:HintAssist.Hint="Пароль" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Password" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.ColumnSpan="2" Margin="20,15,20,0">
+                        <PasswordBox Margin="15,0,15,0" x:Name="RepeatPassword" FontSize="14" materialDesign:HintAssist.Hint="Повторите пароль" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Password" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.ColumnSpan="2" Margin="50,30,50,0">
+                        <Button Content="Сменить пароль" Click="ButtonChangePassword_Click" materialDesign:ButtonAssist.CornerRadius="10"/>
+                    </Grid>
+                </Grid>
+            </materialDesign:Flipper.BackContent>
+        </materialDesign:Flipper>
+    </Grid>
+</Page>

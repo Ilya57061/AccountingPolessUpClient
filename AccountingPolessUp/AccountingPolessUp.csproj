@@ -291,6 +291,12 @@
     <Compile Include="Views\MainWindows\WorkWindow.xaml.cs">
       <DependentUpon>WorkWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Menu\PageSettings.xaml.cs">
+      <DependentUpon>PageSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\PageSecurity.xaml.cs">
+      <DependentUpon>PageSecurity.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\TextViews\WindowDescription.xaml.cs">
       <DependentUpon>WindowDescription.xaml</DependentUpon>
     </Compile>
@@ -523,6 +529,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindows\WorkWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Menu\PageSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\PageSecurity.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -22,6 +22,7 @@
     </Window.Icon>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="40"/>
@@ -32,9 +33,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-
-        <Grid Grid.Row="0" Grid.RowSpan="2">
-            <Border Width="auto" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+        <Border Width="auto" Grid.Row="0"  Grid.RowSpan="3" BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+        <Grid Grid.Row="0">
+            <Button x:Name="ButtonSettings" Click="ButtonSettings_Click" Background="Transparent" Foreground="Black" BorderBrush="Transparent" Height="30" HorizontalAlignment="Left">
+                <materialDesign:PackIcon Kind="Cog" />
+            </Button>
+        </Grid>
+        <Grid Grid.Row="1" Grid.RowSpan="2">
             <TreeView Margin="10 40"  Width="auto" FontSize="20">
                 <TreeViewItem x:Name="ButtonProfile" Selected="Button_Click">
                     <TreeViewItem.Header>
@@ -291,10 +296,10 @@
                 </TreeViewItem>
             </TreeView>
         </Grid>
-        <Grid Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" Background="WhiteSmoke">
+        <Grid Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Grid.ColumnSpan="2" Background="WhiteSmoke">
             <Frame Margin="5 0 0 0" x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
         </Grid>
-        <Grid Margin="0,2,0,0" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Background="Transparent">
+        <Grid Margin="0,2,0,0" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Background="Transparent">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <Button x:Name="ButtonExit" Margin="40,0,0,0" HorizontalAlignment="Left" Click="ButtonExit_Click" Visibility="Visible" Width="100" >
                 <materialDesign:PackIcon Width="20" Height="20" Kind="ExitToApp" />

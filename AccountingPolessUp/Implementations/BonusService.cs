@@ -19,7 +19,7 @@ namespace AccountingPolessUp.Implementations
         {
             _webClient = new WebClient
             {
-                BaseAddress = "https://localhost:5001/",
+                BaseAddress = "https://polessu.by/polessup/",
                 Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
             };
             _webClient.Encoding = System.Text.Encoding.UTF8;
