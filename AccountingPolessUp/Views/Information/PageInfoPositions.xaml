@@ -22,7 +22,7 @@ Background="Transparent"
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="220"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.ColumnSpan="2" >
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
@@ -36,13 +36,13 @@ Background="Transparent"
         <Grid Grid.Row="1" Grid.Column="2" x:Name="filter">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition  Height="50"/>
-                <RowDefinition  Height="80"/>
-                <RowDefinition  Height="50"/>
-                <RowDefinition  Height="50"/>
-                <RowDefinition  Height="*"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Border BorderThickness="1" Grid.RowSpan="8" CornerRadius="13" BorderBrush="White" Background="White" />
+            <Border BorderThickness="1" Grid.RowSpan="6" CornerRadius="13" BorderBrush="White" Background="White" />
             <Grid Grid.Row="0">
                 <TextBox Margin="10,0,10,0"  x:Name="FullName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
             </Grid>
@@ -50,7 +50,7 @@ Background="Transparent"
                 <TextBox Margin="10,0,10,0" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
             </Grid>
             <Grid Grid.Row="2">
-                <ComboBox x:Name="BoxDepartment" Margin="10,0,10,0" IsEditable="True" IsReadOnly="False" DisplayMemberPath="FullName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Организация"></ComboBox>
+                <ComboBox x:Name="BoxDepartment" Margin="10,20,10,0" Width="auto" IsEditable="True" IsReadOnly="False" DisplayMemberPath="FullName" FontSize="14" materialDesign:HintAssist.Hint="Организация"></ComboBox>
             </Grid>
             <Grid Grid.Row="3">
                 <Button Margin="20,0,20,0" Click="ButtonConfirm_Click"  VerticalAlignment="Center">Применить</Button>

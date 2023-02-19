@@ -301,6 +301,22 @@ namespace AccountingPolessUp.Helpers
                 list = list.Where(x => x.MaxMmr.ToString().StartsWith(maxMmr));
             page.DataContext = new ObservableCollection<Rank>(list);
         }
+        public static void ConfirmFilter(Page page, IEnumerable<TrainingCourses> list, string name, string description, string dateStart, string dateEnd, string lector, string lectorDesc)
+        {
+            if (!string.IsNullOrEmpty(name))
+                list = list.Where(x => x.Name.ToLower().Contains(name.ToLower()));
+            if (!string.IsNullOrEmpty(description))
+                list = list.Where(x => x.Description.ToLower().Contains(description.ToLower()));
+            if (!string.IsNullOrEmpty(dateStart))
+                list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
+            if (!string.IsNullOrEmpty(dateEnd))
+                list = list.Where(x => x.DateEnd.ToString().StartsWith(DateTime.Parse(dateEnd).ToString()));
+            if (!string.IsNullOrEmpty(lector))
+                list = list.Where(x => x.LectorFIO.ToLower().Contains(lector.ToLower()));
+            if (!string.IsNullOrEmpty(lectorDesc))
+                list = list.Where(x => x.LectorDescription.ToLower().Contains(lectorDesc.ToLower()));
+            page.DataContext = new ObservableCollection<TrainingCourses>(list);
+        }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<RegistrationForCourses> list, string dateEntry, string participant, string course)
         {
             if (!string.IsNullOrEmpty(participant))

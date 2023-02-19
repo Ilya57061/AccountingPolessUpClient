@@ -20,13 +20,56 @@ Background="Transparent"
             <RowDefinition Height="110"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="220"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
             <TextBlock Margin="40,0,0,0" x:Name="LabelCourses" FontSize="34" VerticalAlignment="Center" FontWeight="Bold" Text="Учебные курсы"></TextBlock>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.Column="2" x:Name="filter">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="1" Grid.RowSpan="9" CornerRadius="13" BorderBrush="White" Background="White" />
+
+            <Grid Grid.Row="0">
+                <TextBox Margin="10,0,10,0" x:Name="Name" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBox Margin="10,0,10,0" x:Name="Description" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+            </Grid>
+            <Grid Grid.Row="2">
+                <TextBox Margin="10,0,10,0" x:Name="DateStart" PreviewTextInput="Number_PreviewDateInput" FontSize="14" materialDesign:HintAssist.Hint="Дата начала" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="DateRange" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+            </Grid>
+            <Grid Grid.Row="3">
+                <TextBox Margin="10,0,10,0" x:Name="DateEnd" PreviewTextInput="Number_PreviewDateInput" FontSize="14" materialDesign:HintAssist.Hint="Дата окончания" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="DateRange" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+            </Grid>
+            <Grid Grid.Row="4">
+                <TextBox Margin="10,0,10,0" x:Name="LectorFio" FontSize="14" materialDesign:HintAssist.Hint="ФИО лектора" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Man" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+            </Grid>
+            <Grid Grid.Row="5">
+                <TextBox Margin="10,0,10,0" x:Name="LectorDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание лектора" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+            </Grid>
+            <Grid Grid.Row="6">
+                <Button Margin="20,0,20,0" Click="ButtonConfirm_Click" VerticalAlignment="Center">Применить</Button>
+            </Grid>
+            <Grid Grid.Row="7">
+                <Button Margin="20,0,20,0" Click="ButtonClear_Click" VerticalAlignment="Center">Очистить</Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2">
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <ListView x:Name="LView"  ItemsSource="{Binding Courses}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ListView x:Name="LView"  ItemsSource="{Binding}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="Template">

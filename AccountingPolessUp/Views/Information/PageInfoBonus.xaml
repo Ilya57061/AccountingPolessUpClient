@@ -23,7 +23,7 @@ Background="Transparent"
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="220"/>
         </Grid.ColumnDefinitions>
         <Grid Grid.Row="0" Grid.ColumnSpan="2" >
             <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
@@ -46,9 +46,9 @@ Background="Transparent"
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition  Height="50"/>
-                <RowDefinition  Height="80"/>
                 <RowDefinition  Height="50"/>
-                <RowDefinition  Height="50"/>
+                <RowDefinition  Height="60"/>
+                <RowDefinition  Height="40"/>
                 <RowDefinition  Height="*"/>
             </Grid.RowDefinitions>
             <Border BorderThickness="1" Grid.RowSpan="8" CornerRadius="13" BorderBrush="White" Background="White" />
@@ -60,7 +60,7 @@ Background="Transparent"
                 <TextBox Margin="10,0,10,0" x:Name="BonusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" />
             </Grid>
             <Grid Grid.Row="2">
-                <ComboBox x:Name="BoxRank" Margin="10,0,10,0" IsEditable="True" IsReadOnly="False" DisplayMemberPath="RankName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ранг"></ComboBox>
+                <ComboBox x:Name="BoxRank" Margin="10,20,10,0" IsEditable="True" IsReadOnly="False" DisplayMemberPath="RankName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ранг"></ComboBox>
             </Grid>
            
             <Grid Grid.Row="3">
