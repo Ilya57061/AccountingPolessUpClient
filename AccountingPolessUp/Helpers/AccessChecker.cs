@@ -52,7 +52,7 @@ namespace AccountingPolessUp.Helpers
             switch (RoleValidator.User.Role.Name)
             {
                 case "GlobalPm":
-                    if (page.Title== "PageAdmVacancy" || page.Title== "PageAdmProjects")
+                    if (page.Title == "PageAdmVacancy" || page.Title == "PageAdmProjects")
                         return false;
                     else
                         return true;
@@ -67,17 +67,19 @@ namespace AccountingPolessUp.Helpers
         {
             if (RoleValidator.User.Role.Name != "Admin")
             {
-                int count = VisualTreeHelper.GetChildrenCount(page);
-
-                for (int i = 0; i < count; i++)
+                var grid = page.Content as Grid;
+                if (grid != null)
                 {
-                    var child = VisualTreeHelper.GetChild(page, i);
-
-                    if (child is Button && (child as Button).Content.ToString().StartsWith("Open"))
+                    var childGrid = grid.Children.OfType<Grid>();
+                    foreach (var item in childGrid)
                     {
-                        (child as Button).Visibility = Visibility.Hidden;
+                        var buttonElements = item.Children.OfType<Button>().Where(b => b.Name.StartsWith("Open"));
+                        foreach (var button in buttonElements)
+                        {
+                            button.Visibility = Visibility.Hidden;
+                        }
                     }
-
+                   
                 }
             }
         }

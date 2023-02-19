@@ -16,7 +16,7 @@ Background="Transparent"
      FontFamily="{DynamicResource MaterialDesignFont}"
     Title="PolessUp">
     <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Hidden">
-        <Grid>
+        <Grid PreviewMouseWheel="MouseWheel">
         <Grid.RowDefinitions>
             <RowDefinition Height="110"/>
             <RowDefinition/>
@@ -66,69 +66,93 @@ Background="Transparent"
             <Grid Grid.Row="3">
                 <Button Margin="20,0,20,0" Click="ButtonConfirm_Click"  VerticalAlignment="Center">Применить</Button>
             </Grid>
-            <Grid Grid.Row="4">
-                <Button Margin="20,0,20,0" Click="ButtonClear_Click"  VerticalAlignment="Center">Очистить</Button>
+            <Grid Grid.Row="1" Grid.Column="2" x:Name="filter">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition  Height="50"/>
+                    <RowDefinition  Height="80"/>
+                    <RowDefinition  Height="50"/>
+                    <RowDefinition  Height="50"/>
+                    <RowDefinition  Height="*"/>
+                </Grid.RowDefinitions>
+                <Border BorderThickness="1" Grid.RowSpan="8" CornerRadius="13" BorderBrush="White" Background="White" />
+
+                <Grid Grid.Row="0">
+                    <TextBox Margin="10,0,10,0"  x:Name="BonusName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <TextBox Margin="10,0,10,0" x:Name="BonusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" />
+                </Grid>
+                <Grid Grid.Row="2">
+                    <ComboBox x:Name="BoxRank" Margin="10,0,10,0" IsEditable="True" IsReadOnly="False" DisplayMemberPath="RankName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ранг"></ComboBox>
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Button Margin="20,0,20,0" Click="ButtonConfirm_Click"  VerticalAlignment="Center">Применить</Button>
+                </Grid>
+                <Grid Grid.Row="4">
+                    <Button Margin="20,0,20,0" Click="ButtonClear_Click"  VerticalAlignment="Center">Очистить</Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1" >
+                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+                <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden"  x:Name="LView" ItemsSource="{Binding}" HorizontalAlignment="Center"  Width="550">
+
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListViewItem">
+                                        <Border Name="Border" BorderThickness="10" BorderBrush="Transparent">
+                                            <ContentPresenter />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsSelected" Value="True">
+                                                <Setter TargetName="Border" Property="BorderBrush" Value="transparent" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Width="{Binding ElementName=LView, Path=ActualWidth}"/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate >
+                        <DataTemplate >
+                            <WrapPanel>
+                                <materialDesign:Flipper materialDesign:ElevationAssist.Elevation="Dp0"   Style="{StaticResource MaterialDesignCardFlipper}"  >
+                                    <materialDesign:Flipper.FrontContent>
+                                        <Grid Background="Transparent" Width="500" Height="140" Margin="0,1,0,1">
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="auto" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Border Grid.RowSpan="5" BorderThickness="1" CornerRadius="13" BorderBrush="#c9a97f" Background="#c9a97f" />
+                                            <Grid Background="#FFE7BF8B" Height="50" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+                                                <ScrollViewer VerticalScrollBarVisibility="Hidden">
+                                                    <TextBlock Margin="0,10,0,0" Foreground="White" FontSize="21" HorizontalAlignment="Center" FontFamily="Boud"  VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding BonusName}"/>
+                                                </ScrollViewer>
+                                            </Grid>
+                                            <Grid Grid.Row="1" Margin="0,0,0,20" HorizontalAlignment="Center" VerticalAlignment="Top">
+                                                <ScrollViewer x:Name="scrollDescription" VerticalScrollBarVisibility="Hidden">
+                                                    <TextBlock PreviewMouseWheel="WheelTextBlock" HorizontalAlignment="Center" VerticalAlignment="Stretch" TextWrapping="Wrap" Foreground="White" Margin="0,20,0,0" FontSize="21" Text="{Binding BonusDescription}"/>
+                                                </ScrollViewer>
+                                            </Grid>
+                                        </Grid>
+                                    </materialDesign:Flipper.FrontContent>
+                                </materialDesign:Flipper>
+                            </WrapPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </Grid>
         </Grid>
-        <Grid Grid.Row="1" >
-            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-            <ListView ScrollViewer.VerticalScrollBarVisibility="Hidden"  x:Name="LView" ItemsSource="{Binding}" HorizontalAlignment="Center"  Width="550">
-                
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="ListViewItem">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="ListViewItem">
-                                    <Border Name="Border" BorderThickness="10" BorderBrush="Transparent">
-                                        <ContentPresenter />
-                                    </Border>
-                                    <ControlTemplate.Triggers>
-                                        <Trigger Property="IsSelected" Value="True">
-                                            <Setter TargetName="Border" Property="BorderBrush" Value="transparent" />
-                                        </Trigger>
-                                    </ControlTemplate.Triggers>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </ListView.ItemContainerStyle>
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel Width="{Binding ElementName=LView, Path=ActualWidth}"/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate >
-                        <DataTemplate >
-                        <WrapPanel PreviewMouseWheel="MouseWheel">
-                                <materialDesign:Flipper materialDesign:ElevationAssist.Elevation="Dp0"   Style="{StaticResource MaterialDesignCardFlipper}"  >
-                                <materialDesign:Flipper.FrontContent>
-                                    <Grid Background="Transparent" Width="500" Height="140" Margin="0,1,0,1">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="auto" />
-                                            <RowDefinition Height="*" />
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-                                        <Border Grid.RowSpan="5" BorderThickness="1" CornerRadius="13" BorderBrush="#c9a97f" Background="#c9a97f" />
-                                            <Grid Background="#FFE7BF8B" Height="50" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center">
-                                            <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                                            <TextBlock Margin="0,10,0,0" Foreground="White" FontSize="21" HorizontalAlignment="Center" FontFamily="Boud"  VerticalAlignment="Center" TextWrapping="Wrap" Text="{Binding BonusName}"/>
-                                            </ScrollViewer>
-                                        </Grid>
-                                        <Grid Grid.Row="1" Margin="0,0,0,20" HorizontalAlignment="Center" VerticalAlignment="Top">
-                                            <ScrollViewer VerticalScrollBarVisibility="Hidden">
-                                                <TextBlock HorizontalAlignment="Center" VerticalAlignment="Stretch" TextWrapping="Wrap" Foreground="White" Margin="0,20,0,0" FontSize="21" Text="{Binding BonusDescription}"/>
-                                            </ScrollViewer>
-                                        </Grid>
-                                    </Grid>
-                                </materialDesign:Flipper.FrontContent>
-                            </materialDesign:Flipper>
-                        </WrapPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </Grid>
-    </Grid>
     </ScrollViewer>
 </Page>
