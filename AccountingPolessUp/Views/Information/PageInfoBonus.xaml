@@ -17,30 +17,54 @@ Background="Transparent"
     Title="PolessUp">
     <ScrollViewer x:Name="scroll" VerticalScrollBarVisibility="Hidden">
         <Grid PreviewMouseWheel="MouseWheel">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="110"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="250"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Row="0" Grid.ColumnSpan="2" >
-                <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="200"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <TextBlock Margin="40,0,0,0" x:Name="LabelCourses" FontSize="34" VerticalAlignment="Center" FontWeight="Bold" Text="Бонусы"></TextBlock>
-                    </Grid>
-                    <Grid Grid.Column="1">
-                        <Button x:Name="ButtonBack" Margin="0,0,30,0" HorizontalAlignment="Right" Click="ButtonBack_Click" Visibility="Hidden" Width="100" >
-                            Назад
-                        </Button>
-                    </Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="110"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="220"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2" >
+            <Border BorderThickness="1" CornerRadius="13" BorderBrush="White" Background="White" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock Margin="40,0,0,0" x:Name="LabelCourses" FontSize="34" VerticalAlignment="Center" FontWeight="Bold" Text="Бонусы"></TextBlock>
                 </Grid>
+                <Grid Grid.Column="1">
+                    <Button x:Name="ButtonBack" Margin="0,0,30,0" HorizontalAlignment="Right" Click="ButtonBack_Click" Visibility="Hidden" Width="100" >
+                        Назад
+                    </Button>
+                </Grid>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="2" x:Name="filter">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition  Height="50"/>
+                <RowDefinition  Height="50"/>
+                <RowDefinition  Height="60"/>
+                <RowDefinition  Height="40"/>
+                <RowDefinition  Height="*"/>
+            </Grid.RowDefinitions>
+            <Border BorderThickness="1" Grid.RowSpan="8" CornerRadius="13" BorderBrush="White" Background="White" />
+
+            <Grid Grid.Row="0">
+                <TextBox Margin="10,0,10,0"  x:Name="BonusName" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20"/>
+            </Grid>
+            <Grid Grid.Row="1">
+                <TextBox Margin="10,0,10,0" x:Name="BonusDescription" FontSize="14" materialDesign:HintAssist.Hint="Описание" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Information" materialDesign:TextFieldAssist.LeadingIconSize="20" />
+            </Grid>
+            <Grid Grid.Row="2">
+                <ComboBox x:Name="BoxRank" Margin="10,20,10,0" IsEditable="True" IsReadOnly="False" DisplayMemberPath="RankName"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Ранг"></ComboBox>
+            </Grid>
+           
+            <Grid Grid.Row="3">
+                <Button Margin="20,0,20,0" Click="ButtonConfirm_Click"  VerticalAlignment="Center">Применить</Button>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="2" x:Name="filter">
                 <Grid.RowDefinitions>
