@@ -39,20 +39,6 @@ namespace AccountingPolessUp.Views.Information
         {
             InitializeComponent();
             ButtonBack.Visibility = Visibility.Visible;
-            var grid = Content as Grid;
-            if (grid != null)
-            {
-                var childGrid = grid.Children.OfType<Grid>();
-                foreach (var item in childGrid)
-                {
-                    var buttonElements = item.Children.OfType<Button>().Where(b => b.Name.StartsWith("Open"));
-                    foreach (var button in buttonElements)
-                    {
-                        button.Visibility = Visibility.Hidden;
-                    }
-                }
-
-            }
             Positions = new ObservableCollection<Position>(_positionService.Get(departmentId));
             DataContext = Positions;
             FilterComboBox.SetBoxDepartments(BoxDepartment);
