@@ -119,7 +119,6 @@ Background="Transparent"
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
-
                                                 <Grid Margin="0,10,0,0" Grid.Row="0"  HorizontalAlignment="Left" VerticalAlignment="Center">
                                                     <TextBlock Foreground="WhiteSmoke" HorizontalAlignment="Left" VerticalAlignment="Center" TextWrapping="Wrap"   Margin="20,0,20,0" FontSize="18">
                                                         <Run Text="Организация:"/> <Run Text="{Binding Organizations.Fullname}" />
@@ -137,7 +136,7 @@ Background="Transparent"
                                                 </Grid>
                                             </Grid>
                                         </ScrollViewer>
-                                        <Grid  Grid.Row="2" Height="100" Margin="0,10,0,10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100">
+                                        <Grid  Grid.Row="2" Height="100" Margin="0,10,0,10" HorizontalAlignment="Center" VerticalAlignment="Center" Width="110">
                                             <Button Margin="0,-50,0,0" Background="#FFDAAC95" Foreground="White" Command="{x:Static materialDesign:Flipper.FlipCommand}" materialDesign:ButtonAssist.CornerRadius="10"   Content="Описание" Style="{StaticResource MaterialDesignFlatButton}" />
                                             <Button Margin="0,30,0,0" Background="#FFE9B3BB" Foreground="White" Click="ButtonOpenPositions_Click" materialDesign:ButtonAssist.CornerRadius="10" Content="Должности" Style="{StaticResource MaterialDesignFlatButton}" />
                                         </Grid>
