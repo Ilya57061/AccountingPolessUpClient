@@ -3,10 +3,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -27,7 +24,7 @@ namespace AccountingPolessUp.Implementations
         {
             var json = _webClient.DownloadString("GetTrainingCourses");
             var Info = JsonConvert.DeserializeObject<List<TrainingCourses>>(json);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("TrainingCourses - null");
             else return Info;
         }
 

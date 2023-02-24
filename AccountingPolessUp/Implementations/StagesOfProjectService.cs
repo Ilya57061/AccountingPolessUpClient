@@ -27,7 +27,7 @@ namespace AccountingPolessUp.Implementations
         {
             var json = _webClient.DownloadString("GetStagesOfProject");
             var Info = JsonConvert.DeserializeObject<List<StagesOfProject>>(json);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("StagesOfProjectForProject - null");
             else return Info;
         }
         public List<StagesOfProject> Get(int projectId)
@@ -39,7 +39,7 @@ namespace AccountingPolessUp.Implementations
             var response = _webClient.UploadValues("GetStagesOfProjectForProjectId", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var Info = JsonConvert.DeserializeObject<List<StagesOfProject>>(responseString);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("StagesOfProjectForProject by Id- null");
             else return Info;
         }
 

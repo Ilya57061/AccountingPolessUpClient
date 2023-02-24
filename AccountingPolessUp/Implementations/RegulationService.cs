@@ -27,7 +27,7 @@ namespace AccountingPolessUp.Implementations
         {
             var json = _webClient.DownloadString("GetRegulation");
             var Info = JsonConvert.DeserializeObject<List<Regulation>>(json);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("Regulation - null");
             else return Info;
         } 
 

@@ -27,7 +27,7 @@ namespace AccountingPolessUp.Implementations
         {
             var json = _webClient.DownloadString("GetProject");
             var Info = JsonConvert.DeserializeObject<List<Project>>(json);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("projects - null");
             else return Info;
         }
 

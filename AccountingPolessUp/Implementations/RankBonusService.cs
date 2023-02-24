@@ -27,7 +27,7 @@ namespace AccountingPolessUp.Implementations
         {
             var json = _webClient.DownloadString("GetRankBonus");
             var Info = JsonConvert.DeserializeObject<List<RankBonus>>(json);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("RankBonuses - null");
             else return Info;
         }
         public void Create(RankBonus model)

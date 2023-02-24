@@ -40,7 +40,7 @@ namespace AccountingPolessUp.Implementations
             var response = _webClient.UploadValues("GetPositionForDepartmentId", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var position = JsonConvert.DeserializeObject<List<Position>>(responseString);
-            if (position is null) throw new Exception("position - null");
+            if (position is null) throw new Exception("position by departmentId - null");
             return position;
 
 

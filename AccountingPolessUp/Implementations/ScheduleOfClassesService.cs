@@ -30,7 +30,7 @@ namespace AccountingPolessUp.Implementations
             {
                 var json = _webClient.DownloadString("GetScheduleOfСlasses");
                 var Info = JsonConvert.DeserializeObject<List<ScheduleOfСlasses>>(json);
-                if (Info is null) throw new Exception("info - null");
+                if (Info is null) throw new Exception("ScheduleOfСlasses - null");
                 else return Info;
             }
             catch (Exception)
@@ -49,7 +49,7 @@ namespace AccountingPolessUp.Implementations
             var response = _webClient.UploadValues("GetScheduleOfClassesForCoursesId", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var Info = JsonConvert.DeserializeObject<List<ScheduleOfСlasses>>(responseString);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("ScheduleOfСlasses by coursId - null");
             else return Info;
         }
 

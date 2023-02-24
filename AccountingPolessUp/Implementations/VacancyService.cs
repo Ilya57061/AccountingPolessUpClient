@@ -3,10 +3,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -27,7 +25,7 @@ namespace AccountingPolessUp.Implementations
         {
             var json = _webClient.DownloadString("GetVacancy");
             var Info = JsonConvert.DeserializeObject<List<Vacancy>>(json);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("Vacancy - null");
             else return Info;
         }
         public List<Vacancy> Get(int stagesId)
@@ -39,7 +37,7 @@ namespace AccountingPolessUp.Implementations
             var response = _webClient.UploadValues("GetVacancyForStagesId", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var Info = JsonConvert.DeserializeObject<List<Vacancy>>(responseString);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("Vacancy by ForStagesId - null");
             else return Info;
         }
 

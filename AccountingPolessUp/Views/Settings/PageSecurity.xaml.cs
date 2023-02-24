@@ -39,10 +39,10 @@ namespace AccountingPolessUp.Views.Settings
         {
             try
             {
-                if (Password.Password == RepeatPassword.Password)
+                if (Password.Password == RepeatPassword.Password && !string.IsNullOrEmpty(Password.Password))
                 {
                     _userService.UpdatePassword(new UpdatePasswordDto { Id = RoleValidator.User.Id, Password = Password.Password });
-                    ButtonChangePassword.Background = new SolidColorBrush(Color.FromArgb(181, 217, 140,0));
+                    ButtonChangePassword.Background = new SolidColorBrush(Color.FromRgb(156, 204, 101));
                 }
                 else
                 {

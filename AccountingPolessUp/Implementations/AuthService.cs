@@ -35,7 +35,7 @@ namespace AccountingPolessUp.Implementations
 
                 var response = _webClient.UploadValues("Login", "POST", reqparm);
                 var responseString = Encoding.Default.GetString(response);
-                TokenDto token = JsonConvert.DeserializeObject<TokenDto>(responseString);
+                var token = JsonConvert.DeserializeObject<TokenDto>(responseString);
                 TokenManager.AccessToken = token.Token;
                 return token.User;
             }

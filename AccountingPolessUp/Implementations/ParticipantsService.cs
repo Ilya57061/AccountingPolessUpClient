@@ -31,7 +31,7 @@ namespace AccountingPolessUp.Implementations
         {
             var json = _webClient.DownloadString("GetParticipants");
             var Info = JsonConvert.DeserializeObject<List<Participants>>(json);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("partisipants - null");
             else return Info;
         }
 
@@ -52,7 +52,7 @@ namespace AccountingPolessUp.Implementations
             var url = $"Get?id={id}";
             var json = _webClient.DownloadString(url);
             var Info = JsonConvert.DeserializeObject<List<Participants>>(json);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("participants by id - null");
             else return Info;
         }
 

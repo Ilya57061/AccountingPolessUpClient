@@ -23,7 +23,7 @@ namespace AccountingPolessUp.Implementations
         {
             var json = _webClient.DownloadString("GetRoles");
             var Info = JsonConvert.DeserializeObject<List<Role>>(json);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("Roles - null");
             else return Info;
         }
     }

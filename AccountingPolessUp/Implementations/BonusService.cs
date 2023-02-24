@@ -29,7 +29,7 @@ namespace AccountingPolessUp.Implementations
         {
             var json = _webClient.DownloadString("GetBonus");
             var Info = JsonConvert.DeserializeObject<List<Bonus>>(json);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("Bonuses - null");
             else return Info;
         }
 
@@ -42,7 +42,7 @@ namespace AccountingPolessUp.Implementations
             var response = _webClient.UploadValues("GetBonusForRankId", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var Info = JsonConvert.DeserializeObject<List<Bonus>>(responseString);
-            if (Info is null) throw new Exception("info - null");
+            if (Info is null) throw new Exception("Bonuses by runkId - null");
             else return Info;
         }
 
