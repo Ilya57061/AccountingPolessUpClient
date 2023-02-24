@@ -135,9 +135,9 @@ namespace AccountingPolessUp.Helpers
         {
             list = list.Where(x => x.DateEnd == null && x.Status.StartsWith("Работает"));
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.FullName.ToLower().StartsWith(name.ToLower()));
+                list = list.Where(x => x.FullName.ToLower().Contains(name.ToLower()));
             if (!string.IsNullOrEmpty(description))
-                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
+                list = list.Where(x => x.Description.ToLower().Contains(description.ToLower()));
             if (!string.IsNullOrEmpty(dateStart))
                 list = list.Where(x => x.DateStart.ToString().StartsWith(DateTime.Parse(dateStart).ToString()));
             if (!string.IsNullOrEmpty(organization))
@@ -201,11 +201,11 @@ namespace AccountingPolessUp.Helpers
         public static void ConfirmFilter(Page page, IEnumerable<Bonus> list, string name, string rank, string description)
         {
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.BonusName.ToLower().StartsWith(name.ToLower()));
+                list = list.Where(x => x.BonusName.ToLower().Contains(name.ToLower()));
             if (!string.IsNullOrEmpty(rank))
                 list = list.Where(x => x.RankBonus.Any(rb => rb.Rank.RankName.ToLower().StartsWith(rank.ToLower())));
             if (!string.IsNullOrEmpty(description))
-                list = list.Where(x => x.BonusDescription.ToLower().StartsWith(description.ToLower()));
+                list = list.Where(x => x.BonusDescription.ToLower().Contains(description.ToLower()));
             page.DataContext = new ObservableCollection<Bonus>(list);
         }
         public static void ConfirmFilter(DataGrid dataGrid, IEnumerable<ApplicationsInTheProject> list, string dateEntry, string participant, string vacancy, string isAccepted, string status, string statusDescription)
@@ -241,9 +241,9 @@ namespace AccountingPolessUp.Helpers
         public static void ConfirmFilter(Page page, IEnumerable<Position> list, string name, string description, string department)
         {
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.FullName.ToLower().StartsWith(name.ToLower()));
+                list = list.Where(x => x.FullName.ToLower().Contains(name.ToLower()));
             if (!string.IsNullOrEmpty(description))
-                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
+                list = list.Where(x => x.Description.ToLower().Contains(description.ToLower()));
             if (!string.IsNullOrEmpty(department))
                 list = list.Where(x => x.Department.FullName.ToLower().StartsWith(department.ToLower()));
             page.DataContext = new ObservableCollection<Position>(list);
@@ -280,9 +280,9 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(name))
                 list = list.Where(x => x.RankName.ToLower().StartsWith(name.ToLower()));
             if (!string.IsNullOrEmpty(minMmr))
-                list = list.Where(x => x.MinMmr.ToString().StartsWith(minMmr));
+                list = list.Where(x => x.MinMmr.ToString() == minMmr);
             if (!string.IsNullOrEmpty(maxMmr))
-                list = list.Where(x => x.MaxMmr.ToString().StartsWith(maxMmr));
+                list = list.Where(x => x.MaxMmr.ToString() == maxMmr);
             dataGrid.ItemsSource = null;
             dataGrid.Items.Clear();
             dataGrid.ItemsSource = list;
@@ -292,13 +292,13 @@ namespace AccountingPolessUp.Helpers
             if (!string.IsNullOrEmpty(organization))
                 list = list.Where(x => x.Organizations.Fullname.ToLower().StartsWith(organization.ToLower()));
             if (!string.IsNullOrEmpty(description))
-                list = list.Where(x => x.Description.ToLower().StartsWith(description.ToLower()));
+                list = list.Where(x => x.Description.ToLower().Contains(description.ToLower()));
             if (!string.IsNullOrEmpty(name))
-                list = list.Where(x => x.RankName.ToLower().StartsWith(name.ToLower()));
+                list = list.Where(x => x.RankName.ToLower().Contains(name.ToLower()));
             if (!string.IsNullOrEmpty(minMmr))
-                list = list.Where(x => x.MinMmr.ToString().StartsWith(minMmr));
+                list = list.Where(x => x.MinMmr.ToString() == minMmr);
             if (!string.IsNullOrEmpty(maxMmr))
-                list = list.Where(x => x.MaxMmr.ToString().StartsWith(maxMmr));
+                list = list.Where(x => x.MaxMmr.ToString() == maxMmr);
             page.DataContext = new ObservableCollection<Rank>(list);
         }
         public static void ConfirmFilter(Page page, IEnumerable<TrainingCourses> list, string name, string description, string dateStart, string dateEnd, string lector, string lectorDesc)
