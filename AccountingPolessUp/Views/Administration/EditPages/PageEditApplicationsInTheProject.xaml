@@ -50,7 +50,7 @@ Background="Transparent"
             </ComboBox>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="0">
-            <ComboBox x:Name="BoxIsAccepted" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="IsAccepted" Margin="1,0,1,0">
+            <ComboBox x:Name="BoxIsAccepted" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="IsAccepted" Margin="1,0,1,0">
                 <ComboBoxItem Content="True" />
                 <ComboBoxItem Content="False" />
             </ComboBox>

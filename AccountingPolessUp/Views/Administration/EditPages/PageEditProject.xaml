@@ -46,7 +46,7 @@ Background="Transparent"
             <TextBox Margin="1,0,1,20"  x:Name="Fullname" FontSize="14" materialDesign:HintAssist.Hint="Название" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="Domain" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Fullname}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="1">
-            <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
+            <ComboBox x:Name="BoxStatus" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
                 <ComboBoxItem Content="Завершён" />
                 <ComboBoxItem Content="Не завершён" />
             </ComboBox>
