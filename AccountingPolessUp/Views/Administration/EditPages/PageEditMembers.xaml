@@ -44,7 +44,7 @@ Background="Transparent"
             </Button>
         </Grid>
         <Grid Grid.Row="1">
-            <ComboBox x:Name="BoxIndividuals" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Individuals}" DisplayMemberPath="FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Физ.Лицо" Margin="1,0,1,0"> </ComboBox>
+            <ComboBox x:Name="BoxIndividuals" IsEditable="True" IsReadOnly="False" SelectedItem="{Binding Individuals}" DisplayMemberPath="FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Физ.Лицо" Margin="1,0,1,0" HorizontalContentAlignment="Left"></ComboBox>
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1">
