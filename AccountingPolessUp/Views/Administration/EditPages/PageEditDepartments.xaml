@@ -54,7 +54,7 @@ Background="Transparent"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="4">
-            <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
+            <ComboBox x:Name="BoxStatus" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
                 <ComboBoxItem Content="Работает" />
                 <ComboBoxItem Content="Не работает" />
             </ComboBox>

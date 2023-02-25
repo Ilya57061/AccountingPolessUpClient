@@ -39,7 +39,7 @@ Background="Transparent"
   materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateOfBirth}"/>
                     <TextBox Margin="1,0,1,12.5" x:Name="Mail" FontSize="14" materialDesign:HintAssist.Hint="Эл. почта" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="MailOutline" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding Mail}"/>
-                    <ComboBox x:Name="BoxGender" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Пол" Margin="1,0,1,0">
+                    <ComboBox x:Name="BoxGender" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Пол" Margin="1,0,1,0">
                         <ComboBoxItem Content="Мужской" />
                         <ComboBoxItem Content="Женский" />
                     </ComboBox>

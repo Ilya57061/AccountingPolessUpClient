@@ -25,10 +25,11 @@ namespace AccountingPolessUp
         }
         private void WorkWindow_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+            var focusedElement = Keyboard.FocusedElement;
+            if (focusedElement is TextBox)
+                return;
             if (e.Key == Key.Back)
-            {
                 e.Handled = true;
-            }
         }
         private void SetCommonUIElementsVisibility()
         {
@@ -47,7 +48,7 @@ namespace AccountingPolessUp
                         ButtonAdmEducationalPortals.Visibility = Visibility.Collapsed;
                         AppInTheProject.Visibility = Visibility.Collapsed;
                     }
-                   
+
                     if (_user.Role.Name == "DirectorOrganizational")
                     {
                         Courses.Visibility = Visibility.Visible;
@@ -59,7 +60,7 @@ namespace AccountingPolessUp
                         Vacancy.Visibility = Visibility.Collapsed;
                         Projects.Visibility = Visibility.Visible;
                         AppInTheProject.Visibility = Visibility.Visible;
-                    }    
+                    }
                     break;
                 case "LocalPm":
                     foreach (TreeViewItem item in Admin.Items)

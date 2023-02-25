@@ -50,7 +50,7 @@ Background="Transparent"
   materialDesign:TextFieldAssist.HasClearButton="True"
   Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding DateEnd}"/>
                         <ComboBox x:Name="BoxDirector" IsEditable="True" IsReadOnly="False"  DisplayMemberPath="Individuals.FIO"  Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Руководитель" Margin="1,0,1,0"></ComboBox>
-                        <ComboBox x:Name="BoxStatus" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
+                        <ComboBox x:Name="BoxStatus" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="Статус" Margin="1,0,1,0">
                             <ComboBoxItem Content="Работает" />
                             <ComboBoxItem Content="Не работает" />
                         </ComboBox>

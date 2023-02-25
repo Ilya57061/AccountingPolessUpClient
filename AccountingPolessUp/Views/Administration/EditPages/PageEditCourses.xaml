@@ -55,7 +55,7 @@ Background="Transparent"
             <TextBox Margin="1,0,1,20" PreviewTextInput="Number_PreviewDateInput" x:Name="DateEnd" FontSize="14" materialDesign:HintAssist.Hint="Дата окончания" Style="{StaticResource MaterialDesignFloatingHintTextBox}" materialDesign:TextFieldAssist.HasClearButton="True" materialDesign:TextFieldAssist.HasLeadingIcon="True" materialDesign:TextFieldAssist.LeadingIcon="DateRange" materialDesign:TextFieldAssist.LeadingIconSize="20" Text="{Binding DateEnd}"/>
         </Grid>
         <Grid Grid.Row="1" Grid.Column="7">
-            <ComboBox x:Name="BoxIsActive" IsEditable="True" IsReadOnly="False" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="IsActive" Margin="1,0,1,0">
+            <ComboBox x:Name="BoxIsActive" Width="auto" FontSize="14" materialDesign:HintAssist.Hint="IsActive" Margin="1,0,1,0">
                 <ComboBoxItem Content="True" />
                 <ComboBoxItem Content="False" />
             </ComboBox>
