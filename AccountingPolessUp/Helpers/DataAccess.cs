@@ -1,7 +1,9 @@
 ﻿using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
+using AccountingPolessUp.Views.Administration;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,238 +16,147 @@ namespace AccountingPolessUp.Helpers
 {
     public static class DataAccess
     {
-        private static ApplicationsInTheProjectService _applicationService = new ApplicationsInTheProjectService();
-        private static BonusService _bonusService = new BonusService();
-        private static CustomerService _customerService = new CustomerService();
-        private static TrainingCoursesService _coursesService = new TrainingCoursesService();
-        private static DepartmentService _departmentService = new DepartmentService();
-        private static EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
-        private static FinalProjectService _finalProjectService = new FinalProjectService();
-        private static IndividualsService _individualsService = new IndividualsService();
-        private static ParticipantsService _participantsService = new ParticipantsService();
-        private static OrganizationService _organizationService = new OrganizationService();
-        private static PositionService _positionService = new PositionService();
-        private static ProjectService _projectService = new ProjectService();
-        private static RankService _rankService = new RankService();
-        private static RegistrationForCoursesService _registrationForCoursesService = new RegistrationForCoursesService();
-        private static RegulationService _regulationService = new RegulationService();
-        private static ScheduleOfClassesService _scheduleService = new ScheduleOfClassesService();
-        private static StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
-        private static StudentService _studentService = new StudentService();
-        private static UserService _userService = new UserService();
-        private static VacancyService _vacancyService = new VacancyService();
-        private static EmploymentService _employmentService = new EmploymentService();
+        private static Dictionary<Type, dynamic> _services = new Dictionary<Type, dynamic>
+        {
+            {typeof(ApplicationsInTheProject), new ApplicationsInTheProjectService()},
+            {typeof(Bonus), new BonusService()},
+            {typeof(Customer), new CustomerService()},
+            {typeof(TrainingCourses), new TrainingCoursesService()},
+            {typeof(Department), new DepartmentService()},
+            {typeof(EducationalPortals), new EducationalPortalsService()},
+            {typeof(FinalProject), new FinalProjectService()},
+            {typeof(Individuals), new IndividualsService()},
+            {typeof(Participants), new ParticipantsService()},
+            {typeof(Organization), new OrganizationService()},
+            {typeof(Position), new PositionService()},
+            {typeof(Project), new ProjectService()},
+            {typeof(Rank), new RankService()},
+            {typeof(RegistrationForCourses), new RegistrationForCoursesService()},
+            {typeof(Regulation), new RegulationService()},
+            {typeof(ScheduleOfСlasses), new ScheduleOfClassesService()},
+            {typeof(StagesOfProject), new StagesOfProjectService()},
+            {typeof(Student), new StudentService()},
+            {typeof(User), new UserService()},
+            {typeof(Vacancy), new VacancyService()},
+            {typeof(Employment), new EmploymentService()},
+        };
 
         private static void FrameValid(Page page)
         {
             if (FormValidator.AreAllElementsFilled(page))
                 throw new Exception();
         }
-        public static void Update(Page page, TrainingCourses cours)
+
+        private static void ShowMessage(string message)
         {
-            FrameValid(page);
-            _coursesService.Update(cours);
-            DataGridUpdater.AdmCourses.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, ApplicationsInTheProject applications)
-        {
-            FrameValid(page);
-            _applicationService.Update(applications);
-            DataGridUpdater.AdmAppInTheProject.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, Bonus bonus)
-        {
-            FrameValid(page);
-            _bonusService.Update(bonus);
-            DataGridUpdater.AdmBonus.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, Customer customer)
-        {
-            FrameValid(page);
-            _customerService.Update(customer);
-            DataGridUpdater.AdmCustomer.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, Department department)
-        {
-            FrameValid(page);
-            _departmentService.Update(department);
-            DataGridUpdater.AdmDepartments.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, EducationalPortals educationalPortals)
-        {
-            FrameValid(page);
-            _educationalPortalsService.Update(educationalPortals);
-            DataGridUpdater.AdmEducationalPortals.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, FinalProject finalProject)
-        {
-            FrameValid(page);
-            _finalProjectService.Update(finalProject);
-            DataGridUpdater.AdmFinalProject.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, Individuals individuals)
-        {
-            FrameValid(page);
-            _individualsService.Update(individuals);
-            DataGridUpdater.AdmNatural.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, Participants participants)
-        {
-            FrameValid(page);
-            _participantsService.Update(participants);
-            DataGridUpdater.AdmMembers.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, Organization organization)
-        {
-            FrameValid(page);
-            _organizationService.Update(organization);
-            DataGridUpdater.AdmOrganizations.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, Position position)
-        {
-            FrameValid(page);
-            _positionService.Update(position);
-            DataGridUpdater.AdmPosition.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект отредактирован");
-        }
-        public static void Update(Page page, Project project)
-        {
-            FrameValid(page);
-            _projectService.Update(project);
-            DataGridUpdater.AdmProjects.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-           public static void Update(Page page, Rank rank)
-        {
-            FrameValid(page);
-            _rankService.Update(rank);
-            DataGridUpdater.AdmRanks.UpdateDataGrid();
-            CancelFrameChecker.UpdateData = true;
-            MessageBox.Show("Объект добавлен");
+            MessageBox.Show(message);
         }
 
+        public static void Update<T>(Page page, T obj) where T : class
+        {
+            FrameValid(page);
+            var service = _services[typeof(T)];
+            service.Update(obj);
+            CancelFrameChecker.UpdateData = true;
+            GridUpdater(obj);
+            ShowMessage("Объект отредактирован");
+        }
 
-
-
-
-
-        public static void Create(Page page, TrainingCourses cours)
+        public static void Create<T>(Page page, T obj) where T : class
         {
             FrameValid(page);
-            _coursesService.Create(cours);
-            DataGridUpdater.AdmCourses.UpdateDataGrid();
+            var service = _services[typeof(T)];
+            service.Create(obj);
             CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
+            GridUpdater(obj);
+            ShowMessage("Объект добавлен");
         }
-        public static void Create(Page page, ApplicationsInTheProject applications)
+        private static void GridUpdater<T>(T obj) where T : class
         {
-            FrameValid(page);
-            _applicationService.Create(applications);
-            DataGridUpdater.AdmAppInTheProject.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-        public static void Create(Page page, Bonus bonus)
-        {
-            FrameValid(page);
-            _bonusService.Create(bonus);
-            DataGridUpdater.AdmBonus.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-        public static void Create(Page page, Customer customer)
-        {
-            FrameValid(page);
-            _customerService.Create(customer);
-            DataGridUpdater.AdmCustomer.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-        public static void Create(Page page, Department department)
-        {
-            FrameValid(page);
-            _departmentService.Create(department);
-            DataGridUpdater.AdmDepartments.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-        public static void Create(Page page, EducationalPortals educationalPortals)
-        {
-            FrameValid(page);
-            _educationalPortalsService.Create(educationalPortals);
-            DataGridUpdater.AdmEducationalPortals.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-        public static void Create(Page page, FinalProject finalProject)
-        {
-            FrameValid(page);
-            _finalProjectService.Create(finalProject);
-            DataGridUpdater.AdmFinalProject.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-        public static void Create(Page page, Individuals individuals)
-        {
-            FrameValid(page);
-            _individualsService.Create(individuals);
-            DataGridUpdater.AdmNatural.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-        public static void Create(Page page, Participants participants)
-        {
-            FrameValid(page);
-            _participantsService.Create(participants);
-            DataGridUpdater.AdmMembers.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-        public static void Create(Page page, Organization organization)
-        {
-            FrameValid(page);
-            _organizationService.Create(organization);
-            DataGridUpdater.AdmOrganizations.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-        public static void Create(Page page, Position position)
-        {
-            FrameValid(page);
-            _positionService.Create(position);
-            DataGridUpdater.AdmPosition.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
-        }
-        public static void Create(Page page, Project project)
-        {
-            FrameValid(page);
-            _projectService.Create(project);
-            DataGridUpdater.AdmProjects.UpdateDataGrid();
-            CancelFrameChecker.CreateData = true;
-            MessageBox.Show("Объект добавлен");
+            if (obj is ApplicationsInTheProject)
+            {
+                DataGridUpdater.AdmAppInTheProject.UpdateDataGrid();
+            }
+            else if (obj is Bonus)
+            {
+                DataGridUpdater.AdmBonus.UpdateDataGrid();
+            }
+            else if (obj is TrainingCourses)
+            {
+                DataGridUpdater.AdmCourses.UpdateDataGrid();
+            }
+            else if (obj is Customer)
+            {
+                DataGridUpdater.AdmCustomer.UpdateDataGrid();
+            }
+            else if (obj is Department)
+            {
+                DataGridUpdater.AdmDepartments.UpdateDataGrid();
+            }
+            else if (obj is EducationalPortals)
+            {
+                DataGridUpdater.AdmEducationalPortals.UpdateDataGrid();
+            }
+            else if (obj is FinalProject)
+            {
+                DataGridUpdater.AdmFinalProject.UpdateDataGrid();
+            }
+            else if (obj is Participants)
+            {
+                DataGridUpdater.AdmMembers.UpdateDataGrid();
+            }
+            else if (obj is Individuals)
+            {
+                DataGridUpdater.AdmNatural.UpdateDataGrid();
+            }
+            else if (obj is Organization)
+            {
+                DataGridUpdater.AdmOrganizations.UpdateDataGrid();
+            }
+            else if (obj is Position)
+            {
+                DataGridUpdater.AdmPosition.UpdateDataGrid();
+            }
+            else if (obj is Project)
+            {
+                DataGridUpdater.AdmProjects.UpdateDataGrid();
+            }
+            else if (obj is Rank)
+            {
+                DataGridUpdater.AdmRanks.UpdateDataGrid();
+            }
+            else if (obj is RegistrationForCourses)
+            {
+                DataGridUpdater.AdmRegistrationForCourses.UpdateDataGrid();
+            }
+            else if (obj is Regulation)
+            {
+                DataGridUpdater.AdmRules.UpdateDataGrid();
+            }
+            else if (obj is ScheduleOfСlasses)
+            {
+                DataGridUpdater.AdmScheduleOfClasses.UpdateDataGrid();
+            }
+            else if (obj is StagesOfProject)
+            {
+                DataGridUpdater.AdmStageOfProject.UpdateDataGrid();
+            }
+            else if (obj is Student)
+            {
+                DataGridUpdater.AdmStudents.UpdateDataGrid();
+            }
+            else if (obj is User)
+            {
+                DataGridUpdater.AdmUsers.UpdateDataGrid();
+            }
+            else if (obj is Vacancy)
+            {
+                DataGridUpdater.AdmVacancy.UpdateDataGrid();
+            }
+            else if (obj is Employment)
+            {
+                DataGridUpdater.AdmWork.UpdateDataGrid();
+            }
         }
 
     }

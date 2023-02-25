@@ -62,7 +62,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-             
+                DataAccess.Update(this, _position);
+
             }
             catch (Exception)
             {
@@ -74,7 +75,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-              
+                DataAccess.Create(this, _position);
             }
             catch (Exception)
             {

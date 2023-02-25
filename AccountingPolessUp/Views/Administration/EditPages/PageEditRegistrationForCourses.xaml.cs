@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
@@ -56,11 +57,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _registrationForCoursesService.Update(_registrationForCourses);
-                DataGridUpdater.AdmRegistrationForCourses.UpdateDataGrid();
-                CancelFrameChecker.UpdateData = true;
+                DataAccess.Update(this, _registrationForCourses);
             }
             catch (Exception)
             {
@@ -72,11 +69,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _registrationForCoursesService.Create(_registrationForCourses);
-                DataGridUpdater.AdmRegistrationForCourses.UpdateDataGrid();
-                CancelFrameChecker.CreateData = true;
+                DataAccess.Create(this, _registrationForCourses);
+
             }
             catch (Exception)
             {

@@ -62,11 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.ElementsFilledUpdateUser(this))
-                    throw new Exception();
-                _userService.Update(user);
-                DataGridUpdater.AdmUsers.UpdateDataGrid();
-                CancelFrameChecker.UpdateData = true;
+                DataAccess.Update(this, user);
             }
             catch (Exception)
             {
@@ -86,6 +82,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 _userService.Create(registerDto);
                 DataGridUpdater.AdmUsers.UpdateDataGrid();
                 CancelFrameChecker.CreateData = true;
+                MessageBox.Show("Пользователь добавлен!");
             }
             catch (Exception)
             {
@@ -105,6 +102,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 _userService.UpdatePassword(upPassword);
                 DataGridUpdater.AdmUsers.UpdateDataGrid();
                 this.NavigationService.GoBack();
+                MessageBox.Show("Пароль изменен!");
             }
             catch (Exception)
             {

@@ -59,9 +59,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-               
+                DataAccess.Update(this, _rank);
+
             }
             catch (Exception)
             {
@@ -73,9 +72,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-             
+                DataAccess.Create(this, _rank);
+
             }
             catch (Exception)
             {
