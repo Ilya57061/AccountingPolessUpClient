@@ -2,11 +2,13 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
+using AccountingPolessUp.Views.TextViews;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -139,6 +141,14 @@ namespace AccountingPolessUp.Views.Administration
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {
             NumberValidator.DateValidator(e);
+        }
+        private void Hyperlink_RequestNavigate(object sender, RequestNavigateEventArgs e)
+        {
+            foreach (Department department in dataGrid.SelectedItems)
+            {
+                WindowDescription windowDescription = new WindowDescription(department);
+                windowDescription.Show();
+            }
         }
     }
 }
