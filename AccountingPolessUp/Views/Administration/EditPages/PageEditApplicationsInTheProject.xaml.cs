@@ -15,7 +15,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditApplicationsInTheProject : Page
     {
-        private ApplicationsInTheProjectService _applicationService = new ApplicationsInTheProjectService();
         private ParticipantsService _participantsService = new ParticipantsService();
         private VacancyService _vacancyService = new VacancyService();
         private Page _parent;
@@ -70,11 +69,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _applicationService.Update(_applications);
-                DataGridUpdater.AdmAppInTheProject.UpdateDataGrid();
-                CancelFrameChecker.UpdateData = true;
+                DataAccess.Update(this, _applications);
             }
             catch (Exception)
             {
@@ -86,11 +81,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _applicationService.Create(_applications);
-                DataGridUpdater.AdmAppInTheProject.UpdateDataGrid();
-                CancelFrameChecker.CreateData = true;
+                DataAccess.Create(this, _applications);
             }
             catch (Exception)
             {

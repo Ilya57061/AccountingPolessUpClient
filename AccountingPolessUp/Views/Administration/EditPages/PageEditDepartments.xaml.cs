@@ -70,11 +70,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _departmentService.Update(_department);
-                DataGridUpdater.AdmDepartments.UpdateDataGrid();
-                CancelFrameChecker.UpdateData = true;
+                DataAccess.Update(this,_department);
             }
             catch (Exception)
             {
@@ -86,11 +82,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _departmentService.Create(_department);
-                DataGridUpdater.AdmDepartments.UpdateDataGrid();
-                CancelFrameChecker.CreateData = true;
+                DataAccess.Create(this, _department);
+            
             }
             catch (Exception)
             {

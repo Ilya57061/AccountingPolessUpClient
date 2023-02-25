@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -14,7 +15,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditBonus : Page
     {
-        private BonusService _bonusService = new BonusService();
         private RankService _RankService = new RankService();
         private RankBonusService _rankBonusService = new RankBonusService();
         private List<Rank> _ranks;
@@ -56,11 +56,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _bonusService.Update(_bonus);
-                DataGridUpdater.AdmBonus.UpdateDataGrid();
-                CancelFrameChecker.UpdateData = true;
+                DataAccess.Update(this, _bonus);
             }
             catch (Exception)
             {
@@ -72,11 +68,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _bonusService.Create(_bonus);
-                DataGridUpdater.AdmBonus.UpdateDataGrid();
-                CancelFrameChecker.CreateData = true;
+                DataAccess.Create(this, _bonus);
+
             }
             catch (Exception)
             {

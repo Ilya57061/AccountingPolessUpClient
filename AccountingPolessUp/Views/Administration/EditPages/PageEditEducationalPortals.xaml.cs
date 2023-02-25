@@ -4,18 +4,8 @@ using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -25,7 +15,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditEducationalPortals : Page
     {
         private DepartmentService _departmentService = new DepartmentService();
-        private EducationalPortalsService _educationalPortalsService = new EducationalPortalsService();
         private List<Department> _department;
         private EducationalPortals _educationalPortals;
         private Page _parent;
@@ -64,11 +53,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _educationalPortalsService.Update(_educationalPortals);
-                DataGridUpdater.AdmEducationalPortals.UpdateDataGrid();
-                CancelFrameChecker.UpdateData = true;
+                DataAccess.Update(this,_educationalPortals);
+            
             }
             catch (Exception)
             {
@@ -80,11 +66,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _educationalPortalsService.Create(_educationalPortals);
-                DataGridUpdater.AdmEducationalPortals.UpdateDataGrid();
-                CancelFrameChecker.CreateData = true;
+                DataAccess.Create(this,_educationalPortals);
+             
             }
             catch (Exception)
             {

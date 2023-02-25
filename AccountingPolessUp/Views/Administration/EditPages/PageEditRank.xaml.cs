@@ -61,9 +61,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                _rankService.Update(_rank);
-                DataGridUpdater.AdmRanks.UpdateDataGrid();
-                CancelFrameChecker.UpdateData = true;
+               
             }
             catch (Exception)
             {
@@ -77,9 +75,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                _rankService.Create(_rank);
-                DataGridUpdater.UpdateDataGrid(_rankService.Get(), _parent);
-                CancelFrameChecker.CreateData = true;
+             
             }
             catch (Exception)
             {

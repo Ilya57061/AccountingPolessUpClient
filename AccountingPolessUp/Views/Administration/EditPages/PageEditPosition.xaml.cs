@@ -62,11 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _positionService.Update(_position);
-                UpdateDataGrid();
-                CancelFrameChecker.UpdateData = true;
+             
             }
             catch (Exception)
             {
@@ -78,21 +74,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _positionService.Create(_position);
-                UpdateDataGrid();
-                CancelFrameChecker.CreateData = true;
+              
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
         }
-        private void UpdateDataGrid()
-        {
-            DataGridUpdater.AdmPosition.UpdateDataGrid();
-        }
+      
         private void WriteData()
         {
             _position.FullName = Fullname.Text;

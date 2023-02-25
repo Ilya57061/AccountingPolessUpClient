@@ -66,11 +66,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _finalProjectService.Update(_finalProject);
-                DataGridUpdater.AdmFinalProject.UpdateDataGrid();
-                CancelFrameChecker.UpdateData = true;
+                DataAccess.Update(this, _finalProject);
+                
             }
             catch (Exception)
             {
@@ -82,11 +79,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _finalProjectService.Create(_finalProject);
-                DataGridUpdater.AdmFinalProject.UpdateDataGrid();
-                CancelFrameChecker.CreateData = true;
+                DataAccess.Create(this, _finalProject);
+        
             }
             catch (Exception)
             {

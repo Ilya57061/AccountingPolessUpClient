@@ -23,7 +23,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditCourses : Page
     {
-       private TrainingCoursesService _coursesService = new TrainingCoursesService();
        private TrainingCourses _cours;
         public PageEditCourses(TrainingCourses cours)
         {

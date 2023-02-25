@@ -37,11 +37,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _customerService.Update(_customer);
-                DataGridUpdater.AdmCustomer.UpdateDataGrid();
-                CancelFrameChecker.UpdateData = true;
+                DataAccess.Update(this, _customer);
 
             }
             catch (Exception)
@@ -54,11 +50,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _customerService.Create(_customer);
-                DataGridUpdater.AdmCustomer.UpdateDataGrid();
-                CancelFrameChecker.CreateData = true;
+                DataAccess.Create(this, _customer);
             }
             catch (Exception)
             {
