@@ -66,6 +66,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _userService.Update(user);
                 DataGridUpdater.AdmUsers.UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
             }
             catch (Exception)
             {
@@ -84,6 +85,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 registerDto.RoleId = roles.FirstOrDefault(x => x == BoxRole.SelectedItem).Id;
                 _userService.Create(registerDto);
                 DataGridUpdater.AdmUsers.UpdateDataGrid();
+                CancelFrameChecker.CreateData = true;
             }
             catch (Exception)
             {

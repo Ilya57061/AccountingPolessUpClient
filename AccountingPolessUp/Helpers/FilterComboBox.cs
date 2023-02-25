@@ -7,20 +7,20 @@ namespace AccountingPolessUp.Helpers
 {
     public static class FilterComboBox
     {
-        static RankService rankService = new RankService();
-        static ParticipantsService participantsService = new ParticipantsService();
-        static TrainingCoursesService coursesService = new TrainingCoursesService();
-        static CustomerService customerService = new CustomerService();
-        static StagesOfProjectService stagesOfProjectService = new StagesOfProjectService();
-        static ProjectService projectService = new ProjectService();
-        static UserService userService = new UserService();
-        static DepartmentService departmentService = new DepartmentService();
-        static IndividualsService individualsService = new IndividualsService();
-        static RoleService roleService = new RoleService();
-        static OrganizationService organizationService = new OrganizationService();
-        static PositionService positionService = new PositionService();
+        private static RankService rankService = new RankService();
+        private static ParticipantsService participantsService = new ParticipantsService();
+        private static TrainingCoursesService coursesService = new TrainingCoursesService();
+        private static CustomerService customerService = new CustomerService();
+        private static StagesOfProjectService stagesOfProjectService = new StagesOfProjectService();
+        private static ProjectService projectService = new ProjectService();
+        private static UserService userService = new UserService();
+        private static DepartmentService departmentService = new DepartmentService();
+        private static IndividualsService individualsService = new IndividualsService();
+        private static RoleService roleService = new RoleService();
+        private static OrganizationService organizationService = new OrganizationService();
+        private static PositionService positionService = new PositionService();
 
-        static void SetBox(ComboBox box, object data)
+        private static void SetBox(ComboBox box, object data)
         {
             box.ItemsSource = (System.Collections.IEnumerable)data;
         }
@@ -50,7 +50,7 @@ namespace AccountingPolessUp.Helpers
         }
         public static void SetBoxUsers(ComboBox box)
         {
-            SetBox(box,userService.Get());
+            SetBox(box, userService.Get());
         }
         public static void SetBoxDepartments(ComboBox box)
         {
@@ -69,12 +69,12 @@ namespace AccountingPolessUp.Helpers
         }
         public static void SetBoxOrganizations(ComboBox box)
         {
-            SetBox(box,organizationService.Get());
+            SetBox(box, organizationService.Get());
         }
         public static void SetBoxPositions(ComboBox box)
         {
             var positions = positionService.Get();
-            if (RoleValidator.User.Role.Name!="Admin")
+            if (RoleValidator.User.Role.Name != "Admin")
             {
                 positions = positions.Where(x => RoleValidator.RoleChecker((int)x.Department.DirectorId) == true).ToList();
             }

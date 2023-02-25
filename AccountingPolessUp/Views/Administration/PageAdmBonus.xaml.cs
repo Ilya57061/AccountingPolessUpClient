@@ -16,9 +16,9 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmBonus : Page
     {
-        private readonly BonusService _bonusService = new BonusService();
-        List<Bonus> _bonuses;
-        Rank _rank;
+        private  BonusService _bonusService = new BonusService();
+        private List<Bonus> _bonuses;
+        private Rank _rank;
 
         public PageAdmBonus()
         {
@@ -49,8 +49,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
-            ButtonCancel.Visibility = Visibility.Hidden;
+            CancelFrameChecker.Cancel(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {

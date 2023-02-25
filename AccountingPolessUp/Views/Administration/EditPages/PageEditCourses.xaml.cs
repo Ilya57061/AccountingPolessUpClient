@@ -23,10 +23,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditCourses : Page
     {
-        Page _parent;
-        TrainingCoursesService _coursesService = new TrainingCoursesService();
-        TrainingCourses _cours;
-        public PageEditCourses(TrainingCourses cours, Page parent)
+       private TrainingCoursesService _coursesService = new TrainingCoursesService();
+       private TrainingCourses _cours;
+        public PageEditCourses(TrainingCourses cours)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
@@ -34,15 +33,13 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _cours = cours;
             BoxIsActive.SelectedIndex = _cours.IsActive ? 0 : 1;
             DataContext = cours;
-            _parent = parent;
         }
-        public PageEditCourses(Page parent)
+        public PageEditCourses()
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _cours = new TrainingCourses();
-            _parent = parent;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -53,6 +50,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _coursesService.Update(_cours);
                 DataGridUpdater.AdmCourses.UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
             }
             catch (Exception)
             {
@@ -68,6 +66,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _coursesService.Create(_cours);
                 DataGridUpdater.AdmCourses.UpdateDataGrid();
+                CancelFrameChecker.CreateData = true;
             }
             catch (Exception)
             {

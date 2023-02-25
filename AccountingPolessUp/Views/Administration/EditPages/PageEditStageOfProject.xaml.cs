@@ -76,6 +76,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _stagesOfProjectService.Update(_stagesOfProject);
                 DataGridUpdater.AdmStageOfProject.UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
             }
             catch (Exception)
             {
@@ -91,6 +92,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _stagesOfProjectService.Create(_stagesOfProject);
                 DataGridUpdater.AdmStudents.UpdateDataGrid();
+                CancelFrameChecker.CreateData = true;
             }
             catch (Exception)
             {

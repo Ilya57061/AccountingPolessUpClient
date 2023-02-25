@@ -66,6 +66,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _scheduleService.Update(_schedule);
                 DataGridUpdater.AdmScheduleOfClasses.UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
             }
             catch (Exception)
             {
@@ -81,6 +82,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _scheduleService.Create(_schedule);
                 DataGridUpdater.AdmScheduleOfClasses.UpdateDataGrid();
+                CancelFrameChecker.CreateData = true;
             }
             catch (Exception)
             {

@@ -43,6 +43,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _individualsService.Update(_individuals);
                 DataGridUpdater.AdmNatural.UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
             }
             catch (Exception)
             {
@@ -58,6 +59,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _individualsService.Create(_individuals);
                 DataGridUpdater.AdmNatural.UpdateDataGrid();
+                CancelFrameChecker.CreateData = true;
             }
             catch (Exception)
             {

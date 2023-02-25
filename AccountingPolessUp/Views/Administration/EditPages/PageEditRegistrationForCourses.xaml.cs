@@ -60,6 +60,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _registrationForCoursesService.Update(_registrationForCourses);
                 DataGridUpdater.AdmRegistrationForCourses.UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
             }
             catch (Exception)
             {
@@ -75,6 +76,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _registrationForCoursesService.Create(_registrationForCourses);
                 DataGridUpdater.AdmRegistrationForCourses.UpdateDataGrid();
+                CancelFrameChecker.CreateData = true;
             }
             catch (Exception)
             {

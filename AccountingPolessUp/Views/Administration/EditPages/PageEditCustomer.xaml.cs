@@ -41,6 +41,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _customerService.Update(_customer);
                 DataGridUpdater.AdmCustomer.UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
+
             }
             catch (Exception)
             {
@@ -56,6 +58,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _customerService.Create(_customer);
                 DataGridUpdater.AdmCustomer.UpdateDataGrid();
+                CancelFrameChecker.CreateData = true;
             }
             catch (Exception)
             {

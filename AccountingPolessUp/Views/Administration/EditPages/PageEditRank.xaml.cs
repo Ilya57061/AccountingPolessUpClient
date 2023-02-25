@@ -23,22 +23,22 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditRank : Page
     {
-        private RankService _RankService = new RankService();
+        private RankService _rankService = new RankService();
         private OrganizationService _organizationService = new OrganizationService();
         private List<Organization> _organizations;
-        private Rank _Rank;
+        private Rank _rank;
         private Page _parent;
 
-        public PageEditRank(Rank Rank, Page parent)
+        public PageEditRank(Rank rank, Page parent)
         {
             InitializeComponent();
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _Rank = Rank;
+            _rank = rank;
             _organizations = _organizationService.Get();
-            DataContext = Rank;
+            DataContext = rank;
             BoxOrganization.ItemsSource = _organizations;
-            BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o => o.Id == Rank.OrganizationId));
+            BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o => o.Id == rank.OrganizationId));
             _parent = parent;
             AccessChecker.AccessOpenButton(this);
         }
@@ -48,7 +48,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _organizations = _organizationService.Get();
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            _Rank = new Rank();
+            _rank = new Rank();
             DataGridUpdater.AdmRanks.UpdateDataGrid();
             BoxOrganization.ItemsSource = _organizations;
             _parent = parent;
@@ -61,8 +61,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                _RankService.Update(_Rank);
+                _rankService.Update(_rank);
                 DataGridUpdater.AdmRanks.UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
             }
             catch (Exception)
             {
@@ -76,8 +77,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 WriteData();
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                _RankService.Create(_Rank);
-                DataGridUpdater.UpdateDataGrid(_RankService.Get(), _parent);
+                _rankService.Create(_rank);
+                DataGridUpdater.UpdateDataGrid(_rankService.Get(), _parent);
+                CancelFrameChecker.CreateData = true;
             }
             catch (Exception)
             {
@@ -92,11 +94,11 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
-            _Rank.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganization.SelectedItem).Id;
-            _Rank.RankName = RankName.Text;
-            _Rank.Description = Description.Text;
-            _Rank.MaxMmr = int.Parse(MaxMmr.Text);
-            _Rank.MinMmr = int.Parse(MinMmr.Text);
+            _rank.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganization.SelectedItem).Id;
+            _rank.RankName = RankName.Text;
+            _rank.Description = Description.Text;
+            _rank.MaxMmr = int.Parse(MaxMmr.Text);
+            _rank.MinMmr = int.Parse(MinMmr.Text);
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

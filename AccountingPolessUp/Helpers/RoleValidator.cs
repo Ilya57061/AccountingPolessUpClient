@@ -1,12 +1,5 @@
 ﻿using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows;
 
 namespace AccountingPolessUp.Helpers
 {
@@ -15,7 +8,6 @@ namespace AccountingPolessUp.Helpers
         private static ParticipantsService _participantsService = new ParticipantsService();
         private static Participants _participant;
         public static User User { get; set; }
-
         public static bool RoleChecker(int id) 
         {
             _participant = _participantsService.GetByUser(User.Id);

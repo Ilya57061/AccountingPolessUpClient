@@ -66,6 +66,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _positionService.Update(_position);
                 UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
             }
             catch (Exception)
             {
@@ -81,6 +82,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _positionService.Create(_position);
                 UpdateDataGrid();
+                CancelFrameChecker.CreateData = true;
             }
             catch (Exception)
             {

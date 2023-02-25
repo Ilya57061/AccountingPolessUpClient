@@ -59,8 +59,7 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
-            ButtonCancel.Visibility = Visibility.Hidden;
+            CancelFrameChecker.Cancel(this);
         }
         private void ButtonFinalProject_Click(object sender, RoutedEventArgs e)
         {

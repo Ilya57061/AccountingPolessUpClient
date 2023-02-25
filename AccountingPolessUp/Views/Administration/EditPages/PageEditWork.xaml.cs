@@ -74,11 +74,40 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _employmentService.Update(employment);
                 DataGridUpdater.AdmWork.UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
             }
             catch (Exception)
             {
                 MessageBox.Show("Заполните все поля корректно!");
             }
+        }
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                WriteData();
+                if (FormValidator.AreAllElementsFilled(this))
+                    throw new Exception();
+                _employmentService.Create(employment);
+                DataGridUpdater.AdmWork.UpdateDataGrid();
+                CancelFrameChecker.CreateData = true;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Заполните все поля корректно!");
+            }
+        }
+        private void WriteData()
+        {
+            employment.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipants.SelectedItem).Id;
+            employment.PositionId = _positions.FirstOrDefault(i => i == BoxPosition.SelectedItem).Id;
+            employment.DateStart = DateStart.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateStart.Text);
+            employment.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
+            employment.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
+            employment.StatusDescription = StatusDescription.Text;
+            var selectedMentor = _participants.FirstOrDefault(i => i == BoxMentors.SelectedItem);
+            if (selectedMentor != null)
+                employment.IdMentor = selectedMentor.Id;
         }
         private void OpenParticipants_Click(object sender, RoutedEventArgs e)
         {
@@ -97,33 +126,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxPosition.Name;
             _parent.NavigationService.Content = new PageAdmPosition(_positions);
-        }
-        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                WriteData();
-                if (FormValidator.AreAllElementsFilled(this))
-                    throw new Exception();
-                _employmentService.Create(employment);
-                DataGridUpdater.AdmWork.UpdateDataGrid();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Заполните все поля корректно!");
-            }
-        }
-        private void WriteData()
-        {
-            employment.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipants.SelectedItem).Id;
-            employment.PositionId = _positions.FirstOrDefault(i => i == BoxPosition.SelectedItem).Id;
-            employment.DateStart = DateStart.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateStart.Text);
-            employment.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
-            employment.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
-            employment.StatusDescription = StatusDescription.Text;
-            var selectedMentor = _participants.FirstOrDefault(i => i == BoxMentors.SelectedItem);
-            if (selectedMentor != null)
-                employment.IdMentor = selectedMentor.Id;
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

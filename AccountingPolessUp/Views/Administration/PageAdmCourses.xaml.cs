@@ -58,13 +58,12 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            EditFrame.Content = new PageEditCourses(this);
+            EditFrame.Content = new PageEditCourses();
             ButtonCancel.Visibility = Visibility.Visible;
         }
         private void ButtonCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
-            ButtonCancel.Visibility = Visibility.Hidden;
+            CancelFrameChecker.Cancel(this);
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -96,7 +95,7 @@ namespace AccountingPolessUp.Views.Administration
         {
             foreach (TrainingCourses TrainingCourses in dataGrid.SelectedItems)
             {
-                EditFrame.Content = new PageEditCourses(TrainingCourses, this);
+                EditFrame.Content = new PageEditCourses(TrainingCourses);
                 break;
             }
         }

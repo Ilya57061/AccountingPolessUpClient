@@ -68,6 +68,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _educationalPortalsService.Update(_educationalPortals);
                 DataGridUpdater.AdmEducationalPortals.UpdateDataGrid();
+                CancelFrameChecker.UpdateData = true;
             }
             catch (Exception)
             {
@@ -83,6 +84,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                     throw new Exception();
                 _educationalPortalsService.Create(_educationalPortals);
                 DataGridUpdater.AdmEducationalPortals.UpdateDataGrid();
+                CancelFrameChecker.CreateData = true;
             }
             catch (Exception)
             {

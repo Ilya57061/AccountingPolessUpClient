@@ -4,10 +4,8 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -19,7 +17,7 @@ namespace AccountingPolessUp.Implementations
         {
             _webClient = new WebClient
             {
-                BaseAddress = "https://localhost:5001/",
+                BaseAddress = "https://polessu.by/polessup/",
                 Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
             };
             _webClient.Encoding = System.Text.Encoding.UTF8;
