@@ -26,7 +26,7 @@ namespace AccountingPolessUp
         private void WorkWindow_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             var focusedElement = Keyboard.FocusedElement;
-            if (focusedElement is TextBox)
+            if (focusedElement is TextBox || focusedElement is PasswordBox)
                 return;
             if (e.Key == Key.Back)
                 e.Handled = true;
