@@ -94,6 +94,7 @@
     <Compile Include="Helpers\FormValidator.cs" />
     <Compile Include="Helpers\NumberValidator.cs" />
     <Compile Include="Helpers\RoleValidator.cs" />
+    <Compile Include="Helpers\DataAccess.cs" />
     <Compile Include="Implementations\ApplicationsInTheProjectService.cs" />
     <Compile Include="Implementations\BonusService.cs" />
     <Compile Include="Implementations\CustomerService.cs" />
