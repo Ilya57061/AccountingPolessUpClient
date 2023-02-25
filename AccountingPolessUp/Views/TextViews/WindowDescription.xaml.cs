@@ -32,6 +32,12 @@ namespace AccountingPolessUp.Views.TextViews
             this.Title = bonus.BonusName;
             Text.Text = bonus.BonusDescription;
         }
+        public WindowDescription(Department department)
+        {
+            InitializeComponent();
+            this.Title = department.FullName;
+            Text.Text=department.Description;
+        }
         private void ButtonCopy_Click(object sender, RoutedEventArgs e)
         {
             if (Text != null)

@@ -5,6 +5,7 @@ using AccountingPolessUp.Views.Information;
 using AccountingPolessUp.Views.Menu;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AccountingPolessUp
 {
@@ -18,9 +19,16 @@ namespace AccountingPolessUp
         {
             _user = user;
             InitializeComponent();
+            PreviewKeyDown += WorkWindow_PreviewKeyDown;
             SetCommonUIElementsVisibility();
             MainFrame.Content = new PageProfile(user);
-
+        }
+        private void WorkWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Back)
+            {
+                e.Handled = true;
+            }
         }
         private void SetCommonUIElementsVisibility()
         {
