@@ -36,7 +36,10 @@ namespace AccountingPolessUp.Views.Administration
         }
         public void UpdateDataGrid()
         {
+
             _users = _userService.Get();
+            if (RoleValidator.User.Role.Name != "Admin")
+                _users = _users.Where(x=>x.Role.Name=="User").ToList();
             DataGridUpdater.UpdateDataGrid(_users, this);
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)

@@ -46,7 +46,7 @@ namespace AccountingPolessUp.Views.Administration
             ButtonAdd.Visibility = Visibility.Hidden;
             FilterComboBox.SetBoxUsers(BoxUser);
             FilterComboBox.SetBoxIndividuals(BoxIndividuals);
-            DataGridUpdater.UpdateDataGrid(_participants, this);
+            UpdateDataGrid();
             ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
         }
         private void ButtonRight_Click(object sender, RoutedEventArgs e)
@@ -60,6 +60,8 @@ namespace AccountingPolessUp.Views.Administration
         public void UpdateDataGrid()
         {
             _participants = _participantsService.Get();
+            if (RoleValidator.User.Role.Name != "Admin")
+                _participants = _participants.Where(x => x.User.Role.Name == "User").ToList();
             DataGridUpdater.UpdateDataGrid(_participants, this);
         }
 

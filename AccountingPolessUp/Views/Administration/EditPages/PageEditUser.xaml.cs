@@ -44,7 +44,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             InitializeComponent();
             this.user = new User();
             ButtonAdd.Visibility = Visibility.Visible;
-            roles = _roleService.Get();
+            CheckRole();
             BoxRole.ItemsSource = roles;
             BoxRole.SelectedIndex = roles.IndexOf(roles.FirstOrDefault(x => x.Id == user.RoleId));
             _parent = parent;
@@ -53,9 +53,15 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             this.user = user;
             DataContext = user;
-            roles = _roleService.Get();
+            CheckRole();
             BoxRole.ItemsSource = roles;
             BoxRole.SelectedIndex = roles.IndexOf(roles.FirstOrDefault(x => x.Id == user.RoleId));
+        }
+        private void CheckRole()
+        {
+            roles = _roleService.Get();
+            if (RoleValidator.User.Role.Name != "Admin")
+                roles = roles.Where(x => x.Name == "User").ToList();
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

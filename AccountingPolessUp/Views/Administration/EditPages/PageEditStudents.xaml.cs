@@ -25,7 +25,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditStudents : Page
     {
         Page _parent;
-        StudentService _studentService = new StudentService();
         IndividualsService _individualsService = new IndividualsService();
         List<Individuals> _individuals;
         Student _student;

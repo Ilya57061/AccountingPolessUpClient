@@ -15,7 +15,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditMembers : Page
     {
-        private ParticipantsService _participantsService = new ParticipantsService();
         private UserService _userService = new UserService();
         private IndividualsService _individualsService = new IndividualsService();
         private List<User> _users;
@@ -28,7 +27,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _parent = page;
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _users = _userService.Get();
+            CheckRole();
             _individuals = _individualsService.Get();
             _participants = participants;
             this.DataContext = participants;
@@ -46,11 +45,18 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
             _participants = new Participants();
-            _users = _userService.Get();
+            CheckRole();
             _individuals = _individualsService.Get();
             BoxIndividuals.ItemsSource = _individuals;
             BoxUser.ItemsSource = _users;
             AccessChecker.AccessOpenButton(this);
+        }
+        private void CheckRole()
+        {
+            _users = _userService.Get();
+            if (RoleValidator.User.Role.Name != "Admin")
+                _users = _users.Where(x => x.Role.Name == "User").ToList();
+
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

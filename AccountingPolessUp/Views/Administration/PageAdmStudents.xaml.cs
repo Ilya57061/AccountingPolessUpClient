@@ -3,6 +3,7 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.Views.Administration.EditPages;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -19,7 +20,7 @@ namespace AccountingPolessUp.Views.Administration
         public PageAdmStudents()
         {
             InitializeComponent();
-            DataGridUpdater.AdmStudents = this;            
+            DataGridUpdater.AdmStudents = this;
             UpdateDataGrid();
             FilterComboBox.SetBoxIndividuals(BoxIndividuals);
             ButtonDelete.Visibility = AccessChecker.AccessDeleteButton() ? Visibility.Hidden : Visibility.Visible;
