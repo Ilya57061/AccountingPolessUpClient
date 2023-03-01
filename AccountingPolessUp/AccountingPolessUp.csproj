@@ -85,6 +85,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Configurations\WebClientConfiguration.cs" />
     <Compile Include="Helpers\AccessChecker.cs" />
     <Compile Include="Helpers\CancelFrameChecker.cs" />
     <Compile Include="Helpers\DataGridUpdater.cs" />
@@ -598,6 +599,7 @@
   <ItemGroup>
     <Resource Include="external-university-online-education-flaticons-lineal-color-flat-icons.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.7.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.7.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
