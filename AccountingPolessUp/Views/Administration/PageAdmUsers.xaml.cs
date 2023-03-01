@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace AccountingPolessUp.Views.Administration
 {
@@ -39,7 +38,7 @@ namespace AccountingPolessUp.Views.Administration
 
             _users = _userService.Get();
             if (RoleValidator.User.Role.Name != "Admin")
-                _users = _users.Where(x=>x.Role.Name=="User").ToList();
+                _users = _users.Where(x => x.Role.Name == "User").ToList();
             DataGridUpdater.UpdateDataGrid(_users, this);
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)

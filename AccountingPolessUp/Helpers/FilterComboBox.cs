@@ -1,5 +1,4 @@
 ﻿using AccountingPolessUp.Implementations;
-using AccountingPolessUp.Models;
 using System.Linq;
 using System.Windows.Controls;
 
@@ -51,8 +50,8 @@ namespace AccountingPolessUp.Helpers
         public static void SetBoxUsers(ComboBox box)
         {
             var users = userService.Get();
-            if(RoleValidator.User.Role.Name != "Admin")
-                users = users.Where(x => x.Role.Name=="User").ToList();
+            if (RoleValidator.User.Role.Name != "Admin")
+                users = users.Where(x => x.Role.Name == "User").ToList();
             SetBox(box, users);
         }
         public static void SetBoxDepartments(ComboBox box)
@@ -71,7 +70,7 @@ namespace AccountingPolessUp.Helpers
             var roles = roleService.Get();
             if (RoleValidator.User.Role.Name != "Admin")
                 roles = roles.Where(x => x.Name == "User").ToList();
-           SetBox(box, roles);
+            SetBox(box, roles);
         }
         public static void SetBoxOrganizations(ComboBox box)
         {

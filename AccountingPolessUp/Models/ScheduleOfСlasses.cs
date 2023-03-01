@@ -1,6 +1,4 @@
-﻿
-using AccountingPolessUp.Models;
-using System;
+﻿using System;
 
 namespace AccountingPolessUp.Models
 {

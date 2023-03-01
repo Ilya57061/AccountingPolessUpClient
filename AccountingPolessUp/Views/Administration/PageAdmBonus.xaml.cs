@@ -6,7 +6,6 @@ using AccountingPolessUp.Views.TextViews;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 using System.Windows.Navigation;
 
 namespace AccountingPolessUp.Views.Administration
@@ -16,7 +15,7 @@ namespace AccountingPolessUp.Views.Administration
     /// </summary>
     public partial class PageAdmBonus : Page
     {
-        private  BonusService _bonusService = new BonusService();
+        private BonusService _bonusService = new BonusService();
         private List<Bonus> _bonuses;
         private Rank _rank;
 

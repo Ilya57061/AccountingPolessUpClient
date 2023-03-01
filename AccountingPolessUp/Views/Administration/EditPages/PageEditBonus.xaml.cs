@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -20,7 +19,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private List<Rank> _ranks;
         private Bonus _bonus;
         private Page _parent;
-        
+
         public PageEditBonus(Bonus bonus, Page parent)
         {
             InitializeComponent();

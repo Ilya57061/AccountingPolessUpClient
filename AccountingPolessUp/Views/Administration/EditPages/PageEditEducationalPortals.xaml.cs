@@ -53,8 +53,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                DataAccess.Update(this,_educationalPortals);
-            
+                DataAccess.Update(this, _educationalPortals);
+
             }
             catch (Exception)
             {
@@ -66,8 +66,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                DataAccess.Create(this,_educationalPortals);
-             
+                DataAccess.Create(this, _educationalPortals);
+
             }
             catch (Exception)
             {

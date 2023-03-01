@@ -4,11 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -47,7 +43,7 @@ namespace AccountingPolessUp.Implementations
 
                 throw new Exception("Ошибка при создании связи RankBonus");
             }
-          
+
         }
         public void Edit(RankBonus model)
         {

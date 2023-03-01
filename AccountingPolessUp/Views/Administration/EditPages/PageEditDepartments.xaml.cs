@@ -70,7 +70,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                DataAccess.Update(this,_department);
+                DataAccess.Update(this, _department);
             }
             catch (Exception)
             {
@@ -83,7 +83,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
                 WriteData();
                 DataAccess.Create(this, _department);
-            
+
             }
             catch (Exception)
             {

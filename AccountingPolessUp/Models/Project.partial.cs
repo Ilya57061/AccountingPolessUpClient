@@ -1,9 +1,6 @@
-﻿using System;
+﻿using AccountingPolessUp.Implementations;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AccountingPolessUp.Implementations;
 
 namespace AccountingPolessUp.Models
 {

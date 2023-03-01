@@ -1,14 +1,11 @@
 ﻿using AccountingPolessUp.Configurations;
-using AccountingPolessUp.Helpers;
 using AccountingPolessUp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -41,7 +38,7 @@ namespace AccountingPolessUp.Implementations
             var finalProject = JsonConvert.DeserializeObject<List<FinalProject>>(responseString);
             if (finalProject == null) throw new Exception("FinalProject - null");
             return finalProject;
-         
+
         }
 
         public void Create(FinalProject model)

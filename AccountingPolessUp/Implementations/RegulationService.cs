@@ -4,10 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -30,7 +27,7 @@ namespace AccountingPolessUp.Implementations
             var Info = JsonConvert.DeserializeObject<List<Regulation>>(json);
             if (Info is null) throw new Exception("Regulation - null");
             else return Info;
-        } 
+        }
 
         public void Create(Regulation model)
         {

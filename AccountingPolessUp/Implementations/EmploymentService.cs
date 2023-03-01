@@ -1,14 +1,11 @@
 ﻿using AccountingPolessUp.Configurations;
-using AccountingPolessUp.Helpers;
 using AccountingPolessUp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -40,7 +37,7 @@ namespace AccountingPolessUp.Implementations
 
                 return null;
             }
-        
+
         }
 
         public Employment GetByParticipants(int participantsId)
@@ -58,7 +55,7 @@ namespace AccountingPolessUp.Implementations
             {
                 return null;
             }
-           
+
         }
 
         public void Create(Employment model)

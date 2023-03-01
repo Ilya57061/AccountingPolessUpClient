@@ -33,7 +33,7 @@ namespace AccountingPolessUp.Helpers
             {
                 var child = VisualTreeHelper.GetChild(parent, i);
 
-                if ( child is ComboBox comboBox && comboBox.SelectedItem == null
+                if (child is ComboBox comboBox && comboBox.SelectedItem == null
                     || child is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text)
                     || child is DatePicker datePicker && string.IsNullOrEmpty(datePicker.Text))
                 {

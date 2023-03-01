@@ -4,17 +4,9 @@ using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -29,7 +21,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private FinalProject _finalProject;
         private Employment _employment;
         private Page _parent;
-        
+
         public PageEditFinalProject(FinalProject finalProject, Employment employment, Page parent)
         {
             InitializeComponent();
@@ -67,7 +59,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
                 WriteData();
                 DataAccess.Update(this, _finalProject);
-                
+
             }
             catch (Exception)
             {
@@ -80,7 +72,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
                 WriteData();
                 DataAccess.Create(this, _finalProject);
-        
+
             }
             catch (Exception)
             {

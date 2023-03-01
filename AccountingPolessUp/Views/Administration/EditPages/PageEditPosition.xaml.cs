@@ -82,7 +82,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 MessageBox.Show("Заполните все поля корректно!");
             }
         }
-      
+
         private void WriteData()
         {
             _position.FullName = Fullname.Text;

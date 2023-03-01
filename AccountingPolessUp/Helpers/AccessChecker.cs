@@ -73,7 +73,7 @@ namespace AccountingPolessUp.Helpers
                             button.Visibility = Visibility.Hidden;
                         }
                     }
-                   
+
                 }
             }
         }

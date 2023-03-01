@@ -22,7 +22,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private List<Participants> _participants;
         private Page _parent;
         private Employment employment;
-        
+
         public PageEditWork(Employment employment, Page parent)
         {
             InitializeComponent();

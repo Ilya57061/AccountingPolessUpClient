@@ -62,7 +62,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             try
             {
-                DataAccess.Update(this,_participants);
+                DataAccess.Update(this, _participants);
             }
             catch (Exception)
             {

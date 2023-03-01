@@ -1,16 +1,9 @@
 ﻿using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
-using AccountingPolessUp.Views.Administration;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace AccountingPolessUp.Helpers
 {

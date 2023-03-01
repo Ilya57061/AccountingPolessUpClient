@@ -1,17 +1,11 @@
 ﻿using AccountingPolessUp.Configurations;
 using AccountingPolessUp.Models;
-using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Xml.Linq;
 
 namespace AccountingPolessUp.Implementations
 {

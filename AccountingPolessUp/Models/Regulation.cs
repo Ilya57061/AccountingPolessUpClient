@@ -1,7 +1,4 @@
-﻿
-using AccountingPolessUp.Models;
-
-namespace AccountingPolessUp.Models
+﻿namespace AccountingPolessUp.Models
 {
     public class Regulation
     {

@@ -2,21 +2,12 @@
 using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Information
 {
@@ -50,12 +41,12 @@ namespace AccountingPolessUp.Views.Information
         }
         private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
         {
-            FilterManager.ConfirmFilter(this, Courses, Name.Text,Description.Text,DateStart.Text,DateEnd.Text,LectorFio.Text,LectorDescription.Text);
+            FilterManager.ConfirmFilter(this, Courses, Name.Text, Description.Text, DateStart.Text, DateEnd.Text, LectorFio.Text, LectorDescription.Text);
         }
         private void ButtonClear_Click(object sender, RoutedEventArgs e)
         {
             FilterManager.ClearControls(filter);
-            DataContext =Courses;
+            DataContext = Courses;
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

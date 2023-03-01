@@ -1,20 +1,9 @@
 ﻿using AccountingPolessUp.Helpers;
-using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -23,7 +12,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditCourses : Page
     {
-       private TrainingCourses _cours;
+        private TrainingCourses _cours;
         public PageEditCourses(TrainingCourses cours)
         {
             InitializeComponent();
@@ -57,7 +46,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                DataAccess.Create(this,_cours);
+                DataAccess.Create(this, _cours);
             }
             catch (Exception)
             {
