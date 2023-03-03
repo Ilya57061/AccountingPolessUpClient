@@ -36,8 +36,9 @@ namespace AccountingPolessUp.Helpers
             }
             if (CancelCheck() == false)
             {
-                MessageBoxResult result = MessageBox.Show("Данные не будут сохранены.\nПродолжить?", "Внимание!", MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.Yes)
+                var messageBoxResult = MessageBox.Show("Данные не будут сохранены.\nПродолжить?", "Внимание!", MessageBoxButton.YesNo);
+
+                if (messageBoxResult == MessageBoxResult.Yes)
                     CancelFrame();
             }
             else
