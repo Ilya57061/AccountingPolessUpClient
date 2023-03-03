@@ -19,23 +19,29 @@ namespace AccountingPolessUp.Views.Administration
     public partial class PageAdmOrganizations : Page
     {
         private readonly OrganizationService _organizationService = new OrganizationService();
+
         List<Organization> _organizations;
+
         public PageAdmOrganizations()
         {
             InitializeComponent();
-            DataGridUpdater.AdmOrganizations = this;
             UpdateDataGrid();
+
+            DataGridUpdater.AdmOrganizations = this;   
         }
         public PageAdmOrganizations(List<Organization> organizations)
         {
             InitializeComponent();
+
+            DataGridUpdater.UpdateDataGrid(_organizations, this);
             DataGridUpdater.AdmOrganizations = this;
-            ColumSelect.Visibility = Visibility.Visible;
+
             _organizations = organizations;
+
+            ColumSelect.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
             ButtonDelete.Visibility = Visibility.Hidden;
             ButtonEdit.Visibility = Visibility.Hidden;
-            DataGridUpdater.UpdateDataGrid(_organizations, this);
         }
         private void ButtonDelete_Click(object sender, RoutedEventArgs e)
         {
@@ -76,7 +82,9 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void DeleteSelectedOrganizations()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            var messageBoxResult = MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo);
+
+            if (dataGrid.SelectedItems.Count > 0 &&  messageBoxResult == MessageBoxResult.Yes)
             {
                 foreach (Organization organization in dataGrid.SelectedItems)
                 {
@@ -92,7 +100,7 @@ namespace AccountingPolessUp.Views.Administration
                 DataNavigator.UpdateValueComboBox(_organizations.FirstOrDefault(x => x.Id == organization.Id));
             }
 
-            this.NavigationService.GoBack();
+            NavigationService.GoBack();
         }
         private void EditSelectedOrganizations()
         {
