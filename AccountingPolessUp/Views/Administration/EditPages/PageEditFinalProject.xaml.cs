@@ -17,6 +17,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
         private FinalProjectService _finalProjectService = new FinalProjectService();
         private EmploymentService _employmentService = new EmploymentService();
+
         private List<Employment> _employments;
         private FinalProject _finalProject;
         private Employment _employment;
@@ -26,31 +27,40 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             InitializeComponent();
             SetEmployments();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
+
             _finalProject = finalProject;
             DataContext = finalProject;
             _employment = employment;
-            BoxEmployment.SelectedIndex = _employments.IndexOf(_employments.FirstOrDefault(p => p.Id == _finalProject.EmploymentId));
             _parent = parent;
+
+            BoxEmployment.SelectedIndex = _employments.IndexOf(_employments.FirstOrDefault(p => p.Id == _finalProject.EmploymentId));
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+
             AccessChecker.AccessOpenButton(this);
         }
         public PageEditFinalProject(Employment employment, Page parent)
         {
             InitializeComponent();
             SetEmployments();
+
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
+
             _finalProject = new FinalProject();
             _employment = employment;
             _parent = parent;
+
             AccessChecker.AccessOpenButton(this);
         }
         private void SetEmployments()
         {
             _employments = _employmentService.Get();
+
             if (RoleValidator.User.Role.Name != "Admin")
                 _employments = _employments.Where(x => RoleValidator.RoleChecker((int)x.Position.Department.DirectorId) == true).ToList();
+
             BoxEmployment.ItemsSource = _employments;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)

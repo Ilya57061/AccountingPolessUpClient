@@ -15,37 +15,49 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditScheduleOfClasses : Page
     {
-        Page _parent;
+        
+
         ScheduleOfClassesService _scheduleService = new ScheduleOfClassesService();
         TrainingCoursesService _trainingCoursesService = new TrainingCoursesService();
+
+        Page _parent;
         List<TrainingCourses> _trainingCourses;
         ScheduleOfСlasses _schedule;
+
         public PageEditScheduleOfClasses(ScheduleOfСlasses schedule, Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
+            
             _trainingCourses = _trainingCoursesService.Get();
             DataContext = schedule;
             _schedule = schedule;
+            _parent = parent;
+
             BoxTrainingCourses.ItemsSource = _trainingCourses;
             BoxTrainingCourses.SelectedIndex = _trainingCourses.IndexOf(_trainingCourses.FirstOrDefault(r => r.Id == schedule.TrainingCoursesId));
-            _parent = parent;
+           
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
         }
         public PageEditScheduleOfClasses(Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Hidden;
-            ButtonAdd.Visibility = Visibility.Visible;
+
             _schedule = new ScheduleOfСlasses();
             _trainingCourses = _trainingCoursesService.Get();
-            BoxTrainingCourses.ItemsSource = _trainingCourses;
             _parent = parent;
+
+            BoxTrainingCourses.ItemsSource = _trainingCourses;
+
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
         }
         private void OpenCourses_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxTrainingCourses.Name;
+
             _parent.NavigationService.Content = new PageAdmCourses(_trainingCourses);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -75,10 +87,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void WriteData()
         {
             _schedule.Description = Description.Text;
+            _schedule.WorkSpaceLink = WorkSpaceLink.Text;
+
+            _schedule.TrainingCoursesId = _trainingCourses.FirstOrDefault(i => i == BoxTrainingCourses.SelectedItem).Id;
+
             _schedule.DateStart = DateTime.Parse(DateStart.Text);
             _schedule.DateEnd = DateTime.Parse(DateEnd.Text);
-            _schedule.WorkSpaceLink = WorkSpaceLink.Text;
-            _schedule.TrainingCoursesId = _trainingCourses.FirstOrDefault(i => i == BoxTrainingCourses.SelectedItem).Id;
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
         {

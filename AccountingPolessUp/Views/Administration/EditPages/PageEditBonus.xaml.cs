@@ -25,12 +25,12 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             InitializeComponent();
 
-            DataContext = bonus;
-            BoxRank.ItemsSource = _ranks;
-
+            _ranks = _RankService.Get();
             _bonus = bonus;
             _parent = parent;
-            _ranks = _RankService.Get();
+            DataContext = bonus;
+
+            BoxRank.ItemsSource = _ranks;
 
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;             
@@ -55,6 +55,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxRank.Name;
+
             _parent.NavigationService.Content = new PageAdmRanks(_ranks);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -86,6 +87,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 _rankBonusService.Create(new RankBonus { RankId = _ranks.FirstOrDefault(i => i == BoxRank.SelectedItem).Id, BonusId = _bonus.Id });
+
                 DataGridUpdater.AdmBonus.UpdateDataGrid();
             }
             catch (Exception)

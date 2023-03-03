@@ -13,26 +13,33 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditIndividuals : Page
     {
-        Page _parent;
         IndividualsService _individualsService = new IndividualsService();
+
+        Page _parent;
         Individuals _individuals;
+
         public PageEditIndividuals(Individuals individuals, Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
+
             _individuals = individuals;
             DataContext = individuals;
-            BoxGender.SelectedIndex = _individuals.Gender == "Мужской" ? 0 : 1;
             _parent = parent;
+
+            BoxGender.SelectedIndex = _individuals.Gender == "Мужской" ? 0 : 1;
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
         }
         public PageEditIndividuals(Page parent)
         {
-            _parent = parent;
             InitializeComponent();
+
+            _parent = parent;
+            _individuals = new Individuals();
+
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            _individuals = new Individuals();
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -65,8 +72,9 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _individuals.FIO = FIO.Text;
             _individuals.Phone = Phone.Text;
             _individuals.Mail = Mail.Text;
-            _individuals.Gender = ((ComboBoxItem)BoxGender.SelectedItem).Content.ToString();
             _individuals.SocialNetwork = SocialNetwork.Text;
+
+            _individuals.Gender = ((ComboBoxItem)BoxGender.SelectedItem).Content.ToString();
             _individuals.DateOfBirth = DateTime.Parse(DateOfBirth.Text);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)

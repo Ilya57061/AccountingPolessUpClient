@@ -24,44 +24,57 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditApplicationsInTheProject(ApplicationsInTheProject applications, Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
+
+            
             _vacancy = _vacancyService.Get();
             _participants = _participantsService.Get();
             DataContext = applications;
             _applications = applications;
+            _parent = parent;
+
             BoxVacancy.ItemsSource = _vacancy;
             BoxParticipant.ItemsSource = _participants;
-            BoxIsAccepted.SelectedIndex = (bool)_applications.IsAccepted ? 0 : 1;
-            BoxStatus.SelectedIndex = _applications.Status == "Завершено успешно" ? 0 : _applications.Status == "В работе" ? 1 : 2;
+            
             BoxVacancy.SelectedIndex = _vacancy.IndexOf(_vacancy.FirstOrDefault(r => r.Id == applications.VacancyId));
             BoxParticipant.SelectedIndex = _participants.IndexOf(_participants.FirstOrDefault(r => r.Id == applications.ParticipantsId));
+
+            BoxIsAccepted.SelectedIndex = (bool)_applications.IsAccepted ? 0 : 1;
+            BoxStatus.SelectedIndex = _applications.Status == "Завершено успешно" ? 0 : _applications.Status == "В работе" ? 1 : 2;
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+
             AccessChecker.AccessOpenButton(this);
-            _parent = parent;
         }
         public PageEditApplicationsInTheProject(Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Hidden;
-            ButtonAdd.Visibility = Visibility.Visible;
-            _parent = parent;
+
             _applications = new ApplicationsInTheProject();
             _vacancy = _vacancyService.Get();
             _participants = _participantsService.Get();
+            _parent = parent;
+
             BoxVacancy.ItemsSource = _vacancy;
             BoxParticipant.ItemsSource = _participants;
+
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+
             AccessChecker.AccessOpenButton(this);
         }
         private void OpenVacancy_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxVacancy.Name;
+
             _parent.NavigationService.Content = new PageAdmVacancy(_vacancy);
         }
         private void OpenParticipants_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxParticipant.Name;
+
             _parent.NavigationService.Content = new PageAdmMembers(_participants);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -92,8 +105,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             _applications.Status = BoxStatus.Text;
             _applications.StatusDescription = StatusDescription.Text;
+
             _applications.IsAccepted = bool.Parse(BoxIsAccepted.Text);
             _applications.DateEntry = DateTime.Parse(DateEntry.Text);
+
             _applications.VacancyId = _vacancy.FirstOrDefault(i => i == BoxVacancy.SelectedItem).Id;
             _applications.ParticipantsId = _participants.FirstOrDefault(i => i == BoxParticipant.SelectedItem).Id;
         }

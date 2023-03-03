@@ -16,6 +16,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
         private PositionService _positionService = new PositionService();
         private DepartmentService _departmentService = new DepartmentService();
+
         private List<Department> _departments;
         private List<Position> positions;
         private Position _position;
@@ -25,36 +26,46 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             InitializeComponent();
             SetDepartments();
+
+            _parent = parent;
+            _department = department;
+            _position = position;
+            DataContext = position;
+            
+            BoxDepartment.SelectedIndex = _departments.IndexOf(_departments.FirstOrDefault(d => d.Id == position.DepartmentId));
+
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _position = position;
-            _department = department;
-            DataContext = position;
-            BoxDepartment.SelectedIndex = _departments.IndexOf(_departments.FirstOrDefault(d => d.Id == position.DepartmentId));
-            _parent = parent;
+
             AccessChecker.AccessOpenButton(this);
         }
         public PageEditPosition(Page parent)
         {
             InitializeComponent();
             SetDepartments();
-            ButtonSaveEdit.Visibility = Visibility.Hidden;
-            ButtonAdd.Visibility = Visibility.Visible;
+           
             _position = new Position();
             _parent = parent;
+
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+
             AccessChecker.AccessOpenButton(this);
         }
         private void SetDepartments()
         {
             _departments = _departmentService.Get();
+
             if (RoleValidator.User.Role.Name != "Admin")
                 _departments = _departments.Where(x => RoleValidator.RoleChecker((int)x.DirectorId) == true).ToList();
+
             BoxDepartment.ItemsSource = _departments;
         }
         private void OpenDepartments_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxDepartment.Name;
+
             _parent.NavigationService.Content = new PageAdmDepartments(_departments);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -87,6 +98,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             _position.FullName = Fullname.Text;
             _position.Description = Description.Text;
+
             _position.DepartmentId = _departments.FirstOrDefault(i => i == BoxDepartment.SelectedItem).Id;
         }
     }

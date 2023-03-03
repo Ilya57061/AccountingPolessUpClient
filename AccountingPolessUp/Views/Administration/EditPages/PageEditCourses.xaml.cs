@@ -13,21 +13,26 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditCourses : Page
     {
         private TrainingCourses _cours;
-        public PageEditCourses(TrainingCourses cours)
+        public PageEditCourses(TrainingCourses course)
         {
             InitializeComponent();
+
+            _cours = course;
+            DataContext = course;
+
+            BoxIsActive.SelectedIndex = _cours.IsActive ? 0 : 1;
+
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _cours = cours;
-            BoxIsActive.SelectedIndex = _cours.IsActive ? 0 : 1;
-            DataContext = cours;
         }
         public PageEditCourses()
         {
             InitializeComponent();
+
+            _cours = new TrainingCourses();
+
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            _cours = new TrainingCourses();
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -60,8 +65,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _cours.Link = Link.Text;
             _cours.LectorFIO = LectorFio.Text;
             _cours.LectorDescription = LectorDescription.Text;
+
             _cours.DateStart = DateTime.Parse(DateStart.Text);
             _cours.DateEnd = DateTime.Parse(DateEnd.Text);
+
             _cours.IsActive = bool.Parse(BoxIsActive.Text);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)

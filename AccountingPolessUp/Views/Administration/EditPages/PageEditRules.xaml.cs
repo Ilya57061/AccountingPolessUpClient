@@ -14,32 +14,40 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditRules : Page
     {
-        Page _parent;
         RegulationService _regulationService = new RegulationService();
         OrganizationService _organizationService = new OrganizationService();
+
+        Page _parent;
         List<Organization> _organizations;
         Regulation _regulation;
+
         public PageEditRules(Regulation regulation, Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
+
+            _organizations = _organizationService.Get();
+            _parent = parent;
             _regulation = regulation;
             DataContext = regulation;
-            _organizations = _organizationService.Get();
+          
             BoxOrganization.ItemsSource = _organizations;
             BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o => o.Id == regulation.OrganizationId));
-            _parent = parent;
+            
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
         }
         public PageEditRules(Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Hidden;
-            ButtonAdd.Visibility = Visibility.Visible;
+           
             _regulation = new Regulation();
             _organizations = _organizationService.Get();
-            BoxOrganization.ItemsSource = _organizations;
             _parent = parent;
+
+            BoxOrganization.ItemsSource = _organizations;
+
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -69,6 +77,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxOrganization.Name;
+
             _parent.NavigationService.Content = new PageAdmOrganizations(_organizations);
         }
         private void WriteData()
@@ -76,6 +85,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _regulation.Text = Text.Text;
             _regulation.Name = Name.Text;
             _regulation.Description = Description.Text;
+
             _regulation.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganization.SelectedItem).Id;
         }
     }

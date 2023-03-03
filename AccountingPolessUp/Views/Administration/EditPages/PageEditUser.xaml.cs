@@ -18,48 +18,61 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
         private UserService _userService = new UserService();
         private RoleService _roleService = new RoleService();
+
         private List<Role> roles;
-        private User user;
+        private User _user;
         private Page _parent;
 
         public PageEditUser(User user, Page parent)
         {
             InitializeComponent();
-            Password.IsEnabled = false;
             FillDataContext(user);
-            ButtonSaveEdit.Visibility = Visibility.Visible;
+
             _parent = parent;
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+
+            Password.IsEnabled = false;
         }
         public PageEditUser(User user, bool changePassword, Page parent)
         {
             InitializeComponent();
-            _parent = parent;
             FillDataContext(user);
+
+            _parent = parent;
+            
             ButtonEditPassword.Visibility = Visibility.Visible;
+
             Login.IsEnabled = false;
             BoxRole.IsEnabled = false;
         }
         public PageEditUser(Page parent)
         {
             InitializeComponent();
-            this.user = new User();
-            ButtonAdd.Visibility = Visibility.Visible;
             CheckRole();
-            BoxRole.ItemsSource = roles;
-            BoxRole.SelectedIndex = roles.IndexOf(roles.FirstOrDefault(x => x.Id == user.RoleId));
+
+            _user = new User();
             _parent = parent;
+
+            BoxRole.ItemsSource = roles;
+            BoxRole.SelectedIndex = roles.IndexOf(roles.FirstOrDefault(x => x.Id == _user.RoleId));
+            
+            ButtonAdd.Visibility = Visibility.Visible;
         }
         private void FillDataContext(User user)
         {
-            this.user = user;
-            DataContext = user;
             CheckRole();
+
+            _user = user;
+            DataContext = user;
+
             BoxRole.ItemsSource = roles;
             BoxRole.SelectedIndex = roles.IndexOf(roles.FirstOrDefault(x => x.Id == user.RoleId));
         }
         private void CheckRole()
         {
             roles = _roleService.Get();
+
             if (RoleValidator.User.Role.Name != "Admin")
                 roles = roles.Where(x => x.Name == "User").ToList();
         }
@@ -68,7 +81,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                DataAccess.Update(this, user);
+                DataAccess.Update(this, _user);
             }
             catch (Exception)
             {
@@ -81,10 +94,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
                 if (FormValidator.AreAllElementsFilled(this))
                     throw new Exception();
-                RegisterDto registerDto = new RegisterDto();
-                registerDto.Login = Login.Text;
-                registerDto.Password = Password.Password;
-                registerDto.RoleId = roles.FirstOrDefault(x => x == BoxRole.SelectedItem).Id;
+
+                RegisterDto registerDto = new RegisterDto
+                {
+                    Login = Login.Text,
+                    Password = Password.Password,
+                    RoleId = roles.FirstOrDefault(x => x == BoxRole.SelectedItem).Id
+                };
+
                 _userService.Create(registerDto);
                 DataGridUpdater.AdmUsers.UpdateDataGrid();
                 CancelFrameChecker.CreateData = true;
@@ -102,12 +119,15 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 if (string.IsNullOrEmpty(Password.Password))
                     throw new Exception();
 
-                UpdatePasswordDto upPassword = new UpdatePasswordDto();
-                upPassword.Id = user.Id;
-                upPassword.Password = Password.Password;
+                UpdatePasswordDto upPassword = new UpdatePasswordDto
+                {
+                    Id = _user.Id,
+                    Password = Password.Password
+                };
+
                 _userService.UpdatePassword(upPassword);
                 DataGridUpdater.AdmUsers.UpdateDataGrid();
-                this.NavigationService.GoBack();
+                NavigationService.GoBack();
                 MessageBox.Show("Пароль изменен!");
             }
             catch (Exception)
@@ -117,8 +137,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
-            user.Login = Login.Text;
-            user.RoleId = roles.FirstOrDefault(x => x == BoxRole.SelectedItem).Id;
+            _user.Login = Login.Text;
+            _user.RoleId = roles.FirstOrDefault(x => x == BoxRole.SelectedItem).Id;
         }
     }
 }
