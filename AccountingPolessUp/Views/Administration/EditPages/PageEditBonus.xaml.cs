@@ -16,6 +16,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
         private RankService _RankService = new RankService();
         private RankBonusService _rankBonusService = new RankBonusService();
+
         private List<Rank> _ranks;
         private Bonus _bonus;
         private Page _parent;
@@ -23,24 +24,30 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditBonus(Bonus bonus, Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
-            _ranks = _RankService.Get();
+
             DataContext = bonus;
+            BoxRank.ItemsSource = _ranks;
+
             _bonus = bonus;
             _parent = parent;
-            BoxRank.ItemsSource = _ranks;
+            _ranks = _RankService.Get();
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;             
         }
         public PageEditBonus(Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Hidden;
-            ButtonAdd.Visibility = Visibility.Visible;
+ 
             _bonus = new Bonus();
             _ranks = _RankService.Get();
             _parent = parent;
+
             BoxRank.ItemsSource = _ranks;
-            _parent = parent;
+
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+
             ButtonSaveRankBonus.IsEnabled = false;
             ButtonDeleteRankBonus.IsEnabled = false;
         }
@@ -68,7 +75,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
                 WriteData();
                 DataAccess.Create(this, _bonus);
-
             }
             catch (Exception)
             {
