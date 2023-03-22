@@ -107,7 +107,6 @@ namespace AccountingPolessUp.Views.Administration.EditPages
                 upPassword.Password = Password.Password;
                 _userService.UpdatePassword(upPassword);
                 DataGridUpdater.AdmUsers.UpdateDataGrid();
-                this.NavigationService.GoBack();
                 MessageBox.Show("Пароль изменен!");
             }
             catch (Exception)
