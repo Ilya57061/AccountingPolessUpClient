@@ -3,20 +3,10 @@ using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -27,38 +17,49 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
         private VacancyService _vacancyService = new VacancyService();
         private StagesOfProjectService _stagesOfProjectService = new StagesOfProjectService();
+
         private List<StagesOfProject> _stagesOfProjects;
         private Vacancy _vacancy;
         private Page _parent;
         public PageEditVacancy(Vacancy vacancy, Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
+
+            _stagesOfProjects = _stagesOfProjectService.Get();
             _vacancy = vacancy;
             DataContext = vacancy;
-            IsOpened.SelectedIndex = _vacancy.isOpened ? 0 : 1;
-            _stagesOfProjects = _stagesOfProjectService.Get();
+            _parent = parent;
+           
             BoxStagesOfProject.ItemsSource = _stagesOfProjects;
             BoxStagesOfProject.SelectedIndex = _stagesOfProjects.IndexOf(_stagesOfProjects.FirstOrDefault(s => s.Id == vacancy.StagesOfProjectId));
-            _parent = parent;
+
+            IsOpened.SelectedIndex = _vacancy.isOpened ? 0 : 1;
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+
             AccessChecker.AccessOpenButton(this);
         }
         public PageEditVacancy(Page parent)
         {
             InitializeComponent();
+
+            _vacancy = new Vacancy();
+            _stagesOfProjects = _stagesOfProjectService.Get();   
             _parent = parent;
+                
+            BoxStagesOfProject.ItemsSource = _stagesOfProjects;
+
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            _vacancy = new Vacancy();
-            _stagesOfProjects = _stagesOfProjectService.Get();
-            BoxStagesOfProject.ItemsSource = _stagesOfProjects;
+
             AccessChecker.AccessOpenButton(this);
         }
         private void OpenStages_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxStagesOfProject.Name;
+
             _parent.NavigationService.Content = new PageAdmStageOfProject(_stagesOfProjects);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -90,10 +91,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _vacancy.Name = Name.Text;
             _vacancy.Descriptions = Descriptions.Text;
             _vacancy.Responsibilities = Responsibilities.Text;
+
             _vacancy.DateStart = DateTime.Parse(DateStart.Text);
             _vacancy.DateEnd = DateEnd.Text == "" ? DateTime.Parse("1970/01/01") : DateTime.Parse(DateEnd.Text);
+
             _vacancy.StagesOfProjectId = _stagesOfProjects.FirstOrDefault(i => i == BoxStagesOfProject.SelectedItem).Id;
+
             _vacancy.isOpened = bool.Parse(IsOpened.Text);
+
             _vacancy.Budget = double.TryParse(Budget.Text.Replace('.', ','), out var pr) ? pr : (double?)null;
             _vacancy.RatingCoefficient = double.TryParse(RatingCoefficient.Text.Replace('.', ','), out var rc) ? rc : (double?)null;
         }

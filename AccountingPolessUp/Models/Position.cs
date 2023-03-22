@@ -1,8 +1,4 @@
-﻿
-using AccountingPolessUp.Models;
-using System.Collections.Generic;
-
-namespace AccountingPolessUp.Models
+﻿namespace AccountingPolessUp.Models
 {
     public class Position
     {

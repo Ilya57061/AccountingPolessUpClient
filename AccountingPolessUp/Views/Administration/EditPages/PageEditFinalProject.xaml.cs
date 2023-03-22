@@ -4,17 +4,9 @@ using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -25,40 +17,50 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
         private FinalProjectService _finalProjectService = new FinalProjectService();
         private EmploymentService _employmentService = new EmploymentService();
+
         private List<Employment> _employments;
         private FinalProject _finalProject;
         private Employment _employment;
         private Page _parent;
-        
+
         public PageEditFinalProject(FinalProject finalProject, Employment employment, Page parent)
         {
             InitializeComponent();
             SetEmployments();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
+
             _finalProject = finalProject;
             DataContext = finalProject;
             _employment = employment;
-            BoxEmployment.SelectedIndex = _employments.IndexOf(_employments.FirstOrDefault(p => p.Id == _finalProject.EmploymentId));
             _parent = parent;
+
+            BoxEmployment.SelectedIndex = _employments.IndexOf(_employments.FirstOrDefault(p => p.Id == _finalProject.EmploymentId));
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+
             AccessChecker.AccessOpenButton(this);
         }
         public PageEditFinalProject(Employment employment, Page parent)
         {
             InitializeComponent();
             SetEmployments();
+
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
+
             _finalProject = new FinalProject();
             _employment = employment;
             _parent = parent;
+
             AccessChecker.AccessOpenButton(this);
         }
         private void SetEmployments()
         {
             _employments = _employmentService.Get();
+
             if (RoleValidator.User.Role.Name != "Admin")
                 _employments = _employments.Where(x => RoleValidator.RoleChecker((int)x.Position.Department.DirectorId) == true).ToList();
+
             BoxEmployment.ItemsSource = _employments;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -67,7 +69,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
                 WriteData();
                 DataAccess.Update(this, _finalProject);
-                
+
             }
             catch (Exception)
             {
@@ -80,7 +82,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             {
                 WriteData();
                 DataAccess.Create(this, _finalProject);
-        
+
             }
             catch (Exception)
             {

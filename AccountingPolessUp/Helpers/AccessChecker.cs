@@ -11,20 +11,16 @@ namespace AccountingPolessUp.Helpers
 
         public static int ApplicationsInTheProjectCheck(int participantId)
         {
-            return (int)_employmentService.GetByParticipants(participantId).Position.Department.DirectorId;
+            var directorId = _employmentService.GetByParticipants(participantId).Position.Department.DirectorId ?? -1;
+
+            return directorId;
         }
+
         public static bool AccessDeleteButton()
         {
-            switch (RoleValidator.User.Role.Name)
-            {
-                case "GlobalPm":
-                case "Director":
-                case "DirectorOrganizational":
-                case "LocalPm":
-                    return true;
-                default: return false;
-            }
+            return AccessRoles();
         }
+
         public static bool AccessEditButton(Page page)
         {
             switch (RoleValidator.User.Role.Name)
@@ -34,11 +30,8 @@ namespace AccountingPolessUp.Helpers
                         return false;
                     else
                         return true;
-                case "Director":
-                case "DirectorOrganizational":
-                case "LocalPm":
-                    return true;
-                default: return false;
+
+                default: return AccessRoles();
             }
         }
         public static bool AccessAddButton(Page page)
@@ -50,11 +43,8 @@ namespace AccountingPolessUp.Helpers
                         return false;
                     else
                         return true;
-                case "Director":
-                case "DirectorOrganizational":
-                case "LocalPm":
-                    return true;
-                default: return false;
+
+                default: return AccessRoles();
             }
         }
         public static void AccessOpenButton(Page page)
@@ -73,8 +63,22 @@ namespace AccountingPolessUp.Helpers
                             button.Visibility = Visibility.Hidden;
                         }
                     }
-                   
+
                 }
+            }
+        }
+
+        private static bool AccessRoles()
+        {
+            switch (RoleValidator.User.Role.Name)
+            {
+                case "GlobalPm":
+                case "Director":
+                case "DirectorOrganizational":
+                case "LocalPm":
+                    return true;
+
+                default: return false;
             }
         }
     }

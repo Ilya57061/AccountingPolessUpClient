@@ -1,20 +1,9 @@
 ﻿using AccountingPolessUp.Helpers;
-using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -23,22 +12,27 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     /// </summary>
     public partial class PageEditCourses : Page
     {
-       private TrainingCourses _cours;
-        public PageEditCourses(TrainingCourses cours)
+        private TrainingCourses _cours;
+        public PageEditCourses(TrainingCourses course)
         {
             InitializeComponent();
+
+            _cours = course;
+            DataContext = course;
+
+            BoxIsActive.SelectedIndex = _cours.IsActive ? 0 : 1;
+
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _cours = cours;
-            BoxIsActive.SelectedIndex = _cours.IsActive ? 0 : 1;
-            DataContext = cours;
         }
         public PageEditCourses()
         {
             InitializeComponent();
+
+            _cours = new TrainingCourses();
+
             ButtonSaveEdit.Visibility = Visibility.Hidden;
             ButtonAdd.Visibility = Visibility.Visible;
-            _cours = new TrainingCourses();
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {
@@ -57,7 +51,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                DataAccess.Create(this,_cours);
+                DataAccess.Create(this, _cours);
             }
             catch (Exception)
             {
@@ -71,8 +65,10 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             _cours.Link = Link.Text;
             _cours.LectorFIO = LectorFio.Text;
             _cours.LectorDescription = LectorDescription.Text;
+
             _cours.DateStart = DateTime.Parse(DateStart.Text);
             _cours.DateEnd = DateTime.Parse(DateEnd.Text);
+
             _cours.IsActive = bool.Parse(BoxIsActive.Text);
         }
         private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)

@@ -4,17 +4,9 @@ using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -25,6 +17,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
         private RankService _rankService = new RankService();
         private OrganizationService _organizationService = new OrganizationService();
+
         private List<Organization> _organizations;
         private Rank _rank;
         private Page _parent;
@@ -32,26 +25,34 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditRank(Rank rank, Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
-            _rank = rank;
+
             _organizations = _organizationService.Get();
+            _rank = rank;
             DataContext = rank;
+            _parent = parent;
+
             BoxOrganization.ItemsSource = _organizations;
             BoxOrganization.SelectedIndex = _organizations.IndexOf(_organizations.FirstOrDefault(o => o.Id == rank.OrganizationId));
-            _parent = parent;
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+
             AccessChecker.AccessOpenButton(this);
         }
         public PageEditRank(Page parent)
         {
             InitializeComponent();
-            _organizations = _organizationService.Get();
-            ButtonSaveEdit.Visibility = Visibility.Hidden;
-            ButtonAdd.Visibility = Visibility.Visible;
+
+            _organizations = _organizationService.Get();    
             _rank = new Rank();
+            _parent = parent;
+
             DataGridUpdater.AdmRanks.UpdateDataGrid();
             BoxOrganization.ItemsSource = _organizations;
-            _parent = parent;
+
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+
             AccessChecker.AccessOpenButton(this);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -84,13 +85,16 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxOrganization.Name;
+
             _parent.NavigationService.Content = new PageAdmOrganizations(_organizations);
         }
         private void WriteData()
         {
             _rank.OrganizationId = _organizations.FirstOrDefault(i => i == BoxOrganization.SelectedItem).Id;
+
             _rank.RankName = RankName.Text;
             _rank.Description = Description.Text;
+
             _rank.MaxMmr = int.Parse(MaxMmr.Text);
             _rank.MinMmr = int.Parse(MinMmr.Text);
         }

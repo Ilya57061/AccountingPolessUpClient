@@ -1,7 +1,4 @@
-﻿
-
-using AccountingPolessUp.Models;
-using System;
+﻿using System;
 
 namespace AccountingPolessUp.Models
 {
@@ -13,7 +10,7 @@ namespace AccountingPolessUp.Models
         public Participants Participants { get; set; }
         public int TrainingCoursesId { get; set; }
         public TrainingCourses TrainingCourses { get; set; }
-       
+
 
     }
 }

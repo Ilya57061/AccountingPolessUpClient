@@ -4,18 +4,9 @@ using AccountingPolessUp.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp.Views.Administration.EditPages
 {
@@ -31,25 +22,30 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditStudents(Student student, Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
+
+            _individuals = _individualsService.Get();
             _student = student;
             DataContext = student;
-            _individuals = _individualsService.Get();
+            _parent = parent;
+            
             BoxIndividuals.ItemsSource = _individuals;
             BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == student.IndividualsId));
-            _parent = parent;
+            
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+
             AccessChecker.AccessOpenButton(this);
         }
         public PageEditStudents(Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Hidden;
-            ButtonAdd.Visibility = Visibility.Visible;
+           
             _student = new Student();
             _individuals = _individualsService.Get();
-            BoxIndividuals.ItemsSource = _individuals;
             _parent = parent;
+
+            BoxIndividuals.ItemsSource = _individuals;
+           
             AccessChecker.AccessOpenButton(this);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -68,6 +64,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxIndividuals.Name;
+
             _parent.NavigationService.Content = new PageAdmNatural(_individuals);
         }
         private void ButtonAdd_Click(object sender, RoutedEventArgs e)
@@ -84,11 +81,14 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         }
         private void WriteData()
         {
-            _student.StudentCard = long.Parse(StudentCard.Text);
-            _student.Group = Group.Text;
-            _student.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
-            _student.CourseNumber = int.Parse(CourseNumber.Text);
             _student.University = University.Text;
+            _student.Group = Group.Text;
+
+            _student.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
+
+            _student.StudentCard = long.Parse(StudentCard.Text);
+            _student.CourseNumber = int.Parse(CourseNumber.Text);
+ 
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {

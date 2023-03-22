@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.Net;
-using System.Net.Http;
-using System.Text;
+﻿using AccountingPolessUp.Configurations;
 using AccountingPolessUp.Models;
 using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Specialized;
+using System.Net;
+using System.Text;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -18,9 +18,10 @@ namespace AccountingPolessUp.Implementations
         {
             _webClient = new WebClient
             {
-                BaseAddress = "https://polessu.by/polessup/",
+                BaseAddress = WebClientConfiguration.BaseAdress,
+                Headers = WebClientConfiguration.Headers,
+                Encoding = WebClientConfiguration.Encoding
             };
-            _webClient.Encoding = System.Text.Encoding.UTF8;
         }
 
         public User Login(LoginDto loginModel)

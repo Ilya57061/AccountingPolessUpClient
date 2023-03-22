@@ -101,7 +101,9 @@ namespace AccountingPolessUp.Views.Administration
         }
         private void DeleteSelectedPositions()
         {
-            if (dataGrid.SelectedItems.Count > 0 && MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            var messageBoxResult = MessageBox.Show("Подтвердить удаление", "Удаление", MessageBoxButton.YesNo);
+
+            if (dataGrid.SelectedItems.Count > 0 && messageBoxResult == MessageBoxResult.Yes)
             {
                 foreach (Position position in dataGrid.SelectedItems)
                 {

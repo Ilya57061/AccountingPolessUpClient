@@ -1,6 +1,4 @@
-﻿
-using AccountingPolessUp.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace AccountingPolessUp.Models
@@ -10,7 +8,7 @@ namespace AccountingPolessUp.Models
         public int Id { get; set; }
         public string Fullname { get; set; } = string.Empty;
         public string Status { get; set; } = string.Empty;
-        public DateTime DateStart { get; set; } 
+        public DateTime DateStart { get; set; }
         public DateTime DateEnd { get; set; }
         public string Description { get; set; } = string.Empty;
         public string TechnicalSpecification { get; set; } = string.Empty;

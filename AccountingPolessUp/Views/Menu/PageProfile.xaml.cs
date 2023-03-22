@@ -1,20 +1,10 @@
 ﻿using AccountingPolessUp.Implementations;
 using AccountingPolessUp.Models;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace AccountingPolessUp
 {
@@ -54,66 +44,66 @@ namespace AccountingPolessUp
             catch (Exception)
             {
 
-                UserName.Text = "Нет данных";
-                InfoDateStart.Text = "Дата вступления: Нет данных";
-                InfoDayCount.Text = "Стаж: Нет данных";
-                InfoGitHub.Text = "Нет данных";
+                //UserName.Text = "Нет данных";
+                //InfoDateStart.Text = "Дата вступления: Нет данных";
+                //InfoDayCount.Text = "Стаж: Нет данных";
+                //InfoGitHub.Text = "Нет данных";
 
-                InfoMale.Text = "Гендер: Нет данных";
-                InfoBirthday.Text = "Дата рождения: Нет данных";
-                InfoPhone.Text = "Мобильный телефон: Нет данных";
-                InfoMail.Text = "Нет данных";
-                InfoSocial.Text = "Нет данных";
+                //InfoMale.Text = "Гендер: Нет данных";
+                //InfoBirthday.Text = "Дата рождения: Нет данных";
+                //InfoPhone.Text = "Мобильный телефон: Нет данных";
+                //InfoMail.Text = "Нет данных";
+                //InfoSocial.Text = "Нет данных";
 
-                InfoUniversity.Text = "Учебное заведение: Нет данных";
-                InfoStudyNumber.Text = "Студенческий билет: Нет данных";
-                InfoGroup.Text = "Группа: Нет данных";
-                InfoKurs.Text = "Курс: Нет данных";
+                //InfoUniversity.Text = "Учебное заведение: Нет данных";
+                //InfoStudyNumber.Text = "Студенческий билет: Нет данных";
+                //InfoGroup.Text = "Группа: Нет данных";
+                //InfoKurs.Text = "Курс: Нет данных";
             }
 
         }
 
         private void SetBasicRatingBar()
         {
-            if (_participant.Mmr >= 100 && _participant.Mmr < 1000)
-            { BasicRatingBar.Value = 2; InfoRank.Text = "Ранг: Джун"; }
-            else if (_participant.Mmr >= 1000 && _participant.Mmr < 4000)
-            { BasicRatingBar.Value = 3; InfoRank.Text = "Ранг: Мидл"; }
-            else if (_participant.Mmr >= 4000)
-            { BasicRatingBar.Value = 4; InfoRank.Text = "Ранг: Сеньёр"; }
-            else
-            {
-                BasicRatingBar.Value = 1; InfoRank.Text = "Ранг: Стажер";
-            }
+        //    if (_participant.Mmr >= 100 && _participant.Mmr < 1000)
+        //    { BasicRatingBar.Value = 2; InfoRank.Text = "Ранг: Джун"; }
+        //    else if (_participant.Mmr >= 1000 && _participant.Mmr < 4000)
+        //    { BasicRatingBar.Value = 3; InfoRank.Text = "Ранг: Мидл"; }
+        //    else if (_participant.Mmr >= 4000)
+        //    { BasicRatingBar.Value = 4; InfoRank.Text = "Ранг: Сеньёр"; }
+        //    else
+        //    {
+        //        BasicRatingBar.Value = 1; InfoRank.Text = "Ранг: Стажер";
+        //    }
         }
         private void HyperlinkGitHub_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Process.Start(_participant.GitHub);
+            //try
+            //{
+            //    Process.Start(_participant.GitHub);
 
-            }
-            catch (Exception)
-            {
-                HyperlinkGitHub.IsEnabled = false;
-                InfoGitHub.Foreground = new SolidColorBrush(Colors.Gray);
-            }
+            //}
+            //catch (Exception)
+            //{
+            //    HyperlinkGitHub.IsEnabled = false;
+            //    InfoGitHub.Foreground = new SolidColorBrush(Colors.Gray);
+            //}
         }
         private void HyperlinkMail_Click(object sender, RoutedEventArgs e)
         {
-            Clipboard.SetText(_participant.Individuals.Mail);
+            //Clipboard.SetText(_participant.Individuals.Mail);
         }
         private void HyperlinkSocial_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                Process.Start(_participant.Individuals.SocialNetwork);
-            }
-            catch (Exception)
-            {
-                HyperlinkSocial.IsEnabled = false;
-                InfoSocial.Foreground = new SolidColorBrush(Colors.Gray);
-            }
+            //try
+            //{
+            //    Process.Start(_participant.Individuals.SocialNetwork);
+            //}
+            //catch (Exception)
+            //{
+            //    HyperlinkSocial.IsEnabled = false;
+            //    InfoSocial.Foreground = new SolidColorBrush(Colors.Gray);
+            //}
         }
     }
 }

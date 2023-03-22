@@ -18,19 +18,24 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditCustomer(Customer customer, Page parent)
         {
             InitializeComponent();
+
+            _customer = customer;
+            _parent = parent;
+            DataContext = customer;
+
             ButtonSaveEdit.Visibility = Visibility.Visible;
             ButtonAdd.Visibility = Visibility.Hidden;
-            _customer = customer;
-            DataContext = customer;
-            _parent = parent;
         }
         public PageEditCustomer(Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Hidden;
-            ButtonAdd.Visibility = Visibility.Visible;
+
+           
             _customer = new Customer();
             _parent = parent;
+
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
         {

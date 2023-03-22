@@ -17,6 +17,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     {
         private UserService _userService = new UserService();
         private IndividualsService _individualsService = new IndividualsService();
+
         private List<User> _users;
         private List<Individuals> _individuals;
         private Page _parent;
@@ -24,36 +25,47 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         public PageEditMembers(Participants participants, Page page)
         {
             InitializeComponent();
-            _parent = page;
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
             CheckRole();
+
             _individuals = _individualsService.Get();
+            _parent = page;
             _participants = participants;
-            this.DataContext = participants;
-            BoxStatus.SelectedIndex = participants.Status == "Активный" ? 0 : 1;
-            BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == participants.IndividualsId));
-            BoxUser.SelectedIndex = _users.IndexOf(_users.FirstOrDefault(p => p.Id == participants.UserId));
+            DataContext = participants;
+
             BoxIndividuals.ItemsSource = _individuals;
             BoxUser.ItemsSource = _users;
+
+            BoxIndividuals.SelectedIndex = _individuals.IndexOf(_individuals.FirstOrDefault(p => p.Id == participants.IndividualsId));
+            BoxUser.SelectedIndex = _users.IndexOf(_users.FirstOrDefault(p => p.Id == participants.UserId));
+           
+            BoxStatus.SelectedIndex = participants.Status == "Активный" ? 0 : 1;
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+
             AccessChecker.AccessOpenButton(this);
         }
         public PageEditMembers(Page page)
         {
             InitializeComponent();
-            _parent = page;
-            ButtonSaveEdit.Visibility = Visibility.Hidden;
-            ButtonAdd.Visibility = Visibility.Visible;
-            _participants = new Participants();
             CheckRole();
+
+            _participants = new Participants();
             _individuals = _individualsService.Get();
+            _parent = page;      
+            
             BoxIndividuals.ItemsSource = _individuals;
             BoxUser.ItemsSource = _users;
+
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+
             AccessChecker.AccessOpenButton(this);
         }
         private void CheckRole()
         {
             _users = _userService.Get();
+
             if (RoleValidator.User.Role.Name != "Admin")
                 _users = _users.Where(x => x.Role.Name == "User").ToList();
 
@@ -62,7 +74,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             try
             {
-                DataAccess.Update(this,_participants);
+                DataAccess.Update(this, _participants);
             }
             catch (Exception)
             {
@@ -86,22 +98,27 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxIndividuals.Name;
+
             _parent.NavigationService.Content = new PageAdmNatural(_individuals);
         }
         private void OpenUser_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxUser.Name;
+
             _parent.NavigationService.Content = new PageAdmUsers(_users);
         }
         private void WriteData()
-        {
-            _participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
+        {    
             _participants.Mmr = int.Parse(Mmr.Text);
-            _participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
-            _participants.DateEntry = DateTime.Parse(DateEntry.Text);
-            _participants.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
             _participants.GitHub = GitHub.Text;
+
+            _participants.IndividualsId = _individuals.FirstOrDefault(i => i == BoxIndividuals.SelectedItem).Id;
+            _participants.UserId = _users.FirstOrDefault(i => i == BoxUser.SelectedItem).Id;
+    
+            _participants.Status = ((ComboBoxItem)BoxStatus.SelectedItem).Content.ToString();
+           
+            _participants.DateEntry = DateTime.Parse(DateEntry.Text);
             _participants.DateExit = DateTime.TryParse(DateExit.Text, out var dateExitResult) ? dateExitResult : (DateTime?)null;
         }
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.RightsManagement;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
 
 namespace AccountingPolessUp.Helpers
@@ -42,8 +36,9 @@ namespace AccountingPolessUp.Helpers
             }
             if (CancelCheck() == false)
             {
-                MessageBoxResult result = MessageBox.Show("Данные не будут сохранены.\nПродолжить?", "Внимание!", MessageBoxButton.YesNo);
-                if (result == MessageBoxResult.Yes)
+                var messageBoxResult = MessageBox.Show("Данные не будут сохранены.\nПродолжить?", "Внимание!", MessageBoxButton.YesNo);
+
+                if (messageBoxResult == MessageBoxResult.Yes)
                     CancelFrame();
             }
             else

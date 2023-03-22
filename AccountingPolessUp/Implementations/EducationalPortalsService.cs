@@ -1,12 +1,10 @@
-﻿using AccountingPolessUp.Models;
+﻿using AccountingPolessUp.Configurations;
+using AccountingPolessUp.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -17,10 +15,10 @@ namespace AccountingPolessUp.Implementations
         {
             _webClient = new WebClient
             {
-                BaseAddress = "https://polessu.by/polessup/",
-                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+                BaseAddress = WebClientConfiguration.BaseAdress,
+                Headers = WebClientConfiguration.Headers,
+                Encoding = WebClientConfiguration.Encoding
             };
-            _webClient.Encoding = System.Text.Encoding.UTF8;
         }
 
         public List<EducationalPortals> Get()

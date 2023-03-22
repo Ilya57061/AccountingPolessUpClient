@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace AccountingPolessUp.Models
 {
@@ -14,7 +13,7 @@ namespace AccountingPolessUp.Models
         public double? Budget { get; set; }
         public double? RatingCoefficient { get; set; }
         public StagesOfProject StagesOfProject { get; set; }
-        public int StagesOfProjectId { get; set; } 
+        public int StagesOfProjectId { get; set; }
         public bool isOpened { get; set; }
     }
 }

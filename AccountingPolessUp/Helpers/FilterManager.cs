@@ -1,11 +1,8 @@
 using AccountingPolessUp.Models;
-using MaterialDesignThemes.Wpf;
-using MaterialDesignThemes.Wpf.Internal;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net;
 using System.Windows.Controls;
 
 namespace AccountingPolessUp.Helpers

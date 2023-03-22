@@ -15,37 +15,47 @@ namespace AccountingPolessUp.Views.Administration.EditPages
     public partial class PageEditEducationalPortals : Page
     {
         private DepartmentService _departmentService = new DepartmentService();
+
         private List<Department> _department;
         private EducationalPortals _educationalPortals;
         private Page _parent;
         public PageEditEducationalPortals(EducationalPortals educationalPortals, Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Visible;
-            ButtonAdd.Visibility = Visibility.Hidden;
+            
             _department = _departmentService.Get();
             DataContext = educationalPortals;
             _educationalPortals = educationalPortals;
+            _parent = parent;
+
             BoxDepartment.ItemsSource = _department;
             BoxDepartment.SelectedIndex = _department.IndexOf(_department.FirstOrDefault(r => r.Id == educationalPortals.DepartmentId));
-            _parent = parent;
+
+            ButtonSaveEdit.Visibility = Visibility.Visible;
+            ButtonAdd.Visibility = Visibility.Hidden;
+
             AccessChecker.AccessOpenButton(this);
         }
         public PageEditEducationalPortals(Page parent)
         {
             InitializeComponent();
-            ButtonSaveEdit.Visibility = Visibility.Hidden;
-            ButtonAdd.Visibility = Visibility.Visible;
+           
             _educationalPortals = new EducationalPortals();
             _department = _departmentService.Get();
-            BoxDepartment.ItemsSource = _department;
             _parent = parent;
+
+            BoxDepartment.ItemsSource = _department;
+
+            ButtonSaveEdit.Visibility = Visibility.Hidden;
+            ButtonAdd.Visibility = Visibility.Visible;
+
             AccessChecker.AccessOpenButton(this);
         }
         private void OpenDepartments_Click(object sender, RoutedEventArgs e)
         {
             DataNavigator.ChangePage = this;
             DataNavigator.NameBox = BoxDepartment.Name;
+
             _parent.NavigationService.Content = new PageAdmDepartments(_department);
         }
         private void ButtonSaveEdit_Click(object sender, RoutedEventArgs e)
@@ -53,8 +63,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                DataAccess.Update(this,_educationalPortals);
-            
+                DataAccess.Update(this, _educationalPortals);
+
             }
             catch (Exception)
             {
@@ -66,8 +76,8 @@ namespace AccountingPolessUp.Views.Administration.EditPages
             try
             {
                 WriteData();
-                DataAccess.Create(this,_educationalPortals);
-             
+                DataAccess.Create(this, _educationalPortals);
+
             }
             catch (Exception)
             {
@@ -77,6 +87,7 @@ namespace AccountingPolessUp.Views.Administration.EditPages
         private void WriteData()
         {
             _educationalPortals.DepartmentId = _department.FirstOrDefault(i => i == BoxDepartment.SelectedItem).Id;
+
             _educationalPortals.Name = Name.Text;
             _educationalPortals.Description = Description.Text;
             _educationalPortals.Link = Link.Text;

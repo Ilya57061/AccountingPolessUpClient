@@ -1,4 +1,4 @@
-﻿using AccountingPolessUp.Helpers;
+﻿using AccountingPolessUp.Configurations;
 using AccountingPolessUp.Models;
 using Newtonsoft.Json;
 using System;
@@ -17,17 +17,17 @@ namespace AccountingPolessUp.Implementations
         {
             _webClient = new WebClient
             {
-                BaseAddress = "https://polessu.by/polessup/",
-                Headers = { ["Authorization"] = "Bearer " + TokenManager.AccessToken }
+                BaseAddress = WebClientConfiguration.BaseAdress,
+                Headers = WebClientConfiguration.Headers,
+                Encoding = WebClientConfiguration.Encoding
             };
-            _webClient.Encoding = System.Text.Encoding.UTF8;
         }
 
         public List<ApplicationsInTheProject> Get()
         {
             var json = _webClient.DownloadString("GetAppInTheProject");
             var applicationsInTheProject = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(json);
-            if (applicationsInTheProject is null) throw new Exception("applicationsInTheProject - null"); 
+            if (applicationsInTheProject is null) throw new Exception("applicationsInTheProject - null");
             return applicationsInTheProject;
         }
         public List<ApplicationsInTheProject> Get(int vacancyId)
@@ -47,7 +47,7 @@ namespace AccountingPolessUp.Implementations
         {
             var reqparm = new NameValueCollection
             {
-                
+
                 ["DateEntry"] = $"{model.DateEntry}",
                 ["ParticipantsId"] = $"{model.ParticipantsId}",
                 ["IsAccepted"] = $"{model.IsAccepted}",
@@ -63,7 +63,7 @@ namespace AccountingPolessUp.Implementations
             var reqparm = new NameValueCollection
             {
                 ["id"] = $"{model.Id}",
-                
+
                 ["DateEntry"] = $"{model.DateEntry}",
                 ["ParticipantsId"] = $"{model.ParticipantsId}",
                 ["IsAccepted"] = $"{model.IsAccepted}",
