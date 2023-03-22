@@ -12,11 +12,374 @@
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-   Background="#EDEEF0"
+   Background="#FFFFFF"
      FontFamily="{DynamicResource MaterialDesignFont}">
+    <Page.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Roboto"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Margin" Value="15 7 0 0"/>
+        </Style>
+        <Style TargetType="CheckBox" BasedOn="{StaticResource MaterialDesignCheckBox}">
+            <Setter Property="Margin" Value="15,0,0,0" />
+        </Style>
+    </Page.Resources>
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-        <Grid>
-
+        <Grid Margin="50 0 30 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="220"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <!--Инфа про пользователя-->
+            <Grid Grid.Row="0" Grid.ColumnSpan="2" Margin="0 50 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3">
+                    <StackPanel>
+                        <Grid Margin="0 10 50 0" Grid.Row="0">
+                            <TextBlock FontSize="30" FontFamily="Roboto" Grid.Row="0" Text="Ярошук Владислав Анатольевич" FontWeight="Bold"/>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="180"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Text="Дата вступления"/>
+                            <TextBlock Grid.Row="1" Text="Стаж"/>
+                            <TextBlock Grid.Row="2" Text="Ранг"/>
+                            <TextBlock Grid.Row="3" Text="GitHub"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" x:Name="DateEntry" FontWeight="Normal"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="Experience" FontWeight="Normal"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="Rank" FontWeight="Normal"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="GitHub" Margin="0 0 0 20" FontWeight="Normal"/>
+                        </Grid>
+                    </StackPanel>
+                </materialDesign:Card>
+            </Grid>
+            <!--Поиск-->
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0 20 0 5">
+                <WrapPanel HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBox FontFamily="Roboto" Text="{Binding Time}" Height="43" Margin="0 0 0 15" Width="240" materialDesign:HintAssist.Hint="Поиск" FontSize="14" VerticalContentAlignment="Bottom" HorizontalAlignment="Left" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                    <Button Width="Auto" Margin="10 0 0 0" Height="30" Content="Поиск" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                </WrapPanel>
+            </Grid>
+            <!--История-->
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label FontSize="30" FontFamily="Roboto" Content="История Трудоустройств" FontWeight="Bold"/>
+                </Grid>
+                <Grid Grid.Row="1" Margin="0 0 15 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3">
+                        <StackPanel>
+                            <Grid Margin="0 10 0 0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="195"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock FontSize="20" FontFamily="Roboto" Grid.Row="0" Text="UX/UI Designer" FontWeight="Bold" Margin="15 0 0 0"/>
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Завершено" VerticalAlignment="Center" Foreground="#34C86F" Margin="0 0 0 0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Margin="0 0 15 0">
+                                    <TextBlock Text="16/02/2020 - 16/02/2020" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#898989" Margin="0 0 0 0"/>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Отдел"/>
+                                <TextBlock Grid.Row="1" Text="Стаж работы"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Normal" Text="Креатив и дизайн"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" FontWeight="Normal" Text="0 дней"/>
+                                <Button Grid.Row="2" Width="120" Margin="15 10 0 0" Height="30" HorizontalAlignment="Left" Content="Подробнее" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+                <Grid Grid.Row="2" Margin="0 0 15 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3">
+                        <StackPanel >
+                            <Grid Margin="0 10 0 0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="195"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock FontSize="20" FontFamily="Roboto" Grid.Row="0" Text="UX/UI Designer" FontWeight="Bold" Margin="15 0 0 0"/>
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Провалено" VerticalAlignment="Center" Foreground="#FF4040" Margin="0 0 0 0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Margin="0 0 15 0">
+                                    <TextBlock Text="16/02/2020 - 16/02/2020" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#898989" Margin="0 0 0 0"/>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Отдел"/>
+                                <TextBlock Grid.Row="1" Text="Стаж работы"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Normal" Text="Креатив и дизайн"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" FontWeight="Normal" Text="0 дней"/>
+                                <Button Grid.Row="2" Width="120" Margin="15 10 0 0" Height="30" HorizontalAlignment="Left" Content="Подробнее" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+                <Grid Grid.Row="3" Margin="0 0 15 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3">
+                        <StackPanel>
+                            <Grid Margin="0 10 0 0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="195"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock FontSize="20" FontFamily="Roboto" Grid.Row="0" Text="UX/UI Designer" FontWeight="Bold" Margin="15 0 0 0"/>
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Провалено" VerticalAlignment="Center" Foreground="#FF4040" Margin="0 0 0 0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Margin="0 0 15 0">
+                                    <TextBlock Text="16/02/2020 - 16/02/2020" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#898989" Margin="0 0 0 0"/>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Отдел"/>
+                                <TextBlock Grid.Row="1" Text="Стаж работы"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Normal" Text="Креатив и дизайн"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" FontWeight="Normal" Text="0 дней"/>
+                                <Button Grid.Row="2" Width="120" Margin="15 10 0 0" Height="30" HorizontalAlignment="Left" Content="Подробнее" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+                <Grid Grid.Row="4" Margin="0 0 15 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3">
+                        <StackPanel>
+                            <Grid Margin="0 10 0 0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="195"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock FontSize="20" FontFamily="Roboto" Grid.Row="0" Text="UX/UI Designer" FontWeight="Bold" Margin="15 0 0 0"/>
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Выполняется" VerticalAlignment="Center" Foreground="#65C8FF" Margin="0 0 0 0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Margin="0 0 15 0">
+                                    <TextBlock Text="16/02/2020 - 16/02/2020" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#898989" Margin="0 0 0 0"/>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Отдел"/>
+                                <TextBlock Grid.Row="1" Text="Стаж работы"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Normal" Text="Креатив и дизайн"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" FontWeight="Normal" Text="0 дней"/>
+                                <Button Grid.Row="2" Width="120" Margin="15 10 0 0" Height="30" HorizontalAlignment="Left" Content="Подробнее" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+                <Grid Grid.Row="5" Margin="0 0 15 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3">
+                        <StackPanel>
+                            <Grid Margin="0 10 0 0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="195"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock FontSize="20" FontFamily="Roboto" Grid.Row="0" Text="UX/UI Designer" FontWeight="Bold" Margin="15 0 0 0"/>
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Выполняется" VerticalAlignment="Center" Foreground="#65C8FF" Margin="0 0 0 0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Margin="0 0 15 0">
+                                    <TextBlock Text="16/02/2020 - 16/02/2020" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#898989" Margin="0 0 0 0"/>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Отдел"/>
+                                <TextBlock Grid.Row="1" Text="Стаж работы"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Normal" Text="Креатив и дизайн"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" FontWeight="Normal" Text="0 дней"/>
+                                <Button Grid.Row="2" Width="120" Margin="15 10 0 0" Height="30" HorizontalAlignment="Left" Content="Подробнее" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+                <Grid Grid.Row="6" Margin="0 0 15 0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="130"/>
+                    </Grid.RowDefinitions>
+                    <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3">
+                        <StackPanel>
+                            <Grid Margin="0 10 0 0" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="195"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock FontSize="20" FontFamily="Roboto" Grid.Row="0" Text="UX/UI Designer" FontWeight="Bold" Margin="15 0 0 0"/>
+                                <Grid Grid.Column="1">
+                                    <TextBlock Text="Завершено" VerticalAlignment="Center" Foreground="#34C86F" Margin="0 0 0 0"/>
+                                </Grid>
+                                <Grid Grid.Column="2" Margin="0 0 15 0">
+                                    <TextBlock Text="Дата начала - дата конца" VerticalAlignment="Center" HorizontalAlignment="Right" Foreground="#898989" Margin="0 0 0 0"/>
+                                </Grid>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="180"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+                                <TextBlock Grid.Row="0" Text="Отдел"/>
+                                <TextBlock Grid.Row="1" Text="Стаж работы"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" FontWeight="Normal" Text="Креатив и дизайн"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" FontWeight="Normal" Text="0 дней"/>
+                                <Button Grid.Row="2" Width="120" Margin="15 10 0 0" Height="30" HorizontalAlignment="Left" Content="Подробнее" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+            </Grid>
+            <!--Фильтр-->
+            <Grid Grid.Row="2" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Label FontSize="30" FontFamily="Roboto" Content="Фильтр" FontWeight="Bold"/>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3">
+                        <StackPanel>
+                            <TextBlock Text="Отдел"/>
+                            <ComboBox materialDesign:ComboBoxAssist.MaxLength="2" Margin="15 0 15 0" FontSize="14" materialDesign:HintAssist.Hint="Отдел" materialDesign:HintAssist.HintOpacity=".2" IsEditable="True">
+                                <ComboBoxItem Content="Apple" />
+                            </ComboBox>
+                            <TextBlock Text="Должность"/>
+                            <ComboBox materialDesign:ComboBoxAssist.MaxLength="2" Margin="15 0 15 0" FontSize="14" materialDesign:HintAssist.Hint="Должность" materialDesign:HintAssist.HintOpacity=".2" IsEditable="True">
+                                <ComboBoxItem Content="Apple" />
+                            </ComboBox>
+                            <TextBlock Text="Дата"/>
+                            <StackPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <CheckBox Content="2022" FontSize="14"/>
+                                <CheckBox Content="2023" FontSize="14"/>
+                            </StackPanel>
+                            <WrapPanel Margin="0 5 0 0">
+                                <TextBox materialDesign:HintAssist.HelperText="16/02/2022" materialDesign:HintAssist.Hint="С" Width="75" Margin="15 0 15 0" materialDesign:TextFieldAssist.HasClearButton="True" FontSize="14"/>
+                                <TextBox materialDesign:HintAssist.HelperText="16/02/2022" materialDesign:HintAssist.Hint="По" Width="75" Margin="0 0 15 0" materialDesign:TextFieldAssist.HasClearButton="True" FontSize="14"/>
+                            </WrapPanel>
+                            <TextBlock Text="Стаж" Margin="15 20 0 0"/>
+                            <WrapPanel Orientation="Horizontal" Margin="0,8,15,0">
+                                <CheckBox Content="От 15 дней" FontSize="14"/>
+                                <CheckBox Content="От 30 дней" FontSize="14"/>
+                                <CheckBox Content="30 и более дней" FontSize="14"/>
+                                <TextBox materialDesign:HintAssist.Hint="От" Width="70" FontSize="14" Margin="15 0 15 0" materialDesign:TextFieldAssist.HasClearButton="True" HorizontalContentAlignment="Center"/>
+                                <TextBox materialDesign:HintAssist.Hint="До" Width="70" FontSize="14" Margin="0 0 15 0" materialDesign:TextFieldAssist.HasClearButton="True" HorizontalContentAlignment="Center"/>
+                            </WrapPanel>
+                            <TextBlock Text="Статус"/>
+                            <WrapPanel Orientation="Horizontal" Margin="0,8,0,0">
+                                <CheckBox Content="Завершено" Foreground="#34C86F" FontSize="14"/>
+                                <CheckBox Content="Выполняется" Foreground="#65C8FF" FontSize="14"/>
+                                <CheckBox Content="Провалено" Foreground="#FF4040" FontSize="14"/>
+                            </WrapPanel>
+                            <Grid Grid.Row="2" Margin="0 20 0 10">
+                                <WrapPanel >
+                                    <Button Width="Auto" Margin="15 0 0 0" Height="30" Content="Сбросить" FontFamily="Roboto" Background="#FF5959" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                                    <Button Width="Auto" Margin="5 0 15 0" Height="30" Content="Применить" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                                </WrapPanel>
+                            </Grid>
+                        </StackPanel>
+                    </materialDesign:Card>
+                </Grid>
+            </Grid>
         </Grid>
     </ScrollViewer>
 </Page>
