@@ -1,5 +1,6 @@
 ﻿using AccountingPolessUp.Configurations;
 using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -99,6 +100,26 @@ namespace AccountingPolessUp.Implementations
             catch (Exception)
             {
             }
+        }
+        public List<Employment> GetFiltered(EmploymentFilter model)
+        {
+            var reqparm = new NameValueCollection
+            {
+                ["Department"] = $"{model.Department}",
+                ["Position"] = $"{model.Position}",
+                ["DateYear"] = $"{model.DateYear}",
+                ["DateFrom"] = $"{model.DateFrom}",
+                ["DateTo"] = $"{model.DateTo}",
+                ["ExperienceFrom"] = $"{model.ExperienceFrom}",
+                ["ExperienceTo"] = $"{model.ExperienceTo}",
+                ["Experience"] = $"{model.Experience}",
+                ["Status"] = $"{model.Status}"
+            };
+            var response = _webClient.UploadValues("GetFiltredEmployments", "PUT", reqparm);
+            var responseString = Encoding.Default.GetString(response);
+            var employments = JsonConvert.DeserializeObject<List<Employment>>(responseString);
+            if (employments is null) throw new Exception("employments - null");
+            else return employments;
         }
     }
 }

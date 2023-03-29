@@ -1,10 +1,12 @@
 ﻿using AccountingPolessUp.Configurations;
 using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
+using System.Text;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -63,6 +65,20 @@ namespace AccountingPolessUp.Implementations
                 ["id"] = $"{id}"
             };
             _webClient.UploadValues("DeleteRank", "DELETE", reqparm);
+        }
+        public List<Rank> GetFiltered(RankFilter model)
+        {
+            var reqparm = new NameValueCollection
+            {
+                ["MmrFrom"] = $"{model.MmrFrom}",
+                ["MmrTo"] = $"{model.MmrTo}",
+                ["Name"] = $"{model.Name}"
+            };
+            var response = _webClient.UploadValues("GetFiltredRanks", "PUT", reqparm);
+            var responseString = Encoding.Default.GetString(response);
+            var ranks = JsonConvert.DeserializeObject<List<Rank>>(responseString);
+            if (ranks is null) throw new Exception("ranks - null");
+            else return ranks;
         }
     }
 }

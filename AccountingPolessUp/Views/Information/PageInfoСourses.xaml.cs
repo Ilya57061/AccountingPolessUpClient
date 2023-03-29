@@ -24,33 +24,33 @@ namespace AccountingPolessUp.Views.Information
             Courses = new ObservableCollection<TrainingCourses>(_trainingCoursesService.Get());
             DataContext = Courses;
         }
-        private void HyperlinkCourses_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                Hyperlink hyperlink = sender as Hyperlink;
-                Run run = hyperlink.Inlines.FirstInline as Run;
-                string text = run.Text;
-                Process.Start(text);
-            }
-            catch (Exception)
-            {
-                Hyperlink hyperlink = sender as Hyperlink;
-                hyperlink.IsEnabled = false;
-            }
-        }
-        private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
-        {
-            FilterManager.ConfirmFilter(this, Courses, Name.Text, Description.Text, DateStart.Text, DateEnd.Text, LectorFio.Text, LectorDescription.Text);
-        }
-        private void ButtonClear_Click(object sender, RoutedEventArgs e)
-        {
-            FilterManager.ClearControls(filter);
-            DataContext = Courses;
-        }
-        private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
-        {
-            NumberValidator.DateValidator(e);
-        }
+        //private void HyperlinkCourses_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        Hyperlink hyperlink = sender as Hyperlink;
+        //        Run run = hyperlink.Inlines.FirstInline as Run;
+        //        string text = run.Text;
+        //        Process.Start(text);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        Hyperlink hyperlink = sender as Hyperlink;
+        //        hyperlink.IsEnabled = false;
+        //    }
+        //}
+        //private void ButtonConfirm_Click(object sender, RoutedEventArgs e)
+        //{
+        //    FilterManager.ConfirmFilter(this, Courses, Name.Text, Description.Text, DateStart.Text, DateEnd.Text, LectorFio.Text, LectorDescription.Text);
+        //}
+        //private void ButtonClear_Click(object sender, RoutedEventArgs e)
+        //{
+        //    FilterManager.ClearControls(filter);
+        //    DataContext = Courses;
+        //}
+        //private void Number_PreviewDateInput(object sender, TextCompositionEventArgs e)
+        //{
+        //    NumberValidator.DateValidator(e);
+        //}
     }
 }

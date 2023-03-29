@@ -1,5 +1,6 @@
 ﻿using AccountingPolessUp.Configurations;
 using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -84,6 +85,23 @@ namespace AccountingPolessUp.Implementations
                 ["id"] = $"{id}"
             };
             _webClient.UploadValues("DeleteVacancy", "DELETE", reqparm);
+        }
+        public List<Vacancy> GetFiltered(VacancyFilter model)
+        {
+            var reqparm = new NameValueCollection
+            {
+                ["Vacancy"] = $"{model.Vacancy}",
+                ["Project"] = $"{model.Project}",
+                ["DateYear"] = $"{model.DateYear}",
+                ["DateFrom"] = $"{model.DateFrom}",
+                ["DateTo"] = $"{model.DateTo}",
+                ["Status"] = $"{model.Status}"
+            };
+            var response = _webClient.UploadValues("GetFiltredVacancy", "PUT", reqparm);
+            var responseString = Encoding.Default.GetString(response);
+            var vacancy = JsonConvert.DeserializeObject<List<Vacancy>>(responseString);
+            if (vacancy is null) throw new Exception("vacancy - null");
+            else return vacancy;
         }
     }
 }

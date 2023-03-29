@@ -1,5 +1,6 @@
 ﻿using AccountingPolessUp.Configurations;
 using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -111,6 +112,22 @@ namespace AccountingPolessUp.Implementations
 
             }
 
+        }
+        public List<ScheduleOfСlasses> GetFiltered(ScheduleOfСlassesFilter model)
+        {
+            var reqparm = new NameValueCollection
+            {
+                ["Lector"] = $"{model.Lector}",
+                ["DateYear"] = $"{model.DateYear}",
+                ["DateFrom"] = $"{model.DateFrom}",
+                ["DateTo"] = $"{model.DateTo}",
+                ["Status"] = $"{model.Status}"
+            };
+            var response = _webClient.UploadValues("GetFiltredScheduleOfСlasses", "PUT", reqparm);
+            var responseString = Encoding.Default.GetString(response);
+            var scheduleOfСlasses = JsonConvert.DeserializeObject<List<ScheduleOfСlasses>>(responseString);
+            if (scheduleOfСlasses is null) throw new Exception("scheduleOfСlasses - null");
+            else return scheduleOfСlasses;
         }
     }
 }

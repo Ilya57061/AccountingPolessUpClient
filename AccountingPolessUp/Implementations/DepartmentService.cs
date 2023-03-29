@@ -1,10 +1,12 @@
 ﻿using AccountingPolessUp.Configurations;
 using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
+using System.Text;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -70,6 +72,25 @@ namespace AccountingPolessUp.Implementations
                 ["id"] = $"{id}"
             };
             _webClient.UploadValues("DeleteDepartment", "DELETE", reqparm);
+        }
+        public List<Department> GetFiltered(DepartmentFilter model)
+        {
+            var reqparm = new NameValueCollection
+            {
+                ["DateYear"] = $"{model.DateYear}",
+                ["DateFrom"] = $"{model.DateFrom}",
+                ["DateTo"] = $"{model.DateTo}",
+                ["NumberOfPeople"] = $"{model.NumberOfPeople}",
+                ["NumberOfPeopleFrom"] = $"{model.NumberOfPeopleFrom}",
+                ["NumberOfPeopleTo"] = $"{model.NumberOfPeopleTo}",
+                ["ParticipantsId"] = $"{model.ParticipantsId}",
+                ["Status"] = $"{model.Status}"
+            };
+            var response = _webClient.UploadValues("GetFiltredDepartment", "PUT", reqparm);
+            var responseString = Encoding.Default.GetString(response);
+            var departments = JsonConvert.DeserializeObject<List<Department>>(responseString);
+            if (departments is null) throw new Exception("departments - null");
+            else return departments;
         }
     }
 }

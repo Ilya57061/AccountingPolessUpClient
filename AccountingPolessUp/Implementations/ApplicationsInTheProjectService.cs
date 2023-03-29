@@ -1,5 +1,6 @@
 ﻿using AccountingPolessUp.Configurations;
 using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -38,9 +39,9 @@ namespace AccountingPolessUp.Implementations
             };
             var response = _webClient.UploadValues("GetAppInTheProjectForVacancyId", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
-            var Info = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(responseString);
-            if (Info is null) throw new Exception("info - null");
-            else return Info;
+            var appInTheProjects = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(responseString);
+            if (appInTheProjects is null) throw new Exception("AppInTheProjects - null");
+            else return appInTheProjects;
         }
 
         public void Create(ApplicationsInTheProject model)
@@ -82,5 +83,23 @@ namespace AccountingPolessUp.Implementations
             };
             _webClient.UploadValues("DeleteAppInTheProject", "DELETE", reqparm);
         }
+        public List<ApplicationsInTheProject> GetFiltered(ApplicationsInTheProjectFilter model)
+        {
+            var reqparm = new NameValueCollection
+            {
+                ["Vacancy"] = $"{model.Vacancy}",
+                ["Project"] = $"{model.Project}",
+                ["DateYear"] = $"{model.DateYear}",
+                ["DateFrom"] = $"{model.DateFrom}",
+                ["DateTo"] = $"{model.DateTo}",
+                ["IsAccepted"] = $"{model.IsAccepted}"
+            };
+            var response = _webClient.UploadValues("GetFilteredApplicationInTheProject", "PUT", reqparm);
+            var responseString = Encoding.Default.GetString(response);
+            var appInTheProjects = JsonConvert.DeserializeObject<List<ApplicationsInTheProject>>(responseString);
+            if (appInTheProjects is null) throw new Exception("AppInTheProjects - null");
+            else return appInTheProjects;
+        }
+
     }
 }

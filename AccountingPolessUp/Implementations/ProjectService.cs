@@ -1,10 +1,12 @@
 ﻿using AccountingPolessUp.Configurations;
 using AccountingPolessUp.Models;
+using AccountingPolessUp.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Net;
+using System.Text;
 
 namespace AccountingPolessUp.Implementations
 {
@@ -75,6 +77,22 @@ namespace AccountingPolessUp.Implementations
             catch (Exception)
             {
             }
+        }
+        public List<Project> GetFiltered(ProjectFilter model)
+        {
+            var reqparm = new NameValueCollection
+            {
+                ["Position"] = $"{model.Position}",
+                ["DateYear"] = $"{model.DateYear}",
+                ["DateFrom"] = $"{model.DateFrom}",
+                ["DateTo"] = $"{model.DateTo}",
+                ["Status"] = $"{model.Status}"
+            };
+            var response = _webClient.UploadValues("GetFiltredProjects", "PUT", reqparm);
+            var responseString = Encoding.Default.GetString(response);
+            var projects = JsonConvert.DeserializeObject<List<Project>>(responseString);
+            if (projects is null) throw new Exception("projects - null");
+            else return projects;
         }
     }
 }
