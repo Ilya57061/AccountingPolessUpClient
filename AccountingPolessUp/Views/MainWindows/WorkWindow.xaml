@@ -73,7 +73,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem x:Name="ButtonMenuProjectApplications" Selected="Button_Click">
+                <TreeViewItem x:Name="ButtonApplications" Selected="Button_Click">
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="PlusCircle" Width="35" Height="35" VerticalAlignment="Center"/>
@@ -81,7 +81,7 @@
                         </StackPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
-                <TreeViewItem x:Name="ButtonPositions" Selected="Button_Click">
+                <TreeViewItem x:Name="ButtonVacancy" Selected="Button_Click">
                     <TreeViewItem.Header>
                         <StackPanel  Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="BriefcasePlus" Width="35" Height="35" VerticalAlignment="Center"/>

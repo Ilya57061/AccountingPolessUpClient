@@ -276,14 +276,14 @@
     <Compile Include="Views\Information\PageInfoСourses.xaml.cs">
       <DependentUpon>PageInfoСourses.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Menu\PageApplications.xaml.cs">
+      <DependentUpon>PageApplications.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Menu\PageEmployment.xaml.cs">
       <DependentUpon>PageEmployment.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Menu\PageMentor.xaml.cs">
       <DependentUpon>PageMentor.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Menu\PagePositions.xaml.cs">
-      <DependentUpon>PagePositions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Menu\PageProfile.xaml.cs">
       <DependentUpon>PageProfile.xaml</DependentUpon>
@@ -296,6 +296,9 @@
     </Compile>
     <Compile Include="Views\Menu\PageSettings.xaml.cs">
       <DependentUpon>PageSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Menu\PageVacancy.xaml.cs">
+      <DependentUpon>PageVacancy.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Settings\PageSecurity.xaml.cs">
       <DependentUpon>PageSecurity.xaml</DependentUpon>
@@ -511,15 +514,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Menu\PageApplications.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Menu\PageEmployment.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Menu\PageMentor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Menu\PagePositions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -536,6 +539,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Menu\PageSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Menu\PageVacancy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
