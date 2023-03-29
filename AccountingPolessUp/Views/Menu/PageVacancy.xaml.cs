@@ -24,5 +24,18 @@ namespace AccountingPolessUp.Views.Menu
         {
             InitializeComponent();
         }
+        private void HyperlinkGitHub_Click(object sender, RoutedEventArgs e)
+        {
+            //try
+            //{
+            //    Process.Start(_participants.GitHub);
+
+            //}
+            //catch (Exception)
+            //{
+            //    HyperlinkGitHub.IsEnabled = false;
+            //    InfoGitHub.Foreground = new SolidColorBrush(Colors.Gray);
+            //}
+        }
     }
 }
