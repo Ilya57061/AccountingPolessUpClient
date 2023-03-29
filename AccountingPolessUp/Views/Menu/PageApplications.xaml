@@ -1,13 +1,12 @@
-﻿<Page x:Class="AccountingPolessUp.Views.PageProjects"
+﻿<Page x:Class="AccountingPolessUp.Views.Menu.PageApplications"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      
-      xmlns:local="clr-namespace:AccountingPolessUp.Views"
+      xmlns:local="clr-namespace:AccountingPolessUp"
       mc:Ignorable="d" 
-      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-     d:DesignHeight="950" d:DesignWidth="800"
+     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      d:DesignHeight="1950" d:DesignWidth="800"
           TextElement.Foreground="{DynamicResource MaterialDesignBody}"
      TextElement.FontWeight="Regular"
      TextElement.FontSize="13"
@@ -15,6 +14,7 @@
      TextOptions.TextRenderingMode="Auto"
    Background="#FFFFFF"
      FontFamily="{DynamicResource MaterialDesignFont}">
+
     <ScrollViewer VerticalScrollBarVisibility="Hidden">
         <Grid>
             <Grid.ColumnDefinitions>
@@ -131,18 +131,18 @@
                             <RowDefinition Height="25"/>
                             <RowDefinition Height="40"/>
                             <RowDefinition Height="25"/>
-                            <RowDefinition Height="140"/>
+                            <RowDefinition Height="40"/>
                             <RowDefinition Height="25"/>
-                            <RowDefinition Height="115"/>
+                            <RowDefinition Height="140"/>
                             <RowDefinition Height="25"/>
                             <RowDefinition Height="70"/>
                             <RowDefinition Height="60"/>
                         </Grid.RowDefinitions>
                         <Grid Grid.Column="1" Grid.Row="1">
-                            <TextBlock Text="Должность" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                            <TextBlock Text="Вакансия" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
                         </Grid>
-                        <Grid Grid.Column="1" Grid.Row="2" VerticalAlignment="Top">
-                            <ComboBox materialDesign:HintAssist.Hint="Должность">
+                        <Grid Grid.Column="1" Grid.Row="2">
+                            <ComboBox materialDesign:HintAssist.Hint="Вакансия" VerticalAlignment="Top">
                                 <ComboBoxItem Content="Android" />
                                 <ComboBoxItem Content="iOS" />
                                 <ComboBoxItem Content="Linux" />
@@ -150,9 +150,20 @@
                             </ComboBox>
                         </Grid>
                         <Grid Grid.Column="1" Grid.Row="3">
-                            <TextBlock Text="Дата" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                            <TextBlock Text="Проект" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
                         </Grid>
                         <Grid Grid.Column="1" Grid.Row="4">
+                            <ComboBox materialDesign:HintAssist.Hint="Проект" VerticalAlignment="Top">
+                                <ComboBoxItem Content="Android" />
+                                <ComboBoxItem Content="iOS" />
+                                <ComboBoxItem Content="Linux" />
+                                <ComboBoxItem Content="Windows" />
+                            </ComboBox>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="5">
+                            <TextBlock Text="Дата" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="6">
                             <StackPanel>
                                 <RadioButton Content="2022" FontSize="16" FontFamily="Roboto"/>
                                 <RadioButton Content="2023" FontSize="16" FontFamily="Roboto"/>
@@ -162,37 +173,17 @@
                                 </WrapPanel>
                             </StackPanel>
                         </Grid>
-                        <Grid Grid.Column="1" Grid.Row="5">
-                            <TextBlock Text="Стаж" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
-                        </Grid>
-                        <Grid Grid.Column="1" Grid.Row="6">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="auto"/>
-                                <RowDefinition Height="auto"/>
-                            </Grid.RowDefinitions>
-                            <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0 0 0 10">
-                                <RadioButton Content="От 15 дней" FontSize="16" FontFamily="Roboto"/>
-                                <RadioButton Content="От 30 дней" FontSize="16" FontFamily="Roboto"/>
-                                <RadioButton Content="От 30 и более" FontSize="16" FontFamily="Roboto"/>
-                            </StackPanel>
-                            <TextBox materialDesign:HintAssist.Hint="От" Width="50" Grid.Row="1" Grid.Column="0" FontFamily="Roboto" materialDesign:TextFieldAssist.HasClearButton="True" HorizontalContentAlignment="Center"/>
-                            <TextBox materialDesign:HintAssist.Hint="До" Width="50" Grid.Row="1" Grid.Column="1" FontFamily="Roboto" materialDesign:TextFieldAssist.HasClearButton="True" HorizontalContentAlignment="Center"/>
-                        </Grid>
                         <Grid Grid.Column="1" Grid.Row="7">
                             <TextBlock Text="Статус" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
                         </Grid>
                         <Grid Grid.Column="1" Grid.Row="8">
                             <WrapPanel Orientation="Horizontal">
-                                <RadioButton Content="Завершен" Foreground="#34C86F" FontSize="16"/>
-                                <RadioButton Content="Выполняется" Foreground="#65C8FF" FontSize="16"/>
-                                <RadioButton Content="Провален" Foreground="#FF4040" FontSize="16"/>
+                                <RadioButton Content="Принята" Foreground="#34C86F" FontSize="16"/>
+                                <RadioButton Content="На рассмотрении" Foreground="#65C8FF" FontSize="16"/>
+                                <RadioButton Content="Отклонена" Foreground="#FF4040" FontSize="16"/>
                             </WrapPanel>
                         </Grid>
-                        <Grid Grid.Column="1" Grid.Row="9">
+                        <Grid Grid.Column="1" Grid.Row="10">
                             <WrapPanel Margin="0 10 0 0">
                                 <Button Width="auto" Height="30" BorderBrush="#FF5959" Content="Сбросить" Margin="0 0 5 0" FontFamily="Roboto" Background="#FF5959" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
                                 <Button Width="auto" Height="30" BorderBrush="#34C86F" Content="Применить" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
@@ -210,63 +201,56 @@
                     <RowDefinition Height="auto"/>
                 </Grid.RowDefinitions>
                 <Grid Grid.Row="0">
-                    <TextBlock Text="История проектов" FontSize="30" FontFamily="Roboto" FontWeight="Bold"/>
+                    <TextBlock Text="Заявки в проект" FontSize="30" FontFamily="Roboto" FontWeight="Bold"/>
                 </Grid>
                 <!--ItemSource Binding сделать-->
                 <!--<ListView>
                     <ListView.ItemTemplate>
                         <DataTemplate>-->
-                            <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3" Grid.Row="2">
-                                <Grid Grid.Row="2">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="15"/>
-                                        <RowDefinition Height="35"/>
-                                        <RowDefinition Height="35"/>
-                                        <RowDefinition Height="35"/>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="50"/>
-                                        <RowDefinition Height="15"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="15"/>
-                                        <ColumnDefinition Width="220"/>
-                                        <ColumnDefinition Width="auto"/>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition Width="15"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid Grid.Row="1" Grid.Column="1">
-                                        <TextBlock Text="PolessUP" FontSize="26" FontFamily="Roboto" FontWeight="Medium"/>
-                                    </Grid>
-                                    <Grid Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
-                                        <TextBlock Text="Должность" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
-                                    </Grid>
-                                    <Grid Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
-                                        <TextBlock Text="Коэффициент сложности" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
-                                    </Grid>
-                                    <Grid Grid.Row="4" Grid.Column="1" MinHeight="35">
-                                        <TextBlock Text="Описание" FontSize="16" FontFamily="Roboto" FontWeight="Medium" VerticalAlignment="Top"/>
-                                    </Grid>
-                                    <Grid Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left">
-                                        <Button Width="150" Height="30" BorderBrush="#34C86F" Content="Подробнее" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
-                                    </Grid>
-                                    <Grid Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
-                                        <TextBlock Text="Завершено" Foreground="#34C86F" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
-                                    </Grid>
-                                    <Grid Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
-                                        <TextBlock Text="UX/UI Designer" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
-                                    </Grid>
-                                    <Grid Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
-                                        <TextBlock Text="4.6" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
-                                    </Grid>
-                                    <Grid Grid.Row="4" Grid.Column="2">
-                                        <TextBlock TextWrapping="Wrap" Text="Описание проще этого не придумать, потому что здесь на столько простое описание, что каждый программист готов прочитать его за пару секунд, попробуйте и вы убедиться в этом лично" FontSize="16" FontFamily="Roboto" FontWeight="Normal" Width="250"/>
-                                    </Grid>
-                                    <Grid Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center">
-                            <TextBlock Text="16/12/2002 - 16/12/2002" FontSize="16" FontFamily="Roboto" FontWeight="Normal" Foreground="#898989"/>
-                                    </Grid>
-                                </Grid>
-                            </materialDesign:Card>
-                        <!--</DataTemplate>
+                <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3" Grid.Row="2">
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="35"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="15"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition Width="220"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="15"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Row="1" Grid.Column="1">
+                            <TextBlock Text="UX/UI Designer" FontSize="26" FontFamily="Roboto" FontWeight="Medium"/>
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="Проект" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                        </Grid>
+                        <Grid Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                            <TextBlock Text="Этап проекта" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                        </Grid>
+                        <Grid Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left">
+                            <Button Width="150" Height="30" BorderBrush="#34C86F" Content="Подробнее" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
+                            <TextBlock Text="Принята" Foreground="#34C86F" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
+                        </Grid>
+                        <Grid Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
+                            <TextBlock Text="PolessUP" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
+                        </Grid>
+                        <Grid Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
+                            <TextBlock Text="Проектирования и дизайн интерфейса" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
+                        </Grid>
+                        <Grid Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <TextBlock Text="16/12/2002" FontSize="16" FontFamily="Roboto" FontWeight="Normal" Foreground="#898989"/>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+                <!--</DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>-->
             </Grid>

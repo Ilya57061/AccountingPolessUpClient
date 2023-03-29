@@ -100,8 +100,11 @@ namespace AccountingPolessUp
                 case "ButtonProfile":
                     MainFrame.Content = new PageProfile(_user);
                     break;
-                case "ButtonPositions":
-                    MainFrame.Content = new PagePositions();
+                case "ButtonApplications":
+                    MainFrame.Content = new PageApplications();
+                    break;
+                case "ButtonVacancy":
+                    MainFrame.Content = new PageVacancy();
                     break;
                 case "ButtonMentor":
                     MainFrame.Content = new PageMentor();
