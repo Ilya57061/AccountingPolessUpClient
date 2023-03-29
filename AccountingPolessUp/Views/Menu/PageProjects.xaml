@@ -13,11 +13,263 @@
      TextElement.FontSize="13"
      TextOptions.TextFormattingMode="Ideal"
      TextOptions.TextRenderingMode="Auto"
-   Background="#EDEEF0"
+   Background="#FFFFFF"
      FontFamily="{DynamicResource MaterialDesignFont}">
-    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
         <Grid>
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition />
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <!--Инфа пользователя-->
+            <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
+                <Grid DataContext="{Binding Participants}">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="240"/>
+                        <ColumnDefinition Width="240"/>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="15"/>
+                    </Grid.ColumnDefinitions>
+                    <!--DataContext Participants-->
+                    <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3">
+                        <TextBlock Text="{Binding Individuals.FIO}" FontSize="30" FontFamily="Roboto" FontWeight="Bold"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="1">
+                        <TextBlock Text="Дата вступления" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="1">
+                        <TextBlock Text="Стаж" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                    </Grid>
+                    <Grid Grid.Row="4" Grid.Column="1">
+                        <TextBlock Text="Ранг" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                    </Grid>
+                    <Grid Grid.Row="5" Grid.Column="1">
+                        <TextBlock Text="GitHub" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                    </Grid>
+                    <Grid Grid.Row="2" Grid.Column="2" Width="auto">
+                        <TextBlock Text="{Binding DateEntry}" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
+                    </Grid>
+                    <Grid Grid.Row="3" Grid.Column="2">
+                        <TextBlock Text="0 Дней" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
+                    </Grid>
+                    <Grid Grid.Row="4" Grid.Column="2">
+                        <TextBlock Text="Junior" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
+                    </Grid>
+                    <Grid Grid.Row="5" Grid.Column="2">
+                        <TextBlock Text="{Binding GitHub}" FontSize="16" FontFamily="Roboto" FontWeight="Normal">
+                        <Hyperlink x:Name="HyperlinkGitHub" Foreground="#3f3f3f" Click="HyperlinkGitHub_Click">
+                            <Run x:Name="InfoGitHub" Text="Ссылка на GitHub"/>
+                        </Hyperlink>
+                        </TextBlock>
+                    </Grid>
+                    <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Grid.RowSpan="5" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Mmr}" FontFamily="Roboto" FontSize="70" Foreground="#CDCDCD"/>
+                    </Grid>
+                </Grid>
+            </materialDesign:Card>
+            <!--Поиск-->
+            <Grid Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="15"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="15"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="15"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <WrapPanel VerticalAlignment="Center">
+                        <TextBox VerticalAlignment="Center" materialDesign:HintAssist.Hint="Поиск" HorizontalAlignment="Left" FontSize="16" FontFamily="Roboto" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="350"/>
+                        <Button materialDesign:ButtonAssist.CornerRadius="10" Content="Поиск" BorderBrush="#34C86F" Margin="5 0 0 0" FontSize="16" Background="#34C86F" FontFamily="Roboto" Width="100" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                    </WrapPanel>
+                </Grid>
+            </Grid>
+            <!--Фильтр-->
+            <Grid Grid.Row="3" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="36"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.ColumnSpan="3">
+                    <TextBlock Text="Фильтр" FontSize="26" FontFamily="Roboto" FontWeight="Medium"/>
+                </Grid>
+                <!--Внутрянка фильтра-->
+                <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3" Grid.Row="2" Grid.RowSpan="5">
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="15"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="15"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="15"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="140"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="115"/>
+                            <RowDefinition Height="25"/>
+                            <RowDefinition Height="70"/>
+                            <RowDefinition Height="60"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Column="1" Grid.Row="1">
+                            <TextBlock Text="Должность" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="2" VerticalAlignment="Top">
+                            <ComboBox materialDesign:HintAssist.Hint="Должность">
+                                <ComboBoxItem Content="Android" />
+                                <ComboBoxItem Content="iOS" />
+                                <ComboBoxItem Content="Linux" />
+                                <ComboBoxItem Content="Windows" />
+                            </ComboBox>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="3">
+                            <TextBlock Text="Дата" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="4">
+                            <StackPanel>
+                                <RadioButton Content="2022" FontSize="16" FontFamily="Roboto"/>
+                                <RadioButton Content="2023" FontSize="16" FontFamily="Roboto"/>
+                                <WrapPanel>
+                                    <DatePicker Width="120" FontSize="16" Height="40" FontFamily="Roboto" materialDesign:HintAssist.Hint="С" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                    <DatePicker Width="120" FontSize="16" Height="40" FontFamily="Roboto" materialDesign:HintAssist.Hint="По" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                </WrapPanel>
+                            </StackPanel>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="5">
+                            <TextBlock Text="Стаж" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="6">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0 0 0 10">
+                                <RadioButton Content="От 15 дней" FontSize="16" FontFamily="Roboto"/>
+                                <RadioButton Content="От 30 дней" FontSize="16" FontFamily="Roboto"/>
+                                <RadioButton Content="От 30 и более" FontSize="16" FontFamily="Roboto"/>
+                            </StackPanel>
+                            <TextBox materialDesign:HintAssist.Hint="От" Width="50" Grid.Row="1" Grid.Column="0" FontFamily="Roboto" materialDesign:TextFieldAssist.HasClearButton="True" HorizontalContentAlignment="Center"/>
+                            <TextBox materialDesign:HintAssist.Hint="До" Width="50" Grid.Row="1" Grid.Column="1" FontFamily="Roboto" materialDesign:TextFieldAssist.HasClearButton="True" HorizontalContentAlignment="Center"/>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="7">
+                            <TextBlock Text="Статус" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="8">
+                            <WrapPanel Orientation="Horizontal">
+                                <RadioButton Content="Завершено" Foreground="#34C86F" FontSize="16"/>
+                                <RadioButton Content="Выполняется" Foreground="#65C8FF" FontSize="16"/>
+                                <RadioButton Content="Провалено" Foreground="#FF4040" FontSize="16"/>
+                            </WrapPanel>
+                        </Grid>
+                        <Grid Grid.Column="1" Grid.Row="9">
+                            <WrapPanel Margin="0 10 0 0">
+                                <Button Width="auto" Height="30" BorderBrush="#FF5959" Content="Сбросить" Margin="0 0 5 0" FontFamily="Roboto" Background="#FF5959" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                                <Button Width="auto" Height="30" BorderBrush="#34C86F" Content="Применить" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                            </WrapPanel>
+                        </Grid>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+
+            <!--История-->
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="36"/>
+                    <RowDefinition Height="15"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <TextBlock Text="История проектов" FontSize="30" FontFamily="Roboto" FontWeight="Bold"/>
+                </Grid>
+                <!--ItemSource Binding сделать-->
+                <!--<ListView>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>-->
+                            <materialDesign:Card materialDesign:ElevationAssist.Elevation="Dp3" Grid.Row="2">
+                                <Grid Grid.Row="2">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="15"/>
+                                        <RowDefinition Height="35"/>
+                                        <RowDefinition Height="35"/>
+                                        <RowDefinition Height="35"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="50"/>
+                                        <RowDefinition Height="15"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="15"/>
+                                        <ColumnDefinition Width="220"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition Width="15"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Grid.Row="1" Grid.Column="1">
+                                        <TextBlock Text="PolessUP" FontSize="26" FontFamily="Roboto" FontWeight="Medium"/>
+                                    </Grid>
+                                    <Grid Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="Должность" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                                    </Grid>
+                                    <Grid Grid.Row="3" Grid.Column="1" VerticalAlignment="Center">
+                                        <TextBlock Text="Коэффициент сложности" FontSize="16" FontFamily="Roboto" FontWeight="Medium"/>
+                                    </Grid>
+                                    <Grid Grid.Row="4" Grid.Column="1" MinHeight="35">
+                                        <TextBlock Text="Описание" FontSize="16" FontFamily="Roboto" FontWeight="Medium" VerticalAlignment="Top"/>
+                                    </Grid>
+                                    <Grid Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left">
+                                        <Button Width="150" Height="30" BorderBrush="#34C86F" Content="Подробнее" FontFamily="Roboto" Background="#34C86F" materialDesign:ButtonAssist.CornerRadius="10" FontSize="12" IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Style="{StaticResource MaterialDesignRaisedButton}" ToolTip="MaterialDesignRaisedButton with Round Corners"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
+                                        <TextBlock Text="Завершено" Foreground="#34C86F" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
+                                    </Grid>
+                                    <Grid Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
+                                        <TextBlock Text="UX/UI Designer" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
+                                    </Grid>
+                                    <Grid Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
+                                        <TextBlock Text="4.6" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
+                                    </Grid>
+                                    <Grid Grid.Row="4" Grid.Column="2">
+                                        <TextBlock TextWrapping="Wrap" Text="Описание проще этого не придумать, потому что здесь на столько простое описание, что каждый программист готов прочитать его за пару секунд, попробуйте и вы убедиться в этом лично" FontSize="16" FontFamily="Roboto" FontWeight="Normal" Width="250"/>
+                                    </Grid>
+                                    <Grid Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center">
+                            <TextBlock Text="16/12/2002 - 16/12/2002" FontSize="16" FontFamily="Roboto" FontWeight="Normal" Foreground="#898989"/>
+                                    </Grid>
+                                </Grid>
+                            </materialDesign:Card>
+                        <!--</DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->
+            </Grid>
         </Grid>
     </ScrollViewer>
 </Page>
