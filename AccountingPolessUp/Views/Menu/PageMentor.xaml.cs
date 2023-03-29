@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace AccountingPolessUp.Views
 {
@@ -10,6 +11,19 @@ namespace AccountingPolessUp.Views
         public PageMentor()
         {
             InitializeComponent();
+        }
+        private void HyperlinkGitHub_Click(object sender, RoutedEventArgs e)
+        {
+            //try
+            //{
+            //    Process.Start(_participants.GitHub);
+
+            //}
+            //catch (Exception)
+            //{
+            //    HyperlinkGitHub.IsEnabled = false;
+            //    InfoGitHub.Foreground = new SolidColorBrush(Colors.Gray);
+            //}
         }
     }
 }
