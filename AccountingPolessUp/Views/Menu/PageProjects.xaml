@@ -258,10 +258,10 @@
                                     <Grid Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">
                                         <TextBlock Text="4.6" FontSize="16" FontFamily="Roboto" FontWeight="Normal"/>
                                     </Grid>
-                                    <Grid Grid.Row="4" Grid.Column="2">
-                                        <TextBlock TextWrapping="Wrap" Text="Описание проще этого не придумать, потому что здесь на столько простое описание, что каждый программист готов прочитать его за пару секунд, попробуйте и вы убедиться в этом лично" FontSize="16" FontFamily="Roboto" FontWeight="Normal" Width="250"/>
+                                    <Grid Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
+                                        <TextBlock TextWrapping="Wrap" Text="Описание проще этого не придумать, потому что здесь на столько простое описание, что каждый программист готов прочитать его за пару секунд, попробуйте и вы убедиться в этом лично" FontSize="16" FontFamily="Roboto" FontWeight="Normal" />
                                     </Grid>
-                                    <Grid Grid.Row="1" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Center">
+                                    <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center">
                             <TextBlock Text="16/12/2002 - 16/12/2002" FontSize="16" FontFamily="Roboto" FontWeight="Normal" Foreground="#898989"/>
                                     </Grid>
                                 </Grid>
