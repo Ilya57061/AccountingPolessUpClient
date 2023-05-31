@@ -31,5 +31,10 @@ namespace AccountingPolessUp.Helpers
             return service.GetFiltered(obj) as List<T>;
             //var filtered = FilterMenu.GetFiltered(objFilter) as List<objReturnType>;
         }
+        public static List<T> Search<T>(T obj) where T : class
+        {
+            var service = _services[typeof(T)];
+            return service.Search(obj) as List<T>;
+        }
     }
 }

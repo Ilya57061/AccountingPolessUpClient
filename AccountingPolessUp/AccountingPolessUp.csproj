@@ -92,6 +92,7 @@
     <Compile Include="Helpers\DataNavigator.cs" />
     <Compile Include="Helpers\FilterComboBox.cs" />
     <Compile Include="Helpers\FilterManager.cs" />
+    <Compile Include="Helpers\FilterMenu.cs" />
     <Compile Include="Helpers\FormValidator.cs" />
     <Compile Include="Helpers\NumberValidator.cs" />
     <Compile Include="Helpers\RoleValidator.cs" />
@@ -128,10 +129,20 @@
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\ScheduleOfСlasses.cs" />
     <Compile Include="Models\TokenManager.cs" />
+    <Compile Include="ViewModels\ApplicationsInTheProjectFilter.cs" />
+    <Compile Include="ViewModels\DepartmentFilter.cs" />
+    <Compile Include="ViewModels\EducationalPortalsFilter.cs" />
+    <Compile Include="ViewModels\EmploymentFilter.cs" />
     <Compile Include="ViewModels\LoginDto.cs" />
+    <Compile Include="ViewModels\PositionFilter.cs" />
+    <Compile Include="ViewModels\ProjectFilter.cs" />
+    <Compile Include="ViewModels\RankFilter.cs" />
     <Compile Include="ViewModels\RegisterDto.cs" />
+    <Compile Include="ViewModels\ScheduleOfСlassesFilter.cs" />
     <Compile Include="ViewModels\TokenDto.cs" />
+    <Compile Include="ViewModels\TrainingCoursesFilter.cs" />
     <Compile Include="ViewModels\UpdatePasswordDto.cs" />
+    <Compile Include="ViewModels\VacancyFilter.cs" />
     <Compile Include="Views\Administration\EditPages\PageEditApplicationsInTheProject.xaml.cs">
       <DependentUpon>PageEditApplicationsInTheProject.xaml</DependentUpon>
     </Compile>
@@ -515,8 +526,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Menu\PageApplications.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Menu\PageEmployment.xaml">
       <SubType>Designer</SubType>
@@ -543,8 +554,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Menu\PageVacancy.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Settings\PageSecurity.xaml">
       <SubType>Designer</SubType>

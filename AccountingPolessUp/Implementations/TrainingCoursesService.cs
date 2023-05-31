@@ -89,7 +89,7 @@ namespace AccountingPolessUp.Implementations
                 ["DateTo"] = $"{model.DateTo}",
                 ["Status"] = $"{model.Status}"
             };
-            var response = _webClient.UploadValues("GetTrainingCourses", "PUT", reqparm);
+            var response = _webClient.UploadValues("GetFiltredTrainingCourses", "PUT", reqparm);
             var responseString = Encoding.Default.GetString(response);
             var courses = JsonConvert.DeserializeObject<List<TrainingCourses>>(responseString);
             if (courses is null) throw new Exception("courses - null");
